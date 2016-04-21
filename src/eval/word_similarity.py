@@ -100,24 +100,28 @@ def parallel_word_sim_eval(vector_inpath, wordpair_path, logpath, format="google
 def word_sim_eval(vector_inpath, wordpair_path, logpath, format="google"):
 	output(alt("Loading model...\n"), logpath)
 	model = load_vectors_from_model(vector_inpath)[1]
-	y = []
 	error_counter = 0
 
 	# Read word pairs with values
 	output(alt("Loading word pairs...\n"), logpath)
-	pairs, x = read_wordpairs(wordpair_path, format)
+	raw_pairs, x = read_wordpairs(wordpair_path, format)
+	y = [None] * len(raw_pairs)
+	pairs = []
+	for i in range(len(raw_pairs)):
+		pairs.append((i, raw_pairs[i]))
 
 	# Calculate similarity values for pairs
 	output(alt("Calculating word pair similarities...\n"), logpath)
-	for pair in pairs:
+	for pair_id, pair in pairs:
 		try:
 			a = model[capitalize(pair[0])]
 			b = model[capitalize(pair[1])]
 			sim = cosine(a, b)
-			y.append(sim)
+			y[pair_id] = sim
 		except TypeError:
-			x.pop(pairs.index(pair))
 			error_counter += 1
+
+	x, y = remove_unknowns(x, y)
 
 	rho, t, z = evaluate_wordpair_sims(x, y, len(pairs))
 
@@ -126,6 +130,21 @@ def word_sim_eval(vector_inpath, wordpair_path, logpath, format="google"):
 	# Write on screen or into logfile
 	output(alt("Calculated Pearman's rho for %i pairs (%.2f %%).\n\tr = %.4f\n\tt = %.4f\n\tz = %.4f\n")
 			% (successful_pairs, successful_percentage, rho, t, z), logpath)
+
+
+def remove_unknowns(x, y):
+	to_pop = []
+	for i in range(len(y)):
+		if not y[i]:
+			to_pop.append(i)
+
+	# Avoid popping elements while iterating through list
+	to_pop.reverse()
+	for i in to_pop:
+		x.pop(i)
+		y.pop(i)
+
+	return x, y
 
 
 def capitalize(word):

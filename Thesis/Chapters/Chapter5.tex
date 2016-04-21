@@ -6,6 +6,15 @@
 
 %----------------------------------------------------------------------------------------
 
+\begin{itquote}
+[Y]ou’ll see that there are a lot of pairings where words with similar meanings are nearby. [...]
+On the other hand, there’s a lot of junk. [...] You’d want the closest word to ``grandma'' to be ``grandpa'', not ``gym.''
+\flushright
+\textsc{Ben Schmidt über das Plotten von Word Embeddings in zwei Dimensionen\footnote{Blogeintrag ``Word Embeddings for the digital humanities'' von Ben Schmidt (2015),
+online unter http://bookworm.benschmidt.org/posts/2015-10-25-Word-Embeddings.html (zuletzt abgerufen am 21.04.15)}}
+\end{itquote}
+
+
 \section{Evaluation der Wortvektoren}
 
 An dieser Stelle sollen die verschiedenen Ansätze zum Trainieren von Wortvektoren, die im vorherigen Kapitel
@@ -149,53 +158,53 @@ angewendet und kritisch reflektiert werden sollen.\\
        & \multicolumn{4}{c}{Wortähnlichkeit ($\rho \in [-1, 1]$)} & \multicolumn{2}{c}{Analogien (in \%)} \\
       Datenset & \textsc{Wortpaare65} & \textsc{Wortpaare222} & \textsc{Wortpaare350} & \textsc{Schm280} & \textsc{Google} & \textsc{SemRel} \\
       \hline \hline
-      Mark I & -0.8068 & -0.2455$_{(13)}$& & & 44,56 & \\
+      Mark I & & -0.4640$_{(13)}$& & & 44,56 & \\
       \hline
-      Mark II & -0.8012 & -0.2576$_{(13)}$ & & & 40,37 &  \\
+      Mark II &  & -0.4409$_{(13)}$ & & & 40,37 &  \\
       \hline
-      Mark III & -0.7694 & -0.2417$_{(13)}$& & & 27,42 & 35,11 \\
+      Mark III &  & -0.4242$_{(13)}$ & & & 27,42 & 35,11 \\
       \hline
-      Mark IV & -0.7706 & -0.2383$_{(13)}$& & & 25,48 & 32,03 \\
+      Mark IV & & & & & 25,48 & 32,03 \\
       \hline
-      Mark V & -0.7679 & -0.2299$_{(13)}$ & & & 25,54 &  \\
+      Mark V &  &  & & & 25,54 &  \\
       \hline
-      Mark VI & -0.7648 & -0.2337$_{(13)}$ & & & &  \\
+      Mark VI &  &  & & & &  \\
       \hline
-      Mark VII & -0.7246 & -0.2180$_{(13)}$ & & & & 1,50  \\
+      Mark VII &  &  & & & & 1,50  \\
       \hline
-      Mark VIII & -0.6775 & -0.2377$_{(13)}$ & & & &  \\
+      Mark VIII &  &  & & & &  \\
       \hline
-      Mark IX & -0.6161 & -0.2481$_{(13)}$ & & & & 1,62 \\
+      Mark IX & & & & & & 1,62 \\
       \hline
-      Mark X & -0.5807 & -0.2753$_{(13)}$ & & & & 1,22 \\
+      Mark X &  & & & & & 1,22 \\
       \hline
-      Mark XI & -0.5775 & -0.2838$_{(13)}$ & & & & 1,38  \\
+      Mark XI &  &  & & & & 1,38  \\
       \hline
-      Mark XII & -0.5743 & -0.2770$_{(13)}$ & & & &  \\
+      Mark XII &  &  & & & &  \\
       \hline
-      Mark XIII & \textbf{-0.8218}$_{(2)}$ & -0.3145 & & & & 3,01 \\
+      Mark XIII &  & -0.3145 & & & & 3,01 \\
       \hline
-      Mark XIV & -0.8097$_{(2)}$ &  & & & & 2,56 \\
+      Mark XIV &  & -0.5066$_{(122)}$ & & & & 2,56 \\
       \hline
-      Mark XV & -0.7759$_{(2)}$ &  & & & & 2,44 \\
+      Mark XV & &  & & & & 2,44 \\
       \hline
-      Mark XVI & -0.7596$_{(2)}$ & & & & & 2,56 \\
+      Mark XVI &  & & & & & 2,56 \\
       \hline
-      Mark XVII & -0.7533$_{(2)}$ & & & & & 2,80 \\
+      Mark XVII &  & & & & & 2,80 \\
       \hline
-      Mark XVIII & -0.7498$_{(2)}$ & & & & & 3,01 \\
+      Mark XVIII &  & & & & & 3,01 \\
       \hline
-      Mark XIX & -0.7543$_{(2)}$ & & & & & 2,23 \\
+      Mark XIX &  & & & & & 2,23 \\
       \hline
-      Mark XX & -0.7502$_{(2)}$ & & & & & 2,15 \\
+      Mark XX &  & & & & & 2,15 \\
       \hline
-      Mark XXI & -0.7182$_{(2)}$ & & & & & 1,75 \\
+      Mark XXI &  & & & & & 1,75 \\
       \hline
-      Mark XXII & -0.6949$_{(2)}$ & & & & & 1,71 \\
+      Mark XXII &  & & & & & 1,71 \\
       \hline
-      Mark XXIII & -0.6927$_{(2)}$ & & & & & 1,95 \\
+      Mark XXIII &  & & & & & 1,95 \\
       \hline
-      Mark XXIV & -0.6865$_{(2)}$ & & & & & 2,07 \\
+      Mark XXIV & & & & & & 2,07 \\
     \end{tabular}
     \caption[Evaluationsergebnisse bei Wortähnlichkeit und Analogien]{Evaluationsergebnisse bei Wortähnlichkeit und Analogien für die verschiedenen Datensets. Für weitere
     Informationen über die Grundlage der Vektoren siehe Appendix \ref{AppendixA}. Wörter außerhalb des Vokabulars wurden entweder als Fehler gerechnet, oder
