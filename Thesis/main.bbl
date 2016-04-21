@@ -16,6 +16,28 @@
   {}
 \endgroup
 
+\entry{Goldberg15c}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Goldberg}{G.}%
+     {Yoav}{Y.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{GY1}
+  \strng{fullhash}{GY1}
+  \field{labelyear}{2015}
+  \field{sortinit}{G}
+  \field{title}{A Primer on Neural Network Models for Natural Language
+  Processing}
+  \verb{url}
+  \verb http://arxiv.org/abs/1510.00726
+  \endverb
+  \field{volume}{abs/1510.00726}
+  \field{journaltitle}{CoRR}
+  \field{year}{2015}
+\endentry
+
 \entry{levy2014dependency}{inproceedings}{}
   \name{author}{2}{}{%
     {{}%

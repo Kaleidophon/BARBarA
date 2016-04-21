@@ -4,20 +4,20 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Gegen\IeC {\"u}berstellung von Skip-Gram und CBOW}}{8}{figure.caption.24}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Erstellung von Dependenzkontexten beim Wortvektortraining}}{9}{figure.caption.28}
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Gegen\IeC {\"u}berstellung von Skip-Gram und CBOW}}{12}{figure.caption.35}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Erstellung von Dependenzkontexten beim Wortvektortraining}}{13}{figure.caption.38}
-\addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Listen der \emph {k} n\IeC {\"a}chsten Nachbarn von W\IeC {\"o}rtern in verschiedenen Datensets.\relax }}{15}{figure.caption.42}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Anzahl der Annotatoren und Agreement (als $Cohen's\ \kappa $) der \textsc {Wortpaar}-Evaluationsdatensets.\relax }}{18}{figure.caption.53}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Evaluationsergebnisse bei Wort\IeC {\"a}hnlichkeit und Analogien}}{19}{figure.caption.56}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Mathematische Modellierung eines Neurons}}{7}{figure.caption.23}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Darstellung eine neuralen Netzwerks}}{8}{figure.caption.30}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Gegen\IeC {\"u}berstellung von Skip-Gram und CBOW}}{9}{figure.caption.32}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Erstellung von Dependenzkontexten beim Wortvektortraining}}{11}{figure.caption.36}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Listen der \emph {k} n\IeC {\"a}chsten Nachbarn von W\IeC {\"o}rtern in verschiedenen Datensets.\relax }}{15}{figure.caption.46}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Anzahl der Annotatoren und Agreement (als $Cohen's\ \kappa $) der \textsc {Wortpaar}-Evaluationsdatensets.\relax }}{18}{figure.caption.57}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Evaluationsergebnisse bei Wort\IeC {\"a}hnlichkeit und Analogien}}{19}{figure.caption.60}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Quelle und Trainingsparameter f\IeC {\"u}r Wortvektoren}}{33}{figure.caption.76}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Quelle und Trainingsparameter f\IeC {\"u}r Wortvektoren}}{33}{figure.caption.80}

@@ -15,7 +15,67 @@ very loudly. Everybody does it.
 
 \section{Neurale Netzwerke}
 
+Wie der Name bereits erahnen lässt, fußt die Idee von neuralen Netzwerken auf einer mathematischen Modellierung
+des menschlichen Gehirns. Die Grundbausteine bilden dabei einzelne Neuronen, die dabei auf folgende Art und Weise
+modelliert werden (dieser Teil ist dabei auch als \emph{Perceptron}-Algorithmus bekannt):
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.65\textwidth]{../img/neuron.png}
+  \caption[Mathematische Modellierung eines Neurons]{Mathematische Modellierung eines Neurons, auch bekannt als
+  \emph{Perceptron}-Algorithmus. $x$ bezeichnet In-, $y$ den Output des Neurons, $w$ bilden die Gewichte und $f$ die
+  Aktivierungsfunktion. Abbildung aus (\cite{rong2014word2vec}).}
+\end{figure}
+
+Der Analogie der menschlichen Nervenzelle folgend erhält das Neuron mehrere Inputs in Form eines Vektors $x$ mit $K$
+Dimensionen. Der Output erhält die Bezeichnung $y$. Um den Output zu bestimmen enthält die Zelle eine Aktivierungsfunktion
+$f$ (um zu bestimmen, wann das Neuron ``feuert''):
+\begin{equation}
+  y = f(u)
+\end{equation}
+
+$u$ bezeichnet dabei einen Skalar, dem man durch das Summieren der mit $w$ gewichteten Inputs erhält:
+\begin{equation}
+  u = \sum_{i=0}^{K} w_i x_i = w^T x
+\end{equation}
+
+Für die Aktivierungsfunktion $f$ bieten sich mehrere Optionen. Ursprünglich wurde die \emph{Heaviside step function}
+oder \emph{Rectifier (ReLU)} gewählt:
+\begin{equation}
+    f(u) = \begin{cases} 1 & \quad \text{if}\ u > 0 \\ 0 & \quad \text{otherwise} \\ \end{cases} \text{bzw.} \\
+\end{equation}
+\begin{equation}
+  f(u) = max(0,u) = \begin{cases} 0 & \quad \text{if}\ u < 0 \\ u & \quad \text{otherwise} \end{cases}
+\end{equation}
+
+Andere Funktionen sind z.B. \emph{sigmoid} ($\sigma(u) \in [0,1]$)
+und \emph{tanh} ($tanh(u) \in [-1, 1]$), im Gegenteil zu den beiden zuvor sind diese durch ihre s-förmige Form
+kontinuierlich und dadurchableitbar:
+
+\begin{equation}
+  \sigma(u) = \frac{1}{1 + e^{-u}}
+\end{equation}
+\begin{equation}
+  tanh(u) = \frac{e^{2u}-1}{e^{2u}+1}
+\end{equation}
+
+Um aus einzelnen Neuronen nun ein neurales Netzwerk zu kreieren, werden mehrere Schichten erstellt (i.d.R. eine Eingabe-
+(\emph{input layer}), eine Ausgabe- (\emph{output layer}) und min. eine ``versteckte'' Schicht (\emph{hidden layer}).
+Die Schichten bestehen dann aus mehreren Nervenzellen, wobei jede Zelle mit jeder anderen Zelle der vorhergehenden und
+folgenden Schicht vernetzt ist (siehe Abb. X).
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\textwidth]{../img/neuralnet.png}
+  \caption[Darstellung eine neuralen Netzwerks]{Darstellung eines neuralen Netzwerks mit vier Schichten, davon jeweils eine
+  für In- und Output, sowie zwei ``versteckte'' Schichten (\emph{hidden layer}). Bild aus (\cite{Goldberg15c}).}
+\end{figure}
+
+Die einzelnen Gewichtsvektoren $w$ aller Neuronen einer Schicht werden dann zu einer Gewichtsmatrix $W$ zusammengefasst,
+wobei jede Zeile einem Gewichtsvektor entspricht. Zum Training dieser Strukturen wird der sog. \emph{Backpropagation}-
+Algorithmus verwendet, der mithilfe einer vorher definierten Verlustfunktion (die anzeigt, inwiefern das durch das Netzwerk
+erzeugt Ergebnis von dem erwünschtne Ergebnis abweicht) einen Fehler errechnet und diesen dann rekursiv durch alle
+Schichten des Netzwerks zurückgibt und simultan die Werte innerhalb der Gewichtsmatrizen anpasst.
 
 \section{Wortvektoren}
 
