@@ -1,0 +1,93 @@
+% Chapter 3
+
+\chapter{Grundlagen} % Main chapter title
+
+\label{Chapter3} % For referencing the chapter elsewhere, use \ref{Chapter1}
+
+%----------------------------------------------------------------------------------------
+
+\begin{itquote}
+To deal with hyper-planes in a 14-dimensional space, visualize a 3-D space and say ``fourteen'' to yourself
+very loudly. Everybody does it.
+\flushright
+\textsc{Unknown}
+\end{itquote}
+
+\section{Neurale Netzwerke}
+
+
+
+\section{Wortvektoren}
+
+Frühere Experimente mit Wortvektoren arbeiteten meist mit sog. ``One-Hot''-Vektoren, bei denen jede Dimension i.d.R.
+einem betimmten Wort zugeordnet wurde. Nehmen wir beispielsweise das Minikorpus \emph{Der Hund beißt den Mann} an.
+Das Vokabular besteht dann aus $\textsc{V} = \{bei{\ss}t,\ Der,\ den,\ Hund,\ Mann\}$ (in alphabetischer Reihenfolge).
+Um jedes dieser Wörter als einen der oben genannten Vektoren zu repräsentieren, können wir Vektoren der Länge $V$
+($V$ steht eigentlich für $\|\textsc{V}\|$, wird der Übersicht halber aber im Folgenden stellvertrentend dafür verwendet)
+benutzen. Um nun zum Beispiel einen Vektor für \emph{Hund} zu generieren, setzen wir den Wert der Stelle des Vektors (=
+\emph{Feature}) auf $1$, der dem Index von Hund in $\textsc{V}$ entspricht,
+also $\vec{v}(Hund)=(0, 0, 0, 1, 0)$.\\
+Diese Art von Wortvektor wird gemeinhin als ``sparse'', also spärlich bezeichnet, da sie relativ wenig Information enthält.
+Wortvektoren, die mithilfe von Neuralen Netzwerken trainiert werden (im Englischen zur Abgrenzung \emph{word embeddings}
+genannt), beinhalten mehr (semantische) Informationen über das dazugehörige Wort, zudem lassen sich einzelne Features
+nicht mehr auf eindeutig auf bestimmte Worte zurückführen.\\
+
+Das Training dieser neuen Wortvektoren läuft folgendermaßen ab:
+Als Input fungieren die erwähnten ``One-Hot''-Vektoren, welche genau so viele Dimensionen wie Worte im Vokabular besitzen
+($\vec{v} \in \mathbb{R}^V$).
+Die Modelle bestehen aus drei Schichten, namentlich \emph{Input}, \emph{Hidden} und \emph{Output}.
+Input und Output besitzen die Dimensionalität von $V$), Hidden die von $N$.\\
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=1.1\textwidth]{../img/cbowskip.png}
+  \caption[Gegenüberstellung von Skip-Gram und CBOW]{Gegenüberstellung der beiden Trainingsmethoden CBOW (links)
+  und Skip-Gram (rechts). CBOW versucht die Wahrscheinlichkeit eines Wortes gegeben seines Kontexts zu trainieren,
+  Skip-Gram die Wahrscheinlichkeit eines Kontextes gegeben eines Wortes.}
+\end{figure}
+
+Zwischen Input und Hidden liegt die Gewichtsmatrix $W$ und zwischen Hidden und Output die Matrix $W'$.
+CBOW versucht, die Wahrscheinlichkeit eines Wortes gegeben eines Kontextes
+der Größe $C$ zu maximieren (Kontext bezieht sich in diesem Fall auf die Summe der rechts und links vom Eingabewort stehenden
+Wörter). Unsere Verlustfunktion, deren Wert es dabei zu minimieren gilt, besteht darin in der negativen logarithmischen
+Wahrscheinlichkeit eines Wortes gegeben seines Kontextes:
+
+\begin{equation}
+  E = - log\ p(w_O | w_{I,1}, \ldots, w_{I,C})
+\end{equation}
+
+Beim Skip-gram-Modell verhält sich das Ganze genau umgekehrt, es wird versucht, den Kontext gegeben eines Eingabewortes
+vorherzusagen:
+
+\begin{equation}
+  E = - log\ p(w_{I,1}, \ldots, w_O)
+\end{equation}
+
+In beiden Fällen wird daraufhin überprüft, ob die Vorhersage mit den tatsächlichen Daten übereinstimmt und die Abweichung
+errechnet, mit der dann die Parameter der Gewichtsmatrizen $W$ und $W'$ rekursiv angepasst werden, um zukünftige Prognosen
+zu verbessen, wofür der \emph{Backpropagation}-Algorithmus verwendet wird. Die Wortvektoren, die dann nach dem Abarbeiten aller Trainingsdaten resultieren, sind dann die Zeilen von
+$W'$, wobei die \emph{i}-te Zeile der Matrix dem Wortvektor des Wortes mit dem Index \emph{i} im Vokabular entspricht.\\
+Eigentlich erfordert das Training eine aufwendige Berechnung über alle Wörter des Vokabels, was der Skalierbarkeit dieses
+Verfahrens entgegensteht. Der Aufwand kann allerdings durch Techniken wie \emph{Hierarchisches Softmax}, bei dem
+der Aufwand durch einen binären Baum von $O(V)$ auf $O(log\ V)$ reduziert wird sowie
+\emph{Negativem Sampling}. Bei letzterem werden ``schlechte'' (also Negativ-)Beispiele zum Training hinzugezogen,
+woher sich auch der Name des Verfahrens ableitet.\\
+
+\section{Wortvektoren aus Dependenzen}
+
+Dependenzgrammatiken untersuchen die Abhängigkeiten zwischen Wörtern eines Satzes und fügen diese in eine Dependenzstruktur ein.
+Anders als in der Phrasenstrukturgrammatik entsteht dabei kein Syntaxbaum mit Knoten. Worte stehen in Abhängigkeitsverhältnissen,
+wobei das das die Dependenz verursachende Wort alt \emph{Regens}, das davon abhängige als \emph{Dependenz} bezeichnet wird.\\
+(\citeauthor{levy2014dependency}) machen sich dies zunutze, um den Kontext beim Training von Wortvektoren neu zu definieren:
+Er besteht nun nicht mehr als den umgebenden Wörtern im Satz, sondern aus den Depenzen: Für ein Word $w$ mit den Modifizierern
+$m_1, \ldots m_k$ und den Kopf $h$ besteht der Kontext nun aus $(m_1, lbl_1), \ldots (m_k, lbl_k), (h, lbl_h^{-1})$, wobei
+$lbl$ stellvertretend für eine Dependenzrelation steht, ein $-1$ im Exponenten zeigt das Inverse einer solchen Relation an.
+Ein Beispiel dafür ist in Abb. X zu sehen.\\
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.2]{../img/depend_ex.png}
+    \caption[Erstellung von Dependenzkontexten beim Wortvektortraining]{Beispiel der Erstellung von Wortkontexten aus Dependenzen.
+    Dependenzen mit Präposition werden zu einer Abhängigkeit zusammengefasst. \textbf{Oben}: Dependenzstruktur.
+    \textbf{Unten}: Extrahierte Kontexte.}
+\end{figure}

@@ -1,0 +1,73 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+The style file: biblatex.bst
+A level-1 auxiliary file: Chapters/Chapter1.aux
+A level-1 auxiliary file: Chapters/Chapter2.aux
+A level-1 auxiliary file: Chapters/Chapter3.aux
+A level-1 auxiliary file: Chapters/Chapter4.aux
+A level-1 auxiliary file: Chapters/Chapter5.aux
+A level-1 auxiliary file: Chapters/Chapter6.aux
+A level-1 auxiliary file: Chapters/Chapter7.aux
+A level-1 auxiliary file: Chapters/Chapter8.aux
+A level-1 auxiliary file: Chapters/Chapter9.aux
+A level-1 auxiliary file: Chapters/Chapter10.aux
+A level-1 auxiliary file: Chapters/Chapter11.aux
+A level-1 auxiliary file: Appendices/AppendixA.aux
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: main-blx.bib
+Database file #2: example.bib
+Biblatex version: 2.8
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
+You've used 6 entries,
+            6047 wiz_defined-function locations,
+            1168 strings with 9057 characters,
+and the built_in function-call counts, 16548 in all, are:
+= -- 556
+> -- 596
+< -- 145
++ -- 187
+- -- 235
+* -- 1327
+:= -- 1209
+add.period$ -- 0
+call.type$ -- 6
+change.case$ -- 51
+chr.to.int$ -- 34
+cite$ -- 10
+duplicate$ -- 1765
+empty$ -- 1738
+format.name$ -- 360
+if$ -- 3751
+int.to.chr$ -- 0
+int.to.str$ -- 10
+missing$ -- 0
+newline$ -- 146
+num.names$ -- 205
+pop$ -- 1682
+preamble$ -- 1
+purify$ -- 67
+quote$ -- 0
+skip$ -- 952
+stack$ -- 0
+substring$ -- 269
+swap$ -- 582
+text.length$ -- 167
+text.prefix$ -- 5
+top$ -- 1
+type$ -- 216
+warning$ -- 0
+while$ -- 136
+width$ -- 0
+write$ -- 139

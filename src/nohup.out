@@ -1,0 +1,58 @@
+Traceback (most recent call last):
+  File "relations.py", line 146, in <module>
+    main()
+  File "relations.py", line 9, in main
+    fetch_relation_triples_of_file(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
+  File "relations.py", line 38, in fetch_relation_triples_of_file
+    entity1 = fetch_name(id1, lang)
+  File "relations.py", line 127, in fetch_name
+    response = json.loads(urllib.urlopen(url).read())
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib.py", line 87, in urlopen
+    return opener.open(url)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib.py", line 213, in open
+    return getattr(self, name)(url)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib.py", line 443, in open_https
+    h.endheaders(data)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 997, in endheaders
+    self._send_output(message_body)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 850, in _send_output
+    self.send(msg)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 812, in send
+    self.connect()
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 1212, in connect
+    server_hostname=server_hostname)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/ssl.py", line 350, in wrap_socket
+    _context=self)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/ssl.py", line 566, in __init__
+    self.do_handshake()
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/ssl.py", line 788, in do_handshake
+    self._sslobj.do_handshake()
+IOError: [Errno socket error] [Errno 65] No route to host
+Traceback (most recent call last):
+  File "relations.py", line 146, in <module>
+    main()
+  File "relations.py", line 9, in main
+    fetch_relation_triples_of_file(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
+  File "relations.py", line 38, in fetch_relation_triples_of_file
+    entity1 = fetch_name(id1, lang)
+  File "relations.py", line 127, in fetch_name
+    response = json.loads(urllib.urlopen(url).read())
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib.py", line 87, in urlopen
+    return opener.open(url)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib.py", line 213, in open
+    return getattr(self, name)(url)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/urllib.py", line 443, in open_https
+    h.endheaders(data)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 997, in endheaders
+    self._send_output(message_body)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 850, in _send_output
+    self.send(msg)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 812, in send
+    self.connect()
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 1204, in connect
+    HTTPConnection.connect(self)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/httplib.py", line 793, in connect
+    self.timeout, self.source_address)
+  File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/socket.py", line 553, in create_connection
+    for res in getaddrinfo(host, port, 0, SOCK_STREAM):
+IOError: [Errno socket error] [Errno 8] nodename nor servname provided, or not known

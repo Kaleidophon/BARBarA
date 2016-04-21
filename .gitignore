@@ -1,0 +1,11 @@
+*.pyc
+*.loc
+Paper/*
+*.log
+*.aux
+logs/*
+rsc/*
+__init__.py
+depend/
+testdata
+.idea/*

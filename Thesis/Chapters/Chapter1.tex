@@ -1,0 +1,108 @@
+% Chapter 1
+
+\chapter{Einleitung} % Main chapter title
+
+\label{Chapter1} % For referencing the chapter elsewhere, use \ref{Chapter1}
+
+%----------------------------------------------------------------------------------------
+
+% Define some commands to keep the formatting separated from the content
+\newcommand{\keyword}[1]{\textbf{#1}}
+\newcommand{\tabhead}[1]{\textbf{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\file}[1]{\texttt{\bfseries#1}}
+\newcommand{\option}[1]{\texttt{\itshape#1}}
+
+%----------------------------------------------------------------------------------------
+
+\begin{itquote}
+"Weltwissen beschreibt das einem Individuum verfügbare allgemeine Wissen, Kenntnisse und Erfahrungen über Umwelt und Gesellschaft. [...]
+Das Weltwissen ermöglicht es, neue Tatsachen einzuordnen und entsprechend zu handeln, auch wenn detaillierte Informationen fehlen. [...]
+
+Auch in der Robotik [und KI-Forschung; Anm. des Autors] spielt Weltwissen [...] eine Rolle,
+da Computer [...] nicht selbst über Weltwissen verfügen."
+\flushright
+\textsc{Einleitung des Artikels über Weltwissen, Wikipedia\footnote{https://de.wikipedia.org/wiki/Weltwissen (zuletzt abgerufen am 03.03.16)}}
+\end{itquote}
+
+\section{Knowledge Graph Completion}
+
+\vspace{1cm}
+Computer sind dem Menschen mittlerweile beim Lösen vielerlei Aufgaben überlegen. Sie rechnen schneller und genauer.
+Sie können riesige Datenmengen in einem Bruchteil der Zeit verarbeiten, die ein Mensch dafür bräuchte. Die menschliche
+Überlegenheit beginnt auch in Bereichen zu bröckeln, bei denen der Einsatz von Computern lange für unmöglichkeit: Menschliche
+Champions scheitern nun gegen Maschinen beim Schach. Zuletzt scheiterte auch der Mensch auch beim Spiel Go gegen ein ``intelligentes'' System.
+In anderen Bereichen jedoch hinken die Maschinen den Prognosen hinterher. Viele dieser Bereiche haben dabei eines gemeinsam:
+Die Anforderung an das System, nicht nur einfache Rechenoperationen auszuführen, sondern sich ein Bild von der umgebenden Welt zu machen,
+Schlüsse zu ziehen und neues Wissen zu Erwerben und passend in den vorhandenen Informationsbestand einzuordnen.\\
+Entwicklungen wie die ersten Fahrten fahrerloser Autos, den Jeopardy-Champion Watson und ähnliche zeigen den Fortschritt in diesem Bereich auf,
+jedoch ist die Wissenschaft von einer allgemeinen Intelligenz noch weit entfernt. Ein Grund dafür ist das Problem von Computern,
+dass sie im Gegensatz zum Menschen über kein Weltwissen verfügen, welches letztere sich im Laufe ihres Lebens aneignen.
+Dabei lernen sie
+\begin{itemize}
+  \item wie Objekte in der Realwelt zueinander in Beziehung stehen
+  \item welche Attribute von verschiedenen Objekten besessen werden
+  \item Zusammenhänge zwischen Ereignissen zu verstehen
+  \item Pläne zu schmieden und sich Stragien zurechtzulegen
+  \item \ldots
+\end{itemize}
+
+Ersteres wird in der Informatik durch sog. \emph{Ontologien} (= formale Darstellung einer Beziehung zwischen Elementen einer Menge)
+modelliert. Zieht man zwischen den Entitäten in der Welt nun derartige Ontologien, entsteht ein Graph, in dem die Beziehungen
+der Knoten untereinander mithilfe verschiedener Arten von Kanten kodiert sieht, dem \emph{Knowledge Graph}.\\
+Die Vervollständigung ebendieses ermöglicht Systemen, die langwierige menschliche Erlernung dieses Wissens zu kompensieren.
+In dieser Arbeit soll deshalb ein Ansatz vorgestellt werden, der die Lösung diesen Problems einen kleinen Schritt näherbringen könnte.
+
+\section{Ansatz}
+
+Innerhalb der letzten Jahre haben neurale Netze in der Informatik im Allgemeinen und in der Computerlinguistik im Speziellen
+eine Renaissance erlebt. Mit diesen konnten eine neue Art von Wortvektoren, auf Englisch ``word embeddings'' trainiert werden,
+die semantische Information in sich kodierten. Zwar zeigen einige Untersuchung, dass sich dieser Ansatz älteren durchaus sehr
+ähnlich ist und nicht unbedingt zu besseren Ergebnissen führt, der Aufruhr hat aber eine neue Welle von Forschungen im Bereich
+der distributionellen Semantik ausgelöst.\\
+Ein oft zitiertes Beispiel für die Ausdruckskraft dieser Vektoren ist das Entdecken von
+semantischen Relationen hinter einfachen arithmetischen Operationen:
+
+\begin{quote}
+  $\vec{v}(King) - \vec{v}(Man) + \vec{v}(Woman) \approx \vec{v}(Queen)$
+\end{quote}
+
+Zwar lassen sich dadurch nicht alle Arten von Relationen aus Wortvektoren extrahieren und beschränken sich die Beispiele
+bei dieser Herangehensweise auf 1:1-Relationen (1:N-, N:1- sowie N:N-Relationen lassen sich auf andere Art und Weise finden),
+jedoch lassen sie schon ein gewisses Potenzial erahnen. Eine Reihe von Papern nutzt nun Methoden des maschinellen Lernens,
+um mithilfe von Trainingsdaten die Differenzvektoren für bestimmte, im Voraus ausgewählte Relationen zu trainieren und die Ergebnisse
+in einem Testset anzuwenden. \\
+Die Idee, die in dieser Arbeit angegangen werden soll, fußt auf der Hypthese, dass das Trainieren solcher Relationen nicht
+möglich wäre, wenn sich die Differenzvektoren von Wortpaaren einzelner Relationen nicht ähneln würden, also z.B.
+
+\begin{quote}
+  $\vec{v}(Berlin) - \vec{v}(Germany) \approx \vec{v}(Paris) - \vec{v}(Frankreich) \approx \vec{v}(Madrid) - \vec{v}(Spain)$
+\end{quote}
+
+Betrachtet man die Abstandsvektoren von Wortpaaren als Punkte in einem eigenen Vektorraum, so müssten theoretisch die Punkte,
+die zu Ländern und deren Hauptstädten gehören, in diesem Raum nahe beieinander liegen. Dies wiederum könnte man dann insofern
+ausnutzen, indem man ein Clusteringverfahren anwendet, um diese Gruppen zu identifizieren und die Elemente jeder Gruppe danach
+mit der entsprechenden Relation in einen Knowledge Graph einzuordnen. Dies hätte zwei Vorteile:
+\begin{enumerate}
+  \item Teile des kostenintensiven Dateneinpflegens durch menschliche Hilfe fällt weg
+  \item Es wird möglich abzuschätzen, welche Relationen in einem Raum von Wortvektoren tatsächlich festgehalten werden
+        (darunter vielleicht auch einige, die man bei vorherigen Experimenten nicht berücksichtigt hatte)
+\end{enumerate}
+
+Die Ergebnisse, die diese Prozedur zutage fördert sowie die Fallstricke, die sie mit sich bringt, werden in den nächsten
+Kapiteln beschrieben. Über jene wird nun ein kleiner Überblick gegeben.
+
+\section{Inhalt}
+
+In Kapitel \ref{Chapter2} dieser Arbeit sollen verwandte Arbeiten zu diesem Thema vorgestellt werden. Darauf folgt eine Beschreibung
+der ein Vorbereitungsschritte, die erforderlich waren (siehe Kapitel \ref{Chapter3}) sowie eine Charakterisierung der verwendeten Ressourcen.
+Dabei wird auch auf das Training verschiedener Wortvektoren eingegangen, die in Kapitel \ref{Chapter4} auf qualitative und quantitative
+Art und Weise auf ihre semantische Aussagekraft evaluiert werden. \\
+Das Kapitel Nummer \ref{Chapter5} handelt von Mapping-Vorgang, bei dem aus den Wortvektoren in einem neuen Vektorraum Punkte
+entstehen, die jeweils einem Wortpaar entsprechen. Dabei wird auf das theoretische Verfahren genauso eingegangen wie auch
+auf den benötigen Algorithmus und notwendige Einschränkungen. \\
+In Kapitel \ref{Chapter6} wird der Clustering-Schritt im Bezug auf die Wahl des Algorithmus, seiner Parameter und
+seiner Skalierbarkeit beschrieben. Daran schließt in Kapitel \ref{Chapter7} die Evaluation der entstehenden Cluster an,
+bevor in Kapitel \ref{Chapter8} die Ergebnisse sowie die Möglichkeiten und Grenzen des Verfahrens ausdrücklich diskutiert werden. \\
+Die Arbeit schließt mit einem Fazit (Kapitel \ref{Chapter9}) und einem Ausblick für auf diese Arbeit aufbauende Untersuchungen
+an (Kapitel \ref{Chapter10}).

@@ -1,0 +1,205 @@
+% Chapter 5
+
+\chapter{Evaluation der Wortvektoren} % Main chapter title
+
+\label{Chapter5} % For referencing the chapter elsewhere, use \ref{Chapter1}
+
+%----------------------------------------------------------------------------------------
+
+\section{Evaluation der Wortvektoren}
+
+An dieser Stelle sollen die verschiedenen Ansätze zum Trainieren von Wortvektoren, die im vorherigen Kapitel
+vorgestellt werden, miteinander verglichen werden. Zu diesem Zweck sollte zuerst eine Frage gestellt werden:
+Was macht eine Menge von Wortvektoren ``besser'' bzw. ``schlechter'' als andere?\\
+Da der Vorteil von Wortvektoren darin besteht, semantische Informationen zu beinhalten, wird diese
+Frage meist dahingehend beantwortet, dass Vektoren dann als überlegen an zu sehen sind, wenn sie
+eine höhere semantische Ausdruckskraft besitzen. Um dies festzustellen, haben sich in Veröffentlichungen
+zu diesem Thema bestimmte Vorgehensweisen durchgesetzt, die in dne folgenden Abschnitten, vorgestellt, erläutert,
+angewendet und kritisch reflektiert werden sollen.\\
+
+  \subsection{Qualitative Evaluation}
+
+  Qualitative Verfahren zur Evaluation sind meist recht simple Ansätze, die für das menschliche
+  Auge leicht zu interpetierbare Ergebnisse liefern. Deshalb sind sie für einen ersten Ausdruck
+  auch durchaus geeignet, sollten wenn möglich aber nicht als alleinige Kriterium für eine Bewertung
+  hinzugezogen werden, da sie meisten nie die Gesamtheit aller in den Ergebnissen enthaltenen
+  Informationen darstellen können. \\
+  Im Beispiel der Wortvektoren werden beispielsweise einige Wörter des Vokabulars stellvertretend ausgewählt
+  und zu diesen die \emph{k} nächsten Nachbarn im Vektorraum gesucht. Unter der Annahme, dass
+  in Vektorräumen von Wortvektoren ähnliche Wörter nahe zusammenliegen, sollte diese Liste nah verwandte
+  Begriffe zutage fördern (siehe Abb. X).\\
+
+  \begin{figure}[h]
+    \begin{tabular}{l|ccccc}
+       & \textsc{Wort 1} & \textsc{Word 2} & \textsc{Wort 3} & \textsc{Wort 4} & \textsc{Wort 5} \\
+      \hline \hline
+      Datenset 1 & & & & & \\
+      \hline
+      Datenset 2 & & & & & \\
+      \hline
+      Datenset 3 & & & & & \\
+    \end{tabular}
+    \caption{Listen der \emph{k} nächsten Nachbarn von Wörtern in verschiedenen Datensets.}
+  \end{figure}
+
+  Das Problem bei dieser Methode liegt in der menschlichen Subjektivität: Die präsentierte Auswahl der Begriffe
+  muss nicht zwangsläufig repräsentativ für die restlichen Daten sein und könnte theoretisch aus den wenigen,
+  gut funktionierenden Beispielen bestehen. Darüber hinaus bleibt es in einigen Fällen schwierig,
+  die Ergebisse verschiedener Datensets zu vergleichen, da sich die Qualität der \emph{k} Nachbarn
+  nicht quantifizieren lässt: Es lässt sich vielleicht erkennen, das diese in einem Fall wenig Sinn machen und
+  im anderen Fall die Erwartungen erfüllen; an anderer Stelle scheinen die Resultate für den Betrachter jedoch nicht
+  unbedingt schlechter, sondern einfach nur anders.\\
+  Darum ist wiederum festzuhalten, dass sich qualitative Methoden in diesem Fall eher für den ersten Eindruck
+  eignen, weiterhin aber Prozeduren mit quantifizierbaren Ergebnissen verwendet werden sollten, wie z.B.
+  nächsten Abschnitt beschrieben werden.
+
+  \subsection{Quantitative Evaluation}
+
+  Bei der quantitativen Evaluation von Wortvektoren werden die folgenden Ideen aufgegriffen:\\
+  \begin{enumerate}
+    \item \textbf{Benchmark-Tests}\\
+      Bei dieser pragmatischen Art der Bewertung werden wird das Datenset als Grundlage für
+      eine einfach Aufgabe wie Sentiment-Klassifikation oder Part-of-Speech-Tagging verwendet.
+      Die Qualität der Daten wird dann anhand der Ergebnisse des Systems gemessen.\\
+      Diese extrinische Evaluationsmethode macht ergo nur dann Sinn, wenn man mehr als ein Datenset
+      miteinander vergleicht. Dabei muss sichergestellt werden, dass die Tests immer unter den
+      selben Bedingungen ablaufen, damit eine Vergleichbarkeit gewährleistet bleibt.\\
+    \item \textbf{Wortähnlichkeit}\\
+      Hierbei werden Wortpaaren Ähnlichkeitswerte von menschlichen Annotatoren zugeordnet. Anschließend
+      werden mit den zu Verfügung stehenden Vektoren Ähnlichkeitswerte für die gleichen Paare berechnet,
+      in der Regel mithilfe der Cosinus-Ähnlichkeit. Diese beschreibt die Ähnlichkeit zweier Vektoren
+      als den Winkel zwischen ihnen, mit einem Wert von $-1$ ($\hat{=}$ komplett unterschiedlich) über 0
+      ($\hat{=}$ orthogonal) und $+1$ ($\hat{=}$ Equivalenz):
+      \begin{equation}
+        cosine\_similarity(\vec{a}, \vec{b}) = \frac{\vec{a} \cdot \vec{b}}{\|\vec{a}\| \|\vec{b}\|}
+      \end{equation}
+      Danach kann mit \emph{Spearman's $\rho$} bzw. \emph{Spearman's rank correlation coefficient}
+      anschließend festgestellt werden, ob die beiden Werte für die Wortpaare korrelieren, sprich ob
+      das System Paaren, denen von Menschen ein hoher Ähnlichkeitswert zugewiesen wurde auch eine hohe
+      Ähnlichkeit zuschreibt. Dabei ist $\rho \in [-1, 1]$ den Grad der Korrelation anzeigt, wobei
+      $-1$ einer starken negativen, $+1$ einer starken positiven Korrelation entspricht.
+    \item \textbf{Analogien}\\
+      Die dritte Methode basiert auf Analogien der Form \emph{a verhält sich zu a* wie b zu b*}.
+      Die Daten werden nun dahingehend getestet, indem unter Gebrauch der Cosinus-Ähnlichkeit
+      das $b*$ aus dem Vokabular $\mathcal{V}$ gesucht wird, welches besonders ähnlich zu $b$ und $a*$ aber unähnlich zu $a$ ist:
+      \begin{equation}
+        \underset{\tilde{b}^* \in \mathcal{V}}{argmax}\ cos(\tilde{b}^*, b - a + a^*)
+      \end{equation}
+      Sind alle Vektoren der Länge eins, so kann diese Gleichung umformuliert werden:
+      \begin{equation}
+        \underset{\tilde{b}^* \in \mathcal{V}}{argmax}\ cos(\tilde{b}^*, b) - cos(\tilde{b}^*, a) + cos(\tilde{b}^*, a^*)
+      \end{equation}
+      Diese Methode wird gemeinhin als \textsc{3CosAdd} bezeichnet. (Autor) etablierten dazu jedoch
+      eine Alternative namens \textsc{3CosMul}, die bei Tests bessere Ergebnisse produziert:
+      \begin{equation}
+        \underset{\tilde{b}^* \in \mathcal{V}}{argmax} \frac{cos(\tilde{b}^*, b)\ cos(\tilde{b}^*, a^*)}{cos(\tilde{b}^*, a) + \epsilon}
+      \end{equation}
+      Dabei ist $\epsilon = 0,001$, um die Divison durch Null zu verhindern.\\
+      Der Erfolg der Evaluation kann dann als Anteil der richtig vervollständigten Analogien (bei denen $\tilde{b}^* = b^*$) gemessen werden.
+  \end{enumerate}
+  In dieser Arbeit sollen die Datensets durch die zweit- und drittgenannte Methode evaluiert werden.
+  Ein weiterer Fallstrick liegt allerdings in der Zusammenstellung der Datensets: So liefern
+  die genannten nur dann Aussagekräftige Ergebnisse, wenn bei der Wortähnlichkeit die menschlichenen Annotatoren
+  zuverlässig und sinnvoll die Paare bewertet haben (zu messen z.B. mit $Cohen's\ \kappa$) und bei
+  den Analogien aus der Zusammenstellung ebendieser (welche Entitäten sind enthalten, wie oft kommen diese vor,
+  welche semantische Relationen wurden ausgewählt, wurden diese maschinell oder per Hand erzeugt).\\
+  Aus diesem Grund sollen die benutzten Evaluationssets im hierauf folgenden Abschnitt näher beleuchtet werden.
+
+  \subsection{Evaluationsdaten}
+
+    \subsubsection{Wortpaarähnlichkeit}
+
+    Im Englischen wird für die Wortähnlichkeitsevaluation häufig das \textsc{WordSim353}-Datenset verwendet. Dieses
+    wurde unter dem Namen \textsc{Schm280} in deutsche portiert, wobei die Paare nicht nur einfach übersetzt, sondern die
+    Ähnlichkeit auch noch von deutschen Muttersprachlern neu bewertet wurde. Es enthält insgesamt 280 Wortpaare.\\ \\
+    \textsc{Wortpaare65}, \textsc{Wortpaare222} und \textsc{Wortpaare350} entstammen der Arbeit von [REFERENZ]. Dabei werden Wortpaaren
+    Werte von 0 ($\hat{=}$ vollkommen unzusammenhängend) bis 4 ($\hat{=}$ stark zusammenhängend) bewertet. Die Anzahl
+    der menschlichen Annotatoren sowie deren Übereinstimmung sind in Fig. X festgehalten.
+
+    \begin{figure}[h]
+      \centering
+      \begin{tabular}{l|cc}
+        Datenset & \#Annotatoren & $\kappa$ \\
+        \hline
+        \textsc{Wortpaare65} & 24 & 0,81 \\
+        \textsc{Wortpaare222} & 21 & 0,49 \\
+        \textsc{Wortpaare350} & 8 & 0,69 \\
+      \end{tabular}
+      \caption{Anzahl der Annotatoren und Agreement (als $Cohen's\ \kappa$) der \textsc{Wortpaar}-Evaluationsdatensets.}
+    \end{figure}
+
+    \subsubsection{Analogien}
+
+    Die \textsc{Google semantic/syntactic analogy datasets} wurden von Mikolov et al. (2013) [REFERENZ] eingefügt und bestehen
+    aus Analogien der Form \emph{a verhält sich zu a* wie b zu b*}. [REFERENZ] haben diese manuell übersetzt und durch
+    drei menschliche Prüfer validieren lassen. Dabei wurde die Kategorie ``adjektiv - adverb'' fallengelassen, da sie
+    im Deutschen nicht existiert, weshalb 18.552 Analogien übrigbleiben. Diese werden im Folgenden einfach als
+    \textsc{Google} bezeichnet.\\ \\
+    \textsc{SemRel} wurde aus Synonomie-, Antonomie- und Hypernomie-Beziehungen von [REFERENZ] für das Deutsche und Englische
+    konstruiert. Dabei werden Substantive, Verben und Adjektive berücksichtigt. In der deutschen Variante sind 2.462 (recht schwierige) Analogien enthalten,
+    die aus teilweise sehr seltenen Wörter kreiert wurden.
+
+  \subsection{Evaluationsergebnisse}
+
+  \newpage
+  \begin{landscape}
+  \begin{figure}[h]
+    \centering
+    \begin{tabular}{l||c|c|c|c||c|c}
+       & \multicolumn{4}{c}{Wortähnlichkeit ($\rho \in [-1, 1]$)} & \multicolumn{2}{c}{Analogien (in \%)} \\
+      Datenset & \textsc{Wortpaare65} & \textsc{Wortpaare222} & \textsc{Wortpaare350} & \textsc{Schm280} & \textsc{Google} & \textsc{SemRel} \\
+      \hline \hline
+      Mark I & -0.8068 & -0.2455$_{(13)}$& & & 44,56 & \\
+      \hline
+      Mark II & -0.8012 & -0.2576$_{(13)}$ & & & 40,37 &  \\
+      \hline
+      Mark III & -0.7694 & -0.2417$_{(13)}$& & & 27,42 & 35,11 \\
+      \hline
+      Mark IV & -0.7706 & -0.2383$_{(13)}$& & & 25,48 & 32,03 \\
+      \hline
+      Mark V & -0.7679 & -0.2299$_{(13)}$ & & & 25,54 &  \\
+      \hline
+      Mark VI & -0.7648 & -0.2337$_{(13)}$ & & & &  \\
+      \hline
+      Mark VII & -0.7246 & -0.2180$_{(13)}$ & & & & 1,50  \\
+      \hline
+      Mark VIII & -0.6775 & -0.2377$_{(13)}$ & & & &  \\
+      \hline
+      Mark IX & -0.6161 & -0.2481$_{(13)}$ & & & & 1,62 \\
+      \hline
+      Mark X & -0.5807 & -0.2753$_{(13)}$ & & & & 1,22 \\
+      \hline
+      Mark XI & -0.5775 & -0.2838$_{(13)}$ & & & & 1,38  \\
+      \hline
+      Mark XII & -0.5743 & -0.2770$_{(13)}$ & & & &  \\
+      \hline
+      Mark XIII & \textbf{-0.8218}$_{(2)}$ & -0.3145 & & & & 3,01 \\
+      \hline
+      Mark XIV & -0.8097$_{(2)}$ &  & & & & 2,56 \\
+      \hline
+      Mark XV & -0.7759$_{(2)}$ &  & & & & 2,44 \\
+      \hline
+      Mark XVI & -0.7596$_{(2)}$ & & & & & 2,56 \\
+      \hline
+      Mark XVII & -0.7533$_{(2)}$ & & & & & 2,80 \\
+      \hline
+      Mark XVIII & -0.7498$_{(2)}$ & & & & & 3,01 \\
+      \hline
+      Mark XIX & -0.7543$_{(2)}$ & & & & & 2,23 \\
+      \hline
+      Mark XX & -0.7502$_{(2)}$ & & & & & 2,15 \\
+      \hline
+      Mark XXI & -0.7182$_{(2)}$ & & & & & 1,75 \\
+      \hline
+      Mark XXII & -0.6949$_{(2)}$ & & & & & 1,71 \\
+      \hline
+      Mark XXIII & -0.6927$_{(2)}$ & & & & & 1,95 \\
+      \hline
+      Mark XXIV & -0.6865$_{(2)}$ & & & & & 2,07 \\
+    \end{tabular}
+    \caption[Evaluationsergebnisse bei Wortähnlichkeit und Analogien]{Evaluationsergebnisse bei Wortähnlichkeit und Analogien für die verschiedenen Datensets. Für weitere
+    Informationen über die Grundlage der Vektoren siehe Appendix \ref{AppendixA}. Wörter außerhalb des Vokabulars wurden entweder als Fehler gerechnet, oder
+    werden, falls anders nicht möglich, als Zahl im Index in runden Klammern angegeben.}
+  \end{figure}
+\end{landscape}
+\newpage

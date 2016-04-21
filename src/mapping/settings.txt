@@ -1,0 +1,2 @@
+operations distvec
+vectors ../../rsc/vectors/subsets/new_vectors
