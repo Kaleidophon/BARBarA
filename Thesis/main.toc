@@ -28,23 +28,22 @@
 \contentsline {subsubsection}{Wortpaar\IeC {\"a}hnlichkeit}{17}{section*.57}
 \contentsline {subsubsection}{Analogien}{18}{section*.59}
 \contentsline {subsection}{\numberline {5.1.4}Evaluationsergebnisse}{18}{subsection.60}
-\contentsline {chapter}{\numberline {6}Mapping}{21}{chapter.62}
-\contentsline {section}{\numberline {6.1}Mapping-Schritt}{21}{section.63}
-\contentsline {subsection}{\numberline {6.1.1}Features \& Einschr\IeC {\"a}nkungen}{21}{subsection.64}
-\contentsline {subsection}{\numberline {6.1.2}Algorithmus}{21}{subsection.65}
-\contentsline {subsection}{\numberline {6.1.3}Parallelisierter Algorithmus}{21}{subsection.66}
-\contentsline {chapter}{\numberline {7}Clustering}{23}{chapter.67}
-\contentsline {section}{\numberline {7.1}Clustering}{23}{section.68}
-\contentsline {subsection}{\numberline {7.1.1}DBSCAN}{23}{subsection.69}
-\contentsline {subsection}{\numberline {7.1.2}Pre-Training}{23}{subsection.70}
-\contentsline {subsection}{\numberline {7.1.3}Parallelisiertes DBSCAN}{23}{subsection.71}
-\contentsline {chapter}{\numberline {8}Evaluation der Cluster}{25}{chapter.72}
-\contentsline {section}{\numberline {8.1}Evaluation der Cluster}{25}{section.73}
-\contentsline {chapter}{\numberline {9}Diskussion}{27}{chapter.74}
-\contentsline {section}{\numberline {9.1}Diskussion}{27}{section.75}
-\contentsline {chapter}{\numberline {10}Fazit}{29}{chapter.76}
-\contentsline {section}{\numberline {10.1}Fazit}{29}{section.77}
-\contentsline {chapter}{\numberline {11}Ausblick}{31}{chapter.78}
-\contentsline {section}{\numberline {11.1}Ausblick}{31}{section.79}
-\contentsline {chapter}{\numberline {A}\IeC {\"U}bersicht \IeC {\"u}ber die Parameter zum Trainieren der Wortvektoren}{33}{appendix.80}
-\contentsline {chapter}{Literatur}{35}{appendix*.82}
+\contentsline {chapter}{\numberline {6}Experiment A}{21}{chapter.62}
+\contentsline {section}{\numberline {6.1}Idee}{21}{section.63}
+\contentsline {section}{\numberline {6.2}Algorithmus}{21}{section.65}
+\contentsline {section}{\numberline {6.3}Parallelisierter Algorithmus}{22}{section.72}
+\contentsline {chapter}{\numberline {7}Clustering}{23}{chapter.73}
+\contentsline {section}{\numberline {7.1}Clustering}{23}{section.74}
+\contentsline {subsection}{\numberline {7.1.1}DBSCAN}{23}{subsection.75}
+\contentsline {subsection}{\numberline {7.1.2}Pre-Training}{23}{subsection.76}
+\contentsline {subsection}{\numberline {7.1.3}Parallelisiertes DBSCAN}{23}{subsection.77}
+\contentsline {chapter}{\numberline {8}Evaluation der Cluster}{25}{chapter.78}
+\contentsline {section}{\numberline {8.1}Evaluation der Cluster}{25}{section.79}
+\contentsline {chapter}{\numberline {9}Diskussion}{27}{chapter.80}
+\contentsline {section}{\numberline {9.1}Diskussion}{27}{section.81}
+\contentsline {chapter}{\numberline {10}Fazit}{29}{chapter.82}
+\contentsline {section}{\numberline {10.1}Fazit}{29}{section.83}
+\contentsline {chapter}{\numberline {11}Ausblick}{31}{chapter.84}
+\contentsline {section}{\numberline {11.1}Ausblick}{31}{section.85}
+\contentsline {chapter}{\numberline {A}\IeC {\"U}bersicht \IeC {\"u}ber die Parameter zum Trainieren der Wortvektoren}{33}{appendix.86}
+\contentsline {chapter}{Literatur}{35}{appendix*.88}
