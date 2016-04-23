@@ -1,6 +1,6 @@
 % Chapter 6
 
-\chapter{Mapping} % Main chapter title
+\chapter{Experiment A} % Main chapter title
 
 \label{Chapter6} % For referencing the chapter elsewhere, use \ref{Chapter1}
 
@@ -13,10 +13,65 @@ A: to To other side . get the
 \textsc{Jason Whittington}
 \end{itquote}
 
-\section{Mapping-Schritt}
+\section{Idee}
 
-  \subsection{Features \& Einschränkungen}
+Gegeben ist ein Vektorraum $V$ mit Wortvektoren $\vec{u}, \vec{v} \in V$ und $\vec{u},\vec{v}\in\mathbb{R}^d$.
+Gesucht ist eine Funktion $\phi$, die ein Vektorenpaar in einen Relationsraum abbildet: $\phi: \mathbb{R}^d \to \mathbb{R}^e$, wobei
+nicht zwangsläufig $d = e$.\\
+In ihrer einfachsten Form bildet sie einfach die Differenz $\vec{d}$ der beiden Vektoren:
+\begin{equation}
+  \phi(\vec{u}, \vec{v}) = \vec{v} - \vec{u} = \vec{d}
+\end{equation}
 
-  \subsection{Algorithmus}
+\section{Algorithmus}
 
-  \subsection{Parallelisierter Algorithmus}
+Der Grundalgorithmus (siehe Fig. X) versucht nun, alle Kombinationen von Wortvektoren zu bilden und über diese
+und den Differenzvektor zu bilden. Alle Kombinationen würde bei $n$ Vektoren in $n * n = n^2$ Vektoren resultieren.
+Zwar ist $\phi(\vec{u}, \vec{v}) \neq \phi(\vec{v}, \vec{u})$, jedoch wäre die Berechnung beider Differenzvektoren redundant,
+da sie lediglich Spiegelungen voneinander im Raum sind und so diesselbe Information enthalten. Die Berechnung
+der Differenz in nur eine Richtung reduziert die Anzahl der Vektoren dadurch zu $\frac{n * (n-1)}{2}$.
+
+\begin{figure}[h]
+  \centering
+  \begin{algorithm}[H]
+    \KwData{Menge von Vektorpaaren $\mathcal{C}$}
+    \For{$(\vec{u}, \vec{v}) \in \mathcal{C}$}{
+      $\vec{d} = \vec{v} - \vec{u}$;
+    }
+  \end{algorithm}
+  \caption[Einfacher Projektionsalgorithmus]{Einfacher Projektionsalgorithmus.}
+\end{figure}
+
+Gegeben einer Menge relevanter Kombinationen $\mathcal{C}$ mit Vektorpaaren gilt also:
+\begin{equation}
+  \forall (\vec{u}, \vec{v}) \in \mathcal{C}: (\vec{v}, \vec{u}) \notin \mathcal{C}
+\end{equation}
+
+Eine Modifikation des Algorithmus besteht daran, das Berechnen von $\vec{d}$ ab eine Bedingung zu knüpfen.
+Gegeben sei eine Menge von Sätzen (ein Korpus) $\mathcal{K}$ mit $n$ Sätzen $s_i$ sodass $\mathcal{K} = \{s_i\}_{i=1}^{n}$ mit
+$m$ Wörtern $w_{ij}$ pro Satz $s_i = \{w_{ij}\}_{j=1}^m$. Eine Kookkurrenz von zwei Begriffen (\emph{types}) $t_1$ und $t_2$
+besteht demnach, falls im Korpus mindestens ein Satz existiert, in dem beide gleichermaßen vorkommen. Dazu können wir
+eine Funktion $\Lambda$ definieren, die die Anzahl der Kookkurrenzen bestimmt:
+\begin{equation}
+  \Lambda(t_1, t_2) = |\{s | s\in\mathcal{K} \land \exists w_1\in s \land \exists w_2\in s \land w_1 = t_1 \land w_2 = t_2 \land w_1 \neq w_2\}|
+\end{equation}
+Eine mögliche Einschränkung besteht darin, in einem geänderten Algorithmus (siehe Fig. X) das Berechnen von $\vec{d}$ nur
+dann zu erlauben, wenn die Anzahl der Kookkurrenzen der zu den Vektoren $\vec{v}(t_1), \vec{v}(t_2)$ gehörenden Begriffe $t_1, t_2$
+einen bestimmten Schwellenwert $\gamma$ überschreitet, also $\Lambda(t_1, t_2) > \gamma$.
+
+\begin{figure}[h]
+  \centering
+  \begin{algorithm}[H]
+    \KwData{Menge von Vektorpaaren $\mathcal{C}$}
+    \For{$(\vec{v}(t_1), \vec{v}(t_2)) \in \mathcal{C}$}{
+      \If{$\Lambda(t_1, t_2) > \gamma$}{
+        $\vec{d} = \vec{v}(t_2) - \vec{v}(t_1)$;
+      }
+    }
+  \end{algorithm}
+  \caption[Modifizierter Projektionsalgorithmus]{Modifizierter Projektionsalgorithmus, bei dem die zu den Vektoren gehörigen
+  Begriffe über $\gamma$ Mal im Korpus im gleichen Satz aufgetreten sein müssen, damit $\vec{d}$ errechnet wird.}
+\end{figure}
+
+
+\section{Parallelisierter Algorithmus}
