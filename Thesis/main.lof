@@ -16,10 +16,12 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {6.1}{\ignorespaces Einfacher Projektionsalgorithmus}}{21}{figure.caption.66}
 \contentsline {figure}{\numberline {6.2}{\ignorespaces Modifizierter Projektionsalgorithmus}}{22}{figure.caption.70}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Parallelisierter Projektionsalgorithmus}}{23}{figure.caption.73}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Darstellung der Funktionsweise von DBSCAN}}{24}{figure.caption.77}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Quelle und Trainingsparameter f\IeC {\"u}r Wortvektoren}}{33}{figure.caption.86}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Quelle und Trainingsparameter f\IeC {\"u}r Wortvektoren}}{37}{figure.caption.99}

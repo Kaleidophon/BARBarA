@@ -32,17 +32,19 @@
 \contentsline {section}{\numberline {6.1}Idee}{21}{section.63}
 \contentsline {section}{\numberline {6.2}Algorithmus}{21}{section.65}
 \contentsline {section}{\numberline {6.3}Parallelisierter Algorithmus}{22}{section.72}
-\contentsline {section}{\numberline {6.4}Clusterin}{22}{section.73}
-\contentsline {section}{\numberline {6.5}Ergebnisse}{22}{section.74}
-\contentsline {section}{\numberline {6.6}Diskussion der Ergebnisse}{22}{section.75}
-\contentsline {chapter}{\numberline {7}Experiment B}{23}{chapter.76}
-\contentsline {section}{\numberline {7.1}Ansatz}{23}{section.77}
-\contentsline {chapter}{\numberline {8}Evaluation der Cluster}{25}{chapter.78}
-\contentsline {section}{\numberline {8.1}Evaluation der Cluster}{25}{section.79}
-\contentsline {chapter}{\numberline {9}Diskussion}{27}{chapter.80}
-\contentsline {chapter}{\numberline {10}Fazit}{29}{chapter.81}
-\contentsline {section}{\numberline {10.1}Fazit}{29}{section.82}
-\contentsline {chapter}{\numberline {11}Ausblick}{31}{chapter.83}
-\contentsline {section}{\numberline {11.1}Ausblick}{31}{section.84}
-\contentsline {chapter}{\numberline {A}\IeC {\"U}bersicht \IeC {\"u}ber die Parameter zum Trainieren der Wortvektoren}{33}{appendix.85}
-\contentsline {chapter}{Literatur}{35}{appendix*.87}
+\contentsline {section}{\numberline {6.4}Clustering}{23}{section.76}
+\contentsline {section}{\numberline {6.5}Ergebnisse}{24}{section.81}
+\contentsline {section}{\numberline {6.6}Zwischendiskussion}{24}{section.82}
+\contentsline {subsection}{\numberline {6.6.1}Daten}{25}{subsection.83}
+\contentsline {subsection}{\numberline {6.6.2}Ansatz}{26}{subsection.88}
+\contentsline {chapter}{\numberline {7}Experiment B}{27}{chapter.89}
+\contentsline {section}{\numberline {7.1}Ansatz}{27}{section.90}
+\contentsline {chapter}{\numberline {8}Evaluation der Cluster}{29}{chapter.91}
+\contentsline {section}{\numberline {8.1}Evaluation der Cluster}{29}{section.92}
+\contentsline {chapter}{\numberline {9}Diskussion}{31}{chapter.93}
+\contentsline {chapter}{\numberline {10}Fazit}{33}{chapter.94}
+\contentsline {section}{\numberline {10.1}Fazit}{33}{section.95}
+\contentsline {chapter}{\numberline {11}Ausblick}{35}{chapter.96}
+\contentsline {section}{\numberline {11.1}Ausblick}{35}{section.97}
+\contentsline {chapter}{\numberline {A}\IeC {\"U}bersicht \IeC {\"u}ber die Parameter zum Trainieren der Wortvektoren}{37}{appendix.98}
+\contentsline {chapter}{Literatur}{39}{appendix*.100}
