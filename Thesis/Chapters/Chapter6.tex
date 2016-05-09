@@ -123,7 +123,30 @@ Zusätzlich wird eine Menge eingeführt, in die Paare von Vektoren hinzugefügt 
 ein Differenzvektor ausgerechnet wurde. Damit nun keiner der Threads redundante Berechnungen durchführt, prüft er, ob sein
 aktuelles Vektorpaar sich in dieser Menge befindet und schon abgehakt wurde\footnote{Damit dies möglichst schnell funktioniert,
 wird das Vektorpaar durch eine Hashfunktion in einen Wert umgewandelt. Diese wird so gewählt,
-sodass $h(\vec{v}(t_1), \vec{v}(t_2)) = h(\vec{v}(t_2), \vec{v}(t_1))$.}.
+sodass $h(\vec{v}(t_1), \vec{v}(t_2)) = h(\vec{v}(t_2), \vec{v}(t_1))$.}.\\
+
+Als Grundlage der Daten wurde das Datenset Mark 0 [BESTES EINFÜGEN] gewählt, da es in den meisten der Evaluationsaufgaben
+als bestes Abschnitt. Mit $\gamma = 100$ resultierte das Procedere in einem neuen Menge an Daten mit insgesamt
+X Differenzvektoren [GENAUE ZAHL EINFÜGEN] mit einer Größe von X,X GB [GENAUE GRÖSSE EINFÜGEN].\\
+Um den Gewinn durch Multithreading zu verdeutlichen, wurden darüber hinaus die Rechenzeiten gemessen (siehe Fig. X).
+Gerechnet wurde auf eine Hardware mit 40 Prozessorkernen und [RESTLICHE SPECS EINFÜGEN].
+
+\begin{figure}[h]
+  \centering
+  \begin{tabular}{r|cc}
+    \textsc{Anzahl der Threads} & \textsc{Benötigte Zeit} (in $m$) & Beschleunigung (in \%) \\
+    \hline
+    1 & & - \\
+    2 & & \\
+    8 & & \\
+    32 & & \\
+    64 & & \\
+    128 & & \\
+  \end{tabular}
+  \caption[Rechenzeiten für den Mappingschritt nach Anzahl von Threads]{Rechenzeiten für den Mappingschritt nach Anzahl von Threads auf
+  einem System mit 40 Prozessorkernen und [RESTLICHE SPECS EINFÜGEN]. Die Beschleunigung wird im Vergleich zum Ausführen des Programms
+  mit nur einem Thread gemessen.}
+\end{figure}
 
 \section{Clustering}
 
@@ -224,3 +247,11 @@ Es lassen sich im Bezug auf jene folgende Punkte feststellen:
 \end{itemize}
 
 \subsection{Ansatz}
+
+Das Fehlschlagen des Vorgehens kann auch auf einer theoretischen Ebene festgestellt werden: Das Ziel bestand darin, Wissen
+über Relationen zwischen Wortpaaren zu extrahieren. Um dieses Wissen gewissermaßen ``freilegen'', muss es aber auf eine
+Art und Weise innerhalb der Daten ``kodiert'' sein, wenn auch versteckt (so wie die semantische Ähnlichkeit zwischen Wörtern
+durch die räumliche Nähe ihrer Vektoren und deren Dimension kodiert ist).\\
+Wie beim Aufzeigen des Trugschlusses am Ende des vorherigen Abschnitts gezeigt wurde, sind semantische Relationen nicht eindeutig
+innerhalb der Daten aufzuzeigen bzw. nur dann, wenn bereits vorher bruchstückhaftes Wissen darüber vorliegt. Ohne
+dieses Vorwissen sind richtige von nur scheinbaren Relationen nicht zu trennen.
