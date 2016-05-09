@@ -128,31 +128,6 @@ def fetch_relation_triples(relation):
 	return relation_triples
 
 
-def fetch_relations_of(entity):
-	api_key, service_url = read_credentials()
-	# query = [{'id': None, 'name': None, 'type': '/astronomy/planet'}]
-	# TODO: Richtige Formulierung fuer Query finden
-
-	query = [{
-		'name': '%s' %(entity),
-		'type': None
-	}]
-	response = freebase_request(query, api_key, service_url)
-	print response
-	for result in response['result']:
-		print
-
-
-def fetch_relations_of_entities(entity1, entity2):
-	inverse_relations = defaultdict(str)
-	api_key, service_url = read_credentials()
-	query = [{
-		'id': '%s' % (entity1)
-	}]
-	response = freebase_request(query, api_key, service_url)
-	print response
-
-
 def translate_name(name, lang="en"):
 	api_key, service_url = read_credentials()
 	query = [{
