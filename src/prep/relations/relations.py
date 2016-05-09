@@ -48,8 +48,6 @@ def translate_word2vec_question_phrases(inpath, outpath, lang="en"):
 		print "%i of %i translations successful (%.2f %%)" %(n-failed, n, (n-failed)*100.0/n)
 
 
-
-
 def fetch_relation_triples_of_file(inpath, outpath, logpath, lang="en"):
 	starttime = time.time()
 	id_dict = defaultdict(str)
@@ -107,8 +105,7 @@ def fetch_relation_triples_of_file(inpath, outpath, logpath, lang="en"):
 
 
 def fetch_relation_triples(relation):
-	api_key = open("../../rsc/rel/freebase_api_key").read()
-	service_url = 'https://www.googleapis.com/freebase/v1/mqlread'
+	api_key, service_url = read_credentials()
 	# query = [{'id': None, 'name': None, 'type': '/astronomy/planet'}]
 
 	query = [{
@@ -117,9 +114,7 @@ def fetch_relation_triples(relation):
 		}],
 		'name': None
 	}]
-	params = {'query': json.dumps(query), 'key': api_key}
-	url = service_url + '?' + urllib.urlencode(params)
-	response = json.loads(urllib.urlopen(url).read())
+	response = freebase_request(query, api_key, service_url)
 	results = response['result']
 	relation_triples = []
 
@@ -134,8 +129,7 @@ def fetch_relation_triples(relation):
 
 
 def fetch_relations_of(entity):
-	api_key = open("../../rsc/rel/freebase_api_key").read()
-	service_url = 'https://www.googleapis.com/freebase/v1/mqlread'
+	api_key, service_url = read_credentials()
 	# query = [{'id': None, 'name': None, 'type': '/astronomy/planet'}]
 	# TODO: Richtige Formulierung fuer Query finden
 
@@ -143,17 +137,24 @@ def fetch_relations_of(entity):
 		'name': '%s' %(entity),
 		'type': None
 	}]
-	params = {'query': json.dumps(query), 'key': api_key}
-	url = service_url + '?' + urllib.urlencode(params)
-	response = json.loads(urllib.urlopen(url).read())
+	response = freebase_request(query, api_key, service_url)
 	print response
 	for result in response['result']:
 		print
 
 
+def fetch_relations_of_entities(entity1, entity2):
+	inverse_relations = defaultdict(str)
+	api_key, service_url = read_credentials()
+	query = [{
+		'id': '%s' % (entity1)
+	}]
+	response = freebase_request(query, api_key, service_url)
+	print response
+
+
 def translate_name(name, lang="en"):
-	api_key = open("../../rsc/rel/freebase_api_key").read()
-	service_url = 'https://www.googleapis.com/freebase/v1/mqlread'
+	api_key, service_url = read_credentials()
 	query = [{
 		"id":"/en/%s" %(name.lower().replace(" ", "_")),
 		"name":[{
@@ -161,9 +162,7 @@ def translate_name(name, lang="en"):
 			"value": None
 		}]
 	}]
-	params = {'query': json.dumps(query), 'key': api_key}
-	url = service_url + '?' + urllib.urlencode(params)
-	response = json.loads(urllib.urlopen(url).read())
+	response = freebase_request(query, api_key, service_url)
 	if u"error" in response.keys():
 		return None
 	results = response['result']
@@ -174,8 +173,7 @@ def translate_name(name, lang="en"):
 
 
 def fetch_name(id, lang='en'):
-	api_key = open("../../rsc/rel/freebase_api_key").read()
-	service_url = 'https://www.googleapis.com/freebase/v1/mqlread'
+	api_key, service_url = read_credentials()
 	# query = [{'id': None, 'name': None, 'type': '/astronomy/planet'}]
 
 	query = [{
@@ -185,12 +183,23 @@ def fetch_name(id, lang='en'):
 			'value': None
 		}]
 	}]
-	params = {'query': json.dumps(query), 'key': api_key}
-	url = service_url + '?' + urllib.urlencode(params)
-	response = json.loads(urllib.urlopen(url).read())
+	response = freebase_request(query, api_key, service_url)
 	if response[u'result'] == []:
 		raise MissingTranslationException("No associated alias for id %s in language %s found in Freebase." %(id, lang))
 	return response[u'result'][0][u'name'][0][u'value']
+
+
+def freebase_request(query, api_key, service_url):
+	params = {'query': json.dumps(query), 'key': api_key}
+	url = service_url + '?' + urllib.urlencode(params)
+	response = json.loads(urllib.urlopen(url).read())
+	return response
+
+
+def read_credentials():
+	api_key = open("../../../rsc/rel/freebase_api_key").read()
+	service_url = 'https://www.googleapis.com/freebase/v1/mqlread'
+	return api_key, service_url
 
 
 def format_fbid(id):
