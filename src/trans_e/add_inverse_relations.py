@@ -24,16 +24,21 @@ def add_inverse_relations(relations_inpath, relations_outpath, inverse_relations
 				rentikey = (triple[2], triple[0])
 				new_relation = ""
 
-				if entikey not in known_keys:
-					if triple[1] in inverse_keys:
-						new_relation = triple[1] + "." + inverse_relations[triple[1]]
-					else:
-						new_relation = triple[1]
+				if triple[1] in inverse_keys:
+					new_relation = triple[1] + "." + inverse_relations[triple[1]]
 				else:
-					if entikey in known_keys:
-						new_relation += known_relations[entikey]
-					if rentikey in known_keys:
-						new_relation += "." + known_relations[rentikey]
+					new_relation = triple[1]
+
+				#if entikey not in known_keys:
+				#	if triple[1] in inverse_keys:
+				#		new_relation = triple[1] + "." + inverse_relations[triple[1]]
+				#	else:
+				#		new_relation = triple[1]
+				#else:
+				#	if entikey in known_keys:
+				#		new_relation += known_relations[entikey]
+				#	if rentikey in known_keys:
+				#		new_relation += "." + known_relations[rentikey]
 
 				relations_outfile.write("%s\t%s\t%s\n" %(triple[0], new_relation, triple[2]))
 

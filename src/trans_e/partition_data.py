@@ -25,7 +25,7 @@ def write_data_in_file(data, file):
 
 
 def partition_data(data, prts, outdir):
-	random.shuffle(data)
+	#random.shuffle(data)
 	size = len(data)
 
 	train_file = codecs.open(outdir + "freebase_mtr100_mte100-train.txt", 'wb', 'utf-8')
@@ -33,7 +33,10 @@ def partition_data(data, prts, outdir):
 	test_file = codecs.open(outdir + "freebase_mtr100_mte100-test.txt", 'wb', 'utf-8')
 
 	# Write files
-	write_data_in_file(data[int(prts[0]*size):], train_file)
+	print len(data[:int(prts[0]*size)]),\
+			len(data[int(prts[0]*size)+1:int((prts[0]+prts[1])*size)]),\
+			len(data[int((prts[0]+prts[1])*size)+1:])
+	write_data_in_file(data[:int(prts[0]*size)], train_file)
 	write_data_in_file(data[int(prts[0]*size)+1:int((prts[0]+prts[1])*size)], validation_file)
 	write_data_in_file(data[int((prts[0]+prts[1])*size)+1:], test_file)
 
