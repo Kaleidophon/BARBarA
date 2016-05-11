@@ -9,6 +9,8 @@ def main():
 	print args
 	if args.uniqueness_check:
 		check_data_integrity(args.input, args.remove_clones, args.outdir)
+	elif args.set_check:
+		check_set_integrity(args.indir)
 	else:
 		prts = (float(args.partitions[0]), float(args.partitions[1]), float(args.partitions[2]))
 		assert prts[0] + prts[1] + prts[2] == 1.0
@@ -76,16 +78,42 @@ def check_data_integrity(data_inpath, remove_clones, outpath):
 				outfile.write("%s\t%s\t%s\n" %(triplet[0], triplet[1], triplet[2]))
 
 
+def read_only_relations_into_set(inpath):
+	relations = set()
+
+	with codecs.open(inpath, 'rb', 'utf-8') as infile:
+		line = infile.readline().strip()
+		while line:
+			parts = line.split("\t")
+			relations.add(parts[1])
+			line = infile.readline().strip()
+
+	return relations
+
+
 def check_set_integrity(indir):
-	pass
-	# Check whether all relation in validation and test set appear at least once in training set
+	train_set = read_only_relations_into_set(indir + "freebase_mtr100_mte100-train.txt")
+	valid_set = read_only_relations_into_set(indir + "freebase_mtr100_mte100-valid.txt")
+	test_set = read_only_relations_into_set(indir + "freebase_mtr100_mte100-test.txt")
+
+	if len(valid_set.intersection(train_set)) < len(valid_set):
+		sys.stderr.write("WARNING: There are unseen relations in the validation set.\n")
+
+	if len(test_set.intersection(train_set)) < len(test_set):
+		sys.stderr.write("WARNING: There are unseen relations in the test set.\n")
+
+	print "Check complete!"
+
+	# TODO: Correct mistakes
+
 
 
 def init_argparse():
 	argparser = argparse.ArgumentParser()
 	argparser.add_argument('--input',
-							required=True,
 							help='Relation input data')
+	argparser.add_argument('--indir',
+							help="Directory to partioned data.")
 	argparser.add_argument('--outdir',
 							help='Output data directory')
 	argparser.add_argument('--partitions',
@@ -94,6 +122,9 @@ def init_argparse():
 	argparser.add_argument('--uniqueness_check',
 							action="store_true",
 							help="Checks the uniqueness of input data triplets.")
+	argparser.add_argument('--set_check',
+							action="store_true",
+							help="Checks if relation in validation and test set appear at least once in training data.")
 	argparser.add_argument('--remove_clones',
 							action='store_true',
 							help="Removes clones while checking for uniqueness.")
