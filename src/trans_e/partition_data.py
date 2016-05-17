@@ -1,6 +1,9 @@
-import codecs, sys
+import codecs
+import sys
+import os
 import argparse
 import random
+from collections import defaultdict
 
 
 def main():
@@ -16,38 +19,100 @@ def main():
 		assert prts[0] + prts[1] + prts[2] == 1.0
 
 		data = read_relations(args.input)
-		partition_data(data, prts, args.outdir)
+		stats = get_stats(data)
+		print "%i unique entities / %i unique relations / %i total in data." %(stats[0], stats[1], stats[2])
+		partition_data(data, prts, args.outdir, args.whole)
 
 
 def read_relations(inpath):
 	with codecs.open(inpath, 'rb', 'utf-8') as infile:
-		return infile.readlines()
+		return [line.strip().split("\t") for line in infile.readlines()]
 
 
-def write_data_in_file(data, file):
+def get_stats(data):
+	entities = set()
+	relations = set()
+
+	for triple in data:
+		entities.add(triple[0])
+		entities.add(triple[2])
+		relations.add(triple[1])
+
+	return len(entities), len(relations), len(entities) + len(relations)
+
+
+def write_data_in_file(data, outfile):
 	for d in data:
-		file.write("%s" %(d.replace(" ", "_")))
+		d = [part.replace(" ", "_") for part in d]
+		outfile.write("%s\t%s\t%s\n" %(d[0], d[1], d[2]))
 
 
-def partition_data(data, prts, outdir):
+def partition_relation_wise(data, prts):
+	triples = defaultdict(list)
+
+	# Aggregate relations
+	for d in data:
+		relation = d[1]
+		if d[1] in triples.keys():
+			triples[relation].append(d)
+		else:
+			triples[relation] = [d]
+
+	# Partition
+	train = []
+	valid = []
+	test = []
+
+	for relation in triples.keys():
+		rtriples = triples[relation]
+		if len(rtriples) < 10:
+			train.extend(rtriples)
+			continue
+		res = partitions_list(rtriples, prts)
+		train.extend(res[0])
+		valid.extend(res[1])
+		test.extend(res[2])
+
+	random.shuffle(train)
+	random.shuffle(valid)
+	random.shuffle(test)
+
+	print len(train), len(valid), len(test)
+	return train, valid, test
+
+
+def partition_whole(data, prts):
+	train, valid, test = partitions_list(data, prts)
+	print len(train), len(valid), len(test)
+	return train, valid, test
+
+
+def partition_data(data, prts, outdir, whole=True):
 	random.shuffle(data)
-	size = len(data)
 
 	train_file = codecs.open(outdir + "freebase_mtr100_mte100-train.txt", 'wb', 'utf-8')
 	validation_file = codecs.open(outdir + "freebase_mtr100_mte100-valid.txt", 'wb', 'utf-8')
 	test_file = codecs.open(outdir + "freebase_mtr100_mte100-test.txt", 'wb', 'utf-8')
 
+	# Partition
+	if whole:
+		train, valid, test = partition_whole(data, prts)
+	else:
+		train, valid, test = partition_relation_wise(data, prts)
+
 	# Write files
-	print len(data[:int(prts[0]*size)]),\
-			len(data[int(prts[0]*size)+1:int((prts[0]+prts[1])*size)]),\
-			len(data[int((prts[0]+prts[1])*size)+1:])
-	write_data_in_file(data[:int(prts[0]*size)], train_file)
-	write_data_in_file(data[int(prts[0]*size)+1:int((prts[0]+prts[1])*size)], validation_file)
-	write_data_in_file(data[int((prts[0]+prts[1])*size)+1:], test_file)
+	write_data_in_file(train, train_file)
+	write_data_in_file(valid, validation_file)
+	write_data_in_file(test, test_file)
 
 	train_file.close()
 	validation_file.close()
 	test_file.close()
+
+
+def partitions_list(l, prts):
+	size = len(l)
+	return l[:int(prts[0]*size)], l[int(prts[0]*size)+1:int((prts[0]+prts[1])*size)], l[int((prts[0]+prts[1])*size)+1:]
 
 
 def check_data_integrity(data_inpath, remove_clones, outpath):
@@ -104,9 +169,6 @@ def check_set_integrity(indir):
 
 	print "Check complete!"
 
-	# TODO: Correct mistakes
-
-
 
 def init_argparse():
 	argparser = argparse.ArgumentParser()
@@ -128,6 +190,9 @@ def init_argparse():
 	argparser.add_argument('--remove_clones',
 							action='store_true',
 							help="Removes clones while checking for uniqueness.")
+	argparser.add_argument('--whole',
+							action='store_true',
+							help="Partiton whole dataset or per relation..")
 	return argparser
 
 if __name__ == '__main__':
