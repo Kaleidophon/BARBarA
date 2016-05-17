@@ -23,6 +23,7 @@
 %----------------------------------------------------------------------------------------
 
 \documentclass[
+captions=nooneline,
 11pt, % The default document font size, options: 10pt, 11pt, 12pt
 %oneside, % Two side (alternating margins) for binding by default, uncomment to switch to one side
 %chapterinoneline,% Have the chapter title next to the number in one single line
@@ -44,6 +45,11 @@ headsepline, % Uncomment to get a line under the header
 \usepackage{palatino} % Use the Palatino font by default
 \usepackage{lscape}
 \usepackage[]{algorithm2e}
+\usepackage{caption}
+\usepackage{hyperref}
+\usepackage{fancyvrb} 
+\VerbatimFootnotes
+\captionsetup{margin=10pt,font=small,labelfont=bf}
 
 \usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex} % Use the bibtex backend with the authoryear citation style (which resembles APA)
 

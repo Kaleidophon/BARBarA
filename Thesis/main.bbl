@@ -16,6 +16,44 @@
   {}
 \endgroup
 
+\entry{bordes2013translating}{inproceedings}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Bordes}{B.}%
+     {Antoine}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Usunier}{U.}%
+     {Nicolas}{N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Garcia-Duran}{G.-D.}%
+     {Alberto}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Weston}{W.}%
+     {Jason}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Yakhnenko}{Y.}%
+     {Oksana}{O.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BA+1}
+  \strng{fullhash}{BAUNGDAWJYO1}
+  \field{labelyear}{2013}
+  \field{sortinit}{B}
+  \field{booktitle}{Advances in Neural Information Processing Systems}
+  \field{pages}{2787\bibrangedash 2795}
+  \field{title}{Translating embeddings for modeling multi-relational data}
+  \field{year}{2013}
+\endentry
+
 \entry{Goldberg15c}{article}{}
   \name{author}{1}{}{%
     {{}%
@@ -89,6 +127,45 @@
   \field{volume}{3}
   \field{journaltitle}{Transactions of the Association for Computational
   Linguistics}
+  \field{year}{2015}
+\endentry
+
+\entry{lin2015learning}{inproceedings}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Lin}{L.}%
+     {Yankai}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Liu}{L.}%
+     {Zhiyuan}{Z.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Sun}{S.}%
+     {Maosong}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Liu}{L.}%
+     {Yang}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Zhu}{Z.}%
+     {Xuan}{X.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{LY+1}
+  \strng{fullhash}{LYLZSMLYZX1}
+  \field{labelyear}{2015}
+  \field{sortinit}{L}
+  \field{booktitle}{AAAI}
+  \field{pages}{2181\bibrangedash 2187}
+  \field{title}{Learning Entity and Relation Embeddings for Knowledge Graph
+  Completion.}
   \field{year}{2015}
 \endentry
 
