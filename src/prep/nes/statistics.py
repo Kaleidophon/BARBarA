@@ -6,10 +6,10 @@ import codecs, yaml
 
 def main():
 	#calculateOccurrences(sys.argv[1:])
-	calculateOccurrences("../rsc/decow/freq_merge.txt", "../rsc/rel/relations.yaml")
+	calculate_occurrences("../rsc/decow/freq_merge.txt", "../rsc/rel/relations.yaml")
 
 
-def calculateOccurrences(freqpath, relations_path):
+def calculate_occurrences(freqpath, relations_path):
 	rel_entities = set()
 	with codecs.open(relations_path, "rb", "utf-8") as relfile:
 		line = relfile.readline().strip()

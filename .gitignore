@@ -11,3 +11,4 @@ __init__.py
 depend/
 testdata
 .idea/*
+freebase_api_key
