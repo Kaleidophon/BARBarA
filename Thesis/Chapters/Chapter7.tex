@@ -40,3 +40,30 @@ Personennamen i.d.R. durch alle Sprachen hinweg gleich. Schwieriger wird es bei 
 Intuitiv drängt sich der Anschein auf, dass populäre Bezeichnungen eher übersetzt werden als unpopulärere
 (\emph{United States of America} $\rightarrow$ \emph{Vereinigte Staaten von Amerika} / \emph{University of Denver}
 $\rightarrow$ \emph{University of Denver}).\\
+Im Falle der Relevanz ist davon auszugehen, dass diese mit der Bearbeitung durch Nutzer einher geht: Bei einer großen
+Nutzerbasis ist davon auszugehen, dass diese primär Einträge von Entitäten bearbeiten, die im Kontext der Geschichte,
+des Tagesgeschehens o. Ä. relevant sind. Gegeben genug Zeit und aktive Nutzer ist also anzunehmen, dass eine immer
+größer werdende Prozentzahl von Relevanten Entitäten an das Deutsche angepasst wird. Bedenkt man die Laufzeit von Freebase
+seit 2007 (also zum Zeitpunkt des Schreibens dieser Arbeit rund 9 Jahre), so nehmen wir an, dass dieses Bedenken zwar nicht
+ganz aus der Welt zu räumen, aber zumindest zu vernachlässigen ist.\\
+
+Basierend auf dieser Argumentation werden korrespondierende ``deutsche'' Daten folgendermaßen erzeugt:
+Es wird bei allen Relationstripeln eine Prüfung durchgeführt, ob beide Entitäten $h$ und $t$ eine deutsche Bezeichnung
+besitzen. Falls nicht, wird dieses Tripel ausgelassen. Danach wird ggf. noch die inverse Relation ergänzt (diese wird
+später beim Training benötigt), z.B. bei \emph{/location/location/contains} und \emph{/location/location/containedby}.
+
+\begin{figure}[h]
+  \centering
+  \begin{tabular}{r|ccc}
+    Datenset & \#Tripel & \#Entitätstypen & \#Relationstypen \\
+    \hline \hline
+    FB15k & 592.213 & 14.951 & 1.345 \\
+    GER19k & 204.016 & 18.778 & 1.033 \\
+  \end{tabular}
+  \caption[Daten über die Relationsdatensets FB15k und GER15k]{Daten über die Relationsdatensets FB15k und GER19k.
+  Aufgelistet ist die Anzahl der Tripel (Datensätze), Entitäts- und Relationstypen.}
+\end{figure}
+
+\section{Training}
+
+\section{Evaluation}
