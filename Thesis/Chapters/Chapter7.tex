@@ -6,6 +6,37 @@
 
 %----------------------------------------------------------------------------------------
 
-\section{Ansatz}
+In diesem Kapitel soll der Ansatz von (\cite{bordes2013translating}) für deutsche Daten nachvollzogen werden.
+Dabei wird erst erklärt, wie die Daten erstellt wurden. Danach wird die Idee zum Training der Daten ausgeführt und
+auf die neuen Datensätze angewendet, bevor schlußendlich eine Evaluation und eine Gegenüberstellung zu den Originaldaten
+erfolgt.
 
-Test
+\section{Datenerzeugung}
+
+In (\cite{bordes2013translating}) werden mehrere Datensets erstellt darunter eines namens \emph{FB15k}. Dieses
+besteht aus Relationstripeln der Form $(h, l, t)$
+(= $(head,\ link,\ tail)$). Diese stammen aus \emph{Freebase}, einer
+community-gepflegten Datenbank, in der mehr als 23 Millionen Entitäten durch Relationen miteinander verknüpft sind.
+Mittlerweile ist die Seite offline; das Projekt wurde sukzessive in \emph{Wikidata}
+\footnote{Siehe \url{https://www.wikidata.org/wiki/Wikidata:Main_Page (zuletzt abgerufen am 20.05.16)}} integriert. Auch die
+Freebase API, die als Programmierschnittstelle zum Abfragen von Informationen dient wird langsam abgeschaltet
+\footnote{Siehe \url{https://en.wikipedia.org/wiki/Freebase (zuletzt abgerufen am (20.05.16))}}.\\
+
+Die FB15k-Daten enthalten 592.213 Tripeln mit 14.951 einzigartigen Entitäten und 1.345 einzigartigen Relationen.
+In Freebase sind Entitäten sprachlich unabhängig gehalten. So wird die Entität mit dem Kürzel ``/m/02vk52z''
+im Englischen mit dem Begriff \emph{World Bank} und im Deutschen mit \emph{Weltbank} bezeichnet. Somit sind ist auch
+FB15k zumindest theoretisch vielsprachig. Jedoch sind die Entitäten darin oft hauptsächlich englische bzw. amerikanische
+Entitäten, die im deutschen Sprachraum teils nicht sehr bekannt sind. Das lässt daraus schließen, dass das Attribut einer
+Entität in Freebase, dass den deutschen Namen enthält, nicht immer verwendet wurde. Dies könnte drei Gründ haben:
+
+\begin{enumerate}
+  \item Es gibt keine deutsche Übersetzung
+  \item Die Entität ist für den deutschen Sprachraum nicht relevant genug
+  \item Bisher hat einfach noch kein Nutzer einen deutschen Begriff hinzugefügt
+\end{enumerate}
+
+Die Plausibilität dieser Gründe ist diskutabel: Nicht alle Begriffe brauchen eine Übersetzung, so sind beispielsweise
+Personennamen i.d.R. durch alle Sprachen hinweg gleich. Schwieriger wird es bei Ortsnamen oder Namen von Organisationen:
+Intuitiv drängt sich der Anschein auf, dass populäre Bezeichnungen eher übersetzt werden als unpopulärere
+(\emph{United States of America} $\rightarrow$ \emph{Vereinigte Staaten von Amerika} / \emph{University of Denver}
+$\rightarrow$ \emph{University of Denver}).\\
