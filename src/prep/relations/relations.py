@@ -64,6 +64,8 @@ def fetch_relation_triples_of_file(inpath, outpath, logpath, lang="en"):
 				parts = line.split("\t")
 				try:
 					id1, id2 = format_fbid(parts[0]), format_fbid(parts[1])
+
+					# If name for id not available in language
 					if id1 in failed_id_requests:
 						raise MissingTranslationException("No associated alias for id %s in language %s found in Freebase." %(id1, lang))
 					elif id2 in failed_id_requests:
@@ -71,15 +73,19 @@ def fetch_relation_triples_of_file(inpath, outpath, logpath, lang="en"):
 
 					entity1 = entity2 = ""
 
+					# If name for entity was already requested
 					if id1 in id_dict.keys():
 						entity1 = id_dict[id1]
+					# Get name of entity in language
 					else:
 						entity1 = fetch_name(id1, lang)
 						id_dict.setdefault(id1, entity1)
 						query_count += 1
 
+					# If name for entity was already requested
 					if id2 in id_dict.keys():
 						entity2 = id_dict[id2]
+					# Get name of entity in language
 					else:
 						entity2 = fetch_name(id2, lang)
 						id_dict.setdefault(id2, entity2)
