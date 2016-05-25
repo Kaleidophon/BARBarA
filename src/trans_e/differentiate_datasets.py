@@ -52,11 +52,7 @@ def compare_entities(set1, set2):
 			target_set = set1 if len(set1) > len(set2) else set2
 			for entry in target_set:
 				if entry[0] in shared_entities and entry[2] in shared_entities:
-					outfile.write("%s\t%s\t%s\n" % (entry[0], entry[2], entry[2]))
-
-
-
-
+					outfile.write("%s\t%s\t%s\n" % (entry[0], entry[1], entry[2]))
 
 
 def init_argparse():
