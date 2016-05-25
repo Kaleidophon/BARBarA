@@ -20,10 +20,11 @@
 \contentsline {figure}{\numberline {6.4}{\ignorespaces Rechenzeiten f\IeC {\"u}r den Mappingschritt nach Anzahl von Threads}}{23}{figure.caption.76}
 \contentsline {figure}{\numberline {6.5}{\ignorespaces Darstellung der Funktionsweise von DBSCAN}}{25}{figure.caption.78}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Daten \IeC {\"u}ber die Relationsdatensets FB15k und GER15k}}{28}{figure.caption.97}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Daten \IeC {\"u}ber die Relationsdatensets FB15k und GER14k}}{28}{figure.caption.97}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Resultate f\IeC {\"u}r TransE mit FB15k und GER14k}}{28}{figure.caption.98}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Quelle und Trainingsparameter f\IeC {\"u}r Wortvektoren}}{37}{figure.caption.106}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Quelle und Trainingsparameter f\IeC {\"u}r Wortvektoren}}{37}{figure.caption.109}

@@ -58,10 +58,24 @@ später beim Training benötigt), z.B. bei \emph{/location/location/contains} un
     Datenset & \#Tripel & \#Entitätstypen & \#Relationstypen \\
     \hline \hline
     FB15k & 592.213 & 14.951 & 1.345 \\
-    GER19k & 204.016 & 18.778 & 1.033 \\
+    GER14k & 459.724 & 14.334 & 1.236 \\
   \end{tabular}
-  \caption[Daten über die Relationsdatensets FB15k und GER15k]{Daten über die Relationsdatensets FB15k und GER19k.
+  \caption[Daten über die Relationsdatensets FB15k und GER14k]{Daten über die Relationsdatensets FB15k und GER19k.
   Aufgelistet ist die Anzahl der Tripel (Datensätze), Entitäts- und Relationstypen.}
+\end{figure}
+
+
+\begin{figure}[h]
+  \centering
+  \begin{tabular}{r||cc|cc}
+    \multirow{2}{*}{\textsc{Datenset}} & \multicolumn{2}{c|}{\textsc{Mean Rank}} & \multicolumn{2}{c}{\textsc{Hits\@10}} \\
+     & \emph{Raw} & \emph{Filtered} & \emph{Raw} & \emph{Filtered} \\
+     \hline
+     FB15k & & & & \\
+     GER14k & & & & \\
+
+  \end{tabular}
+  \caption[Resultate für TransE mit FB15k und GER14k]{Resultate für TransE, trainiert auf dem FB15k- und dem GER14k-Datenset.}
 \end{figure}
 
 \section{Training}
