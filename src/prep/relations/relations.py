@@ -1,7 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import json, urllib, re, codecs, sys, time
+import json
+import urllib
+import re
+import codecs
+import time
 from collections import defaultdict
 import optparse
 
@@ -30,7 +34,6 @@ def translate_word2vec_question_phrases(inpath, outpath, lang="en"):
 			line = line.strip()
 			line_parts = line.split(" ")
 			print line
-			found_none = False
 			new_parts = []
 			for part in line_parts:
 				if part not in requests.keys():
@@ -45,7 +48,7 @@ def translate_word2vec_question_phrases(inpath, outpath, lang="en"):
 				new_parts.append(translation)
 			else:
 				outfile.write("%s\n" %(" ".join(new_parts)))
-		print "%i of %i translations successful (%.2f %%)" %(n-failed, n, (n-failed)*100.0/n)
+		print "%i of %i translations successful (%.2f %%)" % (n-failed, n, (n-failed) * 100.0 / n)
 
 
 def fetch_relation_triples_of_file(inpath, outpath, logpath, lang="en"):
@@ -58,38 +61,44 @@ def fetch_relation_triples_of_file(inpath, outpath, logpath, lang="en"):
 		with codecs.open(outpath, "wb", "utf-8") as outfile:
 			while line != "":
 				if line_count % 100 == 0:
-					logfile.write(u"Line nr. %i\n" %(line_count))
-					logfile.write(u"Stored %i IDs so far...\n" %(len(id_dict.keys())))
-				logfile.write(u"Processing '%s'...\n" %(line))
+					logfile.write(u"Line nr. %i\n" % line_count)
+					logfile.write(u"Stored %i IDs so far...\n" % len(id_dict.keys()))
+				logfile.write(u"Processing '%s'...\n" % line)
 				parts = line.split("\t")
 				try:
 					id1, id2 = format_fbid(parts[0]), format_fbid(parts[1])
+
+					# If name for id not available in language
 					if id1 in failed_id_requests:
-						raise MissingTranslationException("No associated alias for id %s in language %s found in Freebase." %(id1, lang))
+						raise MissingTranslationException("No associated alias for id %s in language %s found in Freebase." % (id1, lang))
 					elif id2 in failed_id_requests:
-						raise MissingTranslationException("No associated alias for id %s in language %s found in Freebase." %(id2, lang))
+						raise MissingTranslationException("No associated alias for id %s in language %s found in Freebase." % (id2, lang))
 
 					entity1 = entity2 = ""
 
+					# If name for entity was already requested
 					if id1 in id_dict.keys():
 						entity1 = id_dict[id1]
+					# Get name of entity in language
 					else:
 						entity1 = fetch_name(id1, lang)
 						id_dict.setdefault(id1, entity1)
 						query_count += 1
 
+					# If name for entity was already requested
 					if id2 in id_dict.keys():
 						entity2 = id_dict[id2]
+					# Get name of entity in language
 					else:
 						entity2 = fetch_name(id2, lang)
 						id_dict.setdefault(id2, entity2)
 						query_count += 1
 
-					outfile.write('- [%s, %s, %s, %s, %s]\n' %(entity1, id1, parts[2], entity2, id2))
+					outfile.write('- [%s, %s, %s, %s, %s]\n' % (entity1, id1, parts[2], entity2, id2))
 					success_count += 1
 				except MissingTranslationException as mte:
 					failed_id_requests.add(mte.get_id())
-					logfile.write(u"%s\n" %(mte))
+					logfile.write(u"%s\n" % mte)
 					exception_count += 1
 
 				line = rl(infile)
@@ -99,41 +108,18 @@ def fetch_relation_triples_of_file(inpath, outpath, logpath, lang="en"):
 		endtime = time.time()
 		elapsed_time = endtime - starttime
 		success_rate = success_count * 1.0 / (success_count + exception_count)
-		logfile.write(u"%.2f %% of triples successfully extracted.\n" %(success_rate * 100))
-		logfile.write(u"%i queries sent.\n" %(query_count))
-		logfile.write(u"Process took %.3f minutes (%.2f line per second).\n" %(elapsed_time / 60.0, line_count * 1.0 / elapsed_time))
-
-
-def fetch_relation_triples(relation):
-	api_key, service_url = read_credentials()
-	# query = [{'id': None, 'name': None, 'type': '/astronomy/planet'}]
-
-	query = [{
-		'%s' %(relation): [{
-			'name': None
-		}],
-		'name': None
-	}]
-	response = freebase_request(query, api_key, service_url)
-	results = response['result']
-	relation_triples = []
-
-	# TODO: Relationen für aequivalente und hierarchische 1:n, m:1 und m:n-Relationen
-
-	for entry in results:
-		if entry[u'name'] is not None:
-			relation_triples.append((entry[relation][0][u'name'], relation, entry[u'name']))
-		else:
-			relation_triples.append((entry[relation][0][u'name'], relation, entry[relation][1][u'name']))
-	return relation_triples
+		logfile.write(u"%.2f %% of triples successfully extracted.\n" % success_rate * 100)
+		logfile.write(u"%i queries sent.\n" % query_count)
+		logfile.write(u"Process took %.3f minutes (%.2f line per second).\n" % (elapsed_time / 60.0, line_count * 1.0 /
+																				elapsed_time))
 
 
 def translate_name(name, lang="en"):
 	api_key, service_url = read_credentials()
 	query = [{
-		"id":"/en/%s" %(name.lower().replace(" ", "_")),
-		"name":[{
-			"lang": "/lang/%s" %(lang),
+		"id": "/en/%s" % name.lower().replace(" ", "_"),
+		"name": [{
+			"lang": "/lang/%s" % lang,
 			"value": None
 		}]
 	}]
@@ -152,14 +138,14 @@ def fetch_name(id, lang='en'):
 	# query = [{'id': None, 'name': None, 'type': '/astronomy/planet'}]
 
 	query = [{
-		'id': '%s' %(id),
+		'id': '%s' % id,
 		'name': [{
-			'lang': '/lang/%s' %(lang),
+			'lang': '/lang/%s' % lang,
 			'value': None
 		}]
 	}]
 	response = freebase_request(query, api_key, service_url)
-	if response[u'result'] == []:
+	if not response[u'result']:
 		raise MissingTranslationException("No associated alias for id %s in language %s found in Freebase." %(id, lang))
 	return response[u'result'][0][u'name'][0][u'value']
 
