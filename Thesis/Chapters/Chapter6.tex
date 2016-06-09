@@ -2,256 +2,167 @@
 
 \chapter{Experiment A} % Main chapter title
 
-\label{Chapter6} % For referencing the chapter elsewhere, use \ref{Chapter1}
+\label{Chapter7} % For referencing the chapter elsewhere, use \ref{Chapter1}
 
 %----------------------------------------------------------------------------------------
 
-\begin{itquote}
-Q: Why did the multithreaded chicken cross the road?
-A: to To other side . get the
-\flushright
-\textsc{Jason Whittington}
-\end{itquote}
+In diesem Kapitel soll der Ansatz von (\cite{bordes2013translating}) für deutsche Daten nachvollzogen werden.
+Dabei wird erst erklärt, wie die Daten erstellt wurden. Danach wird die Idee zum Training der Daten ausgeführt und
+auf die neuen Datensätze angewendet, bevor schlußendlich eine Evaluation und eine Gegenüberstellung zu den Originaldaten
+erfolgt.
 
-\section{Idee}
+\section{Datenerzeugung}
 
-Gegeben ist ein Vektorraum $V$ mit Wortvektoren $\vec{u}, \vec{v} \in V$ und $\vec{u},\vec{v}\in\mathbb{R}^d$.
-Gesucht ist eine Funktion $\phi$, die ein Vektorenpaar in einen Relationsraum abbildet: $\phi: \mathbb{R}^d \to \mathbb{R}^e$, wobei
-nicht zwangsläufig $d = e$.\\
-In ihrer einfachsten Form bildet sie einfach die Differenz $\vec{d}$ der beiden Vektoren:
-\begin{equation}
-  \phi(\vec{u}, \vec{v}) = \vec{v} - \vec{u} = \vec{d}
-\end{equation}
+In (\cite{bordes2013translating}) werden mehrere Datensets erstellt darunter eines namens \emph{FB15k}. Dieses
+besteht aus Relationstripeln der Form $(h, l, t)$
+(= $(head,\ link,\ tail)$). Diese stammen aus \emph{Freebase}, einer
+community-gepflegten Datenbank, in der mehr als 23 Millionen Entitäten durch Relationen miteinander verknüpft sind.
+Mittlerweile ist die Seite offline; das Projekt wurde sukzessive in \emph{Wikidata}
+\footnote{Siehe \url{https://www.wikidata.org/wiki/Wikidata:Main_Page (zuletzt abgerufen am 20.05.16)}} integriert. Auch die
+Freebase API, die als Programmierschnittstelle zum Abfragen von Informationen dient wird langsam abgeschaltet
+\footnote{Siehe \url{https://en.wikipedia.org/wiki/Freebase (zuletzt abgerufen am (20.05.16))}}.\\
 
-\section{Algorithmus}
+Die FB15k-Daten enthalten 592.213 Tripeln mit 14.951 einzigartigen Entitäten und 1.345 einzigartigen Relationen.
+In Freebase sind Entitäten sprachlich unabhängig gehalten. So wird die Entität mit dem Kürzel ``/m/02vk52z''
+im Englischen mit dem Begriff \emph{World Bank} und im Deutschen mit \emph{Weltbank} bezeichnet. Somit sind ist auch
+FB15k zumindest theoretisch vielsprachig. Jedoch sind die Entitäten darin oft hauptsächlich englische bzw. amerikanische
+Entitäten, die im deutschen Sprachraum teils nicht sehr bekannt sind. Das lässt daraus schließen, dass das Attribut einer
+Entität in Freebase, dass den deutschen Namen enthält, nicht immer verwendet wurde. Dies könnte drei Gründ haben:
 
-Der Grundalgorithmus (siehe Fig. X) versucht nun, alle Kombinationen von Wortvektoren zu bilden und über diese
-und den Differenzvektor zu bilden. Alle Kombinationen würde bei $n$ Vektoren in $n * n = n^2$ Vektoren resultieren.
-Zwar ist $\phi(\vec{u}, \vec{v}) \neq \phi(\vec{v}, \vec{u})$, jedoch wäre die Berechnung beider Differenzvektoren redundant,
-da sie lediglich Spiegelungen voneinander im Raum sind und so diesselbe Information enthalten. Die Berechnung
-der Differenz in nur eine Richtung reduziert die Anzahl der Vektoren dadurch zu $\frac{n * (n-1)}{2}$.
+\begin{enumerate}
+  \item Es gibt keine deutsche Übersetzung
+  \item Die Entität ist für den deutschen Sprachraum nicht relevant genug
+  \item Bisher hat einfach noch kein Nutzer einen deutschen Begriff hinzugefügt
+\end{enumerate}
 
-\begin{figure}[h]
-  \centering
-  \begin{algorithm}[H]
-    \KwData{Menge von Vektorpaaren $\mathcal{C}$}
-    \For{$(\vec{u}, \vec{v}) \in \mathcal{C}$}{
-      $\vec{d} = \vec{v} - \vec{u}$;
-    }
-  \end{algorithm}
-  \caption[Einfacher Projektionsalgorithmus]{Einfacher Projektionsalgorithmus.}
-\end{figure}
+Die Plausibilität dieser Gründe ist diskutabel: Nicht alle Begriffe brauchen eine Übersetzung, so sind beispielsweise
+Personennamen i.d.R. durch alle Sprachen hinweg gleich. Schwieriger wird es bei Ortsnamen oder Namen von Organisationen:
+Intuitiv drängt sich der Anschein auf, dass populäre Bezeichnungen eher übersetzt werden als unpopulärere
+(\emph{United States of America} $\rightarrow$ \emph{Vereinigte Staaten von Amerika} / \emph{University of Denver}
+$\rightarrow$ \emph{University of Denver}).\\
+Im Falle der Relevanz ist davon auszugehen, dass diese mit der Bearbeitung durch Nutzer einher geht: Bei einer großen
+Nutzerbasis ist davon auszugehen, dass diese primär Einträge von Entitäten bearbeiten, die im Kontext der Geschichte,
+des Tagesgeschehens o. Ä. relevant sind. Gegeben genug Zeit und aktive Nutzer ist also anzunehmen, dass eine immer
+größer werdende Prozentzahl von Relevanten Entitäten an das Deutsche angepasst wird. Bedenkt man die Laufzeit von Freebase
+seit 2007 (also zum Zeitpunkt des Schreibens dieser Arbeit rund 9 Jahre), so nehmen wir an, dass dieses Bedenken zwar nicht
+ganz aus der Welt zu räumen, aber zumindest zu vernachlässigen ist.\\
 
-Gegeben einer Menge relevanter Kombinationen $\mathcal{C}$ mit Vektorpaaren gilt also:
-\begin{equation}
-  \forall (\vec{u}, \vec{v}) \in \mathcal{C}: (\vec{v}, \vec{u}) \notin \mathcal{C}
-\end{equation}
-
-Eine Modifikation des Algorithmus besteht daran, das Berechnen von $\vec{d}$ ab eine Bedingung zu knüpfen.
-Gegeben sei eine Menge von Sätzen (ein Korpus) $\mathcal{K}$ mit $n$ Sätzen $s_i$ sodass $\mathcal{K} = \{s_i\}_{i=1}^{n}$ mit
-$m$ Wörtern $w_{ij}$ pro Satz $s_i = \{w_{ij}\}_{j=1}^m$. Eine Kookkurrenz von zwei Begriffen (\emph{types}) $t_1$ und $t_2$
-besteht demnach, falls im Korpus mindestens ein Satz existiert, in dem beide gleichermaßen vorkommen. Dazu können wir
-eine Funktion $\Lambda$ definieren, die die Anzahl der Kookkurrenzen bestimmt:
-\begin{equation}
-  \Lambda(t_1, t_2) = |\{s_i | \exists w_{ij} = t_1 \land \exists w_{ij} = t_2 \land t_1\neq t_2\}_{i=1}^{n}|
-\end{equation}
-Eine mögliche Einschränkung besteht darin, in einem geänderten Algorithmus (siehe Fig. X) das Berechnen von $\vec{d}$ nur
-dann zu erlauben, wenn die Anzahl der Kookkurrenzen der zu den Vektoren $\vec{v}(t_1), \vec{v}(t_2)$ gehörenden Begriffe $t_1, t_2$
-einen bestimmten Schwellenwert $\gamma$ überschreitet, also $\Lambda(t_1, t_2) > \gamma$.
+Basierend auf dieser Argumentation werden korrespondierende ``deutsche'' Daten folgendermaßen erzeugt:
+Es wird bei allen Relationstripeln eine Prüfung durchgeführt, ob beide Entitäten $h$ und $t$ eine deutsche Bezeichnung
+besitzen. Falls nicht, wird dieses Tripel ausgelassen. Danach wird ggf. noch die inverse Relation ergänzt (diese wird
+später beim Training benötigt), z.B. bei \emph{/location/location/contains} und \emph{/location/location/containedby}.
 
 \begin{figure}[h]
   \centering
-  \begin{algorithm}[H]
-    \KwData{Menge von Vektorpaaren $\mathcal{C}$}
-    \For{$(\vec{v}(t_1), \vec{v}(t_2)) \in \mathcal{C}$}{
-      \If{$\Lambda(t_1, t_2) > \gamma$}{
-        $\vec{d} = \vec{v}(t_2) - \vec{v}(t_1)$;
-      }
-    }
-  \end{algorithm}
-  \caption[Modifizierter Projektionsalgorithmus]{Modifizierter Projektionsalgorithmus, bei dem die zu den Vektoren gehörigen
-  Begriffe über $\gamma$ Mal im Korpus im gleichen Satz aufgetreten sein müssen, damit $\vec{d}$ errechnet wird.}
-\end{figure}
-
-
-\section{Parallelisierter Algorithmus}
-
-Doch selbst mit den erwähnten Einschränkungen skaliert dieser Algorithmus nur bedingt. Um dem entgegenzuwirken, soll nun
-versucht werden, diesen mithilfe von \emph{Multithreading} zu parallelisieren. Bei dieser Technik beschäftigt ein Rechenprozess
-mehrere Prozessstränge (\emph{Threads}), die miteinander kommunizieren und bei Bedarf synchronisiert werden können,
-während sie Teile eines Problems lösen.\\
-Ein beliebtes Muster, das Verhältis zwischen mehreren Threads zu definieren besteht im \emph{Master-Slave}-Muster.
-Dabei fungiert ein Subprozess als Aufseher, der seine Arbeiterprozesse überwacht, sie mit Daten versorgt und in manchen
-Fällen untereinander koordiniert.\\ \\
-
-\begin{figure}[h]
-  \centering
-  \begin{algorithm}[H]
-    \KwData{Menge von Vektorpaaren $\mathcal{C}$}
-    \KwData{Menge von erledigten Vektorpaaren $\mathcal{C}'$ (Anfangs $\mathcal{C}' = \varnothing$)}
-    \KwData{Menge von Threads $\mathcal{T}=\{th\}_i^n$}
-    \BlankLine
-    \textbf{Klasse} \textsc{MasterThread} \\
-      data = ladeDaten();\\
-      \For{$th \in \mathcal{T}$}{
-        starteThread($th$, data);
-      }
-      \For{$th \in \mathcal{T}$}{
-        beendeThread($th$);
-      }
-
-    \BlankLine
-    \textbf{Klasse} \textsc{WorkerThread} \\
-    \For{$(\vec{v}(t_1), \vec{v}(t_2)) \in \mathcal{C}$}{
-      \If{$(\vec{v}(t_1), \vec{v}(t_2)) \notin \mathcal{C}'$}{
-        \If{$\Lambda(t_1, t_2) > \gamma$}{
-          $\vec{d} = \vec{v}(t_2) - \vec{v}(t_1)$;
-        }
-        $\mathcal{C}'$ = $\mathcal{C}' \cup (\vec{v}(t_1), \vec{v}(t_2))$;
-      }
-    }
-  \end{algorithm}
-  \caption[Parallelisierter Projektionsalgorithmus]{Parallelisierter Projektionsalgorithmus, bei dem die zu den Vektoren gehörigen
-  Begriffe über $\gamma$ Mal im Korpus im gleichen Satz aufgetreten sein müssen, damit $\vec{d}$ errechnet wird. Ein Master-Thread
-  verteilt zudem die Aufgaben an Worker-Threads, die diese Berechnungen übernehmen und erledigt Vektorpaare in einer Menge ablegen.}
-\end{figure}
-
-In diesem konkreten Fall ist der Master-Thread dafür verantwortlich, alle benötigten Daten in entsprechende Datenstrukturen
-zu laden, sie den Worker-Threads bereitzustellen und letztere gemeinsam zu starten und zu beenden, sobald ein bestimmtes
-Abschlusskriterium der Aufgabe erfüllt ist.
-Zusätzlich wird eine Menge eingeführt, in die Paare von Vektoren hinzugefügt werden, sofern für sie von einem Thread
-ein Differenzvektor ausgerechnet wurde. Damit nun keiner der Threads redundante Berechnungen durchführt, prüft er, ob sein
-aktuelles Vektorpaar sich in dieser Menge befindet und schon abgehakt wurde\footnote{Damit dies möglichst schnell funktioniert,
-wird das Vektorpaar durch eine Hashfunktion in einen Wert umgewandelt. Diese wird so gewählt,
-sodass $h(\vec{v}(t_1), \vec{v}(t_2)) = h(\vec{v}(t_2), \vec{v}(t_1))$.}.\\
-
-Als Grundlage der Daten wurde das Datenset Mark 0 [BESTES EINFÜGEN] gewählt, da es in den meisten der Evaluationsaufgaben
-als bestes Abschnitt. Mit $\gamma = 100$ resultierte das Procedere in einem neuen Menge an Daten mit insgesamt
-X Differenzvektoren [GENAUE ZAHL EINFÜGEN] mit einer Größe von X,X GB [GENAUE GRÖSSE EINFÜGEN].\\
-Um den Gewinn durch Multithreading zu verdeutlichen, wurden darüber hinaus die Rechenzeiten gemessen (siehe Fig. X).
-Gerechnet wurde auf eine Hardware mit 40 Prozessorkernen und [RESTLICHE SPECS EINFÜGEN].
-
-\begin{figure}[h]
-  \centering
-  \begin{tabular}{r|cc}
-    \textsc{Anzahl der Threads} & \textsc{Benötigte Zeit} (in $m$) & Beschleunigung (in \%) \\
+  \begin{tabular}{r||ccc}
+    \textsc{Datenset} & \textsc{\#Tripel} & \textsc{\#Entitätstypen} & \textsc{\#Relationstypen} \\
     \hline
-    1 & & - \\
-    2 & & \\
-    8 & & \\
-    32 & & \\
-    64 & & \\
-    128 & & \\
+    FB15k & 592.213 & 14.951 & 1.345 \\
+    GER14k & 459.724 & 14.334 & 1.236 \\
   \end{tabular}
-  \caption[Rechenzeiten für den Mappingschritt nach Anzahl von Threads]{Rechenzeiten für den Mappingschritt nach Anzahl von Threads auf
-  einem System mit 40 Prozessorkernen und [RESTLICHE SPECS EINFÜGEN]. Die Beschleunigung wird im Vergleich zum Ausführen des Programms
-  mit nur einem Thread gemessen.}
+  \caption[Daten über die Relationsdatensets FB15k und GER14k]{Daten über die Relationsdatensets FB15k und GER19k.
+  Aufgelistet ist die Anzahl der Tripel (Datensätze), Entitäts- und Relationstypen.}
 \end{figure}
 
-\section{Clustering}
+Somit gilt für die Menge englischer Relationstripel $S_{EN}$ und die Menge deutscher Tripel $S_{DE}$, dass letztere
+eine echte Teilmenge ist: $S_{EN} \supsetneq S_{DE}$ \footnote{$\forall e \in S_{DE}: e \in S_{EN} \wedge S_{DE} \neq S_{EN}$}.
 
-\emph{Clustering} bezeichnet eine Art von unüberwachten maschinellen Lernen,
-die versucht, Elemente, die nach vorher definierten Maßgaben als ähnlich erachtet
-werden sollen, zu gruppieren.\\
-Die Literatur zu diesem Thema bietet dabei eine Fülle von Algorithmen mit verschiedenen
-Grundannahmen, aus denen es zu wählen gilt. Für die Aufgaben in dieser Arbeit wurde
-der DBSCAN-Algorithmus (\textbf{D}ensity-\textbf{B}ased \textbf{S}patial \textbf{C}lustering of
-\textbf{A}pplications with \textbf{N}oise) gewählt, da er folgende Kriterien erfüllt:
-\begin{itemize}
-  \item DBSCAN erlaubt es, dass nicht alle Datenpunkte bei der
-  Terminierung des Algorithmus einem Cluster zugeordnet sein müssen (\emph{Outlier detection})
-  \item Die Anzahl der Cluster muss bei Beginn des Algorithmus nicht festgelegt werden.
-  \item Cluster werden nicht nach der räumlichen Distanz zwischen den Punkten gebildet, sondern nach deren
-  Dichte im Raum. Dies lässt auch nicht-sphärische Clusterformen zu.
-\end{itemize}
+\section{Training}
 
-Zur Erklärung von DBSCAN müssen zuerst einige Definitionen erstellt werden:
-\begin{itemize}
-  \item Ein Punkt $p$ in den Daten wird dann als
-  Kernpunkt (\emph{core point}) bezeichnet, sofern mindesten $minPts$ Punkte innerhalb einem Radius $\epsilon$ vorhanden sind.\\
-  Diese Punkte sind von $p$ \emph{direkt erreichbar}.
-  \item Ein Punkt $q$ ist von $p$ erreichbar, sofern es einen Pfad $p_1, \ldots, p_n$ mit $p_1 = p$ und $p_n = q$ gibt, wobei
-  jeder Punkt $p_{i+1}$ von einem Punkt $p_i$ direkt erreichbar ist.
-  \item Alle Punkte, die nicht von einem anderen Punkt aus direkt erreichbar sind, sind Ausreißer (\emph{Outlier}).
-  \item Zwei Punkte $p$ und $q$ sind \emph{direkt verbunden}, sofern es einen Punkt $o$ gibt,
-  von dem aus beide Punkte direkt erreichbar sind.
-  \item Cluster bestehen aus Punkten, die alle miteinander direkt verbunden sind.
-\end{itemize}
+Gegeben ist eine Menge von Relationstripeln $S$ der Form $(h, l, t) \in S$. Zusätzliche gibt es noch eine Entitätsmenge
+$E$ sodass und $h, t \in E$ und eine Menge von Relationen $L$ mit $h \in L$. Den Entitäten und Relationen werden zuästzlich
+noch Vektoren aus $\mathbb{R}^k$ zugewiesen. Idealerweise gelten nach dem Training für eine gültige Relation $(h, l, t)$
+dann $h + l \approx t$. Hinzu wird noch eine Menge aus korrumpierten bzw. ``falschen'' Tripeln $S'$ erstellt, indem
+für jedes Tripel in $S$ entweder $h$ oder $t$ durch eine andere, zufällig gewählte Entität ersetzt wird:
+\begin{equation}
+  S' = \{(h', l, t) | h' \in E\} \cup \{(h, l, t') | t' \in E\}
+\end{equation}
+
+Um die für das Training benötigte Verlustfunktion du definieren wird das Unähnlichkeitsmaß $d_p$ für ein Tripel bestimmt, welcher
+entweder aus der $L_1$- oder der $L_2$-Norm abgeleitet wird, also:
+\begin{equation}
+    d_1(h + l, t) = \sum_{i=1}^k \| h_i + l_i - t_i \|
+\end{equation}
+\begin{equation}
+    d_2(h + l, t) = \sqrt{\sum_{i=1}^k \| h_i + l_i - t_i \|^2}
+\end{equation}
+
+Nun kann die Verlustfunktion $\mathcal{L}$ erstellt werden:
+\begin{equation}
+  \mathcal{L} = \sum_{(h,l,t) \in S} \sum_{(h', l', t') \in S'} max(0, \gamma + d_p(h + l, t) - d(h' + l, t'))
+\end{equation}
+
+Der Parameter $\gamma$ bezeichnet hier einen Hyperparameter, der dem System einen gewissen Spielraum lässt. Indem versucht
+wird, den durch diese Funktion errechneten Verlust zu minimieren, wird beim Training sichergestellt, dass die Vektorrepräsentationen
+von korrekten Tripeln die Gleichung $h + l \approx t$ bestmöglichst erfüllen und für korrumpierte Tripel möglichst weit
+verfehlen.\\
+Vor dem Training werden die Repräsentationen der Entitäten und Relationen mit einer uniformen Verteilung im Intervall
+$[-\frac{6}{\sqrt{k}}, \frac{6}{\sqrt{k}}]$ initialisiert und im Falle von $l \in L$ zusätzlich normiert. Während jedes
+Trainingsschritt werden für die aktuellen Repräsentation der Verlust berechnet und deren Werte mithilfe des
+Minibatch-Stochastic-Gradient-Descent angepasst. Der Minibatch enthält dabei ebenso viele gültige wie korrumpierte Tripel.
+Das Training wird solange ausgeführt, bis die Fehlerrate auf dem Validationsset konvergiert\footnote{Konvergenz auf dem
+Trainingsset könnte ein Zeichen für Overfitting sein.}.\\
+
+Für das Reproduzieren der Ergebnisse wurde den Empfehlen von (\cite{bordes2013translating}) gefolgt: So wird das Training
+nach maximal 1000 Epochen beendet, außerdem gilt $k = 50$, $\gamma = 1$, $\lambda = 0,01$ und $d_1$ als Unähnlichkeitsmaß.
+
+\section{Evaluation}
+
+Um die erstellten Daten zu evaluieren, werden bei den Relationen im Testset jeweils die Head- und Tailentitäten ersetzt.
+Danach werden alle bekannten Entitäten eingesetzt und mithilfe des Dissimilaritätsmaßes ansteigend sortiert. Der Rang
+der korrekten (ursprünglich entfernten) Entität wird dann gespeichert. Dieses Verfahren wurde zuerst von (\cite{bordes2011learning})
+vorgeschlagen.\\
+Daraus lassen sich dann zwei Evaluationsmaße ableiten: Den gemittelten Rang der korrekten Entität sowie die den Anteil
+der Evaluationsläufe, bei denen sich die richtige Entität innerhalb der Top 10 befand (Hits@10). Zusätzlich wurde noch
+zwischen roh und gefiltert unterschieden: Bei letzterem werden mögliche Tripel ignoriert, die in dieser Form schon in
+den Trainingsdaten vorkamen und so auf ``unfaire'' Art und Weise vor allen anderen Tripeln bevorzugt werden.
+Die Ergebnisse für die auf FB15k und GER14k trainierten Daten sind in Abbildung X festgehalten.
+
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=0.6\textwidth]{../img/DBSCAN-Illustration.png}
-  \caption[Darstellung der Funktionsweise von DBSCAN]{Darstellung der Funktionsweise von DBSCAN. Punkt A ist ein Kernpunkt, die
-  Punkte B und C sind von A aus erreichbar. Punkt N ist nicht erreichbar und damit ein Ausreißer.\footnotemark}
+  \begin{tabular}{r||cc|cc}
+    \multirow{2}{*}{\textsc{Datenset}} & \multicolumn{2}{c|}{\textsc{Gemittelter Rang}} & \multicolumn{2}{c}{\textsc{Hits@10}} \\
+     & \emph{Roh} & \emph{Gefiltert} & \emph{Roh} & \emph{Gefiltert} \\
+     \hline
+     FB15k & 575,54 & \textbf{197,02} & \textbf{34,8} & \textbf{48,79} \\
+     GER14k & \textbf{234,73} & 222,05 & \textbf{34,07} & 41,83 \\
+
+  \end{tabular}
+  \caption[Resultate für TransE mit FB15k und GER14k]{Resultate für TransE, trainiert auf dem FB15k- und dem GER14k-Datenset.
+  Hits\@10 gibt den Anteil der Vorkommen an, bei denen sich die gesuchte Entität in der Relation links oder rechts in den top zehn
+  von dem System vorhergesagten Kandidaten befand (\emph{raw}). \emph{Filtered} bezieht sich auf denselben Rang, wenn die extra erstellten
+  korrumpierten Tripel zum Training aus den Trainingsdaten entfernt wurden. \emph{mean} bezeichnet den gemittelten Rang der richtigen
+  Entität in der vom System erstellten Rangliste der wahrscheinlichsten Vorhersagen.}
 \end{figure}
-\footnotetext{Abbildung von
-Chire - Eigenes Werk, CC BY-SA 3.0, \url{https://commons.wikimedia.org/w/index.php?curid=17045963} (zuletzt abgerufen am
-25.04.16).}
 
-Der Algorithmus ist von linearer Komplexität, sofern ihm eine geeignete Indexierung der Daten zugrunde gelegt wird, ansonsten
-verhält sich die Komplexität quadratische zur Anzahl der Datenpunkte\footnote{Bei der
-\verb|scikit-learn|-Implementation wird beispielsweise ein Nearest-Neighbour-Graph verwendet:
-\url{http://scikit-learn.org/stable/modules/generated/sklearn.cluster.dbscan.html} (zuletzt abgerufen am 25.04.16)}.
+An Ergebnissen ist zuerst zu erkennen, dass sie von den Ergebnissen in (\cite{bordes2013translating}) für FB15k etwas abweichen.
+Dies könnte daran liegen, das bei der Beschreibung des Trainingsverfahren angegeben wurde, dass das Trainingsverfahren
+nicht unbedingt 1000 Epochen lang ausgeführt wurde. In dem Code, der von den Autoren online zur Verfügung gestellt wurde
+\footnote{\url{https://github.com/glorotxa/SME}}, wurde dazu leider keine Option gefunden. Weshalb vermutlich davon auszugehen
+ist, dass dies manuell ausgeführt wurde. Deshalb ist zu schließen, dass die hier aufgeführten Ergebnisse schlechter sind als die,
+die im Paper angegeben wurde, weil die Vektorrepräsentationen zu sehr auf die Trainingsdaten angepasst wurden und dann schlecht
+auf den Testdaten generalisieren. Da die Daten aus GER14k gewissermaßen eine Untermenge von FB15k sind, sind deren Ergebnisse
+eher i.d.R. gleichwertig oder schlechter. Die Frage, warum der rohe gemittelte Rang bei GER14k signifikant besser ist als
+bei FB15k, könnte dahingehend beantwortet werden, dass sich in der Trainingsphase zu sehr an die Übungsdaten angepasst wurde und
+zuviele Trainingstripel vor der eigentlich richtigen Lösung rangieren. Deshalb ist der Wert für die gefilterten Tripel auch umso viel
+besser.
 
-\section{Ergebnisse}
+[STATISTISCHE SIGNIFIKANZ HITS@10 ROH]
 
-\section{Zwischendiskussion}
+\section{Fazit}
 
-Wie der letzte Abschnitt der gezeigt hat, entsprechen die Ergebnisse nicht den vorher gefassten Hoffnungen.
-Im Folgenden soll ein Versuch unternommen zu erklären, welche Probleme zu diesen Resultaten geführt haben und welche
-Implikationen diese besitzen.
+In diesem Kapitel wurde ein Verfahren vorgestellt, dass es erlaubt, Vektoren zu trainieren, die Entitäten und Relationen
+aus Wissendatenbanken modellieren und zur Relationsvorhersage zu nutzen. Dabei bestehen die Daten aus Relationstripeln,
+also 3-Tupeln mit einer Kopf- und einer Fußentität und einer dazugehörigen semantischen Relation. Es werden außerdem noch
+ egativbeispiele erzeugt, indem einer der beiden Entitäten durch eine andere in den Trainingsdaten vorkommende Entität zufällig ausgetauscht wird.
+Der Trainingsvorgang wird hierbei mithilfe eines auf Vektorarithmetik basierenden Unähnlichkeitsmaß betrieben, mit der
+die ``Stimmigkeit'' korrekter Tripel versucht wird zu maximieren. Das Gegenteil stimmt für korrumpierte Tripel.\\
+Es wurde gezeigt, dass sich die (\cite{bordes2011learning}) präsentierten Ergebnisse im Rahmen der gegebenen Möglichkeit
+annähernd replizieren lassen. Darüber hinaus wurde die Methodik auch auf eine Menge deutscher Daten angewendet, die eine
+echte Teilmenge der englischen Daten darstellt. Für diese konnten ähnlich gute Ergebnisse erziehlt werden, wobei die qua
+definition kleinere Menge an Übungsbeispielen dem Unterschied in Performanz Rechnung trägt.\\
 
-\subsection{Daten}
-
-Will man das Scheitern unmittelbar auf einen Faktor zurückführen, so liegen die zugrunde liegenden Daten am nächsten.
-Es lassen sich im Bezug auf jene folgende Punkte feststellen:
-\begin{itemize}
-  \item \textbf{Menge}\\ Selbst mit dir Reduzierung der resultierenden Daten von $n^2$ auf $\frac{n*(n-1)}{2}$ ist die
-  Datenmenge noch sehr groß, gerade wenn das anfänglich Wortvektorset auf einem großen Vokabular wie dem des Decow-Korpus aufbaut.
-  Dies stellt hohe Anforderung an die Skalierbarkeit aller involvierter Algorithmen und fordert Einschränkungen auf verschiedener
-  Ebene, wodurch mögliche spätere Entdeckung eventuell vorenthalten werden könnten.
-  \item \textbf{Rauschen}\\ In den Enddaten ist der überwiegende Teil der Datenpunkte keiner sinnvollen Relation zuzuordnen.
-  Dadurch verrauschen diese mögliche sinnvolle Relationscluster, die darin untergehen. Die resultierenden Cluster sind sehr
-  schwammig, da sie sich schlecht vom Hintergrundrauschen abgrenzen. Dies ist beispielsweise durch den Wert des Silhouettenkoeffizienten
-  \footnote{Der Silhoettekoeffizient $s_C$ beschreibt das durchschnittliche Verhältnis vom Abstand eines Punktes zu seinem Clusterzentrum gegnüber
-  des nächsten Clusterzentrums. $-1 \leq s_C \leq 1$.}
-  erkennbar, der bei den Experimenten immer kurz unter Null lag\footnote{Für ein gutes Clustering wird ein Wert von $s_C \geq 0,75$
-  erwartet.}.
-  \item \textbf{Ähnliche Distanzvektoren}\\
-  Der beschriebene Ansatz wurde unter der Annahme verfolgt, dass für Wortpaare einer Relation $R=\{(h_j, t_j\}_{j=0}^m$
-  folgendes gilt:
-  \begin{equation}
-    \vec{v}(t_0) - \vec{v}(h_0) \approx \vec{v}(t_1) - \vec{v}(h_1) \approx \ldots \approx \vec{v}(t_m) - \vec{v}(h_m)
-  \end{equation}
-  Anders ausgedrückt wurde aufgrund vorheriger Arbeiten die Hypothese aufgestellt, dass sich die Distanzvektoren von
-  Wortpaaren derselben Relation ähneln. Durch die Ergebnisse wurde diese Hypothese nicht widerlegt (im Gegenteil scheinen
-  andere Arbeiten wie (\cite{bordes2013translating}) oder (\cite{lin2015learning}) diese Annahmen zu bestätigen), jedoch
-  gilt diese Eigenschaft nicht \textbf{exklusiv} für diese Untermenge an Vektorenpaaren.\\
-  Nehmen wir beispielsweise im ursprünglichen Vektorraum mit Wortvektoren das folgende Szenario an: Wir finden dort
-  zwei Cluster $C_1$ und $C_2$ vor. Die zu den Vektoren zugehörigen Cluster weisen eine semantische Ähnlichkeit auf
-  und liegen deshalb nahe beieinander, z.B. Vornamen wie \emph{Julia} und \emph{Hans} in $C_1$ und Städte wie
-  \emph{Barcelona} und \emph{Paris} in $C_2$. Daraus ergibt sich Folgendes:
-  \begin{equation}
-    \begin{split}
-      \vec{v}(Julia) \approx \vec{v}(Hans) \land \vec{v}(Barcelona) \approx \vec{v}(Paris) \implies \\
-      \vec{v}(Julia) - \vec{v}(Barcelona) \approx \vec{v}(Hans) - \vec{v}(Paris)
-    \end{split}
-  \end{equation}
-  Anders ausgedrückt: Auch wenn sich semantische Information in den Wortvektoren dadurch manifestiert, dass ähnliche
-  Ausdrücke in ihren Clustern nahe beinander liegen, können Distanzvektoren aus Wortenpaaren der gleichen Cluster ähnlich sein,
-  ohne semantisch in irgendeinem Zusammenhang zu stehen. Dies führt schlussendlich dazu, dass die wenigen Cluster, die
-  im Relationsraum gefunden werden, zwar aus Wortpaaren mit ähnlichem Differenzvektor stehen, jedoch keine ``sinnvolle''
-  Relation bilden, was sicht mit dem in 6.1 eingeführtern Parameter $\gamma$ zwar verringern, allerdings nicht gänzlich
-  verhindern lässt. Das Ziel, neue und legitime Relationen zu finden, wird durch diesen Trugschluss ad absurdum geführt.
-
-\end{itemize}
-
-\subsection{Ansatz}
-
-Das Fehlschlagen des Vorgehens kann auch auf einer theoretischen Ebene festgestellt werden: Das Ziel bestand darin, Wissen
-über Relationen zwischen Wortpaaren zu extrahieren. Um dieses Wissen gewissermaßen ``freilegen'', muss es aber auf eine
-Art und Weise innerhalb der Daten ``kodiert'' sein, wenn auch versteckt (so wie die semantische Ähnlichkeit zwischen Wörtern
-durch die räumliche Nähe ihrer Vektoren und deren Dimension kodiert ist).\\
-Wie beim Aufzeigen des Trugschlusses am Ende des vorherigen Abschnitts gezeigt wurde, sind semantische Relationen nicht eindeutig
-innerhalb der Daten aufzuzeigen bzw. nur dann, wenn bereits vorher bruchstückhaftes Wissen darüber vorliegt. Ohne
-dieses Vorwissen sind richtige von nur scheinbaren Relationen nicht zu trennen.
+Bei dieser Vorgehensweise wurden die Vektorrepräsentationen für Entitäten und Relationen gleichermaßen trainiert. In den folgenden
+Kapiteln soll ein Versuch unternommen werden, mithilfe von distributioneller Semantik erstellte Wortvektorrepräsentationen
+für die Entitäten zu nutzen und darauf aufbauend Relationen vorherzusagen.
