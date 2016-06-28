@@ -1,6 +1,6 @@
 % Chapter 6
 
-\chapter{Experiment A} % Main chapter title
+\chapter{Experiment A: TransE für deutsche Wissensdaten} % Main chapter title
 
 \label{Chapter7} % For referencing the chapter elsewhere, use \ref{Chapter1}
 
@@ -14,7 +14,7 @@ erfolgt.
 \section{Datenerzeugung}
 
 In (\cite{bordes2013translating}) werden mehrere Datensets erstellt darunter eines namens \emph{FB15k}. Dieses
-besteht aus Relationstripeln der Form $(h, l, t)$
+besteht aus Relationstripeln der Form $(h, l, t)$\\
 (= $(head,\ link,\ tail)$). Diese stammen aus \emph{Freebase}, einer
 community-gepflegten Datenbank, in der mehr als 23 Millionen Entitäten durch Relationen miteinander verknüpft sind.
 Mittlerweile ist die Seite offline; das Projekt wurde sukzessive in \emph{Wikidata}
@@ -23,7 +23,7 @@ Freebase API, die als Programmierschnittstelle zum Abfragen von Informationen di
 \footnote{Siehe \url{https://en.wikipedia.org/wiki/Freebase (zuletzt abgerufen am (20.05.16))}}.\\
 
 Die FB15k-Daten enthalten 592.213 Tripeln mit 14.951 einzigartigen Entitäten und 1.345 einzigartigen Relationen.
-In Freebase sind Entitäten sprachlich unabhängig gehalten. So wird die Entität mit dem Kürzel ``/m/02vk52z''
+In Freebase sind Entitäten sprachlich unabhängig gehalten. So wird die Entität mit dem Kürzel \\``/m/02vk52z''
 im Englischen mit dem Begriff \emph{World Bank} und im Deutschen mit \emph{Weltbank} bezeichnet. Somit sind ist auch
 FB15k zumindest theoretisch vielsprachig. Jedoch sind die Entitäten darin oft hauptsächlich englische bzw. amerikanische
 Entitäten, die im deutschen Sprachraum teils nicht sehr bekannt sind. Das lässt daraus schließen, dass das Attribut einer
@@ -61,11 +61,12 @@ später beim Training benötigt), z.B. bei \emph{/location/location/contains} un
     GER14k & 459.724 & 14.334 & 1.236 \\
   \end{tabular}
   \caption[Daten über die Relationsdatensets FB15k und GER14k]{Daten über die Relationsdatensets FB15k und GER19k.
-  Aufgelistet ist die Anzahl der Tripel (Datensätze), Entitäts- und Relationstypen.}
+  Aufgelistet ist die Anzahl der Tripel (Datensätze), Entitäts- und Relationstypen.\label{fig:fb15kger14k}}
 \end{figure}
 
 Somit gilt für die Menge englischer Relationstripel $S_{EN}$ und die Menge deutscher Tripel $S_{DE}$, dass letztere
 eine echte Teilmenge ist: $S_{EN} \supsetneq S_{DE}$ \footnote{$\forall e \in S_{DE}: e \in S_{EN} \wedge S_{DE} \neq S_{EN}$}.
+Verschiedene Informationen über die beiden Datensets sind in Abbildung \ref{fig:fb15kger14k} aufgelistet.
 
 \section{Training}
 
@@ -116,7 +117,7 @@ Daraus lassen sich dann zwei Evaluationsmaße ableiten: Den gemittelten Rang der
 der Evaluationsläufe, bei denen sich die richtige Entität innerhalb der Top 10 befand (Hits@10). Zusätzlich wurde noch
 zwischen roh und gefiltert unterschieden: Bei letzterem werden mögliche Tripel ignoriert, die in dieser Form schon in
 den Trainingsdaten vorkamen und so auf ``unfaire'' Art und Weise vor allen anderen Tripeln bevorzugt werden.
-Die Ergebnisse für die auf FB15k und GER14k trainierten Daten sind in Abbildung X festgehalten.
+Die Ergebnisse für die auf FB15k und GER14k trainierten Daten sind in Abbildung \ref{fig:results1} festgehalten.
 
 
 \begin{figure}[h]
@@ -130,10 +131,10 @@ Die Ergebnisse für die auf FB15k und GER14k trainierten Daten sind in Abbildung
 
   \end{tabular}
   \caption[Resultate für TransE mit FB15k und GER14k]{Resultate für TransE, trainiert auf dem FB15k- und dem GER14k-Datenset.
-  Hits\@10 gibt den Anteil der Vorkommen an, bei denen sich die gesuchte Entität in der Relation links oder rechts in den top zehn
+  Hits@10 gibt den Anteil der Vorkommen an, bei denen sich die gesuchte Entität in der Relation links oder rechts in den top zehn
   von dem System vorhergesagten Kandidaten befand (\emph{raw}). \emph{Filtered} bezieht sich auf denselben Rang, wenn die extra erstellten
   korrumpierten Tripel zum Training aus den Trainingsdaten entfernt wurden. \emph{mean} bezeichnet den gemittelten Rang der richtigen
-  Entität in der vom System erstellten Rangliste der wahrscheinlichsten Vorhersagen.}
+  Entität in der vom System erstellten Rangliste der wahrscheinlichsten Vorhersagen.\label{fig:results1}}
 \end{figure}
 
 An Ergebnissen ist zuerst zu erkennen, dass sie von den Ergebnissen in (\cite{bordes2013translating}) für FB15k etwas abweichen.

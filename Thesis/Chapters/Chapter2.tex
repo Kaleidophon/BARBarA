@@ -6,5 +6,96 @@
 
 %----------------------------------------------------------------------------------------
 
-\section{Verwandte Arbeiten}
-Bla
+\section{Wortvektorrepräsentationen}
+
+\emph{Word embeddings} (=``Worteinbettungen'') wurden zuerst von (\cite{bengio2006neural}) noch vor dem erneuten
+Deep-Learning-Boom 2006 präsentiert. Im Vergleich zu vorherigen Arbeiten mit sog. ``One-Hot''-Vektoren, bei denen
+jede Dimension einem Wort des Vokabulars eines Korpus zugeordnet ist und nur eine davon den Wert $1$ besitzt (gewöhnlich
+besitzen alle anderen den Wert $0$), sind Informationen über ein Wort in dieser Repräsentation für den Menschen uneindeutig
+und kontinuerlich über den Vektor verteilt (``distributed represenation''), woher sich auch der Name des dazugehörigen
+Forschungsfeldes - der distributionellen Semantik - herleitet. Dies ist aber eigentlich nur die Folge eines viel
+grundlegeren Unterschied der Methodik, der von (\cite{baroni2014don}) weiter ausgeführt: Lange hatte man sich
+mit zählbasierten Methoden beschäftigt, um solche Repräsentationen zu erstellen; mit (\cite{bengio2006neural}) hielten
+vorhersagebasierte Methoden schließlich Einzug. \\
+Diese fußt auf der \emph{Distributional hypthesis}, die besagt, dass Worte, die in ähnlichen Kontexten auftauchen, dazu tendieren, eine ähnliche Bedeutung zu haben (\cite{harris1954distributional}).
+Diese Besonderheit macht sich (\cite{bengio2006neural}) zunutze, da das neurale Netz, mit denen die Wortvektorrepräsenationen
+trainiert werden, sich beim Bewegen durch einen Trainingskorpus ein mehrwortiges Kontextfenster um ein Zielwort herum
+verwendet. Das System lernt, die Wortvektoren an häufig vorkommende Wortkontexte anzupassen. Selbige besitzen zudem
+weitere nützliche Eigenschaften, die in Kapitel \ref{Chapter3} beschrieben werden.\\
+Diese Forschungsarbeit löste eine Welle weiterer Forschungen in diesem Gebiet aus, da gezeigt werden konnte, dass diese
+Art der Wortrepräsentationen genutzt werden konnte, die Leistungen von Systemen selbst im Bezug auf lange bekannte und
+erforschte Probleme der Computerlinguistik signifikant verbessern konnte. Exemplarisch sei hier die Arbeit von
+(\cite{collobert2011natural}) genannt, die so neue Ansätze für PoS-Tagging, Named-Entity-Recognition, Chunking und Semantic
+Role Labeling präsentieren.\\
+
+Weitere Untersuchungen beschäftigen sich u. A. mit bilingualen Repräsentationen für maschinelle Übersetzung (\cite{zou2013bilingual}),
+deren Training auf der Basis von einem dependenzgeparsten Korpus (\cite{levy2014dependency}), dem Optimieren der Parameter
+(\cite{levy2015improving}) u.v.m.
+
+
+\section{Vektorrepräsentationen für Wissensdatenbank}
+
+Entitäten und Relationen aus Wissensdatenbanken mithilfe eigener Vektoren zu respräsentieren wurde bereits von einigen
+Forschungsarbeiten in Angriff genommen: Als einer der ersten Ansätze versuchen (\cite{bordes2011learning}), symbolische
+Wissensrepräsentationen in einen Vektorraum einzubetten und so für die Künstliche-Intelligenz-Forschung leichter nutzbar
+zu machen. Diese sog. \emph{Structured Embeddings} (SE) werden mithilfe von neuralen Netzwerken trainiert.
+Darauf aufbauend präsentieren (\cite{bordes2013translating}) einen etwas simpleren Ansatz namens \emph{TransE}, der darauf abzieht, Relationen
+zwischen Entitäten als eine einfach vektorarithmetische Operation (= Übersetzung) zu sehen. Diese Vorgehensweise wird in Kapitel \ref{Chapter6}
+etwas genauer ausgeführt und dere Ergebnisse für einen deutschsprachigen Datensatz repliziert.\\
+
+\begin{figure}[h]
+  \centering
+  \bgroup
+  \def\arraystretch{1.5}
+  \resizebox{0.8\columnwidth}{!}{%
+  \begin{tabular}{l|l}
+    \textsc{Modell} & \textsc{Scoring-Funktion} \\
+    \hline \hline
+    \emph{TransE} & $f_r(h, t) = \parallel h + r - t \parallel^2_2$ \\
+    \hline
+    \emph{TransH} & $f_r(h, t) = \parallel h_{\bot} + r - t_{\bot} \parallel^2_2$ \\
+    \hline
+    \multirow{3}{*}{\emph{TransR}} & $f_r(h, t) = \parallel h_r + r - t_r \parallel^2_2$ \\
+     & $h_r = hM_r$ \\
+     & $t_r = tM_r$ \\
+    \hline
+    \multirow{3}{*}{\emph{CTransR}} & $f_r(h, t) = \parallel h_{r, c} + r_c - t_{r, c} \parallel^2_2 + \alpha\parallel r_c-r\parallel^2_2$ \\
+     & $h_{r,c} = hM_r$ \\
+     & $t_{r,c} = tM_r$ \\
+  \end{tabular}%
+  }
+  \egroup
+   \\\vspace{0.5cm}
+
+\textbf{Erklärung der Parameter}
+
+\begin{multicols}{2}
+
+  \begin{itemize}
+    \item $(h, r, t)$: Relationstripel bestehend aus einer Kopf- ($h$) und Fußentität ($t$) sowie einer Relation $r$
+    \item $f_r(\cdot, \cdot)$: Scoringfunktion zweier Entitäten für eine Relation $r$
+    \item $h_{\bot}, t_{\bot}$: Projektionen zweiter Entitätsvektoren auf eine Ebene
+  \end{itemize}
+
+  \columnbreak
+
+  \begin{itemize}
+    \item $M$: Projektionsmatrix
+    \item $(h_{r, c}, r_c, t_{r, c})$: Relationstripel mit auf ein Subcluster einer Relation trainieren Vektorrepräsentationen
+    \item $\alpha$: Gewichtsparameter zur Einschränkung für den Abstand einer Subrelation zur Hauptrelation
+  \end{itemize}
+
+  \end{multicols}
+  \caption[Übersicht über verschiedene Arten der Vektorrepräsentationen für Wissensdatenbanken]{Übersicht über verschiedene Arten der Vektorrepräsentationen für Wissensdatenbanken
+  Für TransE (\cite{bordes2013translating}), TransH (\cite{wang2014knowledge}), TransR und CTransR (\cite{lin2015learning})
+  werden die verschiedenen Scoringfunktionen gegenübergestellt und vorkommende Parameter erklärt. \label{fig:scoring}}
+\end{figure}
+
+Diese Idee wird weiter von (\cite{wang2014knowledge}) vorangetrieben: Um nicht nur 1:1- sondern auch 1:n-, n:1- und m:n-Relationen
+abzubilden, werden Punkte in einem Vektorraum auf eine für jede Relation separat gelernte Ebene projiziert, woher sich
+der Name des Verfahrens \emph{TransH}, herleitet.\\
+Um die Vektorräume von Entitäten und Relationen zu trennen, stellen (\cite{lin2015learning}) \emph{TransR} und \emph{CTransR}
+vor. Für Ersteres wird für jede Relation eine Projektionsmatrix gelernt, die Entitäten in den jeweiligen Relationsvektorraum
+übersetzt. Bei Letzterem werden für jede Relation mehrere Vektoren trainiert, um der Unterschiedlichkeit im Kontext
+anderer Entitäten gerecht zu werden. Eine Übersicht über die Berwertungsfunktionen aller Verfahren findet sich in Abbildung
+\ref{fig:scoring}.

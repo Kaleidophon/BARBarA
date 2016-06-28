@@ -16,7 +16,7 @@ very loudly. Everybody does it.
 \section{Neurale Netzwerke}
 
 Wie der Name bereits erahnen lässt, fußt die Idee von neuralen Netzwerken auf einer mathematischen Modellierung
-des menschlichen Gehirns. Die Grundbausteine bilden dabei einzelne Neuronen, die dabei auf folgende Art und Weise
+des menschlichen Gehirns (siehe Abbildung \ref{fig:perceptron}). Die Grundbausteine bilden dabei einzelne Neuronen, die dabei auf folgende Art und Weise
 modelliert werden (dieser Teil ist dabei auch als \emph{Perceptron}-Algorithmus bekannt):
 
 \begin{figure}[h]
@@ -24,7 +24,7 @@ modelliert werden (dieser Teil ist dabei auch als \emph{Perceptron}-Algorithmus 
   \includegraphics[width=0.65\textwidth]{../img/neuron.png}
   \caption[Mathematische Modellierung eines Neurons]{Mathematische Modellierung eines Neurons, auch bekannt als
   \emph{Perceptron}-Algorithmus. $x$ bezeichnet In-, $y$ den Output des Neurons, $w$ bilden die Gewichte und $f$ die
-  Aktivierungsfunktion. Abbildung aus (\cite{rong2014word2vec}).}
+  Aktivierungsfunktion. Abbildung aus (\cite{rong2014word2vec}).\label{fig:perceptron}}
 \end{figure}
 
 Der Analogie der menschlichen Nervenzelle folgend erhält das Neuron mehrere Inputs in Form eines Vektors $x$ mit $K$
@@ -62,13 +62,13 @@ kontinuierlich und dadurchableitbar:
 Um aus einzelnen Neuronen nun ein neurales Netzwerk zu kreieren, werden mehrere Schichten erstellt (i.d.R. eine Eingabe-
 (\emph{input layer}), eine Ausgabe- (\emph{output layer}) und min. eine ``versteckte'' Schicht (\emph{hidden layer}).
 Die Schichten bestehen dann aus mehreren Nervenzellen, wobei jede Zelle mit jeder anderen Zelle der vorhergehenden und
-folgenden Schicht vernetzt ist (siehe Abb. X).
+folgenden Schicht vernetzt ist (siehe Abbildung \ref{fig:neuralnet}).
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.5\textwidth]{../img/neuralnet.png}
   \caption[Darstellung eine neuralen Netzwerks]{Darstellung eines neuralen Netzwerks mit vier Schichten, davon jeweils eine
-  für In- und Output, sowie zwei ``versteckte'' Schichten (\emph{hidden layer}). Bild aus (\cite{Goldberg15c}).}
+  für In- und Output, sowie zwei ``versteckte'' Schichten (\emph{hidden layer}). Bild aus (\cite{Goldberg15c}).\label{fig:neuralnet}}
 \end{figure}
 
 Die einzelnen Gewichtsvektoren $w$ aller Neuronen einer Schicht werden dann zu einer Gewichtsmatrix $W$ zusammengefasst,
@@ -103,13 +103,13 @@ Input und Output besitzen die Dimensionalität von $V$), Hidden die von $N$.\\
   \includegraphics[width=1.1\textwidth]{../img/cbowskip.png}
   \caption[Gegenüberstellung von Skip-Gram und CBOW]{Gegenüberstellung der beiden Trainingsmethoden CBOW (links)
   und Skip-Gram (rechts). CBOW versucht die Wahrscheinlichkeit eines Wortes gegeben seines Kontexts zu trainieren,
-  Skip-Gram die Wahrscheinlichkeit eines Kontextes gegeben eines Wortes.}
+  Skip-Gram die Wahrscheinlichkeit eines Kontextes gegeben eines Wortes.\label{fig:cbowskip}}
 \end{figure}
 
 Zwischen Input und Hidden liegt die Gewichtsmatrix $W$ und zwischen Hidden und Output die Matrix $W'$.
 CBOW versucht, die Wahrscheinlichkeit eines Wortes gegeben eines Kontextes
 der Größe $C$ zu maximieren (Kontext bezieht sich in diesem Fall auf die Summe der rechts und links vom Eingabewort stehenden
-Wörter). Unsere Verlustfunktion, deren Wert es dabei zu minimieren gilt, besteht darin in der negativen logarithmischen
+Wörter, siehe Abbildung \ref{fig:cbowskip}). Unsere Verlustfunktion, deren Wert es dabei zu minimieren gilt, besteht darin in der negativen logarithmischen
 Wahrscheinlichkeit eines Wortes gegeben seines Kontextes:
 
 \begin{equation}

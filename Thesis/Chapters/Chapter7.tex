@@ -25,7 +25,7 @@ In ihrer einfachsten Form bildet sie einfach die Differenz $\vec{d}$ der beiden 
 
 \section{Algorithmus}
 
-Der Grundalgorithmus (siehe Fig. X) versucht nun, alle Kombinationen von Wortvektoren zu bilden und über diese
+Der Grundalgorithmus (siehe Abbildung \ref{fig:algo1}) versucht nun, alle Kombinationen von Wortvektoren zu bilden und über diese
 und den Differenzvektor zu bilden. Alle Kombinationen würde bei $n$ Vektoren in $n * n = n^2$ Vektoren resultieren.
 Zwar ist $\phi(\vec{u}, \vec{v}) \neq \phi(\vec{v}, \vec{u})$, jedoch wäre die Berechnung beider Differenzvektoren redundant,
 da sie lediglich Spiegelungen voneinander im Raum sind und so diesselbe Information enthalten. Die Berechnung
@@ -39,7 +39,7 @@ der Differenz in nur eine Richtung reduziert die Anzahl der Vektoren dadurch zu 
       $\vec{d} = \vec{v} - \vec{u}$;
     }
   \end{algorithm}
-  \caption[Einfacher Projektionsalgorithmus]{Einfacher Projektionsalgorithmus.}
+  \caption[Einfacher Projektionsalgorithmus]{Einfacher Projektionsalgorithmus.\label{fig:algo1}}
 \end{figure}
 
 Gegeben einer Menge relevanter Kombinationen $\mathcal{C}$ mit Vektorpaaren gilt also:
@@ -55,7 +55,7 @@ eine Funktion $\Lambda$ definieren, die die Anzahl der Kookkurrenzen bestimmt:
 \begin{equation}
   \Lambda(t_1, t_2) = |\{s_i | \exists w_{ij} = t_1 \land \exists w_{ij} = t_2 \land t_1\neq t_2\}_{i=1}^{n}|
 \end{equation}
-Eine mögliche Einschränkung besteht darin, in einem geänderten Algorithmus (siehe Fig. X) das Berechnen von $\vec{d}$ nur
+Eine mögliche Einschränkung besteht darin, in einem geänderten Algorithmus (siehe Abbildung \ref{fig:algo2}) das Berechnen von $\vec{d}$ nur
 dann zu erlauben, wenn die Anzahl der Kookkurrenzen der zu den Vektoren $\vec{v}(t_1), \vec{v}(t_2)$ gehörenden Begriffe $t_1, t_2$
 einen bestimmten Schwellenwert $\gamma$ überschreitet, also $\Lambda(t_1, t_2) > \gamma$.
 
@@ -70,7 +70,7 @@ einen bestimmten Schwellenwert $\gamma$ überschreitet, also $\Lambda(t_1, t_2) 
     }
   \end{algorithm}
   \caption[Modifizierter Projektionsalgorithmus]{Modifizierter Projektionsalgorithmus, bei dem die zu den Vektoren gehörigen
-  Begriffe über $\gamma$ Mal im Korpus im gleichen Satz aufgetreten sein müssen, damit $\vec{d}$ errechnet wird.}
+  Begriffe über $\gamma$ Mal im Korpus im gleichen Satz aufgetreten sein müssen, damit $\vec{d}$ errechnet wird.\label{fig:algo2}}
 \end{figure}
 
 
@@ -113,14 +113,15 @@ Fällen untereinander koordiniert.\\ \\
   \end{algorithm}
   \caption[Parallelisierter Projektionsalgorithmus]{Parallelisierter Projektionsalgorithmus, bei dem die zu den Vektoren gehörigen
   Begriffe über $\gamma$ Mal im Korpus im gleichen Satz aufgetreten sein müssen, damit $\vec{d}$ errechnet wird. Ein Master-Thread
-  verteilt zudem die Aufgaben an Worker-Threads, die diese Berechnungen übernehmen und erledigt Vektorpaare in einer Menge ablegen.}
+  verteilt zudem die Aufgaben an Worker-Threads, die diese Berechnungen übernehmen und erledigt Vektorpaare in einer Menge ablegen.
+  \label{fig:algo3}}
 \end{figure}
 
 In diesem konkreten Fall ist der Master-Thread dafür verantwortlich, alle benötigten Daten in entsprechende Datenstrukturen
 zu laden, sie den Worker-Threads bereitzustellen und letztere gemeinsam zu starten und zu beenden, sobald ein bestimmtes
 Abschlusskriterium der Aufgabe erfüllt ist.
 Zusätzlich wird eine Menge eingeführt, in die Paare von Vektoren hinzugefügt werden, sofern für sie von einem Thread
-ein Differenzvektor ausgerechnet wurde. Damit nun keiner der Threads redundante Berechnungen durchführt, prüft er, ob sein
+ein Differenzvektor ausgerechnet wurde (siehe Abbildung \ref{fig:algo3}). Damit nun keiner der Threads redundante Berechnungen durchführt, prüft er, ob sein
 aktuelles Vektorpaar sich in dieser Menge befindet und schon abgehakt wurde\footnote{Damit dies möglichst schnell funktioniert,
 wird das Vektorpaar durch eine Hashfunktion in einen Wert umgewandelt. Diese wird so gewählt,
 sodass $h(\vec{v}(t_1), \vec{v}(t_2)) = h(\vec{v}(t_2), \vec{v}(t_1))$.}.\\
@@ -128,7 +129,7 @@ sodass $h(\vec{v}(t_1), \vec{v}(t_2)) = h(\vec{v}(t_2), \vec{v}(t_1))$.}.\\
 Als Grundlage der Daten wurde das Datenset Mark 0 [BESTES EINFÜGEN] gewählt, da es in den meisten der Evaluationsaufgaben
 als bestes Abschnitt. Mit $\gamma = 100$ resultierte das Procedere in einem neuen Menge an Daten mit insgesamt
 X Differenzvektoren [GENAUE ZAHL EINFÜGEN] mit einer Größe von X,X GB [GENAUE GRÖSSE EINFÜGEN].\\
-Um den Gewinn durch Multithreading zu verdeutlichen, wurden darüber hinaus die Rechenzeiten gemessen (siehe Fig. X).
+Um den Gewinn durch Multithreading zu verdeutlichen, wurden darüber hinaus die Rechenzeiten gemessen (siehe Abbildung \ref{fig:times}).
 Gerechnet wurde auf eine Hardware mit 40 Prozessorkernen und [RESTLICHE SPECS EINFÜGEN].
 
 \begin{figure}[h]
@@ -145,7 +146,7 @@ Gerechnet wurde auf eine Hardware mit 40 Prozessorkernen und [RESTLICHE SPECS EI
   \end{tabular}
   \caption[Rechenzeiten für den Mappingschritt nach Anzahl von Threads]{Rechenzeiten für den Mappingschritt nach Anzahl von Threads auf
   einem System mit 40 Prozessorkernen und [RESTLICHE SPECS EINFÜGEN]. Die Beschleunigung wird im Vergleich zum Ausführen des Programms
-  mit nur einem Thread gemessen.}
+  mit nur einem Thread gemessen.\label{fig:times}}
 \end{figure}
 
 \section{Clustering}
@@ -165,7 +166,8 @@ der DBSCAN-Algorithmus (\textbf{D}ensity-\textbf{B}ased \textbf{S}patial \textbf
   Dichte im Raum. Dies lässt auch nicht-sphärische Clusterformen zu.
 \end{itemize}
 
-Zur Erklärung von DBSCAN müssen zuerst einige Definitionen erstellt werden:
+Zur Erklärung von DBSCAN müssen zuerst einige Definitionen erstellt werden (siehe Abbildung \ref{fig:dbscan} zur visuellen
+Darstellung):
 \begin{itemize}
   \item Ein Punkt $p$ in den Daten wird dann als
   Kernpunkt (\emph{core point}) bezeichnet, sofern mindesten $minPts$ Punkte innerhalb einem Radius $\epsilon$ vorhanden sind.\\
@@ -182,7 +184,7 @@ Zur Erklärung von DBSCAN müssen zuerst einige Definitionen erstellt werden:
   \centering
   \includegraphics[width=0.6\textwidth]{../img/DBSCAN-Illustration.png}
   \caption[Darstellung der Funktionsweise von DBSCAN]{Darstellung der Funktionsweise von DBSCAN. Punkt A ist ein Kernpunkt, die
-  Punkte B und C sind von A aus erreichbar. Punkt N ist nicht erreichbar und damit ein Ausreißer.\footnotemark}
+  Punkte B und C sind von A aus erreichbar. Punkt N ist nicht erreichbar und damit ein Ausreißer.\label{fig:dbscan}\footnotemark}
 \end{figure}
 \footnotetext{Abbildung von
 Chire - Eigenes Werk, CC BY-SA 3.0, \url{https://commons.wikimedia.org/w/index.php?curid=17045963} (zuletzt abgerufen am
