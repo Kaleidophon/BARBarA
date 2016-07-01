@@ -10,6 +10,7 @@ from sklearn.decomposition import PCA
 import matplotlib.pyplot as plt
 import matplotlib.font_manager
 from mpl_toolkits.mplot3d import axes3d, Axes3D
+from gensim.models import Word2Vec as w2v
 
 from concentration import calculate_concentration, load_vectors_from_model, calculate_loss_of_precision
 from analogy import analogy_eval, analogy_eval_parallel
@@ -89,6 +90,27 @@ def main():
 									args.procs,
 									args.sizes,
 									args.log)
+
+	# Find the n nearest neighbors of a list of words given a dataset
+	elif args.mode == "neighbors":
+		find_nearest_neighbors(args.input[0],
+								args.max,
+								args.words)
+
+
+def find_nearest_neighbors(vector_inpath, max, wordlist):
+	print "Loading vectors...."
+	model = w2v.load_word2vec_format(vector_inpath, binary=False)
+	print wordlist
+	for word in wordlist:
+		most_similar_with_score = model.most_similar(positive=[word], topn=max)
+		for v in most_similar_with_score:
+			print v
+		most_similar_words = [pair[0] for pair in most_similar_with_score]
+
+		print u"%i most similar words of %s in dataset %s" %(max, word, vector_inpath)
+		for i in range(len(most_similar_words)):
+			print u"%i: %s" %(i+1, most_similar_words[i])
 
 
 def plot(data, max, dimensions, show_plot=False, display_names=False):
@@ -225,7 +247,7 @@ def init_argparser():
 	argparser.add_argument('--max',
 							default=None,
 							type=int,
-							help='Maximum numbers of vectors to load.')
+							help='Maximum numbers of vectors to load / number of most similar neigbors to find.')
 	argparser.add_argument('--sizes',
 							help='Model sizes to calculate loss of precision.')
 	argparser.add_argument('--dimensions',
@@ -246,6 +268,9 @@ def init_argparser():
 							default='google',
 							help='File format for word similarity evaluation '
 							     'file.')
+	argparser.add_argument('--words',
+							nargs='+',
+							help="List words the nearest neigbors should be found for.")
 	argparser.add_argument('--sectionwise',
 							action='store_true',
 							default=False,

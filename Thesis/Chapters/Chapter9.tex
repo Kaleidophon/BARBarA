@@ -49,3 +49,18 @@ nicht mehr möglich war, im Rahmen dieser Abschlussarbeit andere Verfahren zu te
 vorliegenden Daten diesen Fehler zu korrigieren fehlgeschlagen waren.
 
 \section{Ausblick}
+
+Der vorliegende Ansatz bietet vielerlei Möglichkeiten zur Verbesserung. Im Folgenden sollen einige davon skizziert werden:\\
+Zuallerst erscheint es sinnvoll, das Konzept von einem unüberwachten zu einem überwachten Ansatz zu ändern, sprich einer
+maschinellen Lernmethode mit Daten zu versorgen, denen bereits eine Klasse zugewiesen wurde. Beispielweise könnten eine
+sog. \emph{Support Vector Machine} (SVM) oder ein anderer Lernalgorithmus ein zu einer bestimmten Relation gehöriges Wortpaar
+als Eingabe nehmen, um anhand dessen lernen zu unterscheiden, welche Differenzvektoren für eine spezifische Relationsart
+charakteristisch sind. Innerhalb des gesamten Forschungsbereichs des maschinellen Lernens ergeben sich so dutzende Möglichkeiten,
+sei es mit verschiedenen Features oder Algorithmen, z.B. SVMs mit Kerneln oder Neuralen Netzwerken. Es könnte für jede
+Relation eine Klasse (plus ggf. eine Klasse für Wortpaare ohne Relation) definiert werden, denen später unklassifizierte
+Wortpaare zugeordnet werden.\\
+
+Die durch auf dem Korpus erstellten Wortvektoren sind ein sehr aktuelles Forschungsthema. Verschiedene Ansätze wurden
+präsentiert, diese weiter zu verbessern, beispielweise auf Depenzgrammatik basierede Repräsentationen von (\cite{levy2014dependency}).
+Es wäre interessant herauszufinden, inwiefern sich diese auf die Performanz eines Systems zur Relationsvorhersage
+auswirken.

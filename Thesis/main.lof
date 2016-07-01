@@ -10,20 +10,20 @@
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Gegen\IeC {\"u}berstellung von Skip-Gram und CBOW}}{11}{figure.caption.28}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Listen der \emph {k} n\IeC {\"a}chsten Nachbarn von W\IeC {\"o}rtern in verschiedenen Datensets.\relax }}{16}{figure.caption.41}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Listen der \emph {k} n\IeC {\"a}chsten Nachbarn von W\IeC {\"o}rtern in verschiedenen Datensets. Inspiriert von (\cite {collobert2011natural}). \relax }}{16}{figure.caption.41}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Anzahl der Annotatoren und Agreement (als $Cohen's\ \kappa $) der \textsc {Wortpaar}-Evaluationsdatensets. \relax }}{18}{figure.caption.52}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Evaluationsergebnisse der besten Vektordatensets}}{18}{figure.caption.55}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Evaluationsergebnisse der besten Vektordatensets}}{19}{figure.caption.55}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Daten \IeC {\"u}ber die Relationsdatensets FB15k und GER14k}}{20}{figure.caption.63}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Resultate f\IeC {\"u}r TransE mit FB15k und GER14k}}{22}{figure.caption.72}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Daten \IeC {\"u}ber die Relationsdatensets FB15k und GER14k}}{22}{figure.caption.65}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Resultate f\IeC {\"u}r TransE mit FB15k und GER14k}}{24}{figure.caption.74}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Einfacher Projektionsalgorithmus}}{25}{figure.caption.79}
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Modifizierter Projektionsalgorithmus}}{26}{figure.caption.83}
-\contentsline {figure}{\numberline {7.3}{\ignorespaces Parallelisierter Projektionsalgorithmus}}{27}{figure.caption.86}
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Rechenzeiten f\IeC {\"u}r den Mappingschritt nach Anzahl von Threads}}{28}{figure.caption.89}
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Darstellung der Funktionsweise von DBSCAN}}{29}{figure.caption.91}
-\contentsline {figure}{\numberline {7.6}{\ignorespaces Dreidimensionale Projektionen einiger durch das Mappingverfahren resultierender Vektorr\IeC {\"a}ume}}{31}{figure.caption.102}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Einfacher Projektionsalgorithmus}}{27}{figure.caption.81}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Modifizierter Projektionsalgorithmus}}{28}{figure.caption.85}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Parallelisierter Projektionsalgorithmus}}{29}{figure.caption.88}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Rechenzeiten f\IeC {\"u}r den Mappingschritt nach Anzahl von Threads}}{30}{figure.caption.91}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Darstellung der Funktionsweise von DBSCAN}}{31}{figure.caption.93}
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Dreidimensionale Projektionen einiger durch das Mappingverfahren resultierender Vektorr\IeC {\"a}ume}}{33}{figure.caption.104}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Quelle und Trainingsparameter f\IeC {\"u}r Wortvektoren}}{35}{figure.caption.109}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Quelle und Trainingsparameter f\IeC {\"u}r Wortvektoren}}{37}{figure.caption.111}
 \addvspace {10\p@ }

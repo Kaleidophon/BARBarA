@@ -39,16 +39,34 @@ angewendet und kritisch reflektiert werden sollen.\\
   Begriffe zutage fördern (siehe Abbildung \ref{fig:wortliste}).\\
 
   \begin{figure}[h]
-    \begin{tabular}{l|ccccc}
-       & \textsc{Wort 1} & \textsc{Word 2} & \textsc{Wort 3} & \textsc{Wort 4} & \textsc{Wort 5} \\
+    \centering
+    \begin{changemargin}{-1cm}{0cm}
+    \resizebox{1.15\textwidth}{!}{%
+    \begin{tabular}{l|cccc}
+       & \textsc{Frankreich} & \textsc{Bank} & \textsc{Computerlinguistik} & \textsc{gekratzt} \\
       \hline \hline
-      Datenset 1 & & & & & \\
+      \multirow{5}{*}{Mark I} & \textsc{Belgien} & \textsc{Anlagebank} & \textsc{Linguistik} & \textsc{gekrazt} \\
+       & \textsc{Italien} & \textsc{(unknown)\_Bank} & \textsc{Informationswissenschaft} & \textsc{weggekrazt} \\
+       & \textsc{Niederland} & \textsc{BAnk} & \textsc{Texttechnologie} & \textsc{geschubbert} \\
+       & \textsc{Niederlande} & \textsc{Bankstatus} & \textsc{Sprachwissenschaft} & \textsc{gekratz} \\
+       & \textsc{Spanien} & \textsc{Geldinstitut} & \textsc{Softwaretechnik} & \textsc{abgeleckt} \\
       \hline
-      Datenset 2 & & & & & \\
+      \multirow{5}{*}{Mark VIII} & \textsc{Italien} & \textsc{Hausbank} & \textsc{Bioinformatik} & \textsc{gekrazt} \\
+      & \textsc{Ungarn} & \textsc{Geschäftsbank} & \textsc{Texttechnologie} & \textsc{weggekrazt} \\
+      & \textsc{Polen} & \textsc{Großbank} & \textsc{Informationswissenschaft} & \textsc{geschubbert} \\
+      & \textsc{Spanien} & \textsc{Kreditbank} & \textsc{Softwaretechnik} & \textsc{angeknabbert} \\
+      & \textsc{Belgien} & \textsc{Mutterbank} & \textsc{Linguistik} & \textsc{rausgerissen} \\
       \hline
-      Datenset 3 & & & & & \\
-    \end{tabular}
-    \caption{Listen der \emph{k} nächsten Nachbarn von Wörtern in verschiedenen Datensets.\label{fig:wortliste}}
+      \multirow{5}{*}{Mark XXII} & \textsc{Italien} & \textsc{Kreditinstitut} & \textsc{Bioinformatik} & \textsc{geritzt} \\
+      & \textsc{Ungarn} & \textsc{Geldinstitut} & \textsc{Wirtschaftsgeographie} & \textsc{angesengt} \\
+      & \textsc{Polen} & \textsc{Sparkasse} & \textsc{Grundschulpädagogik} & \textsc{zusammengenäht} \\
+      & \textsc{Spanien} & \textsc{Landesbank} & \textsc{Computerwissenschaft} & \textsc{aufgesprungen} \\
+      & \textsc{Belgien} & \textsc{Finanzinstitut} & \textsc{Humangeographie} & \textsc{tupfen} \\
+    \end{tabular}%
+    }
+  \end{changemargin}
+    \caption{Listen der \emph{k} nächsten Nachbarn von Wörtern in verschiedenen Datensets. Inspiriert
+            von (\cite{collobert2011natural}). \label{fig:wortliste}}
   \end{figure}
 
   Das Problem bei dieser Methode liegt in der menschlichen Subjektivität: Die präsentierte Auswahl der Begriffe
@@ -153,13 +171,20 @@ angewendet und kritisch reflektiert werden sollen.\\
 
   Im Folgenden sollen die Ergebnisse der Wortvektor-Evaluation diskutiert werden. Am Ende dieses Abschnitts werden dabei
   nur die Datensets mit den besten Ergebnissen und deren Konfiguration von Parametern vorgstellt, eine ausführliche
-  Übersicht findet sich jedoch im Appendix \ref{AppendixB}.
+  Übersicht findet sich jedoch im Appendix \ref{AppendixB}.\\
+
+%Mark I     & \textbf{-0,8096}         & \textbf{-0,4640$_{(13)}$}   & \textbf{-0,7302$_{(13)}$}   & \textbf{-0,7094$_{(2)}$}  & \textbf{44,56}  & 1,71 \\
+%Mark XIII  & \textbf{-0,8247$_{(1)}$} & \textbf{-0,5066$_{(102)}$}  & \textbf{-0,7494$_{(132)}$}  & -0,7097$_{(48)}$          & 15,51           & \textbf{3,01} \\
+%Mark XIV   & -0,8106$_{(1)}$          & -0,4953$_{(102)}$           & -0,7362$_{(132)}$           & \textbf{-0,7205$_{(48)}$} & 14,51           & 2,56 \\
 
   \begin{figure}[h]
     \centering
-    \begin{tabular}{l||c|c|c|c}
+    \begin{tabular}{l||l|l|l|l}
       \textsc{Datenset} & \textsc{Wortpaare65} & \textsc{Wortpaare222} & \textsc{Wortpaare350} & \textsc{Schm280} \\
       \hline
+      Mark I & \textbf{-0,8096} & \textbf{-0,4640$_{(13)}$} & \textbf{-0,7302$_{(13)}$} & \textbf{-0,7094$_{(2)}$} \\
+      Mark XIII & \textbf{-0,8247$_{(1)}$} & \textbf{-0,5066$_{(102)}$}  & \textbf{-0,7494$_{(132)}$} & -0,7097$_{(48)}$ \\
+      Mark XIV & -0,8106$_{(1)}$ & -0,4953$_{(102)}$ & -0,7362$_{(132)}$ & \textbf{-0,7205$_{(48)}$} \\
     \end{tabular}
 
     \vspace{1cm}
@@ -167,6 +192,9 @@ angewendet und kritisch reflektiert werden sollen.\\
     \begin{tabular}{l||c|c}
       \textsc{Datenset} & \textsc{Google} & \textsc{SemRel} \\
       \hline
+      Mark I & \textbf{44,56}  & 1,71 \\
+      Mark XIII & 15,51 & \textbf{3,01} \\
+      Mark XIV & 14,51 & 2,56 \\
     \end{tabular}
 
     \caption[Evaluationsergebnisse der besten Vektordatensets]{Evaluationsergebnisse der fünf besten Vektordatensetz. Oben:
@@ -174,3 +202,33 @@ angewendet und kritisch reflektiert werden sollen.\\
     von Analogien in Prozent. Nicht gefundene Wortvektoren klein in Klammern hinter dem Wert. Für eine vollständige Liste
     der Trainingsparameter jedes Datensets siehe \ref{AppendixA}. Für die gesamte Liste aller Ergebnisse siehe \ref{AppendixB}.}
   \end{figure}
+
+  Bei der Evaluation war zuallererst festzustellen, dass sowohl bei Datensets, die auf dem normalen oder lemmatisierten Korpus
+  trainiert wurden, Ergebnisse mit steigender Downsamplingrate schlechter wurden. Dies war sowohl bei Training mit dem CBOW- als
+  auch mit dem Skip-Gram-Modell feststellbar. Darüber hinaus lieferte Letzteres im Schnitt bessere Resultate (und benötigte
+  während des Trainings auch weniger Zeit). Das Lemmatisieren führte dazu, das während der Bewertung der Sets oft einige
+  Schritte nicht durchgeführt werden könnten, was anhand der in Subskript in Klammern stehenden Zahlen abzulesen ist.
+  Darunter leidet leider auch wenig die Vergleichbarkeit; es erscheint aber zumindest logisch, dass bei gleichem Evaluationswert
+  einem Datenset mit weniger nicht gefundenen Wortvektoren eine höhere Qualität beizumessen ist.\\
+  Bei den Analogie-Datensets sind ähnliche Tendenzen sichtbar: Beim \textsc{Google}-Datenset sind die Diskrepanzen jedoch
+  deutlich stärker und Vektoren des unlemmatisierten Korpus schneiden deutlich besser ab, was vor allem dadurch
+  zu erklären ist, dass in diesem Set auch Flektion geprüft wird (bspw. \emph{schreiben} verhält sich zu \emph{schreibt} wie
+   \emph{sagen} zu \emph{sagt}) und diese Formen durch die Lemmatisierung velorengehen. Beim \textsc{SemRel}-Datenset
+  verhält sich das ganze allerdings genau umgekehrt, wenn auch die Unterschiede wesentlich feiner sind.\\
+
+  Es ist ferner zu erkennen, dass einige der extern bereitgestellten Evaluationsdaten nicht sehr gut zusammengestellt wurden.
+  Bei \textsc{Wortpaare222} prägen sich die Korrelationswerte nicht unter $-0,54$ aus, was dafür spricht, das die Ähnlichkeit
+  der Wortpaare für sowohl für das System als möglicherweise auch für die menschlichen Annotatoren schwer einzuschätzen war
+  \footnote{Beispielhaft seien hier einige Wortpaare aus \textsc{Wortpaare222} genannt, die nach Ähnlichkeit bewertet werden
+  mussten, um das Problem zu illustrieren:\\
+  \emph{wahrnehmen} - \emph{Grundsatzfrage} / \emph{groß} - \emph{Arbeitszeitregelung} /
+  \emph{Hubschraubertyp} - \emph{einschließlich} / \emph{Büroequipment} - \emph{Institut}.}
+  Beim \textsc{SemRel}-Analogienset sticht dieser Fakt noch viel drastischer heraus: Im besten Fall wurden $3\%$ (sic!)
+  der Analogien richtig vom System vervollständigt. Es sei angemerkt, dass es auch dem Autor und anderen gefragten Personen
+  schwerfiel, stichprobeartig ausgewählte Fragen richtig zu beantworten
+  \footnote{\emph{Lieblichkeit} verhält sich zu \emph{Anmut} wie \emph{Mittelklasse} zu$\ldots$? \rotatebox[origin=c]{180}{\emph{Mittelschicht}}\\
+  \emph{Zivilgesellschaft} verhält sich zu \emph{Bürgergesellschaft} wie \emph{Gegenargument} zu$\ldots$? \rotatebox[origin=c]{180}{\emph{Widerspruch}}\\
+  \emph{Trio} verhält sich zu \emph{Solo}  wie \emph{Arzt} zu$\ldots$? \rotatebox[origin=c]{180}{\emph{Patient}}}.
+  Deshalb stellen sich die Ergebnisse bei diesem Vergleichset ohne klare Tendenz in den Resultaten und generell sehr schlecht dar.\\
+
+  Für die nachfolgenden Schritte wurde die bestabschneidenen Wortvektorsets, namentlich Mark I, XIII und XIV ausgewählt.
