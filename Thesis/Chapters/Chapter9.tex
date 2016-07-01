@@ -14,6 +14,38 @@
 
 \section{Zusammenfassung}
 
+In dieser Arbeit wurden verschiedene Möglichkeiten präsentiert, Wissen aus Wissensdatenbanken durch kontinuierliche Vektoren
+zu repräsentieren. In Kapitel \ref{Chapter6} wurden unterschiedlich komplexe Herangehesweisen vorgestellt, Repräsentationen
+für Entitäten und Relationen einer solchen Datenbank gleichzeitig zu mithilfe von Methoden des Maschinellen Lernens zu trainieren.\\
+Für das TransE genannte Verfahren wurden zusätzlich Ergebnisse mit einer deutschsprachigen Untermenge der Daten (GER14k)
+durchgeführt, die zwar bei der Evaluation etwas schlechter ausfielen, aber dennoch vergleichbar waren.\\
+
+In Kapitel \ref{Chapter7} wurde ein eigener Versuch unternommen, ähnliche Ergebnisse mithilfe von Wortvektorrepräsentationen
+zu erreichen, zur deren Erstellung das Tool \emph{word2vec} verwendet wurde, welches auf großen Korpora arbeitet. Dazu
+wurde der deutschsprachige Internetkorpus DECOW14X aufbereitet.\\
+Im Folgenden wurde angestrebt, Wortvektorpaare durch ihre Differenzvektoren verschiedenen Relationen zuzuteilen. Dies schlug
+jedoch fehl, da der Ansatz auf einem Trugschluss fußte. Deshalb konnten keine evaluierbaren Ergebnisse erzeugt werden.
+Eine ausführliche Diskussion darüber findet sich im letzten Abschnitt von Kapitel \ref{Chapter7}.
+
 \section{Diskussion}
+
+Die Implikationen der in dieser Arbeit gewonnenen Erkenntnisse sollte mit Bedacht diskutiert werden. Das Fehlschlagen
+eines Ansatzes auf der Basis von Wortvektorrepräsentationen heißt im Umkehrschluss nicht, dass alle Vorstöße in dieser
+Richtung zum Scheitern verurteilt sind (im Gegenteil soll darauf im nächsten Abschnitt eingegangen werden).\\
+Es scheint jedoch leichter, Repräsentationen gleich im Kontext der Struktur einer Wissensdatenbank als im
+Kontext eines großen Korpus zu trainieren, da diese so von Anfang an auf dafür wichtige Eigenschaften getrimmt werden
+(nämliche die Beziehung zu anderen Relevanten Entitäten).\\
+
+Das Fehlschlagen des vorgestellten Ansatzes in Kapitel \ref{Chapter7} scheint vor allem auf einen Fehler in der
+Grundannahme und die schlechte Skalierbarkeit zurückzuführen. Um Letzteres zu verhindern, könnten in zukünftigen Ansätzen
+weitere Informationsquellen hinzugezogen werden, um ``sinnvolle'' von ``sinnlosen'' Wortpaaren zu trennen. Da davon
+auszugehen ist, dass in der Menge aller Möglichen Wortpaare nur ein sehr kleiner Prozentsatz tatsächlich Sinn ergeben
+dürfte, sollte dieses Vorgehen die totale Rechenzeit signifikaten verringern.\\
+Der der Hypothese zugrunde liegende logische Fehler scheint im Nachhinein offensichtlich. Jedoch war dieser schwer
+vorherzusehen, nachdem in vielen anderen Arbeiten die semantischen Eigenschaften von arithmentischen Rechnungen mit
+Wortvektoren so stark hervorgehoben werden. Zudem wird dieser Aspekt immer nur anhand von in einer offensichtlichen
+Beziehung zueinander stehenden Wortpaaren illustriert. Dadurch fiel dieses Versäumnis erst auf, als es aus zeitliche Gründen
+nicht mehr möglich war, im Rahmen dieser Abschlussarbeit andere Verfahren zu testen und zudem Versuche, auf Basis der
+vorliegenden Daten diesen Fehler zu korrigieren fehlgeschlagen waren.
 
 \section{Ausblick}

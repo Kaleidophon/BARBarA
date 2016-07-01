@@ -87,6 +87,9 @@ headsepline, % Uncomment to get a line under the header
 	%showframe,% show how the type block is set on the page
 }
 
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
+
 %----------------------------------------------------------------------------------------
 %	THESIS INFORMATION
 %----------------------------------------------------------------------------------------
@@ -134,13 +137,13 @@ headsepline, % Uncomment to get a line under the header
 
 \begin{minipage}[t]{0.4\textwidth}
 \begin{flushleft} \large
-\emph{Author:}\\
+\emph{Autor:}\\
 {\authorname} % Author name - remove the \href bracket to remove the link
 \end{flushleft}
 \end{minipage}
 \begin{minipage}[t]{0.4\textwidth}
 \begin{flushright} \large
-\emph{Supervisor:} \\
+\emph{Betreuende:} \\
 {\supname\\Dr. Viviana \textsc{Nastase}} % Supervisor name - remove the \href bracket to remove the link
 \end{flushright}
 \end{minipage}\\[3cm]
@@ -195,7 +198,14 @@ headsepline, % Uncomment to get a line under the header
 \begin{abstract}
 \addchaptertocentry{\abstractname} % Add the abstract to the table of contents
 
-Deutscher Satz\ldots
+In sog. \emph{Wissensdatenbanken} wird Wissen über die Beziehungen von Entitäten in dieser Welt
+beschrieben. Dieses Wissen ist für vielerlei nützlich, um Maschinen das fehlende Weltwissen
+bei Computersystemen zu kompensieren. Die Erstellung solcher Datenbanken ist jedoch sehr
+arbeitsintensiv, weshalb sich Bemühungen, diese automatisch zu ergänzen, lohnen können.\\
+Diese Abschlussarbeit wirft einen Blick auf verschiedene Ansätze in diesem Bereich und
+versucht darüber hinaus, ähnliche Verfahren auf der Grundlage von Wortvektorenrepräsentationen,
+die im Zuge des Deep-Learning-Trends in den letzten Jahren erhöhte Aufmerksamkeit in der
+NLP-Gemeinschaft erfahren haben, zu verwirklichen.
 
 \end{abstract}
 
@@ -206,7 +216,13 @@ Deutscher Satz\ldots
 \begin{abstracteng}
 \addchaptertocentry{Abstract} % Add the abstract to the table of contents
 
-English sentence\ldots
+So-called \emph{knowledge bases} contain knowledge about the relations between entities in
+this world. This knowledge is very useful to compensate the inherent lack of universal knowledge
+of any computer system. However, the creation of such databases is deemed to be very labour-intensive.
+Thus, automatic efforts to replenish them might be worthwile.\\
+This thesis aims to compare various approaches in this area and furthermore wants to realize similar
+procedures based on word embeddings, which gained a lot of popularity in recent years among the
+NLP community.
 
 \end{abstracteng}
 

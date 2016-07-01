@@ -154,3 +154,23 @@ angewendet und kritisch reflektiert werden sollen.\\
   Im Folgenden sollen die Ergebnisse der Wortvektor-Evaluation diskutiert werden. Am Ende dieses Abschnitts werden dabei
   nur die Datensets mit den besten Ergebnissen und deren Konfiguration von Parametern vorgstellt, eine ausführliche
   Übersicht findet sich jedoch im Appendix \ref{AppendixB}.
+
+  \begin{figure}[h]
+    \centering
+    \begin{tabular}{l||c|c|c|c}
+      \textsc{Datenset} & \textsc{Wortpaare65} & \textsc{Wortpaare222} & \textsc{Wortpaare350} & \textsc{Schm280} \\
+      \hline
+    \end{tabular}
+
+    \vspace{1cm}
+
+    \begin{tabular}{l||c|c}
+      \textsc{Datenset} & \textsc{Google} & \textsc{SemRel} \\
+      \hline
+    \end{tabular}
+
+    \caption[Evaluationsergebnisse der besten Vektordatensets]{Evaluationsergebnisse der fünf besten Vektordatensetz. Oben:
+    Spearman's $\rho$ für die Wortähnlichkeit mit von menschen gewerteten Wortpaaren. Unten: Treffer beim Vervollständigen
+    von Analogien in Prozent. Nicht gefundene Wortvektoren klein in Klammern hinter dem Wert. Für eine vollständige Liste
+    der Trainingsparameter jedes Datensets siehe \ref{AppendixA}. Für die gesamte Liste aller Ergebnisse siehe \ref{AppendixB}.}
+  \end{figure}

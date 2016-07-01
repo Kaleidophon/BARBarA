@@ -213,9 +213,9 @@ Es lassen sich im Bezug auf jene folgende Punkte feststellen:
   Dies stellt hohe Anforderung an die Skalierbarkeit aller involvierter Algorithmen und fordert Einschränkungen auf verschiedener
   Ebene, wodurch mögliche spätere Entdeckung eventuell vorenthalten werden könnten.
   \item \textbf{Rauschen}\\ In den Enddaten ist der überwiegende Teil der Datenpunkte keiner sinnvollen Relation zuzuordnen.
-  Dadurch verrauschen diese mögliche sinnvolle Relationscluster, die darin untergehen. Die resultierenden Cluster sind sehr
-  schwammig, da sie sich schlecht vom Hintergrundrauschen abgrenzen. Dies ist beispielsweise durch den Wert des Silhouettenkoeffizienten
-  \footnote{Der Silhoettekoeffizient $s_C$ beschreibt das durchschnittliche Verhältnis vom Abstand eines Punktes zu seinem Clusterzentrum gegnüber
+  Dadurch verrauschen diese mögliche sinnvolle Relationscluster, die darin untergehen (vgl. Abbildung \ref{fig:proj_map}). Die resultierenden Cluster sind sehr
+  schwammig, da sie sich schlecht vom Hintergrundrauschen abgrenzen. Dies ist beispielsweise durch den Wert des Silhouettenkoeffizienten\footnote{
+  Der Silhoettekoeffizient $s_C$ beschreibt das durchschnittliche Verhältnis vom Abstand eines Punktes zu seinem Clusterzentrum gegnüber
   des nächsten Clusterzentrums. $-1 \leq s_C \leq 1$.}
   erkennbar, der bei den Experimenten immer kurz unter Null lag\footnote{Für ein gutes Clustering wird ein Wert von $s_C \geq 0,75$
   erwartet.}.
@@ -245,6 +245,44 @@ Es lassen sich im Bezug auf jene folgende Punkte feststellen:
   im Relationsraum gefunden werden, zwar aus Wortpaaren mit ähnlichem Differenzvektor stehen, jedoch keine ``sinnvolle''
   Relation bilden, was sicht mit dem in 6.1 eingeführtern Parameter $\gamma$ zwar verringern, allerdings nicht gänzlich
   verhindern lässt. Das Ziel, neue und legitime Relationen zu finden, wird durch diesen Trugschluss ad absurdum geführt.
+
+\begin{figure}[h]
+  \centering
+  \begin{multicols}{2}
+    \includegraphics[width=0.5\textwidth]{../img/mappings_get10000_occ100_cos.jpg}
+    \textbf{Mappings A:} $\spadesuit\clubsuit\blacksquare$
+    \includegraphics[width=0.5\textwidth]{../img/mappings_get10000_occ100_eucl.jpg}
+    \textbf{Mappings C:} $\spadesuit\clubsuit\varheart$
+
+    \columnbreak
+
+    \includegraphics[width=0.5\textwidth]{../img/mappings_get10000_occ100.jpg}
+    \textbf{Mappings B:} $\spadesuit\clubsuit$
+    \includegraphics[width=0.5\textwidth]{../img/mappings10000_occ.jpg}
+    \textbf{Mappings D:} $\spadesuit\bigstar$
+  \end{multicols}
+
+  \flushleft
+  \fbox{
+  \parbox{\textwidth}{
+  \textbf{Feature-Legende}
+  \begin{multicols}{2}
+  \begin{itemize}
+    \item[$\spadesuit$] $\vec{v}(t_2) - \vec{v}(t_1)$
+    \item[$\bigstar$] $\Lambda(t_1, t_2) \geq 1$
+    \item[$\clubsuit$] $\Lambda(t_1, t_2) \geq 100$
+  \end{itemize}
+  \columnbreak
+  \begin{itemize}
+    \item[$\blacksquare$] $cos(\vec{v}(t_2) - \vec{v}(t_1))$
+    \item[$\varheart$] $\parallel \vec{v}(t_2) - \vec{v}(t_1) \parallel$
+  \end{itemize}
+\end{multicols}
+}}
+  \caption[Dreidimensionale Projektionen einiger durch das Mappingverfahren resultierender Vektorräume]{Dreidimensionale
+   Projektionen einiger durch das Mappingverfahren resultierender Vektorräume. Jeweils dargestellt: 10000 Vektoren.
+   Symbole zeigen die jeweils genutzten Feature an. \label{fig:proj_map}}
+\end{figure}
 
 \end{itemize}
 
