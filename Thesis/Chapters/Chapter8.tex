@@ -1,7 +1,60 @@
 % Chapter 8
 
-\chapter{Experiment C: Relationsvorhersage mit Wortvektorrepräsentation und SMVs} % Main chapter title
+\chapter{Experiment C: Relationsvorhersage mit Wortvektorrepräsentation} % Main chapter title
 
 \label{Chapter8} % For referencing the chapter elsewhere, use \ref{Chapter1}
 
 %----------------------------------------------------------------------------------------
+
+In diesem Kapitel soll versucht werden, die Methodik des Rausch-konstrastierenden Lernen aus Kapitel \ref{Chapter6}
+auf die Wortvektoren (vgl. Kapitel \ref{Chapter5}) anzuwenden und nur die Relationsvektoren zu lernen. Zu diesem Zweck
+wird eine Untermenge von FB15k, die Tripel enthält, deren Kopf- und Fußentität jeweils als Wortvektorrepräsentation vorliegen.
+Schlußendlich werden die Ergebnisse evaluiert und diskutiert.
+
+\section{Datenerzeugung}
+
+Zu Trainingszwecken wird eine Untermenge aus FB15k bzw. GER14k gebildet. Da
+die Vektorrepräsentationen für die Entitäten nicht von Grund auf erstellt sorden mit
+\verb|word2vec| trainierte Vektoren verwendert werden, können nur solche Worte in dem
+neuen Trainingsset vorhanden sein, zu denen ebensolche Wortvektoren auch vorliegen.
+Dies ist leider nur für einen gerinen Teil der Fall, wie in Abbildung \ref{fig:we4k} zu
+erkennen ist.
+
+\begin{figure}[h]
+  \centering
+  \begin{tabular}{r||cl|cl|cl}
+    \textsc{Datenset} & \multicolumn{2}{l|}{\textsc{\#Tripel}} & \multicolumn{2}{l|}{\textsc{\#Entitätstypen}} & \multicolumn{2}{l}{\textsc{\#Relationstypen}} \\
+    \hline
+    FB15k & 592.213 & & 14.951 & & 1.345 & \\
+    GER14k & 459.724 & (\textcolor{BrickRed}{$\downarrow$-22,37 \%}) & 14.334 & (\textcolor{BrickRed}{$\downarrow$-4,12 \%}) & 1.236 & (\textcolor{BrickRed}{$\downarrow$-8,1 \%}) \\
+    WE4k & 50.518 & (\textcolor{BrickRed}{$\downarrow$-91,47 \%}) & 3.623 & (\textcolor{BrickRed}{$\downarrow$-74,72 \%}) & 749 & (\textcolor{BrickRed}{$\downarrow$-39,40 \%}) \\
+  \end{tabular}
+  \caption[Daten des neuen Relationsdatensets im Vergleich zu FB15k und GER14k]{Daten des neuen Sets WE4k im Vergleich mit
+  FB15k und GER14k. Aufgelistet ist die Anzahl der Tripel (Datensätze), Entitäts- und Relationstypen und die Veränderung
+  der Anzahlen in Prozent im Vergleich zu FB15k in Klammern.\label{fig:we4k}}
+\end{figure}
+
+Dies ist dadurch zu erklären, dass in der Quelle der Originaldaten, nämlich Freebase,
+sehr viele sehr seltene Entitäten vertreten sind. Die vielen Freiwilligen, die über die
+Jahre dazu beigetragen haben, die Wissensdatenbank weiter zu vervollständigen, haben dabei auch
+viele unbekanntere Filme, Personen etc. hinzugefügt, die in einem Korpus eher selten zu finden sind.\\
+
+Da die resultierende Menge an Tripeln gerundet ungefähr viertausend einzigartig Entitäten enthält, die auch als
+Wortvektorrepräsentation (\emph{word embeddings}) vorliegen, wird dieses Datenset WE4k genannt.
+
+\section{Training}
+
+Das Training der Relationsvektoren findet in einer sehr zu der in Kapitel \ref{Chapter6} beschrieben Methode sehr
+ähnlichen Art und Weise statt:
+
+\section{Evaluation}
+
+\begin{figure}[h]
+  \centering
+  \begin{tabular}{r||c|c}
+    \textsc{Datenset} & \textsc{Gemittelter Rang} & \textsc{Hits@10} \\
+     \hline
+     Mit max & 945,54 & 4,93 \\
+  \end{tabular}
+  \caption[Resultate auf mit Wordvektoren auf WE3k]{}
+\end{figure}

@@ -79,6 +79,9 @@ für jedes Tripel in $S$ entweder $h$ oder $t$ durch eine andere, zufällig gew�
   S' = \{(h', l, t) | h' \in E\} \cup \{(h, l, t') | t' \in E\}
 \end{equation}
 
+Diese Methode wird von (\cite{bordes2013translating}) Rausch-konstrastierendes Lernen(\emph{Noise-constrastive learning})
+genannt.
+
 Um die für das Training benötigte Verlustfunktion du definieren wird das Unähnlichkeitsmaß $d_p$ für ein Tripel bestimmt, welcher
 entweder aus der $L_1$- oder der $L_2$-Norm abgeleitet wird, also:
 \begin{equation}
@@ -90,7 +93,7 @@ entweder aus der $L_1$- oder der $L_2$-Norm abgeleitet wird, also:
 
 Nun kann die Verlustfunktion $\mathcal{L}$ erstellt werden:
 \begin{equation}
-  \mathcal{L} = \sum_{(h,l,t) \in S} \sum_{(h', l', t') \in S'} max(0, \gamma + d_p(h + l, t) - d(h' + l, t'))
+  \mathcal{L} = \sum_{(h,l,t) \in S} \sum_{(h', l', t') \in S'} max(0, \gamma + d_p(h + l, t) - d_p(h' + l, t'))
 \end{equation}
 
 Der Parameter $\gamma$ bezeichnet hier einen Hyperparameter, der dem System einen gewissen Spielraum lässt. Indem versucht
