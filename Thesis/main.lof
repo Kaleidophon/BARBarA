@@ -10,7 +10,7 @@
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Gegen\IeC {\"u}berstellung von Skip-Gram und CBOW}}{11}{figure.caption.30}
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Darstellung der Funktionsweise von DBSCAN}}{13}{figure.caption.34}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber verwendete vorgefertigte Datensets}}{15}{figure.caption.42}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber verwendete vorgefertigte Datensets}}{15}{figure.caption.41}
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Listen der \emph {k} n\IeC {\"a}chsten Nachbarn von W\IeC {\"o}rtern in verschiedenen Datensets. Inspiriert von (\cite {collobert2011natural}). \relax }}{18}{figure.caption.50}
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Anzahl der Annotatoren und Agreement (als $Cohen's\ \kappa $) der \textsc {Wortpaar}-Evaluationsdatensets. \relax }}{20}{figure.caption.61}
@@ -23,11 +23,11 @@
 \contentsline {figure}{\numberline {7.2}{\ignorespaces Modifizierter Projektionsalgorithmus}}{30}{figure.caption.95}
 \contentsline {figure}{\numberline {7.3}{\ignorespaces Parallelisierter Projektionsalgorithmus}}{31}{figure.caption.98}
 \contentsline {figure}{\numberline {7.4}{\ignorespaces Rechenzeiten f\IeC {\"u}r den Mappingschritt nach Anzahl von Threads}}{32}{figure.caption.101}
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Dreidimensionale Projektionen einiger durch das Mappingverfahren resultierender Vektorr\IeC {\"a}ume}}{34}{figure.caption.110}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Dreidimensionale Projektionen einiger durch das Mappingverfahren resultierender Vektorr\IeC {\"a}ume}}{35}{figure.caption.117}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Daten des neuen Relationsdatensets im Vergleich zu FB15k und GER14k}}{35}{figure.caption.114}
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Resultate auf mit Wordvektoren auf WE3k}}{36}{figure.caption.119}
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Daten des neuen Relationsdatensets im Vergleich zu FB15k und GER14k}}{37}{figure.caption.121}
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Resultate auf mit Wordvektoren auf WE3k}}{38}{figure.caption.126}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Quelle und Trainingsparameter f\IeC {\"u}r Wortvektoren}}{39}{figure.caption.125}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Quelle und Trainingsparameter f\IeC {\"u}r Wortvektoren}}{41}{figure.caption.132}
 \addvspace {10\p@ }

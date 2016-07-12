@@ -40,8 +40,8 @@ angewendet und kritisch reflektiert werden sollen.\\
 
   \begin{figure}[h]
     \centering
-    \begin{changemargin}{-1cm}{0cm}
-    \resizebox{1.15\textwidth}{!}{%
+    \begin{changemargin}{0cm}{0cm}
+    \resizebox{\textwidth}{!}{%
     \begin{tabular}{l|cccc}
        & \textsc{Frankreich} & \textsc{Bank} & \textsc{Computerlinguistik} & \textsc{gekratzt} \\
       \hline \hline
@@ -98,7 +98,7 @@ angewendet und kritisch reflektiert werden sollen.\\
       als den Winkel zwischen ihnen, mit einem Wert von $-1$ ($\hat{=}$ komplett unterschiedlich) über 0
       ($\hat{=}$ orthogonal) und $+1$ ($\hat{=}$ Equivalenz):
       \begin{equation}
-        cosine\_similarity(\vec{a}, \vec{b}) = \frac{\vec{a} \cdot \vec{b}}{\|\vec{a}\| \|\vec{b}\|}
+        cos(\vec{a}, \vec{b}) = \frac{\vec{a} \cdot \vec{b}}{\|\vec{a}\| \|\vec{b}\|}
       \end{equation}
       Danach kann mit \emph{Spearman's $\rho$} bzw. \emph{Spearman's rank correlation coefficient}
       anschließend festgestellt werden, ob die beiden Werte für die Wortpaare korrelieren, sprich ob
@@ -158,12 +158,12 @@ angewendet und kritisch reflektiert werden sollen.\\
 
     \subsubsection{Analogien}
 
-    Die \textsc{Google semantic/syntactic analogy datasets} wurden von Mikolov et al. (2013) [REFERENZ] eingefügt und bestehen
-    aus Analogien der Form \emph{a verhält sich zu a* wie b zu b*}. [REFERENZ] haben diese manuell übersetzt und durch
+    Die \textsc{Google semantic/syntactic analogy datasets} wurden von (\cite{mikolov2013efficient}) eingefügt und bestehen
+    aus Analogien der Form \emph{a verhält sich zu a* wie b zu b*}. (\cite{koper2015multilingual}) haben diese manuell übersetzt und durch
     drei menschliche Prüfer validieren lassen. Dabei wurde die Kategorie ``adjektiv - adverb'' fallengelassen, da sie
     im Deutschen nicht existiert, weshalb 18.552 Analogien übrigbleiben. Diese werden im Folgenden einfach als
     \textsc{Google} bezeichnet.\\ \\
-    \textsc{SemRel} wurde aus Synonomie-, Antonomie- und Hypernomie-Beziehungen von [REFERENZ] für das Deutsche und Englische
+    \textsc{SemRel} wurde aus Synonomie-, Antonomie- und Hypernomie-Beziehungen von (\cite{koper2015multilingual}) für das Deutsche und Englische
     konstruiert. Dabei werden Substantive, Verben und Adjektive berücksichtigt. In der deutschen Variante sind 2.462 (recht schwierige) Analogien enthalten,
     die aus teilweise sehr seltenen Wörter kreiert wurden.
 
@@ -179,15 +179,18 @@ angewendet und kritisch reflektiert werden sollen.\\
 
   \begin{figure}[h]
     \centering
+
+    \resizebox{\textwidth}{!}{%
     \begin{tabular}{l||l|l|l|l}
       \textsc{Datenset} & \textsc{Wortpaare65} & \textsc{Wortpaare222} & \textsc{Wortpaare350} & \textsc{Schm280} \\
       \hline
       Mark I & \textbf{-0,8096} & \textbf{-0,4640$_{(13)}$} & \textbf{-0,7302$_{(13)}$} & \textbf{-0,7094$_{(2)}$} \\
       Mark XIII & \textbf{-0,8247$_{(1)}$} & \textbf{-0,5066$_{(102)}$}  & \textbf{-0,7494$_{(132)}$} & -0,7097$_{(48)}$ \\
       Mark XIV & -0,8106$_{(1)}$ & -0,4953$_{(102)}$ & -0,7362$_{(132)}$ & \textbf{-0,7205$_{(48)}$} \\
-    \end{tabular}
+    \end{tabular}%
+    }
 
-    \vspace{1cm}
+    \vspace{0.5cm}
 
     \begin{tabular}{l||c|c}
       \textsc{Datenset} & \textsc{Google} & \textsc{SemRel} \\

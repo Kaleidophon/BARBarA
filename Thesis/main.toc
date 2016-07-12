@@ -18,7 +18,7 @@
 \contentsline {chapter}{\numberline {4}Vorbereitung}{15}{chapter.38}
 \contentsline {section}{\numberline {4.1}Vorbereitung}{15}{section.39}
 \contentsline {subsection}{\numberline {4.1.1}Verwendete Daten}{15}{subsection.40}
-\contentsline {subsection}{\numberline {4.1.2}Aufbereitung des Korpus}{15}{subsection.43}
+\contentsline {subsection}{\numberline {4.1.2}Aufbereitung des Korpus}{16}{subsection.43}
 \contentsline {subsection}{\numberline {4.1.3}Training der Wortvektoren}{16}{subsection.45}
 \contentsline {chapter}{\numberline {5}Evaluation der Wortvektoren}{17}{chapter.46}
 \contentsline {section}{\numberline {5.1}Evaluation der Wortvektoren}{17}{section.48}
@@ -38,18 +38,18 @@
 \contentsline {section}{\numberline {7.2}Algorithmus}{29}{section.90}
 \contentsline {section}{\numberline {7.3}Parallelisierter Algorithmus}{30}{section.97}
 \contentsline {section}{\numberline {7.4}Evaluation}{31}{section.102}
-\contentsline {section}{\numberline {7.5}Ergebnisse}{31}{section.103}
-\contentsline {section}{\numberline {7.6}Zwischendiskussion}{32}{section.104}
-\contentsline {subsection}{\numberline {7.6.1}Daten}{32}{subsection.105}
-\contentsline {subsection}{\numberline {7.6.2}Ansatz}{33}{subsection.111}
-\contentsline {chapter}{\numberline {8}Experiment C: Relationsvorhersage mit Wortvektorrepr\IeC {\"a}sentation}{35}{chapter.112}
-\contentsline {section}{\numberline {8.1}Datenerzeugung}{35}{section.113}
-\contentsline {section}{\numberline {8.2}Training}{36}{section.115}
-\contentsline {section}{\numberline {8.3}Evaluation}{36}{section.118}
-\contentsline {chapter}{\numberline {9}Fazit}{37}{chapter.120}
-\contentsline {section}{\numberline {9.1}Zusammenfassung}{37}{section.121}
-\contentsline {section}{\numberline {9.2}Diskussion}{37}{section.122}
-\contentsline {section}{\numberline {9.3}Ausblick}{38}{section.123}
-\contentsline {chapter}{\numberline {A}\IeC {\"U}bersicht \IeC {\"u}ber die Parameter zum Trainieren der Wortvektoren}{39}{appendix.124}
-\contentsline {chapter}{\numberline {B}Evaluationen der Wortvektoren}{41}{appendix.126}
-\contentsline {chapter}{Literatur}{43}{appendix*.127}
+\contentsline {section}{\numberline {7.5}Ergebnisse}{33}{section.110}
+\contentsline {section}{\numberline {7.6}Zwischendiskussion}{33}{section.111}
+\contentsline {subsection}{\numberline {7.6.1}Daten}{33}{subsection.112}
+\contentsline {subsection}{\numberline {7.6.2}Ansatz}{34}{subsection.118}
+\contentsline {chapter}{\numberline {8}Experiment C: Relationsvorhersage mit Wortvektorrepr\IeC {\"a}sentation}{37}{chapter.119}
+\contentsline {section}{\numberline {8.1}Datenerzeugung}{37}{section.120}
+\contentsline {section}{\numberline {8.2}Training}{38}{section.122}
+\contentsline {section}{\numberline {8.3}Evaluation}{38}{section.125}
+\contentsline {chapter}{\numberline {9}Fazit}{39}{chapter.127}
+\contentsline {section}{\numberline {9.1}Zusammenfassung}{39}{section.128}
+\contentsline {section}{\numberline {9.2}Diskussion}{39}{section.129}
+\contentsline {section}{\numberline {9.3}Ausblick}{40}{section.130}
+\contentsline {chapter}{\numberline {A}\IeC {\"U}bersicht \IeC {\"u}ber die Parameter zum Trainieren der Wortvektoren}{41}{appendix.131}
+\contentsline {chapter}{\numberline {B}Evaluationen der Wortvektoren}{43}{appendix.133}
+\contentsline {chapter}{Literatur}{45}{appendix*.134}

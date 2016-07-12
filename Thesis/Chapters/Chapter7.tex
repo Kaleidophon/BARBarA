@@ -151,6 +151,52 @@ Gerechnet wurde auf eine Hardware mit 40 Prozessorkernen und [RESTLICHE SPECS EI
 
 \section{Evaluation}
 
+Die Evaluation der im vorherigen Schritt gewonnen Daten findet folgendermaßen statt: Für jedes gewonnene Cluster $c$ wird für
+jedes Paar von Vektoren die Zughehörigkeit der entsprechenden Wörter zu einer \textsc{Freebase}-Relation $r$ geprüft.
+Dem gesamten Cluster kann dann die Relation $r_C$ zugeordnet werden, die die meisten Treffer zu verzeichnet hat.
+
+\begin{equation}
+    r_c = \underset{r \in R}{argmax}\ \sum_{(\vec{v}(w_1), \vec{v}(w_2)) \in c}  \mathbbm{1}_{r}((w_1, w_2))
+\end{equation}
+
+Die ``Reinheit'' $P$ eines Clusters kann dann errechnet werden, indem der Anteil der zur Relation des gesamten Clusters
+zugehörigen Wortpaaren bestimmt wird\footnote{Die Indikatorfuntion mit $\mathbbm{1}_{r_c}((w_1, w_2))$ liefert $1$, wenn
+$(w_1, w_2) \in r_c$ gilt, ansonsten $0$.}:
+
+\begin{equation}
+    P(c) = (\sum_{(\vec{v}(w_1), \vec{v}(w_2)) \in c} \mathbbm{1}_{r_c}((w_1, w_2)))\ /\ |c|
+\end{equation}
+
+Diese Metrik bestraft allerdings, wenn in einem Cluster neue Paare einer Relation vorkommen, die noch nicht in \textsc{Freebase}
+vorhanden sind. Da dies allerdings auch ein Teilziel dieses Ansatzes war, ebensolche Paare neu aufzufinden, wird noch
+eine modifizierte Version dieser Metrik behandelt: Es gilt dabei vor allem, unbekannte richtige Wortpaare von falschen
+zu unterscheiden. Zu diesem Zweck wird die Annahme getroffen, dass alle Vektoren $\vec{v}(h)$ und $\vec{v}(t)$, die zu den Kopfentitäten $H_c$ und
+den Fußentitäten $T_c$ gehören, recht ähnlich sind. So wird für jedes Cluster zunächst für ebendiese Entitäten ein Durchschnitt
+errechnet, deren Zugehörigkeit zu $r_c$ festgestellt wurde:
+
+\begin{equation}
+  \tilde{h} = (\sum_{\vec{v}(h) \in H_c} \vec{v}(h))\ /\ |H_c|
+\end{equation}
+
+\begin{equation}
+  \tilde{t} = (\sum_{\vec{v}(t) \in H_c} \vec{v}(t))\ /\ |T_c|
+\end{equation}
+
+Demnach erweitern wir $r_c$ um die Wortpaare, deren Vektoren den durchschnittlichen Kopf- und Fußvektoren ähnlich genug sind.
+Zu diesem Zweck wird ein Schwellenwert $\tau$ definiert, den ein potenziell zu $r_c$ zugehöriges Wortpaar im Bezug auf
+Cosinusänlichkeit nicht unterschreiten darf:
+
+\begin{equation}
+  r_c^+ = r_c\ \cup\ \{(w_1, w_2)| (\vec{v}(w_1), \vec{v}(w_2)) \in c\ \land\ cos(\vec{v}(w_1), \tilde{h}) \geq \tau\ \land\ cos(\vec{v}(w_2), \tilde{t}) \geq \tau\}
+\end{equation}
+
+Auf Basis der Gleichung (7.5) folgt für die modifizierte Reinheit eines Wortpaarclusters $P^+$:
+
+\begin{equation}
+  P^+(c) = (\sum_{(\vec{v}(w_1), \vec{v}(w_2)) \in c} \mathbbm{1}_{r_c^+}((w_1, w_2)))\ /\ |c|
+\end{equation}
+
+
 \section{Ergebnisse}
 
 [ERGEBNISSE]
