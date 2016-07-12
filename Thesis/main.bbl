@@ -249,6 +249,35 @@
   \field{year}{1954}
 \endentry
 
+\entry{koper2015multilingual}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {K{\"o}per}{K.}%
+     {Maximilian}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Scheible}{S.}%
+     {Christian}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Walde}{W.}%
+     {Sabine~Schulte}{S.~S.}%
+     {im}{i.}%
+     {}{}}%
+  }
+  \strng{namehash}{KMSCWSSi1}
+  \strng{fullhash}{KMSCWSSi1}
+  \field{labelyear}{2015}
+  \field{sortinit}{K}
+  \field{pages}{40}
+  \field{title}{Multilingual reliability and “semantic” structure of
+  continuous word spaces}
+  \field{journaltitle}{IWCS 2015}
+  \field{year}{2015}
+\endentry
+
 \entry{levy2014dependency}{inproceedings}{}
   \name{author}{2}{}{%
     {{}%
@@ -389,6 +418,34 @@
   \field{title}{word2vec parameter learning explained}
   \field{journaltitle}{arXiv preprint arXiv:1411.2738}
   \field{year}{2014}
+\endentry
+
+\entry{rubenstein1965contextual}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Rubenstein}{R.}%
+     {Herbert}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Goodenough}{G.}%
+     {John~B}{J.~B.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {ACM}%
+  }
+  \strng{namehash}{RHGJB1}
+  \strng{fullhash}{RHGJB1}
+  \field{labelyear}{1965}
+  \field{sortinit}{R}
+  \field{number}{10}
+  \field{pages}{627\bibrangedash 633}
+  \field{title}{Contextual correlates of synonymy}
+  \field{volume}{8}
+  \field{journaltitle}{Communications of the ACM}
+  \field{year}{1965}
 \endentry
 
 \entry{schafer2012building}{inproceedings}{}

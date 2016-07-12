@@ -91,9 +91,14 @@ entweder aus der $L_1$- oder der $L_2$-Norm abgeleitet wird, also:
     d_2(h + l, t) = \sqrt{\sum_{i=1}^k \| h_i + l_i - t_i \|^2}
 \end{equation}
 
+Zuletzt werden noch Tripel $s$ aus $S$ und zufällige Tripel $s'$ aus $S'$ in Pärchen in einem neuen Datenset $S^*$ gruppiert:
+\begin{equation}
+  S^* = \{(s, sample(S'): s \in S\}
+\end{equation}
+
 Nun kann die Verlustfunktion $\mathcal{L}$ erstellt werden:
 \begin{equation}
-  \mathcal{L} = \sum_{(h,l,t) \in S} \sum_{(h', l', t') \in S'} max(0, \gamma + d_p(h + l, t) - d_p(h' + l, t'))
+  \mathcal{L} = \sum_{((h,l,t), (h', l, t')) \in S^*} max(0, \gamma + d_p(h + l, t) - d_p(h' + l, t'))
 \end{equation}
 
 Der Parameter $\gamma$ bezeichnet hier einen Hyperparameter, der dem System einen gewissen Spielraum lässt. Indem versucht

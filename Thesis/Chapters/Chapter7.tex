@@ -149,53 +149,11 @@ Gerechnet wurde auf eine Hardware mit 40 Prozessorkernen und [RESTLICHE SPECS EI
   mit nur einem Thread gemessen.\label{fig:times}}
 \end{figure}
 
-\section{Clustering}
-
-\emph{Clustering} bezeichnet eine Art von unüberwachten maschinellen Lernen,
-die versucht, Elemente, die nach vorher definierten Maßgaben als ähnlich erachtet
-werden sollen, zu gruppieren.\\
-Die Literatur zu diesem Thema bietet dabei eine Fülle von Algorithmen mit verschiedenen
-Grundannahmen, aus denen es zu wählen gilt. Für die Aufgaben in dieser Arbeit wurde
-der DBSCAN-Algorithmus (\textbf{D}ensity-\textbf{B}ased \textbf{S}patial \textbf{C}lustering of
-\textbf{A}pplications with \textbf{N}oise) gewählt, da er folgende Kriterien erfüllt:
-\begin{itemize}
-  \item DBSCAN erlaubt es, dass nicht alle Datenpunkte bei der
-  Terminierung des Algorithmus einem Cluster zugeordnet sein müssen (\emph{Outlier detection})
-  \item Die Anzahl der Cluster muss bei Beginn des Algorithmus nicht festgelegt werden.
-  \item Cluster werden nicht nach der räumlichen Distanz zwischen den Punkten gebildet, sondern nach deren
-  Dichte im Raum. Dies lässt auch nicht-sphärische Clusterformen zu.
-\end{itemize}
-
-Zur Erklärung von DBSCAN müssen zuerst einige Definitionen erstellt werden (siehe Abbildung \ref{fig:dbscan} zur visuellen
-Darstellung):
-\begin{itemize}
-  \item Ein Punkt $p$ in den Daten wird dann als
-  Kernpunkt (\emph{core point}) bezeichnet, sofern mindesten $minPts$ Punkte innerhalb einem Radius $\epsilon$ vorhanden sind.\\
-  Diese Punkte sind von $p$ \emph{direkt erreichbar}.
-  \item Ein Punkt $q$ ist von $p$ erreichbar, sofern es einen Pfad $p_1, \ldots, p_n$ mit $p_1 = p$ und $p_n = q$ gibt, wobei
-  jeder Punkt $p_{i+1}$ von einem Punkt $p_i$ direkt erreichbar ist.
-  \item Alle Punkte, die nicht von einem anderen Punkt aus direkt erreichbar sind, sind Ausreißer (\emph{Outlier}).
-  \item Zwei Punkte $p$ und $q$ sind \emph{direkt verbunden}, sofern es einen Punkt $o$ gibt,
-  von dem aus beide Punkte direkt erreichbar sind.
-  \item Cluster bestehen aus Punkten, die alle miteinander direkt verbunden sind.
-\end{itemize}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.6\textwidth]{../img/DBSCAN-Illustration.png}
-  \caption[Darstellung der Funktionsweise von DBSCAN]{Darstellung der Funktionsweise von DBSCAN. Punkt A ist ein Kernpunkt, die
-  Punkte B und C sind von A aus erreichbar. Punkt N ist nicht erreichbar und damit ein Ausreißer.\label{fig:dbscan}\footnotemark}
-\end{figure}
-\footnotetext{Abbildung von
-Chire - Eigenes Werk, CC BY-SA 3.0, \url{https://commons.wikimedia.org/w/index.php?curid=17045963} (zuletzt abgerufen am
-25.04.16).}
-
-Der Algorithmus ist von linearer Komplexität, sofern ihm eine geeignete Indexierung der Daten zugrunde gelegt wird, ansonsten
-verhält sich die Komplexität quadratische zur Anzahl der Datenpunkte\footnote{Bei der
-\verb|scikit-learn|-Implementation wird beispielsweise ein Nearest-Neighbour-Graph verwendet:
-\url{http://scikit-learn.org/stable/modules/generated/sklearn.cluster.dbscan.html} (zuletzt abgerufen am 25.04.16)}.
+\section{Evaluation}
 
 \section{Ergebnisse}
+
+[ERGEBNISSE]
 
 \section{Zwischendiskussion}
 

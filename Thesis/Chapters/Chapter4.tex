@@ -7,9 +7,39 @@
 %----------------------------------------------------------------------------------------
 
 \section{Vorbereitung}
-Bla
 
-  \subsection{Extraktion von Named Entities}
+  Für die nachfolgenden Experimente in den Kapiteln \ref{Chapter5}, \ref{Chapter6}, \ref{Chapter7} und \ref{Chapter8}
+  mussten einige Daten zuerst beschafft und unter Umständen aufbereitet werden. Die ergriffenen Maßnahmen werden
+  deshalb in diesem Kapitel beschrieben.
+
+  \subsection{Verwendete Daten}
+
+  \textsc{Google datasets}\footnote{Eigentlich: \textsc{Google semantic/syntactic analogy datasets}}
+
+  \begin{figure}[h]
+    \centering
+    \begin{changemargin}{-0.5cm}{0cm}
+    \resizebox{1.15\textwidth}{!}{%
+    \begin{tabular}{l|rl|l}
+      \textbf{Name} & \multicolumn{2}{l|}{\textbf{Beschreibung}} & \textbf{Quelle} \\
+      \hline \hline
+      \textsc{DECOW14X} & \multicolumn{2}{l|}{Deutschsprachiger Webkorpus} & (\cite{schafer2012building}) \\
+      \hline
+      \textsc{FB14k} & \multicolumn{2}{l|}{592k Relationstripel aus Freebase} & (\cite{bordes2013translating}) \\
+      \hline
+      \textsc{Schm280} & 280 & \multirow{4}{*}{\vast \} \parbox[c]{4cm}{nach Ähnlichkeit bewertete Wortpaare}} & (\cite{koper2015multilingual})\\
+      \textsc{Wortpaare65} & 65 & & (\cite{rubenstein1965contextual}) \\
+      \textsc{Wortpaare222} & 222 & & (\cite{rubenstein1965contextual}) \\
+      \textsc{Wortpaare350} & 350 & & (\cite{rubenstein1965contextual}) \\
+      \hline
+      \textsc{Google datasets} & \multicolumn{2}{l|}{Datenset mit 18.552 Analogien} & (\cite{koper2015multilingual}) \\
+      \textsc{SemRel} & \multicolumn{2}{l|}{Datenset mit 2.462 Analogien} & (\cite{koper2015multilingual}) \\
+    \end{tabular}%
+    }
+  \end{changemargin}
+  \caption[Übersicht über verwendete vorgefertigte Datensets]{}
+  \end{figure}
+
 
   \subsection{Aufbereitung des Korpus}
 

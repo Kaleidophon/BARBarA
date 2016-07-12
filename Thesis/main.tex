@@ -46,15 +46,18 @@ headsepline, % Uncomment to get a line under the header
 \usepackage{lscape}
 \usepackage[]{algorithm2e}
 \usepackage{caption}
-\usepackage{hyperref}
 \usepackage{fancyvrb}
 \usepackage{multirow}
 \usepackage{graphics}
 \usepackage{rotating}
 \usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{chngcntr}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 
 \renewcommand*\rmdefault{bch} % bch
+
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
 
 \VerbatimFootnotes
 \captionsetup{margin=10pt,font=small,labelfont=bf}
@@ -66,6 +69,8 @@ headsepline, % Uncomment to get a line under the header
    andothers = {{et\,al\adddot}},
 }
 
+\counterwithout{footnote}{chapter}
+
 \usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
 
 \newenvironment{itquote}
@@ -73,6 +78,13 @@ headsepline, % Uncomment to get a line under the header
   {\end{quote}\ignorespacesafterend}
 
 \DeclareUnicodeCharacter{00A0}{ }
+
+\makeatletter
+\newcommand{\vast}{\bBigg@{4}}
+\newcommand{\Vast}{\bBigg@{5}}
+\makeatother
+
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
 %----------------------------------------------------------------------------------------
 %	MARGIN SETTINGS
@@ -98,7 +110,7 @@ headsepline, % Uncomment to get a line under the header
 %	THESIS INFORMATION
 %----------------------------------------------------------------------------------------
 
-\thesistitle{Analyse der Relationsvorhersage im Deutschen mit Wortvektoren} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
+\thesistitle{Analyse der Relationsvorhersage im Deutschen mithilfe von Wortvektorrepräsentationen} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
 \thesistitleenglish{Analysis of relation prediction in German using word vector representations}
 \supervisor{Dr. Yannick \textsc{Versley}} % Your supervisor's name, this is used in the title page, print it elsewhere with \supname
 \examiner{} % Your examiner's name, this is not currently used anywhere in the template, print it elsewhere with \examname

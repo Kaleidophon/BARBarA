@@ -22,13 +22,17 @@ erkennen ist.
 
 \begin{figure}[h]
   \centering
+  \begin{changemargin}{-1cm}{0cm}
+  \resizebox{1.15\textwidth}{!}{%
   \begin{tabular}{r||cl|cl|cl}
     \textsc{Datenset} & \multicolumn{2}{l|}{\textsc{\#Tripel}} & \multicolumn{2}{l|}{\textsc{\#Entitätstypen}} & \multicolumn{2}{l}{\textsc{\#Relationstypen}} \\
     \hline
     FB15k & 592.213 & & 14.951 & & 1.345 & \\
     GER14k & 459.724 & (\textcolor{BrickRed}{$\downarrow$-22,37 \%}) & 14.334 & (\textcolor{BrickRed}{$\downarrow$-4,12 \%}) & 1.236 & (\textcolor{BrickRed}{$\downarrow$-8,1 \%}) \\
     WE4k & 50.518 & (\textcolor{BrickRed}{$\downarrow$-91,47 \%}) & 3.623 & (\textcolor{BrickRed}{$\downarrow$-74,72 \%}) & 749 & (\textcolor{BrickRed}{$\downarrow$-39,40 \%}) \\
-  \end{tabular}
+  \end{tabular}%
+  }
+\end{changemargin}
   \caption[Daten des neuen Relationsdatensets im Vergleich zu FB15k und GER14k]{Daten des neuen Sets WE4k im Vergleich mit
   FB15k und GER14k. Aufgelistet ist die Anzahl der Tripel (Datensätze), Entitäts- und Relationstypen und die Veränderung
   der Anzahlen in Prozent im Vergleich zu FB15k in Klammern.\label{fig:we4k}}
@@ -45,7 +49,21 @@ Wortvektorrepräsentation (\emph{word embeddings}) vorliegen, wird dieses Datens
 \section{Training}
 
 Das Training der Relationsvektoren findet in einer sehr zu der in Kapitel \ref{Chapter6} beschrieben Methode sehr
-ähnlichen Art und Weise statt:
+ähnlichen Art und Weise wie in Kapitel \ref{Chapter6} statt: Es wird zuerst eine Menge korrumpierter Tripel erstellt, bei denen entweder
+die Kopf- oder Fußentität ersetzt wurde.
+Mithilfe der ursprünglichen Tripel wird eine Menge aus Tripelpaaren erstellt, von denen der korrumpierte Teil jeweils
+zufällig aus $S'$ ausgewählt wird. Auch die Verlustfunktion gestaltet sich prinzipiell gleich.\\
+
+Der einzige Unterschied besteht in der Implementation des Algorithmus: So wird wird wegen der geringeren Menge an
+Daten darauf verzichtet, für jede Trainingsanzahl eine feste Anzahl von Tripelpaaren zufällig auszuwählen.
+Stattdessen richtet sich die Größe von $S_{batch}$ nach folgender Formel:
+
+\begin{equation}
+  S_{batch} \leftarrow sample(S^*, \floor*{\frac{|S^*|}{10}}+1)\footnote{Die Addtion von 1 dient dazu, bei weniger
+  von 10 Tripeln für eine Relation wenigstens mit einem Tripel zu trainieren. Der Rest ist eine Heuristik.}
+\end{equation}
+
+
 
 \section{Evaluation}
 
@@ -54,7 +72,7 @@ Das Training der Relationsvektoren findet in einer sehr zu der in Kapitel \ref{C
   \begin{tabular}{r||c|c}
     \textsc{Datenset} & \textsc{Gemittelter Rang} & \textsc{Hits@10} \\
      \hline
-     Mit max & 945,54 & 4,93 \\
+     WE4k & 1122,03 & 5,67 \\
   \end{tabular}
   \caption[Resultate auf mit Wordvektoren auf WE3k]{}
 \end{figure}

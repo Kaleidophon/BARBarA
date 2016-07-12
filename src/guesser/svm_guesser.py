@@ -1,53 +1,44 @@
-from sklearn.svm import SVC
+import argparse
+import codecs
+import operator
+import re
+from collections import defaultdict
+from random import choice, sample
+
 import numpy as np
 from gensim.models import Word2Vec as w2v
-from numpy.random import uniform
 from numpy.linalg import norm
-import argparse
-import operator
-from random import choice, sample
-import re
-
-import codecs
-from collections import defaultdict
+from numpy.random import uniform
 
 
 def main():
+	def lossf(args):
+		v_a, v_b, v_r = args
+		return norm(v_a + v_r - v_b)
+
 	argparser = init_argparser()
 	args = argparser.parse_args()
 	print args
+	relation_vectors = None
 	if args.train:
-		train(args.sets, args.model)
-	else:
-		convert_data(args.sets, args.tql, args.model)
+		model, grouped_train, grouped_valid, grouped_test, grouped_corrupted, relation_types, entities = \
+			prepare_training(args.sets, args.model)
+		relation_vectors = train(model, grouped_train, grouped_corrupted, lossf, relation_types)
+		if args.out:
+			dump_relation_vectors(relation_vectors, args.out)
+	if args.eval:
+		if args.input:
+			relation_vectors = load_relation_vectors(args.input)
+		model, grouped_train, grouped_valid, grouped_test, grouped_corrupted, relation_types, entities = \
+			prepare_training(args.sets, args.model)
+		evaluate(model, grouped_test, relation_vectors, entities)
+
+	#convert_data(args.sets, args.tql, args.model)
 
 # ---------------------------------------------------------------------------------------
 
 
-class SVMGuesser(object):
-
-	def __init__(self, input_data):
-		self.input_data = input_data
-
-	def train(self, data):
-		guesser = SVC()
-		X = []
-		y = []
-		for sample in data:
-			X.append(sample[0])
-			y.append(sample[1])
-
-		X = np.array(X)
-		y = np.array(y)
-		guesser.fit(X, y)
-
-	def predict_relation(self, v1, v2):
-		pass
-
-
-# ---------------------------------------------------------------------------------------
-
-def train(sets_path, vector_inpath, epochs=1000, learning_rate=0.01, margin=1):
+def prepare_training(sets_path, vector_inpath):
 	def _read_triple_file(inpath):
 		triples = []
 
@@ -70,10 +61,6 @@ def train(sets_path, vector_inpath, epochs=1000, learning_rate=0.01, margin=1):
 
 		return new_triples, relation_types
 
-	def lossf(args):
-		v_a, v_b, v_r = args
-		return norm(v_a + v_r - v_b)
-
 	train_path = sets_path + "freebase_words-train.txt"
 	valid_path = sets_path + "freebase_words-valid.txt"
 	test_path = sets_path + "freebase_words-test.txt"
@@ -95,14 +82,6 @@ def train(sets_path, vector_inpath, epochs=1000, learning_rate=0.01, margin=1):
 	print "Loading word embeddings..."
 	model = load_vectors(vector_inpath)
 
-	# Prepare for training
-	# initialize relation vectors
-	def _init_rel_vector():
-		v_r = uniform(-0.6, 0.6, 100)
-		return v_r / norm(v_r)
-
-	relation_vectors = {index: _init_rel_vector() for index in range(len(relation_types.keys()))}
-
 	# Transform data sets
 	print "Group triples by relation type..."
 	entities = set()
@@ -113,6 +92,18 @@ def train(sets_path, vector_inpath, epochs=1000, learning_rate=0.01, margin=1):
 
 	print "Create corrupted triplets..."
 	grouped_corrupted = create_corrupt_triples(grouped_train, entities)
+
+	return model, grouped_train, grouped_valid, grouped_test, grouped_corrupted, relation_types, entities
+
+
+def train(model, grouped_train, grouped_corrupted, lossf, relation_types, epochs=1000, learning_rate=0.01, margin=1):
+	# Prepare for training
+	# initialize relation vectors
+	def _init_rel_vector():
+		v_r = uniform(-0.6, 0.6, 100)
+		return v_r / norm(v_r)
+
+	relation_vectors = {index: _init_rel_vector() for index in range(len(relation_types.keys()))}
 
 	# Training
 	print "\n--------- TRAINING ---------"
@@ -130,10 +121,9 @@ def train(sets_path, vector_inpath, epochs=1000, learning_rate=0.01, margin=1):
 		average_error = 0.0
 
 		for epoch in range(epochs):
-			#print "Beginning epoch %i..." % (epoch+1)
 			np.random.shuffle(data)
 			average_error = 0.0
-			for d in data:
+			for d in sample(data, int(len(data)/5.0)+1):
 				v_r = relation_vectors[i]
 				v_a = model[d[0]]
 				v_b = model[d[1]]
@@ -152,27 +142,61 @@ def train(sets_path, vector_inpath, epochs=1000, learning_rate=0.01, margin=1):
 				real_loss = raw_loss if raw_loss > 0 else 0
 				average_error += real_loss
 
+			average_error /= len(data)
 			relation_vectors[i] = v_r - (v_r * average_error * learning_rate)
 
 			if epoch == 0:
 				first_loss = average_error
 
-			average_error /= len(data)
+			if epoch % 100 == 0:
+				print average_error
 
 		print "First loss: " + str(first_loss)
 		print "Last loss: " + str(average_error)
 		first_loss += 0.001 if first_loss == 0 else 0  # Avoid division by zero
 		print "Change in loss: " + str((average_error - first_loss) / first_loss * 100.0) + " %"
 
+	return relation_vectors
+
+
+def _stupid_train(model, grouped_train, relation_types):
+	relation_vectors = [None] * len(relation_types)
+
+	# Training
+	print "\n--------- STUPID TRAINING ---------"
+
+	for i in range(len(grouped_train.keys())):
+		data = grouped_train[i]
+		current_relation_vector = np.array([0.0] * 100)
+
+		for d in data:
+			v_a = model[d[0]]
+			v_b = model[d[1]]
+			current_relation_vector += (v_b - v_a)
+
+		relation_vectors[i] = current_relation_vector / len(data)
+
+	return relation_vectors
+
+
+def evaluate(model, grouped_test, relation_vectors, entities):
+
+	def _print_eval(mean_rank_r, mean_rank_l, count_l, count_r):
+		print "Mean rank: " + str((mean_rank_r / count_r + mean_rank_l / count_l) / 2.0)
+		print "Mean rank left: " + str(mean_rank_l / count_l)
+		print "Mean rank right: " + str(mean_rank_r / count_r)
+		print "Mean hits@10: " + str((mean_hitsat10l / count_l + mean_hitsat10r / count_r) / 2.0 * 100.0)
+		print "Mean hits@10 left: " + str(mean_hitsat10l * 1.0 / count_l * 100.0)
+		print "Mean hits@10 right: " + str(mean_hitsat10r * 1.0 / count_r * 100.0) + "\n"
+
 	# Evaluation
 	print "\n--------- EVALUATION ---------"
-	mean_rank = 0.0
 	mean_rank_l = 0.0
 	mean_rank_r = 0.0
-	mean_hitsat10 = 0.0
 	mean_hitsat10l = 0.0
 	mean_hitsat10r = 0.0
-	n = 0.0
+	count_l = 0.0
+	count_r = 0.0
 
 	for i in range(len(grouped_test.keys())):
 		data = grouped_test[i]
@@ -183,9 +207,6 @@ def train(sets_path, vector_inpath, epochs=1000, learning_rate=0.01, margin=1):
 			v_r = relation_vectors[i]
 			v_a = model[d[0]]
 			v_b = model[d[1]]
-			#v_a /= norm(v_a)
-			#v_b /= norm(v_b)
-			#v_r /= norm(v_r)
 
 			# Replace left
 			rank_l, hitsat10l = rank_entities(v_b - v_r, d[0], model, entities)
@@ -194,32 +215,20 @@ def train(sets_path, vector_inpath, epochs=1000, learning_rate=0.01, margin=1):
 			rank_r, hitsat10r = rank_entities(v_a + v_r, d[1], model, entities)
 
 			# Add to average values
-			mean_rank += rank_l + rank_r
 			mean_rank_r += rank_r
 			mean_rank_l += rank_l
 
-			mean_hitsat10 += 1 if hitsat10l else 0
-			mean_hitsat10 += 1 if hitsat10r else 0
 			mean_hitsat10l += 1 if hitsat10l else 0
 			mean_hitsat10r += 1 if hitsat10r else 0
 
-			n += 2
+			count_l += 1
+			count_r += 1
 
-			if n % 40 == 0:
-				print "Mean rank: " + str(mean_rank / n)
-				print "Mean rank left: " + str(mean_rank_l / n / 2.0)
-				print "Mean rank right: " + str(mean_rank_r / n / 2.0)
-				print "Mean hits@10: " + str(mean_hitsat10 * 1.0 / n * 100.0)
-				print "Mean hits@10 left: " + str(mean_hitsat10l * 1.0 / n * 50.0)
-				print "Mean hits@10 right: " + str(mean_hitsat10r * 1.0 / n * 50.0)
+			if (count_l + count_r) % 40 == 0:
+				_print_eval(mean_rank_r, mean_rank_l, count_r, count_l)
 
-	print "\n--------- FINAL RESULTS ---------"
-	print "Mean rank: " + str(mean_rank / n)
-	print "Mean rank left: " + str(mean_rank_l / n / 2.0)
-	print "Mean rank right: " + str(mean_rank_r / n / 2.0)
-	print "Mean hits@10: " + str(mean_hitsat10 * 1.0 / n * 100.0)
-	print "Mean hits@10 left: " + str(mean_hitsat10l * 1.0 / n * 50.0)
-	print "Mean hits@10 right: " + str(mean_hitsat10r * 1.0 / n * 50.0)
+	print "--------- FINAL RESULTS ---------"
+	_print_eval(mean_rank_r, mean_rank_l, count_r, count_l)
 
 
 def rank_entities(reference, solution, model, entities):
@@ -233,9 +242,11 @@ def rank_entities(reference, solution, model, entities):
 		if entity == solution:
 			solution_score = score
 
-	ranks = sorted(ranks, key=operator.itemgetter(1))
+	sorted_ranks = sorted(ranks, key=operator.itemgetter(1))
 
-	return get_rank(solution, ranks), solution_score <= ranks[9][1]
+	solution_rank = get_rank(solution, sorted_ranks)
+
+	return get_rank(solution, sorted_ranks), solution_rank <= 9
 
 
 def get_rank(target, ranks):
@@ -376,6 +387,16 @@ def read_tql_file(tql_inpath):
 	return codes2names
 
 
+def dump_relation_vectors(relation_vectors, outpath):
+	print "Saving relation vectors to " + outpath
+	np.save(outpath, relation_vectors)
+
+
+def load_relation_vectors(inpath):
+	print "Loading relation vectors from " + inpath
+	return np.load(inpath).tolist()
+
+
 def extract_data_from_uri(uri):
 	uri = uri.replace("<http://de.dbpedia.org/resource/", "")
 	uri = uri.replace("<http://rdf.freebase.com/ns/", "")
@@ -384,11 +405,23 @@ def extract_data_from_uri(uri):
 
 
 def load_vectors(vector_inpath):
+	"""
+
+	@param vector_inpath: Path to word2vec model file
+	"""
 	model = w2v.load_word2vec_format(vector_inpath, binary=False)
 	return model
 
 
 def test_coverage(triples, model):
+	"""
+	Test the coverage of a dataset consisting of freebase triples on word2vec word embeddings.
+	For every triple (h, l, t), the entities h and t are taken and used for look up in the word2vec
+	model.
+
+	@param triples: list of 3-tuples (freebase triples)
+	@param model: gensim word2vec model
+	"""
 	entities = set()
 	errors = 0
 	found_entities = set()
@@ -410,11 +443,19 @@ def test_coverage(triples, model):
 
 
 def init_argparser():
+	"""
+	Initialize all arguments for an ArgumentParser object and return it.
+
+	@returns {ArgumentParser} argument parser object
+	"""
 	argparser = argparse.ArgumentParser()
 	argparser.add_argument('--model', required=True, help='Path to word vector model')
 	argparser.add_argument('--tql', help='Path to .tql file')
 	argparser.add_argument('--sets', required=True, help='Path to train / valid / test sets (folder)')
 	argparser.add_argument('--train', action='store_true', help="Start training!")
+	argparser.add_argument('--eval', action='store_true', help="Start evaluation!")
+	argparser.add_argument('--out', type=str, help="Output path for relation vectors.")
+	argparser.add_argument('--input', type=str, help="Input path for relation vectors.")
 	return argparser
 
 if __name__ == "__main__":
