@@ -17,7 +17,7 @@
   Die anfangs verwendeten Daten lassen sich grob in vier Kategorien einteilen: Den Korpus, das Relationsdatenset,
   Wortähnlichkeitslisten sowie Analogiedatensets (siehe Abbildung \ref{fig:datasets}).\\
   Als Korpus wurde der DECOW14X-Korpus verwendet. Genaueres über dessen Beschaffenheit und Vorverarbeitung für das
-  Training von Wortvektoren wird im nächsten Abschnitt beschrieben.
+  Training von Wortvektoren werden in \ref{sec:corpusprep} und \ref{sec:vectrain} beschrieben.
 
   \begin{figure}[h]
     \centering
@@ -54,7 +54,7 @@
   gegeben ist.
 
 
-  \subsection{Aufbereitung des Korpus}
+  \subsection{Aufbereitung des Korpus}\label{sec:corpusprep}
 
   Als Textressource wurde das DECOW14X-Korpus (DE = Deutsch, COW = ``\textbf{CO}rpus from the \textbf{W}eb'') verwendet.
   Dieses Korpus von (\cite{schafer2012building})  besteht aus 21 Texten,
@@ -71,7 +71,7 @@
   \end{itemize}
 
 
-  \subsection{Training der Wortvektoren}
+  \subsection{Training der Wortvektoren}\label{sec:vectrain}
 
   Wortvektoren werden mithilfe des Tools \emph{word2vec} und zwei verschiedenen Modellen trainiert: Continuous-Bag-of-Words (CBOW)
   und Skip-Gram. Das CBOW-Model wurde zuerst von (\cite{mikolov2013efficient}) vorgestellt. Die Erklärung der Funktionsweise

@@ -74,7 +74,7 @@ einen bestimmten Schwellenwert $\gamma$ überschreitet, also $\Lambda(t_1, t_2) 
 \end{figure}
 
 
-\section{Parallelisierter Algorithmus}
+\section{Parallelisierter Algorithmus}\label{sec:para-algo}
 
 Doch selbst mit den erwähnten Einschränkungen skaliert dieser Algorithmus nur bedingt. Um dem entgegenzuwirken, soll nun
 versucht werden, diesen mithilfe von \emph{Multithreading} zu parallelisieren. Bei dieser Technik beschäftigt ein Rechenprozess
@@ -135,7 +135,7 @@ Gerechnet wurde auf eine Hardware mit 40 Prozessorkernen und [RESTLICHE SPECS EI
 \begin{figure}[h]
   \centering
   \begin{tabular}{r|cc}
-    \textsc{Anzahl der Threads} & \textsc{Benötigte Zeit} (in $m$) & Beschleunigung (in \%) \\
+    \textsc{\#Threads} & \textsc{Zeit} (in $m$) & Beschleunigung (in \%) \\
     \hline
     1 & & - \\
     2 & & \\
@@ -145,7 +145,7 @@ Gerechnet wurde auf eine Hardware mit 40 Prozessorkernen und [RESTLICHE SPECS EI
     128 & & \\
   \end{tabular}
   \caption[Rechenzeiten für den Mappingschritt nach Anzahl von Threads]{Rechenzeiten für den Mappingschritt nach Anzahl von Threads auf
-  einem System mit 40 Prozessorkernen und [RESTLICHE SPECS EINFÜGEN]. Die Beschleunigung wird im Vergleich zum Ausführen des Programms
+  einem System unter möglichst gleichen Bedingungen. Die Beschleunigung wird im Vergleich zum Ausführen des Programms
   mit nur einem Thread gemessen.\label{fig:times}}
 \end{figure}
 
@@ -153,7 +153,7 @@ Gerechnet wurde auf eine Hardware mit 40 Prozessorkernen und [RESTLICHE SPECS EI
 
 Die Evaluation der im vorherigen Schritt gewonnen Daten findet folgendermaßen statt: Für jedes gewonnene Cluster $c$ wird für
 jedes Paar von Vektoren die Zughehörigkeit der entsprechenden Wörter zu einer \textsc{Freebase}-Relation $r$ geprüft.
-Dem gesamten Cluster kann dann die Relation $r_C$ zugeordnet werden, die die meisten Treffer zu verzeichnet hat.
+Dem gesamten Cluster kann dann die Relation $r_c$ zugeordnet werden, die die meisten Treffer zu verzeichnet hat.
 
 \begin{equation}
     r_c = \underset{r \in R}{argmax}\ \sum_{(\vec{v}(w_1), \vec{v}(w_2)) \in c}  \mathbbm{1}_{r}((w_1, w_2))
@@ -164,7 +164,7 @@ zugehörigen Wortpaaren bestimmt wird\footnote{Die Indikatorfuntion mit $\mathbb
 $(w_1, w_2) \in r_c$ gilt, ansonsten $0$.}:
 
 \begin{equation}
-    P(c) = (\sum_{(\vec{v}(w_1), \vec{v}(w_2)) \in c} \mathbbm{1}_{r_c}((w_1, w_2)))\ /\ |c|
+    P(c) = \sum_{(\vec{v}(w_1), \vec{v}(w_2)) \in c} \mathbbm{1}_{r_c}((w_1, w_2))\ /\ |c|
 \end{equation}
 
 Diese Metrik bestraft allerdings, wenn in einem Cluster neue Paare einer Relation vorkommen, die noch nicht in \textsc{Freebase}
@@ -175,11 +175,11 @@ den Fußentitäten $T_c$ gehören, recht ähnlich sind. So wird für jedes Clust
 errechnet, deren Zugehörigkeit zu $r_c$ festgestellt wurde:
 
 \begin{equation}
-  \tilde{h} = (\sum_{\vec{v}(h) \in H_c} \vec{v}(h))\ /\ |H_c|
+  \tilde{h} = \sum_{\vec{v}(h) \in H_c} \vec{v}(h)\ /\ |H_c|
 \end{equation}
 
 \begin{equation}
-  \tilde{t} = (\sum_{\vec{v}(t) \in H_c} \vec{v}(t))\ /\ |T_c|
+  \tilde{t} = \sum_{\vec{v}(t) \in H_c} \vec{v}(t)\ /\ |T_c|
 \end{equation}
 
 Demnach erweitern wir $r_c$ um die Wortpaare, deren Vektoren den durchschnittlichen Kopf- und Fußvektoren ähnlich genug sind.
@@ -193,21 +193,42 @@ Cosinusänlichkeit nicht unterschreiten darf:
 Auf Basis der Gleichung (7.5) folgt für die modifizierte Reinheit eines Wortpaarclusters $P^+$:
 
 \begin{equation}
-  P^+(c) = (\sum_{(\vec{v}(w_1), \vec{v}(w_2)) \in c} \mathbbm{1}_{r_c^+}((w_1, w_2)))\ /\ |c|
+  P^+(c) = \sum_{(\vec{v}(w_1), \vec{v}(w_2)) \in c} \mathbbm{1}_{r_c^+}((w_1, w_2))\ /\ |c|
 \end{equation}
-
 
 \section{Ergebnisse}
 
-[ERGEBNISSE]
+Vorgreifend soll angemerkt werden, dass es nicht möglich war, endgültige Ergebnisse mithilfe der vorher beschriebenen
+Evaluationsmetrik $P^+(\cdot)$ zu erzeugen. Die genauen Gründe hierfür werden im nächsten Abschnitt \ref{sec:zwi-dis}
+genauer beleuchtet. Dementsprechend sollen an dieser Stelle Zwischenergebnisse vorgestellt werden.\\
 
-\section{Zwischendiskussion}
+\begin{figure}[h]
+  \centering
+  \begin{multicols}{2}
+    \textbf{Cluster A}\\
+    $\vdots$\\
+    \columnbreak
+    \textbf{Cluster B}\\
+    $\vdots$\\
+  \end{multicols}
+  \begin{multicols}{2}
+    \textbf{Cluster C}\\
+    $\vdots$\\
+    \columnbreak
+    \textbf{Cluster D}\\
+    $\vdots$\\
+  \end{multicols}
+  \caption[Auszug aus verschiedenen Wortpaarclustern]{Auszüge aus einigen Wortpaarclustern, die mit in dem Abschnitt
+  \ref{sec:para-algo} vorgestellten Ansatz erzeugt wurden.}
+\end{figure}
+
+\section{Zwischendiskussion}\label{sec:zwi-dis}
 
 Wie der letzte Abschnitt der gezeigt hat, entsprechen die Ergebnisse nicht den vorher gefassten Hoffnungen.
 Im Folgenden soll ein Versuch unternommen zu erklären, welche Probleme zu diesen Resultaten geführt haben und welche
 Implikationen diese besitzen.
 
-\subsection{Daten}
+\subsection{Daten}\label{sec:zwi-dis-data}
 
 Will man das Scheitern unmittelbar auf einen Faktor zurückführen, so liegen die zugrunde liegenden Daten am nächsten.
 Es lassen sich im Bezug auf jene folgende Punkte feststellen:
@@ -296,6 +317,6 @@ Das Fehlschlagen des Vorgehens kann auch auf einer theoretischen Ebene festgeste
 über Relationen zwischen Wortpaaren zu extrahieren. Um dieses Wissen gewissermaßen ``freilegen'', muss es aber auf eine
 Art und Weise innerhalb der Daten ``kodiert'' sein, wenn auch versteckt (so wie die semantische Ähnlichkeit zwischen Wörtern
 durch die räumliche Nähe ihrer Vektoren und deren Dimension kodiert ist).\\
-Wie beim Aufzeigen des Trugschlusses am Ende des vorherigen Abschnitts gezeigt wurde, sind semantische Relationen nicht eindeutig
+Wie beim Aufzeigen des Trugschlusses am Ende von \ref{sec:zwi-dis-data} gezeigt wurde, sind semantische Relationen nicht eindeutig
 innerhalb der Daten aufzuzeigen bzw. nur dann, wenn bereits vorher bruchstückhaftes Wissen darüber vorliegt. Ohne
 dieses Vorwissen sind richtige von nur scheinbaren Relationen nicht zu trennen.
