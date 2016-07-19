@@ -434,6 +434,46 @@
   \field{year}{2015}
 \endentry
 
+\entry{mikolov2013distributed}{inproceedings}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Mikolov}{M.}%
+     {Tomas}{T.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Sutskever}{S.}%
+     {Ilya}{I.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Chen}{C.}%
+     {Kai}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Corrado}{C.}%
+     {Greg~S}{G.~S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Dean}{D.}%
+     {Jeff}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{MT+1}
+  \strng{fullhash}{MTSICKCGSDJ1}
+  \field{labelyear}{2013}
+  \field{extrayear}{1}
+  \field{sortinit}{M}
+  \field{booktitle}{Advances in neural information processing systems}
+  \field{pages}{3111\bibrangedash 3119}
+  \field{title}{Distributed representations of words and phrases and their
+  compositionality}
+  \field{year}{2013}
+\endentry
+
 \entry{mikolov2013efficient}{article}{}
   \name{author}{4}{}{%
     {{}%
@@ -460,6 +500,7 @@
   \strng{namehash}{MT+1}
   \strng{fullhash}{MTCKCGDJ1}
   \field{labelyear}{2013}
+  \field{extrayear}{2}
   \field{sortinit}{M}
   \field{title}{Efficient estimation of word representations in vector space}
   \field{journaltitle}{arXiv preprint arXiv:1301.3781}

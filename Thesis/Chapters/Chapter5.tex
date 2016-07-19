@@ -42,22 +42,22 @@ angewendet und kritisch reflektiert werden sollen.\\
     \centering
     \begin{changemargin}{0cm}{0cm}
     \resizebox{\textwidth}{!}{%
-    \begin{tabular}{l|cccc}
-       & \textsc{Frankreich} & \textsc{Bank} & \textsc{Computerlinguistik} & \textsc{gekratzt} \\
+    \begin{tabular}{c|cccc}
+      \textsc{Nr.} & \textsc{Frankreich} & \textsc{Bank} & \textsc{Computerlinguistik} & \textsc{gekratzt} \\
       \hline \hline
-      \multirow{5}{*}{Mark I} & \textsc{Belgien} & \textsc{Anlagebank} & \textsc{Linguistik} & \textsc{gekrazt} \\
+      \multirow{5}{*}{\Romannum{1}} & \textsc{Belgien} & \textsc{Anlagebank} & \textsc{Linguistik} & \textsc{gekrazt} \\
        & \textsc{Italien} & \textsc{(unknown)\_Bank} & \textsc{Informationswissenschaft} & \textsc{weggekrazt} \\
        & \textsc{Niederland} & \textsc{BAnk} & \textsc{Texttechnologie} & \textsc{geschubbert} \\
        & \textsc{Niederlande} & \textsc{Bankstatus} & \textsc{Sprachwissenschaft} & \textsc{gekratz} \\
        & \textsc{Spanien} & \textsc{Geldinstitut} & \textsc{Softwaretechnik} & \textsc{abgeleckt} \\
       \hline
-      \multirow{5}{*}{Mark VIII} & \textsc{Italien} & \textsc{Hausbank} & \textsc{Bioinformatik} & \textsc{gekrazt} \\
+      \multirow{5}{*}{\Romannum{8}} & \textsc{Italien} & \textsc{Hausbank} & \textsc{Bioinformatik} & \textsc{gekrazt} \\
       & \textsc{Ungarn} & \textsc{Geschäftsbank} & \textsc{Texttechnologie} & \textsc{weggekrazt} \\
       & \textsc{Polen} & \textsc{Großbank} & \textsc{Informationswissenschaft} & \textsc{geschubbert} \\
       & \textsc{Spanien} & \textsc{Kreditbank} & \textsc{Softwaretechnik} & \textsc{angeknabbert} \\
       & \textsc{Belgien} & \textsc{Mutterbank} & \textsc{Linguistik} & \textsc{rausgerissen} \\
       \hline
-      \multirow{5}{*}{Mark XXII} & \textsc{Italien} & \textsc{Kreditinstitut} & \textsc{Bioinformatik} & \textsc{geritzt} \\
+      \multirow{5}{*}{\Romannum{22}} & \textsc{Italien} & \textsc{Kreditinstitut} & \textsc{Bioinformatik} & \textsc{geritzt} \\
       & \textsc{Ungarn} & \textsc{Geldinstitut} & \textsc{Wirtschaftsgeographie} & \textsc{angesengt} \\
       & \textsc{Polen} & \textsc{Sparkasse} & \textsc{Grundschulpädagogik} & \textsc{zusammengenäht} \\
       & \textsc{Spanien} & \textsc{Landesbank} & \textsc{Computerwissenschaft} & \textsc{aufgesprungen} \\
@@ -146,7 +146,7 @@ angewendet und kritisch reflektiert werden sollen.\\
     \begin{figure}[h]
       \centering
       \begin{tabular}{l|cc}
-        Datenset & \#Annotatoren & $\kappa$ \\
+        \textsc{Datenset} & \textsc{\#Annotatoren} & $\kappa$ \\
         \hline
         \textsc{Wortpaare65} & 24 & 0,81 \\
         \textsc{Wortpaare222} & 21 & 0,49 \\
@@ -181,24 +181,14 @@ angewendet und kritisch reflektiert werden sollen.\\
     \centering
 
     \resizebox{\textwidth}{!}{%
-    \begin{tabular}{l||l|l|l|l}
-      \textsc{Datenset} & \textsc{Wortpaare65} & \textsc{Wortpaare222} & \textsc{Wortpaare350} & \textsc{Schm280} \\
+    \begin{tabular}{l||l|l|l|l|l|l}
+      \textsc{Nr.} & \textsc{Wortpaare65} & \textsc{Wortpaare222} & \textsc{Wortpaare350} & \textsc{Schm280} & \textsc{Google} & \textsc{SemRel} \\
       \hline
-      Mark I & \textbf{-0,8096} & \textbf{-0,4640$_{(13)}$} & \textbf{-0,7302$_{(13)}$} & \textbf{-0,7094$_{(2)}$} \\
-      Mark XIII & \textbf{-0,8247$_{(1)}$} & \textbf{-0,5066$_{(102)}$}  & \textbf{-0,7494$_{(132)}$} & -0,7097$_{(48)}$ \\
-      Mark XIV & -0,8106$_{(1)}$ & -0,4953$_{(102)}$ & -0,7362$_{(132)}$ & \textbf{-0,7205$_{(48)}$} \\
+      \Romannum{1} & \textbf{-0,8096} & \textbf{-0,4640$_{(13)}$} & \textbf{-0,7302$_{(13)}$} & \textbf{-0,7094$_{(2)}$} & \textbf{44,56}  & 1,71 \\
+      \Romannum{13} & \textbf{-0,8247$_{(1)}$} & \textbf{-0,5066$_{(102)}$}  & \textbf{-0,7494$_{(132)}$} & -0,7097$_{(48)}$ & 15,51 & \textbf{3,01} \\
+      \Romannum{14} & -0,8106$_{(1)}$ & -0,4953$_{(102)}$ & -0,7362$_{(132)}$ & \textbf{-0,7205$_{(48)}$} & 14,51 & 2,56 \\
     \end{tabular}%
     }
-
-    \vspace{0.5cm}
-
-    \begin{tabular}{l||c|c}
-      \textsc{Datenset} & \textsc{Google} & \textsc{SemRel} \\
-      \hline
-      Mark I & \textbf{44,56}  & 1,71 \\
-      Mark XIII & 15,51 & \textbf{3,01} \\
-      Mark XIV & 14,51 & 2,56 \\
-    \end{tabular}
 
     \caption[Evaluationsergebnisse der besten Vektordatensets]{Evaluationsergebnisse der fünf besten Vektordatensetz. Oben:
     Spearman's $\rho$ für die Wortähnlichkeit mit von menschen gewerteten Wortpaaren. Unten: Treffer beim Vervollständigen

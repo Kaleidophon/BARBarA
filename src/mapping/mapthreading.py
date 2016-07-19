@@ -172,7 +172,7 @@ class MappingWorkerThread(threading.Thread):
 							current_occ = self.occurrences[current_word]
 							occ = self.occurrences[word]
 							joint_occ = current_occ & occ
-							if joint_occ >= 100:
+							if len(joint_occ) >= 100:
 								oresult = self.voperations[operation](current_vector, comp_vector)
 								new_vector = numpy.append(new_vector, oresult)
 

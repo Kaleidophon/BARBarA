@@ -6,7 +6,7 @@
 
 %----------------------------------------------------------------------------------------
 
-\section{Wortvektorrepräsentationen}
+\section{Wortvektorrepräsentationen}\label{sec:represent}
 
 \emph{Word embeddings} (=``Worteinbettungen'') wurden zuerst von (\cite{bengio2006neural}) noch vor dem erneuten
 Deep-Learning-Boom 2006 präsentiert. Im Vergleich zu vorherigen Arbeiten mit sog. ``One-Hot''-Vektoren, bei denen
@@ -26,7 +26,10 @@ Diese Forschungsarbeit löste eine Welle weiterer Forschungen in diesem Gebiet a
 Art der Wortrepräsentationen genutzt werden konnte, die Leistungen von Systemen selbst im Bezug auf lange bekannte und
 erforschte Probleme der Computerlinguistik signifikant verbessern konnte. Exemplarisch sei hier die Arbeit von
 (\cite{collobert2011natural}) genannt, die so neue Ansätze für PoS-Tagging, Named-Entity-Recognition, Chunking und Semantic
-Role Labeling präsentieren.\\
+Role Labeling präsentieren. (\cite{mikolov2013efficient}) und (\cite{mikolov2013distributed}) beschäftigen sich mit der
+Optimierung des Wortvektortrainings. Dabei wird auch ein Fokus auf die arithmetischen Regelmäßigkeiten von Wortvektoradditionen
+eingegangen (siehe Abbildung \ref{fig:capitals} im vorherigen Kapitel). Diese Eigenschaft soll später in Kapitel \ref{Chapter8} erneut
+aufgegriffen werden.\\
 
 Weitere Untersuchungen beschäftigen sich u. A. mit bilingualen Repräsentationen für maschinelle Übersetzung (\cite{zou2013bilingual}),
 deren Training auf der Basis von einem dependenzgeparsten Korpus (\cite{levy2014dependency}), dem Optimieren der Parameter
