@@ -63,9 +63,12 @@ Stattdessen richtet sich die Größe von $S_{batch}$ nach folgender Formel:
   von 10 Tripeln für eine Relation wenigstens mit einem Tripel zu trainieren. Der Rest ist eine Heuristik.}
 \end{equation}
 
-
-
 \section{Evaluation}
+
+Die Evaluation fand auf diesselbe Art und Weise wie im Abschnitt \ref{sec:transe-eval} statt. So wurde wieder untersucht,
+inwiefern die Relationsvektoren und die Vektorrepräsentationen der Entitäten dazu genutzt werden können, ein Relationstripel
+durch ``Raten'' zu vervollständigen und gemessen, welcher Rang der richtigen Antwort zugewiesen wurde und in wieivel Prozent
+diese unter den Top Zehn anzutreffen war.
 
 \begin{figure}[h]
   \centering
@@ -73,6 +76,34 @@ Stattdessen richtet sich die Größe von $S_{batch}$ nach folgender Formel:
     \textsc{Datenset} & \textsc{Gemittelter Rang} & \textsc{Hits@10} \\
      \hline
      WE4k & 1122,03 & 5,67 \\
+     FB15k & \textbf{197,02} & \textbf{48,79} \\
+     GER14k & 222,05 & 41,83 \\
   \end{tabular}
-  \caption[Resultate auf mit Wordvektoren auf WE3k]{}
+  \caption[Resultate auf mit Wordvektoren auf WE3k]{\label{fig:eval-we4k}}
 \end{figure}
+
+Im Blick auf Abbildung \ref{fig:eval-we4k} zeigt ein ziemlich ernüchterndes Fazit auf. So schnitt die Variante
+mit Wortvektoren aus \verb|word2vec| und seperat trainierten Relationsrepräsentationen ($\rightarrow$ WE4k) im Bezug auf
+den gemittelten Rang mehr als fünf Mal so schlecht und im Bezug auf die Hits\@10 mehr als acht Mal so schlecht ab.\\
+Die möglichen Gründe für das weite Verfehlen guter Ergebnisse werden nun in \ref{sec:we4k-zwifa} diskutiert.
+
+\section{Zwischenfazit}\label{sec:we4k-zwifa}
+
+Um die Diskrepanz zwischen den Ergebnissen mit gemeinsam trainierten Repräsentationen für Entitäten und Relation im Vergleich
+zu denen mit auf dem Korpus trainierten Entitäsvektoren zu erklären, sollte Unterschiedlichkeit der Ansätze hervorgehoben
+werden.\\
+Im ersten Fall werden wie erwähnt alle zu eine Relation betreffende Repräsentationsvektoren gemeinsam trainiert; es ist
+also davon auszugehen, dass diese bestmöglichst angepasst sind, um $|h + r - t|$ für alle $h, t$ zu minimieren.\\
+Dies kann im zweiten Fall nicht unbedingt gewährleistet werden: Da $h$ und $t$ im Vornherein schon feststehen und nicht
+an $r$ angepasst werden (sondern genau umkehrt $r$ an $h$ und $t$ angepasst wird), kann der minimale Wert der Verlustfunktion
+unter Umständen nur schwer erlangt werden.\\
+Als eine weitere Begründung ist anzuführen, dass a) WE4k auf deutlich kleineren Datenmengen arbeitet (weshalb maschinelle
+Lernverfahren unter umständen gar keine Lösung finden können, die gut auf ungesehene Beispiele generalisiert) und b)
+Wortvektoren von sehr speziellen Entitäten enthält, die in \emph{Freebase} als Knoten existieren, u. U. aber sehr selten
+im Korpus auftauchen. Da die Beschaffenheit der korpusbasierten Repräsentationen vor allem von Kookkurrenzen mit anderen
+Begriffen abhängt, bedeutet eine niedrige Termfrequenz vor allem weniger aussagekräftige Wortvektoren, worunter die
+Ergebnisse in der Konsequenz zu leiden haben.\\
+Zuletzt sollte mit in Betracht gezogen werden, dass die trainierten Relationen sehr feingliedrig sind. Im Gegensatz zu
+anderen Forschungsarbeiten, die mit grobaufgelösten Beziehungen wie ``Cause-Effect'' oder ``Entitiy-Origin''
+(\cite{hendrickx2009semeval}) arbeiten, können dadurch am größere Datenmengen zugreifen und bessere Ergebnisse auf
+ungesehenen Beispielen erziehlen.

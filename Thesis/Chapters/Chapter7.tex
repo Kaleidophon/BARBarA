@@ -126,28 +126,11 @@ aktuelles Vektorpaar sich in dieser Menge befindet und schon abgehakt wurde\foot
 wird das Vektorpaar durch eine Hashfunktion in einen Wert umgewandelt. Diese wird so gewählt,
 sodass $h(\vec{v}(t_1), \vec{v}(t_2)) = h(\vec{v}(t_2), \vec{v}(t_1))$.}.\\
 
-Als Grundlage der Daten wurde das Datenset Mark 0 [BESTES EINFÜGEN] gewählt, da es in den meisten der Evaluationsaufgaben
+Als Grundlage der Daten wurde das Datenset Mark I gewählt, da es in den meisten der Evaluationsaufgaben
 als bestes Abschnitt. Mit $\gamma = 100$ resultierte das Procedere in einem neuen Menge an Daten mit insgesamt
 X Differenzvektoren [GENAUE ZAHL EINFÜGEN] mit einer Größe von X,X GB [GENAUE GRÖSSE EINFÜGEN].\\
 Um den Gewinn durch Multithreading zu verdeutlichen, wurden darüber hinaus die Rechenzeiten gemessen (siehe Abbildung \ref{fig:times}).
 Gerechnet wurde auf eine Hardware mit 40 Prozessorkernen und [RESTLICHE SPECS EINFÜGEN].
-
-\begin{figure}[h]
-  \centering
-  \begin{tabular}{r|cc}
-    \textsc{\#Threads} & \textsc{Zeit} (in $m$) & Beschleunigung (in \%) \\
-    \hline
-    1 & & - \\
-    2 & & \\
-    8 & & \\
-    32 & & \\
-    64 & & \\
-    128 & & \\
-  \end{tabular}
-  \caption[Rechenzeiten für den Mappingschritt nach Anzahl von Threads]{Rechenzeiten für den Mappingschritt nach Anzahl von Threads auf
-  einem System unter möglichst gleichen Bedingungen. Die Beschleunigung wird im Vergleich zum Ausführen des Programms
-  mit nur einem Thread gemessen.\label{fig:times}}
-\end{figure}
 
 \section{Evaluation}
 
@@ -163,7 +146,7 @@ Die ``Reinheit'' $P$ eines Clusters kann dann errechnet werden, indem der Anteil
 zugehörigen Wortpaaren bestimmt wird\footnote{Die Indikatorfuntion mit $\mathbbm{1}_{r_c}((w_1, w_2))$ liefert $1$, wenn
 $(w_1, w_2) \in r_c$ gilt, ansonsten $0$.}:
 
-\begin{equation}
+\begin{equation}\label{form:purity}
     P(c) = \sum_{(\vec{v}(w_1), \vec{v}(w_2)) \in c} \mathbbm{1}_{r_c}((w_1, w_2))\ /\ |c|
 \end{equation}
 
@@ -184,13 +167,13 @@ errechnet, deren Zugehörigkeit zu $r_c$ festgestellt wurde:
 
 Demnach erweitern wir $r_c$ um die Wortpaare, deren Vektoren den durchschnittlichen Kopf- und Fußvektoren ähnlich genug sind.
 Zu diesem Zweck wird ein Schwellenwert $\tau$ definiert, den ein potenziell zu $r_c$ zugehöriges Wortpaar im Bezug auf
-Cosinusänlichkeit nicht unterschreiten darf:
+Cosinusänlichkeit (siehe \ref{form:cossim}) nicht unterschreiten darf:
 
 \begin{equation}
   r_c^+ = r_c\ \cup\ \{(w_1, w_2)| (\vec{v}(w_1), \vec{v}(w_2)) \in c\ \land\ cos(\vec{v}(w_1), \tilde{h}) \geq \tau\ \land\ cos(\vec{v}(w_2), \tilde{t}) \geq \tau\}
 \end{equation}
 
-Auf Basis der Gleichung (7.5) folgt für die modifizierte Reinheit eines Wortpaarclusters $P^+$:
+Auf Basis der Gleichung \ref{form:purity} folgt für die modifizierte Reinheit eines Wortpaarclusters $P^+$:
 
 \begin{equation}
   P^+(c) = \sum_{(\vec{v}(w_1), \vec{v}(w_2)) \in c} \mathbbm{1}_{r_c^+}((w_1, w_2))\ /\ |c|
@@ -219,10 +202,17 @@ genauer beleuchtet. Dementsprechend sollen an dieser Stelle Zwischenergebnisse v
     $\vdots$\\
   \end{multicols}
   \caption[Auszug aus verschiedenen Wortpaarclustern]{Auszüge aus einigen Wortpaarclustern, die mit in dem Abschnitt
-  \ref{sec:para-algo} vorgestellten Ansatz erzeugt wurden.}
+  \ref{sec:para-algo} vorgestellten Ansatz erzeugt wurden.\label{fig:clusters}}
 \end{figure}
 
-\section{Zwischendiskussion}\label{sec:zwi-dis}
+Wie Abbildung \ref{fig:clusters} zu entnehmen ist, in der einige Auszüge aus Clustern beispielhaft dargestellt sind,
+fällt es schwer, die dort aufgeführten Wortpaar ingesamt einer Relation zuzuordnen. Im Gegenteil gelingt dies selbst für
+einzelne Paare nicht, siehe beispielweise ``Beispiel 1'' oder ``Beispiel 2''.\\
+Es zeigt sich, dass auch das Kookkurrenz-Feature zu keiner Besserung der Ergebnisse geführt hat. Aufgrund der scheinbaren
+Zufälligkeit der Ergebnisse erschien es auch nicht mehr sinnvoll, weitere Schritte auf Basis dieser Daten (vor allem Evaluation)
+durchzuführen.\\
+
+\section{Zwischenfazit}\label{sec:zwi-dis}
 
 Wie der letzte Abschnitt der gezeigt hat, entsprechen die Ergebnisse nicht den vorher gefassten Hoffnungen.
 Im Folgenden soll ein Versuch unternommen zu erklären, welche Probleme zu diesen Resultaten geführt haben und welche

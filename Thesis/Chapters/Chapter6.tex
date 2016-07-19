@@ -115,7 +115,7 @@ Trainingsset könnte ein Zeichen für Overfitting sein.}.\\
 Für das Reproduzieren der Ergebnisse wurde den Empfehlen von (\cite{bordes2013translating}) gefolgt: So wird das Training
 nach maximal 1000 Epochen beendet, außerdem gilt $k = 50$, $\gamma = 1$, $\lambda = 0,01$ und $d_1$ als Unähnlichkeitsmaß.
 
-\section{Evaluation}
+\section{Evaluation}\label{sec:transe-eval}
 
 Um die erstellten Daten zu evaluieren, werden bei den Relationen im Testset jeweils die Head- und Tailentitäten ersetzt.
 Danach werden alle bekannten Entitäten eingesetzt und mithilfe des Dissimilaritätsmaßes ansteigend sortiert. Der Rang
@@ -159,7 +159,7 @@ besser.
 
 [STATISTISCHE SIGNIFIKANZ HITS@10 ROH]
 
-\section{Fazit}
+\section{Zwischenfazit}
 
 In diesem Kapitel wurde ein Verfahren vorgestellt, dass es erlaubt, Vektoren zu trainieren, die Entitäten und Relationen
 aus Wissendatenbanken modellieren und zur Relationsvorhersage zu nutzen. Dabei bestehen die Daten aus Relationstripeln,

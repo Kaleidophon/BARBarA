@@ -249,6 +249,69 @@
   \field{year}{1954}
 \endentry
 
+\entry{hendrickx2009semeval}{inproceedings}{}
+  \name{author}{9}{}{%
+    {{}%
+     {Hendrickx}{H.}%
+     {Iris}{I.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kim}{K.}%
+     {Su~Nam}{S.~N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kozareva}{K.}%
+     {Zornitsa}{Z.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Nakov}{N.}%
+     {Preslav}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {{\'O}~S{\'e}aghdha}{{\'O}.~S.}%
+     {Diarmuid}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Pad{\'o}}{P.}%
+     {Sebastian}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Pennacchiotti}{P.}%
+     {Marco}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Romano}{R.}%
+     {Lorenza}{L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Szpakowicz}{S.}%
+     {Stan}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {Association for Computational Linguistics}%
+  }
+  \strng{namehash}{HI+1}
+  \strng{fullhash}{HIKSNKZNPOSDPSPMRLSS1}
+  \field{labelyear}{2009}
+  \field{sortinit}{H}
+  \field{booktitle}{Proceedings of the Workshop on Semantic Evaluations: Recent
+  Achievements and Future Directions}
+  \field{pages}{94\bibrangedash 99}
+  \field{title}{Semeval-2010 task 8: Multi-way classification of semantic
+  relations between pairs of nominals}
+  \field{year}{2009}
+\endentry
+
 \entry{koper2015multilingual}{article}{}
   \name{author}{3}{}{%
     {{}%

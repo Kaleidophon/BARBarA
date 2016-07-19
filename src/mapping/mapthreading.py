@@ -167,16 +167,14 @@ class MappingWorkerThread(threading.Thread):
 
 						# Compute new vector
 						for operation in self.features:
-							if operation == 'spray':
-								current_word = self.indices[current_index]
-								word = self.indices[index]
-								current_occ = self.occurrences[current_word]
-								occ = self.occurrences[word]
-								joint_occ = current_occ & occ
-								oresult = self.spray(current_vector, comp_vector, len(joint_occ))
-							else:
+							current_word = self.indices[current_index]
+							word = self.indices[index]
+							current_occ = self.occurrences[current_word]
+							occ = self.occurrences[word]
+							joint_occ = current_occ & occ
+							if joint_occ >= 100:
 								oresult = self.voperations[operation](current_vector, comp_vector)
-							new_vector = numpy.append(new_vector, oresult)
+								new_vector = numpy.append(new_vector, oresult)
 
 						# Write result and mark combination as done
 						if not self.vector_dict.skippable(index):

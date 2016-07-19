@@ -22,13 +22,12 @@
 \contentsline {figure}{\numberline {7.1}{\ignorespaces Einfacher Projektionsalgorithmus}}{29}{figure.caption.91}
 \contentsline {figure}{\numberline {7.2}{\ignorespaces Modifizierter Projektionsalgorithmus}}{30}{figure.caption.95}
 \contentsline {figure}{\numberline {7.3}{\ignorespaces Parallelisierter Projektionsalgorithmus}}{31}{figure.caption.98}
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Rechenzeiten f\IeC {\"u}r den Mappingschritt nach Anzahl von Threads}}{32}{figure.caption.101}
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Auszug aus verschiedenen Wortpaarclustern}}{33}{figure.caption.111}
-\contentsline {figure}{\numberline {7.6}{\ignorespaces Dreidimensionale Projektionen einiger durch das Mappingverfahren resultierender Vektorr\IeC {\"a}ume}}{35}{figure.caption.118}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Auszug aus verschiedenen Wortpaarclustern}}{33}{figure.caption.110}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Dreidimensionale Projektionen einiger durch das Mappingverfahren resultierender Vektorr\IeC {\"a}ume}}{35}{figure.caption.117}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Daten des neuen Relationsdatensets im Vergleich zu FB15k und GER14k}}{37}{figure.caption.122}
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Resultate auf mit Wordvektoren auf WE3k}}{38}{figure.caption.127}
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Daten des neuen Relationsdatensets im Vergleich zu FB15k und GER14k}}{37}{figure.caption.121}
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Resultate auf mit Wordvektoren auf WE3k}}{38}{figure.caption.126}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Quelle und Trainingsparameter f\IeC {\"u}r Wortvektoren}}{41}{figure.caption.133}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Quelle und Trainingsparameter f\IeC {\"u}r Wortvektoren}}{43}{figure.caption.133}
 \addvspace {10\p@ }
