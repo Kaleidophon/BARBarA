@@ -46,14 +46,37 @@ headsepline, % Uncomment to get a line under the header
 \usepackage{lscape}
 \usepackage[]{algorithm2e}
 \usepackage{caption}
-\usepackage{hyperref}
-\usepackage{fancyvrb} 
+\usepackage{fancyvrb}
+\usepackage{multirow}
+\usepackage{graphics}
+\usepackage{rotating}
+\usepackage{multicol}
+\usepackage{mathtools}
+\usepackage{chngcntr}
+\usepackage{adjustbox}
+\usepackage{bbm}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+
+\renewcommand*\rmdefault{bch} % bch
+
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+\hypersetup{
+     colorlinks   = true,
+     citecolor    = gray,
+     linkcolor    = blue
+}
+
 \VerbatimFootnotes
 \captionsetup{margin=10pt,font=small,labelfont=bf}
 
 \usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex} % Use the bibtex backend with the authoryear citation style (which resembles APA)
 
 \addbibresource{example.bib} % The filename of the bibliography
+\DefineBibliographyStrings{ngerman}{
+   andothers = {{et\,al\adddot}},
+}
+
+\counterwithout{footnote}{chapter}
 
 \usepackage[autostyle=true]{csquotes} % Required to generate language-dependent quotes in the bibliography
 
@@ -62,6 +85,13 @@ headsepline, % Uncomment to get a line under the header
   {\end{quote}\ignorespacesafterend}
 
 \DeclareUnicodeCharacter{00A0}{ }
+
+\makeatletter
+\newcommand{\vast}{\bBigg@{4}}
+\newcommand{\Vast}{\bBigg@{5}}
+\makeatother
+
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
 %----------------------------------------------------------------------------------------
 %	MARGIN SETTINGS
@@ -77,12 +107,18 @@ headsepline, % Uncomment to get a line under the header
 	%showframe,% show how the type block is set on the page
 }
 
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
+
+\def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
+\let\endchangemargin=\endlist
+
 %----------------------------------------------------------------------------------------
 %	THESIS INFORMATION
 %----------------------------------------------------------------------------------------
 
-\thesistitle{[Arbeitstitel] Relation Mining mit Wortvektoren} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
-\thesistitleenglish{[Working Title] Relation Mining with word embeddings}
+\thesistitle{Analyse der Relationsvorhersage im Deutschen mithilfe von Wortvektorrepräsentationen} % Your thesis title, this is used in the title and abstract, print it elsewhere with \ttitle
+\thesistitleenglish{Analysis of relation prediction in German using word vector representations}
 \supervisor{Dr. Yannick \textsc{Versley}} % Your supervisor's name, this is used in the title page, print it elsewhere with \supname
 \examiner{} % Your examiner's name, this is not currently used anywhere in the template, print it elsewhere with \examname
 \degree{Bachelor of Arts} % Your degree name, this is used in the title page and abstract, print it elsewhere with \degreename
@@ -124,13 +160,13 @@ headsepline, % Uncomment to get a line under the header
 
 \begin{minipage}[t]{0.4\textwidth}
 \begin{flushleft} \large
-\emph{Author:}\\
+\emph{Autor:}\\
 {\authorname} % Author name - remove the \href bracket to remove the link
 \end{flushleft}
 \end{minipage}
 \begin{minipage}[t]{0.4\textwidth}
 \begin{flushright} \large
-\emph{Supervisor:} \\
+\emph{Betreuende:} \\
 {\supname\\Dr. Viviana \textsc{Nastase}} % Supervisor name - remove the \href bracket to remove the link
 \end{flushright}
 \end{minipage}\\[3cm]
@@ -138,7 +174,7 @@ headsepline, % Uncomment to get a line under the header
 \large \textit{Eine Arbeit zur Erlangung \\ des Bachelorgrades}\\[0.3cm] % University requirement text
 
 {\large \today}\\[4cm] % Date
-\includegraphics[width=0.4\textwidth]{figures/logo.jpg} % University/department logo - uncomment to place it
+%\includegraphics[width=0.4\textwidth]{figures/logo.jpg} % University/department logo - uncomment to place it
 
 \vfill
 \end{center}
@@ -148,25 +184,25 @@ headsepline, % Uncomment to get a line under the header
 %	DECLARATION PAGE
 %----------------------------------------------------------------------------------------
 
-\begin{declaration}
-\addchaptertocentry{\authorshipname}
-
-\noindent Ich, \authorname, gebe hiermit die eidesstattliche Erklärung ab, dass ich meine Bachelorarbeit mit dem Titel \enquote{\ttitle}
-
-\begin{itemize}
-\item selbständig angefertigt
-\item keine anderen als die angegebenen Quellen und Hilfsmittel be- nutzt und alle wörtlichen oder sinngemäß übernommenen Textstellen als solche kenntlich gemacht habe
-\item Mir ist bekannt, dass die ungekennzeichnete Übernahme fremder Texte – auch aus dem Internet – als Täuschung gewertet wird und die entsprechende Prüfungsleistung als nicht erbracht gilt (Bachelor-Prüfungsordnung § 8, 4 und § 21, 4; Master-Prüfungsordnung § 8, 4 und § 22, 4; Magisterprüfungsordnung, Allgemeiner Teil § 22).\\
-\end{itemize}
-
-\noindent Unterschrift:\\
-\rule[0.5em]{25em}{0.5pt} % This prints a line for the signature
-
-\noindent Datum:\\
-\rule[0.5em]{25em}{0.5pt} % This prints a line to write the date
-\end{declaration}
-
-\cleardoublepage
+%\begin{declaration}
+%\addchaptertocentry{\authorshipname}
+%
+%\noindent Ich, \authorname, gebe hiermit die eidesstattliche Erklärung ab, dass ich meine Bachelorarbeit mit dem Titel \enquote{\ttitle}
+%
+%\begin{itemize}
+%\item selbständig angefertigt
+%\item keine anderen als die angegebenen Quellen und Hilfsmittel be- nutzt und alle wörtlichen oder sinngemäß übernommenen Textstellen als solche kenntlich gemacht habe
+%\item Mir ist bekannt, dass die ungekennzeichnete Übernahme fremder Texte – auch aus dem Internet – als Täuschung gewertet wird und die entsprechende Prüfungsleistung als nicht erbracht gilt (Bachelor-Prüfungsordnung § 8, 4 und § 21, 4; Master-Prüfungsordnung § 8, 4 und § 22, 4; Magisterprüfungsordnung, Allgemeiner Teil § 22).\\
+%\end{itemize}
+%
+%\noindent Unterschrift:\\
+%\rule[0.5em]{25em}{0.5pt} % This prints a line for the signature
+%
+%\noindent Datum:\\
+%\rule[0.5em]{25em}{0.5pt} % This prints a line to write the date
+%\end{declaration}
+%
+%\cleardoublepage
 
 %----------------------------------------------------------------------------------------
 %	QUOTATION PAGE
@@ -185,7 +221,14 @@ headsepline, % Uncomment to get a line under the header
 \begin{abstract}
 \addchaptertocentry{\abstractname} % Add the abstract to the table of contents
 
-Deutscher Satz\ldots
+In sog. \emph{Wissensdatenbanken} wird Wissen über die Beziehungen von Entitäten in dieser Welt
+beschrieben. Dieses Wissen ist für vielerlei nützlich, um Maschinen das fehlende Weltwissen
+bei Computersystemen zu kompensieren. Die Erstellung solcher Datenbanken ist jedoch sehr
+arbeitsintensiv, weshalb sich Bemühungen, diese automatisch zu ergänzen, lohnen können.\\
+Diese Abschlussarbeit wirft einen Blick auf verschiedene Ansätze in diesem Bereich und
+versucht darüber hinaus, ähnliche Verfahren auf der Grundlage von Wortvektorenrepräsentationen,
+die im Zuge des Deep-Learning-Trends in den letzten Jahren erhöhte Aufmerksamkeit in der
+NLP-Gemeinschaft erfahren haben, zu verwirklichen.
 
 \end{abstract}
 
@@ -196,7 +239,13 @@ Deutscher Satz\ldots
 \begin{abstracteng}
 \addchaptertocentry{Abstract} % Add the abstract to the table of contents
 
-English sentence\ldots
+So-called \emph{knowledge bases} contain knowledge about the relations between entities in
+this world. This knowledge is very useful to compensate the inherent lack of universal knowledge
+of any computer system. However, the creation of such databases is deemed to be very labour-intensive.
+Thus, automatic efforts to replenish them might be worthwile.\\
+This thesis aims to compare various approaches in this area and furthermore wants to realize similar
+procedures based on word embeddings, which gained a lot of popularity in recent years among the
+NLP community.
 
 \end{abstracteng}
 
@@ -224,40 +273,40 @@ The acknowledgments and the people to thank go here, don't forget to include you
 %	ABBREVIATIONS
 %----------------------------------------------------------------------------------------
 
-\begin{abbreviations}{ll} % Include a list of abbreviations (a table of two columns)
-
-\textbf{PoS} & \textbf{P}wart \textbf{o}f \textbf{S}peech\\
-\textbf{SGD} & \textbf{S   }tochastic \textbf{G}radient \textbf{D}escent\\
-\textbf{DECOW} & German \textbf{CO}rpus from the \textbf{W}eb\\
-\textbf{CBOW} & \textbf{C}ontinuous-\textbf{B}ag-\textbf{O}f-\textbf{W}ords\\
-\textbf{DBSCAN} & \textbf{D}ensity-\textbf{B}ased \textbf{S}patial \textbf{C}lustering of \textbf{A}pplications with \textbf{N}oise\\
-
-\end{abbreviations}
+%\begin{abbreviations}{ll} % Include a list of abbreviations (a table of two columns)
+%
+%\textbf{PoS} & \textbf{P}art \textbf{o}f \textbf{S}peech\\
+%\textbf{SGD} & \textbf{S   }tochastic \textbf{G}radient \textbf{D}escent\\
+%\textbf{DECOW} & German \textbf{CO}rpus from the \textbf{W}eb\\
+%\textbf{CBOW} & \textbf{C}ontinuous-\textbf{B}ag-\textbf{O}f-\textbf{W}ords\\
+%\textbf{DBSCAN} & \textbf{D}ensity-\textbf{B}ased \textbf{S}patial \textbf{C}lustering of \textbf{A}pplications with \textbf{N}oise\\
+%
+%\end{abbreviations}
 
 %----------------------------------------------------------------------------------------
 %	SYMBOLS
 %----------------------------------------------------------------------------------------
 
-\begin{symbols}{ll} % Include a list of Symbols (a three column table)
-
-$w$ & Ein nicht näher spezifiziertes Wort \\
-$w_1, w_2, w_3$ / $a, b, c$ & Mehrere nicht näher spezifizierte Wörter \\
-$\vec{v}$, $\vec{y}$, $\vec{z}$ & Vektoren \\
-$\vec{v}(Hund)$ / $\vec{v}(w)$ & Der zu einem Wort zugehörige Wortvektor \\
-$\vec{v}^{\prime}$ / $\vec{v}^{\prime}(w).$ & Projektion eines (Wort-)Vektors \\
-$\oplus$ & Vektorkonkatenation \\
-$\mathcal{U}$, $\mathcal{V}$, $\mathcal{W}$ & Mengen \\
-$x^*$, $y^*$, $z^*$  & Gewünschte Ausprägung einer Variablen \\
-$\tilde{x}$, $\tilde{y}$, $\tilde{z}$  & Möglicher Bestwert einer Variablen \\
+%\begin{symbols}{ll} % Include a list of Symbols (a three column table)
+%
+%$w$ & Ein nicht näher spezifiziertes Wort \\
+%$w_1, w_2, w_3$ / $a, b, c$ & Mehrere nicht näher spezifizierte Wörter \\
+%$\vec{v}$, $\vec{y}$, $\vec{z}$ & Vektoren \\
+%$\vec{v}(Hund)$ / $\vec{v}(w)$ & Der zu einem Wort zugehörige Wortvektor \\
+%$\vec{v}^{\prime}$ / $\vec{v}^{\prime}(w).$ & Projektion eines (Wort-)Vektors \\
+%$\oplus$ & Vektorkonkatenation \\
+%$\mathcal{U}$, $\mathcal{V}$, $\mathcal{W}$ & Mengen \\
+%$x^*$, $y^*$, $z^*$  & Gewünschte Ausprägung einer Variablen \\
+%$\tilde{x}$, $\tilde{y}$, $\tilde{z}$  & Möglicher Bestwert einer Variablen \\
 %Symbol & Name & Unit \\
 
-\end{symbols}
+%\end{symbols}
 
 %----------------------------------------------------------------------------------------
 %	DEDICATION
 %----------------------------------------------------------------------------------------
 
-\dedicatory{For/Dedicated to/To my\ldots}
+%\dedicatory{For/Dedicated to/To my\ldots}
 
 %----------------------------------------------------------------------------------------
 %	THESIS CONTENT - CHAPTERS
@@ -292,7 +341,7 @@ $\tilde{x}$, $\tilde{y}$, $\tilde{z}$  & Möglicher Bestwert einer Variablen \\
 % Uncomment the lines as you write the Appendices
 
 \include{Appendices/AppendixA}
-%\include{Appendices/AppendixB}
+\include{Appendices/AppendixB}
 %\include{Appendices/AppendixC}
 
 %----------------------------------------------------------------------------------------

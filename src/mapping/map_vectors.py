@@ -96,6 +96,7 @@ def filter_duplicate_vectors_parallelized(vectors_indir, vector_outpath, procs=1
 def hash_tuple(t):
 	return hash(t) + hash((t[1], t[0]))
 
+
 def init_pool(args):
 	global all_indices_global
 	all_indices_global = args

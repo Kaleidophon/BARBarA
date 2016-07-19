@@ -7,11 +7,54 @@
 %----------------------------------------------------------------------------------------
 
 \section{Vorbereitung}
-Bla
 
-  \subsection{Extraktion von Named Entities}
+  Für die nachfolgenden Experimente in den Kapiteln \ref{Chapter5}, \ref{Chapter6}, \ref{Chapter7} und \ref{Chapter8}
+  mussten einige Daten zuerst beschafft und unter Umständen aufbereitet werden. Die ergriffenen Maßnahmen werden
+  deshalb in diesem Kapitel beschrieben.
 
-  \subsection{Aufbereitung des Korpus}
+  \subsection{Verwendete Daten}
+
+  Die anfangs verwendeten Daten lassen sich grob in vier Kategorien einteilen: Den Korpus, das Relationsdatenset,
+  Wortähnlichkeitslisten sowie Analogiedatensets (siehe Abbildung \ref{fig:datasets}).\\
+  Als Korpus wurde der DECOW14X-Korpus verwendet. Genaueres über dessen Beschaffenheit und Vorverarbeitung für das
+  Training von Wortvektoren werden in \ref{sec:corpusprep} und \ref{sec:vectrain} beschrieben.
+
+  \begin{figure}[h]
+    \centering
+    \def\arraystretch{1.5}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{l|l|rl|l}
+      \textbf{Art} & \textbf{Name} & \multicolumn{2}{l|}{\textbf{Beschreibung}} & \textbf{Quelle} \\
+      \hline \hline
+      Korpora & \textsc{DECOW14X} & \multicolumn{2}{l|}{Deutschsprachiger Webkorpus} & (\cite{schafer2012building}) \\
+      \hline
+      Relationsdaten & \textsc{FB14k} & \multicolumn{2}{l|}{592k Relationstripel aus Freebase} & (\cite{bordes2013translating}) \\
+      \hline
+      \multirow{4}{*}{\parbox[t]{1.5cm}{Wortähnlich-keiten}} & \textsc{Schm280} & 280 & \multirow{4}{*}{\Vast \} \parbox[c]{4cm}{nach Ähnlichkeit bewertete Wortpaare}} & (\cite{koper2015multilingual})\\ \cline{5-5}
+       & \textsc{Wortpaare65} & 65 & & \multirow{3}{*}{(\cite{rubenstein1965contextual})} \\
+       & \textsc{Wortpaare222} & 222 & & \\
+       & \textsc{Wortpaare350} & 350 & & \\
+      \hline
+      \multirow{2}{*}{Analogien} & \textsc{Google} & \multicolumn{2}{l|}{Datenset mit 18.552 Analogien} & \multirow{2}{*}{(\cite{koper2015multilingual})} \\
+       & \textsc{SemRel} & \multicolumn{2}{l|}{Datenset mit 2.462 Analogien} & \\
+    \end{tabular}%
+    }
+  \caption[Übersicht über verwendete vorgefertigte Datensets]{Übersicht über in dieser Arbeit verwendete, extern generierte
+  Datensets sowie deren Quelle.\label{fig:datasets}}
+  \end{figure}
+
+  Relationsdaten aus \textsc{Freebase} wurden im Datenset \textsc{FB14k} von (\cite{bordes2013translating}) gesammelt.
+  Diese werden vor allem in den Versuchen von Kapiteln \ref{Chapter6} und \ref{Chapter8} relevant.\\
+  Alle anderen Datensets sind zur Evaluation der Wortvektoren in Kapitel \ref{Chapter5} angedacht: Die Sets
+  \textsc{Schm280}, \textsc{Wortpaare65}, \textsc{Wortpaare222} und \textsc{Wortpaare350} bestehen aus einer Reihe
+  von Wortpaaren, die von menschlichen Annotatoren auf verschiedenen Skalen nach Ähnlichkeit bewertet wurden.
+  \textsc{Google}\footnote{Eigentlich: \textsc{Google semantic/syntactic analogy datasets}} und \textsc{SemRel} sind
+  in verschiedene Kategorien eingeteilte Analogiepaare der Form ``W verhält sich zu X wie Y zu Z''. Bei der Evaluation
+  wird dann die Fähigkeit eines Systems mit Wortvektoren getestet, diese korrekt zu vorvervollständigen, wenn Z nicht
+  gegeben ist.
+
+
+  \subsection{Aufbereitung des Korpus}\label{sec:corpusprep}
 
   Als Textressource wurde das DECOW14X-Korpus (DE = Deutsch, COW = ``\textbf{CO}rpus from the \textbf{W}eb'') verwendet.
   Dieses Korpus von (\cite{schafer2012building})  besteht aus 21 Texten,
@@ -25,12 +68,10 @@ Bla
   \begin{itemize}
       \item Eine Datei mit den originalen Tokens durch Leerzeichen getrennt, je ein Satz pro Zeile.
       \item Eine Datei mit den lemmatisierten Tokens durch Leerzeichen getrennt, je ein Satz pro Zeile.
-      \item Eine Datei mit dem lemmatisierten Tokens, sortiert nach den für jeden Satz geparsten Dependenzen, ein Satz pro Zeile.
   \end{itemize}
-  Die Dependenzen wurden dabei mit dem Tool X erzeugt. [Blabla erläutern wenn Punkt erledigt.]
 
 
-  \subsection{Training der Wortvektoren}
+  \subsection{Training der Wortvektoren}\label{sec:vectrain}
 
   Wortvektoren werden mithilfe des Tools \emph{word2vec} und zwei verschiedenen Modellen trainiert: Continuous-Bag-of-Words (CBOW)
   und Skip-Gram. Das CBOW-Model wurde zuerst von (\cite{mikolov2013efficient}) vorgestellt. Die Erklärung der Funktionsweise

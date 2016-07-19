@@ -36,19 +36,37 @@ angewendet und kritisch reflektiert werden sollen.\\
   Im Beispiel der Wortvektoren werden beispielsweise einige Wörter des Vokabulars stellvertretend ausgewählt
   und zu diesen die \emph{k} nächsten Nachbarn im Vektorraum gesucht. Unter der Annahme, dass
   in Vektorräumen von Wortvektoren ähnliche Wörter nahe zusammenliegen, sollte diese Liste nah verwandte
-  Begriffe zutage fördern (siehe Abb. X).\\
+  Begriffe zutage fördern (siehe Abbildung \ref{fig:wortliste}).\\
 
   \begin{figure}[h]
-    \begin{tabular}{l|ccccc}
-       & \textsc{Wort 1} & \textsc{Word 2} & \textsc{Wort 3} & \textsc{Wort 4} & \textsc{Wort 5} \\
+    \centering
+    \begin{changemargin}{0cm}{0cm}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{l|cccc}
+       & \textsc{Frankreich} & \textsc{Bank} & \textsc{Computerlinguistik} & \textsc{gekratzt} \\
       \hline \hline
-      Datenset 1 & & & & & \\
+      \multirow{5}{*}{Mark I} & \textsc{Belgien} & \textsc{Anlagebank} & \textsc{Linguistik} & \textsc{gekrazt} \\
+       & \textsc{Italien} & \textsc{(unknown)\_Bank} & \textsc{Informationswissenschaft} & \textsc{weggekrazt} \\
+       & \textsc{Niederland} & \textsc{BAnk} & \textsc{Texttechnologie} & \textsc{geschubbert} \\
+       & \textsc{Niederlande} & \textsc{Bankstatus} & \textsc{Sprachwissenschaft} & \textsc{gekratz} \\
+       & \textsc{Spanien} & \textsc{Geldinstitut} & \textsc{Softwaretechnik} & \textsc{abgeleckt} \\
       \hline
-      Datenset 2 & & & & & \\
+      \multirow{5}{*}{Mark VIII} & \textsc{Italien} & \textsc{Hausbank} & \textsc{Bioinformatik} & \textsc{gekrazt} \\
+      & \textsc{Ungarn} & \textsc{Geschäftsbank} & \textsc{Texttechnologie} & \textsc{weggekrazt} \\
+      & \textsc{Polen} & \textsc{Großbank} & \textsc{Informationswissenschaft} & \textsc{geschubbert} \\
+      & \textsc{Spanien} & \textsc{Kreditbank} & \textsc{Softwaretechnik} & \textsc{angeknabbert} \\
+      & \textsc{Belgien} & \textsc{Mutterbank} & \textsc{Linguistik} & \textsc{rausgerissen} \\
       \hline
-      Datenset 3 & & & & & \\
-    \end{tabular}
-    \caption{Listen der \emph{k} nächsten Nachbarn von Wörtern in verschiedenen Datensets.}
+      \multirow{5}{*}{Mark XXII} & \textsc{Italien} & \textsc{Kreditinstitut} & \textsc{Bioinformatik} & \textsc{geritzt} \\
+      & \textsc{Ungarn} & \textsc{Geldinstitut} & \textsc{Wirtschaftsgeographie} & \textsc{angesengt} \\
+      & \textsc{Polen} & \textsc{Sparkasse} & \textsc{Grundschulpädagogik} & \textsc{zusammengenäht} \\
+      & \textsc{Spanien} & \textsc{Landesbank} & \textsc{Computerwissenschaft} & \textsc{aufgesprungen} \\
+      & \textsc{Belgien} & \textsc{Finanzinstitut} & \textsc{Humangeographie} & \textsc{tupfen} \\
+    \end{tabular}%
+    }
+  \end{changemargin}
+    \caption{Listen der \emph{k} nächsten Nachbarn von Wörtern in verschiedenen Datensets. Inspiriert
+            von (\cite{collobert2011natural}). \label{fig:wortliste}}
   \end{figure}
 
   Das Problem bei dieser Methode liegt in der menschlichen Subjektivität: Die präsentierte Auswahl der Begriffe
@@ -60,9 +78,9 @@ angewendet und kritisch reflektiert werden sollen.\\
   unbedingt schlechter, sondern einfach nur anders.\\
   Darum ist wiederum festzuhalten, dass sich qualitative Methoden in diesem Fall eher für den ersten Eindruck
   eignen, weiterhin aber Prozeduren mit quantifizierbaren Ergebnissen verwendet werden sollten, wie z.B.
-  nächsten Abschnitt beschrieben werden.
+  nächsten Abschnitt \ref{sec:quanteval} beschrieben werden.
 
-  \subsection{Quantitative Evaluation}
+  \subsection{Quantitative Evaluation}\label{sec:quanteval}
 
   Bei der quantitativen Evaluation von Wortvektoren werden die folgenden Ideen aufgegriffen:\\
   \begin{enumerate}
@@ -79,8 +97,8 @@ angewendet und kritisch reflektiert werden sollen.\\
       in der Regel mithilfe der Cosinus-Ähnlichkeit. Diese beschreibt die Ähnlichkeit zweier Vektoren
       als den Winkel zwischen ihnen, mit einem Wert von $-1$ ($\hat{=}$ komplett unterschiedlich) über 0
       ($\hat{=}$ orthogonal) und $+1$ ($\hat{=}$ Equivalenz):
-      \begin{equation}
-        cosine\_similarity(\vec{a}, \vec{b}) = \frac{\vec{a} \cdot \vec{b}}{\|\vec{a}\| \|\vec{b}\|}
+      \begin{equation}\label{form:cossim}
+        cos(\vec{a}, \vec{b}) = \frac{\vec{a} \cdot \vec{b}}{\|\vec{a}\| \|\vec{b}\|}
       \end{equation}
       Danach kann mit \emph{Spearman's $\rho$} bzw. \emph{Spearman's rank correlation coefficient}
       anschließend festgestellt werden, ob die beiden Werte für die Wortpaare korrelieren, sprich ob
@@ -112,18 +130,18 @@ angewendet und kritisch reflektiert werden sollen.\\
   zuverlässig und sinnvoll die Paare bewertet haben (zu messen z.B. mit $Cohen's\ \kappa$) und bei
   den Analogien aus der Zusammenstellung ebendieser (welche Entitäten sind enthalten, wie oft kommen diese vor,
   welche semantische Relationen wurden ausgewählt, wurden diese maschinell oder per Hand erzeugt).\\
-  Aus diesem Grund sollen die benutzten Evaluationssets im hierauf folgenden Abschnitt näher beleuchtet werden.
+  Aus diesem Grund sollen die benutzten Evaluationssets im hierauf folgenden Abschnitt \ref{sec:evaldata} näher beleuchtet werden.
 
-  \subsection{Evaluationsdaten}
+  \subsection{Evaluationsdaten}\label{sec:evaldata}
 
     \subsubsection{Wortpaarähnlichkeit}
 
     Im Englischen wird für die Wortähnlichkeitsevaluation häufig das \textsc{WordSim353}-Datenset verwendet. Dieses
     wurde unter dem Namen \textsc{Schm280} in deutsche portiert, wobei die Paare nicht nur einfach übersetzt, sondern die
     Ähnlichkeit auch noch von deutschen Muttersprachlern neu bewertet wurde. Es enthält insgesamt 280 Wortpaare.\\ \\
-    \textsc{Wortpaare65}, \textsc{Wortpaare222} und \textsc{Wortpaare350} entstammen der Arbeit von [REFERENZ]. Dabei werden Wortpaaren
+    \textsc{Wortpaare65}, \textsc{Wortpaare222} und \textsc{Wortpaare350} entstammen der Arbeit von (\cite{rubenstein1965contextual}). Dabei werden Wortpaaren
     Werte von 0 ($\hat{=}$ vollkommen unzusammenhängend) bis 4 ($\hat{=}$ stark zusammenhängend) bewertet. Die Anzahl
-    der menschlichen Annotatoren sowie deren Übereinstimmung sind in Fig. X festgehalten.
+    der menschlichen Annotatoren sowie deren Übereinstimmung sind in Abbildung \ref{fig:evalsets} festgehalten.
 
     \begin{figure}[h]
       \centering
@@ -134,81 +152,86 @@ angewendet und kritisch reflektiert werden sollen.\\
         \textsc{Wortpaare222} & 21 & 0,49 \\
         \textsc{Wortpaare350} & 8 & 0,69 \\
       \end{tabular}
-      \caption{Anzahl der Annotatoren und Agreement (als $Cohen's\ \kappa$) der \textsc{Wortpaar}-Evaluationsdatensets.}
+      \caption{Anzahl der Annotatoren und Agreement (als $Cohen's\ \kappa$) der \textsc{Wortpaar}-Evaluationsdatensets.
+      \label{fig:evalsets}}
     \end{figure}
 
     \subsubsection{Analogien}
 
-    Die \textsc{Google semantic/syntactic analogy datasets} wurden von Mikolov et al. (2013) [REFERENZ] eingefügt und bestehen
-    aus Analogien der Form \emph{a verhält sich zu a* wie b zu b*}. [REFERENZ] haben diese manuell übersetzt und durch
+    Die \textsc{Google semantic/syntactic analogy datasets} wurden von (\cite{mikolov2013efficient}) eingefügt und bestehen
+    aus Analogien der Form \emph{a verhält sich zu a* wie b zu b*}. (\cite{koper2015multilingual}) haben diese manuell übersetzt und durch
     drei menschliche Prüfer validieren lassen. Dabei wurde die Kategorie ``adjektiv - adverb'' fallengelassen, da sie
     im Deutschen nicht existiert, weshalb 18.552 Analogien übrigbleiben. Diese werden im Folgenden einfach als
     \textsc{Google} bezeichnet.\\ \\
-    \textsc{SemRel} wurde aus Synonomie-, Antonomie- und Hypernomie-Beziehungen von [REFERENZ] für das Deutsche und Englische
+    \textsc{SemRel} wurde aus Synonomie-, Antonomie- und Hypernomie-Beziehungen von (\cite{koper2015multilingual}) für das Deutsche und Englische
     konstruiert. Dabei werden Substantive, Verben und Adjektive berücksichtigt. In der deutschen Variante sind 2.462 (recht schwierige) Analogien enthalten,
     die aus teilweise sehr seltenen Wörter kreiert wurden.
 
   \subsection{Evaluationsergebnisse}
 
-  \newpage
-  \begin{landscape}
+  Im Folgenden sollen die Ergebnisse der Wortvektor-Evaluation diskutiert werden. Am Ende dieses Abschnitts werden dabei
+  nur die Datensets mit den besten Ergebnissen und deren Konfiguration von Parametern vorgstellt, eine ausführliche
+  Übersicht findet sich jedoch im Appendix \ref{AppendixB}.\\
+
+%Mark I     & \textbf{-0,8096}         & \textbf{-0,4640$_{(13)}$}   & \textbf{-0,7302$_{(13)}$}   & \textbf{-0,7094$_{(2)}$}  & \textbf{44,56}  & 1,71 \\
+%Mark XIII  & \textbf{-0,8247$_{(1)}$} & \textbf{-0,5066$_{(102)}$}  & \textbf{-0,7494$_{(132)}$}  & -0,7097$_{(48)}$          & 15,51           & \textbf{3,01} \\
+%Mark XIV   & -0,8106$_{(1)}$          & -0,4953$_{(102)}$           & -0,7362$_{(132)}$           & \textbf{-0,7205$_{(48)}$} & 14,51           & 2,56 \\
+
   \begin{figure}[h]
     \centering
-    \begin{tabular}{l||c|c|c|c||c|c}
-       & \multicolumn{4}{c}{Wortähnlichkeit ($\rho \in [-1, 1]$)} & \multicolumn{2}{c}{Analogien (in \%)} \\
-      Datenset & \textsc{Wortpaare65} & \textsc{Wortpaare222} & \textsc{Wortpaare350} & \textsc{Schm280} & \textsc{Google} & \textsc{SemRel} \\
-      \hline \hline
-      Mark I & -0,8096 & & -0,7302$_{(13)}$ & & 44,56 & \\
+
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{l||l|l|l|l}
+      \textsc{Datenset} & \textsc{Wortpaare65} & \textsc{Wortpaare222} & \textsc{Wortpaare350} & \textsc{Schm280} \\
       \hline
-      Mark II & -0,7856 & & -0,7156$_{(13)}$ & & 40,37 &  \\
+      Mark I & \textbf{-0,8096} & \textbf{-0,4640$_{(13)}$} & \textbf{-0,7302$_{(13)}$} & \textbf{-0,7094$_{(2)}$} \\
+      Mark XIII & \textbf{-0,8247$_{(1)}$} & \textbf{-0,5066$_{(102)}$}  & \textbf{-0,7494$_{(132)}$} & -0,7097$_{(48)}$ \\
+      Mark XIV & -0,8106$_{(1)}$ & -0,4953$_{(102)}$ & -0,7362$_{(132)}$ & \textbf{-0,7205$_{(48)}$} \\
+    \end{tabular}%
+    }
+
+    \vspace{0.5cm}
+
+    \begin{tabular}{l||c|c}
+      \textsc{Datenset} & \textsc{Google} & \textsc{SemRel} \\
       \hline
-      Mark III & -0,7718 & & -0,6886$_{(13)}$ & & 27,42 & 35,11 \\
-      \hline
-      Mark IV & -0,7681 & & -0,6834$_{(13)}$ & & 25,48 & 32,03 \\
-      \hline
-      Mark V &  -0,7725 & & -0,6738$_{(13)}$ & & 25,54 &  \\
-      \hline
-      Mark VI & -0,7697 & & -0,6784$_{(13)}$ & & 25,52 &  \\
-      \hline
-      Mark VII & -0,7255 & & -0,6924$_{(13)}$ & & 30,60 & 1,50  \\
-      \hline
-      Mark VIII & -0,6149 & & -0,6530$_{(13)}$ & & 26,98 &  \\
-      \hline
-      Mark IX & -0,6784 & & -0,6090$_{(13)}$ & & 22,26 & 1,62 \\
-      \hline
-      Mark X & -0,5949 & & -0,5791$_{(13)}$ & & 19,22 & 1,22 \\
-      \hline
-      Mark XI & -0,5890 & & -0,5700$_{(13)}$ & & 18,60 & 1,38  \\
-      \hline
-      Mark XII & -0,5874 & & -0,5706$_{(13)}$ & & 8,62 &  \\
-      \hline
-      Mark XIII & \textbf{-0,8247$_{(1)}$} & & \textbf{-0,7494$_{(132)}$} & & 15,51 & 3,01 \\
-      \hline
-      Mark XIV & -0,8106$_{(1)}$ & & -0,7362$_{(132)}$ & & 14,51 & 2,56 \\
-      \hline
-      Mark XV & -0,7786$_{(1)}$ & & -0,7136$_{(132)}$ & & 13,15 & 2,44 \\
-      \hline
-      Mark XVI & -0,7576$_{(1)}$ & & -0,6990$_{(132)}$ & & 11,76 & 2,56 \\
-      \hline
-      Mark XVII & -0,7578$_{(1)}$ & & -0,6986$_{(132)}$ & & 11,41 & 2,80 \\
-      \hline
-      Mark XVIII & -0,7551$_{(1)}$  & & -0,6981$_{(132)}$ & 11,38 & & 3,01 \\
-      \hline
-      Mark XIX & -0,7589$_{(1)}$  & & -0,7476$_{(132)}$ & & & 2,23 \\
-      \hline
-      Mark XX & -0,7519$_{(1)}$ & & -0,7239$_{(132)}$ & & & 2,15 \\
-      \hline
-      Mark XXI & -0,7188$_{(1)}$ & & -0,6875$_{(132)}$ & & 9,68 & 1,75 \\
-      \hline
-      Mark XXII & -0,6926$_{(1)}$ & & -0,6429$_{(132)}$ & & & 1,71 \\
-      \hline
-      Mark XXIII & -0,6851$_{(1)}$ & & -0,6359$_{(132)}$ & & & 1,95 \\
-      \hline
-      Mark XXIV & -0,6913$_{(1)}$ & & -0,6369$_{(132)}$ & & & 2,07 \\
+      Mark I & \textbf{44,56}  & 1,71 \\
+      Mark XIII & 15,51 & \textbf{3,01} \\
+      Mark XIV & 14,51 & 2,56 \\
     \end{tabular}
-    \caption[Evaluationsergebnisse bei Wortähnlichkeit und Analogien]{Evaluationsergebnisse bei Wortähnlichkeit und Analogien für die verschiedenen Datensets. Für weitere
-    Informationen über die Grundlage der Vektoren siehe Appendix \ref{AppendixA}. Wörter außerhalb des Vokabulars wurden entweder als Fehler gerechnet, oder
-    werden, falls anders nicht möglich, als Zahl im Index in runden Klammern angegeben.}
+
+    \caption[Evaluationsergebnisse der besten Vektordatensets]{Evaluationsergebnisse der fünf besten Vektordatensetz. Oben:
+    Spearman's $\rho$ für die Wortähnlichkeit mit von menschen gewerteten Wortpaaren. Unten: Treffer beim Vervollständigen
+    von Analogien in Prozent. Nicht gefundene Wortvektoren klein in Klammern hinter dem Wert. Für eine vollständige Liste
+    der Trainingsparameter jedes Datensets siehe \ref{AppendixA}. Für die gesamte Liste aller Ergebnisse siehe \ref{AppendixB}.}
   \end{figure}
-\end{landscape}
-\newpage
+
+  Bei der Evaluation war zuallererst festzustellen, dass sowohl bei Datensets, die auf dem normalen oder lemmatisierten Korpus
+  trainiert wurden, Ergebnisse mit steigender Downsamplingrate schlechter wurden. Dies war sowohl bei Training mit dem CBOW- als
+  auch mit dem Skip-Gram-Modell feststellbar. Darüber hinaus lieferte Letzteres im Schnitt bessere Resultate (und benötigte
+  während des Trainings auch weniger Zeit). Das Lemmatisieren führte dazu, das während der Bewertung der Sets oft einige
+  Schritte nicht durchgeführt werden könnten, was anhand der in Subskript in Klammern stehenden Zahlen abzulesen ist.
+  Darunter leidet leider auch wenig die Vergleichbarkeit; es erscheint aber zumindest logisch, dass bei gleichem Evaluationswert
+  einem Datenset mit weniger nicht gefundenen Wortvektoren eine höhere Qualität beizumessen ist.\\
+  Bei den Analogie-Datensets sind ähnliche Tendenzen sichtbar: Beim \textsc{Google}-Datenset sind die Diskrepanzen jedoch
+  deutlich stärker und Vektoren des unlemmatisierten Korpus schneiden deutlich besser ab, was vor allem dadurch
+  zu erklären ist, dass in diesem Set auch Flektion geprüft wird (bspw. \emph{schreiben} verhält sich zu \emph{schreibt} wie
+   \emph{sagen} zu \emph{sagt}) und diese Formen durch die Lemmatisierung velorengehen. Beim \textsc{SemRel}-Datenset
+  verhält sich das ganze allerdings genau umgekehrt, wenn auch die Unterschiede wesentlich feiner sind.\\
+
+  Es ist ferner zu erkennen, dass einige der extern bereitgestellten Evaluationsdaten nicht sehr gut zusammengestellt wurden.
+  Bei \textsc{Wortpaare222} prägen sich die Korrelationswerte nicht unter $-0,54$ aus, was dafür spricht, das die Ähnlichkeit
+  der Wortpaare für sowohl für das System als möglicherweise auch für die menschlichen Annotatoren schwer einzuschätzen war
+  \footnote{Beispielhaft seien hier einige Wortpaare aus \textsc{Wortpaare222} genannt, die nach Ähnlichkeit bewertet werden
+  mussten, um das Problem zu illustrieren:\\
+  \emph{wahrnehmen} - \emph{Grundsatzfrage} / \emph{groß} - \emph{Arbeitszeitregelung} /
+  \emph{Hubschraubertyp} - \emph{einschließlich} / \emph{Büroequipment} - \emph{Institut}.}
+  Beim \textsc{SemRel}-Analogienset sticht dieser Fakt noch viel drastischer heraus: Im besten Fall wurden $3\%$ (sic!)
+  der Analogien richtig vom System vervollständigt. Es sei angemerkt, dass es auch dem Autor und anderen gefragten Personen
+  schwerfiel, stichprobeartig ausgewählte Fragen richtig zu beantworten
+  \footnote{\emph{Lieblichkeit} verhält sich zu \emph{Anmut} wie \emph{Mittelklasse} zu$\ldots$? \rotatebox[origin=c]{180}{\emph{Mittelschicht}}\\
+  \emph{Zivilgesellschaft} verhält sich zu \emph{Bürgergesellschaft} wie \emph{Gegenargument} zu$\ldots$? \rotatebox[origin=c]{180}{\emph{Widerspruch}}\\
+  \emph{Trio} verhält sich zu \emph{Solo}  wie \emph{Arzt} zu$\ldots$? \rotatebox[origin=c]{180}{\emph{Patient}}}.
+  Deshalb stellen sich die Ergebnisse bei diesem Vergleichset ohne klare Tendenz in den Resultaten und generell sehr schlecht dar.\\
+
+  Für die nachfolgenden Schritte wurde die bestabschneidenen Wortvektorsets, namentlich Mark I, XIII und XIV ausgewählt.

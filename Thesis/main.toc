@@ -1,50 +1,56 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \defcounter {refsection}{0}\relax 
 \select@language {ngerman}
-\contentsline {chapter}{Eidesstattliche Erkl\"arung}{iii}{section*.1}
-\contentsline {chapter}{Zusammenfassung}{vii}{section*.2}
-\contentsline {chapter}{Abstract}{ix}{section*.3}
-\contentsline {chapter}{Danksagung}{xi}{section*.4}
-\contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.12}
-\contentsline {section}{\numberline {1.1}Knowledge Graph Completion}{1}{section.14}
-\contentsline {section}{\numberline {1.2}Ansatz}{2}{section.15}
-\contentsline {section}{\numberline {1.3}Inhalt}{3}{section.18}
-\contentsline {chapter}{\numberline {2}Verwandte Arbeiten}{5}{chapter.19}
-\contentsline {section}{\numberline {2.1}Verwandte Arbeiten}{5}{section.20}
-\contentsline {chapter}{\numberline {3}Grundlagen}{7}{chapter.21}
-\contentsline {section}{\numberline {3.1}Neurale Netzwerke}{7}{section.22}
-\contentsline {section}{\numberline {3.2}Wortvektoren}{9}{section.31}
-\contentsline {section}{\numberline {3.3}Wortvektoren aus Dependenzen}{10}{section.35}
-\contentsline {chapter}{\numberline {4}Vorbereitung}{13}{chapter.37}
-\contentsline {section}{\numberline {4.1}Vorbereitung}{13}{section.38}
-\contentsline {subsection}{\numberline {4.1.1}Extraktion von Named Entities}{13}{subsection.39}
-\contentsline {subsection}{\numberline {4.1.2}Aufbereitung des Korpus}{13}{subsection.40}
-\contentsline {subsection}{\numberline {4.1.3}Training der Wortvektoren}{13}{subsection.42}
-\contentsline {chapter}{\numberline {5}Evaluation der Wortvektoren}{15}{chapter.43}
-\contentsline {section}{\numberline {5.1}Evaluation der Wortvektoren}{15}{section.45}
-\contentsline {subsection}{\numberline {5.1.1}Qualitative Evaluation}{15}{subsection.46}
-\contentsline {subsection}{\numberline {5.1.2}Quantitative Evaluation}{16}{subsection.48}
-\contentsline {subsection}{\numberline {5.1.3}Evaluationsdaten}{17}{subsection.56}
-\contentsline {subsubsection}{Wortpaar\IeC {\"a}hnlichkeit}{17}{section*.57}
-\contentsline {subsubsection}{Analogien}{18}{section*.59}
-\contentsline {subsection}{\numberline {5.1.4}Evaluationsergebnisse}{18}{subsection.60}
-\contentsline {chapter}{\numberline {6}Experiment A}{21}{chapter.62}
-\contentsline {section}{\numberline {6.1}Idee}{21}{section.63}
-\contentsline {section}{\numberline {6.2}Algorithmus}{21}{section.65}
-\contentsline {section}{\numberline {6.3}Parallelisierter Algorithmus}{22}{section.72}
-\contentsline {section}{\numberline {6.4}Clustering}{23}{section.76}
-\contentsline {section}{\numberline {6.5}Ergebnisse}{24}{section.81}
-\contentsline {section}{\numberline {6.6}Zwischendiskussion}{24}{section.82}
-\contentsline {subsection}{\numberline {6.6.1}Daten}{25}{subsection.83}
-\contentsline {subsection}{\numberline {6.6.2}Ansatz}{26}{subsection.88}
-\contentsline {chapter}{\numberline {7}Experiment B}{27}{chapter.89}
-\contentsline {section}{\numberline {7.1}Ansatz}{27}{section.90}
-\contentsline {chapter}{\numberline {8}Evaluation der Cluster}{29}{chapter.91}
-\contentsline {section}{\numberline {8.1}Evaluation der Cluster}{29}{section.92}
-\contentsline {chapter}{\numberline {9}Diskussion}{31}{chapter.93}
-\contentsline {chapter}{\numberline {10}Fazit}{33}{chapter.94}
-\contentsline {section}{\numberline {10.1}Fazit}{33}{section.95}
-\contentsline {chapter}{\numberline {11}Ausblick}{35}{chapter.96}
-\contentsline {section}{\numberline {11.1}Ausblick}{35}{section.97}
-\contentsline {chapter}{\numberline {A}\IeC {\"U}bersicht \IeC {\"u}ber die Parameter zum Trainieren der Wortvektoren}{37}{appendix.98}
-\contentsline {chapter}{Literatur}{39}{appendix*.100}
+\contentsline {chapter}{Zusammenfassung}{iii}{section*.1}
+\contentsline {chapter}{Abstract}{v}{section*.2}
+\contentsline {chapter}{Danksagung}{vii}{section*.3}
+\contentsline {chapter}{\numberline {1}Einleitung}{1}{chapter.6}
+\contentsline {section}{\numberline {1.1}Knowledge Graph Completion}{1}{section.8}
+\contentsline {section}{\numberline {1.2}Ansatz}{2}{section.11}
+\contentsline {section}{\numberline {1.3}Inhalt}{3}{section.14}
+\contentsline {chapter}{\numberline {2}Verwandte Arbeiten}{5}{chapter.15}
+\contentsline {section}{\numberline {2.1}Wortvektorrepr\IeC {\"a}sentationen}{5}{section.16}
+\contentsline {section}{\numberline {2.2}Vektorrepr\IeC {\"a}sentationen f\IeC {\"u}r Wissensdatenbank}{6}{section.17}
+\contentsline {chapter}{\numberline {3}Grundlagen}{9}{chapter.19}
+\contentsline {section}{\numberline {3.1}Neurale Netzwerke}{9}{section.20}
+\contentsline {section}{\numberline {3.2}Wortvektoren}{11}{section.29}
+\contentsline {section}{\numberline {3.3}Clustering}{12}{section.33}
+\contentsline {chapter}{\numberline {4}Vorbereitung}{15}{chapter.38}
+\contentsline {section}{\numberline {4.1}Vorbereitung}{15}{section.39}
+\contentsline {subsection}{\numberline {4.1.1}Verwendete Daten}{15}{subsection.40}
+\contentsline {subsection}{\numberline {4.1.2}Aufbereitung des Korpus}{16}{subsection.43}
+\contentsline {subsection}{\numberline {4.1.3}Training der Wortvektoren}{16}{subsection.45}
+\contentsline {chapter}{\numberline {5}Evaluation der Wortvektoren}{17}{chapter.46}
+\contentsline {section}{\numberline {5.1}Evaluation der Wortvektoren}{17}{section.48}
+\contentsline {subsection}{\numberline {5.1.1}Qualitative Evaluation}{17}{subsection.49}
+\contentsline {subsection}{\numberline {5.1.2}Quantitative Evaluation}{18}{subsection.51}
+\contentsline {subsection}{\numberline {5.1.3}Evaluationsdaten}{20}{subsection.59}
+\contentsline {subsubsection}{Wortpaar\IeC {\"a}hnlichkeit}{20}{section*.60}
+\contentsline {subsubsection}{Analogien}{20}{section*.62}
+\contentsline {subsection}{\numberline {5.1.4}Evaluationsergebnisse}{20}{subsection.63}
+\contentsline {chapter}{\numberline {6}Experiment A: TransE f\IeC {\"u}r deutsche Wissensdaten}{23}{chapter.67}
+\contentsline {section}{\numberline {6.1}Datenerzeugung}{23}{section.68}
+\contentsline {section}{\numberline {6.2}Training}{24}{section.76}
+\contentsline {section}{\numberline {6.3}Evaluation}{25}{section.83}
+\contentsline {section}{\numberline {6.4}Zwischenfazit}{26}{section.86}
+\contentsline {chapter}{\numberline {7}Experiment B: Relationsvorhersage mit Wortvektorrepr\IeC {\"a}sentationen}{29}{chapter.87}
+\contentsline {section}{\numberline {7.1}Idee}{29}{section.88}
+\contentsline {section}{\numberline {7.2}Algorithmus}{29}{section.90}
+\contentsline {section}{\numberline {7.3}Parallelisierter Algorithmus}{30}{section.97}
+\contentsline {section}{\numberline {7.4}Evaluation}{31}{section.101}
+\contentsline {section}{\numberline {7.5}Ergebnisse}{32}{section.109}
+\contentsline {section}{\numberline {7.6}Zwischenfazit}{33}{section.111}
+\contentsline {subsection}{\numberline {7.6.1}Daten}{33}{subsection.112}
+\contentsline {subsection}{\numberline {7.6.2}Ansatz}{34}{subsection.118}
+\contentsline {chapter}{\numberline {8}Experiment C: Relationsvorhersage mit Wortvektorrepr\IeC {\"a}sentation}{37}{chapter.119}
+\contentsline {section}{\numberline {8.1}Datenerzeugung}{37}{section.120}
+\contentsline {section}{\numberline {8.2}Training}{38}{section.122}
+\contentsline {section}{\numberline {8.3}Evaluation}{38}{section.125}
+\contentsline {section}{\numberline {8.4}Zwischenfazit}{38}{section.127}
+\contentsline {chapter}{\numberline {9}Fazit}{41}{chapter.128}
+\contentsline {section}{\numberline {9.1}Zusammenfassung}{41}{section.129}
+\contentsline {section}{\numberline {9.2}Diskussion}{41}{section.130}
+\contentsline {section}{\numberline {9.3}Ausblick}{42}{section.131}
+\contentsline {chapter}{\numberline {A}\IeC {\"U}bersicht \IeC {\"u}ber die Parameter zum Trainieren der Wortvektoren}{43}{appendix.132}
+\contentsline {chapter}{\numberline {B}Evaluationen der Wortvektoren}{45}{appendix.134}
+\contentsline {chapter}{Literatur}{47}{appendix*.135}

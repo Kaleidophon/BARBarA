@@ -16,7 +16,7 @@ very loudly. Everybody does it.
 \section{Neurale Netzwerke}
 
 Wie der Name bereits erahnen lässt, fußt die Idee von neuralen Netzwerken auf einer mathematischen Modellierung
-des menschlichen Gehirns. Die Grundbausteine bilden dabei einzelne Neuronen, die dabei auf folgende Art und Weise
+des menschlichen Gehirns (siehe Abbildung \ref{fig:perceptron}). Die Grundbausteine bilden dabei einzelne Neuronen, die dabei auf folgende Art und Weise
 modelliert werden (dieser Teil ist dabei auch als \emph{Perceptron}-Algorithmus bekannt):
 
 \begin{figure}[h]
@@ -24,7 +24,7 @@ modelliert werden (dieser Teil ist dabei auch als \emph{Perceptron}-Algorithmus 
   \includegraphics[width=0.65\textwidth]{../img/neuron.png}
   \caption[Mathematische Modellierung eines Neurons]{Mathematische Modellierung eines Neurons, auch bekannt als
   \emph{Perceptron}-Algorithmus. $x$ bezeichnet In-, $y$ den Output des Neurons, $w$ bilden die Gewichte und $f$ die
-  Aktivierungsfunktion. Abbildung aus (\cite{rong2014word2vec}).}
+  Aktivierungsfunktion. Abbildung aus (\cite{rong2014word2vec}).\label{fig:perceptron}}
 \end{figure}
 
 Der Analogie der menschlichen Nervenzelle folgend erhält das Neuron mehrere Inputs in Form eines Vektors $x$ mit $K$
@@ -62,13 +62,13 @@ kontinuierlich und dadurchableitbar:
 Um aus einzelnen Neuronen nun ein neurales Netzwerk zu kreieren, werden mehrere Schichten erstellt (i.d.R. eine Eingabe-
 (\emph{input layer}), eine Ausgabe- (\emph{output layer}) und min. eine ``versteckte'' Schicht (\emph{hidden layer}).
 Die Schichten bestehen dann aus mehreren Nervenzellen, wobei jede Zelle mit jeder anderen Zelle der vorhergehenden und
-folgenden Schicht vernetzt ist (siehe Abb. X).
+folgenden Schicht vernetzt ist (siehe Abbildung \ref{fig:neuralnet}).
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.5\textwidth]{../img/neuralnet.png}
   \caption[Darstellung eine neuralen Netzwerks]{Darstellung eines neuralen Netzwerks mit vier Schichten, davon jeweils eine
-  für In- und Output, sowie zwei ``versteckte'' Schichten (\emph{hidden layer}). Bild aus (\cite{Goldberg15c}).}
+  für In- und Output, sowie zwei ``versteckte'' Schichten (\emph{hidden layer}). Bild aus (\cite{Goldberg15c}).\label{fig:neuralnet}}
 \end{figure}
 
 Die einzelnen Gewichtsvektoren $w$ aller Neuronen einer Schicht werden dann zu einer Gewichtsmatrix $W$ zusammengefasst,
@@ -103,13 +103,13 @@ Input und Output besitzen die Dimensionalität von $V$), Hidden die von $N$.\\
   \includegraphics[width=1.1\textwidth]{../img/cbowskip.png}
   \caption[Gegenüberstellung von Skip-Gram und CBOW]{Gegenüberstellung der beiden Trainingsmethoden CBOW (links)
   und Skip-Gram (rechts). CBOW versucht die Wahrscheinlichkeit eines Wortes gegeben seines Kontexts zu trainieren,
-  Skip-Gram die Wahrscheinlichkeit eines Kontextes gegeben eines Wortes.}
+  Skip-Gram die Wahrscheinlichkeit eines Kontextes gegeben eines Wortes.\label{fig:cbowskip}}
 \end{figure}
 
 Zwischen Input und Hidden liegt die Gewichtsmatrix $W$ und zwischen Hidden und Output die Matrix $W'$.
 CBOW versucht, die Wahrscheinlichkeit eines Wortes gegeben eines Kontextes
 der Größe $C$ zu maximieren (Kontext bezieht sich in diesem Fall auf die Summe der rechts und links vom Eingabewort stehenden
-Wörter). Unsere Verlustfunktion, deren Wert es dabei zu minimieren gilt, besteht darin in der negativen logarithmischen
+Wörter, siehe Abbildung \ref{fig:cbowskip}). Unsere Verlustfunktion, deren Wert es dabei zu minimieren gilt, besteht darin in der negativen logarithmischen
 Wahrscheinlichkeit eines Wortes gegeben seines Kontextes:
 
 \begin{equation}
@@ -133,21 +133,67 @@ der Aufwand durch einen binären Baum von $O(V)$ auf $O(log\ V)$ reduziert wird 
 \emph{Negativem Sampling}. Bei letzterem werden ``schlechte'' (also Negativ-)Beispiele zum Training hinzugezogen,
 woher sich auch der Name des Verfahrens ableitet.\\
 
-\section{Wortvektoren aus Dependenzen}
+%\section{Wortvektoren aus Dependenzen}
+%
+%Dependenzgrammatiken untersuchen die Abhängigkeiten zwischen Wörtern eines Satzes und fügen diese in eine Dependenzstruktur ein.
+%Anders als in der Phrasenstrukturgrammatik entsteht dabei kein Syntaxbaum mit Knoten. Worte stehen in Abhängigkeitsverhältnissen,
+%wobei das das die Dependenz verursachende Wort alt \emph{Regens}, das davon abhängige als \emph{Dependenz} bezeichnet wird.\\
+%(\citeauthor{levy2014dependency}) machen sich dies zunutze, um den Kontext beim Training von Wortvektoren neu zu definieren:
+%Er besteht nun nicht mehr als den umgebenden Wörtern im Satz, sondern aus den Depenzen: Für ein Word $w$ mit den Modifizierern
+%$m_1, \ldots m_k$ und den Kopf $h$ besteht der Kontext nun aus $(m_1, lbl_1), \ldots (m_k, lbl_k), (h, lbl_h^{-1})$, wobei
+%$lbl$ stellvertretend für eine Dependenzrelation steht, ein $-1$ im Exponenten zeigt das Inverse einer solchen Relation an.
+%Ein Beispiel dafür ist in Abb. X zu sehen.\\
 
-Dependenzgrammatiken untersuchen die Abhängigkeiten zwischen Wörtern eines Satzes und fügen diese in eine Dependenzstruktur ein.
-Anders als in der Phrasenstrukturgrammatik entsteht dabei kein Syntaxbaum mit Knoten. Worte stehen in Abhängigkeitsverhältnissen,
-wobei das das die Dependenz verursachende Wort alt \emph{Regens}, das davon abhängige als \emph{Dependenz} bezeichnet wird.\\
-(\citeauthor{levy2014dependency}) machen sich dies zunutze, um den Kontext beim Training von Wortvektoren neu zu definieren:
-Er besteht nun nicht mehr als den umgebenden Wörtern im Satz, sondern aus den Depenzen: Für ein Word $w$ mit den Modifizierern
-$m_1, \ldots m_k$ und den Kopf $h$ besteht der Kontext nun aus $(m_1, lbl_1), \ldots (m_k, lbl_k), (h, lbl_h^{-1})$, wobei
-$lbl$ stellvertretend für eine Dependenzrelation steht, ein $-1$ im Exponenten zeigt das Inverse einer solchen Relation an.
-Ein Beispiel dafür ist in Abb. X zu sehen.\\
+%\begin{figure}[h]
+%    \centering
+%    \includegraphics[scale=0.2]{../img/depend_ex.png}
+%    \caption[Erstellung von Dependenzkontexten beim Wortvektortraining]{Beispiel der Erstellung von Wortkontexten aus Dependenzen.
+%    Dependenzen mit Präposition werden zu einer Abhängigkeit zusammengefasst. \textbf{Oben}: Dependenzstruktur.
+%    \textbf{Unten}: Extrahierte Kontexte.}
+%\end{figure}
+
+\section{Clustering}
+
+\emph{Clustering} bezeichnet eine Art von unüberwachten maschinellen Lernen,
+die versucht, Elemente, die nach vorher definierten Maßgaben als ähnlich erachtet
+werden sollen, zu gruppieren.\\
+Die Literatur zu diesem Thema bietet dabei eine Fülle von Algorithmen mit verschiedenen
+Grundannahmen, aus denen es zu wählen gilt. Für die Aufgaben in dieser Arbeit wurde
+der DBSCAN-Algorithmus (\textbf{D}ensity-\textbf{B}ased \textbf{S}patial \textbf{C}lustering of
+\textbf{A}pplications with \textbf{N}oise) gewählt, da er folgende Kriterien erfüllt:
+\begin{itemize}
+  \item DBSCAN erlaubt es, dass nicht alle Datenpunkte bei der
+  Terminierung des Algorithmus einem Cluster zugeordnet sein müssen (\emph{Outlier detection})
+  \item Die Anzahl der Cluster muss bei Beginn des Algorithmus nicht festgelegt werden.
+  \item Cluster werden nicht nach der räumlichen Distanz zwischen den Punkten gebildet, sondern nach deren
+  Dichte im Raum. Dies lässt auch nicht-sphärische Clusterformen zu.
+\end{itemize}
+
+Zur Erklärung von DBSCAN müssen zuerst einige Definitionen erstellt werden (siehe Abbildung \ref{fig:dbscan} zur visuellen
+Darstellung):
+\begin{itemize}
+  \item Ein Punkt $p$ in den Daten wird dann als
+  Kernpunkt (\emph{core point}) bezeichnet, sofern mindesten $minPts$ Punkte innerhalb einem Radius $\epsilon$ vorhanden sind.\\
+  Diese Punkte sind von $p$ \emph{direkt erreichbar}.
+  \item Ein Punkt $q$ ist von $p$ erreichbar, sofern es einen Pfad $p_1, \ldots, p_n$ mit $p_1 = p$ und $p_n = q$ gibt, wobei
+  jeder Punkt $p_{i+1}$ von einem Punkt $p_i$ direkt erreichbar ist.
+  \item Alle Punkte, die nicht von einem anderen Punkt aus direkt erreichbar sind, sind Ausreißer (\emph{Outlier}).
+  \item Zwei Punkte $p$ und $q$ sind \emph{direkt verbunden}, sofern es einen Punkt $o$ gibt,
+  von dem aus beide Punkte direkt erreichbar sind.
+  \item Cluster bestehen aus Punkten, die alle miteinander direkt verbunden sind.
+\end{itemize}
 
 \begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.2]{../img/depend_ex.png}
-    \caption[Erstellung von Dependenzkontexten beim Wortvektortraining]{Beispiel der Erstellung von Wortkontexten aus Dependenzen.
-    Dependenzen mit Präposition werden zu einer Abhängigkeit zusammengefasst. \textbf{Oben}: Dependenzstruktur.
-    \textbf{Unten}: Extrahierte Kontexte.}
+  \centering
+  \includegraphics[width=0.6\textwidth]{../img/DBSCAN-Illustration.png}
+  \caption[Darstellung der Funktionsweise von DBSCAN]{Darstellung der Funktionsweise von DBSCAN. Punkt A ist ein Kernpunkt, die
+  Punkte B und C sind von A aus erreichbar. Punkt N ist nicht erreichbar und damit ein Ausreißer.\label{fig:dbscan}\footnotemark}
 \end{figure}
+\footnotetext{Abbildung von
+Chire - Eigenes Werk, CC BY-SA 3.0, \url{https://commons.wikimedia.org/w/index.php?curid=17045963} (zuletzt abgerufen am
+25.04.16).}
+
+Der Algorithmus ist von linearer Komplexität, sofern ihm eine geeignete Indexierung der Daten zugrunde gelegt wird, ansonsten
+verhält sich die Komplexität quadratische zur Anzahl der Datenpunkte\footnote{Bei der
+\verb|scikit-learn|-Implementation wird beispielsweise ein Nearest-Neighbour-Graph verwendet:
+\url{http://scikit-learn.org/stable/modules/generated/sklearn.cluster.dbscan.html} (zuletzt abgerufen am 25.04.16)}.
