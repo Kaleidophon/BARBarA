@@ -92,6 +92,10 @@ headsepline, % Uncomment to get a line under the header
 \newcommand{\Vast}{\bBigg@{5}}
 \makeatother
 
+\makeatletter
+\newcommand{\manuallabel}[2]{\def\@currentlabel{#2}\label{#1}}
+\makeatother
+
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 
 %----------------------------------------------------------------------------------------
@@ -349,7 +353,7 @@ The acknowledgments and the people to thank go here, don't forget to include you
 %	BIBLIOGRAPHY
 %----------------------------------------------------------------------------------------
 
-\printbibliography[heading=bibintoc]
+\printbibliography[heading=bibintoc]\manuallabel{sec:bib}{Bibliographie}
 
 %----------------------------------------------------------------------------------------
 

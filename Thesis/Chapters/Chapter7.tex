@@ -52,7 +52,7 @@ Gegeben sei eine Menge von Sätzen (ein Korpus) $\mathcal{K}$ mit $n$ Sätzen $s
 $m$ Wörtern $w_{ij}$ pro Satz $s_i = \{w_{ij}\}_{j=1}^m$. Eine Kookkurrenz von zwei Begriffen (\emph{types}) $t_1$ und $t_2$
 besteht demnach, falls im Korpus mindestens ein Satz existiert, in dem beide gleichermaßen vorkommen. Dazu können wir
 eine Funktion $\Lambda$ definieren, die die Anzahl der Kookkurrenzen bestimmt:
-\begin{equation}
+\begin{equation}\label{form:lambda-cooc}
   \Lambda(t_1, t_2) = |\{s_i | \exists w_{ij} = t_1 \land \exists w_{ij} = t_2 \land t_1\neq t_2\}_{i=1}^{n}|
 \end{equation}
 Eine mögliche Einschränkung besteht darin, in einem geänderten Algorithmus (siehe Abbildung \ref{fig:algo2}) das Berechnen von $\vec{d}$ nur
@@ -187,16 +187,36 @@ genauer beleuchtet. Dementsprechend sollen an dieser Stelle Zwischenergebnisse v
   \centering
   \begin{multicols}{2}
     \textbf{Cluster A}\\
+    \textsc{Oldenburg} - \textsc{Görlitz}\\
+    \textsc{Tschechien} - \textsc{Karin}\\
+    \textsc{Tschechien} - \textsc{Uwe}\\
+    \textsc{Hockenheim} - \textsc{Offenburg}\\
+    \textsc{Oldenburg} - \textsc{Offenburg}\\
     $\vdots$\\
     \columnbreak
     \textbf{Cluster B}\\
+    \textsc{Pfeiffer} - \textsc{EU-Länder}\\
+    \textsc{Franz} - \textsc{EU-Länder}\\
+    \textsc{Uwe} - \textsc{EU-Länder}\\
+    \textsc{Karin} - \textsc{EU-Länder}\\
+    \textsc{Henning} - \textsc{EU-Länder}\\
     $\vdots$\\
   \end{multicols}
   \begin{multicols}{2}
     \textbf{Cluster C}\\
+    \textsc{Nordhausen} - \textsc{Oberliga}\\
+    \textsc{Bochum} - \textsc{Regionalliga}\\
+    \textsc{Hameln} - \textsc{Regionalliga}\\
+    \textsc{Chemnitzer} - \textsc{Regionalliga}\\
+    \textsc{Chemnitzer} - \textsc{Bundesliga}\\
     $\vdots$\\
     \columnbreak
     \textbf{Cluster D}\\
+    \textsc{Dieter} - \textsc{italienischen}\\
+    \textsc{Pirna} - \textsc{italienischen}\\
+    \textsc{Damon} - \textsc{italienischen}\\
+    \textsc{Shanghai} - \textsc{italienischen}\\
+    \textsc{Pankow} - \textsc{italienischen}\\
     $\vdots$\\
   \end{multicols}
   \caption[Auszug aus verschiedenen Wortpaarclustern]{Auszüge aus einigen Wortpaarclustern, die mit in dem Abschnitt

@@ -16,6 +16,58 @@
   {}
 \endgroup
 
+\entry{abramowitz1964handbook}{book}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Abramowitz}{A.}%
+     {Milton}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Stegun}{S.}%
+     {Irene~A}{I.~A.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Courier Corporation}%
+  }
+  \strng{namehash}{AMSIA1}
+  \strng{fullhash}{AMSIA1}
+  \field{labelyear}{1964}
+  \field{sortinit}{A}
+  \field{title}{Handbook of mathematical functions: with formulas, graphs, and
+  mathematical tables}
+  \field{volume}{55}
+  \field{year}{1964}
+\endentry
+
+\entry{arlia2001experiments}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Arlia}{A.}%
+     {Domenica}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Coppola}{C.}%
+     {Massimo}{M.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {Springer}%
+  }
+  \strng{namehash}{ADCM1}
+  \strng{fullhash}{ADCM1}
+  \field{labelyear}{2001}
+  \field{sortinit}{A}
+  \field{booktitle}{European Conference on Parallel Processing}
+  \field{pages}{326\bibrangedash 331}
+  \field{title}{Experiments in parallel clustering with DBSCAN}
+  \field{year}{2001}
+\endentry
+
 \entry{baroni2014don}{inproceedings}{}
   \name{author}{3}{}{%
     {{}%
@@ -204,6 +256,165 @@
   \field{year}{2011}
 \endentry
 
+\entry{craven2000learning}{article}{}
+  \name{author}{7}{}{%
+    {{}%
+     {Craven}{C.}%
+     {Mark}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {DiPasquo}{D.}%
+     {Dan}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Freitag}{F.}%
+     {Dayne}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {McCallum}{M.}%
+     {Andrew}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Mitchell}{M.}%
+     {Tom}{T.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Nigam}{N.}%
+     {Kamal}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Slattery}{S.}%
+     {Se{\'a}n}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Elsevier}%
+  }
+  \strng{namehash}{CM+1}
+  \strng{fullhash}{CMDDFDMAMTNKSS1}
+  \field{labelyear}{2000}
+  \field{sortinit}{C}
+  \field{number}{1}
+  \field{pages}{69\bibrangedash 113}
+  \field{title}{Learning to construct knowledge bases from the World Wide Web}
+  \field{volume}{118}
+  \field{journaltitle}{Artificial intelligence}
+  \field{year}{2000}
+\endentry
+
+\entry{ester1996density}{inproceedings}{}
+  \true{moreauthor}
+  \name{author}{4}{}{%
+    {{}%
+     {Ester}{E.}%
+     {Martin}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kriegel}{K.}%
+     {Hans-Peter}{H.-P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Sander}{S.}%
+     {J{\"o}rg}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Xu}{X.}%
+     {Xiaowei}{X.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{EM+1}
+  \strng{fullhash}{EMKHPSJXX+1}
+  \field{labelyear}{1996}
+  \field{sortinit}{E}
+  \field{booktitle}{Kdd}
+  \field{number}{34}
+  \field{pages}{226\bibrangedash 231}
+  \field{title}{A density-based algorithm for discovering clusters in large
+  spatial databases with noise.}
+  \field{volume}{96}
+  \field{year}{1996}
+\endentry
+
+\entry{fu2014learning}{inproceedings}{}
+  \name{author}{6}{}{%
+    {{}%
+     {Fu}{F.}%
+     {Ruiji}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Guo}{G.}%
+     {Jiang}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Qin}{Q.}%
+     {Bing}{B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Che}{C.}%
+     {Wanxiang}{W.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Wang}{W.}%
+     {Haifeng}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Liu}{L.}%
+     {Ting}{T.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{FR+1}
+  \strng{fullhash}{FRGJQBCWWHLT1}
+  \field{labelyear}{2014}
+  \field{sortinit}{F}
+  \field{booktitle}{ACL (1)}
+  \field{pages}{1199\bibrangedash 1209}
+  \field{title}{Learning Semantic Hierarchies via Word Embeddings.}
+  \field{year}{2014}
+\endentry
+
+\entry{giaretta1995ontologies}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Giaretta}{G.}%
+     {Pierdaniele}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Guarino}{G.}%
+     {N}{N}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{GPGN1}
+  \strng{fullhash}{GPGN1}
+  \field{labelyear}{1995}
+  \field{sortinit}{G}
+  \field{pages}{32}
+  \field{title}{Ontologies and knowledge bases towards a terminological
+  clarification}
+  \field{volume}{25}
+  \field{journaltitle}{Towards very large knowledge bases: knowledge building
+  \& knowledge sharing}
+  \field{year}{1995}
+\endentry
+
 \entry{Goldberg15c}{article}{}
   \name{author}{1}{}{%
     {{}%
@@ -224,6 +435,29 @@
   \field{volume}{abs/1510.00726}
   \field{journaltitle}{CoRR}
   \field{year}{2015}
+\endentry
+
+\entry{goldberg2014word2vec}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Goldberg}{G.}%
+     {Yoav}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Levy}{L.}%
+     {Omer}{O.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{GYLO1}
+  \strng{fullhash}{GYLO1}
+  \field{labelyear}{2014}
+  \field{sortinit}{G}
+  \field{title}{word2vec Explained: deriving Mikolov et al.'s negative-sampling
+  word-embedding method}
+  \field{journaltitle}{arXiv preprint arXiv:1402.3722}
+  \field{year}{2014}
 \endentry
 
 \entry{harris1954distributional}{article}{}
@@ -434,6 +668,36 @@
   \field{year}{2015}
 \endentry
 
+\entry{maas2013rectifier}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Maas}{M.}%
+     {Andrew~L}{A.~L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Hannun}{H.}%
+     {Awni~Y}{A.~Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ng}{N.}%
+     {Andrew~Y}{A.~Y.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{MALHAYNAY1}
+  \strng{fullhash}{MALHAYNAY1}
+  \field{labelyear}{2013}
+  \field{sortinit}{M}
+  \field{booktitle}{Proc. ICML}
+  \field{number}{1}
+  \field{title}{Rectifier nonlinearities improve neural network acoustic
+  models}
+  \field{volume}{30}
+  \field{year}{2013}
+\endentry
+
 \entry{mikolov2013distributed}{inproceedings}{}
   \name{author}{5}{}{%
     {{}%
@@ -522,6 +786,30 @@
   \field{title}{word2vec parameter learning explained}
   \field{journaltitle}{arXiv preprint arXiv:1411.2738}
   \field{year}{2014}
+\endentry
+
+\entry{rosenblatt1958perceptron}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Rosenblatt}{R.}%
+     {Frank}{F.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {American Psychological Association}%
+  }
+  \strng{namehash}{RF1}
+  \strng{fullhash}{RF1}
+  \field{labelyear}{1958}
+  \field{sortinit}{R}
+  \field{number}{6}
+  \field{pages}{386}
+  \field{title}{The perceptron: a probabilistic model for information storage
+  and organization in the brain.}
+  \field{volume}{65}
+  \field{journaltitle}{Psychological review}
+  \field{year}{1958}
 \endentry
 
 \entry{rubenstein1965contextual}{article}{}

@@ -2,33 +2,33 @@
 \defcounter {refsection}{0}\relax 
 \select@language {ngerman}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Hauptstadtrelationen zwischen Wortvektoren aus (\cite {mikolov2013distributed})}}{4}{figure.caption.16}
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Hauptstadtrelationen zwischen Wortvektoren aus (\cite {mikolov2013distributed})}}{4}{figure.caption.17}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber verschiedene Arten der Vektorrepr\IeC {\"a}sentationen f\IeC {\"u}r Wissensdatenbanken}}{7}{figure.caption.23}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber verschiedene Arten der Vektorrepr\IeC {\"a}sentationen f\IeC {\"u}r Wissensdatenbanken}}{7}{figure.caption.24}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Mathematische Modellierung eines Neurons}}{9}{figure.caption.26}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Darstellung eine neuralen Netzwerks}}{10}{figure.caption.33}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Gegen\IeC {\"u}berstellung von Skip-Gram und CBOW}}{11}{figure.caption.35}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Darstellung der Funktionsweise von DBSCAN}}{13}{figure.caption.39}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Mathematische Modellierung eines Neurons}}{9}{figure.caption.27}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Darstellung eine neuralen Netzwerks}}{10}{figure.caption.35}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Gegen\IeC {\"u}berstellung von Skip-Gram und CBOW}}{12}{figure.caption.40}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Darstellung der Funktionsweise von DBSCAN}}{13}{figure.caption.46}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber verwendete vorgefertigte Datensets}}{15}{figure.caption.46}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber verwendete vorgefertigte Datensets}}{15}{figure.caption.53}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Listen der \emph {k} n\IeC {\"a}chsten Nachbarn von W\IeC {\"o}rtern in verschiedenen Datensets. Inspiriert von (\cite {collobert2011natural}). \relax }}{18}{figure.caption.55}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Anzahl der Annotatoren und Agreement (als $Cohen's\ \kappa $) der \textsc {Wortpaar}-Evaluationsdatensets. \relax }}{20}{figure.caption.66}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Evaluationsergebnisse der besten Vektordatensets}}{21}{figure.caption.69}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Listen der \emph {k} n\IeC {\"a}chsten Nachbarn von W\IeC {\"o}rtern in verschiedenen Datensets. Inspiriert von (\cite {collobert2011natural}). \relax }}{20}{figure.caption.63}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Anzahl der Annotatoren und Agreement (als $Cohen's\ \kappa $) der \textsc {Wortpaar}-Evaluationsdatensets. \relax }}{22}{figure.caption.74}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Evaluationsergebnisse der besten Vektordatensets}}{23}{figure.caption.77}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Daten \IeC {\"u}ber die Relationsdatensets FB15k und GER14k}}{24}{figure.caption.79}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Resultate f\IeC {\"u}r TransE mit FB15k und GER14k}}{26}{figure.caption.89}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Daten \IeC {\"u}ber die Relationsdatensets FB15k und GER14k}}{26}{figure.caption.87}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Resultate f\IeC {\"u}r TransE mit FB15k und GER14k}}{28}{figure.caption.97}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Einfacher Projektionsalgorithmus}}{29}{figure.caption.96}
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Modifizierter Projektionsalgorithmus}}{30}{figure.caption.100}
-\contentsline {figure}{\numberline {7.3}{\ignorespaces Parallelisierter Projektionsalgorithmus}}{31}{figure.caption.103}
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Auszug aus verschiedenen Wortpaarclustern}}{33}{figure.caption.115}
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Dreidimensionale Projektionen einiger durch das Mappingverfahren resultierender Vektorr\IeC {\"a}ume}}{35}{figure.caption.122}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Einfacher Projektionsalgorithmus}}{31}{figure.caption.104}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Modifizierter Projektionsalgorithmus}}{32}{figure.caption.108}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Parallelisierter Projektionsalgorithmus}}{33}{figure.caption.111}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Auszug aus verschiedenen Wortpaarclustern}}{35}{figure.caption.123}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Dreidimensionale Projektionen einiger durch das Mappingverfahren resultierender Vektorr\IeC {\"a}ume}}{37}{figure.caption.130}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Daten des neuen Relationsdatensets im Vergleich zu FB15k und GER14k}}{37}{figure.caption.126}
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Resultate auf mit Wordvektoren auf WE3k}}{38}{figure.caption.131}
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Daten des neuen Relationsdatensets im Vergleich zu FB15k und GER14k}}{39}{figure.caption.134}
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Resultate auf mit Wordvektoren auf WE3k}}{40}{figure.caption.139}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Quelle und Trainingsparameter f\IeC {\"u}r Wortvektoren}}{43}{figure.caption.138}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Quelle und Trainingsparameter f\IeC {\"u}r Wortvektoren}}{45}{figure.caption.146}
 \addvspace {10\p@ }
