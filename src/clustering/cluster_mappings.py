@@ -3,12 +3,11 @@ from sklearn.cluster import DBSCAN
 from sklearn.decomposition import PCA
 from sklearn.metrics import silhouette_score
 from scipy.optimize import minimize
-from scipy.spatial.distance import cosine
 import codecs
 import numpy
 from collections import defaultdict
 import time
-from scipy.spatial.distance import cosine
+from random import randrange
 
 
 def main():
@@ -29,12 +28,17 @@ def main():
 				cluster_mappings(args.input[0])
 
 
-def train_clustering_parameters(vector_inpath):
+def train_clustering_parameters(vector_inpath, iterations=10):
 	x0 = numpy.array([2.5, 20, 2])
 	print alt("Load mappings...")
 	indices, model = load_mappings_from_model(vector_inpath)
 	X = numpy.array([model[key] for key in indices])
 	print alt("Start training...")
+
+	def cluster_amount_constraint(x, expected_n):
+		n = expected_n * 2.0
+		factor = (n / 2)**2
+		return -(1.0/factor) * x**2 + (1.0/(factor/10.0)) * x
 
 	def simple_clustering(x):
 		print alt("Current parameters: %s" %(str(x)))
@@ -46,13 +50,13 @@ def train_clustering_parameters(vector_inpath):
 		tscore = (sscore / (len(cluster_sizes.keys()) - 1))
 		print alt("Current value of objective function: %.5f" %(tscore))
 		print "-" * 50
-		return -1.0 * tscore
+		return cluster_amount_constraint(-1.0 * tscore, 16)
 
-	result = minimize(simple_clustering, x0, method="Nelder-Mead")
-	print result
+	result = minimize(simple_clustering, x0, method="Nelder-Mead", options={'maxiter': 1})
+	print result.x
 
 
-def cluster_mappings(vector_inpath, do_pca=False, target_dim=100, indices_inpath=None, epsilon=2.5, min_s=20):
+def cluster_mappings(vector_inpath, do_pca=False, target_dim=100, indices_inpath=None, epsilon=2.625, min_s=20):
 	# TODO: CLustering parameters
 	# TODO: Metric cosine similarity or euclidian distance
 	print alt("Load mappings...")
@@ -68,7 +72,7 @@ def cluster_mappings(vector_inpath, do_pca=False, target_dim=100, indices_inpath
 	# k = 2 * X[0].shape[0] - 1
 	# min_pts = k + 1
 	#dbscan = DBSCAN(eps=0.1, min_samples=20, metric='cosine',algorithm='brute')
-	dbscan = DBSCAN(eps=epsilon, min_samples=min_s)
+	dbscan = DBSCAN(eps=epsilon, min_samples=min_s, p=2)
 	dbscan.fit(X)
 	labels = dbscan.labels_
 	print get_cluster_size(labels)

@@ -34,6 +34,7 @@ def get_stats(data):
 	relations = set()
 
 	for triple in data:
+		#print triple[0], triple[2]
 		entities.add(triple[0])
 		entities.add(triple[2])
 		relations.add(triple[1])

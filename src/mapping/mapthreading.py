@@ -13,6 +13,7 @@ from math import log
 def main():
 	argparser = init_argparse()
 	args = argparser.parse_args()
+	print args
 	master = MappingMasterThread(args.procs, args.input, args.output, args.features, args.ids, args.indices)
 	master.start_threads()
 
@@ -44,9 +45,9 @@ class MappingMasterThread(threading.Thread):
 		self.prepare()
 
 		# Initialize workers
-		print alt("Initializing %i worker threads..." % (n))
-		for i in range(n):
-			self.threads.append(MappingWorkerThread(n, self.vector_dict, self.vector_queue, self.vector_outpath,
+		print alt("Initializing %i worker threads..." % n)
+		for i in range(int(n)):
+			self.threads.append(MappingWorkerThread(i, self.vector_dict, self.vector_queue, self.vector_outpath,
 													self.features, self.occurrences, self.indices))
 
 	def start_threads(self):
@@ -136,6 +137,7 @@ class MappingWorkerThread(threading.Thread):
 							'cossim': self.cosine_similarity, 'concat': self.concat, 'spray': self.spray}
 
 	def run(self):
+		print "Worker %i start!" % self.worker_id
 		keys = self.vector_dict.get_keys()
 		with codecs.open(self.vector_outpath, "a", "utf-8") as vector_outfile:
 			while not self.vector_queue.empty():
@@ -144,45 +146,28 @@ class MappingWorkerThread(threading.Thread):
 					# Check whether this mapping has already been computed by
 					# another thread
 					if not self.vector_dict.skippable(index) and not current_index == index:
-						# Check whether this mapping would satisfy the
-						# co-occurrence
-						# criterion (optional)
-						#if self.occurrences:
-						#	current_word = self.indices[current_index]
-						#	word = self.indices[index]
-						#	current_occ = self.occurrences[current_word]
-						#	occ = self.occurrences[word]
-						#	joint_occ = current_occ & occ
-							#try:
-							#	if log(len(joint_occ) * 1.0 / (len(occ) * 1.0 * len(current_occ))) < -11:
-							#		self.vector_dict.add_skippable(self.hash_indices(current_index, index))
-							#		continue
-							#except:
-							#	self.vector_dict.add_skippable(self.hash_indices(current_index, index))
-							#	continue
-
 						# Get the other vector
 						comp_vector = self.vector_dict.get_vector(index)
 						new_vector = numpy.array([])
 
-						# Compute new vector
-						for operation in self.features:
-							if operation == 'spray':
-								current_word = self.indices[current_index]
-								word = self.indices[index]
-								current_occ = self.occurrences[current_word]
-								occ = self.occurrences[word]
-								joint_occ = current_occ & occ
-								oresult = self.spray(current_vector, comp_vector, len(joint_occ))
-							else:
+						# Check whether this mapping would satisfy the
+						# co-occurrence criterion (optional)
+						current_word = self.indices[current_index]
+						word = self.indices[index]
+						current_occ = self.occurrences[current_word]
+						occ = self.occurrences[word]
+						joint_occ = current_occ & occ
+						if len(joint_occ) >= 100:
+							# Compute new vector
+							for operation in self.features:
 								oresult = self.voperations[operation](current_vector, comp_vector)
-							new_vector = numpy.append(new_vector, oresult)
-
-						# Write result and mark combination as done
-						if not self.vector_dict.skippable(index):
-							vector_outfile.write(u'%i %i %s\n' % (current_index, index,
-																' '.join([str(d) for d in new_vector.tolist()])))
-						self.vector_dict.add_skippable(self.hash_indices(current_index, index))
+								new_vector = numpy.append(new_vector, oresult)
+								# Write result and mark combination as done
+								if not self.vector_dict.skippable(index):
+									print "Worker %i writing %i - %i" % (self.worker_id, current_index, index)
+									vector_outfile.write(u'%i %i %s\n' % (current_index, index,
+																		' '.join([str(d) for d in new_vector.tolist()])))
+								self.vector_dict.add_skippable(self.hash_indices(current_index, index))
 
 	def distance(self, v1, v2):
 		return v1 - v2

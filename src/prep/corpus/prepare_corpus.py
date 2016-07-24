@@ -29,6 +29,9 @@ def main():
 
 
 def construct_yaml_str(self, node):
+	"""
+	Docstring for git testing purposes.
+	"""
 	# Override the default string handling function
 	# to always return unicode objects
 	return self.construct_scalar(node)

@@ -1,7 +1,9 @@
-*.out
-*.lof
+Thesis/*.out
+Thesis/*.lof
 *.pyc
-*.loc
+Thesis/*.loc
+Thesis/*.toc
+Thesis/*.blg
 Paper/*
 *.log
 *.aux

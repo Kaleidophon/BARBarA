@@ -7,46 +7,93 @@
 %----------------------------------------------------------------------------------------
 
 \section{Vorbereitung}
-Bla
 
-  \subsection{Extraktion von Named Entities}
+  Für die nachfolgenden Experimente in den Kapiteln \ref{Chapter5}, \ref{Chapter6}, \ref{Chapter7} und \ref{Chapter8}
+  mussten einige Daten zuerst beschafft und unter Umständen aufbereitet werden. Die ergriffenen Maßnahmen werden
+  deshalb in diesem Kapitel beschrieben.
 
-  \subsection{Aufbereitung des Korpus}
+  \subsection{Verwendete Daten}
+
+  Die anfangs verwendeten Daten lassen sich grob in vier Kategorien einteilen: Den Korpus, das Relationsdatenset,
+  Wortähnlichkeitslisten sowie Analogiedatensets (siehe Abbildung \ref{fig:datasets}).\\
+  Als Korpus wurde der \textsc{DECOW14X}-Korpus verwendet. Genaueres über dessen Beschaffenheit und Vorverarbeitung für das
+  Training von Wortvektoren werden in \ref{sec:corpusprep} und \ref{sec:vectrain} beschrieben.
+
+  \begin{figure}[h]
+    \centering
+    \def\arraystretch{1.5}
+    \resizebox{\textwidth}{!}{%
+    \begin{tabular}{l|l|rl|l}
+      \textsc{Art} & \textsc{Name} & \multicolumn{2}{l|}{\textsc{Beschreibung}} & \textsc{Quelle} \\
+      \hline \hline
+      Korpora & \textsc{DECOW14X} & \multicolumn{2}{l|}{Deutschsprachiger Webkorpus} & (\cite{schafer2012building}) \\
+      \hline
+      Relationsdaten & \textsc{FB14k} & \multicolumn{2}{l|}{592k Relationstripel aus Freebase} & (\cite{bordes2013translating}) \\
+      \hline
+      \multirow{4}{*}{\parbox[t]{1.5cm}{Wortähnlich-keiten}} & \textsc{Schm280} & 280 & \multirow{4}{*}{\Vast \} \parbox[c]{4cm}{nach Ähnlichkeit bewertete Wortpaare}} & (\cite{koper2015multilingual})\\ \cline{5-5}
+       & \textsc{Wortpaare65} & 65 & & \multirow{3}{*}{(\cite{rubenstein1965contextual})} \\
+       & \textsc{Wortpaare222} & 222 & & \\
+       & \textsc{Wortpaare350} & 350 & & \\
+      \hline
+      \multirow{2}{*}{Analogien} & \textsc{Google} & \multicolumn{2}{l|}{Datenset mit 18.552 Analogien} & \multirow{2}{*}{(\cite{koper2015multilingual})} \\
+       & \textsc{SemRel} & \multicolumn{2}{l|}{Datenset mit 2.462 Analogien} & \\
+    \end{tabular}%
+    }
+  \caption[Übersicht über verwendete vorgefertigte Datensets]{Übersicht über in dieser Arbeit verwendete, extern generierte
+  Datensets sowie deren Quelle.\label{fig:datasets}}
+  \end{figure}
+
+  Relationsdaten aus der mittlerweile in \text{Wikidata} integrierten Wissensdatenbank\footnote{Siehe
+  \url{https://plus.google.com/109936836907132434202/posts/bu3z2wVqcQc} (zuletzt abgerufen am 21.07.16).}
+   \textsc{Freebase} wurden im Datenset \textsc{FB14k} von (\cite{bordes2013translating}) gesammelt.
+  Diese werden vor allem in den Versuchen von Kapiteln \ref{Chapter6} und \ref{Chapter8} relevant.\\
+  Alle anderen Datensets sind zur Evaluation der Wortvektoren in Kapitel \ref{Chapter5} angedacht: Die Sets
+  \textsc{Schm280}, \textsc{Wortpaare65}, \textsc{Wortpaare222} und \textsc{Wortpaare350} bestehen aus einer Reihe
+  von Wortpaaren, die von menschlichen Annotatoren auf verschiedenen Skalen nach Ähnlichkeit bewertet wurden.\\
+  \textsc{Google}\footnote{Eigentlich: \textsc{Google semantic/syntactic analogy datasets}} und \textsc{SemRel} sind
+  in verschiedene Kategorien eingeteilte Analogiepaare der Form ``W verhält sich zu X wie Y zu Z''. Bei der Evaluation
+  wird dann die Fähigkeit eines Systems mit Wortvektoren getestet, diese korrekt zu vorvervollständigen, wenn Z nicht
+  gegeben ist.
+
+
+  \subsection{Aufbereitung des Korpus}\label{sec:corpusprep}
 
   Als Textressource wurde das DECOW14X-Korpus (DE = Deutsch, COW = ``\textbf{CO}rpus from the \textbf{W}eb'') verwendet.
-  Dieses Korpus von (\cite{schafer2012building})  besteht aus 21 Texten,
-  die in den Jahren 2011 und 2014 von deutschsprachigen Internetseiten gecrawled und aufbereitet wurden. Dies beinhaltet
-  PoS-Tagging, Chunking, Lemmatisierung, das Markieren von Eigennamen (Named Entities) und dem Hinzufügen von Metadaten.
-  Die Sätze liegen darin im CoNLL-Format\footnote{Siehe \url{http://ilk.uvt.nl/conll/} (zuletzt abgerufen am 11.04.16)} vor,
-  wobei jedem Wort und dessen Annotationen eine ganze Zeile gewidmet ist,
+  Dieses Korpus von (\cite{schafer2012building}) besteht aus 21 Teilkorpora,
+  die in den Jahren 2011 und 2014 von deutschsprachigen Internetseiten extrahiert und aufbereitet wurden. Diese beinhalten
+  Informationen im Bezug auf PoS-Tagging, Chunking, Lemmatisierung, Eigennamen (\emph{named entities}) und einige Metadaten.
+  Die Sätze liegen im \textsc{CoNLL}-Format\footnote{Siehe \url{http://ilk.uvt.nl/conll/} (zuletzt abgerufen am 11.04.16)} vor,
+  wobei jedem Wort und dessen Annotationen eine ganze Zeile gewidmet ist.
   Stazgrenzen werden durch XML-Tags getrennt. Summa summarum enthält das Korpus 624.767.747 Sätze mit 11.660.894.000 Tokens.\\
 
-  Für diese Arbeit wurden auf Basis der Ressource drei Version für das Training der Wortvektoren erstellt:
+  Für diese Arbeit wurden auf Basis der Ressource zwei Versionen für das Training der Wortvektoren erstellt:
   \begin{itemize}
       \item Eine Datei mit den originalen Tokens durch Leerzeichen getrennt, je ein Satz pro Zeile.
       \item Eine Datei mit den lemmatisierten Tokens durch Leerzeichen getrennt, je ein Satz pro Zeile.
-      \item Eine Datei mit dem lemmatisierten Tokens, sortiert nach den für jeden Satz geparsten Dependenzen, ein Satz pro Zeile.
   \end{itemize}
-  Die Dependenzen wurden dabei mit dem Tool X erzeugt. [Blabla erläutern wenn Punkt erledigt.]
 
+  Um die beiden Varianten zu erstellen, wurden die jeweils relevanten Informationen aus den dazugehörigen Spalten des
+  \textsc{CoNLL}-Formats verwendet.\\
+  Darüber hinaus wurden für spätere Anwendungen in Kapitel \ref{Chapter7} alle Eigennamen sowie die Satz-IDs für
+  alle Eigennamen gesammelt (siehe die Kookkurrenzeinschränkung \ref{form:lambda-cooc}).
 
-  \subsection{Training der Wortvektoren}
+  \subsection{Training der Wortvektoren}\label{sec:vectrain}
 
-  Wortvektoren werden mithilfe des Tools \emph{word2vec} und zwei verschiedenen Modellen trainiert: Continuous-Bag-of-Words (CBOW)
+  Wortvektoren werden mithilfe des Tools \verb|word2vec| und zwei verschiedenen Modellen trainiert: Continuous-Bag-of-Words (CBOW)
   und Skip-Gram. Das CBOW-Model wurde zuerst von (\cite{mikolov2013efficient}) vorgestellt. Die Erklärung der Funktionsweise
   wird im nachfolgenden Teil recht klein gehalten, für eine ausführlichere und verständliche Ausführung wird beispielsweise
-  die Arbeit von (\cite{rong2014word2vec}) empfohlen.\\
+  die Arbeit von (\cite{rong2014word2vec}) oder die Ausführung in Kapitel \ref{sec:wordvec} empfohlen.\\
 
-  Zum Training der Vektoren wurde das C-Tool \emph{Word2Vec} von (\citeauthor{mikolov2013efficient}) verwendet. Als Eingabe
-  benötigt es eine Textressource, die einen Satz pro Zeile enthält, Tokens durch Leerzeichen getrennt und gibt die Wortvektoren
+  Als Eingabe benötigt es eine Textressource, die einen Satz pro Zeile enthält, Tokens durch Leerzeichen getrennt und gibt die Wortvektoren
   entweder einem einfach Text- oder Binärformat aus.\\
   Das Tool lässt zudem dem Nutzer offen, einige Parameter zu verändern. Jene, die in dieser Arbeit berücksichtigt wurden, sollen
   dabei näher erläutert werden:
   \begin{itemize}
-    \item \verb|-sample|\\Die Wahrscheinlichkeit, mit der hochfrequente Worte
+    \item \verb|-sample|\\Die Wahrscheinlichkeit, mit der Einfluss hochfrequenter Worte im Training geregelt wird
     \item \verb|-cbow|\\Bestimmt, welche Trainingsmethode verwendet wird ($0\ \hat{=}$ Skip-gram, $1\ \hat{=}$ Continuous-Bag-of-Words)
     \item \verb|-negative|\\Anzahl von negativen Beispielen beim Training.
   \end{itemize}
 
-  Zwar bietet das Tool auch noch andere Parameter, jedoch soll aufgrund mit der Empfehlungen in (\citeauthor{levy2015improving}), in
+  Zwar bietet das Tool auch noch andere Parameter, jedoch soll aufgrund der Empfehlungen in (\citeauthor{levy2015improving}), in
   der eine große Anzahl von Konfigurationen ausprobiert wurde, im Rahmen dieser Arbeit nur mit den oben genannten Werten experimentiert werden.
+  Weiterführende Optimierungen wurden zudem unterlassen, um den Rahmen dieser Arbeit nicht zu sprengen.
