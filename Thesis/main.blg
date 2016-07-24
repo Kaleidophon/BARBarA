@@ -33,45 +33,45 @@ Warning--I didn't find a database entry for "finkelstein2001placing"
 Biblatex version: 2.8
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
-You've used 29 entries,
+You've used 30 entries,
             6047 wiz_defined-function locations,
-            1309 strings with 13631 characters,
-and the built_in function-call counts, 97532 in all, are:
-= -- 3638
-> -- 3322
-< -- 886
-+ -- 1101
-- -- 1275
-* -- 8424
-:= -- 6016
+            1314 strings with 13772 characters,
+and the built_in function-call counts, 100975 in all, are:
+= -- 3743
+> -- 3462
+< -- 918
++ -- 1144
+- -- 1337
+* -- 8757
+:= -- 6233
 add.period$ -- 0
-call.type$ -- 29
-change.case$ -- 453
+call.type$ -- 30
+change.case$ -- 464
 chr.to.int$ -- 34
-cite$ -- 56
-duplicate$ -- 11126
-empty$ -- 10201
-format.name$ -- 2335
-if$ -- 21915
+cite$ -- 58
+duplicate$ -- 11499
+empty$ -- 10546
+format.name$ -- 2425
+if$ -- 22698
 int.to.chr$ -- 0
-int.to.str$ -- 69
+int.to.str$ -- 71
 missing$ -- 0
-newline$ -- 922
-num.names$ -- 1336
-pop$ -- 9301
+newline$ -- 951
+num.names$ -- 1377
+pop$ -- 9630
 preamble$ -- 1
-purify$ -- 566
+purify$ -- 582
 quote$ -- 0
-skip$ -- 5480
+skip$ -- 5677
 stack$ -- 0
-substring$ -- 1878
-swap$ -- 3786
-text.length$ -- 820
-text.prefix$ -- 29
+substring$ -- 1919
+swap$ -- 3918
+text.length$ -- 854
+text.prefix$ -- 30
 top$ -- 1
-type$ -- 1090
+type$ -- 1128
 warning$ -- 0
-while$ -- 550
+while$ -- 568
 width$ -- 0
-write$ -- 892
+write$ -- 920
 (There were 2 warnings)

@@ -6,18 +6,18 @@
 
 %----------------------------------------------------------------------------------------
 
-In diesem Kapitel soll versucht werden, die Methodik des Rausch-konstrastierenden Lernen aus Kapitel \ref{Chapter6}
-auf die Wortvektoren (vgl. Kapitel \ref{Chapter5}) anzuwenden und nur die Relationsvektoren zu lernen. Zu diesem Zweck
-wird eine Untermenge von FB15k, die Tripel enthält, deren Kopf- und Fußentität jeweils als Wortvektorrepräsentation vorliegen.
+In diesem Kapitel soll versucht werden, die Methodik des rauschkonstrastierenden Lernen aus Kapitel \ref{Chapter6}
+auf die Wortkontextvektoren (vgl. Kapitel \ref{Chapter5}) anzuwenden und nur die Relationsvektoren zu lernen. Zu diesem Zweck
+wird eine Untermenge von \textsc{FB15k}, die Tripel enthält, deren Kopf- und Fußentität jeweils als Wortvektorrepräsentation vorliegen.
 Schlußendlich werden die Ergebnisse evaluiert und diskutiert.
 
 \section{Datenerzeugung}
 
-Zu Trainingszwecken wird eine Untermenge aus FB15k bzw. GER14k gebildet. Da
+Zu Trainingszwecken wird eine Untermenge aus \textsc{FB15k} bzw. \textsc{GER14k} gebildet. Da
 die Vektorrepräsentationen für die Entitäten nicht von Grund auf erstellt sorden mit
 \verb|word2vec| trainierte Vektoren verwendert werden, können nur solche Worte in dem
 neuen Trainingsset vorhanden sein, zu denen ebensolche Wortvektoren auch vorliegen.
-Dies ist leider nur für einen gerinen Teil der Fall, wie in Abbildung \ref{fig:we4k} zu
+Dies ist leider nur für einen substantiell geringeren Teil der Fall, wie in Abbildung \ref{fig:we4k} zu
 erkennen ist.
 
 \begin{figure}[h]
@@ -33,18 +33,19 @@ erkennen ist.
   \end{tabular}%
   }
 \end{changemargin}
-  \caption[Daten des neuen Relationsdatensets im Vergleich zu \textsc{FB15k} und \textsc{GER14k}]{Daten des neuen Sets WE4k im Vergleich mit
-  FB15k und GER14k. Aufgelistet ist die Anzahl der Tripel (Datensätze), Entitäts- und Relationstypen und die Veränderung
-  der Anzahlen in Prozent im Vergleich zu FB15k in Klammern.\label{fig:we4k}}
+  \caption[Daten des neuen Relationsdatensets im Vergleich zu \textsc{FB15k} und \textsc{GER14k}]{Daten des neuen Sets \textsc{WE4k} im Vergleich mit
+  \textsc{FB15k} und \textsc{GER14k}. Aufgelistet ist die Anzahl der Tripel (Datensätze), Entitäts- und Relationstypen und die Veränderung
+  der Anzahlen in Prozent im Vergleich zu \textsc{FB15k} in Klammern.\label{fig:we4k}}
 \end{figure}
 
-Dies ist dadurch zu erklären, dass in der Quelle der Originaldaten, nämlich Freebase,
+Dies ist dadurch zu erklären, dass in der Quelle der Originaldaten, nämlich \emph{Freebase},
 sehr viele sehr seltene Entitäten vertreten sind. Die vielen Freiwilligen, die über die
 Jahre dazu beigetragen haben, die Wissensdatenbank weiter zu vervollständigen, haben dabei auch
-viele unbekanntere Filme, Personen etc. hinzugefügt, die in einem Korpus eher selten zu finden sind.\\
+viele unbekanntere Filme, Personen etc. hinzugefügt, die in einem Korpus eher selten zu finden sind, sei er auch
+so groß wie \textsc{Decow}.\\
 
 Da die resultierende Menge an Tripeln gerundet ungefähr viertausend einzigartig Entitäten enthält, die auch als
-Wortvektorrepräsentation (\emph{word embeddings}) vorliegen, wird dieses Datenset WE4k genannt.
+Wortkontextvektoren vorliegen, wird dieses Datenset im Folgenden \textsc{WE4k} genannt.
 
 \section{Training}
 
@@ -52,15 +53,17 @@ Das Training der Relationsvektoren findet in einer sehr zu der in Kapitel \ref{C
 ähnlichen Art und Weise wie in Kapitel \ref{Chapter6} statt: Es wird zuerst eine Menge korrumpierter Tripel erstellt, bei denen entweder
 die Kopf- oder Fußentität ersetzt wurde.
 Mithilfe der ursprünglichen Tripel wird eine Menge aus Tripelpaaren erstellt, von denen der korrumpierte Teil jeweils
-zufällig aus $S'$ ausgewählt wird. Auch die Verlustfunktion gestaltet sich prinzipiell gleich.\\
+zufällig aus $S'$ ausgewählt wird. Auch die Verlustfunktion gestaltet sich prinzipiell gleich (siehe Formel \ref{form:lossf}).\\
 
-Der einzige Unterschied besteht in der Implementation des Algorithmus: So wird wird wegen der geringeren Menge an
+Die wenigen Unterschiede bestehen darin, dass diesmal nur die Repräsentationen der Relationen trainiert werden,
+da die der Enitäten und schon vorliegen sowie im Trainingsschritt selbst: So wird wird wegen der geringeren Menge an
 Daten darauf verzichtet, für jede Trainingsanzahl eine feste Anzahl von Tripelpaaren zufällig auszuwählen.
-Stattdessen richtet sich die Größe von $S_{batch}$ nach folgender Formel:
+Stattdessen richtet sich die Größe von $S_{batch}$ nach folgender Formel\footnote{Die Addtion von 1 dient dazu, bei weniger
+von 10 Tripeln für eine Relation wenigstens mit einem Tripel zu trainieren. Der Rest entspricht einer Heuristik. Es wurden
+verschiedene Größen für den Minibatch ausprobiert, die jedoch keinen signifikaten Einfluss auf die Ergebnisse hatten.}:
 
 \begin{equation}
-  S_{batch} \leftarrow sample(S^*, \floor*{\frac{|S^*|}{10}}+1)\footnote{Die Addtion von 1 dient dazu, bei weniger
-  von 10 Tripeln für eine Relation wenigstens mit einem Tripel zu trainieren. Der Rest ist eine Heuristik.}
+  S_{batch} \leftarrow sample(S^*, \floor*{\frac{|S^*|}{10}}+1)
 \end{equation}
 
 \section{Evaluation}
@@ -75,35 +78,35 @@ diese unter den Top Zehn anzutreffen war.
   \begin{tabular}{r||c|c}
     \textsc{Datenset} & \textsc{Gemittelter Rang} & \textsc{Hits@10} \\
      \hline
-     WE4k & 1122,03 & 5,67 \\
-     FB15k & \textbf{197,02} & \textbf{48,79} \\
-     GER14k & 222,05 & 41,83 \\
+     \textsc{WE4k} & 1122,03 & 5,67 \\
+     \textsc{FB15k} & \textbf{197,02} & \textbf{48,79} \\
+     \textsc{GER14k} & 222,05 & 41,83 \\
   \end{tabular}
   \caption[Resultate auf mit Wordvektoren auf \textsc{WE3k}]{\label{fig:eval-we4k}}
 \end{figure}
 
 Im Blick auf Abbildung \ref{fig:eval-we4k} zeigt ein ziemlich ernüchterndes Fazit auf. So schnitt die Variante
-mit Wortvektoren aus \verb|word2vec| und seperat trainierten Relationsrepräsentationen ($\rightarrow$ WE4k) im Bezug auf
-den gemittelten Rang mehr als fünf Mal so schlecht und im Bezug auf die Hits\@10 mehr als acht Mal so schlecht ab.\\
-Die möglichen Gründe für das weite Verfehlen guter Ergebnisse werden nun in \ref{sec:we4k-zwifa} diskutiert.
+mit Wortvektoren aus \verb|word2vec| und seperat trainierten Relationsrepräsentationen ($\rightarrow$ \textsc{WE4k}) im Bezug auf
+den gemittelten Rang mehr als fünf Mal so schlecht und im Bezug auf die \textsc{Hits@10} mehr als acht Mal so schlecht ab (sic!).\\
+Die möglichen Gründe für das weite Verfehlen guter Ergebnisse werden nun in Kapitel \ref{sec:we4k-zwifa} diskutiert.
 
 \section{Zwischenfazit}\label{sec:we4k-zwifa}
 
 Um die Diskrepanz zwischen den Ergebnissen mit gemeinsam trainierten Repräsentationen für Entitäten und Relation im Vergleich
-zu denen mit auf dem Korpus trainierten Entitäsvektoren zu erklären, sollte Unterschiedlichkeit der Ansätze hervorgehoben
+zu denen mit Wortkontext- als Entitätsvektoren zu erklären, sollte die Unterschiedlichkeit der Ansätze hervorgehoben
 werden.\\
-Im ersten Fall werden wie erwähnt alle zu eine Relation betreffende Repräsentationsvektoren gemeinsam trainiert; es ist
-also davon auszugehen, dass diese bestmöglichst angepasst sind, um $|h + r - t|$ für alle $h, t$ zu minimieren.\\
+Im ersten Fall werden wie erwähnt alle eine Relation betreffende Repräsentationsvektoren gemeinsam trainiert; es ist
+also davon auszugehen, dass diese bestmöglichst angepasst sind, um $\parallel h + r - t\parallel$ für alle $h, t$ zu minimieren.\\
 Dies kann im zweiten Fall nicht unbedingt gewährleistet werden: Da $h$ und $t$ im Vornherein schon feststehen und nicht
 an $r$ angepasst werden (sondern genau umkehrt $r$ an $h$ und $t$ angepasst wird), kann der minimale Wert der Verlustfunktion
 unter Umständen nur schwer erlangt werden.\\
-Als eine weitere Begründung ist anzuführen, dass a) WE4k auf deutlich kleineren Datenmengen arbeitet (weshalb maschinelle
-Lernverfahren unter umständen gar keine Lösung finden können, die gut auf ungesehene Beispiele generalisiert) und b)
-Wortvektoren von sehr speziellen Entitäten enthält, die in \emph{Freebase} als Knoten existieren, u. U. aber sehr selten
+Als eine weitere Begründung ist anzuführen, dass a) \textsc{WE4k} auf \textbf{deutlich} kleineren Datenmengen arbeitet (weshalb maschinelle
+Lernverfahren unter Umständen gar keine Lösung finden können, die gut auf ungesehene Beispiele generalisiert) und b)
+Wortkontextvektoren von sehr speziellen Entitäten enthält, die in \emph{Freebase} als Knoten existieren, u. U. aber sehr selten
 im Korpus auftauchen. Da die Beschaffenheit der korpusbasierten Repräsentationen vor allem von Kookkurrenzen mit anderen
-Begriffen abhängt, bedeutet eine niedrige Termfrequenz vor allem weniger aussagekräftige Wortvektoren, worunter die
+Begriffen abhängt, bedeutet eine niedrige Termfrequenz vor allem weniger aussagekräftige Wortkontextvektoren, worunter die
 Ergebnisse in der Konsequenz zu leiden haben.\\
-Zuletzt sollte mit in Betracht gezogen werden, dass die trainierten Relationen sehr feingliedrig sind. Im Gegensatz zu
-anderen Forschungsarbeiten, die mit grobaufgelösten Beziehungen wie ``Cause-Effect'' oder ``Entitiy-Origin''
-(\cite{hendrickx2009semeval}) arbeiten, können dadurch am größere Datenmengen zugreifen und bessere Ergebnisse auf
-ungesehenen Beispielen erziehlen.
+Zuletzt sollte mit in Betracht gezogen werden, dass die trainierten Relationen sehr feingliedrig sind. Anderen Forschungsarbeiten,
+ die mit grobaufgelösten Beziehungen wie ``Cause-Effect'' oder ``Entitiy-Origin''
+(\cite{hendrickx2009semeval}) arbeiten, können dadurch auf größere Datenmengen zugreifen und bessere Ergebnisse auf
+ungesehenen Beispielen erzielen.
