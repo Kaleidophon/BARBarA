@@ -1,23 +1,28 @@
 % Appendix Template
 
-\chapter{Evaluationen der Wortvektoren} % Main appendix title
+\chapter{Evaluation der Wortkontextvektoren} % Main appendix title
 %\addtolength{\topmargin}{-0.875in}
 
 \label{AppendixB} % Change X to a consecutive letter; for referencing this appendix elsewhere, use \ref{AppendixX}
 
 Evaluationsergebnisse bei Wortähnlichkeit und Analogien für die verschiedenen Datensets.
+Wert bei Wortähnlichkeit entspricht der Korrelation zwischen der Kosinusähnlichkeit (\ref{form:cossim}) zweier Wörter und
+einem von Menschen vergebenen Ähnlichkeitsweit mit Spearman's $\rho$.\\
+Wert bei Analogien entspricht der Anzahl der richtig vervollständigten Wortreihen (für genauere Informationen siehe
+Kapitel \ref{Chapter5}).\\
 Für weitere Informationen über die Grundlage der Vektoren siehe Appendix \ref{AppendixA}.
-Wörter außerhalb des Vokabulars wurden entweder als Fehler gerechnet, oder
-werden, falls anders nicht möglich, als Zahl im Index in runden Klammern angegeben.
+Wörter außerhalb des Vokabulars (\emph{OOVs}) wurden entweder als Fehler gerechnet, oder
+werden, falls anders nicht möglich, als Zahl im Index in runden Klammern angegeben\footnote{Bei zwei gleichbewerteten
+Datensets ist deshalb auch das mit weniger OOVs als besser anzusehen, da es über ein größeres Vokabular verfügt.}.
 
 \vspace{0.5cm}
-
+\begin{figure}[h]
   \centering
   \rotatebox{-90}{%
   \small
-  \resizebox{1.285\columnwidth}{!}{%
+  \resizebox{1.35\columnwidth}{!}{%
   \begin{tabular}{c||c|c|c|c||c|c}
-     & \multicolumn{4}{c||}{Wortähnlichkeit ($\rho \in [-1, 1]$)} & \multicolumn{2}{c}{Analogien (in \%)} \\
+     & \multicolumn{4}{c||}{\hrulefill\hrulefill\textbf{Wortähnlichkeit ($\mathbf{\rho \in [-1, 1]}$)}\hrulefill\hrulefill} & \multicolumn{2}{c}{\textbf{Analogien (in \%)}} \\
     \textsc{Nr.} & \textsc{Wortpaare65} & \textsc{Wortpaare222} & \textsc{Wortpaare350} & \textsc{Schm280} & \textsc{Google} & \textsc{SemRel} \\
     \hline \hline
     \Romannum{1}     & \textbf{-0,8096}         & \textbf{-0,4640$_{(13)}$}   & \textbf{-0,7302$_{(13)}$}   & \textbf{-0,7094$_{(2)}$}  & \textbf{44,56}  & 1,71 \\
@@ -70,5 +75,9 @@ werden, falls anders nicht möglich, als Zahl im Index in runden Klammern angege
   \end{tabular}%
   }%
   }
+\caption[Evaluationsergebnisse der Wortkontextvektoren]{Evaluationsergebnisse der Wortkontextvektoren. Vollzogen mithilfe
+von Wortähnlichkeits- und Analogiedatensets. Werte beschreiben entweder die Größe des Korrelationswertes $\rho \in [-1, 1]$ oder
+einen Prozentwert.}
+\end{figure}
 
   \restoregeometry

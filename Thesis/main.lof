@@ -13,22 +13,23 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces \IeC {\"U}bersicht \IeC {\"u}ber verwendete vorgefertigte Datensets}}{15}{figure.caption.53}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Listen der \emph {k} n\IeC {\"a}chsten Nachbarn von W\IeC {\"o}rtern in verschiedenen Datensets. Inspiriert von (\cite {collobert2011natural}). \relax }}{20}{figure.caption.63}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Anzahl der Annotatoren und Agreement (als $Cohen's\ \kappa $) der \textsc {Wortpaar}-Evaluationsdatensets. \relax }}{22}{figure.caption.74}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Evaluationsergebnisse der besten Vektordatensets}}{23}{figure.caption.77}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Listen der \emph {k} n\IeC {\"a}chsten Nachbarn von W\IeC {\"o}rtern in verschiedenen Datensets. Inspiriert von (\cite {collobert2011natural}). \relax }}{20}{figure.caption.64}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Anzahl der Annotatoren und Agreement (als $Cohen's\ \kappa $) der \textsc {Wortpaar}-Evaluationsdatensets. \relax }}{22}{figure.caption.79}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Evaluationsergebnisse der besten Vektordatensets}}{23}{figure.caption.82}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Daten \IeC {\"u}ber die Relationsdatensets FB15k und GER14k}}{26}{figure.caption.87}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Resultate f\IeC {\"u}r TransE mit FB15k und GER14k}}{28}{figure.caption.97}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Daten \IeC {\"u}ber die Relationsdatensets FB15k und GER14k}}{26}{figure.caption.92}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Resultate f\IeC {\"u}r TransE mit FB15k und GER14k}}{28}{figure.caption.102}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Einfacher Projektionsalgorithmus}}{31}{figure.caption.104}
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Modifizierter Projektionsalgorithmus}}{32}{figure.caption.108}
-\contentsline {figure}{\numberline {7.3}{\ignorespaces Parallelisierter Projektionsalgorithmus}}{33}{figure.caption.111}
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Auszug aus verschiedenen Wortpaarclustern}}{35}{figure.caption.123}
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Dreidimensionale Projektionen einiger durch das Mappingverfahren resultierender Vektorr\IeC {\"a}ume}}{37}{figure.caption.130}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Einfacher Projektionsalgorithmus}}{31}{figure.caption.109}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Modifizierter Projektionsalgorithmus}}{32}{figure.caption.113}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Parallelisierter Projektionsalgorithmus}}{33}{figure.caption.116}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Auszug aus verschiedenen Wortpaarclustern}}{35}{figure.caption.128}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Dreidimensionale Projektionen einiger durch das Mappingverfahren resultierender Vektorr\IeC {\"a}ume}}{37}{figure.caption.135}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Daten des neuen Relationsdatensets im Vergleich zu FB15k und GER14k}}{39}{figure.caption.134}
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Resultate auf mit Wordvektoren auf WE3k}}{40}{figure.caption.139}
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Daten des neuen Relationsdatensets im Vergleich zu FB15k und GER14k}}{39}{figure.caption.139}
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Resultate auf mit Wordvektoren auf WE3k}}{40}{figure.caption.144}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Quelle und Trainingsparameter f\IeC {\"u}r Wortvektoren}}{45}{figure.caption.146}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Trainingsparameter der Wortkontextvektoren}}{45}{figure.caption.151}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Evaluationsergebnisse der Wortkontextvektoren}}{48}{figure.caption.154}
