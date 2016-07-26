@@ -1,3 +1,9 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+"""
+Cool docstring.
+"""
+
 import argparse
 from sklearn.cluster import DBSCAN
 from sklearn.decomposition import PCA
@@ -11,6 +17,9 @@ from random import randrange
 
 
 def main():
+	"""
+	This is the main method. Duh.
+	"""
 	argparser = init_argparser()
 	args = argparser.parse_args()
 	if args.train:
@@ -95,6 +104,17 @@ def resolve_indices(points, labels, indices_inpath, model):
 
 
 def aggregate_cluster(points, labels):
+	"""
+	Arranges all clusters in a list, where a sublist with all points at index i corresponds with the
+	custer with label i.
+
+	Args:
+		points (list): List of datapoints
+		labels (list): List of unique cluster labels
+
+	Returns:
+		list: list of lists of datapoints belonging to the i-th cluster
+	"""
 	print alt("Aggregate clusters...")
 	clusters = defaultdict(tuple)
 	for i in range(len(labels)):

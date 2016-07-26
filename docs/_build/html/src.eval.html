@@ -1,0 +1,393 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>src.eval package &mdash; Bachelor Thesis v1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'v1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Bachelor Thesis v1.0 documentation" href="index.html" />
+    <link rel="up" title="src package" href="src.html" />
+    <link rel="next" title="src.guesser package" href="src.guesser.html" />
+    <link rel="prev" title="src.clustering package" href="src.clustering.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="src-eval-package">
+<h1>src.eval package<a class="headerlink" href="#src-eval-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-src.eval.analogy">
+<span id="src-eval-analogy-module"></span><h2>src.eval.analogy module<a class="headerlink" href="#module-src.eval.analogy" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="src.eval.analogy.AnalogyMasterThread">
+<em class="property">class </em><code class="descclassname">src.eval.analogy.</code><code class="descname">AnalogyMasterThread</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>analogy_path</em>, <em>per_section</em>, <em>logpath</em>, <em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.AnalogyMasterThread" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">threading.Thread</span></code></p>
+<dl class="method">
+<dt id="src.eval.analogy.AnalogyMasterThread.prepare">
+<code class="descname">prepare</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.AnalogyMasterThread.prepare" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="src.eval.analogy.AnalogyMasterThread.start_threads">
+<code class="descname">start_threads</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.AnalogyMasterThread.start_threads" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.eval.analogy.AnalogyWorkerThread">
+<em class="property">class </em><code class="descclassname">src.eval.analogy.</code><code class="descname">AnalogyWorkerThread</code><span class="sig-paren">(</span><em>worker_id</em>, <em>model</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.AnalogyWorkerThread" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">threading.Thread</span></code></p>
+<dl class="method">
+<dt id="src.eval.analogy.AnalogyWorkerThread.find_most_similar_cosmul">
+<code class="descname">find_most_similar_cosmul</code><span class="sig-paren">(</span><em>a</em>, <em>a_</em>, <em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.AnalogyWorkerThread.find_most_similar_cosmul" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="src.eval.analogy.AnalogyWorkerThread.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.AnalogyWorkerThread.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="src.eval.analogy.analogy_eval">
+<code class="descclassname">src.eval.analogy.</code><code class="descname">analogy_eval</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>analogy_path</em>, <em>per_section=False</em>, <em>logpath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.analogy_eval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.analogy.analogy_eval_parallel">
+<code class="descclassname">src.eval.analogy.</code><code class="descname">analogy_eval_parallel</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>analogy_path</em>, <em>per_section=False</em>, <em>logpath=None</em>, <em>threads=1</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.analogy_eval_parallel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.analogy.output">
+<code class="descclassname">src.eval.analogy.</code><code class="descname">output</code><span class="sig-paren">(</span><em>message</em>, <em>logpath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.analogy.read_analogies">
+<code class="descclassname">src.eval.analogy.</code><code class="descname">read_analogies</code><span class="sig-paren">(</span><em>analogy_path</em>, <em>per_section=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.read_analogies" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.analogy.read_analogies_for_parallel">
+<code class="descclassname">src.eval.analogy.</code><code class="descname">read_analogies_for_parallel</code><span class="sig-paren">(</span><em>analogy_path</em>, <em>per_section=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.read_analogies_for_parallel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.analogy.rreplace">
+<code class="descclassname">src.eval.analogy.</code><code class="descname">rreplace</code><span class="sig-paren">(</span><em>s</em>, <em>old</em>, <em>new</em>, <em>occurrence</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.rreplace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-src.eval.concentration">
+<span id="src-eval-concentration-module"></span><h2>src.eval.concentration module<a class="headerlink" href="#module-src.eval.concentration" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="src.eval.concentration.alt">
+<code class="descclassname">src.eval.concentration.</code><code class="descname">alt</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.alt" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.concentration.calculate_concentration">
+<code class="descclassname">src.eval.concentration.</code><code class="descname">calculate_concentration</code><span class="sig-paren">(</span><em>model</em>, <em>procs</em>, <em>logpath=None</em>, <em>vector_inpath=''</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.calculate_concentration" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.concentration.calculate_concentrations">
+<code class="descclassname">src.eval.concentration.</code><code class="descname">calculate_concentrations</code><span class="sig-paren">(</span><em>vectors_inpath</em>, <em>procs</em>, <em>max_n_vectors</em>, <em>logpath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.calculate_concentrations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.concentration.calculate_loss_of_precision">
+<code class="descclassname">src.eval.concentration.</code><code class="descname">calculate_loss_of_precision</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>procs</em>, <em>sizes</em>, <em>logpath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.calculate_loss_of_precision" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.concentration.chunks">
+<code class="descclassname">src.eval.concentration.</code><code class="descname">chunks</code><span class="sig-paren">(</span><em>l</em>, <em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.chunks" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.concentration.chunks2">
+<code class="descclassname">src.eval.concentration.</code><code class="descname">chunks2</code><span class="sig-paren">(</span><em>lst</em>, <em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.chunks2" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.concentration.init_pool_for_deviances">
+<code class="descclassname">src.eval.concentration.</code><code class="descname">init_pool_for_deviances</code><span class="sig-paren">(</span><em>pool_args</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.init_pool_for_deviances" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.concentration.init_pool_for_distances">
+<code class="descclassname">src.eval.concentration.</code><code class="descname">init_pool_for_distances</code><span class="sig-paren">(</span><em>pool_args</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.init_pool_for_distances" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.concentration.load_vectors_from_model">
+<code class="descclassname">src.eval.concentration.</code><code class="descname">load_vectors_from_model</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>max_n=None</em>, <em>logpath=None</em>, <em>indices=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.load_vectors_from_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.concentration.load_vectors_from_model_parallel">
+<code class="descclassname">src.eval.concentration.</code><code class="descname">load_vectors_from_model_parallel</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>procs</em>, <em>logpath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.load_vectors_from_model_parallel" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.concentration.output">
+<code class="descclassname">src.eval.concentration.</code><code class="descname">output</code><span class="sig-paren">(</span><em>message</em>, <em>logpath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.concentration.rreplace">
+<code class="descclassname">src.eval.concentration.</code><code class="descname">rreplace</code><span class="sig-paren">(</span><em>s</em>, <em>old</em>, <em>new</em>, <em>occurrence</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.rreplace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-src.eval.concept_groups">
+<span id="src-eval-concept-groups-module"></span><h2>src.eval.concept_groups module<a class="headerlink" href="#module-src.eval.concept_groups" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="src.eval.concept_groups.main">
+<code class="descclassname">src.eval.concept_groups.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concept_groups.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.concept_groups.sampleRelations">
+<code class="descclassname">src.eval.concept_groups.</code><code class="descname">sampleRelations</code><span class="sig-paren">(</span><em>inpath</em>, <em>outpath</em>, <em>n</em>, <em>sample_size</em>, <em>freq_constraint</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concept_groups.sampleRelations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.concept_groups.sample_part">
+<code class="descclassname">src.eval.concept_groups.</code><code class="descname">sample_part</code><span class="sig-paren">(</span><em>relation_pairs</em>, <em>coin_flip</em>, <em>sample_size</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concept_groups.sample_part" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.concept_groups.take_sample_from_list">
+<code class="descclassname">src.eval.concept_groups.</code><code class="descname">take_sample_from_list</code><span class="sig-paren">(</span><em>samplelist</em>, <em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concept_groups.take_sample_from_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-src.eval.eval_vectors">
+<span id="src-eval-eval-vectors-module"></span><h2>src.eval.eval_vectors module<a class="headerlink" href="#module-src.eval.eval_vectors" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="src.eval.eval_vectors.apply_on_input">
+<code class="descclassname">src.eval.eval_vectors.</code><code class="descname">apply_on_input</code><span class="sig-paren">(</span><em>func</em>, <em>sets</em>, <em>inpath</em>, <em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.apply_on_input" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.eval_vectors.find_nearest_neighbors">
+<code class="descclassname">src.eval.eval_vectors.</code><code class="descname">find_nearest_neighbors</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>max</em>, <em>wordlist</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.find_nearest_neighbors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.eval_vectors.init_argparser">
+<code class="descclassname">src.eval.eval_vectors.</code><code class="descname">init_argparser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.init_argparser" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.eval_vectors.main">
+<code class="descclassname">src.eval.eval_vectors.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.eval_vectors.opt_callback">
+<code class="descclassname">src.eval.eval_vectors.</code><code class="descname">opt_callback</code><span class="sig-paren">(</span><em>option</em>, <em>opt</em>, <em>value</em>, <em>parser</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.opt_callback" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.eval_vectors.output">
+<code class="descclassname">src.eval.eval_vectors.</code><code class="descname">output</code><span class="sig-paren">(</span><em>message</em>, <em>logpath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.eval_vectors.plot">
+<code class="descclassname">src.eval.eval_vectors.</code><code class="descname">plot</code><span class="sig-paren">(</span><em>data</em>, <em>max</em>, <em>dimensions</em>, <em>show_plot=False</em>, <em>display_names=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.plot" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.eval_vectors.plot_distance_distribution">
+<code class="descclassname">src.eval.eval_vectors.</code><code class="descname">plot_distance_distribution</code><span class="sig-paren">(</span><em>data</em>, <em>max</em>, <em>show_plot=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.plot_distance_distribution" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.eval_vectors.rreplace">
+<code class="descclassname">src.eval.eval_vectors.</code><code class="descname">rreplace</code><span class="sig-paren">(</span><em>s</em>, <em>old</em>, <em>new</em>, <em>occurrence</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.rreplace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-src.eval.word_similarity">
+<span id="src-eval-word-similarity-module"></span><h2>src.eval.word_similarity module<a class="headerlink" href="#module-src.eval.word_similarity" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="src.eval.word_similarity.WordSimMasterThread">
+<em class="property">class </em><code class="descclassname">src.eval.word_similarity.</code><code class="descname">WordSimMasterThread</code><span class="sig-paren">(</span><em>n</em>, <em>vector_inpath</em>, <em>wordpair_inpath</em>, <em>logpath</em>, <em>format</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.WordSimMasterThread" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">threading.Thread</span></code></p>
+<dl class="method">
+<dt id="src.eval.word_similarity.WordSimMasterThread.prepare">
+<code class="descname">prepare</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.WordSimMasterThread.prepare" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="src.eval.word_similarity.WordSimMasterThread.remove_unknowns">
+<code class="descname">remove_unknowns</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.WordSimMasterThread.remove_unknowns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="src.eval.word_similarity.WordSimMasterThread.start_threads">
+<code class="descname">start_threads</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.WordSimMasterThread.start_threads" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.eval.word_similarity.WordSimWorkerThread">
+<em class="property">class </em><code class="descclassname">src.eval.word_similarity.</code><code class="descname">WordSimWorkerThread</code><span class="sig-paren">(</span><em>worker_id</em>, <em>pair_queue</em>, <em>model</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.WordSimWorkerThread" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">threading.Thread</span></code></p>
+<dl class="method">
+<dt id="src.eval.word_similarity.WordSimWorkerThread.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.WordSimWorkerThread.run" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="src.eval.word_similarity.capitalize">
+<code class="descclassname">src.eval.word_similarity.</code><code class="descname">capitalize</code><span class="sig-paren">(</span><em>word</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.capitalize" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.word_similarity.evaluate_wordpair_sims">
+<code class="descclassname">src.eval.word_similarity.</code><code class="descname">evaluate_wordpair_sims</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>number_of_pairs</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.evaluate_wordpair_sims" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.word_similarity.output">
+<code class="descclassname">src.eval.word_similarity.</code><code class="descname">output</code><span class="sig-paren">(</span><em>message</em>, <em>logpath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.output" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.word_similarity.parallel_word_sim_eval">
+<code class="descclassname">src.eval.word_similarity.</code><code class="descname">parallel_word_sim_eval</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>wordpair_path</em>, <em>logpath</em>, <em>format='google'</em>, <em>threads=1</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.parallel_word_sim_eval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.word_similarity.read_wordpairs">
+<code class="descclassname">src.eval.word_similarity.</code><code class="descname">read_wordpairs</code><span class="sig-paren">(</span><em>wordpair_path</em>, <em>format='google'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.read_wordpairs" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.word_similarity.remove_unknowns">
+<code class="descclassname">src.eval.word_similarity.</code><code class="descname">remove_unknowns</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.remove_unknowns" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.word_similarity.rreplace">
+<code class="descclassname">src.eval.word_similarity.</code><code class="descname">rreplace</code><span class="sig-paren">(</span><em>s</em>, <em>old</em>, <em>new</em>, <em>occurrence</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.rreplace" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.eval.word_similarity.word_sim_eval">
+<code class="descclassname">src.eval.word_similarity.</code><code class="descname">word_sim_eval</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>wordpair_path</em>, <em>logpath</em>, <em>format='google'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.word_sim_eval" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-src.eval">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src.eval" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">src.eval package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-src.eval.analogy">src.eval.analogy module</a></li>
+<li><a class="reference internal" href="#module-src.eval.concentration">src.eval.concentration module</a></li>
+<li><a class="reference internal" href="#module-src.eval.concept_groups">src.eval.concept_groups module</a></li>
+<li><a class="reference internal" href="#module-src.eval.eval_vectors">src.eval.eval_vectors module</a></li>
+<li><a class="reference internal" href="#module-src.eval.word_similarity">src.eval.word_similarity module</a></li>
+<li><a class="reference internal" href="#module-src.eval">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="src.html">src package</a><ul>
+      <li>Previous: <a href="src.clustering.html" title="previous chapter">src.clustering package</a></li>
+      <li>Next: <a href="src.guesser.html" title="next chapter">src.guesser package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/src.eval.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Bachelor Thesis.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="_sources/src.eval.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

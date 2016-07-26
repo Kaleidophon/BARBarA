@@ -8,6 +8,13 @@ def main():
 
 
 def extract_conll(inpath, outpath, column):
+	"""
+	Extract information out of CoNLL files.
+
+	Args:
+		inpath (str): Path to input file.
+
+	"""
 	current_sentence = []
 
 	with codecs.open(inpath, 'rb', 'utf-8') as infile:

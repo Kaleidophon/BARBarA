@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>src.guesser package &mdash; Bachelor Thesis v1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'v1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Bachelor Thesis v1.0 documentation" href="index.html" />
+    <link rel="up" title="src package" href="src.html" />
+    <link rel="next" title="src.mapping package" href="src.mapping.html" />
+    <link rel="prev" title="src.eval package" href="src.eval.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="src-guesser-package">
+<h1>src.guesser package<a class="headerlink" href="#src-guesser-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-src.guesser.svm_guesser">
+<span id="src-guesser-svm-guesser-module"></span><h2>src.guesser.svm_guesser module<a class="headerlink" href="#module-src.guesser.svm_guesser" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="src.guesser.svm_guesser.convert_data">
+<code class="descclassname">src.guesser.svm_guesser.</code><code class="descname">convert_data</code><span class="sig-paren">(</span><em>sets_path</em>, <em>tql_inpath</em>, <em>vector_inpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.guesser.svm_guesser.convert_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.guesser.svm_guesser.create_corrupt_triples">
+<code class="descclassname">src.guesser.svm_guesser.</code><code class="descname">create_corrupt_triples</code><span class="sig-paren">(</span><em>grouped_pairs</em>, <em>entities</em><span class="sig-paren">)</span><a class="headerlink" href="#src.guesser.svm_guesser.create_corrupt_triples" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.guesser.svm_guesser.dump_relation_vectors">
+<code class="descclassname">src.guesser.svm_guesser.</code><code class="descname">dump_relation_vectors</code><span class="sig-paren">(</span><em>relation_vectors</em>, <em>outpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.guesser.svm_guesser.dump_relation_vectors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.guesser.svm_guesser.evaluate">
+<code class="descclassname">src.guesser.svm_guesser.</code><code class="descname">evaluate</code><span class="sig-paren">(</span><em>model</em>, <em>grouped_test</em>, <em>relation_vectors</em>, <em>entities</em><span class="sig-paren">)</span><a class="headerlink" href="#src.guesser.svm_guesser.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.guesser.svm_guesser.extract_data_from_uri">
+<code class="descclassname">src.guesser.svm_guesser.</code><code class="descname">extract_data_from_uri</code><span class="sig-paren">(</span><em>uri</em><span class="sig-paren">)</span><a class="headerlink" href="#src.guesser.svm_guesser.extract_data_from_uri" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.guesser.svm_guesser.get_rank">
+<code class="descclassname">src.guesser.svm_guesser.</code><code class="descname">get_rank</code><span class="sig-paren">(</span><em>target</em>, <em>ranks</em><span class="sig-paren">)</span><a class="headerlink" href="#src.guesser.svm_guesser.get_rank" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.guesser.svm_guesser.init_argparser">
+<code class="descclassname">src.guesser.svm_guesser.</code><code class="descname">init_argparser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.guesser.svm_guesser.init_argparser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize all arguments for an ArgumentParser object and return it.</p>
+<p>&#64;returns {ArgumentParser} argument parser object</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.guesser.svm_guesser.load_relation_vectors">
+<code class="descclassname">src.guesser.svm_guesser.</code><code class="descname">load_relation_vectors</code><span class="sig-paren">(</span><em>inpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.guesser.svm_guesser.load_relation_vectors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.guesser.svm_guesser.load_vectors">
+<code class="descclassname">src.guesser.svm_guesser.</code><code class="descname">load_vectors</code><span class="sig-paren">(</span><em>vector_inpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.guesser.svm_guesser.load_vectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>&#64;param vector_inpath: Path to word2vec model file</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.guesser.svm_guesser.main">
+<code class="descclassname">src.guesser.svm_guesser.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.guesser.svm_guesser.main" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.guesser.svm_guesser.prepare_training">
+<code class="descclassname">src.guesser.svm_guesser.</code><code class="descname">prepare_training</code><span class="sig-paren">(</span><em>sets_path</em>, <em>vector_inpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.guesser.svm_guesser.prepare_training" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.guesser.svm_guesser.rank_entities">
+<code class="descclassname">src.guesser.svm_guesser.</code><code class="descname">rank_entities</code><span class="sig-paren">(</span><em>reference</em>, <em>solution</em>, <em>model</em>, <em>entities</em><span class="sig-paren">)</span><a class="headerlink" href="#src.guesser.svm_guesser.rank_entities" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.guesser.svm_guesser.read_freebase_data">
+<code class="descclassname">src.guesser.svm_guesser.</code><code class="descname">read_freebase_data</code><span class="sig-paren">(</span><em>sets_path</em><span class="sig-paren">)</span><a class="headerlink" href="#src.guesser.svm_guesser.read_freebase_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.guesser.svm_guesser.read_freebase_file">
+<code class="descclassname">src.guesser.svm_guesser.</code><code class="descname">read_freebase_file</code><span class="sig-paren">(</span><em>fb_inpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.guesser.svm_guesser.read_freebase_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.guesser.svm_guesser.read_tql_file">
+<code class="descclassname">src.guesser.svm_guesser.</code><code class="descname">read_tql_file</code><span class="sig-paren">(</span><em>tql_inpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.guesser.svm_guesser.read_tql_file" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.guesser.svm_guesser.test_coverage">
+<code class="descclassname">src.guesser.svm_guesser.</code><code class="descname">test_coverage</code><span class="sig-paren">(</span><em>triples</em>, <em>model</em><span class="sig-paren">)</span><a class="headerlink" href="#src.guesser.svm_guesser.test_coverage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test the coverage of a dataset consisting of freebase triples on word2vec word embeddings.
+For every triple (h, l, t), the entities h and t are taken and used for look up in the word2vec
+model.</p>
+<p>&#64;param triples: list of 3-tuples (freebase triples)
+&#64;param model: gensim word2vec model</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.guesser.svm_guesser.train">
+<code class="descclassname">src.guesser.svm_guesser.</code><code class="descname">train</code><span class="sig-paren">(</span><em>model</em>, <em>grouped_train</em>, <em>grouped_corrupted</em>, <em>lossf</em>, <em>relation_types</em>, <em>epochs=1000</em>, <em>learning_rate=0.01</em>, <em>margin=1</em><span class="sig-paren">)</span><a class="headerlink" href="#src.guesser.svm_guesser.train" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.guesser.svm_guesser.transform_triples">
+<code class="descclassname">src.guesser.svm_guesser.</code><code class="descname">transform_triples</code><span class="sig-paren">(</span><em>triples</em>, <em>relation_types</em>, <em>entities</em><span class="sig-paren">)</span><a class="headerlink" href="#src.guesser.svm_guesser.transform_triples" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.guesser.svm_guesser.write_data">
+<code class="descclassname">src.guesser.svm_guesser.</code><code class="descname">write_data</code><span class="sig-paren">(</span><em>triples</em>, <em>found_entities</em>, <em>outpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.guesser.svm_guesser.write_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+<div class="section" id="module-src.guesser">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src.guesser" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">src.guesser package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-src.guesser.svm_guesser">src.guesser.svm_guesser module</a></li>
+<li><a class="reference internal" href="#module-src.guesser">Module contents</a></li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="src.html">src package</a><ul>
+      <li>Previous: <a href="src.eval.html" title="previous chapter">src.eval package</a></li>
+      <li>Next: <a href="src.mapping.html" title="next chapter">src.mapping package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/src.guesser.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Bachelor Thesis.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
+      
+      |
+      <a href="_sources/src.guesser.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
