@@ -162,7 +162,91 @@ Contents:
 \label{src.clustering:submodules}
 
 \paragraph{src.clustering.cluster\_mappings module}
-\label{src.clustering:src-clustering-cluster-mappings-module}
+\label{src.clustering:module-src.clustering.cluster_mappings}\label{src.clustering:src-clustering-cluster-mappings-module}\index{src.clustering.cluster\_mappings (module)}
+Cool docstring.
+\index{aggregate\_cluster() (in module src.clustering.cluster\_mappings)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.clustering:src.clustering.cluster_mappings.aggregate_cluster}\pysiglinewithargsret{\code{src.clustering.cluster\_mappings.}\bfcode{aggregate\_cluster}}{\emph{points}, \emph{labels}}{}
+Arranges all clusters in a list, where a sublist with all points at index i corresponds with the
+custer with label i.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{points}} (\emph{\texttt{list}}) -- List of datapoints
+
+\item {} 
+\textbf{\texttt{labels}} (\emph{\texttt{list}}) -- List of unique cluster labels
+
+\end{itemize}
+
+\item[{Returns}] \leavevmode
+list of lists of datapoints belonging to the i-th cluster
+
+\item[{Return type}] \leavevmode
+list
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{alt() (in module src.clustering.cluster\_mappings)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.clustering:src.clustering.cluster_mappings.alt}\pysiglinewithargsret{\code{src.clustering.cluster\_mappings.}\bfcode{alt}}{\emph{func}}{}
+\end{fulllineitems}
+
+\index{cluster\_mappings() (in module src.clustering.cluster\_mappings)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.clustering:src.clustering.cluster_mappings.cluster_mappings}\pysiglinewithargsret{\code{src.clustering.cluster\_mappings.}\bfcode{cluster\_mappings}}{\emph{vector\_inpath}, \emph{do\_pca=False}, \emph{target\_dim=100}, \emph{indices\_inpath=None}, \emph{epsilon=2.625}, \emph{min\_s=20}}{}
+\end{fulllineitems}
+
+\index{get\_cluster\_size() (in module src.clustering.cluster\_mappings)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.clustering:src.clustering.cluster_mappings.get_cluster_size}\pysiglinewithargsret{\code{src.clustering.cluster\_mappings.}\bfcode{get\_cluster\_size}}{\emph{labels}}{}
+\end{fulllineitems}
+
+\index{init\_argparser() (in module src.clustering.cluster\_mappings)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.clustering:src.clustering.cluster_mappings.init_argparser}\pysiglinewithargsret{\code{src.clustering.cluster\_mappings.}\bfcode{init\_argparser}}{}{}
+\end{fulllineitems}
+
+\index{load\_indices() (in module src.clustering.cluster\_mappings)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.clustering:src.clustering.cluster_mappings.load_indices}\pysiglinewithargsret{\code{src.clustering.cluster\_mappings.}\bfcode{load\_indices}}{\emph{indices\_inpath}}{}
+\end{fulllineitems}
+
+\index{load\_mappings\_from\_model() (in module src.clustering.cluster\_mappings)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.clustering:src.clustering.cluster_mappings.load_mappings_from_model}\pysiglinewithargsret{\code{src.clustering.cluster\_mappings.}\bfcode{load\_mappings\_from\_model}}{\emph{mapping\_inpath}}{}
+\end{fulllineitems}
+
+\index{main() (in module src.clustering.cluster\_mappings)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.clustering:src.clustering.cluster_mappings.main}\pysiglinewithargsret{\code{src.clustering.cluster\_mappings.}\bfcode{main}}{}{}
+This is the main method. Duh.
+
+\end{fulllineitems}
+
+\index{resolve\_indices() (in module src.clustering.cluster\_mappings)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.clustering:src.clustering.cluster_mappings.resolve_indices}\pysiglinewithargsret{\code{src.clustering.cluster\_mappings.}\bfcode{resolve\_indices}}{\emph{points}, \emph{labels}, \emph{indices\_inpath}, \emph{model}}{}
+\end{fulllineitems}
+
+\index{train\_clustering\_parameters() (in module src.clustering.cluster\_mappings)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.clustering:src.clustering.cluster_mappings.train_clustering_parameters}\pysiglinewithargsret{\code{src.clustering.cluster\_mappings.}\bfcode{train\_clustering\_parameters}}{\emph{vector\_inpath}, \emph{iterations=10}}{}
+\end{fulllineitems}
+
+
 
 \paragraph{Module contents}
 \label{src.clustering:module-contents}\label{src.clustering:module-src.clustering}\index{src.clustering (module)}
@@ -174,19 +258,333 @@ Contents:
 \label{src.eval:submodules}
 
 \paragraph{src.eval.analogy module}
-\label{src.eval:src-eval-analogy-module}
+\label{src.eval:module-src.eval.analogy}\label{src.eval:src-eval-analogy-module}\index{src.eval.analogy (module)}\index{AnalogyMasterThread (class in src.eval.analogy)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.analogy.AnalogyMasterThread}\pysiglinewithargsret{\strong{class }\code{src.eval.analogy.}\bfcode{AnalogyMasterThread}}{\emph{vector\_inpath}, \emph{analogy\_path}, \emph{per\_section}, \emph{logpath}, \emph{n}}{}
+Bases: \code{threading.Thread}
+\index{prepare() (src.eval.analogy.AnalogyMasterThread method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.analogy.AnalogyMasterThread.prepare}\pysiglinewithargsret{\bfcode{prepare}}{}{}
+\end{fulllineitems}
+
+\index{start\_threads() (src.eval.analogy.AnalogyMasterThread method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.analogy.AnalogyMasterThread.start_threads}\pysiglinewithargsret{\bfcode{start\_threads}}{}{}
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+\index{AnalogyWorkerThread (class in src.eval.analogy)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.analogy.AnalogyWorkerThread}\pysiglinewithargsret{\strong{class }\code{src.eval.analogy.}\bfcode{AnalogyWorkerThread}}{\emph{worker\_id}, \emph{model}}{}
+Bases: \code{threading.Thread}
+\index{find\_most\_similar\_cosmul() (src.eval.analogy.AnalogyWorkerThread method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.analogy.AnalogyWorkerThread.find_most_similar_cosmul}\pysiglinewithargsret{\bfcode{find\_most\_similar\_cosmul}}{\emph{a}, \emph{a\_}, \emph{b}}{}
+\end{fulllineitems}
+
+\index{run() (src.eval.analogy.AnalogyWorkerThread method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.analogy.AnalogyWorkerThread.run}\pysiglinewithargsret{\bfcode{run}}{}{}
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+\index{analogy\_eval() (in module src.eval.analogy)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.analogy.analogy_eval}\pysiglinewithargsret{\code{src.eval.analogy.}\bfcode{analogy\_eval}}{\emph{vector\_inpath}, \emph{analogy\_path}, \emph{per\_section=False}, \emph{logpath=None}}{}
+\end{fulllineitems}
+
+\index{analogy\_eval\_parallel() (in module src.eval.analogy)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.analogy.analogy_eval_parallel}\pysiglinewithargsret{\code{src.eval.analogy.}\bfcode{analogy\_eval\_parallel}}{\emph{vector\_inpath}, \emph{analogy\_path}, \emph{per\_section=False}, \emph{logpath=None}, \emph{threads=1}}{}
+\end{fulllineitems}
+
+\index{output() (in module src.eval.analogy)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.analogy.output}\pysiglinewithargsret{\code{src.eval.analogy.}\bfcode{output}}{\emph{message}, \emph{logpath=None}}{}
+\end{fulllineitems}
+
+\index{read\_analogies() (in module src.eval.analogy)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.analogy.read_analogies}\pysiglinewithargsret{\code{src.eval.analogy.}\bfcode{read\_analogies}}{\emph{analogy\_path}, \emph{per\_section=False}}{}
+\end{fulllineitems}
+
+\index{read\_analogies\_for\_parallel() (in module src.eval.analogy)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.analogy.read_analogies_for_parallel}\pysiglinewithargsret{\code{src.eval.analogy.}\bfcode{read\_analogies\_for\_parallel}}{\emph{analogy\_path}, \emph{per\_section=False}}{}
+\end{fulllineitems}
+
+\index{rreplace() (in module src.eval.analogy)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.analogy.rreplace}\pysiglinewithargsret{\code{src.eval.analogy.}\bfcode{rreplace}}{\emph{s}, \emph{old}, \emph{new}, \emph{occurrence}}{}
+\end{fulllineitems}
+
+
 
 \paragraph{src.eval.concentration module}
-\label{src.eval:src-eval-concentration-module}
+\label{src.eval:module-src.eval.concentration}\label{src.eval:src-eval-concentration-module}\index{src.eval.concentration (module)}\index{alt() (in module src.eval.concentration)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.concentration.alt}\pysiglinewithargsret{\code{src.eval.concentration.}\bfcode{alt}}{\emph{func}}{}
+\end{fulllineitems}
+
+\index{calculate\_concentration() (in module src.eval.concentration)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.concentration.calculate_concentration}\pysiglinewithargsret{\code{src.eval.concentration.}\bfcode{calculate\_concentration}}{\emph{model}, \emph{procs}, \emph{logpath=None}, \emph{vector\_inpath='`}}{}
+\end{fulllineitems}
+
+\index{calculate\_concentrations() (in module src.eval.concentration)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.concentration.calculate_concentrations}\pysiglinewithargsret{\code{src.eval.concentration.}\bfcode{calculate\_concentrations}}{\emph{vectors\_inpath}, \emph{procs}, \emph{max\_n\_vectors}, \emph{logpath=None}}{}
+\end{fulllineitems}
+
+\index{calculate\_loss\_of\_precision() (in module src.eval.concentration)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.concentration.calculate_loss_of_precision}\pysiglinewithargsret{\code{src.eval.concentration.}\bfcode{calculate\_loss\_of\_precision}}{\emph{vector\_inpath}, \emph{procs}, \emph{sizes}, \emph{logpath=None}}{}
+\end{fulllineitems}
+
+\index{chunks() (in module src.eval.concentration)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.concentration.chunks}\pysiglinewithargsret{\code{src.eval.concentration.}\bfcode{chunks}}{\emph{l}, \emph{n}}{}
+\end{fulllineitems}
+
+\index{chunks2() (in module src.eval.concentration)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.concentration.chunks2}\pysiglinewithargsret{\code{src.eval.concentration.}\bfcode{chunks2}}{\emph{lst}, \emph{n}}{}
+\end{fulllineitems}
+
+\index{init\_pool\_for\_deviances() (in module src.eval.concentration)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.concentration.init_pool_for_deviances}\pysiglinewithargsret{\code{src.eval.concentration.}\bfcode{init\_pool\_for\_deviances}}{\emph{pool\_args}}{}
+\end{fulllineitems}
+
+\index{init\_pool\_for\_distances() (in module src.eval.concentration)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.concentration.init_pool_for_distances}\pysiglinewithargsret{\code{src.eval.concentration.}\bfcode{init\_pool\_for\_distances}}{\emph{pool\_args}}{}
+\end{fulllineitems}
+
+\index{load\_vectors\_from\_model() (in module src.eval.concentration)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.concentration.load_vectors_from_model}\pysiglinewithargsret{\code{src.eval.concentration.}\bfcode{load\_vectors\_from\_model}}{\emph{vector\_inpath}, \emph{max\_n=None}, \emph{logpath=None}, \emph{indices=False}}{}
+\end{fulllineitems}
+
+\index{load\_vectors\_from\_model\_parallel() (in module src.eval.concentration)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.concentration.load_vectors_from_model_parallel}\pysiglinewithargsret{\code{src.eval.concentration.}\bfcode{load\_vectors\_from\_model\_parallel}}{\emph{vector\_inpath}, \emph{procs}, \emph{logpath=None}}{}
+\end{fulllineitems}
+
+\index{output() (in module src.eval.concentration)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.concentration.output}\pysiglinewithargsret{\code{src.eval.concentration.}\bfcode{output}}{\emph{message}, \emph{logpath=None}}{}
+\end{fulllineitems}
+
+\index{rreplace() (in module src.eval.concentration)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.concentration.rreplace}\pysiglinewithargsret{\code{src.eval.concentration.}\bfcode{rreplace}}{\emph{s}, \emph{old}, \emph{new}, \emph{occurrence}}{}
+\end{fulllineitems}
+
+
 
 \paragraph{src.eval.concept\_groups module}
-\label{src.eval:src-eval-concept-groups-module}
+\label{src.eval:src-eval-concept-groups-module}\label{src.eval:module-src.eval.concept_groups}\index{src.eval.concept\_groups (module)}\index{main() (in module src.eval.concept\_groups)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.concept_groups.main}\pysiglinewithargsret{\code{src.eval.concept\_groups.}\bfcode{main}}{}{}
+\end{fulllineitems}
+
+\index{sampleRelations() (in module src.eval.concept\_groups)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.concept_groups.sampleRelations}\pysiglinewithargsret{\code{src.eval.concept\_groups.}\bfcode{sampleRelations}}{\emph{inpath}, \emph{outpath}, \emph{n}, \emph{sample\_size}, \emph{freq\_constraint}}{}
+\end{fulllineitems}
+
+\index{sample\_part() (in module src.eval.concept\_groups)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.concept_groups.sample_part}\pysiglinewithargsret{\code{src.eval.concept\_groups.}\bfcode{sample\_part}}{\emph{relation\_pairs}, \emph{coin\_flip}, \emph{sample\_size}}{}
+\end{fulllineitems}
+
+\index{take\_sample\_from\_list() (in module src.eval.concept\_groups)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.concept_groups.take_sample_from_list}\pysiglinewithargsret{\code{src.eval.concept\_groups.}\bfcode{take\_sample\_from\_list}}{\emph{samplelist}, \emph{n}}{}
+\end{fulllineitems}
+
+
 
 \paragraph{src.eval.eval\_vectors module}
-\label{src.eval:src-eval-eval-vectors-module}
+\label{src.eval:src-eval-eval-vectors-module}\label{src.eval:module-src.eval.eval_vectors}\index{src.eval.eval\_vectors (module)}\index{apply\_on\_input() (in module src.eval.eval\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.eval_vectors.apply_on_input}\pysiglinewithargsret{\code{src.eval.eval\_vectors.}\bfcode{apply\_on\_input}}{\emph{func}, \emph{sets}, \emph{inpath}, \emph{*args}}{}
+\end{fulllineitems}
+
+\index{find\_nearest\_neighbors() (in module src.eval.eval\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.eval_vectors.find_nearest_neighbors}\pysiglinewithargsret{\code{src.eval.eval\_vectors.}\bfcode{find\_nearest\_neighbors}}{\emph{vector\_inpath}, \emph{max}, \emph{wordlist}}{}
+\end{fulllineitems}
+
+\index{init\_argparser() (in module src.eval.eval\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.eval_vectors.init_argparser}\pysiglinewithargsret{\code{src.eval.eval\_vectors.}\bfcode{init\_argparser}}{}{}
+\end{fulllineitems}
+
+\index{main() (in module src.eval.eval\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.eval_vectors.main}\pysiglinewithargsret{\code{src.eval.eval\_vectors.}\bfcode{main}}{}{}
+\end{fulllineitems}
+
+\index{opt\_callback() (in module src.eval.eval\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.eval_vectors.opt_callback}\pysiglinewithargsret{\code{src.eval.eval\_vectors.}\bfcode{opt\_callback}}{\emph{option}, \emph{opt}, \emph{value}, \emph{parser}}{}
+\end{fulllineitems}
+
+\index{output() (in module src.eval.eval\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.eval_vectors.output}\pysiglinewithargsret{\code{src.eval.eval\_vectors.}\bfcode{output}}{\emph{message}, \emph{logpath=None}}{}
+\end{fulllineitems}
+
+\index{plot() (in module src.eval.eval\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.eval_vectors.plot}\pysiglinewithargsret{\code{src.eval.eval\_vectors.}\bfcode{plot}}{\emph{data}, \emph{max}, \emph{dimensions}, \emph{show\_plot=False}, \emph{display\_names=False}}{}
+\end{fulllineitems}
+
+\index{plot\_distance\_distribution() (in module src.eval.eval\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.eval_vectors.plot_distance_distribution}\pysiglinewithargsret{\code{src.eval.eval\_vectors.}\bfcode{plot\_distance\_distribution}}{\emph{data}, \emph{max}, \emph{show\_plot=False}}{}
+\end{fulllineitems}
+
+\index{rreplace() (in module src.eval.eval\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.eval_vectors.rreplace}\pysiglinewithargsret{\code{src.eval.eval\_vectors.}\bfcode{rreplace}}{\emph{s}, \emph{old}, \emph{new}, \emph{occurrence}}{}
+\end{fulllineitems}
+
+
 
 \paragraph{src.eval.word\_similarity module}
-\label{src.eval:src-eval-word-similarity-module}
+\label{src.eval:src-eval-word-similarity-module}\label{src.eval:module-src.eval.word_similarity}\index{src.eval.word\_similarity (module)}\index{WordSimMasterThread (class in src.eval.word\_similarity)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.word_similarity.WordSimMasterThread}\pysiglinewithargsret{\strong{class }\code{src.eval.word\_similarity.}\bfcode{WordSimMasterThread}}{\emph{n}, \emph{vector\_inpath}, \emph{wordpair\_inpath}, \emph{logpath}, \emph{format}}{}
+Bases: \code{threading.Thread}
+\index{prepare() (src.eval.word\_similarity.WordSimMasterThread method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.word_similarity.WordSimMasterThread.prepare}\pysiglinewithargsret{\bfcode{prepare}}{}{}
+\end{fulllineitems}
+
+\index{remove\_unknowns() (src.eval.word\_similarity.WordSimMasterThread method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.word_similarity.WordSimMasterThread.remove_unknowns}\pysiglinewithargsret{\bfcode{remove\_unknowns}}{}{}
+\end{fulllineitems}
+
+\index{start\_threads() (src.eval.word\_similarity.WordSimMasterThread method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.word_similarity.WordSimMasterThread.start_threads}\pysiglinewithargsret{\bfcode{start\_threads}}{}{}
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+\index{WordSimWorkerThread (class in src.eval.word\_similarity)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.word_similarity.WordSimWorkerThread}\pysiglinewithargsret{\strong{class }\code{src.eval.word\_similarity.}\bfcode{WordSimWorkerThread}}{\emph{worker\_id}, \emph{pair\_queue}, \emph{model}, \emph{y}}{}
+Bases: \code{threading.Thread}
+\index{run() (src.eval.word\_similarity.WordSimWorkerThread method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.word_similarity.WordSimWorkerThread.run}\pysiglinewithargsret{\bfcode{run}}{}{}
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+\index{capitalize() (in module src.eval.word\_similarity)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.word_similarity.capitalize}\pysiglinewithargsret{\code{src.eval.word\_similarity.}\bfcode{capitalize}}{\emph{word}}{}
+\end{fulllineitems}
+
+\index{evaluate\_wordpair\_sims() (in module src.eval.word\_similarity)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.word_similarity.evaluate_wordpair_sims}\pysiglinewithargsret{\code{src.eval.word\_similarity.}\bfcode{evaluate\_wordpair\_sims}}{\emph{x}, \emph{y}, \emph{number\_of\_pairs}}{}
+\end{fulllineitems}
+
+\index{output() (in module src.eval.word\_similarity)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.word_similarity.output}\pysiglinewithargsret{\code{src.eval.word\_similarity.}\bfcode{output}}{\emph{message}, \emph{logpath=None}}{}
+\end{fulllineitems}
+
+\index{parallel\_word\_sim\_eval() (in module src.eval.word\_similarity)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.word_similarity.parallel_word_sim_eval}\pysiglinewithargsret{\code{src.eval.word\_similarity.}\bfcode{parallel\_word\_sim\_eval}}{\emph{vector\_inpath}, \emph{wordpair\_path}, \emph{logpath}, \emph{format='google'}, \emph{threads=1}}{}
+\end{fulllineitems}
+
+\index{read\_wordpairs() (in module src.eval.word\_similarity)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.word_similarity.read_wordpairs}\pysiglinewithargsret{\code{src.eval.word\_similarity.}\bfcode{read\_wordpairs}}{\emph{wordpair\_path}, \emph{format='google'}}{}
+\end{fulllineitems}
+
+\index{remove\_unknowns() (in module src.eval.word\_similarity)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.word_similarity.remove_unknowns}\pysiglinewithargsret{\code{src.eval.word\_similarity.}\bfcode{remove\_unknowns}}{\emph{x}, \emph{y}}{}
+\end{fulllineitems}
+
+\index{rreplace() (in module src.eval.word\_similarity)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.word_similarity.rreplace}\pysiglinewithargsret{\code{src.eval.word\_similarity.}\bfcode{rreplace}}{\emph{s}, \emph{old}, \emph{new}, \emph{occurrence}}{}
+\end{fulllineitems}
+
+\index{word\_sim\_eval() (in module src.eval.word\_similarity)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.eval:src.eval.word_similarity.word_sim_eval}\pysiglinewithargsret{\code{src.eval.word\_similarity.}\bfcode{word\_sim\_eval}}{\emph{vector\_inpath}, \emph{wordpair\_path}, \emph{logpath}, \emph{format='google'}}{}
+\end{fulllineitems}
+
+
 
 \paragraph{Module contents}
 \label{src.eval:module-src.eval}\label{src.eval:module-contents}\index{src.eval (module)}
@@ -198,7 +596,134 @@ Contents:
 \label{src.guesser:submodules}
 
 \paragraph{src.guesser.svm\_guesser module}
-\label{src.guesser:src-guesser-svm-guesser-module}
+\label{src.guesser:src-guesser-svm-guesser-module}\label{src.guesser:module-src.guesser.svm_guesser}\index{src.guesser.svm\_guesser (module)}\index{convert\_data() (in module src.guesser.svm\_guesser)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.guesser:src.guesser.svm_guesser.convert_data}\pysiglinewithargsret{\code{src.guesser.svm\_guesser.}\bfcode{convert\_data}}{\emph{sets\_path}, \emph{tql\_inpath}, \emph{vector\_inpath}}{}
+\end{fulllineitems}
+
+\index{create\_corrupt\_triples() (in module src.guesser.svm\_guesser)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.guesser:src.guesser.svm_guesser.create_corrupt_triples}\pysiglinewithargsret{\code{src.guesser.svm\_guesser.}\bfcode{create\_corrupt\_triples}}{\emph{grouped\_pairs}, \emph{entities}}{}
+\end{fulllineitems}
+
+\index{dump\_relation\_vectors() (in module src.guesser.svm\_guesser)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.guesser:src.guesser.svm_guesser.dump_relation_vectors}\pysiglinewithargsret{\code{src.guesser.svm\_guesser.}\bfcode{dump\_relation\_vectors}}{\emph{relation\_vectors}, \emph{outpath}}{}
+\end{fulllineitems}
+
+\index{evaluate() (in module src.guesser.svm\_guesser)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.guesser:src.guesser.svm_guesser.evaluate}\pysiglinewithargsret{\code{src.guesser.svm\_guesser.}\bfcode{evaluate}}{\emph{model}, \emph{grouped\_test}, \emph{relation\_vectors}, \emph{entities}}{}
+\end{fulllineitems}
+
+\index{extract\_data\_from\_uri() (in module src.guesser.svm\_guesser)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.guesser:src.guesser.svm_guesser.extract_data_from_uri}\pysiglinewithargsret{\code{src.guesser.svm\_guesser.}\bfcode{extract\_data\_from\_uri}}{\emph{uri}}{}
+\end{fulllineitems}
+
+\index{get\_rank() (in module src.guesser.svm\_guesser)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.guesser:src.guesser.svm_guesser.get_rank}\pysiglinewithargsret{\code{src.guesser.svm\_guesser.}\bfcode{get\_rank}}{\emph{target}, \emph{ranks}}{}
+\end{fulllineitems}
+
+\index{init\_argparser() (in module src.guesser.svm\_guesser)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.guesser:src.guesser.svm_guesser.init_argparser}\pysiglinewithargsret{\code{src.guesser.svm\_guesser.}\bfcode{init\_argparser}}{}{}
+Initialize all arguments for an ArgumentParser object and return it.
+
+@returns \{ArgumentParser\} argument parser object
+
+\end{fulllineitems}
+
+\index{load\_relation\_vectors() (in module src.guesser.svm\_guesser)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.guesser:src.guesser.svm_guesser.load_relation_vectors}\pysiglinewithargsret{\code{src.guesser.svm\_guesser.}\bfcode{load\_relation\_vectors}}{\emph{inpath}}{}
+\end{fulllineitems}
+
+\index{load\_vectors() (in module src.guesser.svm\_guesser)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.guesser:src.guesser.svm_guesser.load_vectors}\pysiglinewithargsret{\code{src.guesser.svm\_guesser.}\bfcode{load\_vectors}}{\emph{vector\_inpath}}{}
+@param vector\_inpath: Path to word2vec model file
+
+\end{fulllineitems}
+
+\index{main() (in module src.guesser.svm\_guesser)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.guesser:src.guesser.svm_guesser.main}\pysiglinewithargsret{\code{src.guesser.svm\_guesser.}\bfcode{main}}{}{}
+\end{fulllineitems}
+
+\index{prepare\_training() (in module src.guesser.svm\_guesser)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.guesser:src.guesser.svm_guesser.prepare_training}\pysiglinewithargsret{\code{src.guesser.svm\_guesser.}\bfcode{prepare\_training}}{\emph{sets\_path}, \emph{vector\_inpath}}{}
+\end{fulllineitems}
+
+\index{rank\_entities() (in module src.guesser.svm\_guesser)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.guesser:src.guesser.svm_guesser.rank_entities}\pysiglinewithargsret{\code{src.guesser.svm\_guesser.}\bfcode{rank\_entities}}{\emph{reference}, \emph{solution}, \emph{model}, \emph{entities}}{}
+\end{fulllineitems}
+
+\index{read\_freebase\_data() (in module src.guesser.svm\_guesser)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.guesser:src.guesser.svm_guesser.read_freebase_data}\pysiglinewithargsret{\code{src.guesser.svm\_guesser.}\bfcode{read\_freebase\_data}}{\emph{sets\_path}}{}
+\end{fulllineitems}
+
+\index{read\_freebase\_file() (in module src.guesser.svm\_guesser)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.guesser:src.guesser.svm_guesser.read_freebase_file}\pysiglinewithargsret{\code{src.guesser.svm\_guesser.}\bfcode{read\_freebase\_file}}{\emph{fb\_inpath}}{}
+\end{fulllineitems}
+
+\index{read\_tql\_file() (in module src.guesser.svm\_guesser)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.guesser:src.guesser.svm_guesser.read_tql_file}\pysiglinewithargsret{\code{src.guesser.svm\_guesser.}\bfcode{read\_tql\_file}}{\emph{tql\_inpath}}{}
+\end{fulllineitems}
+
+\index{test\_coverage() (in module src.guesser.svm\_guesser)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.guesser:src.guesser.svm_guesser.test_coverage}\pysiglinewithargsret{\code{src.guesser.svm\_guesser.}\bfcode{test\_coverage}}{\emph{triples}, \emph{model}}{}
+Test the coverage of a dataset consisting of freebase triples on word2vec word embeddings.
+For every triple (h, l, t), the entities h and t are taken and used for look up in the word2vec
+model.
+
+@param triples: list of 3-tuples (freebase triples)
+@param model: gensim word2vec model
+
+\end{fulllineitems}
+
+\index{train() (in module src.guesser.svm\_guesser)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.guesser:src.guesser.svm_guesser.train}\pysiglinewithargsret{\code{src.guesser.svm\_guesser.}\bfcode{train}}{\emph{model}, \emph{grouped\_train}, \emph{grouped\_corrupted}, \emph{lossf}, \emph{relation\_types}, \emph{epochs=1000}, \emph{learning\_rate=0.01}, \emph{margin=1}}{}
+\end{fulllineitems}
+
+\index{transform\_triples() (in module src.guesser.svm\_guesser)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.guesser:src.guesser.svm_guesser.transform_triples}\pysiglinewithargsret{\code{src.guesser.svm\_guesser.}\bfcode{transform\_triples}}{\emph{triples}, \emph{relation\_types}, \emph{entities}}{}
+\end{fulllineitems}
+
+\index{write\_data() (in module src.guesser.svm\_guesser)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.guesser:src.guesser.svm_guesser.write_data}\pysiglinewithargsret{\code{src.guesser.svm\_guesser.}\bfcode{write\_data}}{\emph{triples}, \emph{found\_entities}, \emph{outpath}}{}
+\end{fulllineitems}
+
+
 
 \paragraph{Module contents}
 \label{src.guesser:module-src.guesser}\label{src.guesser:module-contents}\index{src.guesser (module)}
@@ -210,13 +735,283 @@ Contents:
 \label{src.mapping:submodules}
 
 \paragraph{src.mapping.map\_vectors module}
-\label{src.mapping:src-mapping-map-vectors-module}
+\label{src.mapping:module-src.mapping.map_vectors}\label{src.mapping:src-mapping-map-vectors-module}\index{src.mapping.map\_vectors (module)}\index{alt() (in module src.mapping.map\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.map_vectors.alt}\pysiglinewithargsret{\code{src.mapping.map\_vectors.}\bfcode{alt}}{\emph{func}}{}
+\end{fulllineitems}
+
+\index{construct\_nearest\_neighbour\_graph() (in module src.mapping.map\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.map_vectors.construct_nearest_neighbour_graph}\pysiglinewithargsret{\code{src.mapping.map\_vectors.}\bfcode{construct\_nearest\_neighbour\_graph}}{\emph{vector\_inpath}}{}
+\end{fulllineitems}
+
+\index{dump\_defaultdict() (in module src.mapping.map\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.map_vectors.dump_defaultdict}\pysiglinewithargsret{\code{src.mapping.map\_vectors.}\bfcode{dump\_defaultdict}}{\emph{ddict}, \emph{outpath}, \emph{pickled=True}}{}
+\end{fulllineitems}
+
+\index{dump\_vector\_defaultdict() (in module src.mapping.map\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.map_vectors.dump_vector_defaultdict}\pysiglinewithargsret{\code{src.mapping.map\_vectors.}\bfcode{dump\_vector\_defaultdict}}{\emph{ddict}, \emph{outpath}, \emph{pickled=True}}{}
+\end{fulllineitems}
+
+\index{filter\_duplicate\_vectors() (in module src.mapping.map\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.map_vectors.filter_duplicate_vectors}\pysiglinewithargsret{\code{src.mapping.map\_vectors.}\bfcode{filter\_duplicate\_vectors}}{\emph{vectors\_indir}, \emph{vector\_outpath}}{}
+\end{fulllineitems}
+
+\index{filter\_duplicate\_vectors\_parallelized() (in module src.mapping.map\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.map_vectors.filter_duplicate_vectors_parallelized}\pysiglinewithargsret{\code{src.mapping.map\_vectors.}\bfcode{filter\_duplicate\_vectors\_parallelized}}{\emph{vectors\_indir}, \emph{vector\_outpath}, \emph{procs=1}}{}
+\end{fulllineitems}
+
+\index{hash\_tuple() (in module src.mapping.map\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.map_vectors.hash_tuple}\pysiglinewithargsret{\code{src.mapping.map\_vectors.}\bfcode{hash\_tuple}}{\emph{t}}{}
+\end{fulllineitems}
+
+\index{index\_vectors() (in module src.mapping.map\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.map_vectors.index_vectors}\pysiglinewithargsret{\code{src.mapping.map\_vectors.}\bfcode{index\_vectors}}{\emph{vector\_inpath}, \emph{vector\_outpath}, \emph{indexing\_outpath}, \emph{subset}}{}
+\end{fulllineitems}
+
+\index{init\_argparse() (in module src.mapping.map\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.map_vectors.init_argparse}\pysiglinewithargsret{\code{src.mapping.map\_vectors.}\bfcode{init\_argparse}}{}{}
+\end{fulllineitems}
+
+\index{init\_pool() (in module src.mapping.map\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.map_vectors.init_pool}\pysiglinewithargsret{\code{src.mapping.map\_vectors.}\bfcode{init\_pool}}{\emph{args}}{}
+\end{fulllineitems}
+
+\index{load\_vectors\_from\_model() (in module src.mapping.map\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.map_vectors.load_vectors_from_model}\pysiglinewithargsret{\code{src.mapping.map\_vectors.}\bfcode{load\_vectors\_from\_model}}{\emph{vector\_inpath}, \emph{max\_n=None}, \emph{logpath=None}}{}
+\end{fulllineitems}
+
+\index{main() (in module src.mapping.map\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.map_vectors.main}\pysiglinewithargsret{\code{src.mapping.map\_vectors.}\bfcode{main}}{}{}
+\end{fulllineitems}
+
+\index{output() (in module src.mapping.map\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.map_vectors.output}\pysiglinewithargsret{\code{src.mapping.map\_vectors.}\bfcode{output}}{\emph{message}, \emph{logpath=None}}{}
+\end{fulllineitems}
+
+\index{read\_subset() (in module src.mapping.map\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.map_vectors.read_subset}\pysiglinewithargsret{\code{src.mapping.map\_vectors.}\bfcode{read\_subset}}{\emph{subset\_inpath}}{}
+\end{fulllineitems}
+
+\index{rreplace() (in module src.mapping.map\_vectors)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.map_vectors.rreplace}\pysiglinewithargsret{\code{src.mapping.map\_vectors.}\bfcode{rreplace}}{\emph{s}, \emph{old}, \emph{new}, \emph{occurrence}}{}
+\end{fulllineitems}
+
+
 
 \paragraph{src.mapping.mapping\_operations module}
-\label{src.mapping:src-mapping-mapping-operations-module}
+\label{src.mapping:module-src.mapping.mapping_operations}\label{src.mapping:src-mapping-mapping-operations-module}\index{src.mapping.mapping\_operations (module)}\index{cosine\_similarity() (in module src.mapping.mapping\_operations)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapping_operations.cosine_similarity}\pysiglinewithargsret{\code{src.mapping.mapping\_operations.}\bfcode{cosine\_similarity}}{\emph{v1}, \emph{v2}}{}
+\end{fulllineitems}
+
+\index{distance() (in module src.mapping.mapping\_operations)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapping_operations.distance}\pysiglinewithargsret{\code{src.mapping.mapping\_operations.}\bfcode{distance}}{\emph{v1}, \emph{v2}}{}
+\end{fulllineitems}
+
+\index{euclidian\_distance1() (in module src.mapping.mapping\_operations)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapping_operations.euclidian_distance1}\pysiglinewithargsret{\code{src.mapping.mapping\_operations.}\bfcode{euclidian\_distance1}}{\emph{v1}, \emph{v2}}{}
+\end{fulllineitems}
+
+\index{euclidian\_distance2() (in module src.mapping.mapping\_operations)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapping_operations.euclidian_distance2}\pysiglinewithargsret{\code{src.mapping.mapping\_operations.}\bfcode{euclidian\_distance2}}{\emph{v1}, \emph{v2}}{}
+\end{fulllineitems}
+
+\index{manhattan\_distance() (in module src.mapping.mapping\_operations)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapping_operations.manhattan_distance}\pysiglinewithargsret{\code{src.mapping.mapping\_operations.}\bfcode{manhattan\_distance}}{\emph{v1}, \emph{v2}}{}
+\end{fulllineitems}
+
+\index{soft\_cosine\_similarity() (in module src.mapping.mapping\_operations)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapping_operations.soft_cosine_similarity}\pysiglinewithargsret{\code{src.mapping.mapping\_operations.}\bfcode{soft\_cosine\_similarity}}{\emph{v1}, \emph{v2}}{}
+\end{fulllineitems}
+
+
 
 \paragraph{src.mapping.mapthreading module}
-\label{src.mapping:src-mapping-mapthreading-module}
+\label{src.mapping:src-mapping-mapthreading-module}\label{src.mapping:module-src.mapping.mapthreading}\index{src.mapping.mapthreading (module)}\index{MappingMasterThread (class in src.mapping.mapthreading)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.MappingMasterThread}\pysiglinewithargsret{\strong{class }\code{src.mapping.mapthreading.}\bfcode{MappingMasterThread}}{\emph{n}, \emph{vector\_inpath}, \emph{vector\_outpath}, \emph{features}, \emph{ids\_inpath}, \emph{indices\_inpath}}{}
+Bases: \code{threading.Thread}
+\index{prepare() (src.mapping.mapthreading.MappingMasterThread method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.MappingMasterThread.prepare}\pysiglinewithargsret{\bfcode{prepare}}{}{}
+\end{fulllineitems}
+
+\index{read\_ids\_file() (src.mapping.mapthreading.MappingMasterThread method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.MappingMasterThread.read_ids_file}\pysiglinewithargsret{\bfcode{read\_ids\_file}}{\emph{ids\_inpath}}{}
+\end{fulllineitems}
+
+\index{start\_threads() (src.mapping.mapthreading.MappingMasterThread method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.MappingMasterThread.start_threads}\pysiglinewithargsret{\bfcode{start\_threads}}{}{}
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+\index{MappingWorkerThread (class in src.mapping.mapthreading)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.MappingWorkerThread}\pysiglinewithargsret{\strong{class }\code{src.mapping.mapthreading.}\bfcode{MappingWorkerThread}}{\emph{worker\_id}, \emph{vector\_dict}, \emph{vector\_queue}, \emph{vector\_outpath}, \emph{features}, \emph{occurrences}, \emph{indices}}{}
+Bases: \code{threading.Thread}
+\index{concat() (src.mapping.mapthreading.MappingWorkerThread method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.MappingWorkerThread.concat}\pysiglinewithargsret{\bfcode{concat}}{\emph{v1}, \emph{v2}}{}
+\end{fulllineitems}
+
+\index{cosine\_similarity() (src.mapping.mapthreading.MappingWorkerThread method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.MappingWorkerThread.cosine_similarity}\pysiglinewithargsret{\bfcode{cosine\_similarity}}{\emph{v1}, \emph{v2}}{}
+\end{fulllineitems}
+
+\index{distance() (src.mapping.mapthreading.MappingWorkerThread method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.MappingWorkerThread.distance}\pysiglinewithargsret{\bfcode{distance}}{\emph{v1}, \emph{v2}}{}
+\end{fulllineitems}
+
+\index{euclidian\_distance1() (src.mapping.mapthreading.MappingWorkerThread method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.MappingWorkerThread.euclidian_distance1}\pysiglinewithargsret{\bfcode{euclidian\_distance1}}{\emph{v1}, \emph{v2}}{}
+\end{fulllineitems}
+
+\index{euclidian\_distance2() (src.mapping.mapthreading.MappingWorkerThread method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.MappingWorkerThread.euclidian_distance2}\pysiglinewithargsret{\bfcode{euclidian\_distance2}}{\emph{v1}, \emph{v2}}{}
+\end{fulllineitems}
+
+\index{hash\_indices() (src.mapping.mapthreading.MappingWorkerThread method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.MappingWorkerThread.hash_indices}\pysiglinewithargsret{\bfcode{hash\_indices}}{\emph{i1}, \emph{i2}}{}
+\end{fulllineitems}
+
+\index{manhattan\_distance() (src.mapping.mapthreading.MappingWorkerThread method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.MappingWorkerThread.manhattan_distance}\pysiglinewithargsret{\bfcode{manhattan\_distance}}{\emph{v1}, \emph{v2}}{}
+\end{fulllineitems}
+
+\index{run() (src.mapping.mapthreading.MappingWorkerThread method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.MappingWorkerThread.run}\pysiglinewithargsret{\bfcode{run}}{}{}
+\end{fulllineitems}
+
+\index{spray() (src.mapping.mapthreading.MappingWorkerThread method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.MappingWorkerThread.spray}\pysiglinewithargsret{\bfcode{spray}}{\emph{v1}, \emph{v2}, \emph{cooc}}{}
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+\index{VectorDict (class in src.mapping.mapthreading)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.VectorDict}\pysigline{\strong{class }\code{src.mapping.mapthreading.}\bfcode{VectorDict}}
+Bases: \code{object}
+\index{add\_skippable() (src.mapping.mapthreading.VectorDict method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.VectorDict.add_skippable}\pysiglinewithargsret{\bfcode{add\_skippable}}{\emph{index}}{}
+\end{fulllineitems}
+
+\index{add\_vector() (src.mapping.mapthreading.VectorDict method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.VectorDict.add_vector}\pysiglinewithargsret{\bfcode{add\_vector}}{\emph{index}, \emph{vector}}{}
+\end{fulllineitems}
+
+\index{get\_keys() (src.mapping.mapthreading.VectorDict method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.VectorDict.get_keys}\pysiglinewithargsret{\bfcode{get\_keys}}{}{}
+\end{fulllineitems}
+
+\index{get\_vector() (src.mapping.mapthreading.VectorDict method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.VectorDict.get_vector}\pysiglinewithargsret{\bfcode{get\_vector}}{\emph{index}}{}
+\end{fulllineitems}
+
+\index{skippable() (src.mapping.mapthreading.VectorDict method)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.VectorDict.skippable}\pysiglinewithargsret{\bfcode{skippable}}{\emph{index\_hash}}{}
+\end{fulllineitems}
+
+
+\end{fulllineitems}
+
+\index{alt() (in module src.mapping.mapthreading)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.alt}\pysiglinewithargsret{\code{src.mapping.mapthreading.}\bfcode{alt}}{\emph{func}}{}
+\end{fulllineitems}
+
+\index{init\_argparse() (in module src.mapping.mapthreading)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.init_argparse}\pysiglinewithargsret{\code{src.mapping.mapthreading.}\bfcode{init\_argparse}}{}{}
+\end{fulllineitems}
+
+\index{main() (in module src.mapping.mapthreading)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.main}\pysiglinewithargsret{\code{src.mapping.mapthreading.}\bfcode{main}}{}{}
+\end{fulllineitems}
+
+
 
 \paragraph{Module contents}
 \label{src.mapping:module-src.mapping}\label{src.mapping:module-contents}\index{src.mapping (module)}
@@ -334,7 +1129,51 @@ Extract information out of CoNLL files.
 \label{src.prep.corpus:module-src.prep.corpus.mapper}\label{src.prep.corpus:src-prep-corpus-mapper-module}\index{src.prep.corpus.mapper (module)}
 
 \subparagraph{src.prep.corpus.prepare\_corpus module}
-\label{src.prep.corpus:src-prep-corpus-prepare-corpus-module}
+\label{src.prep.corpus:module-src.prep.corpus.prepare_corpus}\label{src.prep.corpus:src-prep-corpus-prepare-corpus-module}\index{src.prep.corpus.prepare\_corpus (module)}\index{construct\_yaml\_str() (in module src.prep.corpus.prepare\_corpus)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.prep.corpus:src.prep.corpus.prepare_corpus.construct_yaml_str}\pysiglinewithargsret{\code{src.prep.corpus.prepare\_corpus.}\bfcode{construct\_yaml\_str}}{\emph{self}, \emph{node}}{}
+Docstring for git testing purposes.
+
+\end{fulllineitems}
+
+\index{get\_file\_number() (in module src.prep.corpus.prepare\_corpus)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.prep.corpus:src.prep.corpus.prepare_corpus.get_file_number}\pysiglinewithargsret{\code{src.prep.corpus.prepare\_corpus.}\bfcode{get\_file\_number}}{\emph{filename}}{}
+\end{fulllineitems}
+
+\index{init\_pool() (in module src.prep.corpus.prepare\_corpus)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.prep.corpus:src.prep.corpus.prepare_corpus.init_pool}\pysiglinewithargsret{\code{src.prep.corpus.prepare\_corpus.}\bfcode{init\_pool}}{\emph{args}}{}
+\end{fulllineitems}
+
+\index{main() (in module src.prep.corpus.prepare\_corpus)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.prep.corpus:src.prep.corpus.prepare_corpus.main}\pysiglinewithargsret{\code{src.prep.corpus.prepare\_corpus.}\bfcode{main}}{}{}
+\end{fulllineitems}
+
+\index{prepare() (in module src.prep.corpus.prepare\_corpus)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.prep.corpus:src.prep.corpus.prepare_corpus.prepare}\pysiglinewithargsret{\code{src.prep.corpus.prepare\_corpus.}\bfcode{prepare}}{\emph{ne\_inpath}}{}
+\end{fulllineitems}
+
+\index{process\_corpora() (in module src.prep.corpus.prepare\_corpus)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.prep.corpus:src.prep.corpus.prepare_corpus.process_corpora}\pysiglinewithargsret{\code{src.prep.corpus.prepare\_corpus.}\bfcode{process\_corpora}}{\emph{nesi}, \emph{corpus\_dir}, \emph{out\_dir}, \emph{log\_dir}, \emph{logging\_interval\_meta=10}, \emph{logging\_interval\_processing=10}}{}
+\end{fulllineitems}
+
+\index{process\_corpus() (in module src.prep.corpus.prepare\_corpus)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.prep.corpus:src.prep.corpus.prepare_corpus.process_corpus}\pysiglinewithargsret{\code{src.prep.corpus.prepare\_corpus.}\bfcode{process\_corpus}}{\emph{argstuple}}{}
+\end{fulllineitems}
+
+
 
 \subparagraph{src.prep.corpus.quick\_and\_dirty module}
 \label{src.prep.corpus:module-src.prep.corpus.quick_and_dirty}\label{src.prep.corpus:src-prep-corpus-quick-and-dirty-module}\index{src.prep.corpus.quick\_and\_dirty (module)}\index{clean\_file() (in module src.prep.corpus.quick\_and\_dirty)}
@@ -346,7 +1185,7 @@ Extract information out of CoNLL files.
 
 
 \subparagraph{src.prep.corpus.reducer module}
-\label{src.prep.corpus:src-prep-corpus-reducer-module}
+\label{src.prep.corpus:module-src.prep.corpus.reducer}\label{src.prep.corpus:src-prep-corpus-reducer-module}\index{src.prep.corpus.reducer (module)}
 
 \subparagraph{Module contents}
 \label{src.prep.corpus:module-contents}\label{src.prep.corpus:module-src.prep.corpus}\index{src.prep.corpus (module)}
@@ -559,7 +1398,19 @@ Extract information out of CoNLL files.
 
 
 \subparagraph{src.prep.nes.statistics module}
-\label{src.prep.nes:src-prep-nes-statistics-module}
+\label{src.prep.nes:src-prep-nes-statistics-module}\label{src.prep.nes:module-src.prep.nes.statistics}\index{src.prep.nes.statistics (module)}\index{calculate\_occurrences() (in module src.prep.nes.statistics)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.prep.nes:src.prep.nes.statistics.calculate_occurrences}\pysiglinewithargsret{\code{src.prep.nes.statistics.}\bfcode{calculate\_occurrences}}{\emph{freqpath}, \emph{relations\_path}}{}
+\end{fulllineitems}
+
+\index{main() (in module src.prep.nes.statistics)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.prep.nes:src.prep.nes.statistics.main}\pysiglinewithargsret{\code{src.prep.nes.statistics.}\bfcode{main}}{}{}
+\end{fulllineitems}
+
+
 
 \subparagraph{Module contents}
 \label{src.prep.nes:module-src.prep.nes}\label{src.prep.nes:module-contents}\index{src.prep.nes (module)}
@@ -681,7 +1532,7 @@ Bases: \code{exceptions.Exception}
 
 
 \paragraph{src.trans\_e.clean\_relations module}
-\label{src.trans_e:src-trans-e-clean-relations-module}
+\label{src.trans_e:src-trans-e-clean-relations-module}\label{src.trans_e:module-src.trans_e.clean_relations}\index{src.trans\_e.clean\_relations (module)}
 
 \paragraph{src.trans\_e.contains\_entities module}
 \label{src.trans_e:src-trans-e-contains-entities-module}\label{src.trans_e:module-src.trans_e.contains_entities}\index{src.trans\_e.contains\_entities (module)}\index{contains\_entities() (in module src.trans\_e.contains\_entities)}
@@ -729,7 +1580,7 @@ Bases: \code{exceptions.Exception}
 
 
 \paragraph{src.trans\_e.convert\_relations module}
-\label{src.trans_e:src-trans-e-convert-relations-module}
+\label{src.trans_e:module-src.trans_e.convert_relations}\label{src.trans_e:src-trans-e-convert-relations-module}\index{src.trans\_e.convert\_relations (module)}
 
 \paragraph{src.trans\_e.differentiate\_datasets module}
 \label{src.trans_e:module-src.trans_e.differentiate_datasets}\label{src.trans_e:src-trans-e-differentiate-datasets-module}\index{src.trans\_e.differentiate\_datasets (module)}\index{compare\_entities() (in module src.trans\_e.differentiate\_datasets)}
@@ -861,26 +1712,41 @@ Check whether all triplets in the data are unique.
 \bigletter{s}
 \item {\texttt{src}}, \pageref{src:module-src}
 \item {\texttt{src.clustering}}, \pageref{src.clustering:module-src.clustering}
+\item {\texttt{src.clustering.cluster\_mappings}}, \pageref{src.clustering:module-src.clustering.cluster_mappings}
 \item {\texttt{src.eval}}, \pageref{src.eval:module-src.eval}
+\item {\texttt{src.eval.analogy}}, \pageref{src.eval:module-src.eval.analogy}
+\item {\texttt{src.eval.concentration}}, \pageref{src.eval:module-src.eval.concentration}
+\item {\texttt{src.eval.concept\_groups}}, \pageref{src.eval:module-src.eval.concept_groups}
+\item {\texttt{src.eval.eval\_vectors}}, \pageref{src.eval:module-src.eval.eval_vectors}
+\item {\texttt{src.eval.word\_similarity}}, \pageref{src.eval:module-src.eval.word_similarity}
 \item {\texttt{src.guesser}}, \pageref{src.guesser:module-src.guesser}
+\item {\texttt{src.guesser.svm\_guesser}}, \pageref{src.guesser:module-src.guesser.svm_guesser}
 \item {\texttt{src.mapping}}, \pageref{src.mapping:module-src.mapping}
+\item {\texttt{src.mapping.map\_vectors}}, \pageref{src.mapping:module-src.mapping.map_vectors}
+\item {\texttt{src.mapping.mapping\_operations}}, \pageref{src.mapping:module-src.mapping.mapping_operations}
+\item {\texttt{src.mapping.mapthreading}}, \pageref{src.mapping:module-src.mapping.mapthreading}
 \item {\texttt{src.prep}}, \pageref{src.prep:module-src.prep}
 \item {\texttt{src.prep.corpus}}, \pageref{src.prep.corpus:module-src.prep.corpus}
 \item {\texttt{src.prep.corpus.convert\_to\_plain}}, \pageref{src.prep.corpus:module-src.prep.corpus.convert_to_plain}
 \item {\texttt{src.prep.corpus.extract\_conll}}, \pageref{src.prep.corpus:module-src.prep.corpus.extract_conll}
 \item {\texttt{src.prep.corpus.mapper}}, \pageref{src.prep.corpus:module-src.prep.corpus.mapper}
+\item {\texttt{src.prep.corpus.prepare\_corpus}}, \pageref{src.prep.corpus:module-src.prep.corpus.prepare_corpus}
 \item {\texttt{src.prep.corpus.quick\_and\_dirty}}, \pageref{src.prep.corpus:module-src.prep.corpus.quick_and_dirty}
+\item {\texttt{src.prep.corpus.reducer}}, \pageref{src.prep.corpus:module-src.prep.corpus.reducer}
 \item {\texttt{src.prep.misc}}, \pageref{src.prep.misc:module-src.prep.misc}
 \item {\texttt{src.prep.misc.decorators}}, \pageref{src.prep.misc:module-src.prep.misc.decorators}
 \item {\texttt{src.prep.nes}}, \pageref{src.prep.nes:module-src.prep.nes}
 \item {\texttt{src.prep.nes.extractNE}}, \pageref{src.prep.nes:module-src.prep.nes.extractNE}
 \item {\texttt{src.prep.nes.merge}}, \pageref{src.prep.nes:module-src.prep.nes.merge}
 \item {\texttt{src.prep.nes.mwe}}, \pageref{src.prep.nes:module-src.prep.nes.mwe}
+\item {\texttt{src.prep.nes.statistics}}, \pageref{src.prep.nes:module-src.prep.nes.statistics}
 \item {\texttt{src.prep.relations}}, \pageref{src.prep.relations:module-src.prep.relations}
 \item {\texttt{src.prep.relations.relations}}, \pageref{src.prep.relations:module-src.prep.relations.relations}
 \item {\texttt{src.trans\_e}}, \pageref{src.trans_e:module-src.trans_e}
 \item {\texttt{src.trans\_e.add\_inverse\_relations}}, \pageref{src.trans_e:module-src.trans_e.add_inverse_relations}
+\item {\texttt{src.trans\_e.clean\_relations}}, \pageref{src.trans_e:module-src.trans_e.clean_relations}
 \item {\texttt{src.trans\_e.contains\_entities}}, \pageref{src.trans_e:module-src.trans_e.contains_entities}
+\item {\texttt{src.trans\_e.convert\_relations}}, \pageref{src.trans_e:module-src.trans_e.convert_relations}
 \item {\texttt{src.trans\_e.differentiate\_datasets}}, \pageref{src.trans_e:module-src.trans_e.differentiate_datasets}
 \item {\texttt{src.trans\_e.partition\_data}}, \pageref{src.trans_e:module-src.trans_e.partition_data}
 \end{theindex}
