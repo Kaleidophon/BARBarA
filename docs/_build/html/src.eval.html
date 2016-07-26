@@ -46,276 +46,245 @@
 </div>
 <div class="section" id="module-src.eval.analogy">
 <span id="src-eval-analogy-module"></span><h2>src.eval.analogy module<a class="headerlink" href="#module-src.eval.analogy" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="src.eval.analogy.AnalogyMasterThread">
-<em class="property">class </em><code class="descclassname">src.eval.analogy.</code><code class="descname">AnalogyMasterThread</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>analogy_path</em>, <em>per_section</em>, <em>logpath</em>, <em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.AnalogyMasterThread" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">threading.Thread</span></code></p>
-<dl class="method">
-<dt id="src.eval.analogy.AnalogyMasterThread.prepare">
-<code class="descname">prepare</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.AnalogyMasterThread.prepare" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="src.eval.analogy.AnalogyMasterThread.start_threads">
-<code class="descname">start_threads</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.AnalogyMasterThread.start_threads" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="src.eval.analogy.AnalogyWorkerThread">
-<em class="property">class </em><code class="descclassname">src.eval.analogy.</code><code class="descname">AnalogyWorkerThread</code><span class="sig-paren">(</span><em>worker_id</em>, <em>model</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.AnalogyWorkerThread" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">threading.Thread</span></code></p>
-<dl class="method">
-<dt id="src.eval.analogy.AnalogyWorkerThread.find_most_similar_cosmul">
-<code class="descname">find_most_similar_cosmul</code><span class="sig-paren">(</span><em>a</em>, <em>a_</em>, <em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.AnalogyWorkerThread.find_most_similar_cosmul" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="src.eval.analogy.AnalogyWorkerThread.run">
-<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.AnalogyWorkerThread.run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<p>Module to evaluate word embeddings by the means of analogies like &#8220;W is to X like Y is to Z&#8221;. Usually,
+the system uses the word embeddings of word W, X, Y and tries to find the vector of word Z that is most similar to
+X and Y and most dissimilar to W.
+Therefore, the CosMul method (Levy et al., 2015) is used.</p>
+<p>The whole module is used in <code class="xref py py-mod docutils literal"><span class="pre">src.eval.eval_vectors.py</span></code>.</p>
 <dl class="function">
 <dt id="src.eval.analogy.analogy_eval">
-<code class="descclassname">src.eval.analogy.</code><code class="descname">analogy_eval</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>analogy_path</em>, <em>per_section=False</em>, <em>logpath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.analogy_eval" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.analogy.analogy_eval_parallel">
-<code class="descclassname">src.eval.analogy.</code><code class="descname">analogy_eval_parallel</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>analogy_path</em>, <em>per_section=False</em>, <em>logpath=None</em>, <em>threads=1</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.analogy_eval_parallel" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.analogy.output">
-<code class="descclassname">src.eval.analogy.</code><code class="descname">output</code><span class="sig-paren">(</span><em>message</em>, <em>logpath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.output" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descclassname">src.eval.analogy.</code><code class="descname">analogy_eval</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>analogy_path</em>, <em>per_section=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.analogy_eval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform analogy evaluation. Usually,
+the system uses the word embeddings of word W, X, Y and tries to find the vector of word Z that is most similar to
+X and Y and most dissimilar to W for an analogy like &#8220;W is to X like Y is to Z.&#8221;
+Therefore, the CosMul method (Levy et al., 2015) is used.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vector_inpath</strong> (<em>str</em>) &#8211; Path to <cite>word2vec</cite> vector file.</li>
+<li><strong>analogy_path</strong> (<em>str</em>) &#8211; Path to analogy file.</li>
+<li><strong>per_section</strong> (<em>bool</em>) &#8211; Flag to indicate whether analogies test should be conducted section-wise or just all in
+one run.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="src.eval.analogy.read_analogies">
 <code class="descclassname">src.eval.analogy.</code><code class="descname">read_analogies</code><span class="sig-paren">(</span><em>analogy_path</em>, <em>per_section=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.read_analogies" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.analogy.read_analogies_for_parallel">
-<code class="descclassname">src.eval.analogy.</code><code class="descname">read_analogies_for_parallel</code><span class="sig-paren">(</span><em>analogy_path</em>, <em>per_section=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.read_analogies_for_parallel" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.analogy.rreplace">
-<code class="descclassname">src.eval.analogy.</code><code class="descname">rreplace</code><span class="sig-paren">(</span><em>s</em>, <em>old</em>, <em>new</em>, <em>occurrence</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.rreplace" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</div>
-<div class="section" id="module-src.eval.concentration">
-<span id="src-eval-concentration-module"></span><h2>src.eval.concentration module<a class="headerlink" href="#module-src.eval.concentration" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="src.eval.concentration.alt">
-<code class="descclassname">src.eval.concentration.</code><code class="descname">alt</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.alt" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.concentration.calculate_concentration">
-<code class="descclassname">src.eval.concentration.</code><code class="descname">calculate_concentration</code><span class="sig-paren">(</span><em>model</em>, <em>procs</em>, <em>logpath=None</em>, <em>vector_inpath=''</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.calculate_concentration" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.concentration.calculate_concentrations">
-<code class="descclassname">src.eval.concentration.</code><code class="descname">calculate_concentrations</code><span class="sig-paren">(</span><em>vectors_inpath</em>, <em>procs</em>, <em>max_n_vectors</em>, <em>logpath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.calculate_concentrations" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.concentration.calculate_loss_of_precision">
-<code class="descclassname">src.eval.concentration.</code><code class="descname">calculate_loss_of_precision</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>procs</em>, <em>sizes</em>, <em>logpath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.calculate_loss_of_precision" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.concentration.chunks">
-<code class="descclassname">src.eval.concentration.</code><code class="descname">chunks</code><span class="sig-paren">(</span><em>l</em>, <em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.chunks" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.concentration.chunks2">
-<code class="descclassname">src.eval.concentration.</code><code class="descname">chunks2</code><span class="sig-paren">(</span><em>lst</em>, <em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.chunks2" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.concentration.init_pool_for_deviances">
-<code class="descclassname">src.eval.concentration.</code><code class="descname">init_pool_for_deviances</code><span class="sig-paren">(</span><em>pool_args</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.init_pool_for_deviances" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.concentration.init_pool_for_distances">
-<code class="descclassname">src.eval.concentration.</code><code class="descname">init_pool_for_distances</code><span class="sig-paren">(</span><em>pool_args</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.init_pool_for_distances" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.concentration.load_vectors_from_model">
-<code class="descclassname">src.eval.concentration.</code><code class="descname">load_vectors_from_model</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>max_n=None</em>, <em>logpath=None</em>, <em>indices=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.load_vectors_from_model" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.concentration.load_vectors_from_model_parallel">
-<code class="descclassname">src.eval.concentration.</code><code class="descname">load_vectors_from_model_parallel</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>procs</em>, <em>logpath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.load_vectors_from_model_parallel" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.concentration.output">
-<code class="descclassname">src.eval.concentration.</code><code class="descname">output</code><span class="sig-paren">(</span><em>message</em>, <em>logpath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.output" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.concentration.rreplace">
-<code class="descclassname">src.eval.concentration.</code><code class="descname">rreplace</code><span class="sig-paren">(</span><em>s</em>, <em>old</em>, <em>new</em>, <em>occurrence</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concentration.rreplace" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</div>
-<div class="section" id="module-src.eval.concept_groups">
-<span id="src-eval-concept-groups-module"></span><h2>src.eval.concept_groups module<a class="headerlink" href="#module-src.eval.concept_groups" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="src.eval.concept_groups.main">
-<code class="descclassname">src.eval.concept_groups.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concept_groups.main" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.concept_groups.sampleRelations">
-<code class="descclassname">src.eval.concept_groups.</code><code class="descname">sampleRelations</code><span class="sig-paren">(</span><em>inpath</em>, <em>outpath</em>, <em>n</em>, <em>sample_size</em>, <em>freq_constraint</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concept_groups.sampleRelations" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.concept_groups.sample_part">
-<code class="descclassname">src.eval.concept_groups.</code><code class="descname">sample_part</code><span class="sig-paren">(</span><em>relation_pairs</em>, <em>coin_flip</em>, <em>sample_size</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concept_groups.sample_part" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.concept_groups.take_sample_from_list">
-<code class="descclassname">src.eval.concept_groups.</code><code class="descname">take_sample_from_list</code><span class="sig-paren">(</span><em>samplelist</em>, <em>n</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.concept_groups.take_sample_from_list" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Reads a file with analogies.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>analogy_path</strong> (<em>str</em>) &#8211; Path to analogy file.</li>
+<li><strong>per_section</strong> (<em>bool</em>) &#8211; Flag to indicate whether analogies test should be conducted section-wise or just all in
+one run. In this function, the section will be put into a data structure accordingly.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Dictionary with section header as key, list of analogy as 4-tuples as value.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </div>
 <div class="section" id="module-src.eval.eval_vectors">
 <span id="src-eval-eval-vectors-module"></span><h2>src.eval.eval_vectors module<a class="headerlink" href="#module-src.eval.eval_vectors" title="Permalink to this headline">¶</a></h2>
-<dl class="function">
-<dt id="src.eval.eval_vectors.apply_on_input">
-<code class="descclassname">src.eval.eval_vectors.</code><code class="descname">apply_on_input</code><span class="sig-paren">(</span><em>func</em>, <em>sets</em>, <em>inpath</em>, <em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.apply_on_input" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<dl class="docutils">
+<dt>Main module used to evaluate word embeddings. It offers the following options:</dt>
+<dd><div class="first last line-block">
+<div class="line">1.) Analogy: The system tries to complete an analogy like &#8220;W is to X like Y is to...?&#8221; The percentage
+of correct answers is measured.</div>
+<div class="line">2.) Word similarity: The system assign word pairs a similarity score based on the cosine similarity of their
+word embeddings. Then, to correlation between those and human ratings is measured with Pearson&#8217;s rho.</div>
+<div class="line">3.) Nearest neighbors: Find the nearest neighbors for a list of words based on their word embeddings. Good for
+a first look on the data, but not quantifiable.</div>
+<div class="line">4.) Visualize: Plot word embeddings in 2D or 3D. Fancy plots. Yay!</div>
+</div>
+</dd>
+</dl>
 <dl class="function">
 <dt id="src.eval.eval_vectors.find_nearest_neighbors">
-<code class="descclassname">src.eval.eval_vectors.</code><code class="descname">find_nearest_neighbors</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>max</em>, <em>wordlist</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.find_nearest_neighbors" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descclassname">src.eval.eval_vectors.</code><code class="descname">find_nearest_neighbors</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>max_n</em>, <em>wordlist</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.find_nearest_neighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the nearest neighbors for a list of words based on their word embeddings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vector_inpath</strong> (<em>str</em>) &#8211; Path to vector file. File has to have the following format (separated by spaces):
+&lt;index of original vector #1&gt; &lt;index of original vector #2&gt; &lt;Dimension 1&gt; ... &lt;Dimension n&gt;</li>
+<li><strong>max_n</strong> (<em>int</em>) &#8211; Number of nearest neighbors that should be determined.</li>
+<li><strong>wordlist</strong> (<em>list</em>) &#8211; List of words nearest neighbors should be found for.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="src.eval.eval_vectors.init_argparser">
 <code class="descclassname">src.eval.eval_vectors.</code><code class="descname">init_argparser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.init_argparser" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Initialize all possible arguments for the argument parser.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">ArgumentParser object with command line arguments for this script.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-mod docutils literal"><span class="pre">argparse.ArgumentParser</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="src.eval.eval_vectors.main">
 <code class="descclassname">src.eval.eval_vectors.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.main" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.eval_vectors.opt_callback">
-<code class="descclassname">src.eval.eval_vectors.</code><code class="descname">opt_callback</code><span class="sig-paren">(</span><em>option</em>, <em>opt</em>, <em>value</em>, <em>parser</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.opt_callback" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.eval_vectors.output">
-<code class="descclassname">src.eval.eval_vectors.</code><code class="descname">output</code><span class="sig-paren">(</span><em>message</em>, <em>logpath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.output" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>This is the main function. It uses the parsed command line arguments, especially <cite>&#8211;mode</cite>, to pick the right
+function to execute.</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="src.eval.eval_vectors.plot">
-<code class="descclassname">src.eval.eval_vectors.</code><code class="descname">plot</code><span class="sig-paren">(</span><em>data</em>, <em>max</em>, <em>dimensions</em>, <em>show_plot=False</em>, <em>display_names=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.plot" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.eval_vectors.plot_distance_distribution">
-<code class="descclassname">src.eval.eval_vectors.</code><code class="descname">plot_distance_distribution</code><span class="sig-paren">(</span><em>data</em>, <em>max</em>, <em>show_plot=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.plot_distance_distribution" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.eval_vectors.rreplace">
-<code class="descclassname">src.eval.eval_vectors.</code><code class="descname">rreplace</code><span class="sig-paren">(</span><em>s</em>, <em>old</em>, <em>new</em>, <em>occurrence</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.rreplace" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descclassname">src.eval.eval_vectors.</code><code class="descname">plot</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>max_n</em>, <em>target_dim</em>, <em>show_plot=False</em>, <em>display_names=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot word embeddings in 2D or 3D. As a heuristic, word will only be plotted after the 50th most frequent words to
+avoid plotting boring stop words.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vector_inpath</strong> (<em>str</em>) &#8211; Path to vector file. File has to have the following format (separated by spaces):
+&lt;index of original vector #1&gt; &lt;index of original vector #2&gt; &lt;Dimension 1&gt; ... &lt;Dimension n&gt;</li>
+<li><strong>max_n</strong> (<em>int</em>) &#8211; Maximum number of vectors to be plotted.</li>
+<li><strong>show_plot</strong> (<em>bool</em>) &#8211; Flag to indicate whether a window with the (interactive) plot should pop up after executing
+the script.</li>
+<li><strong>display_names</strong> (<em>bool</em>) &#8211; Flag to indicate whether the words should acutally be shown next to the data point in
+the plot. Can get very messy with higher <cite>max_n</cite>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </div>
 <div class="section" id="module-src.eval.word_similarity">
 <span id="src-eval-word-similarity-module"></span><h2>src.eval.word_similarity module<a class="headerlink" href="#module-src.eval.word_similarity" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="src.eval.word_similarity.WordSimMasterThread">
-<em class="property">class </em><code class="descclassname">src.eval.word_similarity.</code><code class="descname">WordSimMasterThread</code><span class="sig-paren">(</span><em>n</em>, <em>vector_inpath</em>, <em>wordpair_inpath</em>, <em>logpath</em>, <em>format</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.WordSimMasterThread" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">threading.Thread</span></code></p>
-<dl class="method">
-<dt id="src.eval.word_similarity.WordSimMasterThread.prepare">
-<code class="descname">prepare</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.WordSimMasterThread.prepare" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="src.eval.word_similarity.WordSimMasterThread.remove_unknowns">
-<code class="descname">remove_unknowns</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.WordSimMasterThread.remove_unknowns" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="src.eval.word_similarity.WordSimMasterThread.start_threads">
-<code class="descname">start_threads</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.WordSimMasterThread.start_threads" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="src.eval.word_similarity.WordSimWorkerThread">
-<em class="property">class </em><code class="descclassname">src.eval.word_similarity.</code><code class="descname">WordSimWorkerThread</code><span class="sig-paren">(</span><em>worker_id</em>, <em>pair_queue</em>, <em>model</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.WordSimWorkerThread" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">threading.Thread</span></code></p>
-<dl class="method">
-<dt id="src.eval.word_similarity.WordSimWorkerThread.run">
-<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.WordSimWorkerThread.run" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="function">
-<dt id="src.eval.word_similarity.capitalize">
-<code class="descclassname">src.eval.word_similarity.</code><code class="descname">capitalize</code><span class="sig-paren">(</span><em>word</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.capitalize" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
+<p>Module used to conduct the word similarity evaluation. The system assign word pairs a similarity score based on
+the cosine similarity of their word embeddings. Then, to correlation between those and human ratings is measured with
+Pearson&#8217;s rho.</p>
+<p>The whole module is used in <code class="xref py py-mod docutils literal"><span class="pre">src.eval.eval_vectors.py</span></code>.</p>
 <dl class="function">
 <dt id="src.eval.word_similarity.evaluate_wordpair_sims">
 <code class="descclassname">src.eval.word_similarity.</code><code class="descname">evaluate_wordpair_sims</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>number_of_pairs</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.evaluate_wordpair_sims" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.word_similarity.output">
-<code class="descclassname">src.eval.word_similarity.</code><code class="descname">output</code><span class="sig-paren">(</span><em>message</em>, <em>logpath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.output" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.word_similarity.parallel_word_sim_eval">
-<code class="descclassname">src.eval.word_similarity.</code><code class="descname">parallel_word_sim_eval</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>wordpair_path</em>, <em>logpath</em>, <em>format='google'</em>, <em>threads=1</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.parallel_word_sim_eval" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Evaluate results of the similarity score assignments, i.e. calculate pearson&#8217;s rho and its significance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> (<em>list</em>) &#8211; List of similarity scores assigned by humans.</li>
+<li><strong>y</strong> (<em>list</em>) &#8211; List of similarity scores assigned by the system.</li>
+<li><strong>number_of_pairs</strong> (<em>int</em>) &#8211; Number of word pairs evaluated.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>rho</strong> &#8211; Pearson&#8217;s correlation coefficient.
+t (float): Student&#8217;s t value.
+z (float): z value.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="src.eval.word_similarity.read_wordpairs">
 <code class="descclassname">src.eval.word_similarity.</code><code class="descname">read_wordpairs</code><span class="sig-paren">(</span><em>wordpair_path</em>, <em>format='google'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.read_wordpairs" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Read wordpair file with wordpairs and their similarity scores assigned by humans.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>wordpair_path</strong> (<em>str</em>) &#8211; Path to word pair file.</li>
+<li><strong>format</strong> (<em>str</em>) &#8211; Format of wor pair file {google|semrel}</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Tuple of a list of word pairs and a list of similarity scores for those same pair assigned by humans.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="src.eval.word_similarity.remove_unknowns">
 <code class="descclassname">src.eval.word_similarity.</code><code class="descname">remove_unknowns</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.remove_unknowns" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.eval.word_similarity.rreplace">
-<code class="descclassname">src.eval.word_similarity.</code><code class="descname">rreplace</code><span class="sig-paren">(</span><em>s</em>, <em>old</em>, <em>new</em>, <em>occurrence</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.rreplace" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Remove word pairs from the results where one or two word embedding weren&#8217;t found.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> (<em>list</em>) &#8211; List of similarity scores assigned by humans.</li>
+<li><strong>y</strong> (<em>list</em>) &#8211; List of similarity scores assigned by the system.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>x</strong> &#8211; Purged list of similarity scores assigned by humans.
+y (list): Purged list of similarity scores assigned by the system.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="src.eval.word_similarity.word_sim_eval">
-<code class="descclassname">src.eval.word_similarity.</code><code class="descname">word_sim_eval</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>wordpair_path</em>, <em>logpath</em>, <em>format='google'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.word_sim_eval" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descclassname">src.eval.word_similarity.</code><code class="descname">word_sim_eval</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>wordpair_path</em>, <em>format='google'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.word_sim_eval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function that let&#8217;s the system assign word pairs a similarity score based on the cosine similarity of their word
+embeddings. Then, to correlation between those and human ratings is measured with Pearson&#8217;s rho.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vector_inpath</strong> (<em>str</em>) &#8211; Path to vector file. File has to have the following format (separated by spaces):
+&lt;index of original vector #1&gt; &lt;index of original vector #2&gt; &lt;Dimension 1&gt; ... &lt;Dimension n&gt;</li>
+<li><strong>wordpair_path</strong> (<em>str</em>) &#8211; Path to word pair file.</li>
+<li><strong>format</strong> (<em>str</em>) &#8211; Format of word pair file {google|semrel}</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </div>
 <div class="section" id="module-src.eval">
@@ -334,8 +303,6 @@
 <li><a class="reference internal" href="#">src.eval package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
 <li><a class="reference internal" href="#module-src.eval.analogy">src.eval.analogy module</a></li>
-<li><a class="reference internal" href="#module-src.eval.concentration">src.eval.concentration module</a></li>
-<li><a class="reference internal" href="#module-src.eval.concept_groups">src.eval.concept_groups module</a></li>
 <li><a class="reference internal" href="#module-src.eval.eval_vectors">src.eval.eval_vectors module</a></li>
 <li><a class="reference internal" href="#module-src.eval.word_similarity">src.eval.word_similarity module</a></li>
 <li><a class="reference internal" href="#module-src.eval">Module contents</a></li>

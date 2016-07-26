@@ -12,22 +12,6 @@ src.eval.analogy module
     :undoc-members:
     :show-inheritance:
 
-src.eval.concentration module
------------------------------
-
-.. automodule:: src.eval.concentration
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-src.eval.concept_groups module
-------------------------------
-
-.. automodule:: src.eval.concept_groups
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 src.eval.eval_vectors module
 ----------------------------
 

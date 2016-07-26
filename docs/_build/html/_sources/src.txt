@@ -10,6 +10,7 @@ Subpackages
     src.eval
     src.guesser
     src.mapping
+    src.misc
     src.prep
     src.trans_e
 

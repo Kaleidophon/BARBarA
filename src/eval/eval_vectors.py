@@ -1,129 +1,112 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-
-import numpy as np
+"""
+Main module used to evaluate word embeddings. It offers the following options:
+	| 1.) Analogy: The system tries to complete an analogy like "W is to X like Y is to...?" The percentage
+		of correct answers is measured.
+	| 2.) Word similarity: The system assign word pairs a similarity score based on the cosine similarity of their
+		word embeddings. Then, to correlation between those and human ratings is measured with Pearson's rho.
+	| 3.) Nearest neighbors: Find the nearest neighbors for a list of words based on their word embeddings. Good for
+		a first look on the data, but not quantifiable.
+	| 4.) Visualize: Plot word embeddings in 2D or 3D. Fancy plots. Yay!
+"""
+# STANDARD
 import argparse
-import os
-import codecs
 
-from sklearn.decomposition import PCA
-import matplotlib.pyplot as plt
+# EXTERNAL
 import matplotlib.font_manager
-from mpl_toolkits.mplot3d import axes3d, Axes3D
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 from gensim.models import Word2Vec as w2v
+from sklearn.decomposition import PCA
 
-from concentration import calculate_concentration, load_vectors_from_model, calculate_loss_of_precision
-from analogy import analogy_eval, analogy_eval_parallel
-from word_similarity import word_sim_eval, parallel_word_sim_eval
+# PROJECT
+from src.eval.analogy import analogy_eval
+from src.eval.word_similarity import word_sim_eval
+from src.misc.helpers import load_vectors_from_model
 
 
 def main():
+	"""
+	This is the main function. It uses the parsed command line arguments, especially `--mode`, to pick the right
+	function to execute.
+	"""
 	argparser = init_argparser()
 	args = argparser.parse_args()
 
-	# Evaluates word embedding with analogy task
+	# Evaluates word embeddings with analogy task
 	if args.mode == "analogy":
-		if args.procs > 1:
-			apply_on_input(analogy_eval_parallel,
-			               args.sets,
-			               args.input[0],
-			               args.input[1],
-			               args.sectionwise,
-			               args.log,
-			               args.procs)
-		else:
-			apply_on_input(analogy_eval,
-							args.sets,
-							args.input[0],
-							args.input[1],
-							args.sectionwise,
-							args.log)
+		analogy_eval(args.input[0], args.input[1], args.sectionwise)
 
+	# Evaluate word embeddings with word similarity task
 	elif args.mode == "wordsim":
-		if args.procs > 1:
-			apply_on_input(parallel_word_sim_eval,
-							args.sets,
-							args.input[0],
-							args.input[1],
-                            args.log,
-							args.format,
-							args.procs)
-		else:
-			apply_on_input(word_sim_eval,
-							args.sets,
-							args.input[0],
-							args.input[1],
-                            args.log,
-							args.format)
-
-	# Calculates 'concentration' value for a set of word embeddings
-	elif args.mode == "concentration":
-		apply_on_input(calculate_concentration,
-						args.sets,
-						load_vectors_from_model(args.input,
-												args.max,
-												args.log),
-						args.procs,
-						args.log,
-						args.input[0])
+		word_sim_eval(args.input[0], args.input[1], args.log, args.format)
 
 	# Visualizes a set of word embeddings in a 2D or 3D projection
 	elif args.mode == "visualize":
-		apply_on_input(plot,
-						args.sets,
-						args.input[0],
-						args.max,
-						args.dimensions,
-						args.show,
-						args.display)
-
-	# Plots the distribution of distances between word embeddings
-	elif args.mode == "distance_distr":
-		apply_on_input(plot_distance_distribution,
-						args.input[0],
-						args.max,
-						args.show)
-
-	# Calculate loss of precision for different model sizes
-	elif args.mode == "loss":
-		calculate_loss_of_precision(args.input[0],
-									args.procs,
-									args.sizes,
-									args.log)
+		plot(args.input[0], args.max, args.dimensions, args.show, args.display)
 
 	# Find the n nearest neighbors of a list of words given a dataset
 	elif args.mode == "neighbors":
-		find_nearest_neighbors(args.input[0],
-								args.max,
-								args.words)
+		find_nearest_neighbors(args.input[0], args.max, args.words)
 
 
-def find_nearest_neighbors(vector_inpath, max, wordlist):
+def find_nearest_neighbors(vector_inpath, max_n, wordlist):
+	"""
+	Find the nearest neighbors for a list of words based on their word embeddings.
+
+	Args:
+		vector_inpath (str): Path to vector file. File has to have the following format (separated by spaces):
+			<index of original vector #1> <index of original vector #2> <Dimension 1> ... <Dimension n>
+		max_n (int): Number of nearest neighbors that should be determined.
+		wordlist (list): List of words nearest neighbors should be found for.
+	"""
 	print "Loading vectors...."
 	model = w2v.load_word2vec_format(vector_inpath, binary=False)
 	print wordlist
+
+	# Find nearest neighbors
 	for word in wordlist:
-		most_similar_with_score = model.most_similar(positive=[word], topn=max)
+		most_similar_with_score = model.most_similar(positive=[word], topn=max_n)
 		for v in most_similar_with_score:
 			print v
-		most_similar_words = [pair[0] for pair in most_similar_with_score]
+		most_similar_words = [pair[0] for pair in most_similar_with_score]  # Only use words, not scores
 
-		print u"%i most similar words of %s in dataset %s" %(max, word, vector_inpath)
+		# Print results
+		print u"%i most similar words of %s in dataset %s" %(max_n, word, vector_inpath)
 		for i in range(len(most_similar_words)):
 			print u"%i: %s" %(i+1, most_similar_words[i])
 
 
-def plot(data, max, dimensions, show_plot=False, display_names=False):
+def plot(vector_inpath, max_n, target_dim, show_plot=False, display_names=False):
+	"""
+	Plot word embeddings in 2D or 3D. As a heuristic, word will only be plotted after the 50th most frequent words to
+	avoid plotting boring stop words.
+
+	Args:
+		vector_inpath (str): Path to vector file. File has to have the following format (separated by spaces):
+			<index of original vector #1> <index of original vector #2> <Dimension 1> ... <Dimension n>
+		max_n (int): Maximum number of vectors to be plotted.
+		show_plot (bool): Flag to indicate whether a window with the (interactive) plot should pop up after executing
+			the script.
+		display_names (bool): Flag to indicate whether the words should acutally be shown next to the data point in
+			the plot. Can get very messy with higher `max_n`.
+	"""
+	# Configure plot properties
 	font = matplotlib.font_manager.FontProperties(fname='./ipag.ttc')
 	FONT_SIZE = 8
 	TEXT_KW = dict(fontsize=FONT_SIZE, fontweight='bold', fontproperties=font)
-	dimensions = int(dimensions)
-	words, model = load_vectors_from_model(data, max, indices=True)
-	words = words[50:]
+	dimensions = int(target_dim)
+
+	# Load vectors
+	words, model = load_vectors_from_model(vector_inpath, max, indices=True)
+	words = words[50:50+max_n]
 
 	# do PCA
 	X = [model[key] for key in words]
 	vector_length = X[0].shape[0]
+
+	# Plot in two dimensions
 	if dimensions == 2:
 		xs = ys = None
 		if dimensions < vector_length:
@@ -144,6 +127,8 @@ def plot(data, max, dimensions, show_plot=False, display_names=False):
 							 xy=(xs[i], ys[i]), xytext=(3, 3),
 							 textcoords='offset points', ha='left', va='top',
 							 **TEXT_KW)
+
+	# Plot in three dimensions
 	elif dimensions == 3:
 		if dimensions < vector_length:
 			pca = PCA(n_components=3)
@@ -162,71 +147,13 @@ def plot(data, max, dimensions, show_plot=False, display_names=False):
 		plt.show()
 
 
-def plot_distance_distribution(data, max, show_plot=False):
-	word_list, vector_dict = load_vectors_from_model(data, max)
-	distance_list = []
-
-	breaking = False
-	while True:
-		current_word = word_list.pop(0)
-		if not current_word: break
-		current_vector = vector_dict[current_word]
-		for word in vector_dict.keys():
-			if word == current_word: continue
-			current_distance = np.linalg.norm(vector_dict[word] -
-											  current_vector)
-			distance_list.append(current_distance)
-			if len(word_list) == 0:
-				breaking = True
-				break
-		if breaking: break
-
-	# print distance_list
-
-	n, bins, patches = plt.hist(distance_list, alpha=0.5, bins=int(max ** (1.0 / 2)))
-	# add a 'best fit' line
-	plt.xlabel('Length of distances')
-	plt.ylabel('# of distances')
-	plt.title("Distribution of distance lengths between %i points\n(%i "
-			  "connections)" %
-			  (max, max * (max - 1) / 2))
-
-	# Tweak spacing to prevent clipping of ylabel
-	plt.subplots_adjust(left=0.15)
-
-	plt.savefig("./hist.jpg", format="jpg")
-	if show_plot:
-		plt.show()
-
-
-def opt_callback(option, opt, value, parser):
-	setattr(parser.values, option.dest, [int(v) for v in value.split(',')])
-
-
-def apply_on_input(func, sets, inpath, *args):
-	if sets:
-		inpaths = [inpath + path for path in os.listdir(inpath)]
-		print inpaths
-		for infile in inpaths:
-			func(infile, *args)
-	else:
-		func(inpath, *args)
-
-
-def output(message, logpath=None):
-	if not logpath:
-		print rreplace(message, "\n", "", 1)
-	else:
-		with codecs.open(logpath, "a", "utf-8") as logfile:
-			logfile.write(message)
-
-
-def rreplace(s, old, new, occurrence):
-	li = s.rsplit(old, occurrence)
-	return new.join(li)
-
-
 def init_argparser():
+	"""
+	Initialize all possible arguments for the argument parser.
+
+	Returns:
+		:py:mod:`argparse.ArgumentParser`: ArgumentParser object with command line arguments for this script.
+	"""
 	argparser = argparse.ArgumentParser()
 	argparser.add_argument('--input',
 							nargs='+',
@@ -237,13 +164,6 @@ def init_argparser():
 							required=True,
 							help='Mode. Different depending on evaluation '
 								 'method.')
-	argparser.add_argument('--procs',
-							default=1,
-							type=int,
-							help='Number of processes. WARNING: Broken.')
-	argparser.add_argument('--log',
-							default=None,
-							help='Path to log file.')
 	argparser.add_argument('--max',
 							default=None,
 							type=int,

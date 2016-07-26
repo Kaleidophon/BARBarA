@@ -18,10 +18,13 @@ from sklearn.cluster import DBSCAN
 from sklearn.decomposition import PCA
 from sklearn.metrics import silhouette_score
 
+# PROJECT
+from src.misc.helpers import alt
+
 
 def main():
 	"""
-	This is the main method. It uses the parse command line arguments to pick the right function to execute.
+	This is the main function. It uses the parsed command line arguments to pick the right function to execute.
 	"""
 	argparser = init_argparser()
 	args = argparser.parse_args()
@@ -218,22 +221,12 @@ def load_mappings_from_model(mapping_inpath):
 	return indices_list, mappings_dict
 
 
-def alt(func):
-	"""
-	Prepends the local time to the output of a function.
-
-	Args:
-		func (function): Function the local time should be prepended to.
-	"""
-	return "%s: %s" % (time.strftime("%H:%M:%S", time.gmtime()), func)
-
-
 def init_argparser():
 	"""
 	Initialize all possible arguments for the argument parser.
 
 	Returns:
-		argparser (argparse.ArgumentParser): ArgumentParser object with command line arguments for this script.
+		:py:mod:`argparse.ArgumentParser`: ArgumentParser object with command line arguments for this script.
 	"""
 	argparser = argparse.ArgumentParser()
 	argparser.add_argument('--input',
