@@ -10,6 +10,7 @@ Main module used to evaluate word embeddings. It offers the following options:
 		a first look on the data, but not quantifiable.
 	| 4.) Visualize: Plot word embeddings in 2D or 3D. Fancy plots. Yay!
 """
+
 # STANDARD
 import argparse
 

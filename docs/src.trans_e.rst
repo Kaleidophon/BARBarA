@@ -52,6 +52,14 @@ src.trans_e.partition_data module
     :undoc-members:
     :show-inheritance:
 
+src.trans_e.trans_we module
+---------------------------
+
+.. automodule:: src.trans_e.trans_we
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 
 Module contents
 ---------------

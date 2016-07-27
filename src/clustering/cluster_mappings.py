@@ -1,8 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 """
-Script to cluster mapping vectors created with :py:mod:`src.mapping.mapthreading` or
-:py:mod:`rc.mapping.map_vectors.py`.
+Script to cluster mapping vectors created with :py:mod:`src.mapping.mapthreading`.
 """
 
 # STANDARD

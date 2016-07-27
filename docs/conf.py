@@ -52,7 +52,7 @@ intersphinx_mapping = {'pysash': ('https://docs.python.org/3.4', None)}
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.napoleon']
+extensions = ['sphinx.ext.autodoc', 'sphinx.ext.napoleon', 'sphinx.ext.imgmath']
 
 # Napoleon settings
 napoleon_google_docstring = True

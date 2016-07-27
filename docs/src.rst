@@ -8,7 +8,6 @@ Subpackages
 
     src.clustering
     src.eval
-    src.guesser
     src.mapping
     src.misc
     src.prep
