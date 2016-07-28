@@ -46,61 +46,185 @@
 </div>
 <div class="section" id="module-src.prep.relations.relations">
 <span id="src-prep-relations-relations-module"></span><h2>src.prep.relations.relations module<a class="headerlink" href="#module-src.prep.relations.relations" title="Permalink to this headline">¶</a></h2>
+<p>This modules is about retrieving the names of entities and relations in the
+<a class="reference external" href="https://everest.hds.utc.fr/doku.php?id=en:smemlj12">FB15k dataset</a>. Because the entities are
+used with their (quite cryptic) <em>Freebase</em> ids, those have to be resolved.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Unfortunately, it isn&#8217;t possible anymore to use this code (July 2016), because the <em>Freebase API</em> is now
+deprecated; the whole <em>Freebase</em> project has been integrated into <em>Wikidata</em>. However, this code is still
+included to show the process of how freebase where transformed into real names using the API and the MQL query
+language.</p>
+</div>
 <dl class="exception">
 <dt id="src.prep.relations.relations.MissingTranslationException">
 <em class="property">exception </em><code class="descclassname">src.prep.relations.relations.</code><code class="descname">MissingTranslationException</code><a class="headerlink" href="#src.prep.relations.relations.MissingTranslationException" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">exceptions.Exception</span></code></p>
+<p>Exception class to be thrown in cases where the API cannot find a translation for a <em>Freebase</em> API given the
+target language.</p>
 <dl class="method">
 <dt id="src.prep.relations.relations.MissingTranslationException.get_id">
 <code class="descname">get_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.relations.relations.MissingTranslationException.get_id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Return the <em>Freebase</em> ID that triggered this exception.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><em>Freebase</em> ID that triggered this exception.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="function">
 <dt id="src.prep.relations.relations.fetch_name">
-<code class="descclassname">src.prep.relations.relations.</code><code class="descname">fetch_name</code><span class="sig-paren">(</span><em>id</em>, <em>lang='en'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.relations.relations.fetch_name" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descclassname">src.prep.relations.relations.</code><code class="descname">fetch_name</code><span class="sig-paren">(</span><em>fbid</em>, <em>lang='de'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.relations.relations.fetch_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Looks for the translation of a <em>Freebase</em> id in a target language.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fbid</strong> (<em>str</em>) &#8211; Freebase ID to be translated</li>
+<li><strong>lang</strong> (<em>str</em>) &#8211; Target language of the translation process (default is &#8220;de&#8221; for german).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><a class="reference internal" href="#src.prep.relations.relations.MissingTranslationException" title="src.prep.relations.relations.MissingTranslationException"><code class="xref py py-exc docutils literal"><span class="pre">MissingTranslationException</span></code></a> &#8211; If no translation is found.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Translation of <em>Freebase</em> ID</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">str</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="src.prep.relations.relations.fetch_relation_triples_of_file">
-<code class="descclassname">src.prep.relations.relations.</code><code class="descname">fetch_relation_triples_of_file</code><span class="sig-paren">(</span><em>inpath</em>, <em>outpath</em>, <em>logpath</em>, <em>lang='en'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.relations.relations.fetch_relation_triples_of_file" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descclassname">src.prep.relations.relations.</code><code class="descname">fetch_relation_triples_of_file</code><span class="sig-paren">(</span><em>inpath</em>, <em>outpath</em>, <em>logpath</em>, <em>lang='de'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.relations.relations.fetch_relation_triples_of_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start the translation of the <em>Freebase</em> IDs into real names.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>inpath</strong> (<em>str</em>) &#8211; Path to <em>Freebase</em> relation file.</li>
+<li><strong>outpath</strong> (<em>str</em>) &#8211; Path the translated triplets should be written to.</li>
+<li><strong>logpath</strong> (<em>str</em>) &#8211; Path to log file.</li>
+<li><strong>lang</strong> (<em>str</em>) &#8211; Target language of the translation process (default is &#8220;de&#8221; for german).</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="src.prep.relations.relations.format_fbid">
-<code class="descclassname">src.prep.relations.relations.</code><code class="descname">format_fbid</code><span class="sig-paren">(</span><em>id</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.relations.relations.format_fbid" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<code class="descclassname">src.prep.relations.relations.</code><code class="descname">format_fbid</code><span class="sig-paren">(</span><em>fbid</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.relations.relations.format_fbid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform the format of the <em>Freebase</em> IDs from the format used in the dataset to the format used in requests.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fbid</strong> (<em>str</em>) &#8211; <em>Freebase</em> ID to be formatted.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Formatted <em>Freebase</em> ID.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="src.prep.relations.relations.freebase_request">
 <code class="descclassname">src.prep.relations.relations.</code><code class="descname">freebase_request</code><span class="sig-paren">(</span><em>query</em>, <em>api_key</em>, <em>service_url</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.relations.relations.freebase_request" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sends a request to the <em>Freebase</em> API.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>query</strong> (<em>list</em>) &#8211; <code class="docutils literal"><span class="pre">MQL</span></code> query as a dictionary wrapped inside a list</li>
+<li><strong>api_key</strong> (<em>str</em>) &#8211; API key</li>
+<li><strong>service_url</strong> (<em>str</em>) &#8211; URI to API</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Response as a dictionary</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.prep.relations.relations.init_optparser">
+<code class="descclassname">src.prep.relations.relations.</code><code class="descname">init_optparser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.relations.relations.init_optparser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the option parser for this script.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">OptionParser object</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">OptionParser</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="src.prep.relations.relations.main">
 <code class="descclassname">src.prep.relations.relations.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.relations.relations.main" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Main function. Start translation of relation triplets based on command line arguments.</p>
+</dd></dl>
 
 <dl class="function">
 <dt id="src.prep.relations.relations.read_credentials">
 <code class="descclassname">src.prep.relations.relations.</code><code class="descname">read_credentials</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.relations.relations.read_credentials" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Reads API credentials from a file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">API key and API URI as strings</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="function">
 <dt id="src.prep.relations.relations.rl">
 <code class="descclassname">src.prep.relations.relations.</code><code class="descname">rl</code><span class="sig-paren">(</span><em>infile</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.relations.relations.rl" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.prep.relations.relations.translate_name">
-<code class="descclassname">src.prep.relations.relations.</code><code class="descname">translate_name</code><span class="sig-paren">(</span><em>name</em>, <em>lang='en'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.relations.relations.translate_name" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="function">
-<dt id="src.prep.relations.relations.translate_word2vec_question_phrases">
-<code class="descclassname">src.prep.relations.relations.</code><code class="descname">translate_word2vec_question_phrases</code><span class="sig-paren">(</span><em>inpath</em>, <em>outpath</em>, <em>lang='en'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.relations.relations.translate_word2vec_question_phrases" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Lazy function to read a line from a while and remove redundant whitespaces.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>infile</strong> (<em>str</em>) &#8211; Path to input file.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Stripped line</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </div>
 <div class="section" id="module-src.prep.relations">

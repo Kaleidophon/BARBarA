@@ -31,7 +31,7 @@ def calculate_occurrences(freqpath, relations_path):
 
 	Args:
 		freqpath (str): Path to merged frequencies file.
-		relations_path 8str): Path to relation yaml file.
+		relations_path (str): Path to relation yaml file.
 	"""
 	rel_entities = set()
 	with codecs.open(relations_path, "rb", "utf-8") as relfile:

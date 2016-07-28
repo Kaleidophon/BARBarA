@@ -39,19 +39,19 @@
 \contentsline {subparagraph}{src.prep.relations package}{16}{subparagraph*.110}
 \contentsline {subparagraph}{Submodules}{16}{subparagraph*.111}
 \contentsline {subparagraph}{src.prep.relations.relations module}{16}{subparagraph*.112}
-\contentsline {subparagraph}{Module contents}{17}{subparagraph*.124}
-\contentsline {paragraph}{Module contents}{17}{paragraph*.125}
-\contentsline {subsubsection}{src.trans\_e package}{17}{subsubsection*.126}
-\contentsline {paragraph}{Submodules}{17}{paragraph*.127}
-\contentsline {paragraph}{src.trans\_e.add\_inverse\_relations module}{17}{paragraph*.128}
-\contentsline {paragraph}{src.trans\_e.clean\_relations module}{17}{paragraph*.133}
-\contentsline {paragraph}{src.trans\_e.contains\_entities module}{17}{paragraph*.134}
-\contentsline {paragraph}{src.trans\_e.convert\_relations module}{17}{paragraph*.142}
-\contentsline {paragraph}{src.trans\_e.differentiate\_datasets module}{17}{paragraph*.143}
-\contentsline {paragraph}{src.trans\_e.partition\_data module}{18}{paragraph*.148}
-\contentsline {paragraph}{src.trans\_e.trans\_we module}{18}{paragraph*.161}
-\contentsline {paragraph}{Module contents}{19}{paragraph*.181}
-\contentsline {subsection}{\numberline {1.1.2}Module contents}{19}{subsection.1.1.2}
+\contentsline {subparagraph}{Module contents}{18}{subparagraph*.123}
+\contentsline {paragraph}{Module contents}{18}{paragraph*.124}
+\contentsline {subsubsection}{src.trans\_e package}{18}{subsubsection*.125}
+\contentsline {paragraph}{Submodules}{18}{paragraph*.126}
+\contentsline {paragraph}{src.trans\_e.add\_inverse\_relations module}{18}{paragraph*.127}
+\contentsline {paragraph}{src.trans\_e.clean\_relations module}{18}{paragraph*.132}
+\contentsline {paragraph}{src.trans\_e.contains\_entities module}{18}{paragraph*.133}
+\contentsline {paragraph}{src.trans\_e.convert\_relations module}{19}{paragraph*.141}
+\contentsline {paragraph}{src.trans\_e.differentiate\_datasets module}{19}{paragraph*.142}
+\contentsline {paragraph}{src.trans\_e.partition\_data module}{19}{paragraph*.147}
+\contentsline {paragraph}{src.trans\_e.trans\_we module}{19}{paragraph*.160}
+\contentsline {paragraph}{Module contents}{20}{paragraph*.180}
+\contentsline {subsection}{\numberline {1.1.2}Module contents}{20}{subsection.1.1.2}
 \contentsline {chapter}{\numberline {2}Indices and tables}{21}{chapter.2}
-\contentsline {chapter}{Python Module Index}{23}{section*.182}
-\contentsline {chapter}{Index}{25}{section*.183}
+\contentsline {chapter}{Python Module Index}{23}{section*.181}
+\contentsline {chapter}{Index}{25}{section*.182}

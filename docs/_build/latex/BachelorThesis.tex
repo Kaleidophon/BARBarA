@@ -1635,7 +1635,7 @@ occurrence in the \emph{Freebase} relation dataset.
 \textbf{\texttt{freqpath}} (\emph{\texttt{str}}) -- Path to merged frequencies file.
 
 \item {} 
-\textbf{\texttt{8str)}} (\emph{\texttt{relations\_path}}) -- Path to relation yaml file.
+\textbf{\texttt{relations\_path}} (\emph{\texttt{str}}) -- Path to relation yaml file.
 
 \end{itemize}
 
@@ -1663,15 +1663,39 @@ Main function
 \label{src.prep.relations:submodules}
 
 \subparagraph{src.prep.relations.relations module}
-\label{src.prep.relations:src-prep-relations-relations-module}\label{src.prep.relations:module-src.prep.relations.relations}\index{src.prep.relations.relations (module)}\index{MissingTranslationException}
+\label{src.prep.relations:src-prep-relations-relations-module}\label{src.prep.relations:module-src.prep.relations.relations}\index{src.prep.relations.relations (module)}
+This modules is about retrieving the names of entities and relations in the
+\href{https://everest.hds.utc.fr/doku.php?id=en:smemlj12}{FB15k dataset}. Because the entities are
+used with their (quite cryptic) \emph{Freebase} ids, those have to be resolved.
+
+\begin{notice}{warning}{Warning:}
+Unfortunately, it isn't possible anymore to use this code (July 2016), because the \emph{Freebase API} is now
+deprecated; the whole \emph{Freebase} project has been integrated into \emph{Wikidata}. However, this code is still
+included to show the process of how freebase where transformed into real names using the API and the MQL query
+language.
+\end{notice}
+\index{MissingTranslationException}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.relations:src.prep.relations.relations.MissingTranslationException}\pysigline{\strong{exception }\code{src.prep.relations.relations.}\bfcode{MissingTranslationException}}
 Bases: \code{exceptions.Exception}
+
+Exception class to be thrown in cases where the API cannot find a translation for a \emph{Freebase} API given the
+target language.
 \index{get\_id() (src.prep.relations.relations.MissingTranslationException method)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.relations:src.prep.relations.relations.MissingTranslationException.get_id}\pysiglinewithargsret{\bfcode{get\_id}}{}{}
+Return the \emph{Freebase} ID that triggered this exception.
+\begin{quote}\begin{description}
+\item[{Returns}] \leavevmode
+\emph{Freebase} ID that triggered this exception.
+
+\item[{Return type}] \leavevmode
+str
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 
@@ -1680,55 +1704,160 @@ Bases: \code{exceptions.Exception}
 \index{fetch\_name() (in module src.prep.relations.relations)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.relations:src.prep.relations.relations.fetch_name}\pysiglinewithargsret{\code{src.prep.relations.relations.}\bfcode{fetch\_name}}{\emph{id}, \emph{lang='en'}}{}
+\phantomsection\label{src.prep.relations:src.prep.relations.relations.fetch_name}\pysiglinewithargsret{\code{src.prep.relations.relations.}\bfcode{fetch\_name}}{\emph{fbid}, \emph{lang='de'}}{}
+Looks for the translation of a \emph{Freebase} id in a target language.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{fbid}} (\emph{\texttt{str}}) -- Freebase ID to be translated
+
+\item {} 
+\textbf{\texttt{lang}} (\emph{\texttt{str}}) -- Target language of the translation process (default is ``de'' for german).
+
+\end{itemize}
+
+\item[{Raises}] \leavevmode
+{\hyperref[src.prep.relations:src.prep.relations.relations.MissingTranslationException]{\crossref{\code{MissingTranslationException}}}} -- If no translation is found.
+
+\item[{Returns}] \leavevmode
+Translation of \emph{Freebase} ID
+
+\item[{Return type}] \leavevmode
+str
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{fetch\_relation\_triples\_of\_file() (in module src.prep.relations.relations)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.relations:src.prep.relations.relations.fetch_relation_triples_of_file}\pysiglinewithargsret{\code{src.prep.relations.relations.}\bfcode{fetch\_relation\_triples\_of\_file}}{\emph{inpath}, \emph{outpath}, \emph{logpath}, \emph{lang='en'}}{}
+\phantomsection\label{src.prep.relations:src.prep.relations.relations.fetch_relation_triples_of_file}\pysiglinewithargsret{\code{src.prep.relations.relations.}\bfcode{fetch\_relation\_triples\_of\_file}}{\emph{inpath}, \emph{outpath}, \emph{logpath}, \emph{lang='de'}}{}
+Start the translation of the \emph{Freebase} IDs into real names.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{inpath}} (\emph{\texttt{str}}) -- Path to \emph{Freebase} relation file.
+
+\item {} 
+\textbf{\texttt{outpath}} (\emph{\texttt{str}}) -- Path the translated triplets should be written to.
+
+\item {} 
+\textbf{\texttt{logpath}} (\emph{\texttt{str}}) -- Path to log file.
+
+\item {} 
+\textbf{\texttt{lang}} (\emph{\texttt{str}}) -- Target language of the translation process (default is ``de'' for german).
+
+\end{itemize}
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{format\_fbid() (in module src.prep.relations.relations)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.relations:src.prep.relations.relations.format_fbid}\pysiglinewithargsret{\code{src.prep.relations.relations.}\bfcode{format\_fbid}}{\emph{id}}{}
+\phantomsection\label{src.prep.relations:src.prep.relations.relations.format_fbid}\pysiglinewithargsret{\code{src.prep.relations.relations.}\bfcode{format\_fbid}}{\emph{fbid}}{}
+Transform the format of the \emph{Freebase} IDs from the format used in the dataset to the format used in requests.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{fbid}} (\emph{\texttt{str}}) -- \emph{Freebase} ID to be formatted.
+
+\item[{Returns}] \leavevmode
+Formatted \emph{Freebase} ID.
+
+\item[{Return type}] \leavevmode
+str
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{freebase\_request() (in module src.prep.relations.relations)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.relations:src.prep.relations.relations.freebase_request}\pysiglinewithargsret{\code{src.prep.relations.relations.}\bfcode{freebase\_request}}{\emph{query}, \emph{api\_key}, \emph{service\_url}}{}
+Sends a request to the \emph{Freebase} API.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{query}} (\emph{\texttt{list}}) -- \code{MQL} query as a dictionary wrapped inside a list
+
+\item {} 
+\textbf{\texttt{api\_key}} (\emph{\texttt{str}}) -- API key
+
+\item {} 
+\textbf{\texttt{service\_url}} (\emph{\texttt{str}}) -- URI to API
+
+\end{itemize}
+
+\item[{Returns}] \leavevmode
+Response as a dictionary
+
+\item[{Return type}] \leavevmode
+dict
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{init\_optparser() (in module src.prep.relations.relations)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.prep.relations:src.prep.relations.relations.init_optparser}\pysiglinewithargsret{\code{src.prep.relations.relations.}\bfcode{init\_optparser}}{}{}
+Initialize the option parser for this script.
+\begin{quote}\begin{description}
+\item[{Returns}] \leavevmode
+OptionParser object
+
+\item[{Return type}] \leavevmode
+OptionParser
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{main() (in module src.prep.relations.relations)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.relations:src.prep.relations.relations.main}\pysiglinewithargsret{\code{src.prep.relations.relations.}\bfcode{main}}{}{}
+Main function. Start translation of relation triplets based on command line arguments.
+
 \end{fulllineitems}
 
 \index{read\_credentials() (in module src.prep.relations.relations)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.relations:src.prep.relations.relations.read_credentials}\pysiglinewithargsret{\code{src.prep.relations.relations.}\bfcode{read\_credentials}}{}{}
+Reads API credentials from a file.
+\begin{quote}\begin{description}
+\item[{Returns}] \leavevmode
+API key and API URI as strings
+
+\item[{Return type}] \leavevmode
+tuple
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{rl() (in module src.prep.relations.relations)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.relations:src.prep.relations.relations.rl}\pysiglinewithargsret{\code{src.prep.relations.relations.}\bfcode{rl}}{\emph{infile}}{}
-\end{fulllineitems}
+Lazy function to read a line from a while and remove redundant whitespaces.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{infile}} (\emph{\texttt{str}}) -- Path to input file.
 
-\index{translate\_name() (in module src.prep.relations.relations)}
+\item[{Returns}] \leavevmode
+Stripped line
 
-\begin{fulllineitems}
-\phantomsection\label{src.prep.relations:src.prep.relations.relations.translate_name}\pysiglinewithargsret{\code{src.prep.relations.relations.}\bfcode{translate\_name}}{\emph{name}, \emph{lang='en'}}{}
-\end{fulllineitems}
+\item[{Return type}] \leavevmode
+str
 
-\index{translate\_word2vec\_question\_phrases() (in module src.prep.relations.relations)}
+\end{description}\end{quote}
 
-\begin{fulllineitems}
-\phantomsection\label{src.prep.relations:src.prep.relations.relations.translate_word2vec_question_phrases}\pysiglinewithargsret{\code{src.prep.relations.relations.}\bfcode{translate\_word2vec\_question\_phrases}}{\emph{inpath}, \emph{outpath}, \emph{lang='en'}}{}
 \end{fulllineitems}
 
 
