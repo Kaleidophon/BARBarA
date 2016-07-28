@@ -7,7 +7,6 @@ Subpackages
 .. toctree::
 
     src.prep.corpus
-    src.prep.misc
     src.prep.nes
     src.prep.relations
 

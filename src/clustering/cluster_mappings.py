@@ -8,7 +8,6 @@ Script to cluster mapping vectors created with :py:mod:`src.mapping.mapthreading
 import argparse
 import codecs
 from collections import defaultdict
-import time
 
 # EXTERNAL
 import numpy

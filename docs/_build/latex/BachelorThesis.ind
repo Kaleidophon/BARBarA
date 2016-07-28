@@ -2,63 +2,60 @@
 \def\bigletter#1{{\Large\sffamily#1}\nopagebreak\vspace{1mm}}
 
   \bigletter A
-  \item add\_inverse\_relations() (in module src.trans\_e.add\_inverse\_relations), \hyperpage{15}
+  \item add\_inverse\_relations() (in module src.trans\_e.add\_inverse\_relations), \hyperpage{16}
   \item add\_skippable() (src.mapping.mapthreading.VectorDict method), \hyperpage{10}
   \item add\_vector() (src.mapping.mapthreading.VectorDict method), \hyperpage{10}
   \item aggregate\_cluster() (in module src.clustering.cluster\_mappings), \hyperpage{3}
   \item alt() (in module src.mapping.mapthreading), \hyperpage{11}
+  \item alt() (in module src.misc.decorators), \hyperpage{11}
   \item alt() (in module src.misc.helpers), \hyperpage{11}
-  \item alt() (in module src.prep.corpus.convert\_to\_plain), \hyperpage{12}
-  \item alt() (in module src.prep.misc.decorators), \hyperpage{13}
   \item analogy\_eval() (in module src.eval.analogy), \hyperpage{5}
 
   \indexspace
   \bigletter C
-  \item calculate\_occurrences() (in module src.prep.nes.statistics), \hyperpage{14}
+  \item calculate\_occurrences() (in module src.prep.nes.statistics), \hyperpage{15}
   \item capitalize() (in module src.misc.helpers), \hyperpage{11}
-  \item check\_data\_integrity() (in module src.trans\_e.partition\_data), \hyperpage{16}
-  \item check\_set\_integrity() (in module src.trans\_e.partition\_data), \hyperpage{16}
-  \item clean\_file() (in module src.prep.corpus.quick\_and\_dirty), \hyperpage{13}
+  \item check\_data\_integrity() (in module src.trans\_e.partition\_data), \hyperpage{17}
+  \item check\_set\_integrity() (in module src.trans\_e.partition\_data), \hyperpage{17}
   \item cluster\_mappings() (in module src.clustering.cluster\_mappings), \hyperpage{3}
   \item compare\_entities() (in module src.trans\_e.differentiate\_datasets), \hyperpage{16}
-  \item construct\_yaml\_str() (in module src.prep.corpus.prepare\_corpus), \hyperpage{12}
-  \item contains\_entities() (in module src.trans\_e.contains\_entities), \hyperpage{15}
+  \item contains\_entities() (in module src.trans\_e.contains\_entities), \hyperpage{16}
   \item contains\_tag() (in module src.prep.corpus.convert\_to\_plain), \hyperpage{12}
-  \item contains\_tag() (in module src.prep.nes.extractNE), \hyperpage{13}
-  \item convert\_data() (in module src.trans\_e.trans\_we), \hyperpage{16}
+  \item contains\_tag() (in module src.prep.nes.extractNE), \hyperpage{14}
+  \item convert\_data() (in module src.trans\_e.trans\_we), \hyperpage{17}
   \item convert\_decow\_to\_plain() (in module src.prep.corpus.convert\_to\_plain), \hyperpage{12}
   \item convert\_part() (in module src.prep.corpus.convert\_to\_plain), \hyperpage{12}
   \item convert\_part\_merging() (in module src.prep.corpus.convert\_to\_plain), \hyperpage{12}
   \item cosine\_similarity() (src.mapping.mapthreading.MappingWorkerThread method), \hyperpage{8}
-  \item create\_corrupt\_triples() (in module src.trans\_e.trans\_we), \hyperpage{16}
-  \item create\_mwe\_pickle() (in module src.prep.nes.mwe), \hyperpage{14}
-  \item create\_mwe\_pickle2() (in module src.prep.nes.mwe), \hyperpage{14}
-  \item create\_new\_dataset() (in module src.trans\_e.contains\_entities), \hyperpage{15}
+  \item create\_corrupt\_triples() (in module src.trans\_e.trans\_we), \hyperpage{17}
+  \item create\_mwe\_pickle() (in module src.prep.nes.mwe), \hyperpage{15}
+  \item create\_mwe\_pickle2() (in module src.prep.nes.mwe), \hyperpage{15}
+  \item create\_new\_dataset() (in module src.trans\_e.contains\_entities), \hyperpage{16}
 
   \indexspace
   \bigletter D
   \item distance() (src.mapping.mapthreading.MappingWorkerThread method), \hyperpage{8}
-  \item dump\_dict\_pickle() (in module src.prep.nes.mwe), \hyperpage{14}
-  \item dump\_dict\_pickle2() (in module src.prep.nes.mwe), \hyperpage{14}
+  \item dump\_dict\_pickle() (in module src.prep.nes.mwe), \hyperpage{15}
+  \item dump\_dict\_pickle2() (in module src.prep.nes.mwe), \hyperpage{15}
   \item dump\_ids\_dict() (in module src.prep.nes.merge), \hyperpage{14}
-  \item dump\_relation\_vectors() (in module src.trans\_e.trans\_we), \hyperpage{16}
+  \item dump\_relation\_vectors() (in module src.trans\_e.trans\_we), \hyperpage{17}
 
   \indexspace
   \bigletter E
   \item euclidean\_distance1() (src.mapping.mapthreading.MappingWorkerThread method), \hyperpage{9}
   \item euclidean\_distance2() (src.mapping.mapthreading.MappingWorkerThread method), \hyperpage{9}
-  \item evaluate() (in module src.trans\_e.trans\_we), \hyperpage{16}
+  \item evaluate() (in module src.trans\_e.trans\_we), \hyperpage{17}
   \item evaluate\_wordpair\_sims() (in module src.eval.word\_similarity), \hyperpage{6}
-  \item extract\_conll() (in module src.prep.corpus.extract\_conll), \hyperpage{12}
-  \item extract\_data\_from\_uri() (in module src.trans\_e.trans\_we), \hyperpage{16}
+  \item extract\_conll() (in module src.prep.corpus.extract\_conll), \hyperpage{13}
+  \item extract\_data\_from\_uri() (in module src.trans\_e.trans\_we), \hyperpage{17}
   \item extract\_entities\_from\_relation\_dataset() (in module src.trans\_e.contains\_entities), 
-		\hyperpage{15}
+		\hyperpage{16}
   \item extract\_entities\_from\_tql\_file() (in module src.trans\_e.contains\_entities), 
-		\hyperpage{15}
+		\hyperpage{16}
   \item extract\_named\_entity() (in module src.prep.corpus.convert\_to\_plain), \hyperpage{12}
-  \item extract\_named\_entity() (in module src.prep.nes.extractNE), \hyperpage{13}
-  \item extract\_sentence\_id() (in module src.prep.corpus.convert\_to\_plain), \hyperpage{12}
-  \item extract\_sentence\_id() (in module src.prep.nes.extractNE), \hyperpage{13}
+  \item extract\_named\_entity() (in module src.prep.nes.extractNE), \hyperpage{14}
+  \item extract\_sentence\_id() (in module src.prep.corpus.convert\_to\_plain), \hyperpage{13}
+  \item extract\_sentence\_id() (in module src.prep.nes.extractNE), \hyperpage{14}
 
   \indexspace
   \bigletter F
@@ -67,19 +64,18 @@
 		\hyperpage{15}
   \item find\_nearest\_neighbors() (in module src.eval.eval\_vectors), \hyperpage{5}
   \item format\_fbid() (in module src.prep.relations.relations), \hyperpage{15}
-  \item format\_fbid() (in module src.trans\_e.contains\_entities), \hyperpage{15}
+  \item format\_fbid() (in module src.trans\_e.contains\_entities), \hyperpage{16}
   \item freebase\_request() (in module src.prep.relations.relations), \hyperpage{15}
   \item freqWorker() (in module src.prep.nes.merge), \hyperpage{14}
 
   \indexspace
   \bigletter G
   \item get\_cluster\_size() (in module src.clustering.cluster\_mappings), \hyperpage{4}
-  \item get\_file\_number() (in module src.prep.corpus.convert\_to\_plain), \hyperpage{12}
-  \item get\_file\_number() (in module src.prep.corpus.prepare\_corpus), \hyperpage{12}
-  \item get\_id() (src.prep.relations.relations.MissingTranslationException method), \hyperpage{14}
+  \item get\_file\_number() (in module src.prep.corpus.convert\_to\_plain), \hyperpage{13}
+  \item get\_id() (src.prep.relations.relations.MissingTranslationException method), \hyperpage{15}
   \item get\_keys() (src.mapping.mapthreading.VectorDict method), \hyperpage{10}
-  \item get\_rank() (in module src.trans\_e.trans\_we), \hyperpage{16}
-  \item get\_stats() (in module src.trans\_e.partition\_data), \hyperpage{16}
+  \item get\_rank() (in module src.trans\_e.trans\_we), \hyperpage{17}
+  \item get\_stats() (in module src.trans\_e.partition\_data), \hyperpage{17}
   \item get\_vector() (src.mapping.mapthreading.VectorDict method), \hyperpage{10}
 
   \indexspace
@@ -90,48 +86,44 @@
   \bigletter I
   \item idWorker() (in module src.prep.nes.merge), \hyperpage{14}
   \item init\_argparse() (in module src.mapping.mapthreading), \hyperpage{11}
-  \item init\_argparse() (in module src.prep.corpus.extract\_conll), \hyperpage{12}
-  \item init\_argparse() (in module src.trans\_e.add\_inverse\_relations), \hyperpage{15}
-  \item init\_argparse() (in module src.trans\_e.contains\_entities), \hyperpage{15}
+  \item init\_argparse() (in module src.prep.corpus.extract\_conll), \hyperpage{13}
+  \item init\_argparse() (in module src.trans\_e.add\_inverse\_relations), \hyperpage{16}
+  \item init\_argparse() (in module src.trans\_e.contains\_entities), \hyperpage{16}
   \item init\_argparse() (in module src.trans\_e.differentiate\_datasets), \hyperpage{16}
-  \item init\_argparse() (in module src.trans\_e.partition\_data), \hyperpage{16}
+  \item init\_argparse() (in module src.trans\_e.partition\_data), \hyperpage{17}
   \item init\_argparser() (in module src.clustering.cluster\_mappings), \hyperpage{4}
   \item init\_argparser() (in module src.eval.eval\_vectors), \hyperpage{6}
-  \item init\_argparser() (in module src.trans\_e.trans\_we), \hyperpage{16}
-  \item init\_pool() (in module src.prep.corpus.prepare\_corpus), \hyperpage{12}
+  \item init\_argparser() (in module src.trans\_e.trans\_we), \hyperpage{17}
 
   \indexspace
   \bigletter L
-  \item load\_dict\_pickle() (in module src.prep.nes.mwe), \hyperpage{14}
-  \item load\_dict\_pickle2() (in module src.prep.nes.mwe), \hyperpage{14}
+  \item load\_dict\_pickle() (in module src.prep.nes.mwe), \hyperpage{15}
+  \item load\_dict\_pickle2() (in module src.prep.nes.mwe), \hyperpage{15}
   \item load\_ids\_dict() (in module src.prep.nes.merge), \hyperpage{14}
   \item load\_indices() (in module src.clustering.cluster\_mappings), \hyperpage{4}
   \item load\_mappings\_from\_model() (in module src.clustering.cluster\_mappings), \hyperpage{4}
-  \item load\_relation\_vectors() (in module src.trans\_e.trans\_we), \hyperpage{16}
-  \item load\_vectors() (in module src.trans\_e.trans\_we), \hyperpage{16}
+  \item load\_relation\_vectors() (in module src.trans\_e.trans\_we), \hyperpage{17}
+  \item load\_vectors() (in module src.trans\_e.trans\_we), \hyperpage{17}
   \item load\_vectors\_from\_model() (in module src.misc.helpers), \hyperpage{11}
-  \item log\_time() (in module src.prep.corpus.convert\_to\_plain), \hyperpage{12}
-  \item log\_time() (in module src.prep.misc.decorators), \hyperpage{13}
-  \item log\_time\_mp() (in module src.prep.corpus.convert\_to\_plain), \hyperpage{12}
-  \item log\_time\_mp() (in module src.prep.misc.decorators), \hyperpage{13}
+  \item log\_time() (in module src.misc.decorators), \hyperpage{11}
+  \item log\_time\_mp() (in module src.misc.decorators), \hyperpage{11}
 
   \indexspace
   \bigletter M
   \item main() (in module src.clustering.cluster\_mappings), \hyperpage{4}
   \item main() (in module src.eval.eval\_vectors), \hyperpage{6}
   \item main() (in module src.mapping.mapthreading), \hyperpage{11}
-  \item main() (in module src.prep.corpus.convert\_to\_plain), \hyperpage{12}
-  \item main() (in module src.prep.corpus.extract\_conll), \hyperpage{12}
-  \item main() (in module src.prep.corpus.prepare\_corpus), \hyperpage{12}
-  \item main() (in module src.prep.nes.extractNE), \hyperpage{13}
+  \item main() (in module src.prep.corpus.convert\_to\_plain), \hyperpage{13}
+  \item main() (in module src.prep.corpus.extract\_conll), \hyperpage{13}
+  \item main() (in module src.prep.nes.extractNE), \hyperpage{14}
   \item main() (in module src.prep.nes.merge), \hyperpage{14}
-  \item main() (in module src.prep.nes.mwe), \hyperpage{14}
-  \item main() (in module src.prep.nes.statistics), \hyperpage{14}
+  \item main() (in module src.prep.nes.mwe), \hyperpage{15}
+  \item main() (in module src.prep.nes.statistics), \hyperpage{15}
   \item main() (in module src.prep.relations.relations), \hyperpage{15}
-  \item main() (in module src.trans\_e.add\_inverse\_relations), \hyperpage{15}
+  \item main() (in module src.trans\_e.add\_inverse\_relations), \hyperpage{16}
   \item main() (in module src.trans\_e.contains\_entities), \hyperpage{16}
   \item main() (in module src.trans\_e.differentiate\_datasets), \hyperpage{16}
-  \item main() (in module src.trans\_e.partition\_data), \hyperpage{16}
+  \item main() (in module src.trans\_e.partition\_data), \hyperpage{17}
   \item main() (in module src.trans\_e.trans\_we), \hyperpage{17}
   \item manhattan\_distance() (src.mapping.mapthreading.MappingWorkerThread method), \hyperpage{9}
   \item MappingMasterThread (class in src.mapping.mapthreading), \hyperpage{7}
@@ -140,25 +132,22 @@
   \item merge\_id\_dicts() (in module src.prep.nes.merge), \hyperpage{14}
   \item merge\_id\_files() (in module src.prep.nes.merge), \hyperpage{14}
   \item mergeDicts() (in module src.prep.nes.merge), \hyperpage{14}
-  \item MissingTranslationException, \hyperpage{14}
+  \item MissingTranslationException, \hyperpage{15}
 
   \indexspace
   \bigletter P
-  \item partition\_data() (in module src.trans\_e.partition\_data), \hyperpage{16}
-  \item partition\_relation\_wise() (in module src.trans\_e.partition\_data), \hyperpage{16}
-  \item partition\_whole() (in module src.trans\_e.partition\_data), \hyperpage{16}
-  \item partitions\_list() (in module src.trans\_e.partition\_data), \hyperpage{16}
+  \item partition\_data() (in module src.trans\_e.partition\_data), \hyperpage{17}
+  \item partition\_relation\_wise() (in module src.trans\_e.partition\_data), \hyperpage{17}
+  \item partition\_whole() (in module src.trans\_e.partition\_data), \hyperpage{17}
+  \item partitions\_list() (in module src.trans\_e.partition\_data), \hyperpage{17}
   \item plot() (in module src.eval.eval\_vectors), \hyperpage{6}
-  \item prepare() (in module src.prep.corpus.prepare\_corpus), \hyperpage{13}
   \item prepare() (src.mapping.mapthreading.MappingMasterThread method), \hyperpage{8}
   \item prepare\_training() (in module src.trans\_e.trans\_we), \hyperpage{17}
-  \item print\_dict\_in\_file() (in module src.prep.nes.extractNE), \hyperpage{13}
-  \item print\_ids\_in\_file() (in module src.prep.nes.extractNE), \hyperpage{13}
+  \item print\_dict\_in\_file() (in module src.prep.nes.extractNE), \hyperpage{14}
+  \item print\_ids\_in\_file() (in module src.prep.nes.extractNE), \hyperpage{14}
   \item print\_key\_lengths() (in module src.prep.nes.merge), \hyperpage{14}
-  \item print\_list\_in\_file() (in module src.prep.nes.extractNE), \hyperpage{13}
-  \item process() (in module src.prep.nes.extractNE), \hyperpage{13}
-  \item process\_corpora() (in module src.prep.corpus.prepare\_corpus), \hyperpage{13}
-  \item process\_corpus() (in module src.prep.corpus.prepare\_corpus), \hyperpage{13}
+  \item print\_list\_in\_file() (in module src.prep.nes.extractNE), \hyperpage{14}
+  \item process() (in module src.prep.nes.extractNE), \hyperpage{14}
 
   \indexspace
   \bigletter R
@@ -167,16 +156,16 @@
   \item read\_credentials() (in module src.prep.relations.relations), \hyperpage{15}
   \item read\_dataset() (in module src.trans\_e.differentiate\_datasets), \hyperpage{16}
   \item read\_file\_with\_inverse\_relations() (in module src.trans\_e.add\_inverse\_relations), 
-		\hyperpage{15}
+		\hyperpage{16}
   \item read\_freebase\_data() (in module src.trans\_e.trans\_we), \hyperpage{17}
   \item read\_freebase\_file() (in module src.trans\_e.trans\_we), \hyperpage{17}
   \item read\_ids\_file() (src.mapping.mapthreading.MappingMasterThread method), \hyperpage{8}
-  \item read\_only\_relations\_into\_set() (in module src.trans\_e.partition\_data), \hyperpage{16}
-  \item read\_relations() (in module src.trans\_e.partition\_data), \hyperpage{16}
+  \item read\_only\_relations\_into\_set() (in module src.trans\_e.partition\_data), \hyperpage{17}
+  \item read\_relations() (in module src.trans\_e.partition\_data), \hyperpage{17}
   \item read\_tql\_file() (in module src.trans\_e.trans\_we), \hyperpage{17}
   \item read\_wordpairs() (in module src.eval.word\_similarity), \hyperpage{6}
   \item remove\_unknowns() (in module src.eval.word\_similarity), \hyperpage{7}
-  \item replace\_mwes() (in module src.prep.nes.mwe), \hyperpage{14}
+  \item replace\_mwes() (in module src.prep.nes.mwe), \hyperpage{15}
   \item resolve\_indices() (in module src.clustering.cluster\_mappings), \hyperpage{4}
   \item rl() (in module src.prep.nes.merge), \hyperpage{14}
   \item rl() (in module src.prep.relations.relations), \hyperpage{15}
@@ -187,7 +176,7 @@
   \item skippable() (src.mapping.mapthreading.VectorDict method), \hyperpage{11}
   \item soft\_cosine\_similarity() (src.mapping.mapthreading.MappingWorkerThread method), 
 		\hyperpage{10}
-  \item src (module), \hyperpage{17}
+  \item src (module), \hyperpage{18}
   \item src.clustering (module), \hyperpage{5}
   \item src.clustering.cluster\_mappings (module), \hyperpage{3}
   \item src.eval (module), \hyperpage{7}
@@ -197,40 +186,37 @@
   \item src.mapping (module), \hyperpage{11}
   \item src.mapping.mapthreading (module), \hyperpage{7}
   \item src.misc (module), \hyperpage{12}
+  \item src.misc.decorators (module), \hyperpage{11}
   \item src.misc.helpers (module), \hyperpage{11}
-  \item src.prep (module), \hyperpage{15}
-  \item src.prep.corpus (module), \hyperpage{13}
+  \item src.prep (module), \hyperpage{16}
+  \item src.prep.corpus (module), \hyperpage{14}
   \item src.prep.corpus.convert\_to\_plain (module), \hyperpage{12}
-  \item src.prep.corpus.extract\_conll (module), \hyperpage{12}
-  \item src.prep.corpus.mapper (module), \hyperpage{12}
-  \item src.prep.corpus.prepare\_corpus (module), \hyperpage{12}
-  \item src.prep.corpus.quick\_and\_dirty (module), \hyperpage{13}
-  \item src.prep.corpus.reducer (module), \hyperpage{13}
-  \item src.prep.misc (module), \hyperpage{13}
-  \item src.prep.misc.decorators (module), \hyperpage{13}
-  \item src.prep.nes (module), \hyperpage{14}
-  \item src.prep.nes.extractNE (module), \hyperpage{13}
+  \item src.prep.corpus.extract\_conll (module), \hyperpage{13}
+  \item src.prep.corpus.mapper (module), \hyperpage{13}
+  \item src.prep.corpus.reducer (module), \hyperpage{14}
+  \item src.prep.nes (module), \hyperpage{15}
+  \item src.prep.nes.extractNE (module), \hyperpage{14}
   \item src.prep.nes.merge (module), \hyperpage{14}
-  \item src.prep.nes.mwe (module), \hyperpage{14}
-  \item src.prep.nes.statistics (module), \hyperpage{14}
-  \item src.prep.relations (module), \hyperpage{15}
-  \item src.prep.relations.relations (module), \hyperpage{14}
-  \item src.trans\_e (module), \hyperpage{17}
-  \item src.trans\_e.add\_inverse\_relations (module), \hyperpage{15}
-  \item src.trans\_e.clean\_relations (module), \hyperpage{15}
-  \item src.trans\_e.contains\_entities (module), \hyperpage{15}
+  \item src.prep.nes.mwe (module), \hyperpage{15}
+  \item src.prep.nes.statistics (module), \hyperpage{15}
+  \item src.prep.relations (module), \hyperpage{16}
+  \item src.prep.relations.relations (module), \hyperpage{15}
+  \item src.trans\_e (module), \hyperpage{18}
+  \item src.trans\_e.add\_inverse\_relations (module), \hyperpage{16}
+  \item src.trans\_e.clean\_relations (module), \hyperpage{16}
+  \item src.trans\_e.contains\_entities (module), \hyperpage{16}
   \item src.trans\_e.convert\_relations (module), \hyperpage{16}
   \item src.trans\_e.differentiate\_datasets (module), \hyperpage{16}
-  \item src.trans\_e.partition\_data (module), \hyperpage{16}
-  \item src.trans\_e.trans\_we (module), \hyperpage{16}
+  \item src.trans\_e.partition\_data (module), \hyperpage{17}
+  \item src.trans\_e.trans\_we (module), \hyperpage{17}
   \item start\_threads() (src.mapping.mapthreading.MappingMasterThread method), \hyperpage{8}
 
   \indexspace
   \bigletter T
   \item test\_coverage() (in module src.trans\_e.trans\_we), \hyperpage{17}
-  \item train() (in module src.trans\_e.trans\_we), \hyperpage{17}
+  \item train() (in module src.trans\_e.trans\_we), \hyperpage{18}
   \item train\_clustering\_parameters() (in module src.clustering.cluster\_mappings), \hyperpage{4}
-  \item transform\_triples() (in module src.trans\_e.trans\_we), \hyperpage{17}
+  \item transform\_triples() (in module src.trans\_e.trans\_we), \hyperpage{18}
   \item translate\_name() (in module src.prep.relations.relations), \hyperpage{15}
   \item translate\_word2vec\_question\_phrases() (in module src.prep.relations.relations), 
 		\hyperpage{15}
@@ -242,7 +228,7 @@
   \indexspace
   \bigletter W
   \item word\_sim\_eval() (in module src.eval.word\_similarity), \hyperpage{7}
-  \item write\_data() (in module src.trans\_e.trans\_we), \hyperpage{17}
-  \item write\_data\_in\_file() (in module src.trans\_e.partition\_data), \hyperpage{16}
+  \item write\_data() (in module src.trans\_e.trans\_we), \hyperpage{18}
+  \item write\_data\_in\_file() (in module src.trans\_e.partition\_data), \hyperpage{17}
 
 \end{theindex}

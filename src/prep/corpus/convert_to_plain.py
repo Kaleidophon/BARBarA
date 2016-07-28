@@ -1,16 +1,30 @@
-import codecs as c
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+"""
+Convert the *DECOW14X* corpus into a plain text file. Is used as pre-processing step for the
+`word2vec <https://code.google.com/archive/p/word2vec/>`_ training.
+To make this this more feasible (decow is a **huge** corpus), python's :mod:`multiprocessing` is used, s.t. every
+part of the corpus in simultaneously processed. Afterwards, a bash command like ``cat`` can be used to merge into one
+single file.
+"""
+
+# STANDARD
 import codecs
 import gzip as gz
 import multiprocessing
 import optparse
 import os
 import re
-import time
-import threading
-from functools import wraps
+
+# PROJECT
+from src.misc.decorators import log_time
+from src.misc.helpers import alt
 
 
 def main():
+	"""
+	Main function. Uses command lines to start corpus processing.
+	"""
 	optparser = optparse.OptionParser()
 	optparser.add_option('--in', dest='in_dir', help='Path to input directory')
 	optparser.add_option('--out', dest='out', help='Path to output directory')
@@ -22,15 +36,29 @@ def main():
 
 
 def convert_decow_to_plain(decow_dir, out_dir, log_path, merge_nes, log_interval):
+	"""
+	Convert the whole corpus into plain text.
+
+	Args:
+		decow_dir (str): Path to directory with decow corpus paths.
+		out_dir (str): Path where plain text parts should be written to.
+		log_path (str): Path where the log files should be written to.
+		merge_nes (bool): Flag to indicate whether multi-word expression should be merged with underscores.
+		log_interval (int): Interval to log current process state in seconds.
+	"""
+	# Split logging interval into hourse - minutes - seconds
 	m_proc, s_proc = divmod(log_interval, 60)
 	h_proc, m_proc = divmod(m_proc, 60)
+
+	# Init logfile
 	with codecs.open(log_path, "a", "utf-8") as log_file:
 		log_file.write(alt("Starting logging...\n"))
-		log_file.write(alt("Corpus (parts) directory:\t%s\n" %(decow_dir)))
-		log_file.write(alt("Output directory:\t\t%s\n" %(out_dir)))
-		log_file.write(alt("Logging path:\t\t%s\n" %(log_path)))
-		log_file.write(alt("Logging intervals:\n\t Every %2dh %2dm %2ds for metalog\n" %(h_proc, m_proc, s_proc)))
+		log_file.write(alt("Corpus (parts) directory:\t%s\n" % decow_dir))
+		log_file.write(alt("Output directory:\t\t%s\n" % out_dir))
+		log_file.write(alt("Logging path:\t\t%s\n" % log_path))
+		log_file.write(alt("Logging intervals:\n\t Every %2dh %2dm %2ds for metalog\n" % (h_proc, m_proc, s_proc)))
 
+	# Start processes
 	@log_time(log_path, log_interval)
 	def _convert_decow_to_plain(decow_dir, out_dir, log_path, merge_nes, log_interval):
 		with codecs.open(log_path, "a", "utf-8") as log_file:
@@ -47,13 +75,21 @@ def convert_decow_to_plain(decow_dir, out_dir, log_path, merge_nes, log_interval
 
 
 def convert_part(argstuple):
+	"""
+	Convert a corpus part into plain text without merging multiple word entries.
+
+	Args:
+		argstuple: Tuple of methods arguments (``inpath`` (*str*): Path to this processes' corpus part / ``dir_outpath``
+					(*str*): Path to this processes' output / ``log_path`` (*str*): Path to this processes' log / ``interval``
+					(*int*): Logging interval in seconds)
+	"""
 	inpath, dir_outpath, log_path, interval = argstuple
 
 	@log_time(log_path, interval)
-	def _convert_part(inpath, dir_outpath, log_path, interval):
+	def _convert_part(inpath, dir_outpath):
 		file_n = get_file_number(inpath)
 		outpath = dir_outpath + 'decow%s_out.txt' %(str(file_n))
-		with gz.open(inpath, 'rb') as infile, c.open(outpath, 'wb', 'utf-8') as outfile:
+		with gz.open(inpath, 'rb') as infile, codecs.open(outpath, 'wb', 'utf-8') as outfile:
 			sentence = []
 			for line in infile:
 				line = line.strip().decode("utf-8")
@@ -63,32 +99,42 @@ def convert_part(argstuple):
 				if not line.startswith(u'<'):
 					sentence.append(line.split('\t')[0])
 
-	_convert_part(inpath, dir_outpath, log_path, interval)
+	_convert_part(inpath, dir_outpath)
 
 
 def convert_part_merging(argstuple):
+	"""
+	Convert a corpus part into plain text and merging multiple word entries.
+
+	Args:
+		argstuple: Tuple of methods arguments (``inpath`` (*str*): Path to this processes' corpus part / ``dir_outpath``
+					(*str*): Path to this processes' output / ``log_path`` (*str*): Path to this processes' log / ``interval``
+					(*int*): Logging interval in seconds)
+	"""
 	inpath, dir_outpath, log_path, interval = argstuple
 
 	@log_time(log_path, interval)
-	def _convert_part_merging(inpath, dir_outpath, log_path, interval):
+	def _convert_part_merging(inpath, dir_outpath, log_path):
 		with codecs.open(log_path, "a", "utf-8") as log_file:
 			process_name = multiprocessing.current_process().name
 			log_file.write(alt("%s: Start logging processing of\n\t%s to \n\t%s...\n" % (process_name, inpath, dir_outpath)))
 			file_n = get_file_number(inpath)
 			outpath = dir_outpath + 'decow%s_out.txt' %(str(file_n))
-			with gz.open(inpath, 'rb') as infile, c.open(outpath, 'wb', 'utf-8') as outfile:
+
+			with gz.open(inpath, 'rb') as infile, codecs.open(outpath, 'wb', 'utf-8') as outfile:
 				sentence = []
 				line, lcount = infile.readline().strip().decode("utf-8"), 1
-				while line != "":
 
+				while line != "":
 					if lcount % 100000 == 0:
 						log_file.write(alt("%s: Processing line nr. %i...\n" % (process_name, lcount)))
 
-					ne = extract_named_entity(line)
+					ne = extract_named_entity(line)  # Extract possible named entity
 
 					if line.startswith(u'<s'):
 						outfile.write('%s\n' %(' '.join(sentence)))
 						sentence = []
+					# If there was a named entity found, try to complete it if it's a multi-word expression
 					elif ne is not None:
 						while True:
 							next_line = infile.readline().strip().decode("utf-8")
@@ -108,10 +154,19 @@ def convert_part_merging(argstuple):
 						sentence.append(line.split('\t')[0])
 					line, lcount = infile.readline().strip().decode("utf-8"), lcount + 1
 
-	_convert_part_merging(inpath, dir_outpath, log_path, interval)
+	_convert_part_merging(inpath, dir_outpath, log_path)
 
 
 def get_file_number(filename):
+	"""
+	Get the number of the current decow corpus part.
+
+	Args:
+		filename (str): Decow corpus part file name
+
+	Returns:
+		str: File number
+	"""
 	file_n = re.findall(re.compile("\d{2}(?=[^a])"), filename)  # Retrieve file number
 	if len(file_n) == 0:
 		file_n = re.findall(re.compile("\d+"), filename)[len(file_n) - 1]
@@ -121,11 +176,29 @@ def get_file_number(filename):
 
 
 def contains_tag(line):
+	"""
+	Checks whether the current line contains an xml tag.
+
+	Args:
+		line (str): Current line
+
+	Returns:
+		bool: Whether the current line contains an xml tag.
+	"""
 	pattern = re.compile("<.+>")
 	return pattern.search(line) is not None
 
 
 def extract_sentence_id(tag):
+	"""
+	Extract the sentence ID of current sentence.
+
+	Args:
+		tag (str): Sentence tag
+
+	Returns:
+		str: sentence ID
+	"""
 	if "<s" not in tag:
 		return ""
 	pattern = re.compile('id="[a-z0-9]+?"(?=\s)')
@@ -136,6 +209,15 @@ def extract_sentence_id(tag):
 
 
 def extract_named_entity(line):
+	"""
+	Extract named entity from current line.
+
+	Args:
+		line (str): Current line
+
+	Returns:
+		str or None: Extracted named entity or None if no named entity is present.
+	"""
 	try:
 		line_parts = line.split("\t")
 		feature = line_parts[3]
@@ -143,70 +225,6 @@ def extract_named_entity(line):
 			return line_parts[2], line_parts[3]
 	except IndexError:
 		return None
-
-
-def log_time(logpath="log.txt", interval=5):
-
-	def log_time_decorator(func):
-		@wraps(func)
-		def wrapper(*args, **kwargs):
-			result = [None]
-
-			def return_value(*args, **kwargs):
-				result[0] = func(*args, **kwargs)
-
-			t = threading.Thread(target=return_value, args=args, kwargs=kwargs)
-			log_entries = 0
-			with codecs.open(logpath, "a", "utf-8") as logfile:
-				start_time = time.time()
-				t.start()
-				while t.is_alive():
-					elapsed_time = (time.time() - start_time)
-					if elapsed_time > interval * log_entries:
-						m, s = divmod(elapsed_time, 60)
-						h, m = divmod(m, 60)
-						logfile.write(alt("Elapsed time for function '%s': %2dh %2dm %2ds\n"
-						                  % (func.__name__, h, m, s)))
-						log_entries += 1
-			return result[0]
-
-		return wrapper
-
-	return log_time_decorator
-
-
-def log_time_mp(logpath="log.txt", interval=5):
-
-	def log_time_decorator(func):
-		@wraps(func)
-		def wrapper(*args, **kwargs):
-			result = [None]
-
-			def return_value(*args, **kwargs):
-				result[0] = func(*args, **kwargs)
-
-			t = threading.Thread(target=return_value, args=args, kwargs=kwargs)
-			log_entries = 0
-			with codecs.open(logpath, "a", "utf-8") as logfile:
-				start_time = time.time()
-				t.start()
-				while t.is_alive():
-					elapsed_time = (time.time() - start_time)
-					if elapsed_time > interval * log_entries:
-						m, s = divmod(elapsed_time, 60)
-						h, m = divmod(m, 60)
-						logfile.write(alt("Elapsed time for function '%s' of %s: %2dh %2dm %2ds\n"
-						                  % (func.__name__, multiprocessing.current_process().name, h, m, s)))
-						log_entries += 1
-			return result[0]
-
-		return wrapper
-
-	return log_time_decorator
-
-
-def alt(func):
-	return "%s: %s" % (time.strftime("%H:%M:%S", time.gmtime()), func)
 
 
 if __name__ == '__main__':

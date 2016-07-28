@@ -11,7 +11,6 @@ similarity, euclidean distance and many more.
 	at least *n* sentences (but it will still take quite a while).
 """
 
-
 # STANDARD
 import argparse
 import codecs

@@ -4,6 +4,14 @@ src.misc package
 Submodules
 ----------
 
+src.misc.decorators module
+--------------------------
+
+.. automodule:: src.misc.decorators
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 src.misc.helpers module
 -----------------------
 

@@ -41,7 +41,9 @@ autodoc_mock_imports = [
 	'mpl_toolkits.mplot3d'
 ]
 
-intersphinx_mapping = {'pysash': ('https://docs.python.org/3.4', None)}
+intersphinx_mapping = {
+    'python': ('http://docs.python.org/2', None),
+}
 
 # -- General configuration ------------------------------------------------
 
@@ -52,7 +54,7 @@ intersphinx_mapping = {'pysash': ('https://docs.python.org/3.4', None)}
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['sphinx.ext.autodoc', 'sphinx.ext.napoleon', 'sphinx.ext.imgmath']
+extensions = ['sphinx.ext.intersphinx', 'sphinx.ext.autodoc', 'sphinx.ext.napoleon', 'sphinx.ext.imgmath']
 
 # Napoleon settings
 napoleon_google_docstring = True

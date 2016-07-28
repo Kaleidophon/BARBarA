@@ -4,9 +4,10 @@
 Module to evaluate word embeddings by the means of analogies like "W is to X like Y is to Z". Usually,
 the system uses the word embeddings of word W, X, Y and tries to find the vector of word Z that is most similar to
 X and Y and most dissimilar to W.
-Therefore, the CosMul method (Levy et al., 2015) is used.
+Therefore, the `CosMul method (Levy et al., 2015) <https://transacl.org/ojs/index.php/tacl/article/viewFile/570/124>`_
+is used.
 
-The whole module is used in :py:mod:`src.eval.eval_vectors.py`.
+The whole module is used in :mod:`src.eval.eval_vectors.py`.
 """
 
 # STANDARD
@@ -19,8 +20,8 @@ from gensim.models import Word2Vec as w2v
 
 def analogy_eval(vector_inpath, analogy_path, per_section=False):
 	"""
-	Perform analogy evaluation. Usually,
-	the system uses the word embeddings of word W, X, Y and tries to find the vector of word Z that is most similar to
+	Perform analogy evaluation. Usually, the system uses the word embeddings of word W, X, Y and tries to find the
+	vector of word Z that is most similar to
 	X and Y and most dissimilar to W for an analogy like "W is to X like Y is to Z."
 	Therefore, the CosMul method (Levy et al., 2015) is used.
 

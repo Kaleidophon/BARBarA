@@ -31,7 +31,7 @@
 
 
 \title{Bachelor Thesis Documentation}
-\date{Jul 27, 2016}
+\date{Jul 28, 2016}
 \release{v1.0}
 \author{Bachelor Thesis}
 \newcommand{\sphinxlogo}{}
@@ -342,15 +342,16 @@ min\_samples and p.
 Module to evaluate word embeddings by the means of analogies like ``W is to X like Y is to Z''. Usually,
 the system uses the word embeddings of word W, X, Y and tries to find the vector of word Z that is most similar to
 X and Y and most dissimilar to W.
-Therefore, the CosMul method (Levy et al., 2015) is used.
+Therefore, the \href{https://transacl.org/ojs/index.php/tacl/article/viewFile/570/124}{CosMul method (Levy et al., 2015)}
+is used.
 
 The whole module is used in \code{src.eval.eval\_vectors.py}.
 \index{analogy\_eval() (in module src.eval.analogy)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.eval:src.eval.analogy.analogy_eval}\pysiglinewithargsret{\code{src.eval.analogy.}\bfcode{analogy\_eval}}{\emph{vector\_inpath}, \emph{analogy\_path}, \emph{per\_section=False}}{}
-Perform analogy evaluation. Usually,
-the system uses the word embeddings of word W, X, Y and tries to find the vector of word Z that is most similar to
+Perform analogy evaluation. Usually, the system uses the word embeddings of word W, X, Y and tries to find the
+vector of word Z that is most similar to
 X and Y and most dissimilar to W for an analogy like ``W is to X like Y is to Z.''
 Therefore, the CosMul method (Levy et al., 2015) is used.
 \begin{quote}\begin{description}
@@ -1058,6 +1059,27 @@ Main function that initializes the master thread with command line arguments and
 \paragraph{Submodules}
 \label{src.misc:submodules}
 
+\paragraph{src.misc.decorators module}
+\label{src.misc:module-src.misc.decorators}\label{src.misc:src-misc-decorators-module}\index{src.misc.decorators (module)}\index{alt() (in module src.misc.decorators)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.misc:src.misc.decorators.alt}\pysiglinewithargsret{\code{src.misc.decorators.}\bfcode{alt}}{\emph{func}}{}
+\end{fulllineitems}
+
+\index{log\_time() (in module src.misc.decorators)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.misc:src.misc.decorators.log_time}\pysiglinewithargsret{\code{src.misc.decorators.}\bfcode{log\_time}}{\emph{logpath='log.txt'}, \emph{interval=5}}{}
+\end{fulllineitems}
+
+\index{log\_time\_mp() (in module src.misc.decorators)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.misc:src.misc.decorators.log_time_mp}\pysiglinewithargsret{\code{src.misc.decorators.}\bfcode{log\_time\_mp}}{\emph{logpath='log.txt'}, \emph{interval=5}}{}
+\end{fulllineitems}
+
+
+
 \paragraph{src.misc.helpers module}
 \label{src.misc:src-misc-helpers-module}\label{src.misc:module-src.misc.helpers}\index{src.misc.helpers (module)}\index{alt() (in module src.misc.helpers)}
 
@@ -1102,83 +1124,177 @@ Prepends the local time to the output of a function.
 \label{src.prep.corpus:submodules}
 
 \subparagraph{src.prep.corpus.convert\_to\_plain module}
-\label{src.prep.corpus:src-prep-corpus-convert-to-plain-module}\label{src.prep.corpus:module-src.prep.corpus.convert_to_plain}\index{src.prep.corpus.convert\_to\_plain (module)}\index{alt() (in module src.prep.corpus.convert\_to\_plain)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.alt}\pysiglinewithargsret{\code{src.prep.corpus.convert\_to\_plain.}\bfcode{alt}}{\emph{func}}{}
-\end{fulllineitems}
-
+\label{src.prep.corpus:src-prep-corpus-convert-to-plain-module}\label{src.prep.corpus:module-src.prep.corpus.convert_to_plain}\index{src.prep.corpus.convert\_to\_plain (module)}
+Convert the \emph{DECOW14X} corpus into a plain text file. Is used as pre-processing step for the
+\href{https://code.google.com/archive/p/word2vec/}{word2vec} training.
+To make this this more feasible (decow is a \textbf{huge} corpus), python's \code{multiprocessing} is used, s.t. every
+part of the corpus in simultaneously processed. Afterwards, a bash command like \code{cat} can be used to merge into one
+single file.
 \index{contains\_tag() (in module src.prep.corpus.convert\_to\_plain)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.contains_tag}\pysiglinewithargsret{\code{src.prep.corpus.convert\_to\_plain.}\bfcode{contains\_tag}}{\emph{line}}{}
+Checks whether the current line contains an xml tag.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{line}} (\emph{\texttt{str}}) -- Current line
+
+\item[{Returns}] \leavevmode
+Whether the current line contains an xml tag.
+
+\item[{Return type}] \leavevmode
+bool
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{convert\_decow\_to\_plain() (in module src.prep.corpus.convert\_to\_plain)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.convert_decow_to_plain}\pysiglinewithargsret{\code{src.prep.corpus.convert\_to\_plain.}\bfcode{convert\_decow\_to\_plain}}{\emph{decow\_dir}, \emph{out\_dir}, \emph{log\_path}, \emph{merge\_nes}, \emph{log\_interval}}{}
+Convert the whole corpus into plain text.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{decow\_dir}} (\emph{\texttt{str}}) -- Path to directory with decow corpus paths.
+
+\item {} 
+\textbf{\texttt{out\_dir}} (\emph{\texttt{str}}) -- Path where plain text parts should be written to.
+
+\item {} 
+\textbf{\texttt{log\_path}} (\emph{\texttt{str}}) -- Path where the log files should be written to.
+
+\item {} 
+\textbf{\texttt{merge\_nes}} (\emph{\texttt{bool}}) -- Flag to indicate whether multi-word expression should be merged with underscores.
+
+\item {} 
+\textbf{\texttt{log\_interval}} (\emph{\texttt{int}}) -- Interval to log current process state in seconds.
+
+\end{itemize}
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{convert\_part() (in module src.prep.corpus.convert\_to\_plain)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.convert_part}\pysiglinewithargsret{\code{src.prep.corpus.convert\_to\_plain.}\bfcode{convert\_part}}{\emph{argstuple}}{}
+Convert a corpus part into plain text without merging multiple word entries.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{argstuple}} -- Tuple of methods arguments (\code{inpath} (\emph{str}): Path to this processes' corpus part / \code{dir\_outpath}
+(\emph{str}): Path to this processes' output / \code{log\_path} (\emph{str}): Path to this processes' log / \code{interval}
+(\emph{int}): Logging interval in seconds)
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{convert\_part\_merging() (in module src.prep.corpus.convert\_to\_plain)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.convert_part_merging}\pysiglinewithargsret{\code{src.prep.corpus.convert\_to\_plain.}\bfcode{convert\_part\_merging}}{\emph{argstuple}}{}
+Convert a corpus part into plain text and merging multiple word entries.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{argstuple}} -- Tuple of methods arguments (\code{inpath} (\emph{str}): Path to this processes' corpus part / \code{dir\_outpath}
+(\emph{str}): Path to this processes' output / \code{log\_path} (\emph{str}): Path to this processes' log / \code{interval}
+(\emph{int}): Logging interval in seconds)
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{extract\_named\_entity() (in module src.prep.corpus.convert\_to\_plain)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.extract_named_entity}\pysiglinewithargsret{\code{src.prep.corpus.convert\_to\_plain.}\bfcode{extract\_named\_entity}}{\emph{line}}{}
+Extract named entity from current line.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{line}} (\emph{\texttt{str}}) -- Current line
+
+\item[{Returns}] \leavevmode
+Extracted named entity or None if no named entity is present.
+
+\item[{Return type}] \leavevmode
+str or None
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{extract\_sentence\_id() (in module src.prep.corpus.convert\_to\_plain)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.extract_sentence_id}\pysiglinewithargsret{\code{src.prep.corpus.convert\_to\_plain.}\bfcode{extract\_sentence\_id}}{\emph{tag}}{}
+Extract the sentence ID of current sentence.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{tag}} (\emph{\texttt{str}}) -- Sentence tag
+
+\item[{Returns}] \leavevmode
+sentence ID
+
+\item[{Return type}] \leavevmode
+str
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{get\_file\_number() (in module src.prep.corpus.convert\_to\_plain)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.get_file_number}\pysiglinewithargsret{\code{src.prep.corpus.convert\_to\_plain.}\bfcode{get\_file\_number}}{\emph{filename}}{}
-\end{fulllineitems}
+Get the number of the current decow corpus part.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{filename}} (\emph{\texttt{str}}) -- Decow corpus part file name
 
-\index{log\_time() (in module src.prep.corpus.convert\_to\_plain)}
+\item[{Returns}] \leavevmode
+File number
 
-\begin{fulllineitems}
-\phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.log_time}\pysiglinewithargsret{\code{src.prep.corpus.convert\_to\_plain.}\bfcode{log\_time}}{\emph{logpath='log.txt'}, \emph{interval=5}}{}
-\end{fulllineitems}
+\item[{Return type}] \leavevmode
+str
 
-\index{log\_time\_mp() (in module src.prep.corpus.convert\_to\_plain)}
+\end{description}\end{quote}
 
-\begin{fulllineitems}
-\phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.log_time_mp}\pysiglinewithargsret{\code{src.prep.corpus.convert\_to\_plain.}\bfcode{log\_time\_mp}}{\emph{logpath='log.txt'}, \emph{interval=5}}{}
 \end{fulllineitems}
 
 \index{main() (in module src.prep.corpus.convert\_to\_plain)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.main}\pysiglinewithargsret{\code{src.prep.corpus.convert\_to\_plain.}\bfcode{main}}{}{}
+Main function. Uses command lines to start corpus processing.
+
 \end{fulllineitems}
 
 
 
 \subparagraph{src.prep.corpus.extract\_conll module}
-\label{src.prep.corpus:src-prep-corpus-extract-conll-module}\label{src.prep.corpus:module-src.prep.corpus.extract_conll}\index{src.prep.corpus.extract\_conll (module)}\index{extract\_conll() (in module src.prep.corpus.extract\_conll)}
+\label{src.prep.corpus:src-prep-corpus-extract-conll-module}\label{src.prep.corpus:module-src.prep.corpus.extract_conll}\index{src.prep.corpus.extract\_conll (module)}
+This script can be used to extract information out of a specific column of a file in the
+\href{http://ilk.uvt.nl/conll/}{CoNLL}-format.
+\index{extract\_conll() (in module src.prep.corpus.extract\_conll)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.corpus:src.prep.corpus.extract_conll.extract_conll}\pysiglinewithargsret{\code{src.prep.corpus.extract\_conll.}\bfcode{extract\_conll}}{\emph{inpath}, \emph{outpath}, \emph{column}}{}
 Extract information out of CoNLL files.
 \begin{quote}\begin{description}
-\item[{Parameters}] \leavevmode
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
 \textbf{\texttt{inpath}} (\emph{\texttt{str}}) -- Path to input file.
+
+\item {} 
+\textbf{\texttt{outpath}} (\emph{\texttt{str}}) -- Path to output file.
+
+\item {} 
+\textbf{\texttt{column}} (\emph{\texttt{int}}) -- The number (-1) of the column the information should be extracted from.
+
+\end{itemize}
 
 \end{description}\end{quote}
 
@@ -1188,110 +1304,62 @@ Extract information out of CoNLL files.
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.corpus:src.prep.corpus.extract_conll.init_argparse}\pysiglinewithargsret{\code{src.prep.corpus.extract\_conll.}\bfcode{init\_argparse}}{}{}
+Initialize all possible arguments for the argument parser.
+\begin{quote}\begin{description}
+\item[{Returns}] \leavevmode
+ArgumentParser object with command line arguments for this script.
+
+\item[{Return type}] \leavevmode
+\code{argparse.ArgumentParser}
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{main() (in module src.prep.corpus.extract\_conll)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.corpus:src.prep.corpus.extract_conll.main}\pysiglinewithargsret{\code{src.prep.corpus.extract\_conll.}\bfcode{main}}{}{}
+The main function.
+
 \end{fulllineitems}
 
 
 
 \subparagraph{src.prep.corpus.mapper module}
 \label{src.prep.corpus:module-src.prep.corpus.mapper}\label{src.prep.corpus:src-prep-corpus-mapper-module}\index{src.prep.corpus.mapper (module)}
+Mapper classed used to count frequencies of words in a corpus. Corpus has to be in plain text format. This class is
+used in a \href{https://en.wikipedia.org/wiki/MapReduce}{Map-Reduce}-pattern, so you also need the \code{reducer.py} class.
 
-\subparagraph{src.prep.corpus.prepare\_corpus module}
-\label{src.prep.corpus:module-src.prep.corpus.prepare_corpus}\label{src.prep.corpus:src-prep-corpus-prepare-corpus-module}\index{src.prep.corpus.prepare\_corpus (module)}\index{construct\_yaml\_str() (in module src.prep.corpus.prepare\_corpus)}
+Then, you can open your terminal and pipe them together:
 
-\begin{fulllineitems}
-\phantomsection\label{src.prep.corpus:src.prep.corpus.prepare_corpus.construct_yaml_str}\pysiglinewithargsret{\code{src.prep.corpus.prepare\_corpus.}\bfcode{construct\_yaml\_str}}{\emph{self}, \emph{node}}{}
-Docstring for git testing purposes.
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}} cat corpus.txt \PYG{p}{\textbar{}} ./mapper.py \PYG{p}{\textbar{}} sort \PYG{p}{\textbar{}} ./reducer.py
+\end{Verbatim}
 
-\end{fulllineitems}
-
-\index{get\_file\_number() (in module src.prep.corpus.prepare\_corpus)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.prep.corpus:src.prep.corpus.prepare_corpus.get_file_number}\pysiglinewithargsret{\code{src.prep.corpus.prepare\_corpus.}\bfcode{get\_file\_number}}{\emph{filename}}{}
-\end{fulllineitems}
-
-\index{init\_pool() (in module src.prep.corpus.prepare\_corpus)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.prep.corpus:src.prep.corpus.prepare_corpus.init_pool}\pysiglinewithargsret{\code{src.prep.corpus.prepare\_corpus.}\bfcode{init\_pool}}{\emph{args}}{}
-\end{fulllineitems}
-
-\index{main() (in module src.prep.corpus.prepare\_corpus)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.prep.corpus:src.prep.corpus.prepare_corpus.main}\pysiglinewithargsret{\code{src.prep.corpus.prepare\_corpus.}\bfcode{main}}{}{}
-\end{fulllineitems}
-
-\index{prepare() (in module src.prep.corpus.prepare\_corpus)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.prep.corpus:src.prep.corpus.prepare_corpus.prepare}\pysiglinewithargsret{\code{src.prep.corpus.prepare\_corpus.}\bfcode{prepare}}{\emph{ne\_inpath}}{}
-\end{fulllineitems}
-
-\index{process\_corpora() (in module src.prep.corpus.prepare\_corpus)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.prep.corpus:src.prep.corpus.prepare_corpus.process_corpora}\pysiglinewithargsret{\code{src.prep.corpus.prepare\_corpus.}\bfcode{process\_corpora}}{\emph{nesi}, \emph{corpus\_dir}, \emph{out\_dir}, \emph{log\_dir}, \emph{logging\_interval\_meta=10}, \emph{logging\_interval\_processing=10}}{}
-\end{fulllineitems}
-
-\index{process\_corpus() (in module src.prep.corpus.prepare\_corpus)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.prep.corpus:src.prep.corpus.prepare_corpus.process_corpus}\pysiglinewithargsret{\code{src.prep.corpus.prepare\_corpus.}\bfcode{process\_corpus}}{\emph{argstuple}}{}
-\end{fulllineitems}
-
-
-
-\subparagraph{src.prep.corpus.quick\_and\_dirty module}
-\label{src.prep.corpus:module-src.prep.corpus.quick_and_dirty}\label{src.prep.corpus:src-prep-corpus-quick-and-dirty-module}\index{src.prep.corpus.quick\_and\_dirty (module)}\index{clean\_file() (in module src.prep.corpus.quick\_and\_dirty)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.prep.corpus:src.prep.corpus.quick_and_dirty.clean_file}\pysiglinewithargsret{\code{src.prep.corpus.quick\_and\_dirty.}\bfcode{clean\_file}}{\emph{inpath}, \emph{outpath}}{}
-\end{fulllineitems}
-
+Also, you probably have to remove the \code{if \_\_name\_\_ == "\_\_main\_\_":} line and unindent the remaining code,
+this is only
+due to sphinx being picky and not documenting plain python scripts at all.
 
 
 \subparagraph{src.prep.corpus.reducer module}
 \label{src.prep.corpus:module-src.prep.corpus.reducer}\label{src.prep.corpus:src-prep-corpus-reducer-module}\index{src.prep.corpus.reducer (module)}
+Reducer classed used to count frequencies of words in a corpus. Corpus has to be in plain text format. This class is
+used in a \href{https://en.wikipedia.org/wiki/MapReduce}{Map-Reduce}-pattern, so you also need the \code{mapper.py} class.
+
+Then, you can open your terminal and pipe them together:
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{g+gp}{\PYGZgt{}} cat corpus.txt \PYG{p}{\textbar{}} ./mapper.py \PYG{p}{\textbar{}} sort \PYG{p}{\textbar{}} ./reducer.py
+\end{Verbatim}
+
+Also, you probably have to remove the \code{if \_\_name\_\_ == "\_\_main\_\_":} line and unindent the remaining code,
+this is only
+due to sphinx being picky and not documenting plain python scripts at all.
+
 
 \subparagraph{Module contents}
 \label{src.prep.corpus:module-contents}\label{src.prep.corpus:module-src.prep.corpus}\index{src.prep.corpus (module)}
-
-\subparagraph{src.prep.misc package}
-\label{src.prep.misc::doc}\label{src.prep.misc:src-prep-misc-package}
-
-\subparagraph{Submodules}
-\label{src.prep.misc:submodules}
-
-\subparagraph{src.prep.misc.decorators module}
-\label{src.prep.misc:src-prep-misc-decorators-module}\label{src.prep.misc:module-src.prep.misc.decorators}\index{src.prep.misc.decorators (module)}\index{alt() (in module src.prep.misc.decorators)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.prep.misc:src.prep.misc.decorators.alt}\pysiglinewithargsret{\code{src.prep.misc.decorators.}\bfcode{alt}}{\emph{func}}{}
-\end{fulllineitems}
-
-\index{log\_time() (in module src.prep.misc.decorators)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.prep.misc:src.prep.misc.decorators.log_time}\pysiglinewithargsret{\code{src.prep.misc.decorators.}\bfcode{log\_time}}{\emph{logpath='log.txt'}, \emph{interval=5}}{}
-\end{fulllineitems}
-
-\index{log\_time\_mp() (in module src.prep.misc.decorators)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.prep.misc:src.prep.misc.decorators.log_time_mp}\pysiglinewithargsret{\code{src.prep.misc.decorators.}\bfcode{log\_time\_mp}}{\emph{logpath='log.txt'}, \emph{interval=5}}{}
-\end{fulllineitems}
-
-
-
-\subparagraph{Module contents}
-\label{src.prep.misc:module-src.prep.misc}\label{src.prep.misc:module-contents}\index{src.prep.misc (module)}
 
 \subparagraph{src.prep.nes package}
 \label{src.prep.nes:src-prep-nes-package}\label{src.prep.nes::doc}
@@ -1923,17 +1991,14 @@ model.
 \item {\texttt{src.mapping}}, \pageref{src.mapping:module-src.mapping}
 \item {\texttt{src.mapping.mapthreading}}, \pageref{src.mapping:module-src.mapping.mapthreading}
 \item {\texttt{src.misc}}, \pageref{src.misc:module-src.misc}
+\item {\texttt{src.misc.decorators}}, \pageref{src.misc:module-src.misc.decorators}
 \item {\texttt{src.misc.helpers}}, \pageref{src.misc:module-src.misc.helpers}
 \item {\texttt{src.prep}}, \pageref{src.prep:module-src.prep}
 \item {\texttt{src.prep.corpus}}, \pageref{src.prep.corpus:module-src.prep.corpus}
 \item {\texttt{src.prep.corpus.convert\_to\_plain}}, \pageref{src.prep.corpus:module-src.prep.corpus.convert_to_plain}
 \item {\texttt{src.prep.corpus.extract\_conll}}, \pageref{src.prep.corpus:module-src.prep.corpus.extract_conll}
 \item {\texttt{src.prep.corpus.mapper}}, \pageref{src.prep.corpus:module-src.prep.corpus.mapper}
-\item {\texttt{src.prep.corpus.prepare\_corpus}}, \pageref{src.prep.corpus:module-src.prep.corpus.prepare_corpus}
-\item {\texttt{src.prep.corpus.quick\_and\_dirty}}, \pageref{src.prep.corpus:module-src.prep.corpus.quick_and_dirty}
 \item {\texttt{src.prep.corpus.reducer}}, \pageref{src.prep.corpus:module-src.prep.corpus.reducer}
-\item {\texttt{src.prep.misc}}, \pageref{src.prep.misc:module-src.prep.misc}
-\item {\texttt{src.prep.misc.decorators}}, \pageref{src.prep.misc:module-src.prep.misc.decorators}
 \item {\texttt{src.prep.nes}}, \pageref{src.prep.nes:module-src.prep.nes}
 \item {\texttt{src.prep.nes.extractNE}}, \pageref{src.prep.nes:module-src.prep.nes.extractNE}
 \item {\texttt{src.prep.nes.merge}}, \pageref{src.prep.nes:module-src.prep.nes.merge}

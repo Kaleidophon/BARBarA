@@ -49,13 +49,14 @@
 <p>Module to evaluate word embeddings by the means of analogies like &#8220;W is to X like Y is to Z&#8221;. Usually,
 the system uses the word embeddings of word W, X, Y and tries to find the vector of word Z that is most similar to
 X and Y and most dissimilar to W.
-Therefore, the CosMul method (Levy et al., 2015) is used.</p>
+Therefore, the <a class="reference external" href="https://transacl.org/ojs/index.php/tacl/article/viewFile/570/124">CosMul method (Levy et al., 2015)</a>
+is used.</p>
 <p>The whole module is used in <code class="xref py py-mod docutils literal"><span class="pre">src.eval.eval_vectors.py</span></code>.</p>
 <dl class="function">
 <dt id="src.eval.analogy.analogy_eval">
 <code class="descclassname">src.eval.analogy.</code><code class="descname">analogy_eval</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>analogy_path</em>, <em>per_section=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.analogy_eval" title="Permalink to this definition">¶</a></dt>
-<dd><p>Perform analogy evaluation. Usually,
-the system uses the word embeddings of word W, X, Y and tries to find the vector of word Z that is most similar to
+<dd><p>Perform analogy evaluation. Usually, the system uses the word embeddings of word W, X, Y and tries to find the
+vector of word Z that is most similar to
 X and Y and most dissimilar to W for an analogy like &#8220;W is to X like Y is to Z.&#8221;
 Therefore, the CosMul method (Levy et al., 2015) is used.</p>
 <table class="docutils field-list" frame="void" rules="none">

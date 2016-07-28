@@ -28,22 +28,6 @@ src.prep.corpus.mapper module
     :undoc-members:
     :show-inheritance:
 
-src.prep.corpus.prepare_corpus module
--------------------------------------
-
-.. automodule:: src.prep.corpus.prepare_corpus
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-src.prep.corpus.quick_and_dirty module
---------------------------------------
-
-.. automodule:: src.prep.corpus.quick_and_dirty
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 src.prep.corpus.reducer module
 ------------------------------
 
