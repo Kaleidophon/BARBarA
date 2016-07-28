@@ -20,39 +20,38 @@
 \contentsline {paragraph}{Submodules}{11}{paragraph*.59}
 \contentsline {paragraph}{src.misc.decorators module}{11}{paragraph*.60}
 \contentsline {paragraph}{src.misc.helpers module}{11}{paragraph*.64}
-\contentsline {paragraph}{Module contents}{12}{paragraph*.68}
-\contentsline {subsubsection}{src.prep package}{12}{subsubsection*.69}
-\contentsline {paragraph}{Subpackages}{12}{paragraph*.70}
-\contentsline {subparagraph}{src.prep.corpus package}{12}{subparagraph*.71}
-\contentsline {subparagraph}{Submodules}{12}{subparagraph*.72}
-\contentsline {subparagraph}{src.prep.corpus.convert\_to\_plain module}{12}{subparagraph*.73}
+\contentsline {paragraph}{Module contents}{12}{paragraph*.70}
+\contentsline {subsubsection}{src.prep package}{12}{subsubsection*.71}
+\contentsline {paragraph}{Subpackages}{12}{paragraph*.72}
+\contentsline {subparagraph}{src.prep.corpus package}{12}{subparagraph*.73}
+\contentsline {subparagraph}{Submodules}{12}{subparagraph*.74}
+\contentsline {subparagraph}{src.prep.corpus.convert\_to\_plain module}{12}{subparagraph*.75}
 \contentsline {subparagraph}{src.prep.corpus.extract\_conll module}{13}{subparagraph*.82}
 \contentsline {subparagraph}{src.prep.corpus.mapper module}{13}{subparagraph*.86}
 \contentsline {subparagraph}{src.prep.corpus.reducer module}{14}{subparagraph*.87}
 \contentsline {subparagraph}{Module contents}{14}{subparagraph*.88}
 \contentsline {subparagraph}{src.prep.nes package}{14}{subparagraph*.89}
 \contentsline {subparagraph}{Submodules}{14}{subparagraph*.90}
-\contentsline {subparagraph}{src.prep.nes.extractNE module}{14}{subparagraph*.91}
-\contentsline {subparagraph}{src.prep.nes.merge module}{14}{subparagraph*.100}
-\contentsline {subparagraph}{src.prep.nes.mwe module}{15}{subparagraph*.112}
-\contentsline {subparagraph}{src.prep.nes.statistics module}{15}{subparagraph*.121}
-\contentsline {subparagraph}{Module contents}{15}{subparagraph*.124}
-\contentsline {subparagraph}{src.prep.relations package}{15}{subparagraph*.125}
-\contentsline {subparagraph}{Submodules}{15}{subparagraph*.126}
-\contentsline {subparagraph}{src.prep.relations.relations module}{15}{subparagraph*.127}
-\contentsline {subparagraph}{Module contents}{16}{subparagraph*.139}
-\contentsline {paragraph}{Module contents}{16}{paragraph*.140}
-\contentsline {subsubsection}{src.trans\_e package}{16}{subsubsection*.141}
-\contentsline {paragraph}{Submodules}{16}{paragraph*.142}
-\contentsline {paragraph}{src.trans\_e.add\_inverse\_relations module}{16}{paragraph*.143}
-\contentsline {paragraph}{src.trans\_e.clean\_relations module}{16}{paragraph*.148}
-\contentsline {paragraph}{src.trans\_e.contains\_entities module}{16}{paragraph*.149}
-\contentsline {paragraph}{src.trans\_e.convert\_relations module}{16}{paragraph*.157}
-\contentsline {paragraph}{src.trans\_e.differentiate\_datasets module}{16}{paragraph*.158}
-\contentsline {paragraph}{src.trans\_e.partition\_data module}{17}{paragraph*.163}
-\contentsline {paragraph}{src.trans\_e.trans\_we module}{17}{paragraph*.176}
-\contentsline {paragraph}{Module contents}{18}{paragraph*.196}
-\contentsline {subsection}{\numberline {1.1.2}Module contents}{18}{subsection.1.1.2}
-\contentsline {chapter}{\numberline {2}Indices and tables}{19}{chapter.2}
-\contentsline {chapter}{Python Module Index}{21}{section*.197}
-\contentsline {chapter}{Index}{23}{section*.198}
+\contentsline {subparagraph}{src.prep.nes.extract\_nes module}{14}{subparagraph*.91}
+\contentsline {subparagraph}{src.prep.nes.merge module}{15}{subparagraph*.97}
+\contentsline {subparagraph}{src.prep.nes.statistics module}{16}{subparagraph*.106}
+\contentsline {subparagraph}{Module contents}{16}{subparagraph*.109}
+\contentsline {subparagraph}{src.prep.relations package}{16}{subparagraph*.110}
+\contentsline {subparagraph}{Submodules}{16}{subparagraph*.111}
+\contentsline {subparagraph}{src.prep.relations.relations module}{16}{subparagraph*.112}
+\contentsline {subparagraph}{Module contents}{17}{subparagraph*.124}
+\contentsline {paragraph}{Module contents}{17}{paragraph*.125}
+\contentsline {subsubsection}{src.trans\_e package}{17}{subsubsection*.126}
+\contentsline {paragraph}{Submodules}{17}{paragraph*.127}
+\contentsline {paragraph}{src.trans\_e.add\_inverse\_relations module}{17}{paragraph*.128}
+\contentsline {paragraph}{src.trans\_e.clean\_relations module}{17}{paragraph*.133}
+\contentsline {paragraph}{src.trans\_e.contains\_entities module}{17}{paragraph*.134}
+\contentsline {paragraph}{src.trans\_e.convert\_relations module}{17}{paragraph*.142}
+\contentsline {paragraph}{src.trans\_e.differentiate\_datasets module}{17}{paragraph*.143}
+\contentsline {paragraph}{src.trans\_e.partition\_data module}{18}{paragraph*.148}
+\contentsline {paragraph}{src.trans\_e.trans\_we module}{18}{paragraph*.161}
+\contentsline {paragraph}{Module contents}{19}{paragraph*.181}
+\contentsline {subsection}{\numberline {1.1.2}Module contents}{19}{subsection.1.1.2}
+\contentsline {chapter}{\numberline {2}Indices and tables}{21}{chapter.2}
+\contentsline {chapter}{Python Module Index}{23}{section*.182}
+\contentsline {chapter}{Index}{25}{section*.183}

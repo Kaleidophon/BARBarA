@@ -18,7 +18,7 @@ import re
 
 # PROJECT
 from src.misc.decorators import log_time
-from src.misc.helpers import alt
+from src.misc.helpers import alt, contains_tag, extract_sentence_id
 
 
 def main():
@@ -173,39 +173,6 @@ def get_file_number(filename):
 	else:
 		file_n = file_n[len(file_n) - 1]
 	return file_n if int(file_n) > 9 else "0" + file_n
-
-
-def contains_tag(line):
-	"""
-	Checks whether the current line contains an xml tag.
-
-	Args:
-		line (str): Current line
-
-	Returns:
-		bool: Whether the current line contains an xml tag.
-	"""
-	pattern = re.compile("<.+>")
-	return pattern.search(line) is not None
-
-
-def extract_sentence_id(tag):
-	"""
-	Extract the sentence ID of current sentence.
-
-	Args:
-		tag (str): Sentence tag
-
-	Returns:
-		str: sentence ID
-	"""
-	if "<s" not in tag:
-		return ""
-	pattern = re.compile('id="[a-z0-9]+?"(?=\s)')
-	res = re.findall(pattern, tag)
-	if len(res) == 0:
-		return None
-	return res[0].replace('"', "").replace("id=", "")
 
 
 def extract_named_entity(line):

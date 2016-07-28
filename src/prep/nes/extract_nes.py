@@ -1,15 +1,40 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import gzip, re, codecs, sys
+"""
+This script is used to find all named entities in a corpus, extract them and also store their frequencies as well as
+the IDs of the sentences they occur in.
+"""
+
+# STANDARD
+import codecs
+import gzip
+import sys
+
+# PROJECT
+from src.misc.helpers import extract_sentence_id, contains_tag
 
 
 def main():
+	"""
+	Main function.
+	"""
 	# Parsing command line arguments
+	if len(sys.argv) != 4:
+		print "Usage: <Path to input file> <Path to output file> <Path to output logpath>"
+		sys.exit(0)
 	inpath, outpath, logpath = sys.argv[1:]
 	process(inpath, outpath, logpath)
 
 
 def process(inpath, outpath, logpath):
+	"""
+	Starts extracting named entities and their corresponding sentence IDs.
+
+	Args:
+		inpath (str): Path to input file. Input file is a gzipped xml file.
+		outpath (str): Path to output directory.
+		logpath (str): Path to log directory.
+	"""
 	with gzip.open(inpath, "rb") as infile:
 		# Preparing paths
 		outpath_dictfile = outpath + inpath[inpath.rfind("/") + 1:].replace(".xml.gz", "_freqs_out.txt")
@@ -42,7 +67,7 @@ def process(inpath, outpath, logpath):
 							if not contains_tag(next_line):
 								next_ne = extract_named_entity(next_line)
 								if next_ne is not None and next_ne[1] == ne[1]:
-									ne = ("%s %s" %(ne[0], next_ne[0]), ne[1])
+									ne = ("%s %s" % (ne[0], next_ne[0]), ne[1])
 								else:
 									break
 							else:
@@ -69,52 +94,54 @@ def process(inpath, outpath, logpath):
 			logfile.write("Processing of file %s complete!\n" % (infile))
 
 			logfile.write("Writing frequencies of named entities in %s into %s...\n" % (infile, outpath_dictfile))
-			print_dict_in_file(freqs, outpath_dictfile)
+			write_dict_into_file(freqs, outpath_dictfile)
 			logfile.write("Writing frequencies of named entities of %s into %s complete!\n" % (infile, outpath_dictfile))
 
 			logfile.write("Writing occurrences of named entities in %s into %s...\n" % (infile, outpath_idfile))
-			print_ids_in_file(ne_ids, outpath_idfile)
+			write_ids_into_file(ne_ids, outpath_idfile)
 			logfile.write("Writing occurrendes of named entities of %s into %s complete!\n" % (infile, outpath_idfile))
 
 
-def contains_tag(line):
-	pattern = re.compile("<.+>")
-	return pattern.search(line) is not None
-
-
-def extract_sentence_id(tag):
-	if "<s" not in tag:
-		return ""
-	pattern = re.compile('id="[a-z0-9]+?"(?=\s)')
-	res = re.findall(pattern, tag)
-	if len(res) == 0:
-		return None
-	return res[0].replace('"', "").replace("id=", "")
-
-
 def extract_named_entity(line):
+	"""
+	Extracts named entity from current line if present.
+
+	Args:
+		line (str): Current line
+
+	Returns:
+		tuple: Named entity in this line and its NE tag
+	"""
 	line_parts = line.split("\t")
 	feature = line_parts[3]
 	if feature != "O":
 		return line_parts[0], line_parts[3]
 
 
-def print_dict_in_file(dictionary, out_path):
+def write_dict_into_file(dictionary, out_path):
+	"""
+	Write a dictionary of named entities, their tags and their frequencies into a file.
+
+	Args:
+		dictionary (dict): Dictionary with named entities as key and their frequencies as values.
+		out_path (str): Path the frequencies should written to.
+	"""
 	with codecs.open(out_path, "wb", "utf-8") as out_file:
 		for key, value in dictionary.iteritems():
 			out_file.write("%s\t%s\t%s\n" % (key[0], key[1], value))
 
 
-def print_ids_in_file(dictionary, out_path):
+def write_ids_into_file(dictionary, out_path):
+	"""
+	Write a dictionary of named entities,, their tags and IDs of the sentences they occur in into a file.
+
+	Args:
+		dictionary (dict): Dictionary with named entities as key and their occurrences as a list as values.
+		out_path (str): Path the frequencies should written to.
+	"""
 	with codecs.open(out_path, "wb", "utf-8") as out_file:
 		for key, value in dictionary.iteritems():
 			out_file.write("%s\t%s\n\t%s\n\n" % (key[0], key[1], "\n\t".join(value)))
-
-
-def print_list_in_file(ne_list, out_path):
-	with codecs.open(out_path, "wb", "utf-8") as out_file:
-		for ne_tuple in ne_list:
-			out_file.write("%s\t%s\t%s\n" % (ne_tuple[0], ne_tuple[1], ne_tuple[2]))
 
 
 if __name__ == '__main__':

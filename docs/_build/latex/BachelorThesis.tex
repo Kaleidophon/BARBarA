@@ -1100,6 +1100,44 @@ Prepends the local time to the output of a function.
 \phantomsection\label{src.misc:src.misc.helpers.capitalize}\pysiglinewithargsret{\code{src.misc.helpers.}\bfcode{capitalize}}{\emph{word}}{}
 \end{fulllineitems}
 
+\index{contains\_tag() (in module src.misc.helpers)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.misc:src.misc.helpers.contains_tag}\pysiglinewithargsret{\code{src.misc.helpers.}\bfcode{contains\_tag}}{\emph{line}}{}
+Checks whether the current line contains an xml tag.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{line}} (\emph{\texttt{str}}) -- Current line
+
+\item[{Returns}] \leavevmode
+Whether the current line contains an xml tag.
+
+\item[{Return type}] \leavevmode
+bool
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{extract\_sentence\_id() (in module src.misc.helpers)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.misc:src.misc.helpers.extract_sentence_id}\pysiglinewithargsret{\code{src.misc.helpers.}\bfcode{extract\_sentence\_id}}{\emph{tag}}{}
+Extract the sentence ID of current sentence.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{tag}} (\emph{\texttt{str}}) -- Sentence tag
+
+\item[{Returns}] \leavevmode
+sentence ID
+
+\item[{Return type}] \leavevmode
+str
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
 \index{load\_vectors\_from\_model() (in module src.misc.helpers)}
 
 \begin{fulllineitems}
@@ -1130,25 +1168,6 @@ Convert the \emph{DECOW14X} corpus into a plain text file. Is used as pre-proces
 To make this this more feasible (decow is a \textbf{huge} corpus), python's \code{multiprocessing} is used, s.t. every
 part of the corpus in simultaneously processed. Afterwards, a bash command like \code{cat} can be used to merge into one
 single file.
-\index{contains\_tag() (in module src.prep.corpus.convert\_to\_plain)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.contains_tag}\pysiglinewithargsret{\code{src.prep.corpus.convert\_to\_plain.}\bfcode{contains\_tag}}{\emph{line}}{}
-Checks whether the current line contains an xml tag.
-\begin{quote}\begin{description}
-\item[{Parameters}] \leavevmode
-\textbf{\texttt{line}} (\emph{\texttt{str}}) -- Current line
-
-\item[{Returns}] \leavevmode
-Whether the current line contains an xml tag.
-
-\item[{Return type}] \leavevmode
-bool
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
 \index{convert\_decow\_to\_plain() (in module src.prep.corpus.convert\_to\_plain)}
 
 \begin{fulllineitems}
@@ -1221,25 +1240,6 @@ Extracted named entity or None if no named entity is present.
 
 \item[{Return type}] \leavevmode
 str or None
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
-\index{extract\_sentence\_id() (in module src.prep.corpus.convert\_to\_plain)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.extract_sentence_id}\pysiglinewithargsret{\code{src.prep.corpus.convert\_to\_plain.}\bfcode{extract\_sentence\_id}}{\emph{tag}}{}
-Extract the sentence ID of current sentence.
-\begin{quote}\begin{description}
-\item[{Parameters}] \leavevmode
-\textbf{\texttt{tag}} (\emph{\texttt{str}}) -- Sentence tag
-
-\item[{Returns}] \leavevmode
-sentence ID
-
-\item[{Return type}] \leavevmode
-str
 
 \end{description}\end{quote}
 
@@ -1367,188 +1367,288 @@ due to sphinx being picky and not documenting plain python scripts at all.
 \subparagraph{Submodules}
 \label{src.prep.nes:submodules}
 
-\subparagraph{src.prep.nes.extractNE module}
-\label{src.prep.nes:src-prep-nes-extractne-module}\label{src.prep.nes:module-src.prep.nes.extractNE}\index{src.prep.nes.extractNE (module)}\index{contains\_tag() (in module src.prep.nes.extractNE)}
+\subparagraph{src.prep.nes.extract\_nes module}
+\label{src.prep.nes:src-prep-nes-extract-nes-module}\label{src.prep.nes:module-src.prep.nes.extract_nes}\index{src.prep.nes.extract\_nes (module)}
+This script is used to find all named entities in a corpus, extract them and also store their frequencies as well as
+the IDs of the sentences they occur in.
+\index{extract\_named\_entity() (in module src.prep.nes.extract\_nes)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.extractNE.contains_tag}\pysiglinewithargsret{\code{src.prep.nes.extractNE.}\bfcode{contains\_tag}}{\emph{line}}{}
+\phantomsection\label{src.prep.nes:src.prep.nes.extract_nes.extract_named_entity}\pysiglinewithargsret{\code{src.prep.nes.extract\_nes.}\bfcode{extract\_named\_entity}}{\emph{line}}{}
+Extracts named entity from current line if present.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{line}} (\emph{\texttt{str}}) -- Current line
+
+\item[{Returns}] \leavevmode
+Named entity in this line and its NE tag
+
+\item[{Return type}] \leavevmode
+tuple
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
-\index{extract\_named\_entity() (in module src.prep.nes.extractNE)}
+\index{main() (in module src.prep.nes.extract\_nes)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.extractNE.extract_named_entity}\pysiglinewithargsret{\code{src.prep.nes.extractNE.}\bfcode{extract\_named\_entity}}{\emph{line}}{}
+\phantomsection\label{src.prep.nes:src.prep.nes.extract_nes.main}\pysiglinewithargsret{\code{src.prep.nes.extract\_nes.}\bfcode{main}}{}{}
+Main function.
+
 \end{fulllineitems}
 
-\index{extract\_sentence\_id() (in module src.prep.nes.extractNE)}
+\index{process() (in module src.prep.nes.extract\_nes)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.extractNE.extract_sentence_id}\pysiglinewithargsret{\code{src.prep.nes.extractNE.}\bfcode{extract\_sentence\_id}}{\emph{tag}}{}
+\phantomsection\label{src.prep.nes:src.prep.nes.extract_nes.process}\pysiglinewithargsret{\code{src.prep.nes.extract\_nes.}\bfcode{process}}{\emph{inpath}, \emph{outpath}, \emph{logpath}}{}
+Starts extracting named entities and their corresponding sentence IDs.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{inpath}} (\emph{\texttt{str}}) -- Path to input file. Input file is a gzipped xml file.
+
+\item {} 
+\textbf{\texttt{outpath}} (\emph{\texttt{str}}) -- Path to output directory.
+
+\item {} 
+\textbf{\texttt{logpath}} (\emph{\texttt{str}}) -- Path to log directory.
+
+\end{itemize}
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
-\index{main() (in module src.prep.nes.extractNE)}
+\index{write\_dict\_into\_file() (in module src.prep.nes.extract\_nes)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.extractNE.main}\pysiglinewithargsret{\code{src.prep.nes.extractNE.}\bfcode{main}}{}{}
+\phantomsection\label{src.prep.nes:src.prep.nes.extract_nes.write_dict_into_file}\pysiglinewithargsret{\code{src.prep.nes.extract\_nes.}\bfcode{write\_dict\_into\_file}}{\emph{dictionary}, \emph{out\_path}}{}
+Write a dictionary of named entities, their tags and their frequencies into a file.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{dictionary}} (\emph{\texttt{dict}}) -- Dictionary with named entities as key and their frequencies as values.
+
+\item {} 
+\textbf{\texttt{out\_path}} (\emph{\texttt{str}}) -- Path the frequencies should written to.
+
+\end{itemize}
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
-\index{print\_dict\_in\_file() (in module src.prep.nes.extractNE)}
+\index{write\_ids\_into\_file() (in module src.prep.nes.extract\_nes)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.extractNE.print_dict_in_file}\pysiglinewithargsret{\code{src.prep.nes.extractNE.}\bfcode{print\_dict\_in\_file}}{\emph{dictionary}, \emph{out\_path}}{}
-\end{fulllineitems}
+\phantomsection\label{src.prep.nes:src.prep.nes.extract_nes.write_ids_into_file}\pysiglinewithargsret{\code{src.prep.nes.extract\_nes.}\bfcode{write\_ids\_into\_file}}{\emph{dictionary}, \emph{out\_path}}{}
+Write a dictionary of named entities,, their tags and IDs of the sentences they occur in into a file.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{dictionary}} (\emph{\texttt{dict}}) -- Dictionary with named entities as key and their occurrences as a list as values.
 
-\index{print\_ids\_in\_file() (in module src.prep.nes.extractNE)}
+\item {} 
+\textbf{\texttt{out\_path}} (\emph{\texttt{str}}) -- Path the frequencies should written to.
 
-\begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.extractNE.print_ids_in_file}\pysiglinewithargsret{\code{src.prep.nes.extractNE.}\bfcode{print\_ids\_in\_file}}{\emph{dictionary}, \emph{out\_path}}{}
-\end{fulllineitems}
+\end{itemize}
 
-\index{print\_list\_in\_file() (in module src.prep.nes.extractNE)}
+\end{description}\end{quote}
 
-\begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.extractNE.print_list_in_file}\pysiglinewithargsret{\code{src.prep.nes.extractNE.}\bfcode{print\_list\_in\_file}}{\emph{ne\_list}, \emph{out\_path}}{}
-\end{fulllineitems}
-
-\index{process() (in module src.prep.nes.extractNE)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.extractNE.process}\pysiglinewithargsret{\code{src.prep.nes.extractNE.}\bfcode{process}}{\emph{inpath}, \emph{outpath}, \emph{logpath}}{}
 \end{fulllineitems}
 
 
 
 \subparagraph{src.prep.nes.merge module}
-\label{src.prep.nes:src-prep-nes-merge-module}\label{src.prep.nes:module-src.prep.nes.merge}\index{src.prep.nes.merge (module)}\index{dump\_ids\_dict() (in module src.prep.nes.merge)}
+\label{src.prep.nes:src-prep-nes-merge-module}\label{src.prep.nes:module-src.prep.nes.merge}\index{src.prep.nes.merge (module)}
+This module is used to merge various output files created from \code{extract\_nes.py}. Because they are only created
+for one corpus part at a time, you end up with multiple files that cannot simply by concatenated. Therefore, this module
+aims to merge them in a (relatively) memory-efficient manner.
+\index{freq\_worker() (in module src.prep.nes.merge)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.merge.dump_ids_dict}\pysiglinewithargsret{\code{src.prep.nes.merge.}\bfcode{dump\_ids\_dict}}{\emph{idsdict}, \emph{outpath}}{}
+\phantomsection\label{src.prep.nes:src.prep.nes.merge.freq_worker}\pysiglinewithargsret{\code{src.prep.nes.merge.}\bfcode{freq\_worker}}{\emph{inpath}}{}
+Reads the named entity frequencies from a file.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{inpath}} (\emph{\texttt{str}}) -- Path to frequency file.
+
+\item[{Returns}] \leavevmode
+Dictionary with named entities as keys and their frequencies as values.
+
+\item[{Return type}] \leavevmode
+dict
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
-\index{freqWorker() (in module src.prep.nes.merge)}
+\index{id\_worker() (in module src.prep.nes.merge)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.merge.freqWorker}\pysiglinewithargsret{\code{src.prep.nes.merge.}\bfcode{freqWorker}}{\emph{inpath}}{}
-\end{fulllineitems}
+\phantomsection\label{src.prep.nes:src.prep.nes.merge.id_worker}\pysiglinewithargsret{\code{src.prep.nes.merge.}\bfcode{id\_worker}}{\emph{inpath}}{}
+Reads the named entity ids from a file.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{inpath}} (\emph{\texttt{str}}) -- Path to frequency file.
 
-\index{idWorker() (in module src.prep.nes.merge)}
+\item[{Returns}] \leavevmode
+Dictionary with named entities as keys and their ids as values.
 
-\begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.merge.idWorker}\pysiglinewithargsret{\code{src.prep.nes.merge.}\bfcode{idWorker}}{\emph{inpath}}{}
-\end{fulllineitems}
+\item[{Return type}] \leavevmode
+dict
 
-\index{load\_ids\_dict() (in module src.prep.nes.merge)}
+\end{description}\end{quote}
 
-\begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.merge.load_ids_dict}\pysiglinewithargsret{\code{src.prep.nes.merge.}\bfcode{load\_ids\_dict}}{\emph{inpath}}{}
 \end{fulllineitems}
 
 \index{main() (in module src.prep.nes.merge)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.nes:src.prep.nes.merge.main}\pysiglinewithargsret{\code{src.prep.nes.merge.}\bfcode{main}}{}{}
+Main function, handling command line arguments.
+
 \end{fulllineitems}
 
-\index{mergeDicts() (in module src.prep.nes.merge)}
+\index{merge\_dicts() (in module src.prep.nes.merge)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.merge.mergeDicts}\pysiglinewithargsret{\code{src.prep.nes.merge.}\bfcode{mergeDicts}}{\emph{dicttuple}}{}
+\phantomsection\label{src.prep.nes:src.prep.nes.merge.merge_dicts}\pysiglinewithargsret{\code{src.prep.nes.merge.}\bfcode{merge\_dicts}}{\emph{dicttuple}}{}
+Merges two dictionary (efficiently).
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{dicttuple}} (\emph{\texttt{tuple}}) -- Tuple of two frequency dictionaries.
+
+\item[{Returns}] \leavevmode
+New merged dictionary
+
+\item[{Return type}] \leavevmode
+dict
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{merge\_frequency\_files() (in module src.prep.nes.merge)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.nes:src.prep.nes.merge.merge_frequency_files}\pysiglinewithargsret{\code{src.prep.nes.merge.}\bfcode{merge\_frequency\_files}}{\emph{infiles\_path}, \emph{outpath}, \emph{logpath}}{}
+Merge multiple named entitiy frequency files.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{infiles\_path}} (\emph{\texttt{str}}) -- Path to input file directory.
+
+\item {} 
+\textbf{\texttt{outpath}} (\emph{\texttt{str}}) -- Path to output directory.
+
+\item {} 
+\textbf{\texttt{logpath}} (\emph{\texttt{str}}) -- Path to logging directory.
+
+\end{itemize}
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{merge\_id\_dicts() (in module src.prep.nes.merge)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.nes:src.prep.nes.merge.merge_id_dicts}\pysiglinewithargsret{\code{src.prep.nes.merge.}\bfcode{merge\_id\_dicts}}{\emph{dicttuple}}{}
+Merges two id dictionary (efficiently).
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{dicttuple}} (\emph{\texttt{tuple}}) -- Tuple of two id dictionaries.
+
+\item[{Returns}] \leavevmode
+New merged dictionary
+
+\item[{Return type}] \leavevmode
+dict
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{merge\_id\_files() (in module src.prep.nes.merge)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.nes:src.prep.nes.merge.merge_id_files}\pysiglinewithargsret{\code{src.prep.nes.merge.}\bfcode{merge\_id\_files}}{\emph{infiles\_path}, \emph{outpath}, \emph{logpath}, \emph{yaml=False}}{}
-\end{fulllineitems}
+Merge multiple named entitiy id files.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{infiles\_path}} (\emph{\texttt{str}}) -- Path to input file directory.
 
-\index{print\_key\_lengths() (in module src.prep.nes.merge)}
+\item {} 
+\textbf{\texttt{outpath}} (\emph{\texttt{str}}) -- Path to output directory.
 
-\begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.merge.print_key_lengths}\pysiglinewithargsret{\code{src.prep.nes.merge.}\bfcode{print\_key\_lengths}}{\emph{dictionary}}{}
+\item {} 
+\textbf{\texttt{logpath}} (\emph{\texttt{str}}) -- Path to logging directory.
+
+\item {} 
+\textbf{\texttt{yaml}} (\emph{\texttt{bool}}) -- Flag to indicate whether merged files should be written in yaml format.
+
+\end{itemize}
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{rl() (in module src.prep.nes.merge)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.nes:src.prep.nes.merge.rl}\pysiglinewithargsret{\code{src.prep.nes.merge.}\bfcode{rl}}{\emph{infile}}{}
-\end{fulllineitems}
+Lazy function to read a line from a while and remove redundant whitespaces.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{infile}} (\emph{\texttt{str}}) -- Path to input file.
 
+\item[{Returns}] \leavevmode
+Stripped line
 
+\item[{Return type}] \leavevmode
+str
 
-\subparagraph{src.prep.nes.mwe module}
-\label{src.prep.nes:module-src.prep.nes.mwe}\label{src.prep.nes:src-prep-nes-mwe-module}\index{src.prep.nes.mwe (module)}\index{create\_mwe\_pickle() (in module src.prep.nes.mwe)}
+\end{description}\end{quote}
 
-\begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.mwe.create_mwe_pickle}\pysiglinewithargsret{\code{src.prep.nes.mwe.}\bfcode{create\_mwe\_pickle}}{\emph{inpath}, \emph{outpath}, \emph{logpath='./mwes.log'}}{}
-\end{fulllineitems}
-
-\index{create\_mwe\_pickle2() (in module src.prep.nes.mwe)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.mwe.create_mwe_pickle2}\pysiglinewithargsret{\code{src.prep.nes.mwe.}\bfcode{create\_mwe\_pickle2}}{\emph{inpath}, \emph{outpath}, \emph{logpath='./mwes.log'}}{}
-\end{fulllineitems}
-
-\index{dump\_dict\_pickle() (in module src.prep.nes.mwe)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.mwe.dump_dict_pickle}\pysiglinewithargsret{\code{src.prep.nes.mwe.}\bfcode{dump\_dict\_pickle}}{\emph{d}, \emph{outpath}}{}
-\end{fulllineitems}
-
-\index{dump\_dict\_pickle2() (in module src.prep.nes.mwe)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.mwe.dump_dict_pickle2}\pysiglinewithargsret{\code{src.prep.nes.mwe.}\bfcode{dump\_dict\_pickle2}}{\emph{d}, \emph{outpath}}{}
-\end{fulllineitems}
-
-\index{load\_dict\_pickle() (in module src.prep.nes.mwe)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.mwe.load_dict_pickle}\pysiglinewithargsret{\code{src.prep.nes.mwe.}\bfcode{load\_dict\_pickle}}{\emph{inpath}}{}
-\end{fulllineitems}
-
-\index{load\_dict\_pickle2() (in module src.prep.nes.mwe)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.mwe.load_dict_pickle2}\pysiglinewithargsret{\code{src.prep.nes.mwe.}\bfcode{load\_dict\_pickle2}}{\emph{inpath}}{}
-\end{fulllineitems}
-
-\index{main() (in module src.prep.nes.mwe)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.mwe.main}\pysiglinewithargsret{\code{src.prep.nes.mwe.}\bfcode{main}}{}{}
-\end{fulllineitems}
-
-\index{replace\_mwes() (in module src.prep.nes.mwe)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.mwe.replace_mwes}\pysiglinewithargsret{\code{src.prep.nes.mwe.}\bfcode{replace\_mwes}}{\emph{mwe\_path}, \emph{corpus\_path}, \emph{out\_path}}{}
 \end{fulllineitems}
 
 
 
 \subparagraph{src.prep.nes.statistics module}
-\label{src.prep.nes:src-prep-nes-statistics-module}\label{src.prep.nes:module-src.prep.nes.statistics}\index{src.prep.nes.statistics (module)}\index{calculate\_occurrences() (in module src.prep.nes.statistics)}
+\label{src.prep.nes:src-prep-nes-statistics-module}\label{src.prep.nes:module-src.prep.nes.statistics}\index{src.prep.nes.statistics (module)}
+This script collects a few statistics about named entities extracted from the corpus and the percentage of their
+occurrence in the \emph{Freebase} relation dataset.
+Requires a relation file in yaml format and a merged named entity frequency file, see \code{extract\_nes.py},
+\code{merge.py} and  \code{relations.py}.
+\index{calculate\_occurrences() (in module src.prep.nes.statistics)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.nes:src.prep.nes.statistics.calculate_occurrences}\pysiglinewithargsret{\code{src.prep.nes.statistics.}\bfcode{calculate\_occurrences}}{\emph{freqpath}, \emph{relations\_path}}{}
+Calculate statistics about named entities extracted from the corpus and the percentage of their
+occurrence in the \emph{Freebase} relation dataset.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{freqpath}} (\emph{\texttt{str}}) -- Path to merged frequencies file.
+
+\item {} 
+\textbf{\texttt{8str)}} (\emph{\texttt{relations\_path}}) -- Path to relation yaml file.
+
+\end{itemize}
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{main() (in module src.prep.nes.statistics)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.nes:src.prep.nes.statistics.main}\pysiglinewithargsret{\code{src.prep.nes.statistics.}\bfcode{main}}{}{}
+Main function
+
 \end{fulllineitems}
 
 
@@ -2000,9 +2100,8 @@ model.
 \item {\texttt{src.prep.corpus.mapper}}, \pageref{src.prep.corpus:module-src.prep.corpus.mapper}
 \item {\texttt{src.prep.corpus.reducer}}, \pageref{src.prep.corpus:module-src.prep.corpus.reducer}
 \item {\texttt{src.prep.nes}}, \pageref{src.prep.nes:module-src.prep.nes}
-\item {\texttt{src.prep.nes.extractNE}}, \pageref{src.prep.nes:module-src.prep.nes.extractNE}
+\item {\texttt{src.prep.nes.extract\_nes}}, \pageref{src.prep.nes:module-src.prep.nes.extract_nes}
 \item {\texttt{src.prep.nes.merge}}, \pageref{src.prep.nes:module-src.prep.nes.merge}
-\item {\texttt{src.prep.nes.mwe}}, \pageref{src.prep.nes:module-src.prep.nes.mwe}
 \item {\texttt{src.prep.nes.statistics}}, \pageref{src.prep.nes:module-src.prep.nes.statistics}
 \item {\texttt{src.prep.relations}}, \pageref{src.prep.relations:module-src.prep.relations}
 \item {\texttt{src.prep.relations.relations}}, \pageref{src.prep.relations:module-src.prep.relations.relations}

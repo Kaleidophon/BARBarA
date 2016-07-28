@@ -52,3 +52,36 @@ def load_vectors_from_model(vector_inpath, max_n=None, logpath=None, indices=Fal
 	m, s = divmod(loading_endtime - loading_starttime, 60)
 	alt("Loading of %s complete! Loading took %2dm %2ds.\n" % (vector_inpath, m, s))
 	return word_list, vector_dict
+
+
+def contains_tag(line):
+	"""
+	Checks whether the current line contains an xml tag.
+
+	Args:
+		line (str): Current line
+
+	Returns:
+		bool: Whether the current line contains an xml tag.
+	"""
+	pattern = re.compile("<.+>")
+	return pattern.search(line) is not None
+
+
+def extract_sentence_id(tag):
+	"""
+	Extract the sentence ID of current sentence.
+
+	Args:
+		tag (str): Sentence tag
+
+	Returns:
+		str: sentence ID
+	"""
+	if "<s" not in tag:
+		return ""
+	pattern = re.compile('id="[a-z0-9]+?"(?=\s)')
+	res = re.findall(pattern, tag)
+	if len(res) == 0:
+		return None
+	return res[0].replace('"', "").replace("id=", "")
