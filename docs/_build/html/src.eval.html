@@ -1,43 +1,160 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>src.eval package &mdash; Bachelor Thesis v1.0 documentation</title>
-    
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     'v1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Bachelor Thesis v1.0 documentation" href="index.html" />
-    <link rel="up" title="src package" href="src.html" />
-    <link rel="next" title="src.mapping package" href="src.mapping.html" />
-    <link rel="prev" title="src.clustering package" href="src.clustering.html" />
-   
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>src.eval package &mdash; Bachelor Thesis v1.0 documentation</title>
+  
 
-  </head>
-  <body role="document">  
+  
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Bachelor Thesis v1.0 documentation" href="index.html"/>
+        <link rel="up" title="src package" href="src.html"/>
+        <link rel="next" title="src.mapping package" href="src.mapping.html"/>
+        <link rel="prev" title="src.clustering package" href="src.clustering.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Bachelor Thesis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                Dennis Ulmer
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="simple">
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="src.html">src package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="src.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="src.clustering.html">src.clustering package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">src.eval package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-src.eval.analogy">src.eval.analogy module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-src.eval.eval_vectors">src.eval.eval_vectors module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-src.eval.word_similarity">src.eval.word_similarity module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-src.eval">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.mapping.html">src.mapping package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.misc.html">src.misc package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.prep.html">src.prep package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.trans_e.html">src.trans_e package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Bachelor Thesis</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+        <li><a href="src.html">src package</a> &raquo;</li>
+      
+    <li>src.eval package</li>
+    <li class="wy-breadcrumbs-aside">
+      
+          
+          <a href="_sources/src.eval.txt" rel="nofollow"> View page source</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="src-eval-package">
 <h1>src.eval package<a class="headerlink" href="#src-eval-package" title="Permalink to this headline">¶</a></h1>
@@ -54,7 +171,7 @@ is used.</p>
 <p>The whole module is used in <code class="xref py py-mod docutils literal"><span class="pre">src.eval.eval_vectors.py</span></code>.</p>
 <dl class="function">
 <dt id="src.eval.analogy.analogy_eval">
-<code class="descclassname">src.eval.analogy.</code><code class="descname">analogy_eval</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>analogy_path</em>, <em>per_section=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.analogy_eval" title="Permalink to this definition">¶</a></dt>
+<code class="descname">analogy_eval</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>analogy_path</em>, <em>per_section=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.analogy_eval" title="Permalink to this definition">¶</a></dt>
 <dd><p>Perform analogy evaluation. Usually, the system uses the word embeddings of word W, X, Y and tries to find the
 vector of word Z that is most similar to
 X and Y and most dissimilar to W for an analogy like &#8220;W is to X like Y is to Z.&#8221;
@@ -77,7 +194,7 @@ one run.</li>
 
 <dl class="function">
 <dt id="src.eval.analogy.read_analogies">
-<code class="descclassname">src.eval.analogy.</code><code class="descname">read_analogies</code><span class="sig-paren">(</span><em>analogy_path</em>, <em>per_section=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.read_analogies" title="Permalink to this definition">¶</a></dt>
+<code class="descname">read_analogies</code><span class="sig-paren">(</span><em>analogy_path</em>, <em>per_section=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.read_analogies" title="Permalink to this definition">¶</a></dt>
 <dd><p>Reads a file with analogies.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -118,7 +235,7 @@ a first look on the data, but not quantifiable.</div>
 </dl>
 <dl class="function">
 <dt id="src.eval.eval_vectors.find_nearest_neighbors">
-<code class="descclassname">src.eval.eval_vectors.</code><code class="descname">find_nearest_neighbors</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>max_n</em>, <em>wordlist</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.find_nearest_neighbors" title="Permalink to this definition">¶</a></dt>
+<code class="descname">find_nearest_neighbors</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>max_n</em>, <em>wordlist</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.find_nearest_neighbors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Find the nearest neighbors for a list of words based on their word embeddings.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -138,7 +255,7 @@ a first look on the data, but not quantifiable.</div>
 
 <dl class="function">
 <dt id="src.eval.eval_vectors.init_argparser">
-<code class="descclassname">src.eval.eval_vectors.</code><code class="descname">init_argparser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.init_argparser" title="Permalink to this definition">¶</a></dt>
+<code class="descname">init_argparser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.init_argparser" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize all possible arguments for the argument parser.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -154,14 +271,14 @@ a first look on the data, but not quantifiable.</div>
 
 <dl class="function">
 <dt id="src.eval.eval_vectors.main">
-<code class="descclassname">src.eval.eval_vectors.</code><code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.main" title="Permalink to this definition">¶</a></dt>
+<code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.main" title="Permalink to this definition">¶</a></dt>
 <dd><p>This is the main function. It uses the parsed command line arguments, especially <cite>&#8211;mode</cite>, to pick the right
 function to execute.</p>
 </dd></dl>
 
 <dl class="function">
 <dt id="src.eval.eval_vectors.plot">
-<code class="descclassname">src.eval.eval_vectors.</code><code class="descname">plot</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>max_n</em>, <em>target_dim</em>, <em>show_plot=False</em>, <em>display_names=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.plot" title="Permalink to this definition">¶</a></dt>
+<code class="descname">plot</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>max_n</em>, <em>target_dim</em>, <em>show_plot=False</em>, <em>display_names=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.plot" title="Permalink to this definition">¶</a></dt>
 <dd><p>Plot word embeddings in 2D or 3D. As a heuristic, word will only be plotted after the 50th most frequent words to
 avoid plotting boring stop words.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -192,7 +309,7 @@ Pearson&#8217;s rho.</p>
 <p>The whole module is used in <code class="xref py py-mod docutils literal"><span class="pre">src.eval.eval_vectors.py</span></code>.</p>
 <dl class="function">
 <dt id="src.eval.word_similarity.evaluate_wordpair_sims">
-<code class="descclassname">src.eval.word_similarity.</code><code class="descname">evaluate_wordpair_sims</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>number_of_pairs</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.evaluate_wordpair_sims" title="Permalink to this definition">¶</a></dt>
+<code class="descname">evaluate_wordpair_sims</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>number_of_pairs</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.evaluate_wordpair_sims" title="Permalink to this definition">¶</a></dt>
 <dd><p>Evaluate results of the similarity score assignments, i.e. calculate pearson&#8217;s rho and its significance.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -219,7 +336,7 @@ z (float): z value.</p>
 
 <dl class="function">
 <dt id="src.eval.word_similarity.read_wordpairs">
-<code class="descclassname">src.eval.word_similarity.</code><code class="descname">read_wordpairs</code><span class="sig-paren">(</span><em>wordpair_path</em>, <em>format='google'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.read_wordpairs" title="Permalink to this definition">¶</a></dt>
+<code class="descname">read_wordpairs</code><span class="sig-paren">(</span><em>wordpair_path</em>, <em>format='google'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.read_wordpairs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Read wordpair file with wordpairs and their similarity scores assigned by humans.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -243,7 +360,7 @@ z (float): z value.</p>
 
 <dl class="function">
 <dt id="src.eval.word_similarity.remove_unknowns">
-<code class="descclassname">src.eval.word_similarity.</code><code class="descname">remove_unknowns</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.remove_unknowns" title="Permalink to this definition">¶</a></dt>
+<code class="descname">remove_unknowns</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.remove_unknowns" title="Permalink to this definition">¶</a></dt>
 <dd><p>Remove word pairs from the results where one or two word embedding weren&#8217;t found.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -268,7 +385,7 @@ y (list): Purged list of similarity scores assigned by the system.</p>
 
 <dl class="function">
 <dt id="src.eval.word_similarity.word_sim_eval">
-<code class="descclassname">src.eval.word_similarity.</code><code class="descname">word_sim_eval</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>wordpair_path</em>, <em>format='google'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.word_sim_eval" title="Permalink to this definition">¶</a></dt>
+<code class="descname">word_sim_eval</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>wordpair_path</em>, <em>format='google'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.word_sim_eval" title="Permalink to this definition">¶</a></dt>
 <dd><p>Function that let&#8217;s the system assign word pairs a similarity score based on the cosine similarity of their word
 embeddings. Then, to correlation between those and human ratings is measured with Pearson&#8217;s rho.</p>
 <table class="docutils field-list" frame="void" rules="none">
@@ -294,68 +411,71 @@ embeddings. Then, to correlation between those and human ratings is measured wit
 </div>
 
 
+           </div>
           </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="src.mapping.html" class="btn btn-neutral float-right" title="src.mapping package" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="src.clustering.html" class="btn btn-neutral" title="src.clustering package" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Bachelor Thesis.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">src.eval package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-src.eval.analogy">src.eval.analogy module</a></li>
-<li><a class="reference internal" href="#module-src.eval.eval_vectors">src.eval.eval_vectors module</a></li>
-<li><a class="reference internal" href="#module-src.eval.word_similarity">src.eval.word_similarity module</a></li>
-<li><a class="reference internal" href="#module-src.eval">Module contents</a></li>
-</ul>
-</li>
-</ul>
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-  <li><a href="src.html">src package</a><ul>
-      <li>Previous: <a href="src.clustering.html" title="previous chapter">src.clustering package</a></li>
-      <li>Next: <a href="src.mapping.html" title="next chapter">src.mapping package</a></li>
-  </ul></li>
-  </ul></li>
-</ul>
-</div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/src.eval.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2016, Bachelor Thesis.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.4</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
-      
-      |
-      <a href="_sources/src.eval.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
+    </section>
 
-    
-  </body>
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'v1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

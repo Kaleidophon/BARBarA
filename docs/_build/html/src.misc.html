@@ -1,43 +1,159 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>src.misc package &mdash; Bachelor Thesis v1.0 documentation</title>
-    
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     'v1.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
-    <script type="text/javascript" src="_static/jquery.js"></script>
-    <script type="text/javascript" src="_static/underscore.js"></script>
-    <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="Bachelor Thesis v1.0 documentation" href="index.html" />
-    <link rel="up" title="src package" href="src.html" />
-    <link rel="next" title="src.prep package" href="src.prep.html" />
-    <link rel="prev" title="src.mapping package" href="src.mapping.html" />
-   
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>src.misc package &mdash; Bachelor Thesis v1.0 documentation</title>
+  
 
-  </head>
-  <body role="document">  
+  
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body" role="main">
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="Bachelor Thesis v1.0 documentation" href="index.html"/>
+        <link rel="up" title="src package" href="src.html"/>
+        <link rel="next" title="src.prep package" href="src.prep.html"/>
+        <link rel="prev" title="src.mapping package" href="src.mapping.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Bachelor Thesis
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                Dennis Ulmer
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="simple">
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="src.html">src package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="src.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="src.clustering.html">src.clustering package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.eval.html">src.eval package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.mapping.html">src.mapping package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">src.misc package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-src.misc.decorators">src.misc.decorators module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-src.misc.helpers">src.misc.helpers module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-src.misc">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.prep.html">src.prep package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.trans_e.html">src.trans_e package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Bachelor Thesis</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+        <li><a href="src.html">src package</a> &raquo;</li>
+      
+    <li>src.misc package</li>
+    <li class="wy-breadcrumbs-aside">
+      
+          
+          <a href="_sources/src.misc.txt" rel="nofollow"> View page source</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <div class="section" id="src-misc-package">
 <h1>src.misc package<a class="headerlink" href="#src-misc-package" title="Permalink to this headline">¶</a></h1>
@@ -48,17 +164,17 @@
 <span id="src-misc-decorators-module"></span><h2>src.misc.decorators module<a class="headerlink" href="#module-src.misc.decorators" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="src.misc.decorators.alt">
-<code class="descclassname">src.misc.decorators.</code><code class="descname">alt</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#src.misc.decorators.alt" title="Permalink to this definition">¶</a></dt>
+<code class="descname">alt</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#src.misc.decorators.alt" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="src.misc.decorators.log_time">
-<code class="descclassname">src.misc.decorators.</code><code class="descname">log_time</code><span class="sig-paren">(</span><em>logpath='log.txt'</em>, <em>interval=5</em><span class="sig-paren">)</span><a class="headerlink" href="#src.misc.decorators.log_time" title="Permalink to this definition">¶</a></dt>
+<code class="descname">log_time</code><span class="sig-paren">(</span><em>logpath='log.txt'</em>, <em>interval=5</em><span class="sig-paren">)</span><a class="headerlink" href="#src.misc.decorators.log_time" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="src.misc.decorators.log_time_mp">
-<code class="descclassname">src.misc.decorators.</code><code class="descname">log_time_mp</code><span class="sig-paren">(</span><em>logpath='log.txt'</em>, <em>interval=5</em><span class="sig-paren">)</span><a class="headerlink" href="#src.misc.decorators.log_time_mp" title="Permalink to this definition">¶</a></dt>
+<code class="descname">log_time_mp</code><span class="sig-paren">(</span><em>logpath='log.txt'</em>, <em>interval=5</em><span class="sig-paren">)</span><a class="headerlink" href="#src.misc.decorators.log_time_mp" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -66,7 +182,7 @@
 <span id="src-misc-helpers-module"></span><h2>src.misc.helpers module<a class="headerlink" href="#module-src.misc.helpers" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="src.misc.helpers.alt">
-<code class="descclassname">src.misc.helpers.</code><code class="descname">alt</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#src.misc.helpers.alt" title="Permalink to this definition">¶</a></dt>
+<code class="descname">alt</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#src.misc.helpers.alt" title="Permalink to this definition">¶</a></dt>
 <dd><p>Prepends the local time to the output of a function.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -80,12 +196,12 @@
 
 <dl class="function">
 <dt id="src.misc.helpers.capitalize">
-<code class="descclassname">src.misc.helpers.</code><code class="descname">capitalize</code><span class="sig-paren">(</span><em>word</em><span class="sig-paren">)</span><a class="headerlink" href="#src.misc.helpers.capitalize" title="Permalink to this definition">¶</a></dt>
+<code class="descname">capitalize</code><span class="sig-paren">(</span><em>word</em><span class="sig-paren">)</span><a class="headerlink" href="#src.misc.helpers.capitalize" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="function">
 <dt id="src.misc.helpers.contains_tag">
-<code class="descclassname">src.misc.helpers.</code><code class="descname">contains_tag</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#src.misc.helpers.contains_tag" title="Permalink to this definition">¶</a></dt>
+<code class="descname">contains_tag</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#src.misc.helpers.contains_tag" title="Permalink to this definition">¶</a></dt>
 <dd><p>Checks whether the current line contains an xml tag.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -103,7 +219,7 @@
 
 <dl class="function">
 <dt id="src.misc.helpers.extract_sentence_id">
-<code class="descclassname">src.misc.helpers.</code><code class="descname">extract_sentence_id</code><span class="sig-paren">(</span><em>tag</em><span class="sig-paren">)</span><a class="headerlink" href="#src.misc.helpers.extract_sentence_id" title="Permalink to this definition">¶</a></dt>
+<code class="descname">extract_sentence_id</code><span class="sig-paren">(</span><em>tag</em><span class="sig-paren">)</span><a class="headerlink" href="#src.misc.helpers.extract_sentence_id" title="Permalink to this definition">¶</a></dt>
 <dd><p>Extract the sentence ID of current sentence.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -120,8 +236,41 @@
 </dd></dl>
 
 <dl class="function">
+<dt id="src.misc.helpers.format_fbid">
+<code class="descname">format_fbid</code><span class="sig-paren">(</span><em>fbid</em><span class="sig-paren">)</span><a class="headerlink" href="#src.misc.helpers.format_fbid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transform the format of the <em>Freebase</em> IDs from the format used in the dataset to the format used in requests.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fbid</strong> (<em>str</em>) &#8211; <em>Freebase</em> ID to be formatted.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Formatted <em>Freebase</em> ID.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.misc.helpers.load_vectors">
+<code class="descname">load_vectors</code><span class="sig-paren">(</span><em>vector_inpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.misc.helpers.load_vectors" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
 <dt id="src.misc.helpers.load_vectors_from_model">
-<code class="descclassname">src.misc.helpers.</code><code class="descname">load_vectors_from_model</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>max_n=None</em>, <em>logpath=None</em>, <em>indices=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.misc.helpers.load_vectors_from_model" title="Permalink to this definition">¶</a></dt>
+<code class="descname">load_vectors_from_model</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>max_n=None</em>, <em>logpath=None</em>, <em>indices=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.misc.helpers.load_vectors_from_model" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.misc.helpers.partitions_list">
+<code class="descname">partitions_list</code><span class="sig-paren">(</span><em>l</em>, <em>prts</em><span class="sig-paren">)</span><a class="headerlink" href="#src.misc.helpers.partitions_list" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.misc.helpers.read_dataset">
+<code class="descname">read_dataset</code><span class="sig-paren">(</span><em>inpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.misc.helpers.read_dataset" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div>
@@ -131,67 +280,71 @@
 </div>
 
 
+           </div>
           </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="src.prep.html" class="btn btn-neutral float-right" title="src.prep package" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="src.mapping.html" class="btn btn-neutral" title="src.mapping package" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Bachelor Thesis.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">src.misc package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-src.misc.decorators">src.misc.decorators module</a></li>
-<li><a class="reference internal" href="#module-src.misc.helpers">src.misc.helpers module</a></li>
-<li><a class="reference internal" href="#module-src.misc">Module contents</a></li>
-</ul>
-</li>
-</ul>
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-  <li><a href="src.html">src package</a><ul>
-      <li>Previous: <a href="src.mapping.html" title="previous chapter">src.mapping package</a></li>
-      <li>Next: <a href="src.prep.html" title="next chapter">src.prep package</a></li>
-  </ul></li>
-  </ul></li>
-</ul>
-</div>
-  <div role="note" aria-label="source link">
-    <h3>This Page</h3>
-    <ul class="this-page-menu">
-      <li><a href="_sources/src.misc.txt"
-            rel="nofollow">Show Source</a></li>
-    </ul>
-   </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3>Quick search</h3>
-    <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2016, Bachelor Thesis.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.4</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.6</a>
-      
-      |
-      <a href="_sources/src.misc.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
+    </section>
 
-    
-  </body>
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'v1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
 </html>

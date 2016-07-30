@@ -31,7 +31,7 @@
 
 
 \title{Bachelor Thesis Documentation}
-\date{Jul 28, 2016}
+\date{Jul 30, 2016}
 \release{v1.0}
 \author{Bachelor Thesis}
 \newcommand{\sphinxlogo}{}
@@ -146,8 +146,8 @@
 Contents:
 
 
-\chapter{Bachelorarbeit}
-\label{index:bachelorarbeit}\label{index:welcome-to-bachelor-thesis-s-documentation}
+\chapter{src}
+\label{index:src}\label{index:welcome-to-bachelor-thesis-s-documentation}
 
 \section{src package}
 \label{src::doc}\label{src:src-package}
@@ -167,7 +167,7 @@ Script to cluster mapping vectors created with {\hyperref[src.mapping:module\str
 \index{aggregate\_cluster() (in module src.clustering.cluster\_mappings)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.clustering:src.clustering.cluster_mappings.aggregate_cluster}\pysiglinewithargsret{\code{src.clustering.cluster\_mappings.}\bfcode{aggregate\_cluster}}{\emph{points}, \emph{labels}}{}
+\phantomsection\label{src.clustering:src.clustering.cluster_mappings.aggregate_cluster}\pysiglinewithargsret{\bfcode{aggregate\_cluster}}{\emph{points}, \emph{labels}}{}
 Arranges all clusters in a list, where a sublist with all points at index i corresponds with the
 custer with label i.
 \begin{quote}\begin{description}
@@ -193,7 +193,7 @@ list
 \index{cluster\_mappings() (in module src.clustering.cluster\_mappings)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.clustering:src.clustering.cluster_mappings.cluster_mappings}\pysiglinewithargsret{\code{src.clustering.cluster\_mappings.}\bfcode{cluster\_mappings}}{\emph{vector\_inpath}, \emph{do\_pca=False}, \emph{target\_dim=100}, \emph{indices\_inpath=None}, \emph{epsilon=2.625}, \emph{min\_s=20}}{}
+\phantomsection\label{src.clustering:src.clustering.cluster_mappings.cluster_mappings}\pysiglinewithargsret{\bfcode{cluster\_mappings}}{\emph{vector\_inpath}, \emph{do\_pca=False}, \emph{target\_dim=100}, \emph{indices\_inpath=None}, \emph{epsilon=2.625}, \emph{min\_s=20}}{}
 Cluster mapping vectors created with {\hyperref[src.mapping:module\string-src.mapping.mapthreading]{\crossref{\code{src.mapping.mapthreading}}}} or \code{rc.mapping.map\_vectors.py}.
 Because just reading about the number of clusters and their sizes, there's an option to resolve the indices of
 the vectors in the cluster to their original word pairs.
@@ -231,7 +231,7 @@ the vectors in the cluster to their original word pairs.
 \index{get\_cluster\_size() (in module src.clustering.cluster\_mappings)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.clustering:src.clustering.cluster_mappings.get_cluster_size}\pysiglinewithargsret{\code{src.clustering.cluster\_mappings.}\bfcode{get\_cluster\_size}}{\emph{labels}}{}
+\phantomsection\label{src.clustering:src.clustering.cluster_mappings.get_cluster_size}\pysiglinewithargsret{\bfcode{get\_cluster\_size}}{\emph{labels}}{}
 Calculate the size of every cluster found by DBSCAN.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -250,7 +250,7 @@ defaultdict
 \index{init\_argparser() (in module src.clustering.cluster\_mappings)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.clustering:src.clustering.cluster_mappings.init_argparser}\pysiglinewithargsret{\code{src.clustering.cluster\_mappings.}\bfcode{init\_argparser}}{}{}
+\phantomsection\label{src.clustering:src.clustering.cluster_mappings.init_argparser}\pysiglinewithargsret{\bfcode{init\_argparser}}{}{}
 Initialize all possible arguments for the argument parser.
 \begin{quote}\begin{description}
 \item[{Returns}] \leavevmode
@@ -266,7 +266,7 @@ ArgumentParser object with command line arguments for this script.
 \index{load\_indices() (in module src.clustering.cluster\_mappings)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.clustering:src.clustering.cluster_mappings.load_indices}\pysiglinewithargsret{\code{src.clustering.cluster\_mappings.}\bfcode{load\_indices}}{\emph{indices\_inpath}}{}
+\phantomsection\label{src.clustering:src.clustering.cluster_mappings.load_indices}\pysiglinewithargsret{\bfcode{load\_indices}}{\emph{indices\_inpath}}{}
 Load word indices from a file. The file should have the following format: \textless{}index of word\textgreater{}       \textless{}word\textgreater{} (separated by
 tab)
 \begin{quote}\begin{description}
@@ -280,7 +280,7 @@ tab)
 \index{load\_mappings\_from\_model() (in module src.clustering.cluster\_mappings)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.clustering:src.clustering.cluster_mappings.load_mappings_from_model}\pysiglinewithargsret{\code{src.clustering.cluster\_mappings.}\bfcode{load\_mappings\_from\_model}}{\emph{mapping\_inpath}}{}
+\phantomsection\label{src.clustering:src.clustering.cluster_mappings.load_mappings_from_model}\pysiglinewithargsret{\bfcode{load\_mappings\_from\_model}}{\emph{mapping\_inpath}}{}
 Load mapping vectors from file.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -300,7 +300,7 @@ tuple
 \index{main() (in module src.clustering.cluster\_mappings)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.clustering:src.clustering.cluster_mappings.main}\pysiglinewithargsret{\code{src.clustering.cluster\_mappings.}\bfcode{main}}{}{}
+\phantomsection\label{src.clustering:src.clustering.cluster_mappings.main}\pysiglinewithargsret{\bfcode{main}}{}{}
 This is the main function. It uses the parsed command line arguments to pick the right function to execute.
 
 \end{fulllineitems}
@@ -308,13 +308,30 @@ This is the main function. It uses the parsed command line arguments to pick the
 \index{resolve\_indices() (in module src.clustering.cluster\_mappings)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.clustering:src.clustering.cluster_mappings.resolve_indices}\pysiglinewithargsret{\code{src.clustering.cluster\_mappings.}\bfcode{resolve\_indices}}{\emph{points}, \emph{labels}, \emph{indices\_inpath}, \emph{model}}{}
+\phantomsection\label{src.clustering:src.clustering.cluster_mappings.resolve_indices}\pysiglinewithargsret{\bfcode{resolve\_indices}}{\emph{points}, \emph{labels}, \emph{indices\_inpath}}{}
+Resolves the indices of word pairs found in a cluster to their real names.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{points}} (\emph{\texttt{list}}) -- List of datapoints
+
+\item {} 
+\textbf{\texttt{labels}} (\emph{\texttt{list}}) -- List of unique cluster labels
+
+\item {} 
+\textbf{\texttt{indices\_inpath}} (\emph{\texttt{str}}) -- Path to file with the indices given to words. The file should have the following format:
+\textless{}index of word\textgreater{} \textless{}word\textgreater{} (separated by tab)
+
+\end{itemize}
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{train\_clustering\_parameters() (in module src.clustering.cluster\_mappings)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.clustering:src.clustering.cluster_mappings.train_clustering_parameters}\pysiglinewithargsret{\code{src.clustering.cluster\_mappings.}\bfcode{train\_clustering\_parameters}}{\emph{vector\_inpath}}{}
+\phantomsection\label{src.clustering:src.clustering.cluster_mappings.train_clustering_parameters}\pysiglinewithargsret{\bfcode{train\_clustering\_parameters}}{\emph{vector\_inpath}}{}
 Functions that tries to figure out the optimal clustering parameters in regard to DBSCAN's epsilon,
 min\_samples and p.
 \begin{quote}\begin{description}
@@ -349,7 +366,7 @@ The whole module is used in \code{src.eval.eval\_vectors.py}.
 \index{analogy\_eval() (in module src.eval.analogy)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.eval:src.eval.analogy.analogy_eval}\pysiglinewithargsret{\code{src.eval.analogy.}\bfcode{analogy\_eval}}{\emph{vector\_inpath}, \emph{analogy\_path}, \emph{per\_section=False}}{}
+\phantomsection\label{src.eval:src.eval.analogy.analogy_eval}\pysiglinewithargsret{\bfcode{analogy\_eval}}{\emph{vector\_inpath}, \emph{analogy\_path}, \emph{per\_section=False}}{}
 Perform analogy evaluation. Usually, the system uses the word embeddings of word W, X, Y and tries to find the
 vector of word Z that is most similar to
 X and Y and most dissimilar to W for an analogy like ``W is to X like Y is to Z.''
@@ -375,7 +392,7 @@ one run.
 \index{read\_analogies() (in module src.eval.analogy)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.eval:src.eval.analogy.read_analogies}\pysiglinewithargsret{\code{src.eval.analogy.}\bfcode{read\_analogies}}{\emph{analogy\_path}, \emph{per\_section=False}}{}
+\phantomsection\label{src.eval:src.eval.analogy.read_analogies}\pysiglinewithargsret{\bfcode{read\_analogies}}{\emph{analogy\_path}, \emph{per\_section=False}}{}
 Reads a file with analogies.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -417,7 +434,7 @@ a first look on the data, but not quantifiable.
 \index{find\_nearest\_neighbors() (in module src.eval.eval\_vectors)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.eval:src.eval.eval_vectors.find_nearest_neighbors}\pysiglinewithargsret{\code{src.eval.eval\_vectors.}\bfcode{find\_nearest\_neighbors}}{\emph{vector\_inpath}, \emph{max\_n}, \emph{wordlist}}{}
+\phantomsection\label{src.eval:src.eval.eval_vectors.find_nearest_neighbors}\pysiglinewithargsret{\bfcode{find\_nearest\_neighbors}}{\emph{vector\_inpath}, \emph{max\_n}, \emph{wordlist}}{}
 Find the nearest neighbors for a list of words based on their word embeddings.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -440,7 +457,7 @@ Find the nearest neighbors for a list of words based on their word embeddings.
 \index{init\_argparser() (in module src.eval.eval\_vectors)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.eval:src.eval.eval_vectors.init_argparser}\pysiglinewithargsret{\code{src.eval.eval\_vectors.}\bfcode{init\_argparser}}{}{}
+\phantomsection\label{src.eval:src.eval.eval_vectors.init_argparser}\pysiglinewithargsret{\bfcode{init\_argparser}}{}{}
 Initialize all possible arguments for the argument parser.
 \begin{quote}\begin{description}
 \item[{Returns}] \leavevmode
@@ -456,7 +473,7 @@ ArgumentParser object with command line arguments for this script.
 \index{main() (in module src.eval.eval\_vectors)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.eval:src.eval.eval_vectors.main}\pysiglinewithargsret{\code{src.eval.eval\_vectors.}\bfcode{main}}{}{}
+\phantomsection\label{src.eval:src.eval.eval_vectors.main}\pysiglinewithargsret{\bfcode{main}}{}{}
 This is the main function. It uses the parsed command line arguments, especially \titleref{--mode}, to pick the right
 function to execute.
 
@@ -465,7 +482,7 @@ function to execute.
 \index{plot() (in module src.eval.eval\_vectors)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.eval:src.eval.eval_vectors.plot}\pysiglinewithargsret{\code{src.eval.eval\_vectors.}\bfcode{plot}}{\emph{vector\_inpath}, \emph{max\_n}, \emph{target\_dim}, \emph{show\_plot=False}, \emph{display\_names=False}}{}
+\phantomsection\label{src.eval:src.eval.eval_vectors.plot}\pysiglinewithargsret{\bfcode{plot}}{\emph{vector\_inpath}, \emph{max\_n}, \emph{target\_dim}, \emph{show\_plot=False}, \emph{display\_names=False}}{}
 Plot word embeddings in 2D or 3D. As a heuristic, word will only be plotted after the 50th most frequent words to
 avoid plotting boring stop words.
 \begin{quote}\begin{description}
@@ -503,7 +520,7 @@ The whole module is used in \code{src.eval.eval\_vectors.py}.
 \index{evaluate\_wordpair\_sims() (in module src.eval.word\_similarity)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.eval:src.eval.word_similarity.evaluate_wordpair_sims}\pysiglinewithargsret{\code{src.eval.word\_similarity.}\bfcode{evaluate\_wordpair\_sims}}{\emph{x}, \emph{y}, \emph{number\_of\_pairs}}{}
+\phantomsection\label{src.eval:src.eval.word_similarity.evaluate_wordpair_sims}\pysiglinewithargsret{\bfcode{evaluate\_wordpair\_sims}}{\emph{x}, \emph{y}, \emph{number\_of\_pairs}}{}
 Evaluate results of the similarity score assignments, i.e. calculate pearson's rho and its significance.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -533,7 +550,7 @@ float
 \index{read\_wordpairs() (in module src.eval.word\_similarity)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.eval:src.eval.word_similarity.read_wordpairs}\pysiglinewithargsret{\code{src.eval.word\_similarity.}\bfcode{read\_wordpairs}}{\emph{wordpair\_path}, \emph{format='google'}}{}
+\phantomsection\label{src.eval:src.eval.word_similarity.read_wordpairs}\pysiglinewithargsret{\bfcode{read\_wordpairs}}{\emph{wordpair\_path}, \emph{format='google'}}{}
 Read wordpair file with wordpairs and their similarity scores assigned by humans.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -558,7 +575,7 @@ tuple
 \index{remove\_unknowns() (in module src.eval.word\_similarity)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.eval:src.eval.word_similarity.remove_unknowns}\pysiglinewithargsret{\code{src.eval.word\_similarity.}\bfcode{remove\_unknowns}}{\emph{x}, \emph{y}}{}
+\phantomsection\label{src.eval:src.eval.word_similarity.remove_unknowns}\pysiglinewithargsret{\bfcode{remove\_unknowns}}{\emph{x}, \emph{y}}{}
 Remove word pairs from the results where one or two word embedding weren't found.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -584,7 +601,7 @@ list
 \index{word\_sim\_eval() (in module src.eval.word\_similarity)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.eval:src.eval.word_similarity.word_sim_eval}\pysiglinewithargsret{\code{src.eval.word\_similarity.}\bfcode{word\_sim\_eval}}{\emph{vector\_inpath}, \emph{wordpair\_path}, \emph{format='google'}}{}
+\phantomsection\label{src.eval:src.eval.word_similarity.word_sim_eval}\pysiglinewithargsret{\bfcode{word\_sim\_eval}}{\emph{vector\_inpath}, \emph{wordpair\_path}, \emph{format='google'}}{}
 Function that let's the system assign word pairs a similarity score based on the cosine similarity of their word
 embeddings. Then, to correlation between those and human ratings is measured with Pearson's rho.
 \begin{quote}\begin{description}
@@ -630,12 +647,12 @@ at least \emph{n} sentences (but it will still take quite a while).
 \index{MappingMasterThread (class in src.mapping.mapthreading)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.mapping:src.mapping.mapthreading.MappingMasterThread}\pysiglinewithargsret{\strong{class }\code{src.mapping.mapthreading.}\bfcode{MappingMasterThread}}{\emph{n}, \emph{vector\_inpath}, \emph{vector\_outpath}, \emph{features}, \emph{lambda\_}, \emph{ids\_inpath}, \emph{indices\_inpath}}{}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.MappingMasterThread}\pysiglinewithargsret{\strong{class }\bfcode{MappingMasterThread}}{\emph{n}, \emph{vector\_inpath}, \emph{vector\_outpath}, \emph{features}, \emph{lambda\_}, \emph{ids\_inpath}, \emph{indices\_inpath}}{}
 Bases: \code{threading.Thread}
 
 Master thread class. The master thread loads all necessary data into suitable data structures and distributes
 them among all worker threads.
-\index{prepare() (src.mapping.mapthreading.MappingMasterThread method)}
+\index{prepare() (MappingMasterThread method)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.mapping:src.mapping.mapthreading.MappingMasterThread.prepare}\pysiglinewithargsret{\bfcode{prepare}}{}{}
@@ -644,7 +661,7 @@ word embeddings, sentence IDs and word indices are processed.
 
 \end{fulllineitems}
 
-\index{read\_ids\_file() (src.mapping.mapthreading.MappingMasterThread method)}
+\index{read\_ids\_file() (MappingMasterThread method)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.mapping:src.mapping.mapthreading.MappingMasterThread.read_ids_file}\pysiglinewithargsret{\bfcode{read\_ids\_file}}{\emph{ids\_inpath}}{}
@@ -678,7 +695,7 @@ defaultdict
 
 \end{fulllineitems}
 
-\index{start\_threads() (src.mapping.mapthreading.MappingMasterThread method)}
+\index{start\_threads() (MappingMasterThread method)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.mapping:src.mapping.mapthreading.MappingMasterThread.start_threads}\pysiglinewithargsret{\bfcode{start\_threads}}{}{}
@@ -692,7 +709,7 @@ Starts all the threads (and ends them if they're all finished).
 \index{MappingWorkerThread (class in src.mapping.mapthreading)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.mapping:src.mapping.mapthreading.MappingWorkerThread}\pysiglinewithargsret{\strong{class }\code{src.mapping.mapthreading.}\bfcode{MappingWorkerThread}}{\emph{worker\_id}, \emph{vector\_dict}, \emph{vector\_queue}, \emph{vector\_outpath}, \emph{features}, \emph{occurrences}, \emph{indices}, \emph{lambda\_}}{}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.MappingWorkerThread}\pysiglinewithargsret{\strong{class }\bfcode{MappingWorkerThread}}{\emph{worker\_id}, \emph{vector\_dict}, \emph{vector\_queue}, \emph{vector\_outpath}, \emph{features}, \emph{occurrences}, \emph{indices}, \emph{lambda\_}}{}
 Bases: \code{threading.Thread}
 
 Worker thread class. The worker threads do all the dirty work after they receive all necessary data from the master
@@ -704,7 +721,7 @@ An idle thread picks a new vector from the queue and then starts to iterate over
 
 Before it starts calculations, it checks a) if the co-occurrence constraint is satisfied and b) if this combination
 of word embeddings has already been processed.
-\index{cosine\_similarity() (src.mapping.mapthreading.MappingWorkerThread method)}
+\index{cosine\_similarity() (MappingWorkerThread method)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.mapping:src.mapping.mapthreading.MappingWorkerThread.cosine_similarity}\pysiglinewithargsret{\bfcode{cosine\_similarity}}{\emph{v1}, \emph{v2}}{}
@@ -729,7 +746,7 @@ float
 
 \end{fulllineitems}
 
-\index{distance() (src.mapping.mapthreading.MappingWorkerThread method)}
+\index{distance() (MappingWorkerThread method)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.mapping:src.mapping.mapthreading.MappingWorkerThread.distance}\pysiglinewithargsret{\bfcode{distance}}{\emph{v1}, \emph{v2}}{}
@@ -753,7 +770,7 @@ numpy.array: Vector offset.
 
 \end{fulllineitems}
 
-\index{euclidean\_distance1() (src.mapping.mapthreading.MappingWorkerThread method)}
+\index{euclidean\_distance1() (MappingWorkerThread method)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.mapping:src.mapping.mapthreading.MappingWorkerThread.euclidean_distance1}\pysiglinewithargsret{\bfcode{euclidean\_distance1}}{\emph{v1}, \emph{v2}}{}
@@ -780,7 +797,7 @@ float
 
 \end{fulllineitems}
 
-\index{euclidean\_distance2() (src.mapping.mapthreading.MappingWorkerThread method)}
+\index{euclidean\_distance2() (MappingWorkerThread method)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.mapping:src.mapping.mapthreading.MappingWorkerThread.euclidean_distance2}\pysiglinewithargsret{\bfcode{euclidean\_distance2}}{\emph{v1}, \emph{v2}}{}
@@ -807,7 +824,7 @@ float
 
 \end{fulllineitems}
 
-\index{hash\_indices() (src.mapping.mapthreading.MappingWorkerThread method)}
+\index{hash\_indices() (MappingWorkerThread method)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.mapping:src.mapping.mapthreading.MappingWorkerThread.hash_indices}\pysiglinewithargsret{\bfcode{hash\_indices}}{\emph{i1}, \emph{i2}}{}
@@ -834,7 +851,7 @@ int
 
 \end{fulllineitems}
 
-\index{manhattan\_distance() (src.mapping.mapthreading.MappingWorkerThread method)}
+\index{manhattan\_distance() (MappingWorkerThread method)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.mapping:src.mapping.mapthreading.MappingWorkerThread.manhattan_distance}\pysiglinewithargsret{\bfcode{manhattan\_distance}}{\emph{v1}, \emph{v2}}{}
@@ -861,7 +878,7 @@ float
 
 \end{fulllineitems}
 
-\index{run() (src.mapping.mapthreading.MappingWorkerThread method)}
+\index{run() (MappingWorkerThread method)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.mapping:src.mapping.mapthreading.MappingWorkerThread.run}\pysiglinewithargsret{\bfcode{run}}{}{}
@@ -869,7 +886,7 @@ Starts a worker thread.
 
 \end{fulllineitems}
 
-\index{soft\_cosine\_similarity() (src.mapping.mapthreading.MappingWorkerThread method)}
+\index{soft\_cosine\_similarity() (MappingWorkerThread method)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.mapping:src.mapping.mapthreading.MappingWorkerThread.soft_cosine_similarity}\pysiglinewithargsret{\bfcode{soft\_cosine\_similarity}}{\emph{v1}, \emph{v2}}{}
@@ -910,7 +927,7 @@ float
 \index{VectorDict (class in src.mapping.mapthreading)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.mapping:src.mapping.mapthreading.VectorDict}\pysigline{\strong{class }\code{src.mapping.mapthreading.}\bfcode{VectorDict}}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.VectorDict}\pysigline{\strong{class }\bfcode{VectorDict}}
 Bases: \code{object}
 \begin{description}
 \item[{VectorDict class that serves two functions:}] \leavevmode
@@ -922,7 +939,7 @@ Bases: \code{object}
 \end{description}
 
 Locks are used for synchronization purposes.
-\index{add\_skippable() (src.mapping.mapthreading.VectorDict method)}
+\index{add\_skippable() (VectorDict method)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.mapping:src.mapping.mapthreading.VectorDict.add_skippable}\pysiglinewithargsret{\bfcode{add\_skippable}}{\emph{index\_hash}}{}
@@ -935,7 +952,7 @@ Add the hash of an index pair to a set of already processed vector pairs.
 
 \end{fulllineitems}
 
-\index{add\_vector() (src.mapping.mapthreading.VectorDict method)}
+\index{add\_vector() (VectorDict method)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.mapping:src.mapping.mapthreading.VectorDict.add_vector}\pysiglinewithargsret{\bfcode{add\_vector}}{\emph{index}, \emph{vector}}{}
@@ -954,7 +971,7 @@ Add a new word embedding.
 
 \end{fulllineitems}
 
-\index{get\_keys() (src.mapping.mapthreading.VectorDict method)}
+\index{get\_keys() (VectorDict method)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.mapping:src.mapping.mapthreading.VectorDict.get_keys}\pysiglinewithargsret{\bfcode{get\_keys}}{}{}
@@ -970,7 +987,7 @@ list
 
 \end{fulllineitems}
 
-\index{get\_vector() (src.mapping.mapthreading.VectorDict method)}
+\index{get\_vector() (VectorDict method)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.mapping:src.mapping.mapthreading.VectorDict.get_vector}\pysiglinewithargsret{\bfcode{get\_vector}}{\emph{index}}{}
@@ -989,7 +1006,7 @@ numpy.array
 
 \end{fulllineitems}
 
-\index{skippable() (src.mapping.mapthreading.VectorDict method)}
+\index{skippable() (VectorDict method)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.mapping:src.mapping.mapthreading.VectorDict.skippable}\pysiglinewithargsret{\bfcode{skippable}}{\emph{index\_hash}}{}
@@ -1014,7 +1031,7 @@ bool
 \index{alt() (in module src.mapping.mapthreading)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.mapping:src.mapping.mapthreading.alt}\pysiglinewithargsret{\code{src.mapping.mapthreading.}\bfcode{alt}}{\emph{func}}{}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.alt}\pysiglinewithargsret{\bfcode{alt}}{\emph{func}}{}
 Prepends the local time to the output of a function.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -1027,7 +1044,7 @@ Prepends the local time to the output of a function.
 \index{init\_argparse() (in module src.mapping.mapthreading)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.mapping:src.mapping.mapthreading.init_argparse}\pysiglinewithargsret{\code{src.mapping.mapthreading.}\bfcode{init\_argparse}}{}{}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.init_argparse}\pysiglinewithargsret{\bfcode{init\_argparse}}{}{}
 Initialize all possible arguments for the argument parser.
 \begin{quote}\begin{description}
 \item[{Returns}] \leavevmode
@@ -1043,7 +1060,7 @@ ArgumentParser object with command line arguments for this script.
 \index{main() (in module src.mapping.mapthreading)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.mapping:src.mapping.mapthreading.main}\pysiglinewithargsret{\code{src.mapping.mapthreading.}\bfcode{main}}{}{}
+\phantomsection\label{src.mapping:src.mapping.mapthreading.main}\pysiglinewithargsret{\bfcode{main}}{}{}
 Main function that initializes the master thread with command line arguments and starts it.
 
 \end{fulllineitems}
@@ -1063,19 +1080,19 @@ Main function that initializes the master thread with command line arguments and
 \label{src.misc:module-src.misc.decorators}\label{src.misc:src-misc-decorators-module}\index{src.misc.decorators (module)}\index{alt() (in module src.misc.decorators)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.misc:src.misc.decorators.alt}\pysiglinewithargsret{\code{src.misc.decorators.}\bfcode{alt}}{\emph{func}}{}
+\phantomsection\label{src.misc:src.misc.decorators.alt}\pysiglinewithargsret{\bfcode{alt}}{\emph{func}}{}
 \end{fulllineitems}
 
 \index{log\_time() (in module src.misc.decorators)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.misc:src.misc.decorators.log_time}\pysiglinewithargsret{\code{src.misc.decorators.}\bfcode{log\_time}}{\emph{logpath='log.txt'}, \emph{interval=5}}{}
+\phantomsection\label{src.misc:src.misc.decorators.log_time}\pysiglinewithargsret{\bfcode{log\_time}}{\emph{logpath='log.txt'}, \emph{interval=5}}{}
 \end{fulllineitems}
 
 \index{log\_time\_mp() (in module src.misc.decorators)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.misc:src.misc.decorators.log_time_mp}\pysiglinewithargsret{\code{src.misc.decorators.}\bfcode{log\_time\_mp}}{\emph{logpath='log.txt'}, \emph{interval=5}}{}
+\phantomsection\label{src.misc:src.misc.decorators.log_time_mp}\pysiglinewithargsret{\bfcode{log\_time\_mp}}{\emph{logpath='log.txt'}, \emph{interval=5}}{}
 \end{fulllineitems}
 
 
@@ -1084,7 +1101,7 @@ Main function that initializes the master thread with command line arguments and
 \label{src.misc:src-misc-helpers-module}\label{src.misc:module-src.misc.helpers}\index{src.misc.helpers (module)}\index{alt() (in module src.misc.helpers)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.misc:src.misc.helpers.alt}\pysiglinewithargsret{\code{src.misc.helpers.}\bfcode{alt}}{\emph{func}}{}
+\phantomsection\label{src.misc:src.misc.helpers.alt}\pysiglinewithargsret{\bfcode{alt}}{\emph{func}}{}
 Prepends the local time to the output of a function.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -1097,13 +1114,13 @@ Prepends the local time to the output of a function.
 \index{capitalize() (in module src.misc.helpers)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.misc:src.misc.helpers.capitalize}\pysiglinewithargsret{\code{src.misc.helpers.}\bfcode{capitalize}}{\emph{word}}{}
+\phantomsection\label{src.misc:src.misc.helpers.capitalize}\pysiglinewithargsret{\bfcode{capitalize}}{\emph{word}}{}
 \end{fulllineitems}
 
 \index{contains\_tag() (in module src.misc.helpers)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.misc:src.misc.helpers.contains_tag}\pysiglinewithargsret{\code{src.misc.helpers.}\bfcode{contains\_tag}}{\emph{line}}{}
+\phantomsection\label{src.misc:src.misc.helpers.contains_tag}\pysiglinewithargsret{\bfcode{contains\_tag}}{\emph{line}}{}
 Checks whether the current line contains an xml tag.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -1122,7 +1139,7 @@ bool
 \index{extract\_sentence\_id() (in module src.misc.helpers)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.misc:src.misc.helpers.extract_sentence_id}\pysiglinewithargsret{\code{src.misc.helpers.}\bfcode{extract\_sentence\_id}}{\emph{tag}}{}
+\phantomsection\label{src.misc:src.misc.helpers.extract_sentence_id}\pysiglinewithargsret{\bfcode{extract\_sentence\_id}}{\emph{tag}}{}
 Extract the sentence ID of current sentence.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -1138,10 +1155,47 @@ str
 
 \end{fulllineitems}
 
+\index{format\_fbid() (in module src.misc.helpers)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.misc:src.misc.helpers.format_fbid}\pysiglinewithargsret{\bfcode{format\_fbid}}{\emph{fbid}}{}
+Transform the format of the \emph{Freebase} IDs from the format used in the dataset to the format used in requests.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{fbid}} (\emph{\texttt{str}}) -- \emph{Freebase} ID to be formatted.
+
+\item[{Returns}] \leavevmode
+Formatted \emph{Freebase} ID.
+
+\item[{Return type}] \leavevmode
+str
+
+\end{description}\end{quote}
+
+\end{fulllineitems}
+
+\index{load\_vectors() (in module src.misc.helpers)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.misc:src.misc.helpers.load_vectors}\pysiglinewithargsret{\bfcode{load\_vectors}}{\emph{vector\_inpath}}{}
+\end{fulllineitems}
+
 \index{load\_vectors\_from\_model() (in module src.misc.helpers)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.misc:src.misc.helpers.load_vectors_from_model}\pysiglinewithargsret{\code{src.misc.helpers.}\bfcode{load\_vectors\_from\_model}}{\emph{vector\_inpath}, \emph{max\_n=None}, \emph{logpath=None}, \emph{indices=False}}{}
+\phantomsection\label{src.misc:src.misc.helpers.load_vectors_from_model}\pysiglinewithargsret{\bfcode{load\_vectors\_from\_model}}{\emph{vector\_inpath}, \emph{max\_n=None}, \emph{logpath=None}, \emph{indices=False}}{}
+\end{fulllineitems}
+
+\index{partitions\_list() (in module src.misc.helpers)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.misc:src.misc.helpers.partitions_list}\pysiglinewithargsret{\bfcode{partitions\_list}}{\emph{l}, \emph{prts}}{}
+\end{fulllineitems}
+
+\index{read\_dataset() (in module src.misc.helpers)}
+
+\begin{fulllineitems}
+\phantomsection\label{src.misc:src.misc.helpers.read_dataset}\pysiglinewithargsret{\bfcode{read\_dataset}}{\emph{inpath}}{}
 \end{fulllineitems}
 
 
@@ -1171,7 +1225,7 @@ single file.
 \index{convert\_decow\_to\_plain() (in module src.prep.corpus.convert\_to\_plain)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.convert_decow_to_plain}\pysiglinewithargsret{\code{src.prep.corpus.convert\_to\_plain.}\bfcode{convert\_decow\_to\_plain}}{\emph{decow\_dir}, \emph{out\_dir}, \emph{log\_path}, \emph{merge\_nes}, \emph{log\_interval}}{}
+\phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.convert_decow_to_plain}\pysiglinewithargsret{\bfcode{convert\_decow\_to\_plain}}{\emph{decow\_dir}, \emph{out\_dir}, \emph{log\_path}, \emph{merge\_nes}, \emph{log\_interval}}{}
 Convert the whole corpus into plain text.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -1199,7 +1253,7 @@ Convert the whole corpus into plain text.
 \index{convert\_part() (in module src.prep.corpus.convert\_to\_plain)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.convert_part}\pysiglinewithargsret{\code{src.prep.corpus.convert\_to\_plain.}\bfcode{convert\_part}}{\emph{argstuple}}{}
+\phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.convert_part}\pysiglinewithargsret{\bfcode{convert\_part}}{\emph{argstuple}}{}
 Convert a corpus part into plain text without merging multiple word entries.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -1214,7 +1268,7 @@ Convert a corpus part into plain text without merging multiple word entries.
 \index{convert\_part\_merging() (in module src.prep.corpus.convert\_to\_plain)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.convert_part_merging}\pysiglinewithargsret{\code{src.prep.corpus.convert\_to\_plain.}\bfcode{convert\_part\_merging}}{\emph{argstuple}}{}
+\phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.convert_part_merging}\pysiglinewithargsret{\bfcode{convert\_part\_merging}}{\emph{argstuple}}{}
 Convert a corpus part into plain text and merging multiple word entries.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -1229,7 +1283,7 @@ Convert a corpus part into plain text and merging multiple word entries.
 \index{extract\_named\_entity() (in module src.prep.corpus.convert\_to\_plain)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.extract_named_entity}\pysiglinewithargsret{\code{src.prep.corpus.convert\_to\_plain.}\bfcode{extract\_named\_entity}}{\emph{line}}{}
+\phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.extract_named_entity}\pysiglinewithargsret{\bfcode{extract\_named\_entity}}{\emph{line}}{}
 Extract named entity from current line.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -1248,7 +1302,7 @@ str or None
 \index{get\_file\_number() (in module src.prep.corpus.convert\_to\_plain)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.get_file_number}\pysiglinewithargsret{\code{src.prep.corpus.convert\_to\_plain.}\bfcode{get\_file\_number}}{\emph{filename}}{}
+\phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.get_file_number}\pysiglinewithargsret{\bfcode{get\_file\_number}}{\emph{filename}}{}
 Get the number of the current decow corpus part.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -1267,7 +1321,7 @@ str
 \index{main() (in module src.prep.corpus.convert\_to\_plain)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.main}\pysiglinewithargsret{\code{src.prep.corpus.convert\_to\_plain.}\bfcode{main}}{}{}
+\phantomsection\label{src.prep.corpus:src.prep.corpus.convert_to_plain.main}\pysiglinewithargsret{\bfcode{main}}{}{}
 Main function. Uses command lines to start corpus processing.
 
 \end{fulllineitems}
@@ -1281,7 +1335,7 @@ This script can be used to extract information out of a specific column of a fil
 \index{extract\_conll() (in module src.prep.corpus.extract\_conll)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.corpus:src.prep.corpus.extract_conll.extract_conll}\pysiglinewithargsret{\code{src.prep.corpus.extract\_conll.}\bfcode{extract\_conll}}{\emph{inpath}, \emph{outpath}, \emph{column}}{}
+\phantomsection\label{src.prep.corpus:src.prep.corpus.extract_conll.extract_conll}\pysiglinewithargsret{\bfcode{extract\_conll}}{\emph{inpath}, \emph{outpath}, \emph{column}}{}
 Extract information out of CoNLL files.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -1303,7 +1357,7 @@ Extract information out of CoNLL files.
 \index{init\_argparse() (in module src.prep.corpus.extract\_conll)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.corpus:src.prep.corpus.extract_conll.init_argparse}\pysiglinewithargsret{\code{src.prep.corpus.extract\_conll.}\bfcode{init\_argparse}}{}{}
+\phantomsection\label{src.prep.corpus:src.prep.corpus.extract_conll.init_argparse}\pysiglinewithargsret{\bfcode{init\_argparse}}{}{}
 Initialize all possible arguments for the argument parser.
 \begin{quote}\begin{description}
 \item[{Returns}] \leavevmode
@@ -1319,7 +1373,7 @@ ArgumentParser object with command line arguments for this script.
 \index{main() (in module src.prep.corpus.extract\_conll)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.corpus:src.prep.corpus.extract_conll.main}\pysiglinewithargsret{\code{src.prep.corpus.extract\_conll.}\bfcode{main}}{}{}
+\phantomsection\label{src.prep.corpus:src.prep.corpus.extract_conll.main}\pysiglinewithargsret{\bfcode{main}}{}{}
 The main function.
 
 \end{fulllineitems}
@@ -1374,7 +1428,7 @@ the IDs of the sentences they occur in.
 \index{extract\_named\_entity() (in module src.prep.nes.extract\_nes)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.extract_nes.extract_named_entity}\pysiglinewithargsret{\code{src.prep.nes.extract\_nes.}\bfcode{extract\_named\_entity}}{\emph{line}}{}
+\phantomsection\label{src.prep.nes:src.prep.nes.extract_nes.extract_named_entity}\pysiglinewithargsret{\bfcode{extract\_named\_entity}}{\emph{line}}{}
 Extracts named entity from current line if present.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -1393,7 +1447,7 @@ tuple
 \index{main() (in module src.prep.nes.extract\_nes)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.extract_nes.main}\pysiglinewithargsret{\code{src.prep.nes.extract\_nes.}\bfcode{main}}{}{}
+\phantomsection\label{src.prep.nes:src.prep.nes.extract_nes.main}\pysiglinewithargsret{\bfcode{main}}{}{}
 Main function.
 
 \end{fulllineitems}
@@ -1401,7 +1455,7 @@ Main function.
 \index{process() (in module src.prep.nes.extract\_nes)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.extract_nes.process}\pysiglinewithargsret{\code{src.prep.nes.extract\_nes.}\bfcode{process}}{\emph{inpath}, \emph{outpath}, \emph{logpath}}{}
+\phantomsection\label{src.prep.nes:src.prep.nes.extract_nes.process}\pysiglinewithargsret{\bfcode{process}}{\emph{inpath}, \emph{outpath}, \emph{logpath}}{}
 Starts extracting named entities and their corresponding sentence IDs.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -1423,7 +1477,7 @@ Starts extracting named entities and their corresponding sentence IDs.
 \index{write\_dict\_into\_file() (in module src.prep.nes.extract\_nes)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.extract_nes.write_dict_into_file}\pysiglinewithargsret{\code{src.prep.nes.extract\_nes.}\bfcode{write\_dict\_into\_file}}{\emph{dictionary}, \emph{out\_path}}{}
+\phantomsection\label{src.prep.nes:src.prep.nes.extract_nes.write_dict_into_file}\pysiglinewithargsret{\bfcode{write\_dict\_into\_file}}{\emph{dictionary}, \emph{out\_path}}{}
 Write a dictionary of named entities, their tags and their frequencies into a file.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -1442,7 +1496,7 @@ Write a dictionary of named entities, their tags and their frequencies into a fi
 \index{write\_ids\_into\_file() (in module src.prep.nes.extract\_nes)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.extract_nes.write_ids_into_file}\pysiglinewithargsret{\code{src.prep.nes.extract\_nes.}\bfcode{write\_ids\_into\_file}}{\emph{dictionary}, \emph{out\_path}}{}
+\phantomsection\label{src.prep.nes:src.prep.nes.extract_nes.write_ids_into_file}\pysiglinewithargsret{\bfcode{write\_ids\_into\_file}}{\emph{dictionary}, \emph{out\_path}}{}
 Write a dictionary of named entities,, their tags and IDs of the sentences they occur in into a file.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -1468,7 +1522,7 @@ aims to merge them in a (relatively) memory-efficient manner.
 \index{freq\_worker() (in module src.prep.nes.merge)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.merge.freq_worker}\pysiglinewithargsret{\code{src.prep.nes.merge.}\bfcode{freq\_worker}}{\emph{inpath}}{}
+\phantomsection\label{src.prep.nes:src.prep.nes.merge.freq_worker}\pysiglinewithargsret{\bfcode{freq\_worker}}{\emph{inpath}}{}
 Reads the named entity frequencies from a file.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -1487,7 +1541,7 @@ dict
 \index{id\_worker() (in module src.prep.nes.merge)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.merge.id_worker}\pysiglinewithargsret{\code{src.prep.nes.merge.}\bfcode{id\_worker}}{\emph{inpath}}{}
+\phantomsection\label{src.prep.nes:src.prep.nes.merge.id_worker}\pysiglinewithargsret{\bfcode{id\_worker}}{\emph{inpath}}{}
 Reads the named entity ids from a file.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -1506,7 +1560,7 @@ dict
 \index{main() (in module src.prep.nes.merge)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.merge.main}\pysiglinewithargsret{\code{src.prep.nes.merge.}\bfcode{main}}{}{}
+\phantomsection\label{src.prep.nes:src.prep.nes.merge.main}\pysiglinewithargsret{\bfcode{main}}{}{}
 Main function, handling command line arguments.
 
 \end{fulllineitems}
@@ -1514,7 +1568,7 @@ Main function, handling command line arguments.
 \index{merge\_dicts() (in module src.prep.nes.merge)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.merge.merge_dicts}\pysiglinewithargsret{\code{src.prep.nes.merge.}\bfcode{merge\_dicts}}{\emph{dicttuple}}{}
+\phantomsection\label{src.prep.nes:src.prep.nes.merge.merge_dicts}\pysiglinewithargsret{\bfcode{merge\_dicts}}{\emph{dicttuple}}{}
 Merges two dictionary (efficiently).
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -1533,7 +1587,7 @@ dict
 \index{merge\_frequency\_files() (in module src.prep.nes.merge)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.merge.merge_frequency_files}\pysiglinewithargsret{\code{src.prep.nes.merge.}\bfcode{merge\_frequency\_files}}{\emph{infiles\_path}, \emph{outpath}, \emph{logpath}}{}
+\phantomsection\label{src.prep.nes:src.prep.nes.merge.merge_frequency_files}\pysiglinewithargsret{\bfcode{merge\_frequency\_files}}{\emph{infiles\_path}, \emph{outpath}, \emph{logpath}}{}
 Merge multiple named entitiy frequency files.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -1555,7 +1609,7 @@ Merge multiple named entitiy frequency files.
 \index{merge\_id\_dicts() (in module src.prep.nes.merge)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.merge.merge_id_dicts}\pysiglinewithargsret{\code{src.prep.nes.merge.}\bfcode{merge\_id\_dicts}}{\emph{dicttuple}}{}
+\phantomsection\label{src.prep.nes:src.prep.nes.merge.merge_id_dicts}\pysiglinewithargsret{\bfcode{merge\_id\_dicts}}{\emph{dicttuple}}{}
 Merges two id dictionary (efficiently).
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -1574,7 +1628,7 @@ dict
 \index{merge\_id\_files() (in module src.prep.nes.merge)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.merge.merge_id_files}\pysiglinewithargsret{\code{src.prep.nes.merge.}\bfcode{merge\_id\_files}}{\emph{infiles\_path}, \emph{outpath}, \emph{logpath}, \emph{yaml=False}}{}
+\phantomsection\label{src.prep.nes:src.prep.nes.merge.merge_id_files}\pysiglinewithargsret{\bfcode{merge\_id\_files}}{\emph{infiles\_path}, \emph{outpath}, \emph{logpath}, \emph{yaml=False}}{}
 Merge multiple named entitiy id files.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -1599,7 +1653,7 @@ Merge multiple named entitiy id files.
 \index{rl() (in module src.prep.nes.merge)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.merge.rl}\pysiglinewithargsret{\code{src.prep.nes.merge.}\bfcode{rl}}{\emph{infile}}{}
+\phantomsection\label{src.prep.nes:src.prep.nes.merge.rl}\pysiglinewithargsret{\bfcode{rl}}{\emph{infile}}{}
 Lazy function to read a line from a while and remove redundant whitespaces.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -1626,7 +1680,7 @@ Requires a relation file in yaml format and a merged named entity frequency file
 \index{calculate\_occurrences() (in module src.prep.nes.statistics)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.statistics.calculate_occurrences}\pysiglinewithargsret{\code{src.prep.nes.statistics.}\bfcode{calculate\_occurrences}}{\emph{freqpath}, \emph{relations\_path}}{}
+\phantomsection\label{src.prep.nes:src.prep.nes.statistics.calculate_occurrences}\pysiglinewithargsret{\bfcode{calculate\_occurrences}}{\emph{freqpath}, \emph{relations\_path}}{}
 Calculate statistics about named entities extracted from the corpus and the percentage of their
 occurrence in the \emph{Freebase} relation dataset.
 \begin{quote}\begin{description}
@@ -1646,7 +1700,7 @@ occurrence in the \emph{Freebase} relation dataset.
 \index{main() (in module src.prep.nes.statistics)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.nes:src.prep.nes.statistics.main}\pysiglinewithargsret{\code{src.prep.nes.statistics.}\bfcode{main}}{}{}
+\phantomsection\label{src.prep.nes:src.prep.nes.statistics.main}\pysiglinewithargsret{\bfcode{main}}{}{}
 Main function
 
 \end{fulllineitems}
@@ -1671,18 +1725,18 @@ used with their (quite cryptic) \emph{Freebase} ids, those have to be resolved.
 \begin{notice}{warning}{Warning:}
 Unfortunately, it isn't possible anymore to use this code (July 2016), because the \emph{Freebase API} is now
 deprecated; the whole \emph{Freebase} project has been integrated into \emph{Wikidata}. However, this code is still
-included to show the process of how freebase where transformed into real names using the API and the MQL query
+included to show the process of thow freebase where transformed into real names using the API and the MQL query
 language.
 \end{notice}
 \index{MissingTranslationException}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.relations:src.prep.relations.relations.MissingTranslationException}\pysigline{\strong{exception }\code{src.prep.relations.relations.}\bfcode{MissingTranslationException}}
+\phantomsection\label{src.prep.relations:src.prep.relations.relations.MissingTranslationException}\pysigline{\strong{exception }\bfcode{MissingTranslationException}}
 Bases: \code{exceptions.Exception}
 
 Exception class to be thrown in cases where the API cannot find a translation for a \emph{Freebase} API given the
 target language.
-\index{get\_id() (src.prep.relations.relations.MissingTranslationException method)}
+\index{get\_id() (MissingTranslationException method)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.prep.relations:src.prep.relations.relations.MissingTranslationException.get_id}\pysiglinewithargsret{\bfcode{get\_id}}{}{}
@@ -1704,7 +1758,7 @@ str
 \index{fetch\_name() (in module src.prep.relations.relations)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.relations:src.prep.relations.relations.fetch_name}\pysiglinewithargsret{\code{src.prep.relations.relations.}\bfcode{fetch\_name}}{\emph{fbid}, \emph{lang='de'}}{}
+\phantomsection\label{src.prep.relations:src.prep.relations.relations.fetch_name}\pysiglinewithargsret{\bfcode{fetch\_name}}{\emph{fbid}, \emph{lang='de'}}{}
 Looks for the translation of a \emph{Freebase} id in a target language.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -1732,7 +1786,7 @@ str
 \index{fetch\_relation\_triples\_of\_file() (in module src.prep.relations.relations)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.relations:src.prep.relations.relations.fetch_relation_triples_of_file}\pysiglinewithargsret{\code{src.prep.relations.relations.}\bfcode{fetch\_relation\_triples\_of\_file}}{\emph{inpath}, \emph{outpath}, \emph{logpath}, \emph{lang='de'}}{}
+\phantomsection\label{src.prep.relations:src.prep.relations.relations.fetch_relation_triples_of_file}\pysiglinewithargsret{\bfcode{fetch\_relation\_triples\_of\_file}}{\emph{inpath}, \emph{outpath}, \emph{logpath}, \emph{lang='de'}}{}
 Start the translation of the \emph{Freebase} IDs into real names.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -1754,29 +1808,10 @@ Start the translation of the \emph{Freebase} IDs into real names.
 
 \end{fulllineitems}
 
-\index{format\_fbid() (in module src.prep.relations.relations)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.prep.relations:src.prep.relations.relations.format_fbid}\pysiglinewithargsret{\code{src.prep.relations.relations.}\bfcode{format\_fbid}}{\emph{fbid}}{}
-Transform the format of the \emph{Freebase} IDs from the format used in the dataset to the format used in requests.
-\begin{quote}\begin{description}
-\item[{Parameters}] \leavevmode
-\textbf{\texttt{fbid}} (\emph{\texttt{str}}) -- \emph{Freebase} ID to be formatted.
-
-\item[{Returns}] \leavevmode
-Formatted \emph{Freebase} ID.
-
-\item[{Return type}] \leavevmode
-str
-
-\end{description}\end{quote}
-
-\end{fulllineitems}
-
 \index{freebase\_request() (in module src.prep.relations.relations)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.relations:src.prep.relations.relations.freebase_request}\pysiglinewithargsret{\code{src.prep.relations.relations.}\bfcode{freebase\_request}}{\emph{query}, \emph{api\_key}, \emph{service\_url}}{}
+\phantomsection\label{src.prep.relations:src.prep.relations.relations.freebase_request}\pysiglinewithargsret{\bfcode{freebase\_request}}{\emph{query}, \emph{api\_key}, \emph{service\_url}}{}
 Sends a request to the \emph{Freebase} API.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode\begin{itemize}
@@ -1804,7 +1839,7 @@ dict
 \index{init\_optparser() (in module src.prep.relations.relations)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.relations:src.prep.relations.relations.init_optparser}\pysiglinewithargsret{\code{src.prep.relations.relations.}\bfcode{init\_optparser}}{}{}
+\phantomsection\label{src.prep.relations:src.prep.relations.relations.init_optparser}\pysiglinewithargsret{\bfcode{init\_optparser}}{}{}
 Initialize the option parser for this script.
 \begin{quote}\begin{description}
 \item[{Returns}] \leavevmode
@@ -1820,7 +1855,7 @@ OptionParser
 \index{main() (in module src.prep.relations.relations)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.relations:src.prep.relations.relations.main}\pysiglinewithargsret{\code{src.prep.relations.relations.}\bfcode{main}}{}{}
+\phantomsection\label{src.prep.relations:src.prep.relations.relations.main}\pysiglinewithargsret{\bfcode{main}}{}{}
 Main function. Start translation of relation triplets based on command line arguments.
 
 \end{fulllineitems}
@@ -1828,7 +1863,7 @@ Main function. Start translation of relation triplets based on command line argu
 \index{read\_credentials() (in module src.prep.relations.relations)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.relations:src.prep.relations.relations.read_credentials}\pysiglinewithargsret{\code{src.prep.relations.relations.}\bfcode{read\_credentials}}{}{}
+\phantomsection\label{src.prep.relations:src.prep.relations.relations.read_credentials}\pysiglinewithargsret{\bfcode{read\_credentials}}{}{}
 Reads API credentials from a file.
 \begin{quote}\begin{description}
 \item[{Returns}] \leavevmode
@@ -1844,7 +1879,7 @@ tuple
 \index{rl() (in module src.prep.relations.relations)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.prep.relations:src.prep.relations.relations.rl}\pysiglinewithargsret{\code{src.prep.relations.relations.}\bfcode{rl}}{\emph{infile}}{}
+\phantomsection\label{src.prep.relations:src.prep.relations.relations.rl}\pysiglinewithargsret{\bfcode{rl}}{\emph{infile}}{}
 Lazy function to read a line from a while and remove redundant whitespaces.
 \begin{quote}\begin{description}
 \item[{Parameters}] \leavevmode
@@ -1875,115 +1910,219 @@ str
 \label{src.trans_e:submodules}
 
 \paragraph{src.trans\_e.add\_inverse\_relations module}
-\label{src.trans_e:module-src.trans_e.add_inverse_relations}\label{src.trans_e:src-trans-e-add-inverse-relations-module}\index{src.trans\_e.add\_inverse\_relations (module)}\index{add\_inverse\_relations() (in module src.trans\_e.add\_inverse\_relations)}
+\label{src.trans_e:module-src.trans_e.add_inverse_relations}\label{src.trans_e:src-trans-e-add-inverse-relations-module}\index{src.trans\_e.add\_inverse\_relations (module)}
+This script is used to add inverse relations to a \emph{Freebase} relations dataset, e.g.
+\emph{/location/location/contains} and \emph{/location/location/containedby}.
+\index{add\_inverse\_relations() (in module src.trans\_e.add\_inverse\_relations)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.add_inverse_relations.add_inverse_relations}\pysiglinewithargsret{\code{src.trans\_e.add\_inverse\_relations.}\bfcode{add\_inverse\_relations}}{\emph{relations\_inpath}, \emph{relations\_outpath}, \emph{inverse\_relations}, \emph{known\_relations}}{}
+\phantomsection\label{src.trans_e:src.trans_e.add_inverse_relations.add_inverse_relations}\pysiglinewithargsret{\bfcode{add\_inverse\_relations}}{\emph{relations\_inpath}, \emph{relations\_outpath}, \emph{inverse\_relations}}{}
 \end{fulllineitems}
 
 \index{init\_argparse() (in module src.trans\_e.add\_inverse\_relations)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.add_inverse_relations.init_argparse}\pysiglinewithargsret{\code{src.trans\_e.add\_inverse\_relations.}\bfcode{init\_argparse}}{}{}
+\phantomsection\label{src.trans_e:src.trans_e.add_inverse_relations.init_argparse}\pysiglinewithargsret{\bfcode{init\_argparse}}{}{}
+Initialize all possible arguments for the argument parser.
+\begin{quote}\begin{description}
+\item[{Returns}] \leavevmode
+ArgumentParser object with command line arguments for this script.
+
+\item[{Return type}] \leavevmode
+\code{argparse.ArgumentParser}
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{main() (in module src.trans\_e.add\_inverse\_relations)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.add_inverse_relations.main}\pysiglinewithargsret{\code{src.trans\_e.add\_inverse\_relations.}\bfcode{main}}{}{}
+\phantomsection\label{src.trans_e:src.trans_e.add_inverse_relations.main}\pysiglinewithargsret{\bfcode{main}}{}{}
+The main function. Uses command line arguments to start the script.
+
 \end{fulllineitems}
 
 \index{read\_file\_with\_inverse\_relations() (in module src.trans\_e.add\_inverse\_relations)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.add_inverse_relations.read_file_with_inverse_relations}\pysiglinewithargsret{\code{src.trans\_e.add\_inverse\_relations.}\bfcode{read\_file\_with\_inverse\_relations}}{\emph{inverse\_inpath}}{}
+\phantomsection\label{src.trans_e:src.trans_e.add_inverse_relations.read_file_with_inverse_relations}\pysiglinewithargsret{\bfcode{read\_file\_with\_inverse\_relations}}{\emph{inverse\_inpath}}{}
+Read a \emph{Freebase} information file where inverse relations are present and separated by a simple dot.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{inverse\_inpath}} (\emph{\texttt{str}}) -- Path to \emph{Freebase} relation file.
+
+\item[{Returns}] \leavevmode
+Dictionary with a relation as a key and its inverse as value.
+
+\item[{Return type}] \leavevmode
+defaultdict
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 
 
-\paragraph{src.trans\_e.clean\_relations module}
-\label{src.trans_e:src-trans-e-clean-relations-module}\label{src.trans_e:module-src.trans_e.clean_relations}\index{src.trans\_e.clean\_relations (module)}
-
 \paragraph{src.trans\_e.contains\_entities module}
-\label{src.trans_e:src-trans-e-contains-entities-module}\label{src.trans_e:module-src.trans_e.contains_entities}\index{src.trans\_e.contains\_entities (module)}\index{contains\_entities() (in module src.trans\_e.contains\_entities)}
+\label{src.trans_e:src-trans-e-contains-entities-module}\label{src.trans_e:module-src.trans_e.contains_entities}\index{src.trans\_e.contains\_entities (module)}
+This script analyses entities in the \emph{Freebase} \code{FB14k} relations datatset and the tql wikidata dump.
+This is handy because the \emph{Freebase} API is deprecated nowadays. Also, this scripted was used to create the \code{GER14k}
+dataset.
+\index{contains\_entities() (in module src.trans\_e.contains\_entities)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.contains_entities.contains_entities}\pysiglinewithargsret{\code{src.trans\_e.contains\_entities.}\bfcode{contains\_entities}}{\emph{entities1}, \emph{entities2}}{}
+\phantomsection\label{src.trans_e:src.trans_e.contains_entities.contains_entities}\pysiglinewithargsret{\bfcode{contains\_entities}}{\emph{entities1}, \emph{entities2}}{}
+Prints stats about two sets of entities.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{entities1}} (\emph{\texttt{set}}) -- First set of entities.
+
+\item {} 
+\textbf{\texttt{entities2}} (\emph{\texttt{set}}) -- Second set of entities.
+
+\end{itemize}
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{create\_new\_dataset() (in module src.trans\_e.contains\_entities)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.contains_entities.create_new_dataset}\pysiglinewithargsret{\code{src.trans\_e.contains\_entities.}\bfcode{create\_new\_dataset}}{\emph{entities1}, \emph{dataset}, \emph{outpath}}{}
+\phantomsection\label{src.trans_e:src.trans_e.contains_entities.create_new_dataset}\pysiglinewithargsret{\bfcode{create\_new\_dataset}}{\emph{entities1}, \emph{dataset}, \emph{outpath}}{}
+Write a new dataset only with relations which entities appear in a specific set.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{entities1}} (\emph{\texttt{set}}) -- Set entities in relations have to appear in.
+
+\item {} 
+\textbf{\texttt{dataset}} (\emph{\texttt{list}}) -- Original dataset (a list of tuples).
+
+\item {} 
+\textbf{\texttt{outpath}} (\emph{\texttt{str}}) -- Path to new dataset.
+
+\end{itemize}
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{extract\_entities\_from\_relation\_dataset() (in module src.trans\_e.contains\_entities)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.contains_entities.extract_entities_from_relation_dataset}\pysiglinewithargsret{\code{src.trans\_e.contains\_entities.}\bfcode{extract\_entities\_from\_relation\_dataset}}{\emph{dataset\_inpath}}{}
+\phantomsection\label{src.trans_e:src.trans_e.contains_entities.extract_entities_from_relation_dataset}\pysiglinewithargsret{\bfcode{extract\_entities\_from\_relation\_dataset}}{\emph{dataset\_inpath}}{}
+Extract all entities from the \emph{Freebase} relations file.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{dataset\_inpath}} (\emph{\texttt{str}}) -- Path to the \emph{Freebase} file.
+
+\item[{Returns}] \leavevmode
+Set of entities in the \emph{Freebase} relations file..
+
+\item[{Return type}] \leavevmode
+set
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{extract\_entities\_from\_tql\_file() (in module src.trans\_e.contains\_entities)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.contains_entities.extract_entities_from_tql_file}\pysiglinewithargsret{\code{src.trans\_e.contains\_entities.}\bfcode{extract\_entities\_from\_tql\_file}}{\emph{tql\_path}}{}
-\end{fulllineitems}
+\phantomsection\label{src.trans_e:src.trans_e.contains_entities.extract_entities_from_tql_file}\pysiglinewithargsret{\bfcode{extract\_entities\_from\_tql\_file}}{\emph{tql\_path}}{}
+Extract all entities from the \code{tql} \emph{Wikidata} \emph{Freebase} dump.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{tql\_path}} (\emph{\texttt{str}}) -- Path to \code{tql} file.
 
-\index{format\_fbid() (in module src.trans\_e.contains\_entities)}
+\item[{Returns}] \leavevmode
+Set of entities in the \code{tql} dump.
 
-\begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.contains_entities.format_fbid}\pysiglinewithargsret{\code{src.trans\_e.contains\_entities.}\bfcode{format\_fbid}}{\emph{id}}{}
+\item[{Return type}] \leavevmode
+set
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{init\_argparse() (in module src.trans\_e.contains\_entities)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.contains_entities.init_argparse}\pysiglinewithargsret{\code{src.trans\_e.contains\_entities.}\bfcode{init\_argparse}}{}{}
+\phantomsection\label{src.trans_e:src.trans_e.contains_entities.init_argparse}\pysiglinewithargsret{\bfcode{init\_argparse}}{}{}
 \end{fulllineitems}
 
 \index{main() (in module src.trans\_e.contains\_entities)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.contains_entities.main}\pysiglinewithargsret{\code{src.trans\_e.contains\_entities.}\bfcode{main}}{}{}
+\phantomsection\label{src.trans_e:src.trans_e.contains_entities.main}\pysiglinewithargsret{\bfcode{main}}{}{}
+Main function.
+
 \end{fulllineitems}
 
 
 
-\paragraph{src.trans\_e.convert\_relations module}
-\label{src.trans_e:module-src.trans_e.convert_relations}\label{src.trans_e:src-trans-e-convert-relations-module}\index{src.trans\_e.convert\_relations (module)}
-
 \paragraph{src.trans\_e.differentiate\_datasets module}
-\label{src.trans_e:module-src.trans_e.differentiate_datasets}\label{src.trans_e:src-trans-e-differentiate-datasets-module}\index{src.trans\_e.differentiate\_datasets (module)}\index{compare\_entities() (in module src.trans\_e.differentiate\_datasets)}
+\label{src.trans_e:module-src.trans_e.differentiate_datasets}\label{src.trans_e:src-trans-e-differentiate-datasets-module}\index{src.trans\_e.differentiate\_datasets (module)}
+This script analyses entities of two relation datasets (e.g. \code{FB15k} and \code{GER14k}!).
+\index{compare\_entities() (in module src.trans\_e.differentiate\_datasets)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.differentiate_datasets.compare_entities}\pysiglinewithargsret{\code{src.trans\_e.differentiate\_datasets.}\bfcode{compare\_entities}}{\emph{set1}, \emph{set2}}{}
+\phantomsection\label{src.trans_e:src.trans_e.differentiate_datasets.compare_entities}\pysiglinewithargsret{\bfcode{compare\_entities}}{\emph{set1}, \emph{set2}}{}
+Compares unique entities of two relation datasets.
+Also determines the size of their intersection.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{set1}} (\emph{\texttt{list}}) -- List of relation triples as tuples from dataset 1.
+
+\item {} 
+\textbf{\texttt{set2}} (\emph{\texttt{list}}) -- List of relation trilpes as tuples from dataset 2.
+
+\end{itemize}
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{init\_argparse() (in module src.trans\_e.differentiate\_datasets)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.differentiate_datasets.init_argparse}\pysiglinewithargsret{\code{src.trans\_e.differentiate\_datasets.}\bfcode{init\_argparse}}{}{}
+\phantomsection\label{src.trans_e:src.trans_e.differentiate_datasets.init_argparse}\pysiglinewithargsret{\bfcode{init\_argparse}}{}{}
+Initialize all possible arguments for the argument parser.
+\begin{quote}\begin{description}
+\item[{Returns}] \leavevmode
+ArgumentParser object with command line arguments for this script.
+
+\item[{Return type}] \leavevmode
+\code{argparse.ArgumentParser}
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{main() (in module src.trans\_e.differentiate\_datasets)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.differentiate_datasets.main}\pysiglinewithargsret{\code{src.trans\_e.differentiate\_datasets.}\bfcode{main}}{}{}
-\end{fulllineitems}
+\phantomsection\label{src.trans_e:src.trans_e.differentiate_datasets.main}\pysiglinewithargsret{\bfcode{main}}{}{}
+Main function
 
-\index{read\_dataset() (in module src.trans\_e.differentiate\_datasets)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.differentiate_datasets.read_dataset}\pysiglinewithargsret{\code{src.trans\_e.differentiate\_datasets.}\bfcode{read\_dataset}}{\emph{inpath}}{}
 \end{fulllineitems}
 
 
 
 \paragraph{src.trans\_e.partition\_data module}
-\label{src.trans_e:src-trans-e-partition-data-module}\label{src.trans_e:module-src.trans_e.partition_data}\index{src.trans\_e.partition\_data (module)}\index{check\_data\_integrity() (in module src.trans\_e.partition\_data)}
+\label{src.trans_e:src-trans-e-partition-data-module}\label{src.trans_e:module-src.trans_e.partition_data}\index{src.trans\_e.partition\_data (module)}
+This script partition the data of a relation dataset like \code{FB15k} into a training, validation and test set so it
+can be used by \href{https://github.com/glorotxa/SME}{TransE}.
+To make sure that no relation appears in the validation or test set that didn't appear in the training set, data
+will be partitioned relation-wise. To partition them intuitively is still an option, though.
+\index{check\_data\_integrity() (in module src.trans\_e.partition\_data)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.partition_data.check_data_integrity}\pysiglinewithargsret{\code{src.trans\_e.partition\_data.}\bfcode{check\_data\_integrity}}{\emph{data\_inpath}, \emph{remove\_clones}, \emph{outpath}}{}
+\phantomsection\label{src.trans_e:src.trans_e.partition_data.check_data_integrity}\pysiglinewithargsret{\bfcode{check\_data\_integrity}}{\emph{data\_inpath}, \emph{remove\_clones}, \emph{outpath}}{}
 Check whether all triplets in the data are unique.
 
 \end{fulllineitems}
@@ -1991,197 +2130,578 @@ Check whether all triplets in the data are unique.
 \index{check\_set\_integrity() (in module src.trans\_e.partition\_data)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.partition_data.check_set_integrity}\pysiglinewithargsret{\code{src.trans\_e.partition\_data.}\bfcode{check\_set\_integrity}}{\emph{indir}}{}
+\phantomsection\label{src.trans_e:src.trans_e.partition_data.check_set_integrity}\pysiglinewithargsret{\bfcode{check\_set\_integrity}}{\emph{indir}}{}
+Checks the integrity of given training / validation / test sets (do triples with new relations appear in the
+validation or test, but not in the training set?).
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{indir}} (\emph{\texttt{str}}) -- Directory of the datasets.
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{get\_stats() (in module src.trans\_e.partition\_data)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.partition_data.get_stats}\pysiglinewithargsret{\code{src.trans\_e.partition\_data.}\bfcode{get\_stats}}{\emph{data}}{}
+\phantomsection\label{src.trans_e:src.trans_e.partition_data.get_stats}\pysiglinewithargsret{\bfcode{get\_stats}}{\emph{data}}{}
+Returns some statistics about the given data, i.e. the number of unique entities, relations and
+their sum.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{data}} (\emph{\texttt{list}}) -- List of relation triples as tuples.
+
+\item[{Returns}] \leavevmode
+\#entities, \#relations, \#entities + \#relations.
+
+\item[{Return type}] \leavevmode
+tuple
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{init\_argparse() (in module src.trans\_e.partition\_data)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.partition_data.init_argparse}\pysiglinewithargsret{\code{src.trans\_e.partition\_data.}\bfcode{init\_argparse}}{}{}
+\phantomsection\label{src.trans_e:src.trans_e.partition_data.init_argparse}\pysiglinewithargsret{\bfcode{init\_argparse}}{}{}
+Initialize all possible arguments for the argument parser.
+\begin{quote}\begin{description}
+\item[{Returns}] \leavevmode
+ArgumentParser object with command line arguments for this script.
+
+\item[{Return type}] \leavevmode
+\code{argparse.ArgumentParser}
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{main() (in module src.trans\_e.partition\_data)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.partition_data.main}\pysiglinewithargsret{\code{src.trans\_e.partition\_data.}\bfcode{main}}{}{}
+\phantomsection\label{src.trans_e:src.trans_e.partition_data.main}\pysiglinewithargsret{\bfcode{main}}{}{}
+Main function.
+
 \end{fulllineitems}
 
 \index{partition\_data() (in module src.trans\_e.partition\_data)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.partition_data.partition_data}\pysiglinewithargsret{\code{src.trans\_e.partition\_data.}\bfcode{partition\_data}}{\emph{data}, \emph{prts}, \emph{outdir}, \emph{whole=True}}{}
+\phantomsection\label{src.trans_e:src.trans_e.partition_data.partition_data}\pysiglinewithargsret{\bfcode{partition\_data}}{\emph{data}, \emph{prts}, \emph{outdir}, \emph{whole=True}}{}
 \end{fulllineitems}
 
 \index{partition\_relation\_wise() (in module src.trans\_e.partition\_data)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.partition_data.partition_relation_wise}\pysiglinewithargsret{\code{src.trans\_e.partition\_data.}\bfcode{partition\_relation\_wise}}{\emph{data}, \emph{prts}}{}
+\phantomsection\label{src.trans_e:src.trans_e.partition_data.partition_relation_wise}\pysiglinewithargsret{\bfcode{partition\_relation\_wise}}{\emph{data}, \emph{prts}}{}
+Partition data into training, validation and test set.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{data}} (\emph{\texttt{list}}) -- List of relation triples as tuples.
+
+\item {} 
+\textbf{\texttt{prts}} (\emph{\texttt{tuple}}) -- Tuple of floats with each number corresponding to the desired percentage of data distributed to
+the corresponding set (\% train set / \% validation set / \% tets set)
+
+\end{itemize}
+
+\item[{Returns}] \leavevmode
+Tuple of the three data sets as lists of relation triples as tuples.
+
+\item[{Return type}] \leavevmode
+tuples
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{partition\_whole() (in module src.trans\_e.partition\_data)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.partition_data.partition_whole}\pysiglinewithargsret{\code{src.trans\_e.partition\_data.}\bfcode{partition\_whole}}{\emph{data}, \emph{prts}}{}
-\end{fulllineitems}
-
-\index{partitions\_list() (in module src.trans\_e.partition\_data)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.partition_data.partitions_list}\pysiglinewithargsret{\code{src.trans\_e.partition\_data.}\bfcode{partitions\_list}}{\emph{l}, \emph{prts}}{}
+\phantomsection\label{src.trans_e:src.trans_e.partition_data.partition_whole}\pysiglinewithargsret{\bfcode{partition\_whole}}{\emph{data}, \emph{prts}}{}
 \end{fulllineitems}
 
 \index{read\_only\_relations\_into\_set() (in module src.trans\_e.partition\_data)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.partition_data.read_only_relations_into_set}\pysiglinewithargsret{\code{src.trans\_e.partition\_data.}\bfcode{read\_only\_relations\_into\_set}}{\emph{inpath}}{}
-\end{fulllineitems}
+\phantomsection\label{src.trans_e:src.trans_e.partition_data.read_only_relations_into_set}\pysiglinewithargsret{\bfcode{read\_only\_relations\_into\_set}}{\emph{inpath}}{}
+Only read the relation of a given relation dataset into a set.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{inpath}} (\emph{\texttt{str}}) -- Path to relation dataset.
 
-\index{read\_relations() (in module src.trans\_e.partition\_data)}
+\item[{Returns}] \leavevmode
+Set of dataset relation types.
 
-\begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.partition_data.read_relations}\pysiglinewithargsret{\code{src.trans\_e.partition\_data.}\bfcode{read\_relations}}{\emph{inpath}}{}
+\item[{Return type}] \leavevmode
+set
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{write\_data\_in\_file() (in module src.trans\_e.partition\_data)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.partition_data.write_data_in_file}\pysiglinewithargsret{\code{src.trans\_e.partition\_data.}\bfcode{write\_data\_in\_file}}{\emph{data}, \emph{outfile}}{}
+\phantomsection\label{src.trans_e:src.trans_e.partition_data.write_data_in_file}\pysiglinewithargsret{\bfcode{write\_data\_in\_file}}{\emph{data}, \emph{outfile}}{}
+Writes relation triples into a file.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{data}} (\emph{\texttt{list}}) -- List of relation triples as tuples.
+
+\item {} 
+\textbf{\texttt{outfile}} (\emph{\texttt{str}}) -- Path the triples should be written to.
+
+\end{itemize}
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 
 
 \paragraph{src.trans\_e.trans\_we module}
-\label{src.trans_e:src-trans-e-trans-we-module}\label{src.trans_e:module-src.trans_e.trans_we}\index{src.trans\_e.trans\_we (module)}\index{convert\_data() (in module src.trans\_e.trans\_we)}
+\label{src.trans_e:src-trans-e-trans-we-module}\label{src.trans_e:module-src.trans_e.trans_we}\index{src.trans\_e.trans\_we (module)}
+This module follows a modified approach from
+\href{http://papers.nips.cc/paper/5071-translating-embeddings-for-modeling-multi-relational-data.pdf}{(Bordes et al., 2013)}.
+As so, noise-contrastive learning and corrupt triples are use. But whereas in this original paper,
+vector representations forn entities and relations are learned in a joint manner, in this case only the continuous
+representations for semantic relations will be learned and word embeddings used for the entities instead.
+
+\begin{notice}{warning}{Warning:}
+Because we use words embedding but still the \emph{FB15k} dataset here, we can only use data samples where we have
+trained word embeddings for both entities. Those are only a few, which is one reason why this approach performs
+badly.
+\end{notice}
+\index{convert\_data() (in module src.trans\_e.trans\_we)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.trans_we.convert_data}\pysiglinewithargsret{\code{src.trans\_e.trans\_we.}\bfcode{convert\_data}}{\emph{sets\_path}, \emph{tql\_inpath}, \emph{vector\_inpath}}{}
+\phantomsection\label{src.trans_e:src.trans_e.trans_we.convert_data}\pysiglinewithargsret{\bfcode{convert\_data}}{\emph{sets\_path}, \emph{tql\_inpath}, \emph{vector\_inpath}}{}
+Re-formats relation data sets to fit the training routine in this module.
+Also tests the coverage of word embedding model on all entities in the datasets.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{sets\_path}} (\emph{\texttt{str}}) -- Directory of the datasets.
+
+\item {} 
+\textbf{\texttt{tql\_inpath}} (\emph{\texttt{str}}) -- Path to \emph{Wikidata} \emph{Freebase} dump in \titleref{tql} format.
+
+\item {} 
+\textbf{\texttt{vector\_inpath}} (\emph{\texttt{str}}) -- Path to word embedding file.
+
+\end{itemize}
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{create\_corrupt\_triples() (in module src.trans\_e.trans\_we)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.trans_we.create_corrupt_triples}\pysiglinewithargsret{\code{src.trans\_e.trans\_we.}\bfcode{create\_corrupt\_triples}}{\emph{grouped\_pairs}, \emph{entities}}{}
+\phantomsection\label{src.trans_e:src.trans_e.trans_we.create_corrupt_triples}\pysiglinewithargsret{\bfcode{create\_corrupt\_triples}}{\emph{grouped\_pairs}, \emph{entities}}{}
+Creates a set of corrupted training triplets group by their shared relation.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{grouped\_pairs}} (\emph{\texttt{dict}}) -- Test samples as dictionary with relation as key and a list of tuples
+
+\item {} 
+\textbf{\texttt{two entities each as value.}} (\emph{\texttt{with}}) -- 
+
+\item {} 
+\textbf{\texttt{entities}} (\emph{\texttt{set}}) -- Set of unique entities.
+
+\end{itemize}
+
+\item[{Returns}] \leavevmode
+\textbf{grouped\_train} -- Corrupted training samples as dictionary with a relation as key and a list of tuples
+with two entities each as value.
+
+\item[{Return type}] \leavevmode
+dict
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{dump\_relation\_vectors() (in module src.trans\_e.trans\_we)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.trans_we.dump_relation_vectors}\pysiglinewithargsret{\code{src.trans\_e.trans\_we.}\bfcode{dump\_relation\_vectors}}{\emph{relation\_vectors}, \emph{outpath}}{}
+\phantomsection\label{src.trans_e:src.trans_e.trans_we.dump_relation_vectors}\pysiglinewithargsret{\bfcode{dump\_relation\_vectors}}{\emph{relation\_vectors}, \emph{outpath}}{}
+Saves relation numpy vectors.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{relation\_vectors}} (\emph{\texttt{dict}}) -- Dictionary with index of a relation as key and the relations vector as a
+
+\item {} 
+\textbf{\texttt{as value.}} (\emph{\texttt{numpy.array}}) -- 
+
+\item {} 
+\textbf{\texttt{outpath}} (\emph{\texttt{str}}) -- Path the vectors should be saved to.
+
+\end{itemize}
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{evaluate() (in module src.trans\_e.trans\_we)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.trans_we.evaluate}\pysiglinewithargsret{\code{src.trans\_e.trans\_we.}\bfcode{evaluate}}{\emph{model}, \emph{grouped\_test}, \emph{relation\_vectors}, \emph{entities}}{}
+\phantomsection\label{src.trans_e:src.trans_e.trans_we.evaluate}\pysiglinewithargsret{\bfcode{evaluate}}{\emph{model}, \emph{grouped\_test}, \emph{relation\_vectors}, \emph{entities}}{}
+Evaluate the relations vector the same way as in \href{http://papers.nips.cc/paper/5071-translating-embeddings-for-modeling-multi-relational-data.pdf}{(Bordes et al.,
+2013)}.
+Therefore, for every relation triple in the testset, one entity will be removed and all entities will be inserted
+afterwards. Also they will be ranked by their loss (ascending) and assigned a rank. The evaluation metrics are
+the percentage of times the right entity is in the top ten highest ranked entities and mean rank of the correct
+entitiy.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{model}} (\emph{\texttt{gensim.models.Word2Vec}}) -- Word embeddings as gensim model.
+
+\item {} 
+\textbf{\texttt{grouped\_test}} (\emph{\texttt{dict}}) -- Test samples as dictionary with relation as key and a list of tuples
+
+\item {} 
+\textbf{\texttt{two entities each as value.}} (\emph{\texttt{with}}) -- 
+
+\item {} 
+\textbf{\texttt{relation\_vectors}} (\emph{\texttt{dict}}) -- Dictionary with index of a relation as key and the relations vector as a numpy.array
+
+\item {} 
+\textbf{\texttt{value.}} (\emph{\texttt{as}}) -- 
+
+\item {} 
+\textbf{\texttt{entities}} (\emph{\texttt{set}}) -- Set of unique entities.
+
+\end{itemize}
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{extract\_data\_from\_uri() (in module src.trans\_e.trans\_we)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.trans_we.extract_data_from_uri}\pysiglinewithargsret{\code{src.trans\_e.trans\_we.}\bfcode{extract\_data\_from\_uri}}{\emph{uri}}{}
+\phantomsection\label{src.trans_e:src.trans_e.trans_we.extract_data_from_uri}\pysiglinewithargsret{\bfcode{extract\_data\_from\_uri}}{\emph{uri}}{}
+Extracts data from an URI.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{uri}} (\emph{\texttt{str}}) -- URI the data should be extracted from.
+
+\item[{Returns}] \leavevmode
+Extracted data.
+
+\item[{Return type}] \leavevmode
+str
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{get\_rank() (in module src.trans\_e.trans\_we)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.trans_we.get_rank}\pysiglinewithargsret{\code{src.trans\_e.trans\_we.}\bfcode{get\_rank}}{\emph{target}, \emph{ranks}}{}
+\phantomsection\label{src.trans_e:src.trans_e.trans_we.get_rank}\pysiglinewithargsret{\bfcode{get\_rank}}{\emph{target}, \emph{ranks}}{}
+Get rank of a target entity within all ranked entities.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{target}} (\emph{\texttt{str}}) -- Target entity which rank should be determined.
+
+\item {} 
+\textbf{\texttt{ranks}} (\emph{\texttt{list}}) -- List of tuples of an entity and its rank.
+
+\end{itemize}
+
+\item[{Returns}] \leavevmode
+Rank of entity or -1 if entity is not present in ranks.
+
+\item[{Return type}] \leavevmode
+int
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{init\_argparser() (in module src.trans\_e.trans\_we)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.trans_we.init_argparser}\pysiglinewithargsret{\code{src.trans\_e.trans\_we.}\bfcode{init\_argparser}}{}{}
-Initialize all arguments for an ArgumentParser object and return it.
+\phantomsection\label{src.trans_e:src.trans_e.trans_we.init_argparser}\pysiglinewithargsret{\bfcode{init\_argparser}}{}{}
+Initialize all possible arguments for the argument parser.
+\begin{quote}\begin{description}
+\item[{Returns}] \leavevmode
+ArgumentParser object with command line arguments for this script.
 
-@returns \{ArgumentParser\} argument parser object
+\item[{Return type}] \leavevmode
+\code{argparse.ArgumentParser}
+
+\end{description}\end{quote}
 
 \end{fulllineitems}
 
 \index{load\_relation\_vectors() (in module src.trans\_e.trans\_we)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.trans_we.load_relation_vectors}\pysiglinewithargsret{\code{src.trans\_e.trans\_we.}\bfcode{load\_relation\_vectors}}{\emph{inpath}}{}
-\end{fulllineitems}
+\phantomsection\label{src.trans_e:src.trans_e.trans_we.load_relation_vectors}\pysiglinewithargsret{\bfcode{load\_relation\_vectors}}{\emph{inpath}}{}
+Loads relation numpy vectors.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{inpath}} (\emph{\texttt{str}}) -- Path the numpy vectors should be loaded from.
 
-\index{load\_vectors() (in module src.trans\_e.trans\_we)}
+\item[{Returns}] \leavevmode
+Dictionary with index of a relation as key and the relations vector as a numpy.array as value.
 
-\begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.trans_we.load_vectors}\pysiglinewithargsret{\code{src.trans\_e.trans\_we.}\bfcode{load\_vectors}}{\emph{vector\_inpath}}{}
-@param vector\_inpath: Path to word2vec model file
+\item[{Return type}] \leavevmode
+dict
+
+\end{description}\end{quote}
 
 \end{fulllineitems}
 
 \index{main() (in module src.trans\_e.trans\_we)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.trans_we.main}\pysiglinewithargsret{\code{src.trans\_e.trans\_we.}\bfcode{main}}{}{}
+\phantomsection\label{src.trans_e:src.trans_e.trans_we.main}\pysiglinewithargsret{\bfcode{main}}{}{}
+Main function.
+
 \end{fulllineitems}
 
 \index{prepare\_training() (in module src.trans\_e.trans\_we)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.trans_we.prepare_training}\pysiglinewithargsret{\code{src.trans\_e.trans\_we.}\bfcode{prepare\_training}}{\emph{sets\_path}, \emph{vector\_inpath}}{}
+\phantomsection\label{src.trans_e:src.trans_e.trans_we.prepare_training}\pysiglinewithargsret{\bfcode{prepare\_training}}{\emph{sets\_path}, \emph{vector\_inpath}}{}
+Prepares the training step loading word embeddings and training sets.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{sets\_path}} (\emph{\texttt{str}}) -- Path to training set directory.
+
+\item {} 
+\textbf{\texttt{vector\_inpath}} (\emph{\texttt{str}}) -- Path to word embedding file.
+
+\end{itemize}
+
+\item[{Returns}] \leavevmode
+Tuple of results with \textbf{model} (\emph{gensim.models.Word2Vec}): Word embeddings as gensim model /
+\textbf{grouped\_train} (\emph{dict}): Training samples as dictionary with relation as key and a list of tuples
+with two entities each as value / \textbf{grouped\_valid} (\emph{dict}): As \textbf{grouped\_train} / \textbf{grouped\_test}
+(\emph{dict}): As \textbf{grouped\_train} / \textbf{grouped\_corrupted} (\emph{dict}): As \textbf{grouped\_train} /
+\textbf{relations\_types} (\emph{dict}): Dictionary with relations as key and the amount of triples with this relation
+as a key / \textbf{entities} (\emph{set}): Set of unique entities.
+
+\item[{Return type}] \leavevmode
+tuple
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{rank\_entities() (in module src.trans\_e.trans\_we)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.trans_we.rank_entities}\pysiglinewithargsret{\code{src.trans\_e.trans\_we.}\bfcode{rank\_entities}}{\emph{reference}, \emph{solution}, \emph{model}, \emph{entities}}{}
+\phantomsection\label{src.trans_e:src.trans_e.trans_we.rank_entities}\pysiglinewithargsret{\bfcode{rank\_entities}}{\emph{reference}, \emph{solution}, \emph{model}, \emph{entities}}{}
+Ranks entities against a reference vector.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{reference}} (\emph{\texttt{numpy.array}}) -- Reference vector.
+
+\item {} 
+\textbf{\texttt{solution}} (\emph{\texttt{str}}) -- The actual solution.
+
+\item {} 
+\textbf{\texttt{model}} (\emph{\texttt{gensim.models.Word2Vec}}) -- Word embeddings as gensim model.
+
+\item {} 
+\textbf{\texttt{entities}} (\emph{\texttt{set}}) -- Set of unique entities.
+
+\end{itemize}
+
+\item[{Returns}] \leavevmode
+Rank of solution as integer, flag if a \href{mailto:Hit@10}{Hit@10} has occurred as boolean.
+
+\item[{Return type}] \leavevmode
+tuples
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{read\_freebase\_data() (in module src.trans\_e.trans\_we)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.trans_we.read_freebase_data}\pysiglinewithargsret{\code{src.trans\_e.trans\_we.}\bfcode{read\_freebase\_data}}{\emph{sets\_path}}{}
-\end{fulllineitems}
+\phantomsection\label{src.trans_e:src.trans_e.trans_we.read_freebase_data}\pysiglinewithargsret{\bfcode{read\_freebase\_data}}{\emph{sets\_path}}{}
+Reads all different datasets in a directory at once.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{sets\_path}} (\emph{\texttt{str}}) -- Directory of the datasets.
 
-\index{read\_freebase\_file() (in module src.trans\_e.trans\_we)}
+\item[{Returns}] \leavevmode
+Tuple of datasets as lists.
 
-\begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.trans_we.read_freebase_file}\pysiglinewithargsret{\code{src.trans\_e.trans\_we.}\bfcode{read\_freebase\_file}}{\emph{fb\_inpath}}{}
+\item[{Return type}] \leavevmode
+tuple
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{read\_tql\_file() (in module src.trans\_e.trans\_we)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.trans_we.read_tql_file}\pysiglinewithargsret{\code{src.trans\_e.trans\_we.}\bfcode{read\_tql\_file}}{\emph{tql\_inpath}}{}
+\phantomsection\label{src.trans_e:src.trans_e.trans_we.read_tql_file}\pysiglinewithargsret{\bfcode{read\_tql\_file}}{\emph{tql\_inpath}}{}
+Reads a \emph{Freebase} dump by wikidata. Must be in \titleref{tql} format. Available online
+\href{https://developers.google.com/freebase/}{here} (July 2016).
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{tql\_inpath}} (\emph{\texttt{str}}) -- Path to \emph{Wikidata} \emph{Freebase} dump in \titleref{tql} format.
+
+\item[{Returns}] \leavevmode
+Dictionary with \emph{Freebase} code as key and the corresponding real name of an entity as value.
+
+\item[{Return type}] \leavevmode
+defaultdict
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{test\_coverage() (in module src.trans\_e.trans\_we)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.trans_we.test_coverage}\pysiglinewithargsret{\code{src.trans\_e.trans\_we.}\bfcode{test\_coverage}}{\emph{triples}, \emph{model}}{}
+\phantomsection\label{src.trans_e:src.trans_e.trans_we.test_coverage}\pysiglinewithargsret{\bfcode{test\_coverage}}{\emph{triples}, \emph{model}}{}
 Test the coverage of a dataset consisting of freebase triples on word2vec word embeddings.
 For every triple (h, l, t), the entities h and t are taken and used for look up in the word2vec
 model.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{triples}} (\emph{\texttt{list}}) -- List of relation triples as tuples.
 
-@param triples: list of 3-tuples (freebase triples)
-@param model: gensim word2vec model
+\item {} 
+\textbf{\texttt{model}} (\emph{\texttt{gensim.models.Word2Vec}}) -- Word embeddings as gensim model.
+
+\end{itemize}
+
+\item[{Returns}] \leavevmode
+Set of entities in the model.
+
+\item[{Return type}] \leavevmode
+set
+
+\end{description}\end{quote}
 
 \end{fulllineitems}
 
 \index{train() (in module src.trans\_e.trans\_we)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.trans_we.train}\pysiglinewithargsret{\code{src.trans\_e.trans\_we.}\bfcode{train}}{\emph{model}, \emph{grouped\_train}, \emph{grouped\_corrupted}, \emph{lossf}, \emph{relation\_types}, \emph{epochs=1000}, \emph{learning\_rate=0.01}, \emph{margin=1}}{}
+\phantomsection\label{src.trans_e:src.trans_e.trans_we.train}\pysiglinewithargsret{\bfcode{train}}{\emph{model}, \emph{grouped\_train}, \emph{grouped\_corrupted}, \emph{lossf}, \emph{relation\_types}, \emph{epochs=1000}, \emph{learning\_rate=0.01}, \emph{margin=1.0}}{}
+Train the relation vectors following the example of \href{http://papers.nips.cc/paper/5071-translating-embeddings-for-modeling-multi-relational-data.pdf}{(Bordes et al.,
+2013)},
+but use word embeddings for the entity vectors instead.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{model}} (\emph{gensim.models.Word2Vec}) -- Word embeddings as gensim model.
+
+\item {} 
+\textbf{\texttt{grouped\_train}} (\emph{\texttt{dict}}) -- Training samples as dictionary with relation as key and a list of tuples
+
+\item {} 
+\textbf{\texttt{two entities each as value.}} (\emph{\texttt{with}}) -- 
+
+\item {} 
+\textbf{\texttt{grouped\_corrupted}} (\emph{\texttt{dict}}) -- As grouped\_train.
+
+\item {} 
+\textbf{\texttt{lossf}} (\emph{\texttt{func}}) -- Loss function for training.
+
+\item {} 
+\textbf{\texttt{relation\_types}} (\emph{\texttt{dict}}) -- Dictionary with relations as key and the amount of triples with this relation as a key.
+
+\item {} 
+\textbf{\texttt{epochs}} (\emph{\texttt{int}}) -- Number of training epochs.
+
+\item {} 
+\textbf{\texttt{learning\_rate}} (\emph{\texttt{float}}) -- Learning rate for training.
+
+\item {} 
+\textbf{\texttt{margin}} (\emph{\texttt{float}}) -- Margin \(\gamma\) for training.
+
+\end{itemize}
+
+\item[{Returns}] \leavevmode
+Dictionary with index of a relation as key and the relations vector as a numpy.array as value.
+
+\item[{Return type}] \leavevmode
+dict
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{transform\_triples() (in module src.trans\_e.trans\_we)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.trans_we.transform_triples}\pysiglinewithargsret{\code{src.trans\_e.trans\_we.}\bfcode{transform\_triples}}{\emph{triples}, \emph{relation\_types}, \emph{entities}}{}
+\phantomsection\label{src.trans_e:src.trans_e.trans_we.transform_triples}\pysiglinewithargsret{\bfcode{transform\_triples}}{\emph{triples}, \emph{relation\_types}, \emph{entities}}{}
+Groups a list of relations triples by their relations and returns a suitable data structure.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{triples}} (\emph{\texttt{list}}) -- List of relation triples as tuples.
+
+\item {} 
+\textbf{\texttt{relation\_types}} (\emph{\texttt{dict}}) -- Dictionary with relations as key and the amount of triples with this relation as a key.
+
+\item {} 
+\textbf{\texttt{entities}} (\emph{\texttt{set}}) -- Set of unique entities.
+
+\end{itemize}
+
+\item[{Returns}] \leavevmode
+\begin{description}
+\item[{Dictionary with relation as key and a list of entity tuples as value and an augmented set of unique}] \leavevmode
+entities.
+
+\end{description}
+
+
+\item[{Return type}] \leavevmode
+tuple
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{write\_data() (in module src.trans\_e.trans\_we)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.trans_e:src.trans_e.trans_we.write_data}\pysiglinewithargsret{\code{src.trans\_e.trans\_we.}\bfcode{write\_data}}{\emph{triples}, \emph{found\_entities}, \emph{outpath}}{}
+\phantomsection\label{src.trans_e:src.trans_e.trans_we.write_data}\pysiglinewithargsret{\bfcode{write\_data}}{\emph{triples}, \emph{found\_entities}, \emph{outpath}}{}
+Writes relation triples into a file, but only those triples where both entities are also found in a designated
+set.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{triples}} (\emph{\texttt{list}}) -- List of relation triples as tuples.
+
+\item {} 
+\textbf{\texttt{found\_entities}} (\emph{\texttt{set}}) -- Set of unique entities.
+
+\item {} 
+\textbf{\texttt{outpath}} (\emph{\texttt{str}}) -- Path the data should be written to.
+
+\end{itemize}
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 
@@ -2236,9 +2756,7 @@ model.
 \item {\texttt{src.prep.relations.relations}}, \pageref{src.prep.relations:module-src.prep.relations.relations}
 \item {\texttt{src.trans\_e}}, \pageref{src.trans_e:module-src.trans_e}
 \item {\texttt{src.trans\_e.add\_inverse\_relations}}, \pageref{src.trans_e:module-src.trans_e.add_inverse_relations}
-\item {\texttt{src.trans\_e.clean\_relations}}, \pageref{src.trans_e:module-src.trans_e.clean_relations}
 \item {\texttt{src.trans\_e.contains\_entities}}, \pageref{src.trans_e:module-src.trans_e.contains_entities}
-\item {\texttt{src.trans\_e.convert\_relations}}, \pageref{src.trans_e:module-src.trans_e.convert_relations}
 \item {\texttt{src.trans\_e.differentiate\_datasets}}, \pageref{src.trans_e:module-src.trans_e.differentiate_datasets}
 \item {\texttt{src.trans\_e.partition\_data}}, \pageref{src.trans_e:module-src.trans_e.partition_data}
 \item {\texttt{src.trans\_e.trans\_we}}, \pageref{src.trans_e:module-src.trans_e.trans_we}

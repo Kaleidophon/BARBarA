@@ -25,24 +25,24 @@
 \indexentry{src.eval (module)|hyperpage}{7}
 \indexentry{src.mapping.mapthreading (module)|hyperpage}{7}
 \indexentry{MappingMasterThread (class in src.mapping.mapthreading)|hyperpage}{7}
-\indexentry{prepare() (src.mapping.mapthreading.MappingMasterThread method)|hyperpage}{8}
-\indexentry{read\_ids\_file() (src.mapping.mapthreading.MappingMasterThread method)|hyperpage}{8}
-\indexentry{start\_threads() (src.mapping.mapthreading.MappingMasterThread method)|hyperpage}{8}
+\indexentry{prepare() (MappingMasterThread method)|hyperpage}{8}
+\indexentry{read\_ids\_file() (MappingMasterThread method)|hyperpage}{8}
+\indexentry{start\_threads() (MappingMasterThread method)|hyperpage}{8}
 \indexentry{MappingWorkerThread (class in src.mapping.mapthreading)|hyperpage}{8}
-\indexentry{cosine\_similarity() (src.mapping.mapthreading.MappingWorkerThread method)|hyperpage}{8}
-\indexentry{distance() (src.mapping.mapthreading.MappingWorkerThread method)|hyperpage}{8}
-\indexentry{euclidean\_distance1() (src.mapping.mapthreading.MappingWorkerThread method)|hyperpage}{9}
-\indexentry{euclidean\_distance2() (src.mapping.mapthreading.MappingWorkerThread method)|hyperpage}{9}
-\indexentry{hash\_indices() (src.mapping.mapthreading.MappingWorkerThread method)|hyperpage}{9}
-\indexentry{manhattan\_distance() (src.mapping.mapthreading.MappingWorkerThread method)|hyperpage}{9}
-\indexentry{run() (src.mapping.mapthreading.MappingWorkerThread method)|hyperpage}{10}
-\indexentry{soft\_cosine\_similarity() (src.mapping.mapthreading.MappingWorkerThread method)|hyperpage}{10}
+\indexentry{cosine\_similarity() (MappingWorkerThread method)|hyperpage}{8}
+\indexentry{distance() (MappingWorkerThread method)|hyperpage}{8}
+\indexentry{euclidean\_distance1() (MappingWorkerThread method)|hyperpage}{8}
+\indexentry{euclidean\_distance2() (MappingWorkerThread method)|hyperpage}{9}
+\indexentry{hash\_indices() (MappingWorkerThread method)|hyperpage}{9}
+\indexentry{manhattan\_distance() (MappingWorkerThread method)|hyperpage}{9}
+\indexentry{run() (MappingWorkerThread method)|hyperpage}{9}
+\indexentry{soft\_cosine\_similarity() (MappingWorkerThread method)|hyperpage}{9}
 \indexentry{VectorDict (class in src.mapping.mapthreading)|hyperpage}{10}
-\indexentry{add\_skippable() (src.mapping.mapthreading.VectorDict method)|hyperpage}{10}
-\indexentry{add\_vector() (src.mapping.mapthreading.VectorDict method)|hyperpage}{10}
-\indexentry{get\_keys() (src.mapping.mapthreading.VectorDict method)|hyperpage}{10}
-\indexentry{get\_vector() (src.mapping.mapthreading.VectorDict method)|hyperpage}{10}
-\indexentry{skippable() (src.mapping.mapthreading.VectorDict method)|hyperpage}{11}
+\indexentry{add\_skippable() (VectorDict method)|hyperpage}{10}
+\indexentry{add\_vector() (VectorDict method)|hyperpage}{10}
+\indexentry{get\_keys() (VectorDict method)|hyperpage}{10}
+\indexentry{get\_vector() (VectorDict method)|hyperpage}{10}
+\indexentry{skippable() (VectorDict method)|hyperpage}{10}
 \indexentry{alt() (in module src.mapping.mapthreading)|hyperpage}{11}
 \indexentry{init\_argparse() (in module src.mapping.mapthreading)|hyperpage}{11}
 \indexentry{main() (in module src.mapping.mapthreading)|hyperpage}{11}
@@ -56,7 +56,11 @@
 \indexentry{capitalize() (in module src.misc.helpers)|hyperpage}{11}
 \indexentry{contains\_tag() (in module src.misc.helpers)|hyperpage}{11}
 \indexentry{extract\_sentence\_id() (in module src.misc.helpers)|hyperpage}{11}
+\indexentry{format\_fbid() (in module src.misc.helpers)|hyperpage}{12}
+\indexentry{load\_vectors() (in module src.misc.helpers)|hyperpage}{12}
 \indexentry{load\_vectors\_from\_model() (in module src.misc.helpers)|hyperpage}{12}
+\indexentry{partitions\_list() (in module src.misc.helpers)|hyperpage}{12}
+\indexentry{read\_dataset() (in module src.misc.helpers)|hyperpage}{12}
 \indexentry{src.misc (module)|hyperpage}{12}
 \indexentry{src.prep.corpus.convert\_to\_plain (module)|hyperpage}{12}
 \indexentry{convert\_decow\_to\_plain() (in module src.prep.corpus.convert\_to\_plain)|hyperpage}{12}
@@ -93,15 +97,14 @@
 \indexentry{src.prep.nes (module)|hyperpage}{16}
 \indexentry{src.prep.relations.relations (module)|hyperpage}{16}
 \indexentry{MissingTranslationException|hyperpage}{16}
-\indexentry{get\_id() (src.prep.relations.relations.MissingTranslationException method)|hyperpage}{16}
+\indexentry{get\_id() (MissingTranslationException method)|hyperpage}{16}
 \indexentry{fetch\_name() (in module src.prep.relations.relations)|hyperpage}{17}
 \indexentry{fetch\_relation\_triples\_of\_file() (in module src.prep.relations.relations)|hyperpage}{17}
-\indexentry{format\_fbid() (in module src.prep.relations.relations)|hyperpage}{17}
 \indexentry{freebase\_request() (in module src.prep.relations.relations)|hyperpage}{17}
 \indexentry{init\_optparser() (in module src.prep.relations.relations)|hyperpage}{17}
 \indexentry{main() (in module src.prep.relations.relations)|hyperpage}{17}
-\indexentry{read\_credentials() (in module src.prep.relations.relations)|hyperpage}{18}
-\indexentry{rl() (in module src.prep.relations.relations)|hyperpage}{18}
+\indexentry{read\_credentials() (in module src.prep.relations.relations)|hyperpage}{17}
+\indexentry{rl() (in module src.prep.relations.relations)|hyperpage}{17}
 \indexentry{src.prep.relations (module)|hyperpage}{18}
 \indexentry{src.prep (module)|hyperpage}{18}
 \indexentry{src.trans\_e.add\_inverse\_relations (module)|hyperpage}{18}
@@ -109,53 +112,45 @@
 \indexentry{init\_argparse() (in module src.trans\_e.add\_inverse\_relations)|hyperpage}{18}
 \indexentry{main() (in module src.trans\_e.add\_inverse\_relations)|hyperpage}{18}
 \indexentry{read\_file\_with\_inverse\_relations() (in module src.trans\_e.add\_inverse\_relations)|hyperpage}{18}
-\indexentry{src.trans\_e.clean\_relations (module)|hyperpage}{18}
 \indexentry{src.trans\_e.contains\_entities (module)|hyperpage}{18}
 \indexentry{contains\_entities() (in module src.trans\_e.contains\_entities)|hyperpage}{18}
 \indexentry{create\_new\_dataset() (in module src.trans\_e.contains\_entities)|hyperpage}{18}
-\indexentry{extract\_entities\_from\_relation\_dataset() (in module src.trans\_e.contains\_entities)|hyperpage}{18}
-\indexentry{extract\_entities\_from\_tql\_file() (in module src.trans\_e.contains\_entities)|hyperpage}{18}
-\indexentry{format\_fbid() (in module src.trans\_e.contains\_entities)|hyperpage}{18}
-\indexentry{init\_argparse() (in module src.trans\_e.contains\_entities)|hyperpage}{18}
-\indexentry{main() (in module src.trans\_e.contains\_entities)|hyperpage}{18}
-\indexentry{src.trans\_e.convert\_relations (module)|hyperpage}{19}
+\indexentry{extract\_entities\_from\_relation\_dataset() (in module src.trans\_e.contains\_entities)|hyperpage}{19}
+\indexentry{extract\_entities\_from\_tql\_file() (in module src.trans\_e.contains\_entities)|hyperpage}{19}
+\indexentry{init\_argparse() (in module src.trans\_e.contains\_entities)|hyperpage}{19}
+\indexentry{main() (in module src.trans\_e.contains\_entities)|hyperpage}{19}
 \indexentry{src.trans\_e.differentiate\_datasets (module)|hyperpage}{19}
 \indexentry{compare\_entities() (in module src.trans\_e.differentiate\_datasets)|hyperpage}{19}
 \indexentry{init\_argparse() (in module src.trans\_e.differentiate\_datasets)|hyperpage}{19}
 \indexentry{main() (in module src.trans\_e.differentiate\_datasets)|hyperpage}{19}
-\indexentry{read\_dataset() (in module src.trans\_e.differentiate\_datasets)|hyperpage}{19}
 \indexentry{src.trans\_e.partition\_data (module)|hyperpage}{19}
 \indexentry{check\_data\_integrity() (in module src.trans\_e.partition\_data)|hyperpage}{19}
 \indexentry{check\_set\_integrity() (in module src.trans\_e.partition\_data)|hyperpage}{19}
-\indexentry{get\_stats() (in module src.trans\_e.partition\_data)|hyperpage}{19}
-\indexentry{init\_argparse() (in module src.trans\_e.partition\_data)|hyperpage}{19}
-\indexentry{main() (in module src.trans\_e.partition\_data)|hyperpage}{19}
-\indexentry{partition\_data() (in module src.trans\_e.partition\_data)|hyperpage}{19}
-\indexentry{partition\_relation\_wise() (in module src.trans\_e.partition\_data)|hyperpage}{19}
-\indexentry{partition\_whole() (in module src.trans\_e.partition\_data)|hyperpage}{19}
-\indexentry{partitions\_list() (in module src.trans\_e.partition\_data)|hyperpage}{19}
-\indexentry{read\_only\_relations\_into\_set() (in module src.trans\_e.partition\_data)|hyperpage}{19}
-\indexentry{read\_relations() (in module src.trans\_e.partition\_data)|hyperpage}{19}
-\indexentry{write\_data\_in\_file() (in module src.trans\_e.partition\_data)|hyperpage}{19}
-\indexentry{src.trans\_e.trans\_we (module)|hyperpage}{19}
-\indexentry{convert\_data() (in module src.trans\_e.trans\_we)|hyperpage}{19}
-\indexentry{create\_corrupt\_triples() (in module src.trans\_e.trans\_we)|hyperpage}{19}
-\indexentry{dump\_relation\_vectors() (in module src.trans\_e.trans\_we)|hyperpage}{19}
-\indexentry{evaluate() (in module src.trans\_e.trans\_we)|hyperpage}{19}
-\indexentry{extract\_data\_from\_uri() (in module src.trans\_e.trans\_we)|hyperpage}{19}
-\indexentry{get\_rank() (in module src.trans\_e.trans\_we)|hyperpage}{19}
-\indexentry{init\_argparser() (in module src.trans\_e.trans\_we)|hyperpage}{19}
-\indexentry{load\_relation\_vectors() (in module src.trans\_e.trans\_we)|hyperpage}{19}
-\indexentry{load\_vectors() (in module src.trans\_e.trans\_we)|hyperpage}{19}
-\indexentry{main() (in module src.trans\_e.trans\_we)|hyperpage}{19}
-\indexentry{prepare\_training() (in module src.trans\_e.trans\_we)|hyperpage}{20}
-\indexentry{rank\_entities() (in module src.trans\_e.trans\_we)|hyperpage}{20}
-\indexentry{read\_freebase\_data() (in module src.trans\_e.trans\_we)|hyperpage}{20}
-\indexentry{read\_freebase\_file() (in module src.trans\_e.trans\_we)|hyperpage}{20}
-\indexentry{read\_tql\_file() (in module src.trans\_e.trans\_we)|hyperpage}{20}
-\indexentry{test\_coverage() (in module src.trans\_e.trans\_we)|hyperpage}{20}
-\indexentry{train() (in module src.trans\_e.trans\_we)|hyperpage}{20}
-\indexentry{transform\_triples() (in module src.trans\_e.trans\_we)|hyperpage}{20}
-\indexentry{write\_data() (in module src.trans\_e.trans\_we)|hyperpage}{20}
-\indexentry{src.trans\_e (module)|hyperpage}{20}
-\indexentry{src (module)|hyperpage}{20}
+\indexentry{get\_stats() (in module src.trans\_e.partition\_data)|hyperpage}{20}
+\indexentry{init\_argparse() (in module src.trans\_e.partition\_data)|hyperpage}{20}
+\indexentry{main() (in module src.trans\_e.partition\_data)|hyperpage}{20}
+\indexentry{partition\_data() (in module src.trans\_e.partition\_data)|hyperpage}{20}
+\indexentry{partition\_relation\_wise() (in module src.trans\_e.partition\_data)|hyperpage}{20}
+\indexentry{partition\_whole() (in module src.trans\_e.partition\_data)|hyperpage}{20}
+\indexentry{read\_only\_relations\_into\_set() (in module src.trans\_e.partition\_data)|hyperpage}{20}
+\indexentry{write\_data\_in\_file() (in module src.trans\_e.partition\_data)|hyperpage}{20}
+\indexentry{src.trans\_e.trans\_we (module)|hyperpage}{20}
+\indexentry{convert\_data() (in module src.trans\_e.trans\_we)|hyperpage}{21}
+\indexentry{create\_corrupt\_triples() (in module src.trans\_e.trans\_we)|hyperpage}{21}
+\indexentry{dump\_relation\_vectors() (in module src.trans\_e.trans\_we)|hyperpage}{21}
+\indexentry{evaluate() (in module src.trans\_e.trans\_we)|hyperpage}{21}
+\indexentry{extract\_data\_from\_uri() (in module src.trans\_e.trans\_we)|hyperpage}{22}
+\indexentry{get\_rank() (in module src.trans\_e.trans\_we)|hyperpage}{22}
+\indexentry{init\_argparser() (in module src.trans\_e.trans\_we)|hyperpage}{22}
+\indexentry{load\_relation\_vectors() (in module src.trans\_e.trans\_we)|hyperpage}{22}
+\indexentry{main() (in module src.trans\_e.trans\_we)|hyperpage}{22}
+\indexentry{prepare\_training() (in module src.trans\_e.trans\_we)|hyperpage}{22}
+\indexentry{rank\_entities() (in module src.trans\_e.trans\_we)|hyperpage}{22}
+\indexentry{read\_freebase\_data() (in module src.trans\_e.trans\_we)|hyperpage}{23}
+\indexentry{read\_tql\_file() (in module src.trans\_e.trans\_we)|hyperpage}{23}
+\indexentry{test\_coverage() (in module src.trans\_e.trans\_we)|hyperpage}{23}
+\indexentry{train() (in module src.trans\_e.trans\_we)|hyperpage}{23}
+\indexentry{transform\_triples() (in module src.trans\_e.trans\_we)|hyperpage}{24}
+\indexentry{write\_data() (in module src.trans\_e.trans\_we)|hyperpage}{24}
+\indexentry{src.trans\_e (module)|hyperpage}{24}
+\indexentry{src (module)|hyperpage}{24}

@@ -23,6 +23,9 @@ import re
 import json
 import urllib
 
+# PROJECT:
+from src.misc.helpers import format_fbid
+
 
 def main():
 	"""
@@ -169,19 +172,6 @@ def read_credentials():
 	api_key = open("../../../rsc/rel/freebase_api_key").read()
 	service_url = 'https://www.googleapis.com/freebase/v1/mqlread'
 	return api_key, service_url
-
-
-def format_fbid(fbid):
-	"""
-	Transform the format of the *Freebase* IDs from the format used in the dataset to the format used in requests.
-
-	Args:
-		fbid (str): *Freebase* ID to be formatted.
-
-	Returns:
-		str: Formatted *Freebase* ID.
-	"""
-	return re.sub(r'm\.', '/m/', fbid)
 
 
 def rl(infile):

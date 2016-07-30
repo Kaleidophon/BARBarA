@@ -1,17 +1,39 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+"""
+This module follows a modified approach from
+`(Bordes et al., 2013) <http://papers.nips.cc/paper/5071-translating-embeddings-for-modeling-multi-relational-data.pdf>`_.
+As so, noise-contrastive learning and corrupt triples are use. But whereas in this original paper,
+vector representations forn entities and relations are learned in a joint manner, in this case only the continuous
+representations for semantic relations will be learned and word embeddings used for the entities instead.
+
+.. warning::
+	Because we use words embedding but still the *FB15k* dataset here, we can only use data samples where we have
+	trained word embeddings for both entities. Those are only a few, which is one reason why this approach performs
+	badly.
+"""
+
+# STANDARD
 import argparse
 import codecs
-import operator
-import re
 from collections import defaultdict
+import operator
 from random import choice, sample
+import re
 
+# EXTERNAL
 import numpy as np
-from gensim.models import Word2Vec as w2v
 from numpy.linalg import norm
 from numpy.random import uniform
 
+# PROJECT
+from src.misc.helpers import read_dataset, load_vectors
+
 
 def main():
+	"""
+	Main function.
+	"""
 	def lossf(args):
 		v_a, v_b, v_r = args
 		return norm(v_a + v_r - v_b)
@@ -33,12 +55,25 @@ def main():
 			prepare_training(args.sets, args.model)
 		evaluate(model, grouped_test, relation_vectors, entities)
 
-	#convert_data(args.sets, args.tql, args.model)
-
 # ---------------------------------------------------------------------------------------
 
 
 def prepare_training(sets_path, vector_inpath):
+	"""
+	Prepares the training step loading word embeddings and training sets.
+
+	Args:
+		sets_path (str): Path to training set directory.
+		vector_inpath (str): Path to word embedding file.
+
+	Returns:
+		tuple: Tuple of results with **model** (*gensim.models.Word2Vec*): Word embeddings as gensim model /
+		**grouped_train** (*dict*): Training samples as dictionary with relation as key and a list of tuples
+		with two entities each as value / **grouped_valid** (*dict*): As **grouped_train** / **grouped_test**
+		(*dict*): As **grouped_train** / **grouped_corrupted** (*dict*): As **grouped_train** /
+		**relations_types** (*dict*): Dictionary with relations as key and the amount of triples with this relation
+		as a key / **entities** (*set*): Set of unique entities.
+	"""
 	def _read_triple_file(inpath):
 		triples = []
 
@@ -96,7 +131,26 @@ def prepare_training(sets_path, vector_inpath):
 	return model, grouped_train, grouped_valid, grouped_test, grouped_corrupted, relation_types, entities
 
 
-def train(model, grouped_train, grouped_corrupted, lossf, relation_types, epochs=1000, learning_rate=0.01, margin=1):
+def train(model, grouped_train, grouped_corrupted, lossf, relation_types, epochs=1000, learning_rate=0.01, margin=1.0):
+	"""
+	Train the relation vectors following the example of `(Bordes et al.,
+	2013) <http://papers.nips.cc/paper/5071-translating-embeddings-for-modeling-multi-relational-data.pdf>`_,
+	but use word embeddings for the entity vectors instead.
+
+	Args:
+		model (*gensim.models.Word2Vec*): Word embeddings as gensim model.
+		grouped_train (dict): Training samples as dictionary with relation as key and a list of tuples
+		with two entities each as value.
+		grouped_corrupted (dict): As grouped_train.
+		lossf (func): Loss function for training.
+		relation_types (dict): Dictionary with relations as key and the amount of triples with this relation as a key.
+		epochs (int): Number of training epochs.
+		learning_rate (float): Learning rate for training.
+		margin (float): Margin :math:`\gamma` for training.
+
+	Returns:
+		dict: Dictionary with index of a relation as key and the relations vector as a numpy.array as value.
+	"""
 	# Prepare for training
 	# initialize relation vectors
 	def _init_rel_vector():
@@ -127,9 +181,6 @@ def train(model, grouped_train, grouped_corrupted, lossf, relation_types, epochs
 				v_r = relation_vectors[i]
 				v_a = model[d[0]]
 				v_b = model[d[1]]
-				#v_a /= norm(v_a)
-				#v_b /= norm(v_b)
-				#v_r /= norm(v_r)
 
 				corrupted_d = sample(corrupted_data, 1)[0]
 				v_a_corrupted = model[corrupted_d[0]]
@@ -160,6 +211,18 @@ def train(model, grouped_train, grouped_corrupted, lossf, relation_types, epochs
 
 
 def _stupid_train(model, grouped_train, relation_types):
+	"""
+	Very stupid way of training. Just used as a test.
+
+	Args:
+		model (*gensim.models.Word2Vec*): Word embeddings as gensim model.
+		grouped_train (dict): Training samples as dictionary with relation as key and a list of tuples
+		with two entities each as value.
+		relation_types (dict): Dictionary with relations as key and the amount of triples with this relation as a key.
+
+	Returns:
+		dict: Dictionary with index of a relation as key and the relations vector as a numpy.array as value.
+	"""
 	relation_vectors = [None] * len(relation_types)
 
 	# Training
@@ -180,6 +243,22 @@ def _stupid_train(model, grouped_train, relation_types):
 
 
 def evaluate(model, grouped_test, relation_vectors, entities):
+	"""
+	Evaluate the relations vector the same way as in `(Bordes et al.,
+	2013) <http://papers.nips.cc/paper/5071-translating-embeddings-for-modeling-multi-relational-data.pdf>`_.
+	Therefore, for every relation triple in the testset, one entity will be removed and all entities will be inserted
+	afterwards. Also they will be ranked by their loss (ascending) and assigned a rank. The evaluation metrics are
+	the percentage of times the right entity is in the top ten highest ranked entities and mean rank of the correct
+	entitiy.
+
+	Args:
+		model (gensim.models.Word2Vec): Word embeddings as gensim model.
+		grouped_test (dict): Test samples as dictionary with relation as key and a list of tuples
+		with two entities each as value.
+		relation_vectors (dict): Dictionary with index of a relation as key and the relations vector as a numpy.array
+		as value.
+		entities (set): Set of unique entities.
+	"""
 
 	def _print_eval(mean_rank_r, mean_rank_l, count_l, count_r):
 		print "Mean rank: " + str((mean_rank_r / count_r + mean_rank_l / count_l) / 2.0)
@@ -232,15 +311,24 @@ def evaluate(model, grouped_test, relation_vectors, entities):
 
 
 def rank_entities(reference, solution, model, entities):
+	"""
+	Ranks entities against a reference vector.
+
+	Args:
+		reference (numpy.array): Reference vector.
+		solution (str): The actual solution.
+		model (gensim.models.Word2Vec): Word embeddings as gensim model.
+		entities (set): Set of unique entities.
+
+	Returns:
+		tuples: Rank of solution as integer, flag if a Hit@10 has occurred as boolean.
+	"""
 	ranks = []
-	solution_score = 0.0
 
 	for entity in entities:
 		v_e = model[entity]
 		score = norm(v_e - reference)
 		ranks.append((entity, score))
-		if entity == solution:
-			solution_score = score
 
 	sorted_ranks = sorted(ranks, key=operator.itemgetter(1))
 
@@ -250,6 +338,16 @@ def rank_entities(reference, solution, model, entities):
 
 
 def get_rank(target, ranks):
+	"""
+	Get rank of a target entity within all ranked entities.
+
+	Args:
+		target (str): Target entity which rank should be determined.
+		ranks (list): List of tuples of an entity and its rank.
+
+	Returns:
+		int: Rank of entity or -1 if entity is not present in ranks.
+	"""
 	for i in range(len(ranks)):
 		word, rank = ranks[i]
 		if word == target:
@@ -258,6 +356,18 @@ def get_rank(target, ranks):
 
 
 def create_corrupt_triples(grouped_pairs, entities):
+	"""
+	Creates a set of corrupted training triplets group by their shared relation.
+
+	Args:
+		grouped_pairs (dict): Test samples as dictionary with relation as key and a list of tuples
+		with two entities each as value.
+		entities (set): Set of unique entities.
+
+	Returns:
+		grouped_train (dict): Corrupted training samples as dictionary with a relation as key and a list of tuples
+		with two entities each as value.
+	"""
 	grouped_corrupted = {key: set() for key in grouped_pairs.keys()}
 
 	for i in range(len(grouped_pairs.keys())):
@@ -283,6 +393,18 @@ def create_corrupt_triples(grouped_pairs, entities):
 
 
 def transform_triples(triples, relation_types, entities):
+	"""
+	Groups a list of relations triples by their relations and returns a suitable data structure.
+
+	Args:
+		triples (list): List of relation triples as tuples.
+		relation_types (dict): Dictionary with relations as key and the amount of triples with this relation as a key.
+		entities (set): Set of unique entities.
+
+	Returns:
+		tuple: Dictionary with relation as key and a list of entity tuples as value and an augmented set of unique
+			entities.
+	"""
 	grouped_triples = {key: [] for key in range(len(relation_types.keys()))}
 
 	for triple in triples:
@@ -294,12 +416,19 @@ def transform_triples(triples, relation_types, entities):
 
 
 def convert_data(sets_path, tql_inpath, vector_inpath):
+	"""
+	Re-formats relation data sets to fit the training routine in this module.
+	Also tests the coverage of word embedding model on all entities in the datasets.
+
+	Args:
+		sets_path (str): Directory of the datasets.
+		tql_inpath (str): Path to *Wikidata* *Freebase* dump in `tql` format.
+		vector_inpath (str): Path to word embedding file.
+	"""
 	def _convert(triples, codes2names):
 		new_triples = []
 
 		for triple in triples:
-			#print codes2names[triple[0]]
-			#print codes2names[triple[2]]
 			new_triples.append((re.sub(r'_\(.+\)$', '', codes2names[triple[0]]), triple[1], re.sub(r'_\(.+\)$', '', codes2names[triple[2]])))
 
 		return new_triples
@@ -339,6 +468,15 @@ def convert_data(sets_path, tql_inpath, vector_inpath):
 
 
 def write_data(triples, found_entities, outpath):
+	"""
+	Writes relation triples into a file, but only those triples where both entities are also found in a designated
+	set.
+
+	Args:
+		triples (list): List of relation triples as tuples.
+		found_entities (set): Set of unique entities.
+		outpath (str): Path the data should be written to.
+	"""
 	with codecs.open(outpath, 'wb', 'utf-8') as outfile:
 		for triple in triples:
 			if triple[0] in found_entities and triple[2] in found_entities:
@@ -346,31 +484,37 @@ def write_data(triples, found_entities, outpath):
 
 
 def read_freebase_data(sets_path):
+	"""
+	Reads all different datasets in a directory at once.
+
+	Args:
+		sets_path (str): Directory of the datasets.
+
+	Returns:
+		tuple: Tuple of datasets as lists.
+	"""
 	train_path = sets_path + "freebase_mtr100_mte100-train.txt"
 	valid_path = sets_path + "freebase_mtr100_mte100-valid.txt"
 	test_path = sets_path + "freebase_mtr100_mte100-test.txt"
 
-	train_triples = read_freebase_file(train_path)
-	valid_triples = read_freebase_file(valid_path)
-	test_triples = read_freebase_file(test_path)
+	train_triples = read_dataset(train_path)
+	valid_triples = read_dataset(valid_path)
+	test_triples = read_dataset(test_path)
 
 	return train_triples, valid_triples, test_triples
 
 
-def read_freebase_file(fb_inpath):
-	triples = []
-
-	with codecs.open(fb_inpath, 'rb', 'utf-8') as fb_infile:
-		line = fb_infile.readline().strip()
-		while line != "":
-			parts = line.split()
-			triples.append((parts[0], parts[1], parts[2]))
-			line = fb_infile.readline().strip()
-
-	return triples
-
-
 def read_tql_file(tql_inpath):
+	"""
+	Reads a *Freebase* dump by wikidata. Must be in `tql` format. Available online
+	`here <https://developers.google.com/freebase/>`_ (July 2016).
+
+	Args:
+		tql_inpath (str): Path to *Wikidata* *Freebase* dump in `tql` format.
+
+	Returns:
+		defaultdict: Dictionary with *Freebase* code as key and the corresponding real name of an entity as value.
+	"""
 	codes2names = defaultdict(unicode)
 
 	with codecs.open(tql_inpath, "rb", "utf-8") as tql_file:
@@ -388,29 +532,47 @@ def read_tql_file(tql_inpath):
 
 
 def dump_relation_vectors(relation_vectors, outpath):
+	"""
+	Saves relation numpy vectors.
+
+	Args:
+		relation_vectors (dict): Dictionary with index of a relation as key and the relations vector as a
+		numpy.array as value.
+		outpath (str): Path the vectors should be saved to.
+
+	"""
 	print "Saving relation vectors to " + outpath
 	np.save(outpath, relation_vectors)
 
 
 def load_relation_vectors(inpath):
+	"""
+	Loads relation numpy vectors.
+
+	Args:
+		inpath (str): Path the numpy vectors should be loaded from.
+
+	Returns:
+		dict: Dictionary with index of a relation as key and the relations vector as a numpy.array as value.
+	"""
 	print "Loading relation vectors from " + inpath
 	return np.load(inpath).tolist()
 
 
 def extract_data_from_uri(uri):
+	"""
+	Extracts data from an URI.
+
+	Args:
+		uri (str): URI the data should be extracted from.
+
+	Returns:
+		str: Extracted data.
+	"""
 	uri = uri.replace("<http://de.dbpedia.org/resource/", "")
 	uri = uri.replace("<http://rdf.freebase.com/ns/", "")
 	uri = uri.replace(">", "")
 	return uri
-
-
-def load_vectors(vector_inpath):
-	"""
-
-	@param vector_inpath: Path to word2vec model file
-	"""
-	model = w2v.load_word2vec_format(vector_inpath, binary=False)
-	return model
 
 
 def test_coverage(triples, model):
@@ -419,8 +581,12 @@ def test_coverage(triples, model):
 	For every triple (h, l, t), the entities h and t are taken and used for look up in the word2vec
 	model.
 
-	@param triples: list of 3-tuples (freebase triples)
-	@param model: gensim word2vec model
+	Args:
+		triples (list): List of relation triples as tuples.
+		model (gensim.models.Word2Vec): Word embeddings as gensim model.
+
+	Return:
+		set: Set of entities in the model.
 	"""
 	entities = set()
 	errors = 0
@@ -444,9 +610,10 @@ def test_coverage(triples, model):
 
 def init_argparser():
 	"""
-	Initialize all arguments for an ArgumentParser object and return it.
+	Initialize all possible arguments for the argument parser.
 
-	@returns {ArgumentParser} argument parser object
+	Returns:
+		:py:mod:`argparse.ArgumentParser`: ArgumentParser object with command line arguments for this script.
 	"""
 	argparser = argparse.ArgumentParser()
 	argparser.add_argument('--model', required=True, help='Path to word vector model')
@@ -460,4 +627,3 @@ def init_argparser():
 
 if __name__ == "__main__":
 	main()
-	# convert_data("/Users/dennisulmer/Desktop/fb15k_transe_german/", "../../rsc/wikidata/freebase_links_de.tql")

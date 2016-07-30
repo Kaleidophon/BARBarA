@@ -118,7 +118,16 @@ def cluster_mappings(vector_inpath, do_pca=False, target_dim=100, indices_inpath
 		resolve_indices(indices, labels, indices_inpath, model)
 
 
-def resolve_indices(points, labels, indices_inpath, model):
+def resolve_indices(points, labels, indices_inpath):
+	"""
+	Resolves the indices of word pairs found in a cluster to their real names.
+
+	Args:
+		points (list): List of datapoints
+		labels (list): List of unique cluster labels
+		indices_inpath (str): Path to file with the indices given to words. The file should have the following format:
+			<index of word>	<word> (separated by tab)
+	"""
 	indices = load_indices(indices_inpath)
 	clusters = aggregate_cluster(points, labels)
 	for cluster in clusters.keys():

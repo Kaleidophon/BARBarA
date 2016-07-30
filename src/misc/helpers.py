@@ -2,6 +2,8 @@ import time
 import codecs
 from collections import defaultdict
 import numpy as np
+import re
+from gensim.models import Word2Vec as w2v
 
 
 def alt(func):
@@ -14,8 +16,40 @@ def alt(func):
 	return "%s: %s" % (time.strftime("%H:%M:%S", time.gmtime()), func)
 
 
+def format_fbid(fbid):
+	"""
+	Transform the format of the *Freebase* IDs from the format used in the dataset to the format used in requests.
+
+	Args:
+		fbid (str): *Freebase* ID to be formatted.
+
+	Returns:
+		str: Formatted *Freebase* ID.
+	"""
+	return re.sub(r'm\.', '/m/', fbid)
+
+
+def read_dataset(inpath):
+	with codecs.open(inpath, 'rb', 'utf-8') as infile:
+		return [tuple(line.strip().split('\t')) for line in infile]
+
+
+def partitions_list(l, prts):
+	size = len(l)
+	return l[:int(prts[0] * size)], l[int(prts[0] * size) + 1:int((prts[0] + prts[1]) * size)], l[int(
+		(prts[0] + prts[1]) * size) + 1:]
+
+
 def capitalize(word):
 	return word[0].upper() + word[1:]
+
+
+def load_vectors(vector_inpath):
+	"""
+
+	"""
+	model = w2v.load_word2vec_format(vector_inpath, binary=False)
+	return model
 
 
 def load_vectors_from_model(vector_inpath, max_n=None, logpath=None, indices=False):

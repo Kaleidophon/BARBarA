@@ -12,26 +12,10 @@ src.trans_e.add_inverse_relations module
     :undoc-members:
     :show-inheritance:
 
-src.trans_e.clean_relations module
-----------------------------------
-
-.. automodule:: src.trans_e.clean_relations
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 src.trans_e.contains_entities module
 ------------------------------------
 
 .. automodule:: src.trans_e.contains_entities
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-src.trans_e.convert_relations module
-------------------------------------
-
-.. automodule:: src.trans_e.convert_relations
     :members:
     :undoc-members:
     :show-inheritance:
