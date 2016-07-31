@@ -1,9 +1,6 @@
 src.trans_e package
 ===================
 
-Submodules
-----------
-
 src.trans_e.add_inverse_relations module
 ----------------------------------------
 
@@ -40,15 +37,6 @@ src.trans_e.trans_we module
 ---------------------------
 
 .. automodule:: src.trans_e.trans_we
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
-Module contents
----------------
-
-.. automodule:: src.trans_e
     :members:
     :undoc-members:
     :show-inheritance:

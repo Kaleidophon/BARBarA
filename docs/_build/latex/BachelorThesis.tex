@@ -31,7 +31,7 @@
 
 
 \title{Bachelor Thesis Documentation}
-\date{Jul 30, 2016}
+\date{Jul 31, 2016}
 \release{v1.0}
 \author{Bachelor Thesis}
 \newcommand{\sphinxlogo}{}
@@ -151,15 +151,35 @@ Contents:
 
 \section{src package}
 \label{src::doc}\label{src:src-package}
+The \code{src} package contains all code used in this project.
+It is divided into multiple packages:
+\begin{itemize}
+\item {} 
+\code{src.clustering}: Clustering of mapping vectors.
+
+\item {} 
+\code{src.eval}: Evaluation of word embeddings
+
+\item {} 
+\code{src.mapping}: Creation of mapping vectors from word embedding pairs.
+
+\item {} 
+\code{src.misc}: Helper function and decorators.
+
+\item {} 
+\code{src.prep}: Scripts used for different preparations stops for fundamental resources.
+
+\item {} 
+\code{src.trans\_e}: \emph{TransE} related preparation scripts as well as \emph{TransE} inspired Training with word embeddings.
+
+\end{itemize}
+
 
 \subsection{Subpackages}
 \label{src:subpackages}
 
 \subsubsection{src.clustering package}
 \label{src.clustering:src-clustering-package}\label{src.clustering::doc}
-
-\paragraph{Submodules}
-\label{src.clustering:submodules}
 
 \paragraph{src.clustering.cluster\_mappings module}
 \label{src.clustering:module-src.clustering.cluster_mappings}\label{src.clustering:src-clustering-cluster-mappings-module}\index{src.clustering.cluster\_mappings (module)}
@@ -345,14 +365,8 @@ min\_samples and p.
 
 
 
-\paragraph{Module contents}
-\label{src.clustering:module-contents}\label{src.clustering:module-src.clustering}\index{src.clustering (module)}
-
 \subsubsection{src.eval package}
 \label{src.eval::doc}\label{src.eval:src-eval-package}
-
-\paragraph{Submodules}
-\label{src.eval:submodules}
 
 \paragraph{src.eval.analogy module}
 \label{src.eval:module-src.eval.analogy}\label{src.eval:src-eval-analogy-module}\index{src.eval.analogy (module)}
@@ -624,14 +638,8 @@ embeddings. Then, to correlation between those and human ratings is measured wit
 
 
 
-\paragraph{Module contents}
-\label{src.eval:module-src.eval}\label{src.eval:module-contents}\index{src.eval (module)}
-
 \subsubsection{src.mapping package}
 \label{src.mapping::doc}\label{src.mapping:src-mapping-package}
-
-\paragraph{Submodules}
-\label{src.mapping:submodules}
 
 \paragraph{src.mapping.mapthreading module}
 \label{src.mapping:src-mapping-mapthreading-module}\label{src.mapping:module-src.mapping.mapthreading}\index{src.mapping.mapthreading (module)}
@@ -1073,32 +1081,40 @@ Main function that initializes the master thread with command line arguments and
 \subsubsection{src.misc package}
 \label{src.misc:src-misc-package}\label{src.misc::doc}
 
-\paragraph{Submodules}
-\label{src.misc:submodules}
-
 \paragraph{src.misc.decorators module}
-\label{src.misc:module-src.misc.decorators}\label{src.misc:src-misc-decorators-module}\index{src.misc.decorators (module)}\index{alt() (in module src.misc.decorators)}
-
-\begin{fulllineitems}
-\phantomsection\label{src.misc:src.misc.decorators.alt}\pysiglinewithargsret{\bfcode{alt}}{\emph{func}}{}
-\end{fulllineitems}
-
+\label{src.misc:module-src.misc.decorators}\label{src.misc:src-misc-decorators-module}\index{src.misc.decorators (module)}
+This module contains decorators that wrap around functions used in other modules.
 \index{log\_time() (in module src.misc.decorators)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.misc:src.misc.decorators.log_time}\pysiglinewithargsret{\bfcode{log\_time}}{\emph{logpath='log.txt'}, \emph{interval=5}}{}
-\end{fulllineitems}
+This decorator is used to log the execution time of a function into a given logfile, following a constant interval.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{logpath}} (\emph{\texttt{str}}) -- Path to logfile.
 
-\index{log\_time\_mp() (in module src.misc.decorators)}
+\item {} 
+\textbf{\texttt{interval}} (\emph{\texttt{int}}) -- Logging interval in seconds.
 
-\begin{fulllineitems}
-\phantomsection\label{src.misc:src.misc.decorators.log_time_mp}\pysiglinewithargsret{\bfcode{log\_time\_mp}}{\emph{logpath='log.txt'}, \emph{interval=5}}{}
+\end{itemize}
+
+\item[{Returns}] \leavevmode
+Decorator with function.
+
+\item[{Return type}] \leavevmode
+function
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 
 
 \paragraph{src.misc.helpers module}
-\label{src.misc:src-misc-helpers-module}\label{src.misc:module-src.misc.helpers}\index{src.misc.helpers (module)}\index{alt() (in module src.misc.helpers)}
+\label{src.misc:src-misc-helpers-module}\label{src.misc:module-src.misc.helpers}\index{src.misc.helpers (module)}
+This module contains decorators that wrap aroud functions used in other modules.
+\index{alt() (in module src.misc.helpers)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.misc:src.misc.helpers.alt}\pysiglinewithargsret{\bfcode{alt}}{\emph{func}}{}
@@ -1115,6 +1131,19 @@ Prepends the local time to the output of a function.
 
 \begin{fulllineitems}
 \phantomsection\label{src.misc:src.misc.helpers.capitalize}\pysiglinewithargsret{\bfcode{capitalize}}{\emph{word}}{}
+Capitalizes a string.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{word}} (\emph{\texttt{str}}) -- Word to be capitalized.
+
+\item[{Returns}] \leavevmode
+Capitalized word.
+
+\item[{Return type}] \leavevmode
+str
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{contains\_tag() (in module src.misc.helpers)}
@@ -1178,30 +1207,96 @@ str
 
 \begin{fulllineitems}
 \phantomsection\label{src.misc:src.misc.helpers.load_vectors}\pysiglinewithargsret{\bfcode{load\_vectors}}{\emph{vector\_inpath}}{}
+Load word embeddings, gensim style.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{vector\_inpath}} (\emph{\texttt{str}}) -- Path to vector file.
+
+\item[{Returns}] \leavevmode
+Word2Vec gensim model.
+
+\item[{Return type}] \leavevmode
+gensim.models.Word2Vec
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{load\_vectors\_from\_model() (in module src.misc.helpers)}
 
 \begin{fulllineitems}
-\phantomsection\label{src.misc:src.misc.helpers.load_vectors_from_model}\pysiglinewithargsret{\bfcode{load\_vectors\_from\_model}}{\emph{vector\_inpath}, \emph{max\_n=None}, \emph{logpath=None}, \emph{indices=False}}{}
+\phantomsection\label{src.misc:src.misc.helpers.load_vectors_from_model}\pysiglinewithargsret{\bfcode{load\_vectors\_from\_model}}{\emph{vector\_inpath}, \emph{max\_n=None}, \emph{indices=False}}{}
+Load word embeddings (or mapping vectors), my style.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{vector\_inpath}} (\emph{\texttt{str}}) -- Path to vector file.
+
+\item {} 
+\textbf{\texttt{max\_n}} (\emph{\texttt{int}}) -- Maximum number of vectors to load.
+
+\item {} 
+\textbf{\texttt{indices}} (\emph{\texttt{bool}}) -- Flag to indicate the loading of mapping vectors.
+
+\end{itemize}
+
+\item[{Returns}] \leavevmode
+A list of words as well as a dictionary with the vectors as numpy.arrays as value and their
+corresponding words or index pairs as keys.
+
+\item[{Return type}] \leavevmode
+Tuple
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{partitions\_list() (in module src.misc.helpers)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.misc:src.misc.helpers.partitions_list}\pysiglinewithargsret{\bfcode{partitions\_list}}{\emph{l}, \emph{prts}}{}
+Partitions a list into three parts according to their percentages in regard to the length of the original list given
+in a tuple as floats.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode\begin{itemize}
+\item {} 
+\textbf{\texttt{l}} (\emph{\texttt{list}}) -- List to be partitioned.
+
+\item {} 
+\textbf{\texttt{prts}} (\emph{\texttt{tuple}}) -- Tuple of float with new list sizes.
+
+\end{itemize}
+
+\item[{Returns}] \leavevmode
+Tuple of the three new lists.
+
+\item[{Return type}] \leavevmode
+tuple
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 \index{read\_dataset() (in module src.misc.helpers)}
 
 \begin{fulllineitems}
 \phantomsection\label{src.misc:src.misc.helpers.read_dataset}\pysiglinewithargsret{\bfcode{read\_dataset}}{\emph{inpath}}{}
+Reads a generic dataset with rows separated by tabs into a list.
+\begin{quote}\begin{description}
+\item[{Parameters}] \leavevmode
+\textbf{\texttt{inpath}} (\emph{\texttt{str}}) -- Path to dataset.
+
+\item[{Returns}] \leavevmode
+List of line contents as tuples.
+
+\item[{Return type}] \leavevmode
+list
+
+\end{description}\end{quote}
+
 \end{fulllineitems}
 
 
-
-\paragraph{Module contents}
-\label{src.misc:module-contents}\label{src.misc:module-src.misc}\index{src.misc (module)}
 
 \subsubsection{src.prep package}
 \label{src.prep::doc}\label{src.prep:src-prep-package}
@@ -1211,9 +1306,6 @@ str
 
 \subparagraph{src.prep.corpus package}
 \label{src.prep.corpus::doc}\label{src.prep.corpus:src-prep-corpus-package}
-
-\subparagraph{Submodules}
-\label{src.prep.corpus:submodules}
 
 \subparagraph{src.prep.corpus.convert\_to\_plain module}
 \label{src.prep.corpus:src-prep-corpus-convert-to-plain-module}\label{src.prep.corpus:module-src.prep.corpus.convert_to_plain}\index{src.prep.corpus.convert\_to\_plain (module)}
@@ -1412,14 +1504,8 @@ this is only
 due to sphinx being picky and not documenting plain python scripts at all.
 
 
-\subparagraph{Module contents}
-\label{src.prep.corpus:module-contents}\label{src.prep.corpus:module-src.prep.corpus}\index{src.prep.corpus (module)}
-
 \subparagraph{src.prep.nes package}
 \label{src.prep.nes:src-prep-nes-package}\label{src.prep.nes::doc}
-
-\subparagraph{Submodules}
-\label{src.prep.nes:submodules}
 
 \subparagraph{src.prep.nes.extract\_nes module}
 \label{src.prep.nes:src-prep-nes-extract-nes-module}\label{src.prep.nes:module-src.prep.nes.extract_nes}\index{src.prep.nes.extract\_nes (module)}
@@ -1707,14 +1793,8 @@ Main function
 
 
 
-\subparagraph{Module contents}
-\label{src.prep.nes:module-src.prep.nes}\label{src.prep.nes:module-contents}\index{src.prep.nes (module)}
-
 \subparagraph{src.prep.relations package}
 \label{src.prep.relations:src-prep-relations-package}\label{src.prep.relations::doc}
-
-\subparagraph{Submodules}
-\label{src.prep.relations:submodules}
 
 \subparagraph{src.prep.relations.relations module}
 \label{src.prep.relations:src-prep-relations-relations-module}\label{src.prep.relations:module-src.prep.relations.relations}\index{src.prep.relations.relations (module)}
@@ -1897,17 +1977,8 @@ str
 
 
 
-\subparagraph{Module contents}
-\label{src.prep.relations:module-src.prep.relations}\label{src.prep.relations:module-contents}\index{src.prep.relations (module)}
-
-\paragraph{Module contents}
-\label{src.prep:module-contents}\label{src.prep:module-src.prep}\index{src.prep (module)}
-
 \subsubsection{src.trans\_e package}
 \label{src.trans_e:src-trans-e-package}\label{src.trans_e::doc}
-
-\paragraph{Submodules}
-\label{src.trans_e:submodules}
 
 \paragraph{src.trans\_e.add\_inverse\_relations module}
 \label{src.trans_e:module-src.trans_e.add_inverse_relations}\label{src.trans_e:src-trans-e-add-inverse-relations-module}\index{src.trans\_e.add\_inverse\_relations (module)}
@@ -2706,12 +2777,6 @@ set.
 
 
 
-\paragraph{Module contents}
-\label{src.trans_e:module-src.trans_e}\label{src.trans_e:module-contents}\index{src.trans\_e (module)}
-
-\subsection{Module contents}
-\label{src:module-src}\label{src:module-contents}\index{src (module)}
-
 \chapter{Indices and tables}
 \label{index:indices-and-tables}\begin{itemize}
 \item {} 
@@ -2730,31 +2795,22 @@ set.
 \begin{theindex}
 \def\bigletter#1{{\Large\sffamily#1}\nopagebreak\vspace{1mm}}
 \bigletter{s}
-\item {\texttt{src}}, \pageref{src:module-src}
-\item {\texttt{src.clustering}}, \pageref{src.clustering:module-src.clustering}
 \item {\texttt{src.clustering.cluster\_mappings}}, \pageref{src.clustering:module-src.clustering.cluster_mappings}
-\item {\texttt{src.eval}}, \pageref{src.eval:module-src.eval}
 \item {\texttt{src.eval.analogy}}, \pageref{src.eval:module-src.eval.analogy}
 \item {\texttt{src.eval.eval\_vectors}}, \pageref{src.eval:module-src.eval.eval_vectors}
 \item {\texttt{src.eval.word\_similarity}}, \pageref{src.eval:module-src.eval.word_similarity}
 \item {\texttt{src.mapping}}, \pageref{src.mapping:module-src.mapping}
 \item {\texttt{src.mapping.mapthreading}}, \pageref{src.mapping:module-src.mapping.mapthreading}
-\item {\texttt{src.misc}}, \pageref{src.misc:module-src.misc}
 \item {\texttt{src.misc.decorators}}, \pageref{src.misc:module-src.misc.decorators}
 \item {\texttt{src.misc.helpers}}, \pageref{src.misc:module-src.misc.helpers}
-\item {\texttt{src.prep}}, \pageref{src.prep:module-src.prep}
-\item {\texttt{src.prep.corpus}}, \pageref{src.prep.corpus:module-src.prep.corpus}
 \item {\texttt{src.prep.corpus.convert\_to\_plain}}, \pageref{src.prep.corpus:module-src.prep.corpus.convert_to_plain}
 \item {\texttt{src.prep.corpus.extract\_conll}}, \pageref{src.prep.corpus:module-src.prep.corpus.extract_conll}
 \item {\texttt{src.prep.corpus.mapper}}, \pageref{src.prep.corpus:module-src.prep.corpus.mapper}
 \item {\texttt{src.prep.corpus.reducer}}, \pageref{src.prep.corpus:module-src.prep.corpus.reducer}
-\item {\texttt{src.prep.nes}}, \pageref{src.prep.nes:module-src.prep.nes}
 \item {\texttt{src.prep.nes.extract\_nes}}, \pageref{src.prep.nes:module-src.prep.nes.extract_nes}
 \item {\texttt{src.prep.nes.merge}}, \pageref{src.prep.nes:module-src.prep.nes.merge}
 \item {\texttt{src.prep.nes.statistics}}, \pageref{src.prep.nes:module-src.prep.nes.statistics}
-\item {\texttt{src.prep.relations}}, \pageref{src.prep.relations:module-src.prep.relations}
 \item {\texttt{src.prep.relations.relations}}, \pageref{src.prep.relations:module-src.prep.relations.relations}
-\item {\texttt{src.trans\_e}}, \pageref{src.trans_e:module-src.trans_e}
 \item {\texttt{src.trans\_e.add\_inverse\_relations}}, \pageref{src.trans_e:module-src.trans_e.add_inverse_relations}
 \item {\texttt{src.trans\_e.contains\_entities}}, \pageref{src.trans_e:module-src.trans_e.contains_entities}
 \item {\texttt{src.trans\_e.differentiate\_datasets}}, \pageref{src.trans_e:module-src.trans_e.differentiate_datasets}

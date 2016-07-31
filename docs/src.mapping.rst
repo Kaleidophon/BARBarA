@@ -1,9 +1,6 @@
 src.mapping package
 ===================
 
-Submodules
-----------
-
 src.mapping.mapthreading module
 -------------------------------
 

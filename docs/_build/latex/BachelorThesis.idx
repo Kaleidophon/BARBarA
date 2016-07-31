@@ -8,7 +8,6 @@
 \indexentry{main() (in module src.clustering.cluster\_mappings)|hyperpage}{4}
 \indexentry{resolve\_indices() (in module src.clustering.cluster\_mappings)|hyperpage}{4}
 \indexentry{train\_clustering\_parameters() (in module src.clustering.cluster\_mappings)|hyperpage}{4}
-\indexentry{src.clustering (module)|hyperpage}{5}
 \indexentry{src.eval.analogy (module)|hyperpage}{5}
 \indexentry{analogy\_eval() (in module src.eval.analogy)|hyperpage}{5}
 \indexentry{read\_analogies() (in module src.eval.analogy)|hyperpage}{5}
@@ -22,10 +21,9 @@
 \indexentry{read\_wordpairs() (in module src.eval.word\_similarity)|hyperpage}{6}
 \indexentry{remove\_unknowns() (in module src.eval.word\_similarity)|hyperpage}{7}
 \indexentry{word\_sim\_eval() (in module src.eval.word\_similarity)|hyperpage}{7}
-\indexentry{src.eval (module)|hyperpage}{7}
 \indexentry{src.mapping.mapthreading (module)|hyperpage}{7}
 \indexentry{MappingMasterThread (class in src.mapping.mapthreading)|hyperpage}{7}
-\indexentry{prepare() (MappingMasterThread method)|hyperpage}{8}
+\indexentry{prepare() (MappingMasterThread method)|hyperpage}{7}
 \indexentry{read\_ids\_file() (MappingMasterThread method)|hyperpage}{8}
 \indexentry{start\_threads() (MappingMasterThread method)|hyperpage}{8}
 \indexentry{MappingWorkerThread (class in src.mapping.mapthreading)|hyperpage}{8}
@@ -48,109 +46,100 @@
 \indexentry{main() (in module src.mapping.mapthreading)|hyperpage}{11}
 \indexentry{src.mapping (module)|hyperpage}{11}
 \indexentry{src.misc.decorators (module)|hyperpage}{11}
-\indexentry{alt() (in module src.misc.decorators)|hyperpage}{11}
 \indexentry{log\_time() (in module src.misc.decorators)|hyperpage}{11}
-\indexentry{log\_time\_mp() (in module src.misc.decorators)|hyperpage}{11}
 \indexentry{src.misc.helpers (module)|hyperpage}{11}
 \indexentry{alt() (in module src.misc.helpers)|hyperpage}{11}
 \indexentry{capitalize() (in module src.misc.helpers)|hyperpage}{11}
 \indexentry{contains\_tag() (in module src.misc.helpers)|hyperpage}{11}
-\indexentry{extract\_sentence\_id() (in module src.misc.helpers)|hyperpage}{11}
+\indexentry{extract\_sentence\_id() (in module src.misc.helpers)|hyperpage}{12}
 \indexentry{format\_fbid() (in module src.misc.helpers)|hyperpage}{12}
 \indexentry{load\_vectors() (in module src.misc.helpers)|hyperpage}{12}
 \indexentry{load\_vectors\_from\_model() (in module src.misc.helpers)|hyperpage}{12}
 \indexentry{partitions\_list() (in module src.misc.helpers)|hyperpage}{12}
 \indexentry{read\_dataset() (in module src.misc.helpers)|hyperpage}{12}
-\indexentry{src.misc (module)|hyperpage}{12}
-\indexentry{src.prep.corpus.convert\_to\_plain (module)|hyperpage}{12}
-\indexentry{convert\_decow\_to\_plain() (in module src.prep.corpus.convert\_to\_plain)|hyperpage}{12}
-\indexentry{convert\_part() (in module src.prep.corpus.convert\_to\_plain)|hyperpage}{12}
-\indexentry{convert\_part\_merging() (in module src.prep.corpus.convert\_to\_plain)|hyperpage}{12}
+\indexentry{src.prep.corpus.convert\_to\_plain (module)|hyperpage}{13}
+\indexentry{convert\_decow\_to\_plain() (in module src.prep.corpus.convert\_to\_plain)|hyperpage}{13}
+\indexentry{convert\_part() (in module src.prep.corpus.convert\_to\_plain)|hyperpage}{13}
+\indexentry{convert\_part\_merging() (in module src.prep.corpus.convert\_to\_plain)|hyperpage}{13}
 \indexentry{extract\_named\_entity() (in module src.prep.corpus.convert\_to\_plain)|hyperpage}{13}
 \indexentry{get\_file\_number() (in module src.prep.corpus.convert\_to\_plain)|hyperpage}{13}
-\indexentry{main() (in module src.prep.corpus.convert\_to\_plain)|hyperpage}{13}
-\indexentry{src.prep.corpus.extract\_conll (module)|hyperpage}{13}
-\indexentry{extract\_conll() (in module src.prep.corpus.extract\_conll)|hyperpage}{13}
-\indexentry{init\_argparse() (in module src.prep.corpus.extract\_conll)|hyperpage}{13}
-\indexentry{main() (in module src.prep.corpus.extract\_conll)|hyperpage}{13}
-\indexentry{src.prep.corpus.mapper (module)|hyperpage}{13}
+\indexentry{main() (in module src.prep.corpus.convert\_to\_plain)|hyperpage}{14}
+\indexentry{src.prep.corpus.extract\_conll (module)|hyperpage}{14}
+\indexentry{extract\_conll() (in module src.prep.corpus.extract\_conll)|hyperpage}{14}
+\indexentry{init\_argparse() (in module src.prep.corpus.extract\_conll)|hyperpage}{14}
+\indexentry{main() (in module src.prep.corpus.extract\_conll)|hyperpage}{14}
+\indexentry{src.prep.corpus.mapper (module)|hyperpage}{14}
 \indexentry{src.prep.corpus.reducer (module)|hyperpage}{14}
-\indexentry{src.prep.corpus (module)|hyperpage}{14}
-\indexentry{src.prep.nes.extract\_nes (module)|hyperpage}{14}
-\indexentry{extract\_named\_entity() (in module src.prep.nes.extract\_nes)|hyperpage}{14}
-\indexentry{main() (in module src.prep.nes.extract\_nes)|hyperpage}{14}
-\indexentry{process() (in module src.prep.nes.extract\_nes)|hyperpage}{14}
-\indexentry{write\_dict\_into\_file() (in module src.prep.nes.extract\_nes)|hyperpage}{14}
-\indexentry{write\_ids\_into\_file() (in module src.prep.nes.extract\_nes)|hyperpage}{14}
+\indexentry{src.prep.nes.extract\_nes (module)|hyperpage}{15}
+\indexentry{extract\_named\_entity() (in module src.prep.nes.extract\_nes)|hyperpage}{15}
+\indexentry{main() (in module src.prep.nes.extract\_nes)|hyperpage}{15}
+\indexentry{process() (in module src.prep.nes.extract\_nes)|hyperpage}{15}
+\indexentry{write\_dict\_into\_file() (in module src.prep.nes.extract\_nes)|hyperpage}{15}
+\indexentry{write\_ids\_into\_file() (in module src.prep.nes.extract\_nes)|hyperpage}{15}
 \indexentry{src.prep.nes.merge (module)|hyperpage}{15}
 \indexentry{freq\_worker() (in module src.prep.nes.merge)|hyperpage}{15}
-\indexentry{id\_worker() (in module src.prep.nes.merge)|hyperpage}{15}
-\indexentry{main() (in module src.prep.nes.merge)|hyperpage}{15}
-\indexentry{merge\_dicts() (in module src.prep.nes.merge)|hyperpage}{15}
-\indexentry{merge\_frequency\_files() (in module src.prep.nes.merge)|hyperpage}{15}
-\indexentry{merge\_id\_dicts() (in module src.prep.nes.merge)|hyperpage}{15}
-\indexentry{merge\_id\_files() (in module src.prep.nes.merge)|hyperpage}{15}
+\indexentry{id\_worker() (in module src.prep.nes.merge)|hyperpage}{16}
+\indexentry{main() (in module src.prep.nes.merge)|hyperpage}{16}
+\indexentry{merge\_dicts() (in module src.prep.nes.merge)|hyperpage}{16}
+\indexentry{merge\_frequency\_files() (in module src.prep.nes.merge)|hyperpage}{16}
+\indexentry{merge\_id\_dicts() (in module src.prep.nes.merge)|hyperpage}{16}
+\indexentry{merge\_id\_files() (in module src.prep.nes.merge)|hyperpage}{16}
 \indexentry{rl() (in module src.prep.nes.merge)|hyperpage}{16}
-\indexentry{src.prep.nes.statistics (module)|hyperpage}{16}
-\indexentry{calculate\_occurrences() (in module src.prep.nes.statistics)|hyperpage}{16}
-\indexentry{main() (in module src.prep.nes.statistics)|hyperpage}{16}
-\indexentry{src.prep.nes (module)|hyperpage}{16}
-\indexentry{src.prep.relations.relations (module)|hyperpage}{16}
-\indexentry{MissingTranslationException|hyperpage}{16}
-\indexentry{get\_id() (MissingTranslationException method)|hyperpage}{16}
+\indexentry{src.prep.nes.statistics (module)|hyperpage}{17}
+\indexentry{calculate\_occurrences() (in module src.prep.nes.statistics)|hyperpage}{17}
+\indexentry{main() (in module src.prep.nes.statistics)|hyperpage}{17}
+\indexentry{src.prep.relations.relations (module)|hyperpage}{17}
+\indexentry{MissingTranslationException|hyperpage}{17}
+\indexentry{get\_id() (MissingTranslationException method)|hyperpage}{17}
 \indexentry{fetch\_name() (in module src.prep.relations.relations)|hyperpage}{17}
 \indexentry{fetch\_relation\_triples\_of\_file() (in module src.prep.relations.relations)|hyperpage}{17}
-\indexentry{freebase\_request() (in module src.prep.relations.relations)|hyperpage}{17}
-\indexentry{init\_optparser() (in module src.prep.relations.relations)|hyperpage}{17}
-\indexentry{main() (in module src.prep.relations.relations)|hyperpage}{17}
-\indexentry{read\_credentials() (in module src.prep.relations.relations)|hyperpage}{17}
-\indexentry{rl() (in module src.prep.relations.relations)|hyperpage}{17}
-\indexentry{src.prep.relations (module)|hyperpage}{18}
-\indexentry{src.prep (module)|hyperpage}{18}
+\indexentry{freebase\_request() (in module src.prep.relations.relations)|hyperpage}{18}
+\indexentry{init\_optparser() (in module src.prep.relations.relations)|hyperpage}{18}
+\indexentry{main() (in module src.prep.relations.relations)|hyperpage}{18}
+\indexentry{read\_credentials() (in module src.prep.relations.relations)|hyperpage}{18}
+\indexentry{rl() (in module src.prep.relations.relations)|hyperpage}{18}
 \indexentry{src.trans\_e.add\_inverse\_relations (module)|hyperpage}{18}
 \indexentry{add\_inverse\_relations() (in module src.trans\_e.add\_inverse\_relations)|hyperpage}{18}
 \indexentry{init\_argparse() (in module src.trans\_e.add\_inverse\_relations)|hyperpage}{18}
-\indexentry{main() (in module src.trans\_e.add\_inverse\_relations)|hyperpage}{18}
-\indexentry{read\_file\_with\_inverse\_relations() (in module src.trans\_e.add\_inverse\_relations)|hyperpage}{18}
-\indexentry{src.trans\_e.contains\_entities (module)|hyperpage}{18}
-\indexentry{contains\_entities() (in module src.trans\_e.contains\_entities)|hyperpage}{18}
-\indexentry{create\_new\_dataset() (in module src.trans\_e.contains\_entities)|hyperpage}{18}
+\indexentry{main() (in module src.trans\_e.add\_inverse\_relations)|hyperpage}{19}
+\indexentry{read\_file\_with\_inverse\_relations() (in module src.trans\_e.add\_inverse\_relations)|hyperpage}{19}
+\indexentry{src.trans\_e.contains\_entities (module)|hyperpage}{19}
+\indexentry{contains\_entities() (in module src.trans\_e.contains\_entities)|hyperpage}{19}
+\indexentry{create\_new\_dataset() (in module src.trans\_e.contains\_entities)|hyperpage}{19}
 \indexentry{extract\_entities\_from\_relation\_dataset() (in module src.trans\_e.contains\_entities)|hyperpage}{19}
 \indexentry{extract\_entities\_from\_tql\_file() (in module src.trans\_e.contains\_entities)|hyperpage}{19}
 \indexentry{init\_argparse() (in module src.trans\_e.contains\_entities)|hyperpage}{19}
 \indexentry{main() (in module src.trans\_e.contains\_entities)|hyperpage}{19}
-\indexentry{src.trans\_e.differentiate\_datasets (module)|hyperpage}{19}
-\indexentry{compare\_entities() (in module src.trans\_e.differentiate\_datasets)|hyperpage}{19}
-\indexentry{init\_argparse() (in module src.trans\_e.differentiate\_datasets)|hyperpage}{19}
-\indexentry{main() (in module src.trans\_e.differentiate\_datasets)|hyperpage}{19}
-\indexentry{src.trans\_e.partition\_data (module)|hyperpage}{19}
-\indexentry{check\_data\_integrity() (in module src.trans\_e.partition\_data)|hyperpage}{19}
-\indexentry{check\_set\_integrity() (in module src.trans\_e.partition\_data)|hyperpage}{19}
+\indexentry{src.trans\_e.differentiate\_datasets (module)|hyperpage}{20}
+\indexentry{compare\_entities() (in module src.trans\_e.differentiate\_datasets)|hyperpage}{20}
+\indexentry{init\_argparse() (in module src.trans\_e.differentiate\_datasets)|hyperpage}{20}
+\indexentry{main() (in module src.trans\_e.differentiate\_datasets)|hyperpage}{20}
+\indexentry{src.trans\_e.partition\_data (module)|hyperpage}{20}
+\indexentry{check\_data\_integrity() (in module src.trans\_e.partition\_data)|hyperpage}{20}
+\indexentry{check\_set\_integrity() (in module src.trans\_e.partition\_data)|hyperpage}{20}
 \indexentry{get\_stats() (in module src.trans\_e.partition\_data)|hyperpage}{20}
 \indexentry{init\_argparse() (in module src.trans\_e.partition\_data)|hyperpage}{20}
 \indexentry{main() (in module src.trans\_e.partition\_data)|hyperpage}{20}
 \indexentry{partition\_data() (in module src.trans\_e.partition\_data)|hyperpage}{20}
 \indexentry{partition\_relation\_wise() (in module src.trans\_e.partition\_data)|hyperpage}{20}
-\indexentry{partition\_whole() (in module src.trans\_e.partition\_data)|hyperpage}{20}
-\indexentry{read\_only\_relations\_into\_set() (in module src.trans\_e.partition\_data)|hyperpage}{20}
-\indexentry{write\_data\_in\_file() (in module src.trans\_e.partition\_data)|hyperpage}{20}
-\indexentry{src.trans\_e.trans\_we (module)|hyperpage}{20}
+\indexentry{partition\_whole() (in module src.trans\_e.partition\_data)|hyperpage}{21}
+\indexentry{read\_only\_relations\_into\_set() (in module src.trans\_e.partition\_data)|hyperpage}{21}
+\indexentry{write\_data\_in\_file() (in module src.trans\_e.partition\_data)|hyperpage}{21}
+\indexentry{src.trans\_e.trans\_we (module)|hyperpage}{21}
 \indexentry{convert\_data() (in module src.trans\_e.trans\_we)|hyperpage}{21}
 \indexentry{create\_corrupt\_triples() (in module src.trans\_e.trans\_we)|hyperpage}{21}
-\indexentry{dump\_relation\_vectors() (in module src.trans\_e.trans\_we)|hyperpage}{21}
-\indexentry{evaluate() (in module src.trans\_e.trans\_we)|hyperpage}{21}
+\indexentry{dump\_relation\_vectors() (in module src.trans\_e.trans\_we)|hyperpage}{22}
+\indexentry{evaluate() (in module src.trans\_e.trans\_we)|hyperpage}{22}
 \indexentry{extract\_data\_from\_uri() (in module src.trans\_e.trans\_we)|hyperpage}{22}
 \indexentry{get\_rank() (in module src.trans\_e.trans\_we)|hyperpage}{22}
 \indexentry{init\_argparser() (in module src.trans\_e.trans\_we)|hyperpage}{22}
-\indexentry{load\_relation\_vectors() (in module src.trans\_e.trans\_we)|hyperpage}{22}
-\indexentry{main() (in module src.trans\_e.trans\_we)|hyperpage}{22}
-\indexentry{prepare\_training() (in module src.trans\_e.trans\_we)|hyperpage}{22}
-\indexentry{rank\_entities() (in module src.trans\_e.trans\_we)|hyperpage}{22}
+\indexentry{load\_relation\_vectors() (in module src.trans\_e.trans\_we)|hyperpage}{23}
+\indexentry{main() (in module src.trans\_e.trans\_we)|hyperpage}{23}
+\indexentry{prepare\_training() (in module src.trans\_e.trans\_we)|hyperpage}{23}
+\indexentry{rank\_entities() (in module src.trans\_e.trans\_we)|hyperpage}{23}
 \indexentry{read\_freebase\_data() (in module src.trans\_e.trans\_we)|hyperpage}{23}
 \indexentry{read\_tql\_file() (in module src.trans\_e.trans\_we)|hyperpage}{23}
 \indexentry{test\_coverage() (in module src.trans\_e.trans\_we)|hyperpage}{23}
-\indexentry{train() (in module src.trans\_e.trans\_we)|hyperpage}{23}
+\indexentry{train() (in module src.trans\_e.trans\_we)|hyperpage}{24}
 \indexentry{transform\_triples() (in module src.trans\_e.trans\_we)|hyperpage}{24}
 \indexentry{write\_data() (in module src.trans\_e.trans\_we)|hyperpage}{24}
-\indexentry{src.trans\_e (module)|hyperpage}{24}
-\indexentry{src (module)|hyperpage}{24}

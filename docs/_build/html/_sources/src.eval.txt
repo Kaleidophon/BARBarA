@@ -1,9 +1,6 @@
 src.eval package
 ================
 
-Submodules
-----------
-
 src.eval.analogy module
 -----------------------
 
@@ -24,15 +21,6 @@ src.eval.word_similarity module
 -------------------------------
 
 .. automodule:: src.eval.word_similarity
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
-Module contents
----------------
-
-.. automodule:: src.eval
     :members:
     :undoc-members:
     :show-inheritance:

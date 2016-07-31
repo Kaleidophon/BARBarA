@@ -9,11 +9,3 @@ Subpackages
     src.prep.corpus
     src.prep.nes
     src.prep.relations
-
-Module contents
----------------
-
-.. automodule:: src.prep
-    :members:
-    :undoc-members:
-    :show-inheritance:
