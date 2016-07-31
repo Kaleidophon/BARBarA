@@ -1,9 +1,33 @@
-import codecs, os, sys, random, re, copy, cPickle
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+"""
+This module is used to merge various output files created from :py:mod:`extract_nes.py`. Because they are only created
+for one corpus part at a time, you end up with multiple files that cannot simply by concatenated. Therefore, this module
+aims to merge them in a (relatively) memory-efficient manner.
+"""
+
+# STANDARD
+import codecs
 from collections import defaultdict, Counter
+import copy
 from multiprocessing import Pool
+import os
+import random
+import re
+import sys
 
 
 def main():
+	"""
+	Main function, handling command line arguments.
+	"""
+	if sys.argv[1] not in ["-f", "-id", "-yid"]:
+		print "Possible usages:"
+		print "(Merge frequency files:) -f <Path to input files directory> <Path to output directory> <Path to log " \
+			  "directory>"
+		print "(Merge id files): -id <Path to input files directory> <Path to output directory> <Path to log directory>"
+		print "(Merge id files into yaml): -yid (same as above)"
+
 	# Parsing command line arguments
 	if sys.argv[1] == "-f":
 		# Merge frequency files
@@ -21,6 +45,14 @@ def main():
 # Functions associated with the merging of frequency files
 
 def merge_frequency_files(infiles_path, outpath, logpath):
+	"""
+	Merge multiple named entitiy frequency files.
+
+	Args:
+		infiles_path (str): Path to input file directory.
+		outpath (str): Path to output directory.
+		logpath (str): Path to logging directory.
+	"""
 	with codecs.open(logpath, "wb", "utf-8") as logfile:
 		inpaths = [infiles_path + path for path in os.listdir(infiles_path)]
 		logfile.write("Inpaths: %s\n" % (unicode(inpaths)))
@@ -30,7 +62,7 @@ def merge_frequency_files(infiles_path, outpath, logpath):
 		logfile.write("Assigning tasks...\n")
 		pool = Pool(processes=len(inpaths))
 		logfile.write("Starting %i threads...\n" % (len(inpaths)))
-		freqdicts = pool.map(freqWorker, inpaths)
+		freqdicts = pool.map(freq_worker, inpaths)
 		logfile.write("Reading of frequency files complete. Start merging...\n")
 
 		# Merging dictionaries
@@ -38,7 +70,7 @@ def merge_frequency_files(infiles_path, outpath, logpath):
 			logfile.write("Merging %i dictionaries...\n" % len(freqdicts))
 			# Assigning dictionary pair to be merged in parallel
 			freqdict_tuples = [(freqdicts[i], freqdicts[i - 1]) for i in range(1, len(freqdicts), 2)]
-			new_freqdicts = map(mergeDicts, freqdict_tuples)
+			new_freqdicts = map(merge_dicts, freqdict_tuples)
 
 			# Dealing with dictionary that might have been left over
 			if len(freqdicts) % 2 == 1:
@@ -56,7 +88,16 @@ def merge_frequency_files(infiles_path, outpath, logpath):
 		logfile.write("Writing files complete!\n")
 
 
-def freqWorker(inpath):
+def freq_worker(inpath):
+	"""
+	Reads the named entity frequencies from a file.
+
+	Args:
+		inpath (str): Path to frequency file.
+
+	Returns:
+		dict: Dictionary with named entities as keys and their frequencies as values.
+	"""
 	freqdict = defaultdict(int)
 	with codecs.open(inpath, "rb", "utf-8") as infile:
 		line = rl(infile)
@@ -68,12 +109,30 @@ def freqWorker(inpath):
 		return freqdict
 
 
-def mergeDicts(dicttuple):
+def merge_dicts(dicttuple):
+	"""
+	Merges two dictionary (efficiently).
+
+	Args:
+		dicttuple (tuple): Tuple of two frequency dictionaries.
+
+	Returns:
+		dict: New merged dictionary
+	"""
 	c1, c2 = Counter(dicttuple[0]), Counter(dicttuple[1])
 	return c1 + c2
 
 
 def rl(infile):
+	"""
+	Lazy function to read a line from a while and remove redundant whitespaces.
+
+	Args:
+		infile (str): Path to input file.
+
+	Returns:
+		str: Stripped line
+	"""
 	return infile.readline().strip()
 
 
@@ -82,6 +141,15 @@ def rl(infile):
 # Functions associated with the merging of ID files
 
 def merge_id_files(infiles_path, outpath, logpath, yaml=False):
+	"""
+	Merge multiple named entitiy id files.
+
+	Args:
+		infiles_path (str): Path to input file directory.
+		outpath (str): Path to output directory.
+		logpath (str): Path to logging directory.
+		yaml (bool): Flag to indicate whether merged files should be written in yaml format.
+	"""
 	with codecs.open(logpath, "wb", "utf-8") as logfile:
 		inpaths = [infiles_path + path for path in os.listdir(infiles_path) if ".DS_Store" not in path]
 		logfile.write("Inpaths: %s\n" % (unicode(inpaths)))
@@ -91,7 +159,7 @@ def merge_id_files(infiles_path, outpath, logpath, yaml=False):
 		logfile.write("Assigning tasks...\n")
 		pool = Pool(processes=len(inpaths))
 		logfile.write("Starting %i threads...\n" % (len(inpaths)))
-		idsdicts = pool.map(idWorker, inpaths)
+		idsdicts = pool.map(id_worker, inpaths)
 		logfile.write("Reading of ID files complete. Start merging...\n")
 
 		# Merging dictionaries
@@ -123,7 +191,16 @@ def merge_id_files(infiles_path, outpath, logpath, yaml=False):
 		logfile.write("Writing files complete!\n")
 
 
-def idWorker(inpath):
+def id_worker(inpath):
+	"""
+	Reads the named entity ids from a file.
+
+	Args:
+		inpath (str): Path to frequency file.
+
+	Returns:
+		dict: Dictionary with named entities as keys and their ids as values.
+	"""
 	idsdict = defaultdict(list)
 	ids_lookup = defaultdict(str)
 	file_n = re.findall(re.compile("\d{2}(?=[^a])"), inpath) # Retrieve file number
@@ -148,7 +225,7 @@ def idWorker(inpath):
 				if line in ids_lookup:
 					line = ids_lookup[line]
 				else:
-					random_id = random.randint((file_n - 1) * 100000000, file_n * 100000000) # Assign new, shorter ID
+					random_id = random.randint((file_n - 1) * 100000000, file_n * 100000000)  # Assign new, shorter ID
 					while random_id in ids_lookup:
 						random_id = random.randint(0, 100000000)
 					ids_lookup[line] = random_id
@@ -169,30 +246,20 @@ def idWorker(inpath):
 
 
 def merge_id_dicts(dicttuple):
+	"""
+	Merges two id dictionary (efficiently).
+
+	Args:
+		dicttuple (tuple): Tuple of two id dictionaries.
+
+	Returns:
+		dict: New merged dictionary
+	"""
 	dict1, dict2 = dicttuple
 	new = copy.deepcopy(dict1)
 	for key, value in dict2.items():
 		new.setdefault(key, []).extend(value)
 	return new
-
-
-def print_key_lengths(dictionary):
-	for key in dictionary:
-		print "%s\t%i" % (key, len(dictionary[key]))
-	print ""
-
-
-def dump_ids_dict(idsdict, outpath):
-	with codecs.open(outpath, "wb", "utf-8") as outfile:
-		idsdict = {(key[0].encode('latin-1'), key[0].encode('latin-1')): idsdict[key] for key in idsdict}
-		cPickle.dump(idsdict, outfile)
-
-
-def load_ids_dict(inpath):
-	with codecs.open(inpath, "rb") as infile:
-		idsdict = cPickle.load(infile)
-		idsdict = {(key[0].decode('latin-1'), key[1].decode('latin-1')): idsdict[key] for key in idsdict}
-		return idsdict
 
 
 if __name__ == "__main__":

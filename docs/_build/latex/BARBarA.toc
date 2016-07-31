@@ -1,0 +1,53 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}src}{3}{chapter.1}
+\contentsline {section}{\numberline {1.1}src package}{3}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}Subpackages}{3}{subsection.1.1.1}
+\contentsline {subsubsection}{src.clustering package}{3}{subsubsection*.3}
+\contentsline {paragraph}{Submodules}{3}{paragraph*.4}
+\contentsline {paragraph}{src.clustering.cluster\_mappings module}{3}{paragraph*.5}
+\contentsline {paragraph}{Module contents}{5}{paragraph*.15}
+\contentsline {subsubsection}{src.eval package}{5}{subsubsection*.16}
+\contentsline {paragraph}{Submodules}{5}{paragraph*.17}
+\contentsline {paragraph}{src.eval.analogy module}{5}{paragraph*.18}
+\contentsline {paragraph}{src.eval.eval\_vectors module}{5}{paragraph*.21}
+\contentsline {paragraph}{src.eval.word\_similarity module}{6}{paragraph*.26}
+\contentsline {paragraph}{Module contents}{7}{paragraph*.31}
+\contentsline {subsubsection}{src.mapping package}{7}{subsubsection*.32}
+\contentsline {paragraph}{Submodules}{7}{paragraph*.33}
+\contentsline {paragraph}{src.mapping.mapthreading module}{7}{paragraph*.34}
+\contentsline {paragraph}{Module contents}{11}{paragraph*.57}
+\contentsline {subsubsection}{src.misc package}{11}{subsubsection*.58}
+\contentsline {paragraph}{Submodules}{11}{paragraph*.59}
+\contentsline {paragraph}{src.misc.decorators module}{11}{paragraph*.60}
+\contentsline {paragraph}{src.misc.helpers module}{12}{paragraph*.62}
+\contentsline {paragraph}{Module contents}{13}{paragraph*.72}
+\contentsline {subsubsection}{src.prep package}{13}{subsubsection*.73}
+\contentsline {paragraph}{Subpackages}{13}{paragraph*.74}
+\contentsline {subparagraph}{src.prep.corpus package}{13}{subparagraph*.75}
+\contentsline {subparagraph}{Submodules}{13}{subparagraph*.76}
+\contentsline {subparagraph}{src.prep.corpus.convert\_to\_plain module}{13}{subparagraph*.77}
+\contentsline {subparagraph}{src.prep.corpus.extract\_conll module}{14}{subparagraph*.84}
+\contentsline {subparagraph}{src.prep.corpus.mapper module}{15}{subparagraph*.88}
+\contentsline {subparagraph}{src.prep.corpus.reducer module}{15}{subparagraph*.89}
+\contentsline {subparagraph}{Module contents}{15}{subparagraph*.90}
+\contentsline {subparagraph}{src.prep.nes package}{15}{subparagraph*.91}
+\contentsline {subparagraph}{Submodules}{15}{subparagraph*.92}
+\contentsline {subparagraph}{src.prep.nes.extract\_nes module}{15}{subparagraph*.93}
+\contentsline {subparagraph}{src.prep.nes.merge module}{16}{subparagraph*.99}
+\contentsline {subparagraph}{src.prep.nes.statistics module}{17}{subparagraph*.108}
+\contentsline {subparagraph}{Module contents}{18}{subparagraph*.111}
+\contentsline {subparagraph}{src.prep.relations package}{18}{subparagraph*.112}
+\contentsline {subparagraph}{Submodules}{18}{subparagraph*.113}
+\contentsline {subparagraph}{src.prep.relations.relations module}{18}{subparagraph*.114}
+\contentsline {subparagraph}{Module contents}{19}{subparagraph*.124}
+\contentsline {paragraph}{Module contents}{19}{paragraph*.125}
+\contentsline {subsubsection}{src.trans\_e package}{19}{subsubsection*.126}
+\contentsline {paragraph}{src.trans\_e.add\_inverse\_relations module}{19}{paragraph*.127}
+\contentsline {paragraph}{src.trans\_e.contains\_entities module}{20}{paragraph*.132}
+\contentsline {paragraph}{src.trans\_e.differentiate\_datasets module}{20}{paragraph*.139}
+\contentsline {paragraph}{src.trans\_e.partition\_data module}{21}{paragraph*.143}
+\contentsline {paragraph}{src.trans\_e.trans\_we module}{22}{paragraph*.154}
+\contentsline {subsection}{\numberline {1.1.2}Module contents}{25}{subsection.1.1.2}
+\contentsline {chapter}{\numberline {2}Indices and tables}{27}{chapter.2}
+\contentsline {chapter}{Python Module Index}{29}{section*.172}
+\contentsline {chapter}{Index}{31}{section*.173}

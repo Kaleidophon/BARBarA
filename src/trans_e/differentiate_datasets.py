@@ -1,8 +1,21 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+"""
+This script analyses entities of two relation datasets (e.g. ``FB15k`` and ``GER14k``!).
+"""
+
+# STANDARD
 import codecs
 import argparse
 
+# PROJECT
+from src.misc.helpers import read_dataset
+
 
 def main():
+	"""
+	Main function
+	"""
 	argparser = init_argparse()
 	args = argparser.parse_args()
 	print args
@@ -10,12 +23,15 @@ def main():
 	compare_entities(set1, set2)
 
 
-def read_dataset(inpath):
-	with codecs.open(inpath, 'rb', 'utf-8') as infile:
-		return [tuple(line.strip().split('\t')) for line in infile]
-
-
 def compare_entities(set1, set2):
+	"""
+	Compares unique entities of two relation datasets.
+	Also determines the size of their intersection.
+
+	Args:
+		set1 (list): List of relation triples as tuples from dataset 1.
+		set2 (list): List of relation trilpes as tuples from dataset 2.
+	"""
 	set1_entities = set()
 	set2_entities = set()
 
@@ -56,6 +72,12 @@ def compare_entities(set1, set2):
 
 
 def init_argparse():
+	"""
+	Initialize all possible arguments for the argument parser.
+
+	Returns:
+		:py:mod:`argparse.ArgumentParser`: ArgumentParser object with command line arguments for this script.
+	"""
 	argparser = argparse.ArgumentParser()
 	argparser.add_argument('--set1',
 							help='Relation input dataset 1.')

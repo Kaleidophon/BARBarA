@@ -1,0 +1,481 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>src.eval package &mdash; BARBarA (a Bad Acronym Regarding a Bachelor Assignment) v1.0</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="BARBarA (a Bad Acronym Regarding a Bachelor Assignment) v1.0" href="index.html"/>
+        <link rel="up" title="src package" href="src.html"/>
+        <link rel="next" title="src.mapping package" href="src.mapping.html"/>
+        <link rel="prev" title="src.clustering package" href="src.clustering.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> BARBarA
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="simple">
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="src.html">src package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="src.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="src.clustering.html">src.clustering package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">src.eval package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-src.eval.analogy">src.eval.analogy module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-src.eval.eval_vectors">src.eval.eval_vectors module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-src.eval.word_similarity">src.eval.word_similarity module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-src.eval">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.mapping.html">src.mapping package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.misc.html">src.misc package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.prep.html">src.prep package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.trans_e.html">src.trans_e package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">BARBarA</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+        <li><a href="src.html">src package</a> &raquo;</li>
+      
+    <li>src.eval package</li>
+    <li class="wy-breadcrumbs-aside">
+      
+          
+          <a href="_sources/src.eval.txt" rel="nofollow"> View page source</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="src-eval-package">
+<h1>src.eval package<a class="headerlink" href="#src-eval-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-src.eval.analogy">
+<span id="src-eval-analogy-module"></span><h2>src.eval.analogy module<a class="headerlink" href="#module-src.eval.analogy" title="Permalink to this headline">¶</a></h2>
+<p>Module to evaluate word embeddings by the means of analogies like &#8220;W is to X like Y is to Z&#8221;. Usually,
+the system uses the word embeddings of word W, X, Y and tries to find the vector of word Z that is most similar to
+X and Y and most dissimilar to W.
+Therefore, the <a class="reference external" href="https://transacl.org/ojs/index.php/tacl/article/viewFile/570/124">CosMul method (Levy et al., 2015)</a>
+is used.</p>
+<p>The whole module is used in <code class="xref py py-mod docutils literal"><span class="pre">src.eval.eval_vectors.py</span></code>.</p>
+<dl class="function">
+<dt id="src.eval.analogy.analogy_eval">
+<code class="descname">analogy_eval</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>analogy_path</em>, <em>per_section=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.analogy_eval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perform analogy evaluation. Usually, the system uses the word embeddings of word W, X, Y and tries to find the
+vector of word Z that is most similar to
+X and Y and most dissimilar to W for an analogy like &#8220;W is to X like Y is to Z.&#8221;
+Therefore, the CosMul method (Levy et al., 2015) is used.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vector_inpath</strong> (<em>str</em>) &#8211; Path to <cite>word2vec</cite> vector file.</li>
+<li><strong>analogy_path</strong> (<em>str</em>) &#8211; Path to analogy file.</li>
+<li><strong>per_section</strong> (<em>bool</em>) &#8211; Flag to indicate whether analogies test should be conducted section-wise or just all in
+one run.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.eval.analogy.read_analogies">
+<code class="descname">read_analogies</code><span class="sig-paren">(</span><em>analogy_path</em>, <em>per_section=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.analogy.read_analogies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a file with analogies.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>analogy_path</strong> (<em>str</em>) &#8211; Path to analogy file.</li>
+<li><strong>per_section</strong> (<em>bool</em>) &#8211; Flag to indicate whether analogies test should be conducted section-wise or just all in
+one run. In this function, the section will be put into a data structure accordingly.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Dictionary with section header as key, list of analogy as 4-tuples as value.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.eval.eval_vectors">
+<span id="src-eval-eval-vectors-module"></span><h2>src.eval.eval_vectors module<a class="headerlink" href="#module-src.eval.eval_vectors" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>Main module used to evaluate word embeddings. It offers the following options:</dt>
+<dd><div class="first last line-block">
+<div class="line">1.) Analogy: The system tries to complete an analogy like &#8220;W is to X like Y is to...?&#8221; The percentage
+of correct answers is measured.</div>
+<div class="line">2.) Word similarity: The system assign word pairs a similarity score based on the cosine similarity of their
+word embeddings. Then, to correlation between those and human ratings is measured with Pearson&#8217;s rho.</div>
+<div class="line">3.) Nearest neighbors: Find the nearest neighbors for a list of words based on their word embeddings. Good for
+a first look on the data, but not quantifiable.</div>
+<div class="line">4.) Visualize: Plot word embeddings in 2D or 3D. Fancy plots. Yay!</div>
+</div>
+</dd>
+</dl>
+<dl class="function">
+<dt id="src.eval.eval_vectors.find_nearest_neighbors">
+<code class="descname">find_nearest_neighbors</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>max_n</em>, <em>wordlist</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.find_nearest_neighbors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find the nearest neighbors for a list of words based on their word embeddings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vector_inpath</strong> (<em>str</em>) &#8211; Path to vector file. File has to have the following format (separated by spaces):
+&lt;index of original vector #1&gt; &lt;index of original vector #2&gt; &lt;Dimension 1&gt; ... &lt;Dimension n&gt;</li>
+<li><strong>max_n</strong> (<em>int</em>) &#8211; Number of nearest neighbors that should be determined.</li>
+<li><strong>wordlist</strong> (<em>list</em>) &#8211; List of words nearest neighbors should be found for.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.eval.eval_vectors.init_argparser">
+<code class="descname">init_argparser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.init_argparser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize all possible arguments for the argument parser.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">ArgumentParser object with command line arguments for this script.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-mod docutils literal"><span class="pre">argparse.ArgumentParser</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.eval.eval_vectors.main">
+<code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the main function. It uses the parsed command line arguments, especially <cite>&#8211;mode</cite>, to pick the right
+function to execute.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.eval.eval_vectors.plot">
+<code class="descname">plot</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>max_n</em>, <em>target_dim</em>, <em>show_plot=False</em>, <em>display_names=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.eval_vectors.plot" title="Permalink to this definition">¶</a></dt>
+<dd><p>Plot word embeddings in 2D or 3D. As a heuristic, word will only be plotted after the 50th most frequent words to
+avoid plotting boring stop words.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vector_inpath</strong> (<em>str</em>) &#8211; Path to vector file. File has to have the following format (separated by spaces):
+&lt;index of original vector #1&gt; &lt;index of original vector #2&gt; &lt;Dimension 1&gt; ... &lt;Dimension n&gt;</li>
+<li><strong>max_n</strong> (<em>int</em>) &#8211; Maximum number of vectors to be plotted.</li>
+<li><strong>show_plot</strong> (<em>bool</em>) &#8211; Flag to indicate whether a window with the (interactive) plot should pop up after executing
+the script.</li>
+<li><strong>display_names</strong> (<em>bool</em>) &#8211; Flag to indicate whether the words should acutally be shown next to the data point in
+the plot. Can get very messy with higher <cite>max_n</cite>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.eval.word_similarity">
+<span id="src-eval-word-similarity-module"></span><h2>src.eval.word_similarity module<a class="headerlink" href="#module-src.eval.word_similarity" title="Permalink to this headline">¶</a></h2>
+<p>Module used to conduct the word similarity evaluation. The system assign word pairs a similarity score based on
+the cosine similarity of their word embeddings. Then, to correlation between those and human ratings is measured with
+Pearson&#8217;s rho.</p>
+<p>The whole module is used in <code class="xref py py-mod docutils literal"><span class="pre">src.eval.eval_vectors.py</span></code>.</p>
+<dl class="function">
+<dt id="src.eval.word_similarity.evaluate_wordpair_sims">
+<code class="descname">evaluate_wordpair_sims</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>number_of_pairs</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.evaluate_wordpair_sims" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate results of the similarity score assignments, i.e. calculate pearson&#8217;s rho and its significance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> (<em>list</em>) &#8211; List of similarity scores assigned by humans.</li>
+<li><strong>y</strong> (<em>list</em>) &#8211; List of similarity scores assigned by the system.</li>
+<li><strong>number_of_pairs</strong> (<em>int</em>) &#8211; Number of word pairs evaluated.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>rho</strong> &#8211; Pearson&#8217;s correlation coefficient.
+t (float): Student&#8217;s t value.
+z (float): z value.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.eval.word_similarity.read_wordpairs">
+<code class="descname">read_wordpairs</code><span class="sig-paren">(</span><em>wordpair_path</em>, <em>format='google'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.read_wordpairs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read wordpair file with wordpairs and their similarity scores assigned by humans.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>wordpair_path</strong> (<em>str</em>) &#8211; Path to word pair file.</li>
+<li><strong>format</strong> (<em>str</em>) &#8211; Format of wor pair file {google|semrel}</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Tuple of a list of word pairs and a list of similarity scores for those same pair assigned by humans.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.eval.word_similarity.remove_unknowns">
+<code class="descname">remove_unknowns</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.remove_unknowns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove word pairs from the results where one or two word embedding weren&#8217;t found.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>x</strong> (<em>list</em>) &#8211; List of similarity scores assigned by humans.</li>
+<li><strong>y</strong> (<em>list</em>) &#8211; List of similarity scores assigned by the system.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>x</strong> &#8211; Purged list of similarity scores assigned by humans.
+y (list): Purged list of similarity scores assigned by the system.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.eval.word_similarity.word_sim_eval">
+<code class="descname">word_sim_eval</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>wordpair_path</em>, <em>format='google'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.eval.word_similarity.word_sim_eval" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function that let&#8217;s the system assign word pairs a similarity score based on the cosine similarity of their word
+embeddings. Then, to correlation between those and human ratings is measured with Pearson&#8217;s rho.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vector_inpath</strong> (<em>str</em>) &#8211; Path to vector file. File has to have the following format (separated by spaces):
+&lt;index of original vector #1&gt; &lt;index of original vector #2&gt; &lt;Dimension 1&gt; ... &lt;Dimension n&gt;</li>
+<li><strong>wordpair_path</strong> (<em>str</em>) &#8211; Path to word pair file.</li>
+<li><strong>format</strong> (<em>str</em>) &#8211; Format of word pair file {google|semrel}</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.eval">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src.eval" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="src.mapping.html" class="btn btn-neutral float-right" title="src.mapping package" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="src.clustering.html" class="btn btn-neutral" title="src.clustering package" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Dennis Ulmer.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'v1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

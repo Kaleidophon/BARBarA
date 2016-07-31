@@ -1,11 +1,24 @@
-import codecs
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+"""
+This script analyses entities in the *Freebase* ``FB14k`` relations datatset and the tql wikidata dump.
+This is handy because the *Freebase* API is deprecated nowadays. Also, this scripted was used to create the ``GER14k``
+dataset.
+"""
+
+# STANDARD
 import argparse
+import codecs
 import re
 
-from differentiate_datasets import read_dataset
+# PROJECT
+from src.misc.helpers import format_fbid, read_dataset
 
 
 def main():
+	"""
+	Main function.
+	"""
 	argparser = init_argparse()
 	args = argparser.parse_args()
 	print args
@@ -20,12 +33,27 @@ def main():
 
 
 def contains_entities(entities1, entities2):
+	"""
+	Prints stats about two sets of entities.
+
+	Args:
+		entities1 (set): First set of entities.
+		entities2 (set): Second set of entities.
+	"""
 	print "Entities in set 1: %i" % len(entities1)
 	print "Entities in set 2: %i" % len(entities2)
 	print "The sets contains %i shared entities." % len(entities1.intersection(entities2))
 
 
 def create_new_dataset(entities1, dataset, outpath):
+	"""
+	Write a new dataset only with relations which entities appear in a specific set.
+
+	Args:
+		entities1 (set): Set entities in relations have to appear in.
+		dataset (list): Original dataset (a list of tuples).
+		outpath (str): Path to new dataset.
+	"""
 	with codecs.open(outpath, 'wb', 'utf-8') as outfile:
 		for triple in dataset:
 			if triple[0] in entities1 and triple[2] in entities1:
@@ -33,6 +61,15 @@ def create_new_dataset(entities1, dataset, outpath):
 
 
 def extract_entities_from_tql_file(tql_path):
+	"""
+	Extract all entities from the ``tql`` *Wikidata* *Freebase* dump.
+
+	Args:
+		tql_path (str): Path to ``tql`` file.
+
+	Returns:
+		set: Set of entities in the ``tql`` dump.
+	"""
 	print "Read entities from wikidata dump..."
 	entities = set()
 
@@ -52,6 +89,15 @@ def extract_entities_from_tql_file(tql_path):
 
 
 def extract_entities_from_relation_dataset(dataset_inpath):
+	"""
+	Extract all entities from the *Freebase* relations file.
+
+	Args:
+		dataset_inpath (str): Path to the *Freebase* file.
+
+	Returns:
+		set: Set of entities in the *Freebase* relations file..
+	"""
 	print "Read entities from relation datatset..."
 	entities = set()
 	dataset = read_dataset(dataset_inpath)
@@ -61,10 +107,6 @@ def extract_entities_from_relation_dataset(dataset_inpath):
 		entities.add(triple[1])
 
 	return entities, dataset
-
-
-def format_fbid(id):
-	return re.sub(r'm\.', '/m/', id)
 
 
 def init_argparse():

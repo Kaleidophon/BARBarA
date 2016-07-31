@@ -1,12 +1,27 @@
-import codecs
-import sys
-import os
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+"""
+This script partition the data of a relation dataset like ``FB15k`` into a training, validation and test set so it
+can be used by `TransE <https://github.com/glorotxa/SME>`_.
+To make sure that no relation appears in the validation or test set that didn't appear in the training set, data
+will be partitioned relation-wise. To partition them intuitively is still an option, though.
+"""
+
+# STANDARD
 import argparse
-import random
+import codecs
 from collections import defaultdict
+import random
+import sys
+
+# PROJECT
+from src.misc.helpers import read_dataset, partitions_list
 
 
 def main():
+	"""
+	Main function.
+	"""
 	argparser = init_argparse()
 	args = argparser.parse_args()
 	print args
@@ -18,23 +33,27 @@ def main():
 		prts = (float(args.partitions[0]), float(args.partitions[1]), float(args.partitions[2]))
 		assert prts[0] + prts[1] + prts[2] == 1.0
 
-		data = read_relations(args.input)
+		data = read_dataset(args.input)
 		stats = get_stats(data)
 		print "%i unique entities / %i unique relations / %i total in data." %(stats[0], stats[1], stats[2])
 		partition_data(data, prts, args.outdir, args.whole)
 
 
-def read_relations(inpath):
-	with codecs.open(inpath, 'rb', 'utf-8') as infile:
-		return [line.strip().split("\t") for line in infile.readlines()]
-
-
 def get_stats(data):
+	"""
+	Returns some statistics about the given data, i.e. the number of unique entities, relations and
+	their sum.
+
+	Args:
+		data (list): List of relation triples as tuples.
+
+	Returns:
+		tuple: #entities, #relations, #entities + #relations.
+	"""
 	entities = set()
 	relations = set()
 
 	for triple in data:
-		#print triple[0], triple[2]
 		entities.add(triple[0])
 		entities.add(triple[2])
 		relations.add(triple[1])
@@ -43,12 +62,30 @@ def get_stats(data):
 
 
 def write_data_in_file(data, outfile):
+	"""
+	Writes relation triples into a file.
+
+	Args:
+		data (list): List of relation triples as tuples.
+		outfile (str): Path the triples should be written to.
+	"""
 	for d in data:
 		d = [part.replace(" ", "_") for part in d]
 		outfile.write("%s\t%s\t%s\n" %(d[0], d[1], d[2]))
 
 
 def partition_relation_wise(data, prts):
+	"""
+	Partition data into training, validation and test set.
+
+	Args:
+		data (list): List of relation triples as tuples.
+		prts (tuple): Tuple of floats with each number corresponding to the desired percentage of data distributed to
+			the corresponding set (% train set / % validation set / % tets set)
+
+	Returns:
+		tuples: Tuple of the three data sets as lists of relation triples as tuples.
+	"""
 	triples = defaultdict(list)
 
 	# Aggregate relations
@@ -111,11 +148,6 @@ def partition_data(data, prts, outdir, whole=True):
 	test_file.close()
 
 
-def partitions_list(l, prts):
-	size = len(l)
-	return l[:int(prts[0]*size)], l[int(prts[0]*size)+1:int((prts[0]+prts[1])*size)], l[int((prts[0]+prts[1])*size)+1:]
-
-
 def check_data_integrity(data_inpath, remove_clones, outpath):
 	"""
 	Check whether all triplets in the data are unique.
@@ -145,6 +177,15 @@ def check_data_integrity(data_inpath, remove_clones, outpath):
 
 
 def read_only_relations_into_set(inpath):
+	"""
+	Only read the relation of a given relation dataset into a set.
+
+	Args:
+		inpath (str): Path to relation dataset.
+
+	Returns:
+		set: Set of dataset relation types.
+	"""
 	relations = set()
 
 	with codecs.open(inpath, 'rb', 'utf-8') as infile:
@@ -158,6 +199,13 @@ def read_only_relations_into_set(inpath):
 
 
 def check_set_integrity(indir):
+	"""
+	Checks the integrity of given training / validation / test sets (do triples with new relations appear in the
+	validation or test, but not in the training set?).
+
+	Args:
+		indir (str): Directory of the datasets.
+	"""
 	train_set = read_only_relations_into_set(indir + "freebase_mtr100_mte100-train.txt")
 	valid_set = read_only_relations_into_set(indir + "freebase_mtr100_mte100-valid.txt")
 	test_set = read_only_relations_into_set(indir + "freebase_mtr100_mte100-test.txt")
@@ -172,6 +220,12 @@ def check_set_integrity(indir):
 
 
 def init_argparse():
+	"""
+	Initialize all possible arguments for the argument parser.
+
+	Returns:
+		:py:mod:`argparse.ArgumentParser`: ArgumentParser object with command line arguments for this script.
+	"""
 	argparser = argparse.ArgumentParser()
 	argparser.add_argument('--input',
 							help='Relation input data')

@@ -1,0 +1,633 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>src.mapping package &mdash; BARBarA (a Bad Acronym Regarding a Bachelor Assignment) v1.0</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="BARBarA (a Bad Acronym Regarding a Bachelor Assignment) v1.0" href="index.html"/>
+        <link rel="up" title="src package" href="src.html"/>
+        <link rel="next" title="src.misc package" href="src.misc.html"/>
+        <link rel="prev" title="src.eval package" href="src.eval.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> BARBarA
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="simple">
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="src.html">src package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="src.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="src.clustering.html">src.clustering package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.eval.html">src.eval package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">src.mapping package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-src.mapping.mapthreading">src.mapping.mapthreading module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-src.mapping">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.misc.html">src.misc package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.prep.html">src.prep package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.trans_e.html">src.trans_e package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">BARBarA</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+        <li><a href="src.html">src package</a> &raquo;</li>
+      
+    <li>src.mapping package</li>
+    <li class="wy-breadcrumbs-aside">
+      
+          
+          <a href="_sources/src.mapping.txt" rel="nofollow"> View page source</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="src-mapping-package">
+<h1>src.mapping package<a class="headerlink" href="#src-mapping-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-src.mapping.mapthreading">
+<span id="src-mapping-mapthreading-module"></span><h2>src.mapping.mapthreading module<a class="headerlink" href="#module-src.mapping.mapthreading" title="Permalink to this headline">¶</a></h2>
+<p>Module used to map a pair of vectors into a new combined vector space. Those mappings will be created by multiple
+threads in a master-slave-pattern. To do so, the user can choose between different vector operations as offset, cosine
+similarity, euclidean distance and many more.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Because of <img class="math" src="_images/math/9b72457490f3149e03e5dd97bcdcf6a2f316909f.png" alt="\Omega=\frac{n(n-1)}{2}"/>, it is recommended to use the co-occurrence constraint
+<img class="math" src="_images/math/5b99ed91598429157b547a2c3700a6b25c52824a.png" alt="\Lambda"/>, which limits the calculations to word embedding pairs which words occurred together in a corpus in
+at least <em>n</em> sentences (but it will still take quite a while).</p>
+</div>
+<dl class="class">
+<dt id="src.mapping.mapthreading.MappingMasterThread">
+<em class="property">class </em><code class="descname">MappingMasterThread</code><span class="sig-paren">(</span><em>n</em>, <em>vector_inpath</em>, <em>vector_outpath</em>, <em>features</em>, <em>lambda_</em>, <em>ids_inpath</em>, <em>indices_inpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.mapping.mapthreading.MappingMasterThread" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">threading.Thread</span></code></p>
+<p>Master thread class. The master thread loads all necessary data into suitable data structures and distributes
+them among all worker threads.</p>
+<dl class="method">
+<dt id="src.mapping.mapthreading.MappingMasterThread.prepare">
+<code class="descname">prepare</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.mapping.mapthreading.MappingMasterThread.prepare" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads The master thread loads all necessary data into suitable data structures. To be more specific,
+word embeddings, sentence IDs and word indices are processed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.mapping.mapthreading.MappingMasterThread.read_ids_file">
+<code class="descname">read_ids_file</code><span class="sig-paren">(</span><em>ids_inpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.mapping.mapthreading.MappingMasterThread.read_ids_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read the sentence ID file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>ids_inpath</strong> (<em>str</em>) &#8211; <p>Path to sentence IDs file. The file should be in the following <cite>YAML</cite>-format:
+- &lt;word&gt;:</p>
+<blockquote>
+<div><ul class="simple">
+<li>&lt;sentence id&gt;</li>
+<li>&lt;sentence id&gt;</li>
+</ul>
+<p>...</p>
+</div></blockquote>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Dictionary with words as keys and the IDs of the sentences they occur in in a set as value.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">defaultdict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.mapping.mapthreading.MappingMasterThread.start_threads">
+<code class="descname">start_threads</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.mapping.mapthreading.MappingMasterThread.start_threads" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts all the threads (and ends them if they&#8217;re all finished).</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.mapping.mapthreading.MappingWorkerThread">
+<em class="property">class </em><code class="descname">MappingWorkerThread</code><span class="sig-paren">(</span><em>worker_id</em>, <em>vector_dict</em>, <em>vector_queue</em>, <em>vector_outpath</em>, <em>features</em>, <em>occurrences</em>, <em>indices</em>, <em>lambda_</em><span class="sig-paren">)</span><a class="headerlink" href="#src.mapping.mapthreading.MappingWorkerThread" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">threading.Thread</span></code></p>
+<p>Worker thread class. The worker threads do all the dirty work after they receive all necessary data from the master
+thread an try to calculate every possible combinations of two word embeddings in a dataset.</p>
+<p>All the word embeddings will be stores in a dictionary (<a class="reference internal" href="#src.mapping.mapthreading.VectorDict" title="src.mapping.mapthreading.VectorDict"><code class="xref py py-class docutils literal"><span class="pre">VectorDict</span></code></a> as well as a <code class="xref py py-class docutils literal"><span class="pre">Queue</span></code>).
+An idle thread picks a new vector from the queue and then starts to iterate over all the vectors in the
+<a class="reference internal" href="#src.mapping.mapthreading.VectorDict" title="src.mapping.mapthreading.VectorDict"><code class="xref py py-class docutils literal"><span class="pre">VectorDict</span></code></a> (this way, the queue gets shorter over time while the size of the dictionary stays fixed).</p>
+<p>Before it starts calculations, it checks a) if the co-occurrence constraint is satisfied and b) if this combination
+of word embeddings has already been processed.</p>
+<dl class="method">
+<dt id="src.mapping.mapthreading.MappingWorkerThread.cosine_similarity">
+<code class="descname">cosine_similarity</code><span class="sig-paren">(</span><em>v1</em>, <em>v2</em><span class="sig-paren">)</span><a class="headerlink" href="#src.mapping.mapthreading.MappingWorkerThread.cosine_similarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the cosine similarity (<img class="math" src="_images/math/66f6950f48f0dcd8ead5b475332a6e529fa76699.png" alt="cos(\vec{v}_1, \vec{v}_2) \in [-1,-1]"/>) between two vectors.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v1</strong> (<em>numpy.array</em>) &#8211; First vector</li>
+<li><strong>v2</strong> (<em>numpy.array</em>) &#8211; Second vector</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Cosine similarity between the two vectors.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.mapping.mapthreading.MappingWorkerThread.distance">
+<code class="descname">distance</code><span class="sig-paren">(</span><em>v1</em>, <em>v2</em><span class="sig-paren">)</span><a class="headerlink" href="#src.mapping.mapthreading.MappingWorkerThread.distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the vector offset of two vectors:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>v1</strong> (<em>numpy.array</em>) &#8211; First vector</li>
+<li><strong>v2</strong> (<em>numpy.array</em>) &#8211; Second vector</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Returns</dt>
+<dd>numpy.array: Vector offset.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.mapping.mapthreading.MappingWorkerThread.euclidean_distance1">
+<code class="descname">euclidean_distance1</code><span class="sig-paren">(</span><em>v1</em>, <em>v2</em><span class="sig-paren">)</span><a class="headerlink" href="#src.mapping.mapthreading.MappingWorkerThread.euclidean_distance1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the euclidean distance between two vectors.</p>
+<div class="math">
+<p><img src="_images/math/38c910c9e89d24fb49d28f84bdb9b99b0c7799d6.png" alt="eucl(\vec{a}, \vec{b}) = \sqrt{\sum_{i=1}^n (\vec{b}_i - \vec{a}_i)^2}"/></p>
+</div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v1</strong> (<em>numpy.array</em>) &#8211; First vector</li>
+<li><strong>v2</strong> (<em>numpy.array</em>) &#8211; Second vector</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Euclidean distance between the two vectors.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.mapping.mapthreading.MappingWorkerThread.euclidean_distance2">
+<code class="descname">euclidean_distance2</code><span class="sig-paren">(</span><em>v1</em>, <em>v2</em><span class="sig-paren">)</span><a class="headerlink" href="#src.mapping.mapthreading.MappingWorkerThread.euclidean_distance2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the squared euclidean distance between two vectors.</p>
+<div class="math">
+<p><img src="_images/math/27235c9b213c6263190449d8fe8addf282bed29e.png" alt="eucl2(\vec{a}, \vec{b}) = \sum_{i=1}^n (\vec{b}_i - \vec{a}_i)^2"/></p>
+</div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v1</strong> (<em>numpy.array</em>) &#8211; First vector</li>
+<li><strong>v2</strong> (<em>numpy.array</em>) &#8211; Second vector</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Squared euclidean distance between the two vectors.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.mapping.mapthreading.MappingWorkerThread.hash_indices">
+<code class="descname">hash_indices</code><span class="sig-paren">(</span><em>i1</em>, <em>i2</em><span class="sig-paren">)</span><a class="headerlink" href="#src.mapping.mapthreading.MappingWorkerThread.hash_indices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combines two vector indices (the indices of the words&#8217; embeddings used in vector operations) into a hash
+s.t. threads can do an easy lookup if a mapping vector has already been calculated.
+To guarantee this, <img class="math" src="_images/math/e6fd2f6692616585b0142ebc94a5362836d61e15.png" alt="h(i_1, i_2) = h(i_2, i_1)"/> has to be the case.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>i1</strong> (<em>int</em>) &#8211; Index of first word&#8217;s embedding</li>
+<li><strong>i2</strong> (<em>int</em>) &#8211; Index of second word&#8217;s embedding</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Unique hash for index pair.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.mapping.mapthreading.MappingWorkerThread.manhattan_distance">
+<code class="descname">manhattan_distance</code><span class="sig-paren">(</span><em>v1</em>, <em>v2</em><span class="sig-paren">)</span><a class="headerlink" href="#src.mapping.mapthreading.MappingWorkerThread.manhattan_distance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the manhattan distance between two vectors.</p>
+<div class="math">
+<p><img src="_images/math/57de85cdc0303020cab83b5564ab62b548a700d3.png" alt="manhattan(\vec{a}, \vec{b}) = \sum_{i=1}^n |\vec{b}_i - \vec{a}_i |"/></p>
+</div><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v1</strong> (<em>numpy.array</em>) &#8211; First vector</li>
+<li><strong>v2</strong> (<em>numpy.array</em>) &#8211; Second vector</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Manhattan distance between the two vectors.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.mapping.mapthreading.MappingWorkerThread.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.mapping.mapthreading.MappingWorkerThread.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts a worker thread.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.mapping.mapthreading.MappingWorkerThread.soft_cosine_similarity">
+<code class="descname">soft_cosine_similarity</code><span class="sig-paren">(</span><em>v1</em>, <em>v2</em><span class="sig-paren">)</span><a class="headerlink" href="#src.mapping.mapthreading.MappingWorkerThread.soft_cosine_similarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the soft cosine similarity between two vectors.</p>
+<div class="math">
+<p><img src="_images/math/a139799b8da7f4d9cb4da56fcfe6927a19e75db1.png" alt="S = \begin{bmatrix}
+        eucl(\vec{a}_1, \vec{b}_1) &amp; \ldots &amp; eucl(\vec{a}_1, \vec{b}_n) \\
+        \vdots &amp; \ddots &amp; \vdots \\
+        eucl(\vec{a}_n, \vec{b}_1) &amp; \ldots &amp; eucl(\vec{a}_n, \vec{b}_n) \\
+\end{bmatrix}
+
+softcos(\vec{a}, \vec{b}) = \frac{\sum_{i,j}^N S_{ij}\vec{a}_i\vec{b}_j}{\sqrt{\sum_{i,
+j}^N S_{ij}\vec{a}_i\vec{a}_j}\sqrt{\sum_{i,j}^N S_{ij}\vec{b}_i\vec{b}_j}}"/></p>
+</div><p>(It considers the similarity between pairs of features.)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>v1</strong> (<em>numpy.array</em>) &#8211; First vector</li>
+<li><strong>v2</strong> (<em>numpy.array</em>) &#8211; Second vector</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Soft cosine similarity between the two vectors.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">float</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="src.mapping.mapthreading.VectorDict">
+<em class="property">class </em><code class="descname">VectorDict</code><a class="headerlink" href="#src.mapping.mapthreading.VectorDict" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="docutils">
+<dt>VectorDict class that serves two functions:</dt>
+<dd><div class="first last line-block">
+<div class="line">1.) Storing word embeddings so they don&#8217;t allocate memory for every worker thread</div>
+<div class="line">2.) Providing a set, where are processed vector pairs are stored so no redundant computations are made.</div>
+</div>
+</dd>
+</dl>
+<p>Locks are used for synchronization purposes.</p>
+<dl class="method">
+<dt id="src.mapping.mapthreading.VectorDict.add_skippable">
+<code class="descname">add_skippable</code><span class="sig-paren">(</span><em>index_hash</em><span class="sig-paren">)</span><a class="headerlink" href="#src.mapping.mapthreading.VectorDict.add_skippable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add the hash of an index pair to a set of already processed vector pairs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>index_hash</strong> (<em>int</em>) &#8211; Hash value of index pair. Produced with <code class="xref py py-func docutils literal"><span class="pre">hash_indices()</span></code>.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.mapping.mapthreading.VectorDict.add_vector">
+<code class="descname">add_vector</code><span class="sig-paren">(</span><em>index</em>, <em>vector</em><span class="sig-paren">)</span><a class="headerlink" href="#src.mapping.mapthreading.VectorDict.add_vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a new word embedding.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>index</strong> (<em>int</em>) &#8211; Index of the word the embedding belongs to.</li>
+<li><strong>vector</strong> (<em>numpy.array</em>) &#8211; Word embedding corresponding to given index.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.mapping.mapthreading.VectorDict.get_keys">
+<code class="descname">get_keys</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.mapping.mapthreading.VectorDict.get_keys" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get all the keys (word embedding IDs) of this dictionary.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of word embedding IDs.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.mapping.mapthreading.VectorDict.get_vector">
+<code class="descname">get_vector</code><span class="sig-paren">(</span><em>index</em><span class="sig-paren">)</span><a class="headerlink" href="#src.mapping.mapthreading.VectorDict.get_vector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get a word embedding given its word&#8217;s index.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>index</strong> (<em>int</em>) &#8211; Index of the word the embedding belongs to.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Word embedding corresponding to given index.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">numpy.array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.mapping.mapthreading.VectorDict.skippable">
+<code class="descname">skippable</code><span class="sig-paren">(</span><em>index_hash</em><span class="sig-paren">)</span><a class="headerlink" href="#src.mapping.mapthreading.VectorDict.skippable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether a pair of vectors has already been processed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>index_hash</strong> (<em>int</em>) &#8211; Hash value of index pair. Produced with <code class="xref py py-func docutils literal"><span class="pre">hash_indices()</span></code>.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Whether a pair of vectors has already been processed.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="src.mapping.mapthreading.alt">
+<code class="descname">alt</code><span class="sig-paren">(</span><em>func</em><span class="sig-paren">)</span><a class="headerlink" href="#src.mapping.mapthreading.alt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepends the local time to the output of a function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>func</strong> (<em>function</em>) &#8211; Function the local time should be prepended to.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.mapping.mapthreading.init_argparse">
+<code class="descname">init_argparse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.mapping.mapthreading.init_argparse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize all possible arguments for the argument parser.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">ArgumentParser object with command line arguments for this script.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-mod docutils literal"><span class="pre">argparse.ArgumentParser</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.mapping.mapthreading.main">
+<code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.mapping.mapthreading.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function that initializes the master thread with command line arguments and starts it.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.mapping">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src.mapping" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="src.misc.html" class="btn btn-neutral float-right" title="src.misc package" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="src.eval.html" class="btn btn-neutral" title="src.eval package" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Dennis Ulmer.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'v1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

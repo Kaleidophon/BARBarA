@@ -1,109 +1,41 @@
-import threading
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+"""
+Module used to conduct the word similarity evaluation. The system assign word pairs a similarity score based on
+the cosine similarity of their word embeddings. Then, to correlation between those and human ratings is measured with
+Pearson's rho.
+
+The whole module is used in :py:mod:`src.eval.eval_vectors.py`.
+"""
+
+# STANDARD
 import codecs
 import math
+
+# EXTERNAL
 from scipy.stats import pearsonr
 from scipy.spatial.distance import cosine
-from concentration import load_vectors_from_model, load_vectors_from_model_parallel, alt
-import Queue
+
+# PROJECT
+from src.misc.helpers import capitalize, alt, load_vectors_from_model
 
 
-class WordSimMasterThread(threading.Thread):
-	def __init__(self, n, vector_inpath, wordpair_inpath, logpath, format):
-		threading.Thread.__init__(self)
-		self.n = n
-		self.vector_inpath = vector_inpath
-		self.wordpair_inpath = wordpair_inpath
-		self.logpath = logpath
-		self.format = format
-		self.model = None
-		self.pairs = None
-		self.x = None
-		self.y = None
-		self.global_error_count = 0
-		self.threads = []
-		self.pair_queue = Queue.Queue()
+def word_sim_eval(vector_inpath, wordpair_path, format="google"):
+	"""
+	Function that let's the system assign word pairs a similarity score based on the cosine similarity of their word
+	embeddings. Then, to correlation between those and human ratings is measured with Pearson's rho.
 
-		self.prepare()
-		for i in range(self.n):
-			self.threads.append(WordSimWorkerThread(i, self.pair_queue, self.model, self.y))
-
-	def start_threads(self):
-		output(alt("Starting %i wordsim threads...\n" % (self.n)), self.logpath)
-		for thread in self.threads:
-			thread.start()
-
-		for thread in self.threads:
-			thread.join()
-			self.global_error_count += thread.error_count
-
-		output(alt("Removing errors...\n"), self.logpath)
-		self.remove_unknowns()
-
-		output(alt("Calculating results...\n"), self.logpath)
-		rho, t, z = evaluate_wordpair_sims(self.x, self.y, len(self.pairs))
-
-		successful_pairs = len(self.pairs) - self.global_error_count
-		successful_percentage = (len(self.pairs) - self.global_error_count * 1.0) / len(self.pairs) * 100.0
-		# Write on screen or into logfile
-		output(alt("Calculated Pearman's rho for %i pairs (%.2f %%).\n\tr = %.4f\n\tt = %.4f\n\tz = %.4f\n")
-					% (successful_pairs, successful_percentage, rho, t, z), self.logpath)
-
-	def prepare(self):
-		output(alt("Loading model...\n"), self.logpath)
-		self.model = load_vectors_from_model_parallel(self.vector_inpath, self.n, self.logpath)[1]
-		output(alt("Loading word pairs...\n"), self.logpath)
-		self.pairs, self.x = read_wordpairs(self.wordpair_inpath, self.format)
-		output(alt("Preparing queue...\n"), self.logpath)
-		for i in range(len(self.pairs)):
-			self.pair_queue.put((i, self.pairs[i]))
-		self.y = [None] * len(self.pairs)
-
-	def remove_unknowns(self):
-		to_pop = []
-		for i in range(len(self.y)):
-			if not self.y[i]:
-				to_pop.append(i)
-
-		# Avoid popping elements while iterating through list
-		to_pop.reverse()
-		for i in to_pop:
-			self.x.pop(i)
-			self.y.pop(i)
-
-
-class WordSimWorkerThread(threading.Thread):
-	def __init__(self, worker_id, pair_queue, model, y):
-		threading.Thread.__init__(self)
-		self.worker_id = worker_id
-		self.pair_queue = pair_queue
-		self.model = model
-		self.y = y
-		self.error_count = 0
-
-	def run(self):
-		while not self.pair_queue.empty():
-			pair_id, pair = self.pair_queue.get()
-			try:
-				a = self.model[capitalize(pair[0])]
-				b = self.model[capitalize(pair[1])]
-				sim = cosine(a, b)
-				self.y[pair_id] = sim
-			except TypeError:
-				self.error_count += 1
-
-
-def parallel_word_sim_eval(vector_inpath, wordpair_path, logpath, format="google", threads=1):
-	master = WordSimMasterThread(threads, vector_inpath, wordpair_path, logpath, format)
-	master.start_threads()
-
-
-def word_sim_eval(vector_inpath, wordpair_path, logpath, format="google"):
-	output(alt("Loading model...\n"), logpath)
+	Args:
+		vector_inpath (str): Path to vector file. File has to have the following format (separated by spaces):
+			<index of original vector #1> <index of original vector #2> <Dimension 1> ... <Dimension n>
+		wordpair_path (str): Path to word pair file.
+		format (str): Format of word pair file {google|semrel}
+	"""
+	alt("Loading model...\n")
 	model = load_vectors_from_model(vector_inpath)[1]
-	error_counter = 0
 
 	# Read word pairs with values
-	output(alt("Loading word pairs...\n"), logpath)
+	alt("Loading word pairs...\n")
 	raw_pairs, x = read_wordpairs(wordpair_path, format)
 	y = [None] * len(raw_pairs)
 	pairs = []
@@ -111,7 +43,8 @@ def word_sim_eval(vector_inpath, wordpair_path, logpath, format="google"):
 		pairs.append((i, raw_pairs[i]))
 
 	# Calculate similarity values for pairs
-	output(alt("Calculating word pair similarities...\n"), logpath)
+	alt("Calculating word pair similarities...\n")
+	error_counter = 0
 	for pair_id, pair in pairs:
 		try:
 			a = model[capitalize(pair[0])]
@@ -121,18 +54,30 @@ def word_sim_eval(vector_inpath, wordpair_path, logpath, format="google"):
 		except TypeError:
 			error_counter += 1
 
+	# Remove pairs where no word embedding was found
 	x, y = remove_unknowns(x, y)
 
+	# Calculate results
 	rho, t, z = evaluate_wordpair_sims(x, y, len(pairs))
 
 	successful_pairs = len(pairs) - error_counter
 	successful_percentage = (len(pairs) - error_counter * 1.0) / len(pairs) * 100.0
-	# Write on screen or into logfile
-	output(alt("Calculated Pearman's rho for %i pairs (%.2f %%).\n\tr = %.4f\n\tt = %.4f\n\tz = %.4f\n")
-			% (successful_pairs, successful_percentage, rho, t, z), logpath)
+	alt("Calculated Pearman's rho for %i pairs (%.2f %%).\n\tr = %.4f\n\tt = %.4f\n\tz = %.4f\n"
+		% (successful_pairs, successful_percentage, rho, t, z))
 
 
 def remove_unknowns(x, y):
+	"""
+	Remove word pairs from the results where one or two word embedding weren't found.
+
+	Args:
+		x (list): List of similarity scores assigned by humans.
+		y (list): List of similarity scores assigned by the system.
+
+	Returns:
+		x (list): Purged list of similarity scores assigned by humans.
+		y (list): Purged list of similarity scores assigned by the system.
+	"""
 	to_pop = []
 	for i in range(len(y)):
 		if not y[i]:
@@ -147,11 +92,20 @@ def remove_unknowns(x, y):
 	return x, y
 
 
-def capitalize(word):
-	return word[0].upper() + word[1:]
-
-
 def evaluate_wordpair_sims(x, y, number_of_pairs):
+	"""
+	Evaluate results of the similarity score assignments, i.e. calculate pearson's rho and its significance.
+
+	Args:
+		x (list): List of similarity scores assigned by humans.
+		y (list): List of similarity scores assigned by the system.
+		number_of_pairs (int): Number of word pairs evaluated.
+
+	Returns:
+		rho (float): Pearson's correlation coefficient.
+		t (float): Student's t value.
+		z (float): z value.
+	"""
 	# Calculate Pearman's rho
 	rho = pearsonr(x, y)[0]
 
@@ -164,6 +118,16 @@ def evaluate_wordpair_sims(x, y, number_of_pairs):
 
 
 def read_wordpairs(wordpair_path, format="google"):
+	"""
+	Read wordpair file with wordpairs and their similarity scores assigned by humans.
+
+	Args:
+		wordpair_path (str): Path to word pair file.
+		format (str): Format of wor pair file {google|semrel}
+
+	Returns:
+		tuple: Tuple of a list of word pairs and a list of similarity scores for those same pair assigned by humans.
+	"""
 	pairs, x = [], []
 	with codecs.open(wordpair_path, "rb", "utf-8") as wordpair_file:
 		if format == "google":
@@ -180,16 +144,3 @@ def read_wordpairs(wordpair_path, format="google"):
 				pairs.append((line_parts[0], line_parts[1]))
 				x.append(float(line_parts[2]))
 	return pairs, x
-
-
-def output(message, logpath=None):
-	if not logpath:
-		print rreplace(message, "\n", "", 1)
-	else:
-		with codecs.open(logpath, "a", "utf-8") as logfile:
-			logfile.write(message)
-
-
-def rreplace(s, old, new, occurrence):
-	li = s.rsplit(old, occurrence)
-	return new.join(li)
