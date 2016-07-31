@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>src.prep package &mdash; Bachelor Thesis v1.0 documentation</title>
+  <title>src.prep package &mdash; BARBarA (a Bad Acronym Regarding a Bachelor Assignment) v1.0</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="Bachelor Thesis v1.0 documentation" href="index.html"/>
+    <link rel="top" title="BARBarA (a Bad Acronym Regarding a Bachelor Assignment) v1.0" href="index.html"/>
         <link rel="up" title="src package" href="src.html"/>
         <link rel="next" title="src.prep.corpus package" href="src.prep.corpus.html"/>
         <link rel="prev" title="src.misc package" href="src.misc.html"/> 
@@ -52,7 +52,7 @@
           
 
           
-            <a href="index.html" class="icon icon-home"> Bachelor Thesis
+            <a href="index.html" class="icon icon-home"> BARBarA
           
 
           
@@ -62,7 +62,7 @@
             
             
               <div class="version">
-                Dennis Ulmer
+                v1.0
               </div>
             
           
@@ -94,11 +94,13 @@
 <li class="toctree-l3"><a class="reference internal" href="src.misc.html">src.misc package</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">src.prep package</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-src.prep">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="src.trans_e.html">src.trans_e package</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -114,7 +116,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">Bachelor Thesis</a>
+        <a href="index.html">BARBarA</a>
       </nav>
 
 
@@ -153,29 +155,47 @@
             
   <div class="section" id="src-prep-package">
 <h1>src.prep package<a class="headerlink" href="#src-prep-package" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>This package contains subpackages dedicated to different preparations steps for fundamental resources:</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">src.prep.corpus</span></code> contains scripts for the preprocessing of the <code class="docutils literal"><span class="pre">DECOW14X</span></code> corpus.</li>
+<li><code class="docutils literal"><span class="pre">src.prep.nes</span></code> contains scripts to extract <em>Named Entities</em> and other information about them from the corpus.</li>
+<li><code class="docutils literal"><span class="pre">src.prep.relations</span></code> contains scripts related to the <code class="docutils literal"><span class="pre">FB14k</span></code> relation datatset.</li>
+</ul>
+</dd>
+</dl>
 <div class="section" id="subpackages">
 <h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="src.prep.corpus.html">src.prep.corpus package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.prep.corpus.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="src.prep.corpus.html#module-src.prep.corpus.convert_to_plain">src.prep.corpus.convert_to_plain module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="src.prep.corpus.html#module-src.prep.corpus.extract_conll">src.prep.corpus.extract_conll module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="src.prep.corpus.html#module-src.prep.corpus.mapper">src.prep.corpus.mapper module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="src.prep.corpus.html#module-src.prep.corpus.reducer">src.prep.corpus.reducer module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.prep.corpus.html#module-src.prep.corpus">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="src.prep.nes.html">src.prep.nes package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.prep.nes.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="src.prep.nes.html#module-src.prep.nes.extract_nes">src.prep.nes.extract_nes module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="src.prep.nes.html#module-src.prep.nes.merge">src.prep.nes.merge module</a></li>
 <li class="toctree-l2"><a class="reference internal" href="src.prep.nes.html#module-src.prep.nes.statistics">src.prep.nes.statistics module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.prep.nes.html#module-src.prep.nes">Module contents</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="src.prep.relations.html">src.prep.relations package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="src.prep.relations.html#submodules">Submodules</a></li>
 <li class="toctree-l2"><a class="reference internal" href="src.prep.relations.html#module-src.prep.relations.relations">src.prep.relations.relations module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="src.prep.relations.html#module-src.prep.relations">Module contents</a></li>
 </ul>
 </li>
 </ul>
 </div>
+</div>
+<div class="section" id="module-src.prep">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src.prep" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -198,7 +218,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2016, Bachelor Thesis.
+        &copy; Copyright 2016, Dennis Ulmer.
 
     </p>
   </div>

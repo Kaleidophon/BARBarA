@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Bachelor Thesis documentation build configuration file, created by
+# BARBarA documentation build configuration file, created by
 # sphinx-quickstart on Tue Jul 26 09:39:37 2016.
 #
 # This file is execfile()d with the current directory set to its# containing dir.
@@ -87,16 +87,16 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Bachelor Thesis'
-copyright = u'2016, Bachelor Thesis'
-author = u'Bachelor Thesis'
+project = u'BARBarA'
+copyright = u'2016, Dennis Ulmer'
+author = u'Dennis Ulmer'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
 # The short X.Y version.
-version = u'Dennis Ulmer'
+version = u'v1.0'
 # The full version, including alpha/beta/rc tags.
 release = u'v1.0'
 
@@ -150,7 +150,7 @@ pygments_style = 'sphinx'
 # keep_warnings = True
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
-todo_include_todos = True
+#todo_include_todos = True
 
 
 # -- Options for HTML output ----------------------------------------------
@@ -173,11 +173,11 @@ html_theme_path = ["_themes", ]
 # The name for this set of Sphinx documents.
 # "<project> v<release> documentation" by default.
 #
-# html_title = u'Bachelor Thesis v1.0'
+html_title = u'BARBarA (a Bad Acronym Regarding a Bachelor Assignment) v1.0'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #
-# html_short_title = None
+html_short_title = u'BARBarA'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
@@ -273,7 +273,7 @@ html_static_path = ['_static']
 # html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'BachelorThesisdoc'
+htmlhelp_basename = 'BARBarAdoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
@@ -299,8 +299,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'BachelorThesis.tex', u'Bachelor Thesis Documentation',
-     u'Bachelor Thesis', 'manual'),
+    (master_doc, 'BARBarA.tex', u'BARBarA Documentation',
+     u'BARBarA', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -335,7 +335,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'bachelorthesis', u'Bachelor Thesis Documentation',
+    (master_doc, 'barbara', u'BARBarA Documentation',
      [author], 1)
 ]
 
@@ -350,8 +350,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'BachelorThesis', u'Bachelor Thesis Documentation',
-     author, 'BachelorThesis', 'One line description of project.',
+    (master_doc, 'BARBarA', u'BARBarA Documentation',
+     author, 'BARBarA', 'a Bad Acronym Regarding a Bachelor Assignment.',
      'Miscellaneous'),
 ]
 

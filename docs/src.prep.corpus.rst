@@ -1,6 +1,9 @@
 src.prep.corpus package
 =======================
 
+Submodules
+----------
+
 src.prep.corpus.convert_to_plain module
 ---------------------------------------
 
@@ -29,6 +32,15 @@ src.prep.corpus.reducer module
 ------------------------------
 
 .. automodule:: src.prep.corpus.reducer
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: src.prep.corpus
     :members:
     :undoc-members:
     :show-inheritance:
