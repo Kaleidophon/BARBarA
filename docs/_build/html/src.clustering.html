@@ -1,0 +1,401 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>src.clustering package &mdash; BARBarA (a Bad Acronym Regarding a Bachelor Assignment) v1.0</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="BARBarA (a Bad Acronym Regarding a Bachelor Assignment) v1.0" href="index.html"/>
+        <link rel="up" title="src package" href="src.html"/>
+        <link rel="next" title="src.eval package" href="src.eval.html"/>
+        <link rel="prev" title="src package" href="src.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> BARBarA
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="simple">
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="src.html">src package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="src.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">src.clustering package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-src.clustering.cluster_mappings">src.clustering.cluster_mappings module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-src.clustering">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.eval.html">src.eval package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.mapping.html">src.mapping package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.misc.html">src.misc package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.prep.html">src.prep package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.trans_e.html">src.trans_e package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">BARBarA</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+        <li><a href="src.html">src package</a> &raquo;</li>
+      
+    <li>src.clustering package</li>
+    <li class="wy-breadcrumbs-aside">
+      
+          
+          <a href="_sources/src.clustering.txt" rel="nofollow"> View page source</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="src-clustering-package">
+<h1>src.clustering package<a class="headerlink" href="#src-clustering-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-src.clustering.cluster_mappings">
+<span id="src-clustering-cluster-mappings-module"></span><h2>src.clustering.cluster_mappings module<a class="headerlink" href="#module-src.clustering.cluster_mappings" title="Permalink to this headline">¶</a></h2>
+<p>Script to cluster mapping vectors created with <a class="reference internal" href="src.mapping.html#module-src.mapping.mapthreading" title="src.mapping.mapthreading"><code class="xref py py-mod docutils literal"><span class="pre">src.mapping.mapthreading</span></code></a>.</p>
+<dl class="function">
+<dt id="src.clustering.cluster_mappings.aggregate_cluster">
+<code class="descname">aggregate_cluster</code><span class="sig-paren">(</span><em>points</em>, <em>labels</em><span class="sig-paren">)</span><a class="headerlink" href="#src.clustering.cluster_mappings.aggregate_cluster" title="Permalink to this definition">¶</a></dt>
+<dd><p>Arranges all clusters in a list, where a sublist with all points at index i corresponds with the
+custer with label i.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>points</strong> (<em>list</em>) &#8211; List of datapoints</li>
+<li><strong>labels</strong> (<em>list</em>) &#8211; List of unique cluster labels</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">list of lists of datapoints belonging to the i-th cluster</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.clustering.cluster_mappings.cluster_mappings">
+<code class="descname">cluster_mappings</code><span class="sig-paren">(</span><em>vector_inpath</em>, <em>do_pca=False</em>, <em>target_dim=100</em>, <em>indices_inpath=None</em>, <em>epsilon=2.625</em>, <em>min_s=20</em><span class="sig-paren">)</span><a class="headerlink" href="#src.clustering.cluster_mappings.cluster_mappings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cluster mapping vectors created with <a class="reference internal" href="src.mapping.html#module-src.mapping.mapthreading" title="src.mapping.mapthreading"><code class="xref py py-mod docutils literal"><span class="pre">src.mapping.mapthreading</span></code></a> or <code class="xref py py-mod docutils literal"><span class="pre">rc.mapping.map_vectors.py</span></code>.
+Because just reading about the number of clusters and their sizes, there&#8217;s an option to resolve the indices of
+the vectors in the cluster to their original word pairs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vector_inpath</strong> (<em>str</em>) &#8211; Path to vector file. File should have the following format (separated by spaces):
+&lt;index of original vector #1&gt; &lt;index of original vector #2&gt; &lt;Dimension 1&gt; ... &lt;Dimension n&gt;</li>
+<li><strong>do_pca</strong> (<em>bool</em>) &#8211; Flag to indicate whether PCA should be executed before clustering to reduce amount of</li>
+<li><strong>computation.</strong> &#8211; </li>
+<li><strong>target_dim</strong> (<em>int</em>) &#8211; Number of dimensions vectors should be shrunk to in case PCA is performed.</li>
+<li><strong>indices_inpath</strong> (<em>str</em>) &#8211; Path to file with the indices given to words. The file should have the following format:
+&lt;index of word&gt; &lt;word&gt; (separated by tab)</li>
+<li><strong>epsilon</strong> (<em>float</em>) &#8211; Radius of circle DBSCAN uses to look for other data points.</li>
+<li><strong>min_s</strong> (<em>int</em>) &#8211; Minimum number of points in radius epsilon DBSCAN needs to declare a point a core object.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.clustering.cluster_mappings.get_cluster_size">
+<code class="descname">get_cluster_size</code><span class="sig-paren">(</span><em>labels</em><span class="sig-paren">)</span><a class="headerlink" href="#src.clustering.cluster_mappings.get_cluster_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the size of every cluster found by DBSCAN.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>labels</strong> (<em>list</em>) &#8211; List of cluster IDs assigned to every data point.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Dictionary of cluster sizes with cluster id as key and cluster size as value.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">defaultdict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.clustering.cluster_mappings.init_argparser">
+<code class="descname">init_argparser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.clustering.cluster_mappings.init_argparser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize all possible arguments for the argument parser.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">ArgumentParser object with command line arguments for this script.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-mod docutils literal"><span class="pre">argparse.ArgumentParser</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.clustering.cluster_mappings.load_indices">
+<code class="descname">load_indices</code><span class="sig-paren">(</span><em>indices_inpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.clustering.cluster_mappings.load_indices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load word indices from a file. The file should have the following format: &lt;index of word&gt;       &lt;word&gt; (separated by
+tab)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>indices_inpath</strong> (<em>str</em>) &#8211; Path to index file.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.clustering.cluster_mappings.load_mappings_from_model">
+<code class="descname">load_mappings_from_model</code><span class="sig-paren">(</span><em>mapping_inpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.clustering.cluster_mappings.load_mappings_from_model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load mapping vectors from file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>mapping_inpath</strong> &#8211; Path mapping vector file.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">A tuple of a list of word index pairs and a dictionary (defaultdict) with index pair tuple as key
+and mapping vector (as numpy.array) as value.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.clustering.cluster_mappings.main">
+<code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.clustering.cluster_mappings.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the main function. It uses the parsed command line arguments to pick the right function to execute.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.clustering.cluster_mappings.resolve_indices">
+<code class="descname">resolve_indices</code><span class="sig-paren">(</span><em>points</em>, <em>labels</em>, <em>indices_inpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.clustering.cluster_mappings.resolve_indices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resolves the indices of word pairs found in a cluster to their real names.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>points</strong> (<em>list</em>) &#8211; List of datapoints</li>
+<li><strong>labels</strong> (<em>list</em>) &#8211; List of unique cluster labels</li>
+<li><strong>indices_inpath</strong> (<em>str</em>) &#8211; Path to file with the indices given to words. The file should have the following format:
+&lt;index of word&gt; &lt;word&gt; (separated by tab)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.clustering.cluster_mappings.train_clustering_parameters">
+<code class="descname">train_clustering_parameters</code><span class="sig-paren">(</span><em>vector_inpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.clustering.cluster_mappings.train_clustering_parameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Functions that tries to figure out the optimal clustering parameters in regard to DBSCAN&#8217;s epsilon,
+min_samples and p.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>vector_inpath</strong> (<em>str</em>) &#8211; Path to vector file. File has to have the following format (separated by spaces):
+&lt;index of original vector #1&gt; &lt;index of original vector #2&gt; &lt;Dimension 1&gt; ... &lt;Dimension n&gt;</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.clustering">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src.clustering" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="src.eval.html" class="btn btn-neutral float-right" title="src.eval package" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="src.html" class="btn btn-neutral" title="src package" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Dennis Ulmer.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'v1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

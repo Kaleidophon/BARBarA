@@ -1,74 +1,83 @@
 % Appendix Template
 
-\chapter{Evaluationen der Wortvektoren} % Main appendix title
+\chapter{Evaluation der Wortkontextvektoren} % Main appendix title
 %\addtolength{\topmargin}{-0.875in}
 
 \label{AppendixB} % Change X to a consecutive letter; for referencing this appendix elsewhere, use \ref{AppendixX}
 
 Evaluationsergebnisse bei Wortähnlichkeit und Analogien für die verschiedenen Datensets.
+Wert bei Wortähnlichkeit entspricht der Korrelation zwischen der Kosinusähnlichkeit (\ref{form:cossim}) zweier Wörter und
+einem von Menschen vergebenen Ähnlichkeitsweit mit Spearman's $\rho$.\\
+Wert bei Analogien entspricht der Anzahl der richtig vervollständigten Wortreihen (für genauere Informationen siehe
+Kapitel \ref{Chapter5}).\\
 Für weitere Informationen über die Grundlage der Vektoren siehe Appendix \ref{AppendixA}.
-Wörter außerhalb des Vokabulars wurden entweder als Fehler gerechnet, oder
-werden, falls anders nicht möglich, als Zahl im Index in runden Klammern angegeben.
+Wörter außerhalb des Vokabulars (\emph{OOVs}) wurden entweder als Fehler gerechnet, oder
+werden, falls anders nicht möglich, als Zahl im Index in runden Klammern angegeben\footnote{Bei zwei gleichbewerteten
+Datensets ist deshalb auch das mit weniger OOVs als besser anzusehen, da es über ein größeres Vokabular verfügt.}.
 
-\vspace{1cm}
-
+\vspace{0.5cm}
+\begin{figure}[h]
   \centering
   \rotatebox{-90}{%
   \small
-  \resizebox{1.2525\columnwidth}{!}{%
-  \begin{tabular}{l||c|c|c|c||c|c}
-     & \multicolumn{4}{c}{Wortähnlichkeit ($\rho \in [-1, 1]$)} & \multicolumn{2}{c}{Analogien (in \%)} \\
-    \textbf{Datenset} & \textsc{Wortpaare65} & \textsc{Wortpaare222} & \textsc{Wortpaare350} & \textsc{Schm280} & \textsc{Google} & \textsc{SemRel} \\
+  \resizebox{1.35\columnwidth}{!}{%
+  \begin{tabular}{c||c|c|c|c||c|c}
+     & \multicolumn{4}{c||}{\hrulefill\hrulefill\textbf{Wortähnlichkeit ($\mathbf{\rho \in [-1, 1]}$)}\hrulefill\hrulefill} & \multicolumn{2}{c}{\textbf{Analogien (in \%)}} \\
+    \textsc{Nr.} & \textsc{Wortpaare65} & \textsc{Wortpaare222} & \textsc{Wortpaare350} & \textsc{Schm280} & \textsc{Google} & \textsc{SemRel} \\
     \hline \hline
-    Mark I     & \textbf{-0,8096}         & \textbf{-0,4640$_{(13)}$}   & \textbf{-0,7302$_{(13)}$}   & \textbf{-0,7094$_{(2)}$}  & \textbf{44,56}  & 1,71 \\
+    \Romannum{1}     & \textbf{-0,8096}         & \textbf{-0,4640$_{(13)}$}   & \textbf{-0,7302$_{(13)}$}   & \textbf{-0,7094$_{(2)}$}  & \textbf{44,56}  & 1,71 \\
     \hline
-    Mark II    & -0,7856                  & -0.4409$_{(13)}$            & -0,7156$_{(13)}$            & -0,6928$_{(2)}$           & 40,37           & 1,83 \\
+    \Romannum{2}    & -0,7856                  & -0.4409$_{(13)}$            & -0,7156$_{(13)}$            & -0,6928$_{(2)}$           & 40,37           & 1,83 \\
     \hline
-    Mark III   & -0,7718                  & -0,4242$_{(13)}$            & -0,6886$_{(13)}$            & -0,6778$_{(2)}$           & 27,42           & 1.87 \\
+    \Romannum{3}   & -0,7718                  & -0,4242$_{(13)}$            & -0,6886$_{(13)}$            & -0,6778$_{(2)}$           & 27,42           & 1.87 \\
     \hline
-    Mark IV    & -0,7681                  & -0,3902$_{(13)}$            & -0,6834$_{(13)}$            & -0,6545$_{(2)}$           & 25,48           & 1,83 \\
+    \Romannum{4}    & -0,7681                  & -0,3902$_{(13)}$            & -0,6834$_{(13)}$            & -0,6545$_{(2)}$           & 25,48           & 1,83 \\
     \hline
-    Mark V     & -0,7725                  & -0,3889$_{(13)}$            & -0,6738$_{(13)}$            & -0,6529$_{(2)}$           & 25,54           & 1,67 \\
+    \Romannum{5}    & -0,7725                  & -0,3889$_{(13)}$            & -0,6738$_{(13)}$            & -0,6529$_{(2)}$           & 25,54           & 1,67 \\
     \hline
-    Mark VI    & -0,7697                  & -0,3907$_{(13)}$            & -0,6784$_{(13)}$            & -0,6541$_{(2)}$           & 25,52           & 1,46 \\
+    \Romannum{6}    & -0,7697                  & -0,3907$_{(13)}$            & -0,6784$_{(13)}$            & -0,6541$_{(2)}$           & 25,52           & 1,46 \\
     \hline
-    Mark VII   & -0,7255                  & -0,4198$_{(13)}$            & -0,6924$_{(13)}$            & -0,6361$_{(2)}$           & 30,60           & 1,50  \\
+    \Romannum{7}   & -0,7255                  & -0,4198$_{(13)}$            & -0,6924$_{(13)}$            & -0,6361$_{(2)}$           & 30,60           & 1,50  \\
     \hline
-    Mark VIII  & -0,6149                  & -0,4321$_{(13)}$            & -0,6530$_{(13)}$            & -0,5983$_{(2)}$           & 26,98           & 1,83 \\
+    \Romannum{8}  & -0,6149                  & -0,4321$_{(13)}$            & -0,6530$_{(13)}$            & -0,5983$_{(2)}$           & 26,98           & 1,83 \\
     \hline
-    Mark IX    & -0,6784                  & -0,4288$_{(13)}$            & -0,6090$_{(13)}$            & -0,5553$_{(2)}$           & 22,26           & 1,62 \\
+    \Romannum{9}    & -0,6784                  & -0,4288$_{(13)}$            & -0,6090$_{(13)}$            & -0,5553$_{(2)}$           & 22,26           & 1,62 \\
     \hline
-    Mark X     & -0,5949                  & -0,4185$_{(13)}$            & -0,5791$_{(13)}$            & -0,5003$_{(2)}$           & 19,22           & 1,22 \\
+    \Romannum{10}    & -0,5949                  & -0,4185$_{(13)}$            & -0,5791$_{(13)}$            & -0,5003$_{(2)}$           & 19,22           & 1,22 \\
     \hline
-    Mark XI    & -0,5890                  & -0.4245$_{(13)}$            & -0,5700$_{(13)}$            & -0,4993$_{(2)}$           & 18,60           & 1,38  \\
+    \Romannum{11}   & -0,5890                  & -0.4245$_{(13)}$            & -0,5700$_{(13)}$            & -0,4993$_{(2)}$           & 18,60           & 1,38  \\
     \hline
-    Mark XII   & -0,5874                  & -0.4251$_{(13)}$            & -0,5706$_{(13)}$            & -0,5021$_{(2)}$           & 8,62            & 1,50 \\
+    \Romannum{12}   & -0,5874                  & -0.4251$_{(13)}$            & -0,5706$_{(13)}$            & -0,5021$_{(2)}$           & 8,62            & 1,50 \\
     \hline
-    Mark XIII  & \textbf{-0,8247$_{(1)}$} & \textbf{-0,5066$_{(102)}$}  & \textbf{-0,7494$_{(132)}$}  & -0,7097$_{(48)}$          & 15,51           & \textbf{3,01} \\
+    \Romannum{13}  & \textbf{-0,8247$_{(1)}$} & \textbf{-0,5066$_{(102)}$}  & \textbf{-0,7494$_{(132)}$}  & -0,7097$_{(48)}$          & 15,51           & \textbf{3,01} \\
     \hline
-    Mark XIV   & -0,8106$_{(1)}$          & -0,4953$_{(102)}$           & -0,7362$_{(132)}$           & \textbf{-0,7205$_{(48)}$} & 14,51           & 2,56 \\
+    \Romannum{14}   & -0,8106$_{(1)}$          & -0,4953$_{(102)}$           & -0,7362$_{(132)}$           & \textbf{-0,7205$_{(48)}$} & 14,51           & 2,56 \\
     \hline
-    Mark XV    & -0,7786$_{(1)}$          & -0,4991$_{(102)}$           & -0,7136$_{(132)}$           & -0,6956$_{(48)}$          & 13,15           & 2,44 \\
+    \Romannum{15}    & -0,7786$_{(1)}$          & -0,4991$_{(102)}$           & -0,7136$_{(132)}$           & -0,6956$_{(48)}$          & 13,15           & 2,44 \\
     \hline
-    Mark XVI   & -0,7576$_{(1)}$          & -0,4991$_{(102)}$           & -0,6990$_{(132)}$           & -0,6702$_{(48)}$          & 11,76           & 2,56 \\
+    \Romannum{16}   & -0,7576$_{(1)}$          & -0,4991$_{(102)}$           & -0,6990$_{(132)}$           & -0,6702$_{(48)}$          & 11,76           & 2,56 \\
     \hline
-    Mark XVII  & -0,7578$_{(1)}$          & -0,5074$_{(102)}$           & -0,6986$_{(132)}$           & -0,6638$_{(48)}$          & 11,41           & 2,80 \\
+    \Romannum{17}  & -0,7578$_{(1)}$          & -0,5074$_{(102)}$           & -0,6986$_{(132)}$           & -0,6638$_{(48)}$          & 11,41           & 2,80 \\
     \hline
-    Mark XVIII & -0,7551$_{(1)}$          & -0,5102$_{(102)}$           & -0,6981$_{(132)}$           & -0,6715$_{(48)}$          & 11,38           & \textbf{3,01} \\
+    \Romannum{18} & -0,7551$_{(1)}$          & -0,5102$_{(102)}$           & -0,6981$_{(132)}$           & -0,6715$_{(48)}$          & 11,38           & \textbf{3,01} \\
     \hline
-    Mark XIX   & -0,7589$_{(1)}$          & -0,4899$_{(102)}$           & -0,7476$_{(132)}$           & -0,6849$_{(48)}$          & 14,41           & 2,23 \\
+    \Romannum{19}   & -0,7589$_{(1)}$          & -0,4899$_{(102)}$           & -0,7476$_{(132)}$           & -0,6849$_{(48)}$          & 14,41           & 2,23 \\
     \hline
-    Mark XX    & -0,7519$_{(1)}$          & -0,5144$_{(102)}$           & -0,7239$_{(132)}$           & -0,6731$_{(48)}$          & 12,82           & 2,15 \\
+    \Romannum{20}    & -0,7519$_{(1)}$          & -0,5144$_{(102)}$           & -0,7239$_{(132)}$           & -0,6731$_{(48)}$          & 12,82           & 2,15 \\
     \hline
-    Mark XXI   & -0,7188$_{(1)}$          & -0,5371$_{(102)}$           & -0,6875$_{(132)}$           & -0,6520$_{(48)}$          & 9,68            & 1,75 \\
+    \Romannum{21}   & -0,7188$_{(1)}$          & -0,5371$_{(102)}$           & -0,6875$_{(132)}$           & -0,6520$_{(48)}$          & 9,68            & 1,75 \\
     \hline
-    Mark XXII  & -0,6926$_{(1)}$          & \textbf{-0,5377$_{(102)}$}  & -0,6429$_{(132)}$           & -0,6138$_{(48)}$          & 6,85            & 1,71 \\
+    \Romannum{22}  & -0,6926$_{(1)}$          & \textbf{-0,5377$_{(102)}$}  & -0,6429$_{(132)}$           & -0,6138$_{(48)}$          & 6,85            & 1,71 \\
     \hline
-    Mark XXIII & -0,6851$_{(1)}$          & -0,5373$_{(102)}$           & -0,6359$_{(132)}$           & -0,5882$_{(48)}$          & 6,11            & 1,95 \\
+    \Romannum{23} & -0,6851$_{(1)}$          & -0,5373$_{(102)}$           & -0,6359$_{(132)}$           & -0,5882$_{(48)}$          & 6,11            & 1,95 \\
     \hline
-    Mark XXIV  & -0,6913$_{(1)}$          & -0,5349$_{(102)}$           & -0,6369$_{(132)}$           & -0,5930$_{(48)}$          & 6,15            & 2,07 \\
+    \Romannum{24}  & -0,6913$_{(1)}$          & -0,5349$_{(102)}$           & -0,6369$_{(132)}$           & -0,5930$_{(48)}$          & 6,15            & 2,07 \\
   \end{tabular}%
   }%
   }
+\caption[Evaluationsergebnisse der Wortkontextvektoren]{Evaluationsergebnisse der Wortkontextvektoren. Vollzogen mithilfe
+von Wortähnlichkeits- und Analogiedatensets. Werte beschreiben entweder die Größe des Korrelationswertes $\rho \in [-1, 1]$ oder
+einen Prozentwert.}
+\end{figure}
 
   \restoregeometry

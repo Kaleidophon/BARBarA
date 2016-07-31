@@ -1,15 +1,38 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+"""
+This script collects a few statistics about named entities extracted from the corpus and the percentage of their
+occurrence in the *Freebase* relation dataset.
+Requires a relation file in yaml format and a merged named entity frequency file, see :py:mod:`extract_nes.py`,
+:py:mod:`merge.py` and  :py:mod:`relations.py`.
+"""
 
-import codecs, yaml
+# STANDARD
+import codecs
+import sys
+
+# EXTERNAL
+import yaml
 
 
 def main():
-	#calculateOccurrences(sys.argv[1:])
-	calculate_occurrences("../rsc/decow/freq_merge.txt", "../rsc/rel/relations.yaml")
+	"""
+	Main function
+	"""
+	if len(sys.argv) != 3:
+		print "Usage: <Path to merged frequency file> <Path to relation yaml file>"
+	calculate_occurrences(sys.argv[1], sys.argv[2])
 
 
 def calculate_occurrences(freqpath, relations_path):
+	"""
+	Calculate statistics about named entities extracted from the corpus and the percentage of their
+	occurrence in the *Freebase* relation dataset.
+
+	Args:
+		freqpath (str): Path to merged frequencies file.
+		relations_path (str): Path to relation yaml file.
+	"""
 	rel_entities = set()
 	with codecs.open(relations_path, "rb", "utf-8") as relfile:
 		line = relfile.readline().strip()

@@ -1,33 +1,33 @@
 % Chapter 6
 
-\chapter{Experiment A: TransE für deutsche Wissensdaten} % Main chapter title
+\chapter{Experiment $\mathcal{A}$: TransE für deutsche Wissensdaten} % Main chapter title
 
 \label{Chapter6} % For referencing the chapter elsewhere, use \ref{Chapter1}
 
 %----------------------------------------------------------------------------------------
 
 In diesem Kapitel soll der Ansatz von (\cite{bordes2013translating}) für deutsche Daten nachvollzogen werden.
-Dabei wird erst erklärt, wie die Daten erstellt wurden. Danach wird die Idee zum Training der Daten ausgeführt und
-auf die neuen Datensätze angewendet, bevor schlußendlich eine Evaluation und eine Gegenüberstellung zu den Originaldaten
+Dabei wird erst erklärt, wie die Daten erstellt wurden. Danach wird die Idee zum Training der Daten weiter ausgeführt und
+auf die neuen Datensätze angewendet, bevor schlußendlich eine Evaluation und eine Gegenüberstellung zu den Originalergebnissen
 erfolgt.
 
 \section{Datenerzeugung}
 
-In (\cite{bordes2013translating}) werden mehrere Datensets erstellt darunter eines namens \emph{FB15k}. Dieses
-besteht aus Relationstripeln der Form $(h, l, t)$\\
-(= $(head,\ link,\ tail)$). Diese stammen aus \emph{Freebase}, einer
-community-gepflegten Datenbank, in der mehr als 23 Millionen Entitäten durch Relationen miteinander verknüpft sind.
-Mittlerweile ist die Seite offline; das Projekt wurde sukzessive in \emph{Wikidata}
-\footnote{Siehe \url{https://www.wikidata.org/wiki/Wikidata:Main_Page (zuletzt abgerufen am 20.05.16)}} integriert. Auch die
-Freebase API, die als Programmierschnittstelle zum Abfragen von Informationen dient wird langsam abgeschaltet
+In (\cite{bordes2013translating}) werden mehrere Relationsdatensets erstellt, darunter eines namens \textsc{FB15k}. Dieses
+besteht aus Relationstripeln der Form $(h, l, t)$\footnote{= $(head,\ link,\ tail)$)}, wobei
+$h$ und $t$ Entitäten und $l$ die verbindende Relation bezeichnen. Diese stammen aus \emph{Freebase}, einer
+von einer Onlinegemeinschaft gepflegten Datenbank, in der mehr als 23 Millionen Entitäten durch Relationen miteinander verknüpft sind.
+Mittlerweile ist die Seite offline; das Projekt wurde sukzessive in \emph{Wikidata}\footnote{Siehe \url{https://www.wikidata.org/wiki/Wikidata:Main_Page (zuletzt abgerufen am 20.05.16)}} integriert. Auch die
+\emph{Freebase API}, die als Programmierschnittstelle zum Abfragen von Informationen dient, wird langsam abgeschaltet
 \footnote{Siehe \url{https://en.wikipedia.org/wiki/Freebase (zuletzt abgerufen am (20.05.16))}}.\\
 
-Die FB15k-Daten enthalten 592.213 Tripeln mit 14.951 einzigartigen Entitäten und 1.345 einzigartigen Relationen.
-In Freebase sind Entitäten sprachlich unabhängig gehalten. So wird die Entität mit dem Kürzel \\``/m/02vk52z''
-im Englischen mit dem Begriff \emph{World Bank} und im Deutschen mit \emph{Weltbank} bezeichnet. Somit sind ist auch
-FB15k zumindest theoretisch vielsprachig. Jedoch sind die Entitäten darin oft hauptsächlich englische bzw. amerikanische
-Entitäten, die im deutschen Sprachraum teils nicht sehr bekannt sind. Das lässt daraus schließen, dass das Attribut einer
-Entität in Freebase, dass den deutschen Namen enthält, nicht immer verwendet wurde. Dies könnte drei Gründ haben:
+Die \textsc{FB15k}-Daten enthalten 592.213 Tripeln mit 14.951 einzigartigen Entitäten und 1.345 einzigartigen Relationen.
+In \emph{Freebase} sind Entitäten generell sprachlich unabhängig gehalten. So wird die Entität mit dem Kürzel \verb|/m/02vk52|
+im Englischen mit dem Begriff \emph{World Bank} und im Deutschen mit \emph{Weltbank} bezeichnet. Somit ist auch
+\textsc{FB15k} zumindest theoretisch vielsprachig, da es nur die \textsc{Freebase}-Kürzel enthält.
+Jedoch sind die Entitäten darin oft hauptsächlich im englischen bzw. amerikanischen Sprachraum relevante
+Entitäten, die im deutschen Raum teils nicht sehr bekannt sind. Diese 1:1 ins Deutsche zu übernehmen gestaltet sich schwierig,
+da nicht jedes Kürzel in \emph{Freebase} mit einer deutschen Bezeichnung aufgeführt ist. Das könnte jeweils drei Gründe haben:
 
 \begin{enumerate}
   \item Es gibt keine deutsche Übersetzung
@@ -38,12 +38,12 @@ Entität in Freebase, dass den deutschen Namen enthält, nicht immer verwendet w
 Die Plausibilität dieser Gründe ist diskutabel: Nicht alle Begriffe brauchen eine Übersetzung, so sind beispielsweise
 Personennamen i.d.R. durch alle Sprachen hinweg gleich. Schwieriger wird es bei Ortsnamen oder Namen von Organisationen:
 Intuitiv drängt sich der Anschein auf, dass populäre Bezeichnungen eher übersetzt werden als unpopulärere
-(\emph{United States of America} $\rightarrow$ \emph{Vereinigte Staaten von Amerika} / \emph{University of Denver}
+(\emph{United States of America} $\rightarrow$ \emph{Vereinigte Staaten von Amerika} \textbf{aber} \emph{University of Denver}
 $\rightarrow$ \emph{University of Denver}).\\
-Im Falle der Relevanz ist davon auszugehen, dass diese mit der Bearbeitung durch Nutzer einher geht: Bei einer großen
+Im Falle der Relevanz ist davon auszugehen, dass diese mit der Anzahl durch Nutzer einher geht: Bei einer großen
 Nutzerbasis ist davon auszugehen, dass diese primär Einträge von Entitäten bearbeiten, die im Kontext der Geschichte,
 des Tagesgeschehens o. Ä. relevant sind. Gegeben genug Zeit und aktive Nutzer ist also anzunehmen, dass eine immer
-größer werdende Prozentzahl von Relevanten Entitäten an das Deutsche angepasst wird. Bedenkt man die Laufzeit von Freebase
+größer werdende Prozentzahl von relevanten Entitäten an das Deutsche angepasst wird. Bedenkt man die Laufzeit von Freebase
 seit 2007 (also zum Zeitpunkt des Schreibens dieser Arbeit rund 9 Jahre), so nehmen wir an, dass dieses Bedenken zwar nicht
 ganz aus der Welt zu räumen, aber zumindest zu vernachlässigen ist.\\
 
@@ -71,18 +71,18 @@ Verschiedene Informationen über die beiden Datensets sind in Abbildung \ref{fig
 \section{Training}
 
 Gegeben ist eine Menge von Relationstripeln $S$ der Form $(h, l, t) \in S$. Zusätzliche gibt es noch eine Entitätsmenge
-$E$ sodass und $h, t \in E$ und eine Menge von Relationen $L$ mit $h \in L$. Den Entitäten und Relationen werden zuästzlich
-noch Vektoren aus $\mathbb{R}^k$ zugewiesen. Idealerweise gelten nach dem Training für eine gültige Relation $(h, l, t)$
+$E$ sodass $h, t \in E$ und eine Menge von Relationen $L$ mit $l \in L$. Den Entitäten und Relationen werden zuästzlich
+noch Vektoren zugewiesen, sodass $h, l, t \in \mathbb{R}^k$ gilt. Idealerweise gelten nach dem Training für ein gültige Tripel $(h, l, t)$
 dann $h + l \approx t$. Hinzu wird noch eine Menge aus korrumpierten bzw. ``falschen'' Tripeln $S'$ erstellt, indem
 für jedes Tripel in $S$ entweder $h$ oder $t$ durch eine andere, zufällig gewählte Entität ersetzt wird:
 \begin{equation}
   S' = \{(h', l, t) | h' \in E\} \cup \{(h, l, t') | t' \in E\}
 \end{equation}
 
-Diese Methode wird von (\cite{bordes2013translating}) Rausch-konstrastierendes Lernen(\emph{Noise-constrastive learning})
+Diese Methode wird von (\cite{bordes2013translating}) rauschkonstrastierendes Lernen (\emph{Noise-constrastive learning})
 genannt.
 
-Um die für das Training benötigte Verlustfunktion du definieren wird das Unähnlichkeitsmaß $d_p$ für ein Tripel bestimmt, welcher
+Um die für das Training benötigte Verlustfunktion zu definieren, wird das Unähnlichkeitsmaß $d_p$ für ein Tripel bestimmt, welcher
 entweder aus der $L_1$- oder der $L_2$-Norm abgeleitet wird, also:
 \begin{equation}
     d_1(h + l, t) = \sum_{i=1}^k \| h_i + l_i - t_i \|
@@ -91,13 +91,13 @@ entweder aus der $L_1$- oder der $L_2$-Norm abgeleitet wird, also:
     d_2(h + l, t) = \sqrt{\sum_{i=1}^k \| h_i + l_i - t_i \|^2}
 \end{equation}
 
-Zuletzt werden noch Tripel $s$ aus $S$ und zufällige Tripel $s'$ aus $S'$ in Pärchen in einem neuen Datenset $S^*$ gruppiert:
+Zuletzt werden noch Tripel $s$ aus $S$ und zufällige Tripel $s'=(h', l, t')$ aus $S'$ in Pärchen in einem neuen Datenset $S^*$ gruppiert:
 \begin{equation}
-  S^* = \{(s, sample(S'): s \in S\}
+  S^* = \{(s, sample(S'))| s \in S\}
 \end{equation}
 
 Nun kann die Verlustfunktion $\mathcal{L}$ erstellt werden:
-\begin{equation}
+\begin{equation}\label{form:lossf}
   \mathcal{L} = \sum_{((h,l,t), (h', l, t')) \in S^*} max(0, \gamma + d_p(h + l, t) - d_p(h' + l, t'))
 \end{equation}
 
@@ -108,25 +108,24 @@ verfehlen.\\
 Vor dem Training werden die Repräsentationen der Entitäten und Relationen mit einer uniformen Verteilung im Intervall
 $[-\frac{6}{\sqrt{k}}, \frac{6}{\sqrt{k}}]$ initialisiert und im Falle von $l \in L$ zusätzlich normiert. Während jedes
 Trainingsschritt werden für die aktuellen Repräsentation der Verlust berechnet und deren Werte mithilfe des
-Minibatch-Stochastic-Gradient-Descent angepasst. Der Minibatch enthält dabei ebenso viele gültige wie korrumpierte Tripel.
+\emph{minibatch stochastic gradient descent}-Algorithmus angepasst. Die Minibatch enthält dabei ebenso viele gültige wie korrumpierte Tripel.
 Das Training wird solange ausgeführt, bis die Fehlerrate auf dem Validationsset konvergiert\footnote{Konvergenz auf dem
 Trainingsset könnte ein Zeichen für Overfitting sein.}.\\
 
-Für das Reproduzieren der Ergebnisse wurde den Empfehlen von (\cite{bordes2013translating}) gefolgt: So wird das Training
+Für das Reproduzieren der Ergebnisse wurde den Empfehlungen von (\cite{bordes2013translating}) gefolgt: So wird das Training
 nach maximal 1000 Epochen beendet, außerdem gilt $k = 50$, $\gamma = 1$, $\lambda = 0,01$ und $d_1$ als Unähnlichkeitsmaß.
 
 \section{Evaluation}\label{sec:transe-eval}
 
-Um die erstellten Daten zu evaluieren, werden bei den Relationen im Testset jeweils die Head- und Tailentitäten ersetzt.
-Danach werden alle bekannten Entitäten eingesetzt und mithilfe des Dissimilaritätsmaßes ansteigend sortiert. Der Rang
+Um die erstellten Daten zu evaluieren, werden bei den Relationen im Testset jeweils die Kopf- und Fußentitäten entfernt.
+Danach werden alle bekannten Entitäten aus $E$ eingesetzt und mithilfe des Unähnlichkeitsmaßes ansteigend sortiert. Der Rang
 der korrekten (ursprünglich entfernten) Entität wird dann gespeichert. Dieses Verfahren wurde zuerst von (\cite{bordes2011learning})
 vorgeschlagen.\\
-Daraus lassen sich dann zwei Evaluationsmaße ableiten: Den gemittelten Rang der korrekten Entität sowie die den Anteil
+Daraus lassen sich zwei Evaluationsmaße ableiten: Den gemittelten Rang der korrekten Entität sowie den Anteil
 der Evaluationsläufe, bei denen sich die richtige Entität innerhalb der Top 10 befand (Hits@10). Zusätzlich wurde noch
 zwischen roh und gefiltert unterschieden: Bei letzterem werden mögliche Tripel ignoriert, die in dieser Form schon in
 den Trainingsdaten vorkamen und so auf ``unfaire'' Art und Weise vor allen anderen Tripeln bevorzugt werden.
 Die Ergebnisse für die auf FB15k und GER14k trainierten Daten sind in Abbildung \ref{fig:results1} festgehalten.
-
 
 \begin{figure}[h]
   \centering
@@ -138,40 +137,36 @@ Die Ergebnisse für die auf FB15k und GER14k trainierten Daten sind in Abbildung
      GER14k & \textbf{234,73} & 222,05 & \textbf{34,07} & 41,83 \\
 
   \end{tabular}
-  \caption[Resultate für TransE mit FB15k und GER14k]{Resultate für TransE, trainiert auf dem FB15k- und dem GER14k-Datenset.
-  Hits@10 gibt den Anteil der Vorkommen an, bei denen sich die gesuchte Entität in der Relation links oder rechts in den top zehn
-  von dem System vorhergesagten Kandidaten befand (\emph{raw}). \emph{Filtered} bezieht sich auf denselben Rang, wenn die extra erstellten
-  korrumpierten Tripel zum Training aus den Trainingsdaten entfernt wurden. \emph{mean} bezeichnet den gemittelten Rang der richtigen
-  Entität in der vom System erstellten Rangliste der wahrscheinlichsten Vorhersagen.\label{fig:results1}}
+  \caption[Resultate für TransE mit \textsc{FB15k} und \textsc{GER14k}]{Resultate für TransE, trainiert auf dem \textsc{FB15k}- und dem \textsc{GER14k}-Datenset.\label{fig:results1}}
 \end{figure}
 
-An Ergebnissen ist zuerst zu erkennen, dass sie von den Ergebnissen in (\cite{bordes2013translating}) für FB15k etwas abweichen.
-Dies könnte daran liegen, das bei der Beschreibung des Trainingsverfahren angegeben wurde, dass das Trainingsverfahren
-nicht unbedingt 1000 Epochen lang ausgeführt wurde. In dem Code, der von den Autoren online zur Verfügung gestellt wurde
-\footnote{\url{https://github.com/glorotxa/SME}}, wurde dazu leider keine Option gefunden. Weshalb vermutlich davon auszugehen
-ist, dass dies manuell ausgeführt wurde. Deshalb ist zu schließen, dass die hier aufgeführten Ergebnisse schlechter sind als die,
+An den Ergebnissen ist zuerst zu erkennen, dass sie von den Ergebnissen in (\cite{bordes2013translating}) für FB15k etwas abweichen.
+Dies könnte daran liegen, das bei der Beschreibung des Trainingsverfahren angegeben wurde, dass das Prozedere
+nicht unbedingt 1000 Epochen lang ausgeführt wurde. In dem Code, der von den Autoren online zur Verfügung gestellt und
+zum Training verwendet wurde
+\footnote{\url{https://github.com/glorotxa/SME}}, wurde dazu leider keine entsprechende Option gefunden, weshalb vermutlich davon auszugehen
+ist, dass dies manuell ausgeführt oder nicht im Code festgehalten wurde.
+Daraus ist zu schließen, dass die hier aufgeführten Ergebnisse schlechter sind als die,
 die im Paper angegeben wurde, weil die Vektorrepräsentationen zu sehr auf die Trainingsdaten angepasst wurden und dann schlecht
-auf den Testdaten generalisieren. Da die Daten aus GER14k gewissermaßen eine Untermenge von FB15k sind, sind deren Ergebnisse
-eher i.d.R. gleichwertig oder schlechter. Die Frage, warum der rohe gemittelte Rang bei GER14k signifikant besser ist als
-bei FB15k, könnte dahingehend beantwortet werden, dass sich in der Trainingsphase zu sehr an die Übungsdaten angepasst wurde und
-zuviele Trainingstripel vor der eigentlich richtigen Lösung rangieren. Deshalb ist der Wert für die gefilterten Tripel auch umso viel
+auf den Testdaten generalisieren. Da die Daten aus \textsc{GER14k} eine Untermenge von \textsc{FB15k} sind, sind deren Ergebnisse
+i.d.R. gleichwertig oder schlechter. Die Frage, warum der rohe gemittelte Rang bei \textsc{GER14k} signifikant besser ist als
+bei FB15k, könnte dahingehend beantwortet werden, dass auch hier eine übermäßige Anpassung auf die Trainingsdaten stattfand und
+zuviele Trainingstripel vor der eigentlich richtigen Lösung rangieren. Deshalb ist der Wert für die gefilterten Tripel umso
 besser.
-
-[STATISTISCHE SIGNIFIKANZ HITS@10 ROH]
 
 \section{Zwischenfazit}
 
-In diesem Kapitel wurde ein Verfahren vorgestellt, dass es erlaubt, Vektoren zu trainieren, die Entitäten und Relationen
+In diesem Kapitel wurde ein Verfahren vorgestellt, dass es erlaubt, Vektorrepräsentationen zu trainieren, die Entitäten und Relationen
 aus Wissendatenbanken modellieren und zur Relationsvorhersage zu nutzen. Dabei bestehen die Daten aus Relationstripeln,
 also 3-Tupeln mit einer Kopf- und einer Fußentität und einer dazugehörigen semantischen Relation. Es werden außerdem noch
- egativbeispiele erzeugt, indem einer der beiden Entitäten durch eine andere in den Trainingsdaten vorkommende Entität zufällig ausgetauscht wird.
+Negativbeispiele erzeugt, indem einer der beiden Entitäten durch eine andere in den Trainingsdaten vorkommende Entität zufällig ausgetauscht wird.
 Der Trainingsvorgang wird hierbei mithilfe eines auf Vektorarithmetik basierenden Unähnlichkeitsmaß betrieben, mit der
-die ``Stimmigkeit'' korrekter Tripel versucht wird zu maximieren. Das Gegenteil stimmt für korrumpierte Tripel.\\
-Es wurde gezeigt, dass sich die (\cite{bordes2011learning}) präsentierten Ergebnisse im Rahmen der gegebenen Möglichkeit
+die ``Stimmigkeit'' korrekter Tripel versucht wird zu maximieren. Das Gegenteil gilt für korrumpierte Tripel.\\
+Es wurde gezeigt, dass sich die (\cite{bordes2011learning}) präsentierten Ergebnisse im Rahmen der gegebenen Möglichkeiten
 annähernd replizieren lassen. Darüber hinaus wurde die Methodik auch auf eine Menge deutscher Daten angewendet, die eine
 echte Teilmenge der englischen Daten darstellt. Für diese konnten ähnlich gute Ergebnisse erziehlt werden, wobei die qua
 definition kleinere Menge an Übungsbeispielen dem Unterschied in Performanz Rechnung trägt.\\
 
-Bei dieser Vorgehensweise wurden die Vektorrepräsentationen für Entitäten und Relationen gleichermaßen trainiert. In den folgenden
+Bei dieser Vorgehensweise wurden die Vektorrepräsentationen für Entitäten und Relationen gemeinsam trainiert. In den folgenden
 Kapiteln soll ein Versuch unternommen werden, mithilfe von distributioneller Semantik erstellte Wortvektorrepräsentationen
-für die Entitäten zu nutzen und darauf aufbauend Relationen vorherzusagen.
+für die Entitäten zu nutzen und darauf aufbauend für ähnliche Zwecke wie in diesem Kapitel zu nutzen.

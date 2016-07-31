@@ -6,41 +6,54 @@
 
 %----------------------------------------------------------------------------------------
 
-\section{Wortvektorrepräsentationen}
+\section{Wortvektorrepräsentationen}\label{sec:represent}
 
-\emph{Word embeddings} (=``Worteinbettungen'') wurden zuerst von (\cite{bengio2006neural}) noch vor dem erneuten
-Deep-Learning-Boom 2006 präsentiert. Im Vergleich zu vorherigen Arbeiten mit sog. ``One-Hot''-Vektoren, bei denen
+Wortkontextvektoren wurden u. A. von (\cite{bengio2006neural}) präsentiert. Im Vergleich zu vorherigen Arbeiten mit sog. ``One-Hot''-Vektoren, bei denen
 jede Dimension einem Wort des Vokabulars eines Korpus zugeordnet ist und nur eine davon den Wert $1$ besitzt (gewöhnlich
 besitzen alle anderen den Wert $0$), sind Informationen über ein Wort in dieser Repräsentation für den Menschen uneindeutig
 und kontinuerlich über den Vektor verteilt (``distributed represenation''), woher sich auch der Name des dazugehörigen
 Forschungsfeldes - der distributionellen Semantik - herleitet. Dies ist aber eigentlich nur die Folge eines viel
 grundlegeren Unterschied der Methodik, der von (\cite{baroni2014don}) weiter ausgeführt: Lange hatte man sich
 mit zählbasierten Methoden beschäftigt, um solche Repräsentationen zu erstellen; mit (\cite{bengio2006neural}) hielten
-vorhersagebasierte Methoden schließlich Einzug. \\
-Diese fußt auf der \emph{Distributional hypthesis}, die besagt, dass Worte, die in ähnlichen Kontexten auftauchen, dazu tendieren, eine ähnliche Bedeutung zu haben (\cite{harris1954distributional}).
-Diese Besonderheit macht sich (\cite{bengio2006neural}) zunutze, da das neurale Netz, mit denen die Wortvektorrepräsenationen
-trainiert werden, sich beim Bewegen durch einen Trainingskorpus ein mehrwortiges Kontextfenster um ein Zielwort herum
+vorhersagebasierte Methoden schließlich Einzug, die zuerst überlegen schienen (\cite{baroni2014don}). Dies konnte
+allerdings von (\cite{levy2015improving}) widerlegt werden. Der Unterschied im Vergleich zu anderen Methoden
+wurde dabei vor allem durch die Konfiguration von Hyperparametern und unterschiede in den Vorbereitungen der Experimente
+erklärt. \\
+
+Diese fußen auf der \emph{distributional hypthesis}, die besagt, dass Worte, die in ähnlichen Kontexten auftauchen, dazu
+ tendieren, eine ähnliche Bedeutung zu haben (\cite{harris1954distributional}).
+Diese Besonderheit macht sich (\cite{bengio2006neural}) zunutze, da das neurale Netz, mit denen die Wortkontextvektoren
+erzeugt werden, sich beim Bewegen durch einen Trainingskorpus ein mehrwortiges Kontextfenster um ein Zielwort herum
 verwendet. Das System lernt, die Wortvektoren an häufig vorkommende Wortkontexte anzupassen. Selbige besitzen zudem
 weitere nützliche Eigenschaften, die in Kapitel \ref{Chapter3} beschrieben werden.\\
+
 Diese Forschungsarbeit löste eine Welle weiterer Forschungen in diesem Gebiet aus, da gezeigt werden konnte, dass diese
 Art der Wortrepräsentationen genutzt werden konnte, die Leistungen von Systemen selbst im Bezug auf lange bekannte und
 erforschte Probleme der Computerlinguistik signifikant verbessern konnte. Exemplarisch sei hier die Arbeit von
 (\cite{collobert2011natural}) genannt, die so neue Ansätze für PoS-Tagging, Named-Entity-Recognition, Chunking und Semantic
-Role Labeling präsentieren.\\
+Role Labeling präsentieren. (\cite{mikolov2013efficient}) und (\cite{mikolov2013distributed}) beschäftigen sich mit der
+Optimierung des Wortvektortrainings. Dabei wird auch ein Fokus auf die arithmetischen Regelmäßigkeiten von Wortvektoradditionen
+eingegangen (siehe Abbildung \ref{fig:capitals} im vorherigen Kapitel). Diese Eigenschaft soll später in Kapitel \ref{Chapter8} erneut
+aufgegriffen werden.\\
 
 Weitere Untersuchungen beschäftigen sich u. A. mit bilingualen Repräsentationen für maschinelle Übersetzung (\cite{zou2013bilingual}),
 deren Training auf der Basis von einem dependenzgeparsten Korpus (\cite{levy2014dependency}), dem Optimieren der Parameter
-(\cite{levy2015improving}) u.v.m.
+(\cite{levy2015improving}). (\cite{fu2014learning}) nutzen die Differenzen von Wortkontextvektoren, um semantische
+Hierarchien zu erstellen.\\
+Diese Forschungsarbeiten zeugen hierbei exemplarisch von dem riesigen Potenzial und der Vielfalt, die dieses
+Forschungsthema bietet.
 
+\section{Vektorrepräsentationen für Wissensdatenbanken}
 
-\section{Vektorrepräsentationen für Wissensdatenbank}
-
-Entitäten und Relationen aus Wissensdatenbanken mithilfe eigener Vektoren zu respräsentieren wurde bereits von einigen
-Forschungsarbeiten in Angriff genommen: Als einer der ersten Ansätze versuchen (\cite{bordes2011learning}), symbolische
-Wissensrepräsentationen in einen Vektorraum einzubetten und so für die Künstliche-Intelligenz-Forschung leichter nutzbar
-zu machen. Diese sog. \emph{Structured Embeddings} (SE) werden mithilfe von neuralen Netzwerken trainiert.
+Wissendatenbanken sind aufgrund der in Kapitel \ref{Chapter1} genannten Anwendungsmöglichkeit bereits ein lange bearbeitetes
+Forschungsthema. Beispielsweise diskutieren schon (\cite{giaretta1995ontologies}) verschiedene Auslegungen des Ontologiebegriffs
+im Kontext ebendieser Wissensbasen. Dementsprechend wurden auch im Zuge des aufkommenden \emph{world wide web} versucht, dieses
+Ressource zu nutzen, wie z.B. (\cite{craven2000learning}) zeigt.\\
+Dieses Thema nach dem Vorbild von Wortkontextvektoren zu bearbeiten ist jedoch ein eher neue Herangehensweise: Als
+einer der ersten Ansätze versuchen (\cite{bordes2011learning}), symbolische Wissensrepräsentationen in einen Vektorraum
+einzubetten. Diese sog. \emph{Structured Embeddings} (SE) werden mithilfe von neuralen Netzwerken trainiert.
 Darauf aufbauend präsentieren (\cite{bordes2013translating}) einen etwas simpleren Ansatz namens \emph{TransE}, der darauf abzieht, Relationen
-zwischen Entitäten als eine einfach vektorarithmetische Operation (= Übersetzung) zu sehen. Diese Vorgehensweise wird in Kapitel \ref{Chapter6}
+zwischen Entitäten als eine einfach vektorarithmetische Operation ($\leadsto$ Übersetzung) zu sehen. Diese Vorgehensweise wird in Kapitel \ref{Chapter6}
 etwas genauer ausgeführt und dere Ergebnisse für einen deutschsprachigen Datensatz repliziert.\\
 
 \begin{figure}[h]
@@ -67,13 +80,16 @@ etwas genauer ausgeführt und dere Ergebnisse für einen deutschsprachigen Daten
   \egroup
    \\\vspace{0.5cm}
 
+  \fbox{
+  \parbox{\textwidth}{
+  \flushleft
 \textbf{Erklärung der Parameter}
 
 \begin{multicols}{2}
 
   \begin{itemize}
-    \item $(h, r, t)$: Relationstripel bestehend aus einer Kopf- ($h$) und Fußentität ($t$) sowie einer Relation $r$
-    \item $f_r(\cdot, \cdot)$: Scoringfunktion zweier Entitäten für eine Relation $r$
+    \item $(h, r, t)$: Relationstripel bestehend aus (den Vektoren) einer Kopf- ($h$) und Fußentität ($t$) sowie einer Relation $r$
+    \item $f_r(\cdot, \cdot)$: Bewertungsfunktion einer Relation $r$ im Bezug auf zwei Entitäten
     \item $h_{\bot}, t_{\bot}$: Projektionen zweiter Entitätsvektoren auf eine Ebene
   \end{itemize}
 
@@ -86,14 +102,15 @@ etwas genauer ausgeführt und dere Ergebnisse für einen deutschsprachigen Daten
   \end{itemize}
 
   \end{multicols}
+  }}
   \caption[Übersicht über verschiedene Arten der Vektorrepräsentationen für Wissensdatenbanken]{Übersicht über verschiedene Arten der Vektorrepräsentationen für Wissensdatenbanken
-  Für TransE (\cite{bordes2013translating}), TransH (\cite{wang2014knowledge}), TransR und CTransR (\cite{lin2015learning})
+  Für \emph{TransE} (\cite{bordes2013translating}), \emph{TransH} (\cite{wang2014knowledge}), \emph{TransR} und \emph{CTransR} (\cite{lin2015learning})
   werden die verschiedenen Scoringfunktionen gegenübergestellt und vorkommende Parameter erklärt. \label{fig:scoring}}
 \end{figure}
 
 Diese Idee wird weiter von (\cite{wang2014knowledge}) vorangetrieben: Um nicht nur 1:1- sondern auch 1:n-, n:1- und m:n-Relationen
 abzubilden, werden Punkte in einem Vektorraum auf eine für jede Relation separat gelernte Ebene projiziert, woher sich
-der Name des Verfahrens \emph{TransH}, herleitet.\\
+der Name des Verfahrens, \emph{TransH}, herleitet.\\
 Um die Vektorräume von Entitäten und Relationen zu trennen, stellen (\cite{lin2015learning}) \emph{TransR} und \emph{CTransR}
 vor. Für Ersteres wird für jede Relation eine Projektionsmatrix gelernt, die Entitäten in den jeweiligen Relationsvektorraum
 übersetzt. Bei Letzterem werden für jede Relation mehrere Vektoren trainiert, um der Unterschiedlichkeit im Kontext
