@@ -18,14 +18,14 @@ Hereafter, three experiments were conducted:
 ### REQUIREMENTS
 
 The following external python modules need to be installed to use this code:
-    * `gensim`
-    * `gzip`
-    * `matplotlib`
-    * `mpl_toolkits`
-    * `numpy`
-    * `scipy`
-    * `sklearn`
-    * `yaml`
+  * `gensim`
+  * `gzip`
+  * `matplotlib`
+  * `mpl_toolkits`
+  * `numpy`
+  * `scipy`
+  * `sklearn`
+  * `yaml`
 
 Not all of those dependencies are obligatory depending on the part of the project you want to
 execute.
