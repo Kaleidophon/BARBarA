@@ -113,24 +113,6 @@ class MappingMasterThread(threading.Thread):
 		except OSError:
 			pass
 
-		# Load vectors
-		print alt("Loading vectors...")
-		with codecs.open(self.vector_inpath, "rb", "utf-8") as vector_infile:
-			n = 1
-			line = vector_infile.readline().strip()
-			while line:
-				if n == 1:
-					line = vector_infile.readline().strip()
-					n += 1
-					continue
-				parts = line.strip().split(" ")
-				index = int(parts[0].strip())
-				vector = numpy.array([float(dimension.strip()) for dimension in parts[1:]])
-				self.vector_queue.put((index, vector))
-				self.vector_dict.add_vector(index, vector)
-				n += 1
-				line = vector_infile.readline().strip()
-
 		# Load sentence IDs of words (if needed)
 		if self.coc:
 			print alt("Loading word occurrences...")
@@ -150,6 +132,27 @@ class MappingMasterThread(threading.Thread):
 						word = parts[1]
 						self.indices[index] = word
 						line = indices_infile.readline().strip()
+
+		# Load vectors
+		print alt("Loading vectors...")
+		with codecs.open(self.vector_inpath, "rb", "utf-8") as vector_infile:
+			n = 1
+			line = vector_infile.readline().strip()
+			while line:
+				if n == 1:
+					line = vector_infile.readline().strip()
+					n += 1
+					continue
+				parts = line.strip().split(" ")
+				index = int(parts[0].strip())
+				vector = numpy.array([float(dimension.strip()) for dimension in parts[1:]])
+
+				# Only add those words which can possibly fulfill the lambda constraint.
+				if len(self.occurrences[self.indices[index]]) >= self.lambda_:
+					self.vector_queue.put((index, vector))
+					self.vector_dict.add_vector(index, vector)
+				n += 1
+				line = vector_infile.readline().strip()
 
 	def read_ids_file(self, ids_inpath):
 		"""
@@ -238,11 +241,6 @@ class MappingWorkerThread(threading.Thread):
 
 				current_word = self.indices[current_index]
 				current_occ = self.occurrences[current_word]
-
-				# If the current word doesn't have enough occurrences by itself, it can also never fulfill the
-				# lambda criterion
-				if len(current_occ) < self.lambda_:
-					continue
 
 				for index in keys:
 					# Check whether this mapping has already been computed by
