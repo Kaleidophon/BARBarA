@@ -34,7 +34,7 @@ $f$ (um zu bestimmen, wann das Neuron ``feuert''):
   y = f(u)
 \end{equation}
 
-$u$ bezeichnet dabei einen Skalar, dem man durch das Summieren der mit $w$ gewichteten Inputs erhält:
+$u$ bezeichnet dabei einen Skalar, den man durch das Summieren der mit $w$ gewichteten Inputs erhält:
 \begin{equation}
   u = \sum_{i=0}^{K} w_i x_i = w^T x
 \end{equation}
@@ -59,10 +59,10 @@ kontinuierlich und dadurch ableitbar:
   tanh(u) = \frac{e^{2u}-1}{e^{2u}+1}
 \end{equation}
 
-In der jüngeren Vergangenheit fand jedoch wieder eine Rückkehr zu den alten Funktionen statt, siehe z.B. (\cite{maas2013rectifier}).
+In der jüngeren Vergangenheit fand jedoch wieder eine Rückkehr zu den alten Funktionen statt, siehe z.B. (\cite{maas2013rectifier}).\\
 
 Um aus einzelnen Neuronen nun ein Neuronales Netzwerk zu kreieren, werden mehrere Schichten erstellt (i.d.R. eine Eingabe-
-(\emph{input layer}), eine Ausgabe- (\emph{output layer}) und min. eine ``versteckte'' Schicht (\emph{hidden layer}).
+(\emph{input layer}), eine Ausgabe- (\emph{output layer}) und min. eine ``versteckte'' Schicht (\emph{hidden layer})).
 Die Schichten bestehen dann aus mehreren parallelen Zellen, wobei jede Zelle mit jeder anderen Zelle der vorhergehenden und
 folgenden Schicht vernetzt ist (siehe Abbildung \ref{fig:neuralnet})\footnote{Dabei gibt es aber auch Netzwerke, bei denen
 absichtlich Verbindungen ignoriert werden oder Nervenzellen mit Zellen aus einer anderen Schicht als der nächstvorderen
@@ -76,27 +76,29 @@ verknüpft sind.}.
 \end{figure}
 
 Die einzelnen Gewichtsvektoren $w$ aller Neuronen einer Schicht werden dann i.d.R. zu einer Gewichtsmatrix $W$ zusammengefasst,
-wobei jede Zeile einem Gewichtsvektor entspricht. Zum Training dieser Strukturen wird der sog. \emph{Backpropagation}-Algorithmus verwendet, der mithilfe einer vorher definierten Verlustfunktion (die anzeigt, inwiefern das durch das Netzwerk
-erzeugt Ergebnis von dem erwünschtne Ergebnis abweicht) einen Fehler errechnet. Dieser wird rekursiv durch alle
-Schichten des Netzwerks zurückgegeben und simultan die Werte innerhalb der Gewichtsmatrix anpasst.
+wobei jede Zeile einem Gewichtsvektor entspricht. Zum Training dieser Strukturen wird der sogenannte Backpropagation-Algorithmus verwendet,
+ der mithilfe einer vorher definierten Verlustfunktion einen Fehler errechnet. Die Verlustfunktion zeigt dabei an,
+inwiefern das durch das Netzwerk erzeugte Ergebnis von dem erwünschten Ergebnis abweicht. Dieser wird rekursiv durch
+alle Schichten des Netzwerks zurückgegeben und passt simultan die Werte innerhalb der Gewichtsmatrix an.
 
 \section{Wortvektoren}\label{sec:wordvec}
 
 Frühere Experimente mit Wortvektoren arbeiteten meist mit sog. ``One-Hot''-Vektoren, bei denen jede Dimension i.d.R.
-einem betimmten Wort zugeordnet wurde. Nehmen wir beispielsweise das Minikorpus ``Der Hund beißt den Mann'' an.
-Das Vokabular besteht dann aus $\textsc{V} = \{beißt,\ Der,\ den,\ Hund,\ Mann\}$ (in alphabetischer Reihenfolge).
-Um jedes dieser Wörter als einen der oben genannten Vektoren zu repräsentieren, können wir Vektoren der Länge $V$\footnote{
-$V$ steht eigentlich für $\|\textsc{V}\|$, wird der Übersicht halber aber im Folgenden stellvertrentend dafür verwendet.}
-benutzen. Um nun zum Beispiel einen Vektor für \emph{Hund} zu generieren, setzen wir den Wert der Stelle des Vektors (=
-\emph{Feature}) auf $1$, der dem Index von Hund in $\textsc{V}$ entspricht,
+einem bestimmten Wort zugeordnet wurde. Nehmen wir beispielsweise das Minikorpus ``Der Hund beißt den Mann'' an.
+Das Vokabular besteht dann aus \\$\textsc{V} = \{bei{ss}t,\ Der,\ den,\ Hund,\ Mann\}$ (in alphabetischer Reihenfolge).
+Um jedes dieser Wörter als einen der oben genannten Vektoren zu repräsentieren, können wir Vektoren der Länge $V$ benutzen\footnote{
+$V$ steht eigentlich für $\|\textsc{V}\|$, wird der Übersicht wegen aber im Folgenden stellvertrentend dafür verwendet.}.
+Um nun zum Beispiel einen Vektor für \emph{Hund} zu generieren, setzen wir den Wert an der Stelle des Vektors (=
+\emph{Feature}) auf $1$, die dem Index von Hund in $\textsc{V}$ entspricht,
 also $\vec{v}(Hund)=(0, 0, 0, 1, 0)$.\\
-Diese Art von Wortvektor wird gemeinhin als ``sparse'', also spärlich bezeichnet, da sie relativ wenig Information enthält.
-\emph{Wortkontextvektoren}\footnote{Im Englischen zur Abgrenzung \emph{word embeddings}
-genannt.}, die mithilfe von Neuronalen Netzwerken trainiert werden, beinhalten mehr (semantische) Informationen über das dazugehörige Wort, zudem lassen sich einzelne Features
-nicht mehr auf eindeutig auf bestimmte Worte zurückführen\footnote{Die semantische Information ist \emph{implizit} in der
-Vektorrepräsentation kodiert.}. Ein populäres Werkzeug zu diesem Zweck ist \verb|word2vec| von (\cite{mikolov2013efficient}).\\
 
-Das Training dieser neuen Wortkontextvektoren läuft folgendermaßen ab:
+Diese Art von Wortvektor wird gemeinhin als ``sparse'', also spärlich bezeichnet, da sie relativ wenig Information enthält.
+Wortkontextvektoren, die mithilfe von Neuronalen Netzwerken trainiert werden, beinhalten mehr (semantische) Informationen über das dazugehörige Wort, zudem lassen sich einzelne Features
+nicht mehr eindeutig auf bestimmte Worte zurückführen\footnote{Die semantische Information ist \emph{implizit} in der
+Vektorrepräsentation kodiert.}. Ein populäres Werkzeug zur Erstellung der Wortkontextvektoren ist \verb|word2vec| von
+(\cite{mikolov2013efficient}).\\
+
+Das Training dieser neuen Wortkontextvektoren läuft wie folgt ab:
 Als Input fungieren die erwähnten ``One-Hot''-Vektoren, welche genau so viele Dimensionen wie Worte im Vokabular besitzen
 ($\vec{v} \in \mathbb{R}^V$).
 Die Modelle bestehen aus drei Schichten, namentlich \emph{Input}, \emph{Hidden} und \emph{Output}.
@@ -113,16 +115,17 @@ Wortkontextvektoren entspricht.\\
 \end{figure}
 
 Zwischen Input und Hidden liegt die Gewichtsmatrix $W$ und zwischen Hidden und Output die Matrix $W'$.
-CBOW versucht, die Wahrscheinlichkeit eines Wortes gegeben eines Kontextes
-der Größe $C$\footnote{Kontext bezieht sich in diesem Fall auf die Summe der rechts und links vom Eingabewort stehenden
-Wörter, siehe Abbildung \ref{fig:cbowskip}.} zu maximieren. Unsere Verlustfunktion, deren Wert es dabei zu minimieren gilt,
-besteht darin in der negativen logarithmischen Wahrscheinlichkeit eines Wortes gegeben seines Kontextes:
+Um diese anzupassen, kann zwischen zwei verschiedenen Ansätzen gewählt werden:
+\emph{Continuous Bag of Words} (CBOW) versucht, die Wahrscheinlichkeit eines Wortes gegeben eines Kontextes
+der Größe $C$ zu maximieren\footnote{Kontext bezieht sich in diesem Fall auf die Summe der rechts und links vom Eingabewort stehenden
+Wörter, siehe Abbildung \ref{fig:cbowskip}.}. Unsere Verlustfunktion, deren Wert es dabei zu minimieren gilt,
+besteht in der negativen logarithmischen Wahrscheinlichkeit eines Wortes gegeben seines Kontextes:
 
 \begin{equation}
   E = - log\ p(w_O | w_{I,1}, \ldots, w_{I,C})
 \end{equation}
 
-Beim Skip-gram-Modell verhält sich das Ganze genau umgekehrt, es wird versucht, den Kontext gegeben eines Eingabewortes
+Beim Skip-gram-Modell hingegen verhält sich das Ganze genau umgekehrt, es wird versucht, den Kontext gegeben eines Eingabewortes
 vorherzusagen:
 
 \begin{equation}
@@ -130,15 +133,15 @@ vorherzusagen:
 \end{equation}
 
 In beiden Fällen wird daraufhin überprüft, ob die Vorhersage mit den tatsächlichen Daten übereinstimmt und die Abweichung
-errechnet, mit der dann die Parameter der Gewichtsmatrizen $W$ und $W'$ rekursiv angepasst werden, um zukünftige Prognosen
-zu verbessen, wofür der \emph{Backpropagation}-Algorithmus verwendet wird. Die Wortkontextvektoren, die dann nach dem Durcharbeiten aller Trainingsdaten resultieren, sind dann die Zeilen von
+errechnet, mit der die Parameter der Gewichtsmatrizen $W$ und $W'$ rekursiv angepasst werden, um zukünftige Prognosen
+zu verbessen, wofür der \emph{Backpropagation}-Algorithmus verwendet wird. Die Wortkontextvektoren, die aus dem Durcharbeiten aller Trainingsdaten resultieren, sind dann die Zeilen von
 $W'$, wobei die \emph{i}-te Zeile der Matrix dem Wortvektor des Wortes mit dem Index \emph{i} im Vokabular entspricht.\\
 
 Eigentlich erfordert das Training eine aufwendige Berechnung über alle Wörter des Vokabulars, was der Skalierbarkeit dieses
-Verfahrens entgegensteht. Der computationelle Aufwand kann allerdings durch Techniken wie \emph{Hierarchisches Softmax}, bei dem
+Verfahrens entgegensteht. Der rechnerische Aufwand kann allerdings durch Techniken wie \emph{Hierarchisches Softmax}, bei dem
 der Aufwand durch einen binären Baum von $O(V)$ auf $O(log\ V)$ verkleinert wird sowie
 \emph{Negativem Sampling} reduziert werden (\cite{rong2014word2vec}; \cite{goldberg2014word2vec}).
-Bei letzterem werden ``schlechte'' (also Negativ-)Beispiele zum Training hinzugezogen, woher sich auch der Name des Verfahrens ableitet.\\
+Bei letzterem werden Negativbeispiele zum Training hinzugezogen, woher sich auch der Name des Verfahrens ableitet.\\
 
 %\section{Wortvektoren aus Dependenzen}
 %
@@ -161,7 +164,7 @@ Bei letzterem werden ``schlechte'' (also Negativ-)Beispiele zum Training hinzuge
 
 \section{Clustering}
 
-\emph{Clustering} bezeichnet eine Art von unüberwachten maschinellen Lernen,
+\emph{Clustering} bezeichnet eine Art von unüberwachtem maschinellen Lernen,
 die versucht, Elemente, die nach vorher definierten Maßgaben als ähnlich erachtet
 werden sollen, zu gruppieren.\\
 Die Literatur zu diesem Thema bietet dabei eine Fülle von Algorithmen mit verschiedenen
@@ -184,10 +187,10 @@ Darstellung):
   Diese Punkte sind von $p$ \emph{direkt erreichbar}.
   \item Ein Punkt $q$ ist von $p$ erreichbar, sofern es einen Pfad $p_1, \ldots, p_n$ mit $p_1 = p$ und $p_n = q$ gibt, wobei
   jeder Punkt $p_{i+1}$ von einem Punkt $p_i$ direkt erreichbar ist.
-  \item Alle Punkte, die nicht von einem anderen Punkt aus direkt erreichbar sind, sind Ausreißer (\emph{Outlier}).
+  \item Alle Punkte, die nicht von einem anderen Punkt aus erreichbar sind, sind Ausreißer (\emph{Outlier}).
   \item Zwei Punkte $p$ und $q$ sind \emph{direkt verbunden}, sofern es einen Punkt $o$ gibt,
-  von dem aus beide Punkte direkt erreichbar sind.
-  \item Cluster bestehen aus Punkten, die alle miteinander direkt verbunden sind.
+  von dem aus beide Punkte erreichbar sind.
+  \item Cluster bestehen aus Punkten, die alle miteinander direkt verbunden und vom Kernpunkt aus erreichbar sind.
 \end{itemize}
 
 \begin{figure}[h]
@@ -200,8 +203,8 @@ Darstellung):
 Chire - Eigenes Werk, CC BY-SA 3.0, \url{https://commons.wikimedia.org/w/index.php?curid=17045963} (zuletzt abgerufen am
 25.04.16).}
 
-Der Algorithmus ist von linearer Komplexität, sofern ihm eine geeignete Indexierung der Daten zugrunde gelegt wird, ansonsten
-verhält sich die Komplexität quadratische zur Anzahl der Datenpunkte\footnote{Bei der
+Der Algorithmus ist von linearer Komplexität, sofern ihm eine geeignete Indexierung der Daten zugrunde gelegt wird. Ansonsten
+verhält sich die Komplexität quadratisch zur Anzahl der Datenpunkte\footnote{Bei der
 \verb|scikit-learn|-Implementation wird beispielsweise ein Nearest-Neighbour-Graph verwendet:
 \url{http://scikit-learn.org/stable/modules/generated/sklearn.cluster.dbscan.html} (zuletzt abgerufen am 25.04.16)}.\\
 

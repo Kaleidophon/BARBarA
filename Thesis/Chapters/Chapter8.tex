@@ -87,7 +87,7 @@ diese unter den Top Zehn anzutreffen war.
 
 Im Blick auf Abbildung \ref{fig:eval-we4k} zeigt ein ziemlich ernüchterndes Fazit auf. So schnitt die Variante
 mit Wortvektoren aus \verb|word2vec| und seperat trainierten Relationsrepräsentationen ($\rightarrow$ \textsc{WE4k}) im Bezug auf
-den gemittelten Rang mehr als fünf Mal so schlecht und im Bezug auf die \textsc{Hits@10} mehr als acht Mal so schlecht ab (sic!).\\
+den gemittelten Rang mehr als fünf Mal so schlecht und im Bezug auf die \textsc{Hits@10} mehr als acht Mal so schlecht ab (sic!).
 Die möglichen Gründe für das weite Verfehlen guter Ergebnisse werden nun in Kapitel \ref{sec:we4k-zwifa} diskutiert.
 
 \section{Zwischenfazit}\label{sec:we4k-zwifa}
@@ -95,17 +95,20 @@ Die möglichen Gründe für das weite Verfehlen guter Ergebnisse werden nun in K
 Um die Diskrepanz zwischen den Ergebnissen mit gemeinsam trainierten Repräsentationen für Entitäten und Relation im Vergleich
 zu denen mit Wortkontext- als Entitätsvektoren zu erklären, sollte die Unterschiedlichkeit der Ansätze hervorgehoben
 werden.\\
+
 Im ersten Fall werden wie erwähnt alle eine Relation betreffende Repräsentationsvektoren gemeinsam trainiert; es ist
 also davon auszugehen, dass diese bestmöglichst angepasst sind, um $\parallel h + r - t\parallel$ für alle $h, t$ zu minimieren.\\
 Dies kann im zweiten Fall nicht unbedingt gewährleistet werden: Da $h$ und $t$ im Vornherein schon feststehen und nicht
 an $r$ angepasst werden (sondern genau umkehrt $r$ an $h$ und $t$ angepasst wird), kann der minimale Wert der Verlustfunktion
 unter Umständen nur schwer erlangt werden.\\
+
 Als eine weitere Begründung ist anzuführen, dass a) \textsc{WE4k} auf \textbf{deutlich} kleineren Datenmengen arbeitet (weshalb maschinelle
 Lernverfahren unter Umständen gar keine Lösung finden können, die gut auf ungesehene Beispiele generalisiert) und b)
 Wortkontextvektoren von sehr speziellen Entitäten enthält, die in \emph{Freebase} als Knoten existieren, u. U. aber sehr selten
 im Korpus auftauchen. Da die Beschaffenheit der korpusbasierten Repräsentationen vor allem von Kookkurrenzen mit anderen
 Begriffen abhängt, bedeutet eine niedrige Termfrequenz vor allem weniger aussagekräftige Wortkontextvektoren, worunter die
 Ergebnisse in der Konsequenz zu leiden haben.\\
+
 Zuletzt sollte mit in Betracht gezogen werden, dass die trainierten Relationen sehr feingliedrig sind. Anderen Forschungsarbeiten,
  die mit grobaufgelösten Beziehungen wie ``Cause-Effect'' oder ``Entitiy-Origin''
 (\cite{hendrickx2009semeval}) arbeiten, können dadurch auf größere Datenmengen zugreifen und bessere Ergebnisse auf
