@@ -9,14 +9,14 @@
 \section{Vorbereitung}
 
   Für die nachfolgenden Experimente in den Kapiteln \ref{Chapter6}, \ref{Chapter7} und \ref{Chapter8}
-  mussten einige Daten zuerst beschafft und unter Umständen aufbereitet werden. Die ergriffenen Maßnahmen werden
+  mussten einige Daten zuerst beschafft und unter Umständen aufbereitet werden. Die  dazu ergriffenen Maßnahmen werden
   deshalb in diesem Kapitel beschrieben.
 
   \subsection{Verwendete Daten}
 
-  Die anfangs verwendeten Daten lassen sich grob in vier Kategorien einteilen: Den Korpus, das Relationsdatenset,
+  Die anfangs verwendeten Daten lassen sich grob in vier Kategorien einteilen: Das Korpus, das Relationsdatenset,
   Wortähnlichkeitslisten sowie Analogiedatensets (siehe Abbildung \ref{fig:datasets}).\\
-  Als Korpus wurde der \textsc{DECOW14X}-Korpus verwendet. Genaueres über dessen Beschaffenheit und Vorverarbeitung für das
+  Als Korpus wurde das \textsc{DECOW14X}-Korpus verwendet. Genaueres über dessen Beschaffenheit und Vorverarbeitung für das
   Training von Wortvektoren werden in \ref{sec:corpusprep} und \ref{sec:vectrain} beschrieben.
 
   \begin{figure}[h]
@@ -26,7 +26,7 @@
     \begin{tabular}{l|l|rl|l}
       \textsc{Art} & \textsc{Name} & \multicolumn{2}{l|}{\textsc{Beschreibung}} & \textsc{Quelle} \\
       \hline \hline
-      Korpora & \textsc{DECOW14X} & \multicolumn{2}{l|}{Deutschsprachiger Webkorpus} & (\cite{schafer2012building}) \\
+      Korpora & \textsc{DECOW14X} & \multicolumn{2}{l|}{Deutschsprachiges Webkorpus} & (\cite{schafer2012building}) \\
       \hline
       Relationsdaten & \textsc{FB14k} & \multicolumn{2}{l|}{592k Relationstripel aus Freebase} & (\cite{bordes2013translating}) \\
       \hline
@@ -47,6 +47,7 @@
   \url{https://plus.google.com/109936836907132434202/posts/bu3z2wVqcQc} (zuletzt abgerufen am 21.07.16).}
    \textsc{Freebase} wurden im Datenset \textsc{FB14k} von (\cite{bordes2013translating}) gesammelt.
   Diese werden vor allem in den Versuchen von Kapiteln \ref{Chapter6} und \ref{Chapter8} relevant.\\
+
   Alle anderen Datensets sind zur Evaluation der Wortvektoren in Kapitel \ref{sec:we-eval} angedacht: Die Sets
   \textsc{Schm280}, \textsc{Wortpaare65}, \textsc{Wortpaare222} und \textsc{Wortpaare350} bestehen aus einer Reihe
   von Wortpaaren, die von menschlichen Annotatoren auf verschiedenen Skalen nach Ähnlichkeit bewertet wurden.\\
@@ -79,17 +80,17 @@
 
   \subsection{Training der Wortvektoren}\label{sec:vectrain}
 
-  Wortvektoren werden mithilfe des Tools \verb|word2vec| und zwei verschiedenen Modellen trainiert: Continuous-Bag-of-Words (CBOW)
+  Wortvektoren wurden mithilfe des Tools \verb|word2vec| und zwei verschiedenen Modellen trainiert: \emph{Continuous Bag of Words} (CBOW)
   und Skip-Gram. Das CBOW-Model wurde zuerst von (\cite{mikolov2013efficient}) vorgestellt. Die Erklärung der Funktionsweise
   wird im nachfolgenden Teil recht klein gehalten, für eine ausführlichere und verständliche Ausführung wird beispielsweise
   die Arbeit von (\cite{rong2014word2vec}) oder die Ausführung in Kapitel \ref{sec:wordvec} empfohlen.\\
 
-  Als Eingabe benötigt es eine Textressource, die einen Satz pro Zeile enthält, Tokens durch Leerzeichen getrennt und gibt die Wortvektoren
-  entweder einem einfach Text- oder Binärformat aus.\\
+  Als Eingabe wird eine Textressource benötigt, die einen Satz pro Zeile enthält, wobei Tokens durch Leerzeichen getrennt sind;
+  die Wortvektoren können entweder in einem einfachen Text- oder Binärformat gespeichert werden.\\
   Das Tool lässt zudem dem Nutzer offen, einige Parameter zu verändern. Jene, die in dieser Arbeit berücksichtigt wurden, sollen
   dabei näher erläutert werden:
   \begin{itemize}
-    \item \verb|-sample|\\Die Wahrscheinlichkeit, mit der Einfluss hochfrequenter Worte im Training geregelt wird
+    \item \verb|-sample|\\Die Wahrscheinlichkeit, mit der der Einfluss hochfrequenter Worte im Training geregelt wird
     \item \verb|-cbow|\\Bestimmt, welche Trainingsmethode verwendet wird ($0\ \hat{=}$ Skip-gram, $1\ \hat{=}$ Continuous-Bag-of-Words)
     \item \verb|-negative|\\Anzahl von negativen Beispielen beim Training.
   \end{itemize}
