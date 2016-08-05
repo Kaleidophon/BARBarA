@@ -99,7 +99,26 @@
 
   Zwar bietet das Tool auch noch andere Parameter, jedoch soll aufgrund der Empfehlungen in (\citeauthor{levy2015improving}), in
   der eine große Anzahl von Konfigurationen ausprobiert wurde, im Rahmen dieser Arbeit nur mit den oben genannten Werten experimentiert werden.
-  Weiterführende Optimierungen wurden zudem unterlassen, um den Rahmen dieser Arbeit nicht zu sprengen.
+  Weiterführende Optimierungen wurden zudem unterlassen, um den Rahmen dieser Arbeit nicht zu sprengen.\\
+
+  \begin{figure}[h]
+    \centering
+    \begin{tabular}{L|L|L|L|L|L}
+        \rowfont{\huge}%
+        01 & DE & R & S & 5 & -5 \\
+        \rowfont{\scriptsize}%
+        ID & \parbox[t]{1cm}{Korpus-kürzel} & \parbox[t]{1cm}{Lemmata (L) / Roh (R)} & \parbox[t]{1.5cm}{Skip-Gram (S) / CBOW (C)} & \parbox[t]{1cm}{Anzahl Negativ-beispiele} & \parbox[t]{1.5cm}{Sampling-rate} \\
+    \end{tabular}
+  \caption[Erklärung der Nomenklatur für Datensets aus Wortkontextvektoren]{Erklärung der Nomenklatur für Datensets aus
+  Wortkontextvektoren, hier für 01DERS5-5.\label{fig:nomenklatur}}
+  \end{figure}
+
+  Im Folgenden wird für ein spezielle Nomenklatur für jedes Vektordatenset eingeführt (siehe Abbildung \ref{fig:nomenklatur}):
+  So bezeichnen die ersten beiden
+  Ziffern die Nummer des jeweiligen Datensets, die nächsten beiden Buchstaben das Korpus, das für das Training verwendet
+  wurde, das nächste Zeichen, ob das Korpus lemmatisiert (L) oder roh vorlag (R). Danach folgt ein Hinweis auf das im Training
+  verwendete Modell (also Skip-Gram (S) oder CBOW (C)) und schlussendlich die Anzahl der negativen Trainingsbeispielen
+  sowie die Samplingrate.
 
 
 \section{Evaluationsarten für Wortkontextvektoren}\label{sec:we-eval}
@@ -131,21 +150,21 @@ angewendet und kritisch reflektiert werden sollen.\\
     \resizebox{\textwidth}{!}{%
     \begin{tabular}{@{}lllll@{}}
       \toprule[1.5pt]
-      \textsc{Nr.} & \textsc{Frankreich} & \textsc{Bank} & \textsc{Computerlinguistik} & \textsc{gekratzt} \\
+      \textsc{Name} & \textsc{Frankreich} & \textsc{Bank} & \textsc{Computerlinguistik} & \textsc{gekratzt} \\
       \toprule
-      \Romannum{1} & \textsc{Belgien} & \textsc{Anlagebank} & \textsc{Linguistik} & \textsc{gekrazt} \\
+      \textbf{01DERS5-5} & \textsc{Belgien} & \textsc{Anlagebank} & \textsc{Linguistik} & \textsc{gekrazt} \\
        & \textsc{Italien} & \textsc{(unknown)\_Bank} & \textsc{Informationswissenschaft} & \textsc{weggekrazt} \\
        & \textsc{Niederland} & \textsc{BAnk} & \textsc{Texttechnologie} & \textsc{geschubbert} \\
        & \textsc{Niederlande} & \textsc{Bankstatus} & \textsc{Sprachwissenschaft} & \textsc{gekratz} \\
        & \textsc{Spanien} & \textsc{Geldinstitut} & \textsc{Softwaretechnik} & \textsc{abgeleckt} \\
       \midrule
-      \Romannum{8} & \textsc{Italien} & \textsc{Hausbank} & \textsc{Bioinformatik} & \textsc{gekrazt} \\
+      \textbf{08DERC5-4} & \textsc{Italien} & \textsc{Hausbank} & \textsc{Bioinformatik} & \textsc{gekrazt} \\
       & \textsc{Ungarn} & \textsc{Geschäftsbank} & \textsc{Texttechnologie} & \textsc{weggekrazt} \\
       & \textsc{Polen} & \textsc{Großbank} & \textsc{Informationswissenschaft} & \textsc{geschubbert} \\
       & \textsc{Spanien} & \textsc{Kreditbank} & \textsc{Softwaretechnik} & \textsc{angeknabbert} \\
       & \textsc{Belgien} & \textsc{Mutterbank} & \textsc{Linguistik} & \textsc{rausgerissen} \\
       \midrule
-      \Romannum{22} & \textsc{Italien} & \textsc{Kreditinstitut} & \textsc{Bioinformatik} & \textsc{geritzt} \\
+      \textbf{22DELC5-2} & \textsc{Italien} & \textsc{Kreditinstitut} & \textsc{Bioinformatik} & \textsc{geritzt} \\
       & \textsc{Ungarn} & \textsc{Geldinstitut} & \textsc{Wirtschaftsgeographie} & \textsc{angesengt} \\
       & \textsc{Polen} & \textsc{Sparkasse} & \textsc{Grundschulpädagogik} & \textsc{zusammengenäht} \\
       & \textsc{Spanien} & \textsc{Landesbank} & \textsc{Computerwissenschaft} & \textsc{aufgesprungen} \\
@@ -301,11 +320,11 @@ angewendet und kritisch reflektiert werden sollen.\\
     \def\arraystretch{1.5}
     \begin{tabular}{@{}lllllll@{}}
       \toprule
-      \textsc{Nr.} & \textsc{Wortpaare65} & \textsc{Wortpaare222} & \textsc{Wortpaare350} & \textsc{Schm280} & \textsc{Google} & \textsc{SemRel} \\
+      \textsc{Name} & \textsc{Wortpaare65} & \textsc{Wortpaare222} & \textsc{Wortpaare350} & \textsc{Schm280} & \textsc{Google} & \textsc{SemRel} \\
       \toprule
-      \Romannum{1} & \textbf{-0,8096} & \textbf{-0,4640$_{(13)}$} & \textbf{-0,7302$_{(13)}$} & \textbf{-0,7094$_{(2)}$} & \textbf{44,56}  & 1,71 \\
-      \Romannum{13} & \textbf{-0,8247$_{(1)}$} & \textbf{-0,5066$_{(102)}$}  & \textbf{-0,7494$_{(132)}$} & -0,7097$_{(48)}$ & 15,51 & \textbf{3,01} \\
-      \Romannum{14} & -0,8106$_{(1)}$ & -0,4953$_{(102)}$ & -0,7362$_{(132)}$ & \textbf{-0,7205$_{(48)}$} & 14,51 & 2,56 \\
+      \textbf{01DERS5-5} & \textbf{-0,8096} & \textbf{-0,4640$_{(13)}$} & \textbf{-0,7302$_{(13)}$} & \textbf{-0,7094$_{(2)}$} & \textbf{44,56}  & 1,71 \\
+      \textbf{13DELS5-5} & \textbf{-0,8247$_{(1)}$} & \textbf{-0,5066$_{(102)}$}  & \textbf{-0,7494$_{(132)}$} & -0,7097$_{(48)}$ & 15,51 & \textbf{3,01} \\
+      \textbf{22DELC5-2} & -0,8106$_{(1)}$ & -0,4953$_{(102)}$ & -0,7362$_{(132)}$ & \textbf{-0,7205$_{(48)}$} & 14,51 & 2,56 \\
       \bottomrule
     \end{tabular}%
     }
@@ -348,4 +367,4 @@ angewendet und kritisch reflektiert werden sollen.\\
   Deshalb stellen sich die Ergebnisse bei diesem Vergleichsset ohne klare Tendenz in den Resultaten und generell sehr schlecht dar.\\
 
   Für die nachfolgenden Schritte wurde die bestabschneidenen Wortkontextvektorsets bei \textsc{Google} und den anderen
-  Wortpaarsets, namentlich Mark I, XIII und XIV ausgewählt.
+  Wortpaarsets, namentlich 01DERS5-5, 13DELS5-5 und 14DELS5-4 ausgewählt.

@@ -59,6 +59,17 @@ headsepline, % Uncomment to get a line under the header
 \usepackage{booktabs}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 
+
+\usepackage{array}% http://ctan.org/pkg/array
+\makeatletter
+\g@addto@macro{\endtabular}{\rowfont{}}% Clear row font
+\makeatother
+\newcommand{\rowfonttype}{}% Current row font
+\newcommand{\rowfont}[1]{% Set current row font
+   \gdef\rowfonttype{#1}#1%
+}
+\newcolumntype{L}{>{\rowfonttype}l}
+
 \renewcommand*\rmdefault{bch} % bch
 
 \PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
