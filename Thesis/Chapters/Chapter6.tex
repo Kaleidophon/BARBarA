@@ -52,17 +52,20 @@ Es wird bei allen Relationstripeln eine Prüfung durchgeführt, ob beide Entitä
 besitzen. Falls nicht, wird dieses Tripel ausgelassen. Danach wird ggf. noch die inverse Relation ergänzt (diese wird
 später beim Training benötigt), z.B. bei \emph{/location/location/contains} und \emph{/location/location/containedby}.
 
-\begin{figure}[h]
+\begin{table}[h]
   \centering
-  \begin{tabular}{r||ccc}
-    \textsc{Datenset} & \textsc{\#Tripel} & \textsc{\#Entitätstypen} & \textsc{\#Relationstypen} \\
-    \hline
+  \def\arraystretch{1.5}
+  \begin{tabular}{@{}llll@{}}
+    \toprule
+    \textsc{Datenset} & \textsc{\#Tripel} & \textsc{\#Entitäten} & \textsc{\#Relationen} \\
+    \toprule
     FB15k & 592.213 & 14.951 & 1.345 \\
     GER14k & 459.724 & 14.334 & 1.236 \\
+    \bottomrule
   \end{tabular}
   \caption[Daten über die Relationsdatensets FB15k und GER14k]{Daten über die Relationsdatensets FB15k und GER19k.
   Aufgelistet ist die Anzahl der Tripel (Datensätze), Entitäts- und Relationstypen.\label{fig:fb15kger14k}}
-\end{figure}
+\end{table}
 
 Somit gilt für die Menge englischer Relationstripel $S_{EN}$ und die Menge deutscher Tripel $S_{DE}$, dass letztere
 eine echte Teilmenge ist: $S_{EN} \supsetneq S_{DE}$ \footnote{$\forall e \in S_{DE}: e \in S_{EN} \wedge S_{DE} \neq S_{EN}$}.
@@ -127,20 +130,27 @@ Daraus lassen sich zwei Evaluationsmaße ableiten: Den gemittelten Rang der korr
 der Evaluationsläufe, bei denen sich die richtige Entität innerhalb der Top 10 befand (Hits@10). Zusätzlich wurde noch
 zwischen roh und gefiltert unterschieden: Bei letzterem werden mögliche Tripel ignoriert, die in dieser Form zufällig schon in
 den Trainingsdaten vorkamen und so auf ``unfaire'' Art und Weise vor allen anderen Tripeln bevorzugt werden.
+Als Baseline wurde eine Methode namens \emph{Unstructured} aus (\cite{bordes2013translating}) verwendet, bei denen
+die Relationsvektoren einfach Nullvektoren entsprechen.
 Die Ergebnisse für die auf FB15k und GER14k trainierten Daten sind in Abbildung \ref{fig:results1} festgehalten.
 
-\begin{figure}[h]
+\begin{table}[h]
   \centering
-  \begin{tabular}{r||cc|cc}
-    \multirow{2}{*}{\textsc{Datenset}} & \multicolumn{2}{c|}{\textsc{Gemittelter Rang}} & \multicolumn{2}{c}{\textsc{Hits@10}} \\
-     & \emph{Roh} & \emph{Gefiltert} & \emph{Roh} & \emph{Gefiltert} \\
-     \hline
-     FB15k & 575,54 & \textbf{197,02} & \textbf{34,8} & \textbf{48,79} \\
-     GER14k & \textbf{234,73} & 222,05 & \textbf{34,07} & 41,83 \\
-
+  \def\arraystretch{1.5}
+  \begin{tabular}{@{}lllll@{}}
+    \toprule
+     & \multicolumn{2}{c}{\textsc{\O\ Rang}} & \multicolumn{2}{c}{\textsc{Hits@10}} \\ \cmidrule(l{2pt}r{2pt}){2-3} \cmidrule(l{2pt}r{2pt}){4-5}
+     \textsc{Datenset} & \emph{Roh} & \emph{Gefiltert} & \emph{Roh} & \emph{Gefiltert} \\
+     \toprule
+     \textsc{Unstr.} & & & & \\
+     \textsc{FB15k} & 575,54 & \textbf{197,02} & \textbf{34,8} & \textbf{48,79} \\
+     \textsc{GER14k} & \textbf{234,73} & 222,05 & \textbf{34,07} & 41,83 \\
+     \bottomrule
   \end{tabular}
-  \caption[Resultate für TransE mit \textsc{FB15k} und \textsc{GER14k}]{Resultate für TransE, trainiert auf dem \textsc{FB15k}- und dem \textsc{GER14k}-Datenset.\label{fig:results1}}
-\end{figure}
+  \caption[Resultate für TransE mit \textsc{FB15k} und \textsc{GER14k}]{Resultate für TransE, trainiert auf dem
+  \textsc{FB15k}- und dem \textsc{GER14k}-Datenset. Evaluiert gegen Unstructured (\textsc{Unstr.}), wobei einfach
+  Nullvektoren als Relationsvektoren fungieren.\label{fig:results1}}
+\end{table}
 
 An den Ergebnissen ist zuerst zu erkennen, dass sie von den Ergebnissen in (\cite{bordes2013translating}) für FB15k etwas abweichen.
 Dies könnte daran liegen, dass bei der Beschreibung des Trainingsverfahren angegeben wurde, dass das Prozedere

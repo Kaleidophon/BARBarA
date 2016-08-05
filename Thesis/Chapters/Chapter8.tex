@@ -20,23 +20,25 @@ neuen Trainingsset vorhanden sein, zu denen ebensolche Wortvektoren auch vorlieg
 Dies ist leider nur für einen substantiell geringeren Teil der Fall, wie in Abbildung \ref{fig:we4k} zu
 erkennen ist.
 
-\begin{figure}[h]
+\begin{table}[h]
   \centering
   \begin{changemargin}{0cm}{0cm}
   \resizebox{\textwidth}{!}{%
-  \begin{tabular}{r||cl|cl|cl}
-    \textsc{Datenset} & \multicolumn{2}{l|}{\textsc{\#Tripel}} & \multicolumn{2}{l|}{\textsc{\#Entitätstypen}} & \multicolumn{2}{l}{\textsc{\#Relationstypen}} \\
-    \hline
+  \begin{tabular}{@{}lllllll@{}}
+    \toprule[1.5pt]
+    \textsc{Datenset} & \multicolumn{2}{l}{\textsc{\#Tripel}} & \multicolumn{2}{l}{\textsc{\#Entitätstypen}} & \multicolumn{2}{l}{\textsc{\#Relationstypen}} \\
+    \toprule
     FB15k & 592.213 & & 14.951 & & 1.345 & \\
     GER14k & 459.724 & (\textcolor{BrickRed}{$\downarrow$-22,37 \%}) & 14.334 & (\textcolor{BrickRed}{$\downarrow$-4,12 \%}) & 1.236 & (\textcolor{BrickRed}{$\downarrow$-8,1 \%}) \\
     WE4k & 50.518 & (\textcolor{BrickRed}{$\downarrow$-91,47 \%}) & 3.623 & (\textcolor{BrickRed}{$\downarrow$-74,72 \%}) & 749 & (\textcolor{BrickRed}{$\downarrow$-39,40 \%}) \\
+    \bottomrule[1.25pt]
   \end{tabular}%
   }
 \end{changemargin}
   \caption[Daten des neuen Relationsdatensets im Vergleich zu \textsc{FB15k} und \textsc{GER14k}]{Daten des neuen Sets \textsc{WE4k} im Vergleich mit
   \textsc{FB15k} und \textsc{GER14k}. Aufgelistet ist die Anzahl der Tripel (Datensätze), Entitäts- und Relationstypen und die Veränderung
   der Anzahlen in Prozent im Vergleich zu \textsc{FB15k} in Klammern.\label{fig:we4k}}
-\end{figure}
+\end{table}
 
 Dies ist dadurch zu erklären, dass in der Quelle der Originaldaten, nämlich \emph{Freebase},
 sehr viele sehr seltene Entitäten vertreten sind. Die vielen Freiwilligen, die über die
@@ -71,19 +73,24 @@ verschiedene Größen für den Minibatch ausprobiert, die jedoch keinen signifik
 Die Evaluation fand auf diesselbe Art und Weise wie im Abschnitt \ref{sec:transe-eval} statt. So wurde wieder untersucht,
 inwiefern die Relationsvektoren und die Vektorrepräsentationen der Entitäten dazu genutzt werden können, ein Relationstripel
 durch ``Raten'' zu vervollständigen und gemessen, welcher Rang der richtigen Antwort zugewiesen wurde und in wieivel Prozent
-diese unter den besten Zehn anzutreffen war.
+diese unter den besten Zehn anzutreffen war. Als Baseline fungierte wieder die Unstructured-Methode, wobei die Relationsvektoren
+Nullvektoren entsprechen.
 
-\begin{figure}[h]
+\begin{table}[h]
   \centering
-  \begin{tabular}{r||c|c}
-    \textsc{Datenset} & \textsc{Gemittelter Rang} & \textsc{Hits@10} \\
-     \hline
+  \begin{tabular}{lll}
+    \toprule[1.5pt]
+    \textsc{Datenset} & \textsc{\O\ Rang} & \textsc{Hits@10} \\
+     \toprule
+     \textsc{Unstr.} & & \\
      \textsc{WE4k} & 1122,03 & 5,67 \\
      \textsc{FB15k} & \textbf{197,02} & \textbf{48,79} \\
      \textsc{GER14k} & 222,05 & 41,83 \\
+    \bottomrule[1.25pt]
   \end{tabular}
-  \caption[Resultate auf mit Wordvektoren auf \textsc{WE3k}]{\label{fig:eval-we4k}}
-\end{figure}
+  \caption[Resultate auf mit Wordvektoren auf \textsc{WE3k}]{Evaluationsergebnisse von \textsc{WE4k} gegenüber denen
+  von \textsc{FB15k} und \textsc{GER14k} sowie der Unstructured-Baseline.\label{fig:eval-we4k}}
+\end{table}
 
 Im Blick auf Abbildung \ref{fig:eval-we4k} zeigt ein ernüchterndes Fazit auf. So schnitt die Variante
 mit Wortvektoren aus \verb|word2vec| und seperat trainierten Relationsrepräsentationen ($\rightarrow$ \textsc{WE4k}) im Bezug auf
