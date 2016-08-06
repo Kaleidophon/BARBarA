@@ -28,50 +28,47 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: main-blx.bib
 Database file #2: example.bib
-Warning--I didn't find a database entry for "levy2014linguistic"
-Warning--I didn't find a database entry for "finkelstein2001placing"
 Biblatex version: 2.8
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
-You've used 30 entries,
+You've used 32 entries,
             6047 wiz_defined-function locations,
-            1314 strings with 13772 characters,
-and the built_in function-call counts, 100975 in all, are:
-= -- 3743
-> -- 3462
-< -- 918
-+ -- 1144
-- -- 1337
-* -- 8757
-:= -- 6233
+            1322 strings with 14154 characters,
+and the built_in function-call counts, 108344 in all, are:
+= -- 3987
+> -- 3732
+< -- 979
++ -- 1235
+- -- 1453
+* -- 9494
+:= -- 6700
 add.period$ -- 0
-call.type$ -- 30
-change.case$ -- 464
+call.type$ -- 32
+change.case$ -- 488
 chr.to.int$ -- 34
-cite$ -- 58
-duplicate$ -- 11499
-empty$ -- 10546
-format.name$ -- 2425
-if$ -- 22698
+cite$ -- 62
+duplicate$ -- 12346
+empty$ -- 11294
+format.name$ -- 2636
+if$ -- 24314
 int.to.chr$ -- 0
-int.to.str$ -- 71
+int.to.str$ -- 76
 missing$ -- 0
-newline$ -- 951
-num.names$ -- 1377
-pop$ -- 9630
+newline$ -- 1030
+num.names$ -- 1465
+pop$ -- 10310
 preamble$ -- 1
-purify$ -- 582
+purify$ -- 618
 quote$ -- 0
-skip$ -- 5677
+skip$ -- 6069
 stack$ -- 0
-substring$ -- 1919
-swap$ -- 3918
-text.length$ -- 854
-text.prefix$ -- 30
+substring$ -- 2021
+swap$ -- 4209
+text.length$ -- 920
+text.prefix$ -- 32
 top$ -- 1
-type$ -- 1128
+type$ -- 1204
 warning$ -- 0
-while$ -- 568
+while$ -- 605
 width$ -- 0
-write$ -- 920
-(There were 2 warnings)
+write$ -- 997
