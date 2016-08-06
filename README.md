@@ -10,9 +10,9 @@ The goal of this project was to analyze the use of word vector representations f
 of semantic relation prediction. A paper from [(Bordes et al., 2013)](http://papers.nips.cc/paper/5071-translating-embeddings-for-modeling-multi-relational-data.pdf)
 was used as an inspiration.
 Hereafter, three experiments were conducted:
-    * Replicating the results of (Bordes et al., 2013) with a smaller dataset based on German relation triples from *Freebase*
-    * Clustering word embedding offsets to find new word pairs belonging to a semantic relation
-    * Training relation vectors with the training procedure from (Bordes et al. 2013), but using word embeddings for the
+  * Replicating the results of (Bordes et al., 2013) with a smaller dataset based on German relation triples from *Freebase*
+  * Clustering word embedding offsets to find new word pairs belonging to a semantic relation
+  * Training relation vectors with the training procedure from (Bordes et al. 2013), but using word embeddings for the
     entity representations.
 
 ### REQUIREMENTS

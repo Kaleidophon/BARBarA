@@ -56,7 +56,28 @@ headsepline, % Uncomment to get a line under the header
 \usepackage{adjustbox}
 \usepackage{bbm}
 \usepackage{romannum}
+\usepackage{booktabs}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage[explicit]{titlesec}
+
+\usepackage{tocvsec2}
+
+\newcommand*\Hide{%
+\titleformat{\chapter}[display]
+  {}{}{0pt}{\Huge}
+\titleformat{\part}
+  {}{}{0pt}{}
+}
+
+\usepackage{array}% http://ctan.org/pkg/array
+\makeatletter
+\g@addto@macro{\endtabular}{\rowfont{}}% Clear row font
+\makeatother
+\newcommand{\rowfonttype}{}% Current row font
+\newcommand{\rowfont}[1]{% Set current row font
+   \gdef\rowfonttype{#1}#1%
+}
+\newcolumntype{L}{>{\rowfonttype}l}
 
 \renewcommand*\rmdefault{bch} % bch
 
@@ -217,7 +238,7 @@ headsepline, % Uncomment to get a line under the header
 
 \noindent\enquote{\itshape I have not failed. I've just found 10,000 ways that won't work.}\bigbreak
 
-\hfill Thomas A. Edison
+\hfill \textsc{Thomas A. Edison}
 
 %----------------------------------------------------------------------------------------
 %	ABSTRACT PAGE (German)
@@ -226,13 +247,17 @@ headsepline, % Uncomment to get a line under the header
 \begin{abstract}
 \addchaptertocentry{\abstractname} % Add the abstract to the table of contents
 
-In sog. \emph{Wissensdatenbanken} wird Wissen über die Beziehungen von Entitäten in dieser Welt
-beschrieben. Dieses aufbereitete Wissen ist sehr nützlich, um das fehlende Weltwissen
+In sogenannten \emph{Wissensdatenbanken} wird Wissen über die Beziehungen von Entitäten in der realen Welt
+beschrieben. Dieses aufbereitete Wissen ist eine nützliche Quelle, um das fehlende Weltwissen
 bei Computersystemen zu kompensieren. Die Erstellung solcher Datenbanken ist jedoch sehr
-arbeitsintensiv, weshalb sich Bemühungen, diese automatisch zu ergänzen, ein lohnendes Forschungsfeld darstellen.\\
-Diese Abschlussarbeit wirft einen Blick auf verschiedene Ansätze in diesem Bereich, die mit
-Vektorrepräsentationen arbeiten, und versucht darüber hinaus, diese auf die in der NLP-Gemeinschaft
-sehr beliebt gewordenen Wortkontextvektoren (\emph{word embeddings}) zu übertragen.
+arbeitsintensiv, weshalb Bemühungen, diese automatisch zu ergänzen, ein lohnendes Forschungsfeld darstellen.\\
+
+Diese Abschlussarbeit wirft einen Blick auf verschiedene Ansätze zur Relationsvorhersage, inbesondere \emph{TransE}
+von (\cite{bordes2013translating}), und versucht darüber hinaus, diese auf deutsche Daten anzuwenden und auf
+die in der maschinellen Sprachverarbeitung sehr beliebt gewordenen Wortkontextvektoren
+(\emph{word embeddings}) zu übertragen. Außerdem wird ein Versuch unternommen, mithilfe einer
+unüberwachten Methode des maschinellen Lernens neue semantische Relationen in einem Wortvektorraum
+aufzufinden.
 
 \end{abstract}
 
@@ -243,13 +268,17 @@ sehr beliebt gewordenen Wortkontextvektoren (\emph{word embeddings}) zu übertra
 \begin{abstracteng}
 \addchaptertocentry{Abstract} % Add the abstract to the table of contents
 
-So-called \emph{knowledge bases} contain knowledge about the relations between entities in
-this world. This preprocessed knowledge is very useful to compensate the inherent lack of universal knowledge
+So-called \emph{knowledge bases} contain knowledge about relations between entities in
+the real world. This preprocessed knowledge is a useful source to compensate the inherent lack of universal knowledge
 of any computer system. However, the creation of such databases is deemed to be very labour-intensive.
 Thus, automatic efforts to replenish them might be worth researching.\\
-This thesis aims to compare approaches in this area concering various kinds of
-vector representations and furthermore wants to realize similar procedures based on word embeddings,
-which gained a lot of popularity in recent years among the NLP community.
+
+This thesis aims to compare approaches in this area concerning various kinds of
+vector representations, especially \emph{TransE} by (\cite{bordes2013translating}),
+ applies them to German datasets and furthermore wants to realize similar procedures based on word embeddings,
+which gained a lot of popularity in recent years among the Natural Language Processing community.
+Also, an endeavour is made to find new types of semantic relations among word embeddings using
+an unsupervised machine learning procedure.
 
 \end{abstracteng}
 
@@ -261,7 +290,28 @@ which gained a lot of popularity in recent years among the NLP community.
 \begin{acknowledgements}
 \addchaptertocentry{\acknowledgementname} % Add the acknowledgements to the table of contents
 
-Work in progress\ldots
+\begin{flushright}
+\textbf{Heidelberg, den 06.08.16}
+\end{flushright}
+
+An dieser Stelle möchte ich allen Menschen danken, die zur Fertigstellung dieser Arbeit beigetragen haben:\\
+Zuvorderst sind hier Dr. Yannick Versley, der es mir ermöglichte, im Rahmen meiner Abschlussarbeit
+eine eigene Idee zu verwirklichen und mir immer mit Rat und Tat zur Seite stand, sowie Dr. Viviana
+Nastase, mit deren konstruktiven Feedback ich einen kühlen Kopf bewahren und diese Arbeit vollenden konnte,
+zu nennen.\\
+Desweiteren gilt mein Dank meiner Familie, die mich in den letzten Jahren auf kaum aufzählbare Art und Weisen unterstützt hat.
+Nur durch sie ist es mir nun möglich, diese Danksagung überhaupt schreiben zu können.\\
+Darüber hinaus möchte ich auch meinen Freunden und Kommillitonen danken, die mir in den letzten Monaten mit Rat und Tat zur Seite standen,
+sei es beim Korrigieren dieser Arbeit, beim Diskutieren neuer Ideen, bei berechtigter Kritik, bei neuen Ideen und Anregungen
+ oder einem Schulterklopfer bei einem der Tiefpunkte, die man beim Schreiben erlebt.\\
+
+Ich begreife diese Arbeit nicht nur als Abschluss eines letzten Moduls meines Bachelorstudiums, sondern auch als Abschluss
+meines Bachelorstudiums hier in Heidelberg im Allgemeinen. Da das Studium selten nur in der Uni blieb, sondern auch
+von anderen Lebensbereichen in dieser Zeit kaum zu trennen war, möchte ich an dieser Stelle zuletzt meine Wertschätzung
+gegenüber allen Menschen ausdrücken, die diesen meinen Lebensabschnitt mit ihren Begegnungen - sei es auch noch so kurze
+gewesen - bereichert haben. Diejenige Person, der ich zum jetzigen Zeitpunkt entspreche, ist zu einem großen Teil auch
+die Summe aller Erfahrungen, die ich in den letzten Jahren hier gesammelt habe. Und dazu haben viele Menschen - vielleicht
+auch unwissend - ihren Teil beigetragen.
 
 \end{acknowledgements}
 
@@ -272,6 +322,7 @@ Work in progress\ldots
 \tableofcontents % Prints the main table of contents
 
 \listoffigures % Prints the list of figures
+\listoftables
 
 %----------------------------------------------------------------------------------------
 %	ABBREVIATIONS
@@ -336,6 +387,14 @@ Work in progress\ldots
 \include{Chapters/Chapter11}
 
 %----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+\printbibliography[heading=bibintoc]\manuallabel{sec:bib}{Bibliographie}
+
+%----------------------------------------------------------------------------------------
+
+%----------------------------------------------------------------------------------------
 %	THESIS CONTENT - APPENDICES
 %----------------------------------------------------------------------------------------
 
@@ -348,12 +407,19 @@ Work in progress\ldots
 \include{Appendices/AppendixB}
 %\include{Appendices/AppendixC}
 
-%----------------------------------------------------------------------------------------
-%	BIBLIOGRAPHY
-%----------------------------------------------------------------------------------------
+\newpage
+{
+\Hide
+\chapter*{Nachlese}
+\pagestyle{plain}
 
-\printbibliography[heading=bibintoc]\manuallabel{sec:bib}{Bibliographie}
+\vspace*{0.2\textheight}
 
-%----------------------------------------------------------------------------------------
+\noindent\enquote{\itshape I think of ``real'' failure as the point at which you know [that] what you're working on
+is the wrong thing to be working on or you are working on it in the wrong way. You can't call the work up to the moment
+where you're figured out that you are doing the wrong thing failing, that's called learning.}\bigbreak
+
+\hfill \textsc{Astro Teller, supervisor of Google's X department}
+}
 
 \end{document}

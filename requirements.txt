@@ -1,0 +1,8 @@
+gensim
+gzip
+matplotlib
+mpl_toolkits
+numpy
+scipy
+scikit-learn
+pyyaml

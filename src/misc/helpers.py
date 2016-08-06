@@ -12,7 +12,7 @@ import re
 import time
 
 # EXTERNAL
-from gensim.models import Word2Vec as w2v
+#from gensim.models import Word2Vec as w2v
 
 
 def alt(func):

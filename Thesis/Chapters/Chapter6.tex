@@ -1,172 +1,105 @@
-% Chapter 6
+% Chapter 9
 
-\chapter{Experiment $\mathcal{A}$: TransE für deutsche Wissensdaten} % Main chapter title
+\chapter{Fazit} % Main chapter title
 
 \label{Chapter6} % For referencing the chapter elsewhere, use \ref{Chapter1}
 
 %----------------------------------------------------------------------------------------
 
-In diesem Kapitel soll der Ansatz von (\cite{bordes2013translating}) für deutsche Daten nachvollzogen werden.
-Dabei wird erst erklärt, wie die Daten erstellt wurden. Danach wird die Idee zum Training der Daten weiter ausgeführt und
-auf die neuen Datensätze angewendet, bevor schlußendlich eine Evaluation und eine Gegenüberstellung zu den Originalergebnissen
-erfolgt.
+\begin{itquote}
+  ``Mit dem Wissen wächst der Zweifel.''
+  \flushright
+  \textsc{Johann Wolfgang von Goethe}
+\end{itquote}
 
-\section{Datenerzeugung}
+\section{Zusammenfassung}
 
-In (\cite{bordes2013translating}) werden mehrere Relationsdatensets erstellt, darunter eines namens \textsc{FB15k}. Dieses
-besteht aus Relationstripeln der Form $(h, l, t)$\footnote{= $(head,\ link,\ tail)$)}, wobei
-$h$ und $t$ Entitäten und $l$ die verbindende Relation bezeichnen. Diese stammen aus \emph{Freebase}, einer
-von einer Onlinegemeinschaft gepflegten Datenbank, in der mehr als 23 Millionen Entitäten durch Relationen miteinander verknüpft sind.
-Mittlerweile ist die Seite offline; das Projekt wurde sukzessive in \emph{Wikidata}\footnote{Siehe \url{https://www.wikidata.org/wiki/Wikidata:Main_Page (zuletzt abgerufen am 20.05.16)}} integriert. Auch die
-\emph{Freebase API}, die als Programmierschnittstelle zum Abfragen von Informationen dient, wird langsam abgeschaltet
-\footnote{Siehe \url{https://en.wikipedia.org/wiki/Freebase (zuletzt abgerufen am (20.05.16))}}.\\
+In dieser Arbeit wurden verschiedene Möglichkeiten präsentiert, Wissen aus Wissensdatenbanken durch kontinuierliche Vektorrepräsentationen
+darzustellen und zu erweitern. In Kapitel \ref{sec:exp-a} wurden unterschiedlich komplexe Herangehensweisen vorgestellt, Repräsentationen
+für Entitäten und Relationen einer solchen Datenbank gleichzeitig mithilfe von Methoden des Maschinellen Lernens zu trainieren.
+Für das TransE genannte Verfahren wurden zusätzlich Ergebnisse mit einer deutschsprachigen Untermenge der Daten (\textsc{GER14k})
+durchgeführt, die zwar bei der Evaluation etwas schlechter ausfielen, aber dennoch vergleichbar waren.\\
 
-Die \textsc{FB15k}-Daten enthalten 592.213 Tripeln mit 14.951 einzigartigen Entitäten und 1.345 einzigartigen Relationen.
-In \emph{Freebase} sind Entitäten generell sprachlich unabhängig gehalten. So wird die Entität mit dem Kürzel \verb|/m/02vk52|
-im Englischen mit dem Begriff \emph{World Bank} und im Deutschen mit \emph{Weltbank} bezeichnet. Somit ist auch
-\textsc{FB15k} zumindest theoretisch vielsprachig, da es nur die \textsc{Freebase}-Kürzel enthält.
-Jedoch sind die Entitäten darin oft hauptsächlich im englischen bzw. amerikanischen Sprachraum relevante
-Entitäten, die im deutschen Raum teils nicht sehr bekannt sind. Diese 1:1 ins Deutsche zu übernehmen gestaltet sich schwierig,
-da nicht jedes Kürzel in \emph{Freebase} mit einer deutschen Bezeichnung aufgeführt ist. Das könnte jeweils drei Gründe haben:
+In Kapitel \ref{sec:exp-b} wurde versucht, Wortkontextvektoren in das Verfahren von Kapitel \ref{sec:exp-a} einzubinden und nur
+noch Vektorrepräsentationen für Relationen zu trainieren. Hierfür wurde ebenfalls ein Datenset namens \textsc{WE4k}
+erzeugt. Wegen der Datenknappheit und anderen in \ref{sec:we4k-zwifa} diskutierten Gründen konnten hierbei keine vergleichbaren Ergebnisse
+erlangt werden. Dennoch konnten einige Erkenntnisse über Wortkontextvektoren im Speziellen und Vektorrepräsentationen
+im Allgemeinen daraus gezogen werden, die im nächsten Abschnitt reflektiert werden.
 
-\begin{enumerate}
-  \item Es gibt keine deutsche Übersetzung
-  \item Die Entität ist für den deutschen Sprachraum nicht relevant genug
-  \item Bisher hat einfach noch kein Nutzer einen deutschen Begriff hinzugefügt
-\end{enumerate}
+In Kapitel \ref{sec:exp-c} wurde ein eigener Versuch unternommen, ähnliche Ergebnisse mithilfe von Wortkontextvektoren
+zu erreichen, zu deren Erstellung das Tool \verb|word2vec| verwendet wurde, welches auf großen Korpora arbeitet. Dazu
+wurde der deutschsprachige Internetkorpus \textsc{DECOW14X} aufbereitet.\\
+Im Folgenden wurde angestrebt, Wortvektorpaare durch ihre Differenzvektoren verschiedenen Relationen zuzuteilen. Dies schlug
+jedoch fehl, da der Ansatz auf einem fehlerhaften Annahme fußte. Deshalb konnten keine evaluierbaren Ergebnisse erzeugt werden.
+Eine ausführliche Diskussion darüber findet sich in \ref{sec:zwi-dis}.\\
 
-Die Plausibilität dieser Gründe ist diskutabel: Nicht alle Begriffe brauchen eine Übersetzung, so sind beispielsweise
-Personennamen i.d.R. durch alle Sprachen hinweg gleich. Schwieriger wird es bei Ortsnamen oder Namen von Organisationen:
-Intuitiv drängt sich der Anschein auf, dass populäre Bezeichnungen eher übersetzt werden als unpopulärere
-(\emph{United States of America} $\rightarrow$ \emph{Vereinigte Staaten von Amerika} \textbf{aber} \emph{University of Denver}
-$\rightarrow$ \emph{University of Denver}).\\
-Im Falle der Relevanz ist davon auszugehen, dass diese mit der Anzahl durch Nutzer einher geht: Bei einer großen
-Nutzerbasis ist davon auszugehen, dass diese primär Einträge von Entitäten bearbeiten, die im Kontext der Geschichte,
-des Tagesgeschehens o. Ä. relevant sind. Gegeben genug Zeit und aktive Nutzer ist also anzunehmen, dass eine immer
-größer werdende Prozentzahl von relevanten Entitäten an das Deutsche angepasst wird. Bedenkt man die Laufzeit von Freebase
-seit 2007 (also zum Zeitpunkt des Schreibens dieser Arbeit rund 9 Jahre), so nehmen wir an, dass dieses Bedenken zwar nicht
-ganz aus der Welt zu räumen, aber zumindest zu vernachlässigen ist.\\
+\section{Diskussion}
 
-Basierend auf dieser Argumentation werden korrespondierende ``deutsche'' Daten folgendermaßen erzeugt:
-Es wird bei allen Relationstripeln eine Prüfung durchgeführt, ob beide Entitäten $h$ und $t$ eine deutsche Bezeichnung
-besitzen. Falls nicht, wird dieses Tripel ausgelassen. Danach wird ggf. noch die inverse Relation ergänzt (diese wird
-später beim Training benötigt), z.B. bei \emph{/location/location/contains} und \emph{/location/location/containedby}.
+Die Implikationen der in dieser Arbeit gewonnenen Erkenntnisse sollten mit Bedacht diskutiert werden. Das Fehlschlagen
+eines Ansatzes auf der Basis von Wortkontextvektoren heißt im Umkehrschluss nicht, dass alle Vorstöße in dieser
+Richtung zum Scheitern verurteilt sind (im Gegenteil soll darauf in \ref{sec:fazit-ausblick} eingegangen werden).\\
+Es scheint jedoch unbestreitbar leichter, Repräsentationen gleich im Kontext der Struktur einer Wissensdatenbank als im
+Kontext eines großen Korpus zu trainieren, da diese so von Anfang an auf für Wissensbasen wichtige Eigenschaften getrimmt werden
+(nämlich die Beziehung zu anderen Relevanten Entitäten). Jedoch erfordern solche Repräsentationen bereits viele
+vorstrukturierte Datensätze, die von Menschen erstellt werden müssen.\\
 
-\begin{figure}[h]
-  \centering
-  \begin{tabular}{r||ccc}
-    \textsc{Datenset} & \textsc{\#Tripel} & \textsc{\#Entitätstypen} & \textsc{\#Relationstypen} \\
-    \hline
-    FB15k & 592.213 & 14.951 & 1.345 \\
-    GER14k & 459.724 & 14.334 & 1.236 \\
-  \end{tabular}
-  \caption[Daten über die Relationsdatensets FB15k und GER14k]{Daten über die Relationsdatensets FB15k und GER19k.
-  Aufgelistet ist die Anzahl der Tripel (Datensätze), Entitäts- und Relationstypen.\label{fig:fb15kger14k}}
-\end{figure}
+Das Fehlschlagen des vorgestellten Ansatzes in Kapitel \ref{sec:exp-c} scheint vor allem auf einen Fehler in der
+Grundannahme und die schlechte Skalierbarkeit zurückzuführen. Um Letzteres zu verhindern, könnten in zukünftigen Ansätzen
+weitere Informationsquellen hinzugezogen werden, um ``sinnvolle'' von ``sinnlosen'' Wortpaaren zu trennen. Da davon
+auszugehen ist, dass in der Menge aller Möglichen Wortpaare nur ein sehr kleiner Prozentsatz tatsächlich Sinn ergeben
+dürfte, sollte dieses Vorgehen die totale Rechenzeit signifikaten verringern.\\
+Der der Hypothese zugrunde liegende logische Fehler scheint im Nachhinein offensichtlich. Dieser war aber schwer
+vorherzusehen, nachdem in vielen anderen Arbeiten die semantischen Eigenschaften von arithmetischen Rechnungen mit
+Wortvektoren so stark hervorgehoben wurden. Zudem wird dieser Aspekt immer nur anhand von in einer offensichtlichen
+Beziehung zueinander stehenden Wortpaaren illustriert. Dadurch fiel dieses Versäumnis erst auf, als es aus zeitlichen Gründen
+nicht mehr möglich war, im Rahmen dieser Abschlussarbeit andere Verfahren zu testen und zudem Versuche, auf Basis der
+vorliegenden Daten diesen Fehler zu korrigieren fehlgeschlagen waren.
 
-Somit gilt für die Menge englischer Relationstripel $S_{EN}$ und die Menge deutscher Tripel $S_{DE}$, dass letztere
-eine echte Teilmenge ist: $S_{EN} \supsetneq S_{DE}$ \footnote{$\forall e \in S_{DE}: e \in S_{EN} \wedge S_{DE} \neq S_{EN}$}.
-Verschiedene Informationen über die beiden Datensets sind in Abbildung \ref{fig:fb15kger14k} aufgelistet.
+\section{Ausblick}\label{sec:fazit-ausblick}
 
-\section{Training}
+Der vorliegende Ansatz bietet vielerlei Möglichkeiten zur Verbesserung. Im Folgenden sollen einige davon skizziert werden:\\
+Zuallererst erscheint es sinnvoll, das Konzept von einem unüberwachten zu einem überwachten Ansatz zu ändern, also eine
+maschinellen Lernmethode mit Daten zu versorgen, denen bereits eine Klasse zugewiesen wurde. Beispielsweise könnten eine
+sog. \emph{Support Vector Machine} (SVM) oder ein anderer Lernalgorithmus ein zu einer bestimmten Relation gehöriges Wortpaar
+als Eingabe nehmen, um anhand dessen zu lernen zu unterscheiden, welche Differenzvektoren für eine spezifische Relationsart
+charakteristisch sind. Sollte es bei einem unüberwachten Ansatz bleiben, sollten zusätzliche Informationen einer anderen Domäne
+den Daten angefügt werden.\\
+Innerhalb des gesamten Forschungsbereichs des maschinellen Lernens ergeben sich so verschiedenste Möglichkeiten,
+sei es mit verschiedenen Features oder Algorithmen, z.B. SVMs mit Kerneln oder Neuronalen Netzwerken. Es könnte für jede
+Relation eine Klasse (plus ggf. eine Klasse für Wortpaare ohne Relation) definiert werden, denen später unklassifizierte
+Wortpaare zugeordnet werden.\\
 
-Gegeben ist eine Menge von Relationstripeln $S$ der Form $(h, l, t) \in S$. Zusätzliche gibt es noch eine Entitätsmenge
-$E$ sodass $h, t \in E$ und eine Menge von Relationen $L$ mit $l \in L$. Den Entitäten und Relationen werden zuästzlich
-noch Vektoren zugewiesen, sodass $h, l, t \in \mathbb{R}^k$ gilt. Idealerweise gelten nach dem Training für ein gültige Tripel $(h, l, t)$
-dann $h + l \approx t$. Hinzu wird noch eine Menge aus korrumpierten bzw. ``falschen'' Tripeln $S'$ erstellt, indem
-für jedes Tripel in $S$ entweder $h$ oder $t$ durch eine andere, zufällig gewählte Entität ersetzt wird:
-\begin{equation}
-  S' = \{(h', l, t) | h' \in E\} \cup \{(h, l, t') | t' \in E\}
-\end{equation}
+Die auf dem Korpus erstellten Wortvektoren sind ein sehr aktuelles Forschungsthema. Verschiedene Ansätze wurden
+präsentiert, diese weiter zu verbessern, beispielsweise auf Depenzgrammatik basierende Repräsentationen von (\cite{levy2014dependency}),
+oder die als \emph{GloVe} bekanntgewordenen globalen Wortvektoren von (\cite{pennington2014glove}).
+Es wäre interessant herauszufinden, inwiefern sich diese auf die Performanz eines Systems zur Relationsvorhersage
+auswirken.\\
 
-Diese Methode wird von (\cite{bordes2013translating}) rauschkonstrastierendes Lernen (\emph{Noise-constrastive learning})
-genannt.
+Zudem sollte sich auf eher grober aufgelöste Relationen wie in (\cite{hendrickx2009semeval}) fokussiert werden, da dies im Bezug
+auf zweierlei Probleme Abhilfe verschaffen dürfte: Weil diese sich auf weniger spezielle Entitäten beziehen, ist gewährleistet,
+dass die dazugehörigen Wortkontextvektoren qualitativ besser sind. Außerdem ist es in diesem Fall wahrscheinlicher, dass
+sich ebenjene Relationen als Differenzvektor identifizieren lassen als wesentlich seltenere und spezielle Relationen wie
+in \textsc{FB14k}.\\
+Das daraus gewonnene Ergebnisse selbst in dieser Auflösungsebene hilfreich sind, wird in der Einleitung von (\cite{hendrickx2009semeval})
+dargestellt:
 
-Um die für das Training benötigte Verlustfunktion zu definieren, wird das Unähnlichkeitsmaß $d_p$ für ein Tripel bestimmt, welcher
-entweder aus der $L_1$- oder der $L_2$-Norm abgeleitet wird, also:
-\begin{equation}
-    d_1(h + l, t) = \sum_{i=1}^k \| h_i + l_i - t_i \|
-\end{equation}
-\begin{equation}
-    d_2(h + l, t) = \sqrt{\sum_{i=1}^k \| h_i + l_i - t_i \|^2}
-\end{equation}
+\begin{itquote}
+    ``The automatic recognition of semantic relations has many applications, such as information extraction,
+    document summarization, machine translation, or construction of thesauri and semantic networks[,] [...]
+    word sense disambiguation, language modeling, para-phrasing, and recognizing textual entailment.''
+\end{itquote}
 
-Zuletzt werden noch Tripel $s$ aus $S$ und zufällige Tripel $s'=(h', l, t')$ aus $S'$ in Pärchen in einem neuen Datenset $S^*$ gruppiert:
-\begin{equation}
-  S^* = \{(s, sample(S'))| s \in S\}
-\end{equation}
+Abschließend bleibt festzustellen, dass Wortkontextvektoren nur eine von vielen verschiedenen Arten von kontinuierlichen
+Wortvektorrepräsentationen sind, die in ihren Eigenschaft zwar beim Lösen vieler Probleme der maschinellen Sprachverarbeiten
+neue Ansätze geliefert haben, aber auch nicht für jede Problemstellung als Werkzeug nützlich erscheinen.\\
+Stattdessen sollten im Vornherein immer genau die Anforderungen und die Vor- und Nachteile verschiedenster Repräsentationen
+gegeneinander abgewogen werden.\\
 
-Nun kann die Verlustfunktion $\mathcal{L}$ erstellt werden:
-\begin{equation}\label{form:lossf}
-  \mathcal{L} = \sum_{((h,l,t), (h', l, t')) \in S^*} max(0, \gamma + d_p(h + l, t) - d_p(h' + l, t'))
-\end{equation}
+Der Wert dieser Arbeit besteht unter Anderem demnach darin, Grenzen der Wortkontextvektoren aufgezeigt zu haben, die sich abseits
+des berühmten Beispiels
 
-Der Parameter $\gamma$ bezeichnet hier einen Hyperparameter, der dem System einen gewissen Spielraum lässt. Indem versucht
-wird, den durch diese Funktion errechneten Verlust zu minimieren, wird beim Training sichergestellt, dass die Vektorrepräsentationen
-von korrekten Tripeln die Gleichung $h + l \approx t$ bestmöglichst erfüllen und für korrumpierte Tripel möglichst weit
-verfehlen.\\
-Vor dem Training werden die Repräsentationen der Entitäten und Relationen mit einer uniformen Verteilung im Intervall
-$[-\frac{6}{\sqrt{k}}, \frac{6}{\sqrt{k}}]$ initialisiert und im Falle von $l \in L$ zusätzlich normiert. Während jedes
-Trainingsschritt werden für die aktuellen Repräsentation der Verlust berechnet und deren Werte mithilfe des
-\emph{minibatch stochastic gradient descent}-Algorithmus angepasst. Die Minibatch enthält dabei ebenso viele gültige wie korrumpierte Tripel.
-Das Training wird solange ausgeführt, bis die Fehlerrate auf dem Validationsset konvergiert\footnote{Konvergenz auf dem
-Trainingsset könnte ein Zeichen für Overfitting sein.}.\\
+\begin{quote}
+  $\vec{v}(King) - \vec{v}(Man) + \vec{v}(Woman) \approx \vec{v}(Queen)$
+\end{quote}
 
-Für das Reproduzieren der Ergebnisse wurde den Empfehlungen von (\cite{bordes2013translating}) gefolgt: So wird das Training
-nach maximal 1000 Epochen beendet, außerdem gilt $k = 50$, $\gamma = 1$, $\lambda = 0,01$ und $d_1$ als Unähnlichkeitsmaß.
-
-\section{Evaluation}\label{sec:transe-eval}
-
-Um die erstellten Daten zu evaluieren, werden bei den Relationen im Testset jeweils die Kopf- und Fußentitäten entfernt.
-Danach werden alle bekannten Entitäten aus $E$ eingesetzt und mithilfe des Unähnlichkeitsmaßes ansteigend sortiert. Der Rang
-der korrekten (ursprünglich entfernten) Entität wird dann gespeichert. Dieses Verfahren wurde zuerst von (\cite{bordes2011learning})
-vorgeschlagen.\\
-Daraus lassen sich zwei Evaluationsmaße ableiten: Den gemittelten Rang der korrekten Entität sowie den Anteil
-der Evaluationsläufe, bei denen sich die richtige Entität innerhalb der Top 10 befand (Hits@10). Zusätzlich wurde noch
-zwischen roh und gefiltert unterschieden: Bei letzterem werden mögliche Tripel ignoriert, die in dieser Form schon in
-den Trainingsdaten vorkamen und so auf ``unfaire'' Art und Weise vor allen anderen Tripeln bevorzugt werden.
-Die Ergebnisse für die auf FB15k und GER14k trainierten Daten sind in Abbildung \ref{fig:results1} festgehalten.
-
-\begin{figure}[h]
-  \centering
-  \begin{tabular}{r||cc|cc}
-    \multirow{2}{*}{\textsc{Datenset}} & \multicolumn{2}{c|}{\textsc{Gemittelter Rang}} & \multicolumn{2}{c}{\textsc{Hits@10}} \\
-     & \emph{Roh} & \emph{Gefiltert} & \emph{Roh} & \emph{Gefiltert} \\
-     \hline
-     FB15k & 575,54 & \textbf{197,02} & \textbf{34,8} & \textbf{48,79} \\
-     GER14k & \textbf{234,73} & 222,05 & \textbf{34,07} & 41,83 \\
-
-  \end{tabular}
-  \caption[Resultate für TransE mit \textsc{FB15k} und \textsc{GER14k}]{Resultate für TransE, trainiert auf dem \textsc{FB15k}- und dem \textsc{GER14k}-Datenset.\label{fig:results1}}
-\end{figure}
-
-An den Ergebnissen ist zuerst zu erkennen, dass sie von den Ergebnissen in (\cite{bordes2013translating}) für FB15k etwas abweichen.
-Dies könnte daran liegen, das bei der Beschreibung des Trainingsverfahren angegeben wurde, dass das Prozedere
-nicht unbedingt 1000 Epochen lang ausgeführt wurde. In dem Code, der von den Autoren online zur Verfügung gestellt und
-zum Training verwendet wurde
-\footnote{\url{https://github.com/glorotxa/SME}}, wurde dazu leider keine entsprechende Option gefunden, weshalb vermutlich davon auszugehen
-ist, dass dies manuell ausgeführt oder nicht im Code festgehalten wurde.
-Daraus ist zu schließen, dass die hier aufgeführten Ergebnisse schlechter sind als die,
-die im Paper angegeben wurde, weil die Vektorrepräsentationen zu sehr auf die Trainingsdaten angepasst wurden und dann schlecht
-auf den Testdaten generalisieren. Da die Daten aus \textsc{GER14k} eine Untermenge von \textsc{FB15k} sind, sind deren Ergebnisse
-i.d.R. gleichwertig oder schlechter. Die Frage, warum der rohe gemittelte Rang bei \textsc{GER14k} signifikant besser ist als
-bei FB15k, könnte dahingehend beantwortet werden, dass auch hier eine übermäßige Anpassung auf die Trainingsdaten stattfand und
-zuviele Trainingstripel vor der eigentlich richtigen Lösung rangieren. Deshalb ist der Wert für die gefilterten Tripel umso
-besser.
-
-\section{Zwischenfazit}
-
-In diesem Kapitel wurde ein Verfahren vorgestellt, dass es erlaubt, Vektorrepräsentationen zu trainieren, die Entitäten und Relationen
-aus Wissendatenbanken modellieren und zur Relationsvorhersage zu nutzen. Dabei bestehen die Daten aus Relationstripeln,
-also 3-Tupeln mit einer Kopf- und einer Fußentität und einer dazugehörigen semantischen Relation. Es werden außerdem noch
-Negativbeispiele erzeugt, indem einer der beiden Entitäten durch eine andere in den Trainingsdaten vorkommende Entität zufällig ausgetauscht wird.
-Der Trainingsvorgang wird hierbei mithilfe eines auf Vektorarithmetik basierenden Unähnlichkeitsmaß betrieben, mit der
-die ``Stimmigkeit'' korrekter Tripel versucht wird zu maximieren. Das Gegenteil gilt für korrumpierte Tripel.\\
-Es wurde gezeigt, dass sich die (\cite{bordes2011learning}) präsentierten Ergebnisse im Rahmen der gegebenen Möglichkeiten
-annähernd replizieren lassen. Darüber hinaus wurde die Methodik auch auf eine Menge deutscher Daten angewendet, die eine
-echte Teilmenge der englischen Daten darstellt. Für diese konnten ähnlich gute Ergebnisse erziehlt werden, wobei die qua
-definition kleinere Menge an Übungsbeispielen dem Unterschied in Performanz Rechnung trägt.\\
-
-Bei dieser Vorgehensweise wurden die Vektorrepräsentationen für Entitäten und Relationen gemeinsam trainiert. In den folgenden
-Kapiteln soll ein Versuch unternommen werden, mithilfe von distributioneller Semantik erstellte Wortvektorrepräsentationen
-für die Entitäten zu nutzen und darauf aufbauend für ähnliche Zwecke wie in diesem Kapitel zu nutzen.
+in der Begeisterung über ebendiese Eigenschaft nur schwer erkennen lassen.

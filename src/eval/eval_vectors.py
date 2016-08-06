@@ -88,6 +88,7 @@ def plot(vector_inpath, max_n, target_dim, show_plot=False, display_names=False)
 		vector_inpath (str): Path to vector file. File has to have the following format (separated by spaces):
 			<index of original vector #1> <index of original vector #2> <Dimension 1> ... <Dimension n>
 		max_n (int): Maximum number of vectors to be plotted.
+		target_dim (int): Number of dimensions that should be used for visualization {2|3}.
 		show_plot (bool): Flag to indicate whether a window with the (interactive) plot should pop up after executing
 			the script.
 		display_names (bool): Flag to indicate whether the words should acutally be shown next to the data point in
@@ -100,7 +101,7 @@ def plot(vector_inpath, max_n, target_dim, show_plot=False, display_names=False)
 	dimensions = int(target_dim)
 
 	# Load vectors
-	words, model = load_vectors_from_model(vector_inpath, max, indices=True)
+	words, model = load_vectors_from_model(vector_inpath, max_n, indices=True)
 	words = words[50:50+max_n]
 
 	# do PCA

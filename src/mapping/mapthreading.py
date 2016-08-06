@@ -18,7 +18,7 @@ from collections import defaultdict
 import os
 import threading
 import time
-import Queue
+from Queue import Queue
 
 # EXTERNAL
 import numpy
@@ -68,7 +68,7 @@ class MappingMasterThread(threading.Thread):
 		self.indices_inpath = indices_inpath  # optional
 
 		# Initialize data structures
-		self.vector_queue = Queue.Queue()
+		self.vector_queue = Queue()
 		self.vector_dict = VectorDict()
 		self.occurrences = None  # optional
 		self.indices = None  # optional
@@ -87,8 +87,8 @@ class MappingMasterThread(threading.Thread):
 		# Initialize workers
 		print alt("Initializing %i worker threads..." % n)
 		for i in range(int(n)):
-			self.threads.append(MappingWorkerThread(i, self.vector_dict, self.vector_queue, self.vector_outpath,
-													self.features, self.occurrences, self.indices))
+			self.threads.append(MappingWorkerThread(i+1, self.vector_dict, self.vector_queue, self.vector_outpath,
+													self.features, self.occurrences, self.indices, self.lambda_))
 
 	def start_threads(self):
 		"""
@@ -113,24 +113,6 @@ class MappingMasterThread(threading.Thread):
 		except OSError:
 			pass
 
-		# Load vectors
-		print alt("Loading vectors...")
-		with codecs.open(self.vector_inpath, "rb", "utf-8") as vector_infile:
-			n = 1
-			line = vector_infile.readline().strip()
-			while line:
-				if n == 1:
-					line = vector_infile.readline().strip()
-					n += 1
-					continue
-				parts = line.strip().split(" ")
-				index = int(parts[0].strip())
-				vector = numpy.array([float(dimension.strip()) for dimension in parts[1:]])
-				self.vector_queue.put((index, vector))
-				self.vector_dict.add_vector(index, vector)
-				n += 1
-				line = vector_infile.readline().strip()
-
 		# Load sentence IDs of words (if needed)
 		if self.coc:
 			print alt("Loading word occurrences...")
@@ -150,6 +132,27 @@ class MappingMasterThread(threading.Thread):
 						word = parts[1]
 						self.indices[index] = word
 						line = indices_infile.readline().strip()
+
+		# Load vectors
+		print alt("Loading vectors...")
+		with codecs.open(self.vector_inpath, "rb", "utf-8") as vector_infile:
+			n = 1
+			line = vector_infile.readline().strip()
+			while line:
+				if n == 1:
+					line = vector_infile.readline().strip()
+					n += 1
+					continue
+				parts = line.strip().split(" ")
+				index = int(parts[0].strip())
+				vector = numpy.array([float(dimension.strip()) for dimension in parts[1:]])
+
+				# Only add those words which can possibly fulfill the lambda constraint.
+				if len(self.occurrences[self.indices[index]]) >= self.lambda_:
+					self.vector_queue.put((index, vector))
+					self.vector_dict.add_vector(index, vector)
+				n += 1
+				line = vector_infile.readline().strip()
 
 	def read_ids_file(self, ids_inpath):
 		"""
@@ -218,10 +221,10 @@ class MappingWorkerThread(threading.Thread):
 		self.vector_queue = vector_queue
 		self.vector_outpath = vector_outpath
 		self.features = features
-		self.lambda_ = lambda_ # Lambda co-occurrence constraint
-		self.voperations = {'distvec': self.distance, 'eucldist1': self.euclidian_distance1,
-							'eucldist2': self.euclidian_distance2, 'mandist': self.manhattan_distance,
-							'cossim': self.cosine_similarity, 'concat': self.concat, 'spray': self.spray}
+		self.lambda_ = lambda_  # Lambda co-occurrence constraint
+		self.voperations = {'distvec': self.distance, 'eucldist1': self.euclidean_distance1,
+							'eucldist2': self.euclidean_distance2, 'mandist': self.manhattan_distance,
+							'cossim': self.cosine_similarity}
 
 	def run(self):
 		"""
@@ -231,12 +234,19 @@ class MappingWorkerThread(threading.Thread):
 		keys = self.vector_dict.get_keys()
 		with codecs.open(self.vector_outpath, "a", "utf-8") as vector_outfile:
 			while not self.vector_queue.empty():
+				# print "Worker %i getting a new vector..." % self.worker_id
 				current_index, current_vector = self.vector_queue.get()
+				qsize = self.vector_queue.qsize()
+				print alt("Queue size: %i (%.4f %%)" % (qsize, (qsize * 100.0 / len(keys))))
+
+				current_word = self.indices[current_index]
+				current_occ = self.occurrences[current_word]
+
 				for index in keys:
 					# Check whether this mapping has already been computed by
 					# another thread
 					if not self.vector_dict.skippable(index) and not current_index == index:
-
+						# print "Worker %i processing %i - %i" %(self.worker_id, current_index, index)
 						self.vector_dict.add_skippable(self.hash_indices(current_index, index))
 						# Get the other vector
 						comp_vector = self.vector_dict.get_vector(index)
@@ -244,12 +254,11 @@ class MappingWorkerThread(threading.Thread):
 
 						# Check whether this mapping would satisfy the
 						# co-occurrence criterion (optional)
-						current_word = self.indices[current_index]
 						word = self.indices[index]
-						current_occ = self.occurrences[current_word]
 						occ = self.occurrences[word]
 						joint_occ = current_occ & occ
 						if len(joint_occ) >= self.lambda_:
+							# print "Worker %i calculating %i - %i" % (self.worker_id, current_index, index)
 							# Compute new vector
 							for operation in self.features:
 								oresult = self.voperations[operation](current_vector, comp_vector)
