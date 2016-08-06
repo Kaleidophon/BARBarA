@@ -119,7 +119,8 @@ Um diese anzupassen, kann zwischen zwei verschiedenen Ansätzen gewählt werden:
 \emph{Continuous Bag of Words} (CBOW) versucht, die Wahrscheinlichkeit eines Wortes gegeben eines Kontextes
 der Größe $C$ zu maximieren\footnote{Kontext bezieht sich in diesem Fall auf die Summe der rechts und links vom Eingabewort stehenden
 Wörter, siehe Abbildung \ref{fig:cbowskip}.}. Unsere Verlustfunktion, deren Wert es dabei zu minimieren gilt,
-besteht in der negativen logarithmischen Wahrscheinlichkeit eines Wortes gegeben seines Kontextes:
+besteht in der negativen logarithmischen Wahrscheinlichkeit eines Wortes $w_O$ gegeben seines Kontextes
+$w_{I, 1} \ldots w_{I,C}$ mit der Größe $C$:
 
 \begin{equation}
   E = - log\ p(w_O | w_{I,1}, \ldots, w_{I,C})

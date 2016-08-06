@@ -3,6 +3,10 @@
 """
 Script to cluster mapping vectors created with :py:mod:`src.mapping.mapthreading`.
 """
+# Ugly import hack
+import sys
+import os
+sys.path.insert(0, os.path.abspath('../../'))
 
 # STANDARD
 import argparse
@@ -95,7 +99,7 @@ def cluster_mappings(vector_inpath, do_pca=False, target_dim=100, indices_inpath
 
 	# do PCA if wanted
 	if do_pca:
-		print alt("Truncate vectors with PCA to %i dimensions..." % (target_dim))
+		print alt("Truncate vectors with PCA to %i dimensions..." % target_dim)
 		pca = PCA(n_components=target_dim)
 		pca.fit(X)
 		X = pca.transform(X)

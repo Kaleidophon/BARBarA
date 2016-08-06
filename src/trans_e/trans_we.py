@@ -556,7 +556,7 @@ def load_relation_vectors(inpath):
 		dict: Dictionary with index of a relation as key and the relations vector as a numpy.array as value.
 	"""
 	print "Loading relation vectors from " + inpath
-	return np.load(inpath).tolist()
+	return np.load(inpath)
 
 
 def extract_data_from_uri(uri):
