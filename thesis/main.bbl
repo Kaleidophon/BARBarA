@@ -1,0 +1,1050 @@
+% $ biblatex auxiliary file $
+% $ biblatex version 2.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated as
+% required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+\entry{abramowitz1964handbook}{book}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Abramowitz}{A.}%
+     {Milton}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Stegun}{S.}%
+     {Irene~A}{I.~A.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Courier Corporation}%
+  }
+  \strng{namehash}{AMSIA1}
+  \strng{fullhash}{AMSIA1}
+  \field{labelyear}{1964}
+  \field{sortinit}{A}
+  \field{title}{Handbook of mathematical functions: with formulas, graphs, and
+  mathematical tables}
+  \field{volume}{55}
+  \field{year}{1964}
+\endentry
+
+\entry{arlia2001experiments}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Arlia}{A.}%
+     {Domenica}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Coppola}{C.}%
+     {Massimo}{M.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {Springer}%
+  }
+  \strng{namehash}{ADCM1}
+  \strng{fullhash}{ADCM1}
+  \field{labelyear}{2001}
+  \field{sortinit}{A}
+  \field{booktitle}{European Conference on Parallel Processing}
+  \field{pages}{326\bibrangedash 331}
+  \field{title}{Experiments in parallel clustering with DBSCAN}
+  \field{year}{2001}
+\endentry
+
+\entry{baroni2014don}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Baroni}{B.}%
+     {Marco}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Dinu}{D.}%
+     {Georgiana}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kruszewski}{K.}%
+     {Germ{\'a}n}{G.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BMDGKG1}
+  \strng{fullhash}{BMDGKG1}
+  \field{labelyear}{2014}
+  \field{sortinit}{B}
+  \field{booktitle}{ACL (1)}
+  \field{pages}{238\bibrangedash 247}
+  \field{title}{Don't count, predict! A systematic comparison of
+  context-counting vs. context-predicting semantic vectors.}
+  \field{year}{2014}
+\endentry
+
+\entry{bengio2006neural}{incollection}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Bengio}{B.}%
+     {Yoshua}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Schwenk}{S.}%
+     {Holger}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Sen{\'e}cal}{S.}%
+     {Jean-S{\'e}bastien}{J.-S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Morin}{M.}%
+     {Fr{\'e}deric}{F.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Gauvain}{G.}%
+     {Jean-Luc}{J.-L.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer}%
+  }
+  \strng{namehash}{BY+1}
+  \strng{fullhash}{BYSHSJSMFGJL1}
+  \field{labelyear}{2006}
+  \field{sortinit}{B}
+  \field{booktitle}{Innovations in Machine Learning}
+  \field{pages}{137\bibrangedash 186}
+  \field{title}{Neural probabilistic language models}
+  \field{year}{2006}
+\endentry
+
+\entry{bordes2011learning}{inproceedings}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Bordes}{B.}%
+     {Antoine}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Weston}{W.}%
+     {Jason}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Collobert}{C.}%
+     {Ronan}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Bengio}{B.}%
+     {Yoshua}{Y.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BA+1}
+  \strng{fullhash}{BAWJCRBY1}
+  \field{labelyear}{2011}
+  \field{sortinit}{B}
+  \field{booktitle}{Conference on Artificial Intelligence}
+  \field{number}{EPFL-CONF-192344}
+  \field{title}{Learning structured embeddings of knowledge bases}
+  \field{year}{2011}
+\endentry
+
+\entry{bordes2013translating}{inproceedings}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Bordes}{B.}%
+     {Antoine}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Usunier}{U.}%
+     {Nicolas}{N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Garcia-Duran}{G.-D.}%
+     {Alberto}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Weston}{W.}%
+     {Jason}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Yakhnenko}{Y.}%
+     {Oksana}{O.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BA+1}
+  \strng{fullhash}{BAUNGDAWJYO1}
+  \field{labelyear}{2013}
+  \field{sortinit}{B}
+  \field{booktitle}{Advances in Neural Information Processing Systems}
+  \field{pages}{2787\bibrangedash 2795}
+  \field{title}{Translating embeddings for modeling multi-relational data}
+  \field{year}{2013}
+\endentry
+
+\entry{collobert2011natural}{article}{}
+  \name{author}{6}{}{%
+    {{}%
+     {Collobert}{C.}%
+     {Ronan}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Weston}{W.}%
+     {Jason}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Bottou}{B.}%
+     {L{\'e}on}{L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Karlen}{K.}%
+     {Michael}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kavukcuoglu}{K.}%
+     {Koray}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kuksa}{K.}%
+     {Pavel}{P.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {JMLR. org}%
+  }
+  \strng{namehash}{CR+1}
+  \strng{fullhash}{CRWJBLKMKKKP1}
+  \field{labelyear}{2011}
+  \field{sortinit}{C}
+  \field{pages}{2493\bibrangedash 2537}
+  \field{title}{Natural language processing (almost) from scratch}
+  \field{volume}{12}
+  \field{journaltitle}{The Journal of Machine Learning Research}
+  \field{year}{2011}
+\endentry
+
+\entry{craven2000learning}{article}{}
+  \name{author}{7}{}{%
+    {{}%
+     {Craven}{C.}%
+     {Mark}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {DiPasquo}{D.}%
+     {Dan}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Freitag}{F.}%
+     {Dayne}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {McCallum}{M.}%
+     {Andrew}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Mitchell}{M.}%
+     {Tom}{T.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Nigam}{N.}%
+     {Kamal}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Slattery}{S.}%
+     {Se{\'a}n}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Elsevier}%
+  }
+  \strng{namehash}{CM+1}
+  \strng{fullhash}{CMDDFDMAMTNKSS1}
+  \field{labelyear}{2000}
+  \field{sortinit}{C}
+  \field{number}{1}
+  \field{pages}{69\bibrangedash 113}
+  \field{title}{Learning to construct knowledge bases from the World Wide Web}
+  \field{volume}{118}
+  \field{journaltitle}{Artificial intelligence}
+  \field{year}{2000}
+\endentry
+
+\entry{ester1996density}{inproceedings}{}
+  \true{moreauthor}
+  \name{author}{4}{}{%
+    {{}%
+     {Ester}{E.}%
+     {Martin}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kriegel}{K.}%
+     {Hans-Peter}{H.-P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Sander}{S.}%
+     {J{\"o}rg}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Xu}{X.}%
+     {Xiaowei}{X.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{EM+1}
+  \strng{fullhash}{EMKHPSJXX+1}
+  \field{labelyear}{1996}
+  \field{sortinit}{E}
+  \field{booktitle}{Kdd}
+  \field{number}{34}
+  \field{pages}{226\bibrangedash 231}
+  \field{title}{A density-based algorithm for discovering clusters in large
+  spatial databases with noise.}
+  \field{volume}{96}
+  \field{year}{1996}
+\endentry
+
+\entry{finkelstein2001placing}{inproceedings}{}
+  \name{author}{7}{}{%
+    {{}%
+     {Finkelstein}{F.}%
+     {Lev}{L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Gabrilovich}{G.}%
+     {Evgeniy}{E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Matias}{M.}%
+     {Yossi}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Rivlin}{R.}%
+     {Ehud}{E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Solan}{S.}%
+     {Zach}{Z.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Wolfman}{W.}%
+     {Gadi}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ruppin}{R.}%
+     {Eytan}{E.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {ACM}%
+  }
+  \strng{namehash}{FL+1}
+  \strng{fullhash}{FLGEMYRESZWGRE1}
+  \field{labelyear}{2001}
+  \field{sortinit}{F}
+  \field{booktitle}{Proceedings of the 10th international conference on World
+  Wide Web}
+  \field{pages}{406\bibrangedash 414}
+  \field{title}{Placing search in context: The concept revisited}
+  \field{year}{2001}
+\endentry
+
+\entry{fu2014learning}{inproceedings}{}
+  \name{author}{6}{}{%
+    {{}%
+     {Fu}{F.}%
+     {Ruiji}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Guo}{G.}%
+     {Jiang}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Qin}{Q.}%
+     {Bing}{B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Che}{C.}%
+     {Wanxiang}{W.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Wang}{W.}%
+     {Haifeng}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Liu}{L.}%
+     {Ting}{T.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{FR+1}
+  \strng{fullhash}{FRGJQBCWWHLT1}
+  \field{labelyear}{2014}
+  \field{sortinit}{F}
+  \field{booktitle}{ACL (1)}
+  \field{pages}{1199\bibrangedash 1209}
+  \field{title}{Learning Semantic Hierarchies via Word Embeddings.}
+  \field{year}{2014}
+\endentry
+
+\entry{giaretta1995ontologies}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Giaretta}{G.}%
+     {Pierdaniele}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Guarino}{G.}%
+     {N}{N}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{GPGN1}
+  \strng{fullhash}{GPGN1}
+  \field{labelyear}{1995}
+  \field{sortinit}{G}
+  \field{pages}{32}
+  \field{title}{Ontologies and knowledge bases towards a terminological
+  clarification}
+  \field{volume}{25}
+  \field{journaltitle}{Towards very large knowledge bases: knowledge building
+  \& knowledge sharing}
+  \field{year}{1995}
+\endentry
+
+\entry{Goldberg15c}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Goldberg}{G.}%
+     {Yoav}{Y.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{GY1}
+  \strng{fullhash}{GY1}
+  \field{labelyear}{2015}
+  \field{sortinit}{G}
+  \field{title}{A Primer on Neural Network Models for Natural Language
+  Processing}
+  \verb{url}
+  \verb http://arxiv.org/abs/1510.00726
+  \endverb
+  \field{volume}{abs/1510.00726}
+  \field{journaltitle}{CoRR}
+  \field{year}{2015}
+\endentry
+
+\entry{goldberg2014word2vec}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Goldberg}{G.}%
+     {Yoav}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Levy}{L.}%
+     {Omer}{O.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{GYLO1}
+  \strng{fullhash}{GYLO1}
+  \field{labelyear}{2014}
+  \field{sortinit}{G}
+  \field{title}{word2vec Explained: deriving Mikolov et al.'s negative-sampling
+  word-embedding method}
+  \field{journaltitle}{arXiv preprint arXiv:1402.3722}
+  \field{year}{2014}
+\endentry
+
+\entry{harris1954distributional}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Harris}{H.}%
+     {Zellig~S}{Z.~S.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Taylor \& Francis}%
+  }
+  \strng{namehash}{HZS1}
+  \strng{fullhash}{HZS1}
+  \field{labelyear}{1954}
+  \field{sortinit}{H}
+  \field{number}{2-3}
+  \field{pages}{146\bibrangedash 162}
+  \field{title}{Distributional structure}
+  \field{volume}{10}
+  \field{journaltitle}{Word}
+  \field{year}{1954}
+\endentry
+
+\entry{hendrickx2009semeval}{inproceedings}{}
+  \name{author}{9}{}{%
+    {{}%
+     {Hendrickx}{H.}%
+     {Iris}{I.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kim}{K.}%
+     {Su~Nam}{S.~N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kozareva}{K.}%
+     {Zornitsa}{Z.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Nakov}{N.}%
+     {Preslav}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {{\'O}~S{\'e}aghdha}{{\'O}.~S.}%
+     {Diarmuid}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Pad{\'o}}{P.}%
+     {Sebastian}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Pennacchiotti}{P.}%
+     {Marco}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Romano}{R.}%
+     {Lorenza}{L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Szpakowicz}{S.}%
+     {Stan}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {Association for Computational Linguistics}%
+  }
+  \strng{namehash}{HI+1}
+  \strng{fullhash}{HIKSNKZNPOSDPSPMRLSS1}
+  \field{labelyear}{2009}
+  \field{sortinit}{H}
+  \field{booktitle}{Proceedings of the Workshop on Semantic Evaluations: Recent
+  Achievements and Future Directions}
+  \field{pages}{94\bibrangedash 99}
+  \field{title}{Semeval-2010 task 8: Multi-way classification of semantic
+  relations between pairs of nominals}
+  \field{year}{2009}
+\endentry
+
+\entry{koper2015multilingual}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {K{\"o}per}{K.}%
+     {Maximilian}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Scheible}{S.}%
+     {Christian}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Walde}{W.}%
+     {Sabine~Schulte}{S.~S.}%
+     {im}{i.}%
+     {}{}}%
+  }
+  \strng{namehash}{KMSCWSSi1}
+  \strng{fullhash}{KMSCWSSi1}
+  \field{labelyear}{2015}
+  \field{sortinit}{K}
+  \field{pages}{40}
+  \field{title}{Multilingual reliability and “semantic” structure of
+  continuous word spaces}
+  \field{journaltitle}{IWCS 2015}
+  \field{year}{2015}
+\endentry
+
+\entry{levy2014dependency}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Levy}{L.}%
+     {Omer}{O.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Goldberg}{G.}%
+     {Yoav}{Y.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{LOGY1}
+  \strng{fullhash}{LOGY1}
+  \field{labelyear}{2014}
+  \field{sortinit}{L}
+  \field{booktitle}{ACL (2)}
+  \field{pages}{302\bibrangedash 308}
+  \field{title}{Dependency-Based Word Embeddings.}
+  \field{year}{2014}
+\endentry
+
+\entry{levy2015improving}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Levy}{L.}%
+     {Omer}{O.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Goldberg}{G.}%
+     {Yoav}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Dagan}{D.}%
+     {Ido}{I.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{LOGYDI1}
+  \strng{fullhash}{LOGYDI1}
+  \field{labelyear}{2015}
+  \field{sortinit}{L}
+  \field{pages}{211\bibrangedash 225}
+  \field{title}{Improving distributional similarity with lessons learned from
+  word embeddings}
+  \field{volume}{3}
+  \field{journaltitle}{Transactions of the Association for Computational
+  Linguistics}
+  \field{year}{2015}
+\endentry
+
+\entry{levy2014linguistic}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Levy}{L.}%
+     {Omer}{O.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Goldberg}{G.}%
+     {Yoav}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ramat-Gan}{R.-G.}%
+     {Israel}{I.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{LOGYRGI1}
+  \strng{fullhash}{LOGYRGI1}
+  \field{labelyear}{2014}
+  \field{sortinit}{L}
+  \field{booktitle}{CoNLL}
+  \field{pages}{171\bibrangedash 180}
+  \field{title}{Linguistic Regularities in Sparse and Explicit Word
+  Representations.}
+  \field{year}{2014}
+\endentry
+
+\entry{lin2015learning}{inproceedings}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Lin}{L.}%
+     {Yankai}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Liu}{L.}%
+     {Zhiyuan}{Z.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Sun}{S.}%
+     {Maosong}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Liu}{L.}%
+     {Yang}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Zhu}{Z.}%
+     {Xuan}{X.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{LY+1}
+  \strng{fullhash}{LYLZSMLYZX1}
+  \field{labelyear}{2015}
+  \field{sortinit}{L}
+  \field{booktitle}{AAAI}
+  \field{pages}{2181\bibrangedash 2187}
+  \field{title}{Learning Entity and Relation Embeddings for Knowledge Graph
+  Completion.}
+  \field{year}{2015}
+\endentry
+
+\entry{maas2013rectifier}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Maas}{M.}%
+     {Andrew~L}{A.~L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Hannun}{H.}%
+     {Awni~Y}{A.~Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ng}{N.}%
+     {Andrew~Y}{A.~Y.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{MALHAYNAY1}
+  \strng{fullhash}{MALHAYNAY1}
+  \field{labelyear}{2013}
+  \field{sortinit}{M}
+  \field{booktitle}{Proc. ICML}
+  \field{number}{1}
+  \field{title}{Rectifier nonlinearities improve neural network acoustic
+  models}
+  \field{volume}{30}
+  \field{year}{2013}
+\endentry
+
+\entry{mikolov2013distributed}{inproceedings}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Mikolov}{M.}%
+     {Tomas}{T.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Sutskever}{S.}%
+     {Ilya}{I.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Chen}{C.}%
+     {Kai}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Corrado}{C.}%
+     {Greg~S}{G.~S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Dean}{D.}%
+     {Jeff}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{MT+1}
+  \strng{fullhash}{MTSICKCGSDJ1}
+  \field{labelyear}{2013}
+  \field{extrayear}{1}
+  \field{sortinit}{M}
+  \field{booktitle}{Advances in neural information processing systems}
+  \field{pages}{3111\bibrangedash 3119}
+  \field{title}{Distributed representations of words and phrases and their
+  compositionality}
+  \field{year}{2013}
+\endentry
+
+\entry{mikolov2013efficient}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Mikolov}{M.}%
+     {Tomas}{T.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Chen}{C.}%
+     {Kai}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Corrado}{C.}%
+     {Greg}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Dean}{D.}%
+     {Jeffrey}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{MT+1}
+  \strng{fullhash}{MTCKCGDJ1}
+  \field{labelyear}{2013}
+  \field{extrayear}{2}
+  \field{sortinit}{M}
+  \field{title}{Efficient estimation of word representations in vector space}
+  \field{journaltitle}{arXiv preprint arXiv:1301.3781}
+  \field{year}{2013}
+\endentry
+
+\entry{pennington2014glove}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Pennington}{P.}%
+     {Jeffrey}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Socher}{S.}%
+     {Richard}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Manning}{M.}%
+     {Christopher~D}{C.~D.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{PJSRMCD1}
+  \strng{fullhash}{PJSRMCD1}
+  \field{labelyear}{2014}
+  \field{sortinit}{P}
+  \field{booktitle}{EMNLP}
+  \field{pages}{1532\bibrangedash 43}
+  \field{title}{Glove: Global Vectors for Word Representation.}
+  \field{volume}{14}
+  \field{year}{2014}
+\endentry
+
+\entry{rong2014word2vec}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Rong}{R.}%
+     {Xin}{X.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{RX1}
+  \strng{fullhash}{RX1}
+  \field{labelyear}{2014}
+  \field{sortinit}{R}
+  \field{title}{word2vec parameter learning explained}
+  \field{journaltitle}{arXiv preprint arXiv:1411.2738}
+  \field{year}{2014}
+\endentry
+
+\entry{rosenblatt1958perceptron}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Rosenblatt}{R.}%
+     {Frank}{F.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {American Psychological Association}%
+  }
+  \strng{namehash}{RF1}
+  \strng{fullhash}{RF1}
+  \field{labelyear}{1958}
+  \field{sortinit}{R}
+  \field{number}{6}
+  \field{pages}{386}
+  \field{title}{The perceptron: a probabilistic model for information storage
+  and organization in the brain.}
+  \field{volume}{65}
+  \field{journaltitle}{Psychological review}
+  \field{year}{1958}
+\endentry
+
+\entry{rubenstein1965contextual}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Rubenstein}{R.}%
+     {Herbert}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Goodenough}{G.}%
+     {John~B}{J.~B.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {ACM}%
+  }
+  \strng{namehash}{RHGJB1}
+  \strng{fullhash}{RHGJB1}
+  \field{labelyear}{1965}
+  \field{sortinit}{R}
+  \field{number}{10}
+  \field{pages}{627\bibrangedash 633}
+  \field{title}{Contextual correlates of synonymy}
+  \field{volume}{8}
+  \field{journaltitle}{Communications of the ACM}
+  \field{year}{1965}
+\endentry
+
+\entry{schafer2012building}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Sch{\"a}fer}{S.}%
+     {Roland}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Bildhauer}{B.}%
+     {Felix}{F.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{SRBF1}
+  \strng{fullhash}{SRBF1}
+  \field{labelyear}{2012}
+  \field{sortinit}{S}
+  \field{booktitle}{LREC}
+  \field{pages}{486\bibrangedash 493}
+  \field{title}{Building Large Corpora from the Web Using a New Efficient Tool
+  Chain.}
+  \field{year}{2012}
+\endentry
+
+\entry{wang2014knowledge}{inproceedings}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Wang}{W.}%
+     {Zhen}{Z.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Zhang}{Z.}%
+     {Jianwen}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Feng}{F.}%
+     {Jianlin}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Chen}{C.}%
+     {Zheng}{Z.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{organization}{1}{%
+    {Citeseer}%
+  }
+  \strng{namehash}{WZ+1}
+  \strng{fullhash}{WZZJFJCZ1}
+  \field{labelyear}{2014}
+  \field{sortinit}{W}
+  \field{booktitle}{AAAI}
+  \field{pages}{1112\bibrangedash 1119}
+  \field{title}{Knowledge Graph Embedding by Translating on Hyperplanes.}
+  \field{year}{2014}
+\endentry
+
+\entry{zou2013bilingual}{inproceedings}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Zou}{Z.}%
+     {Will~Y}{W.~Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Socher}{S.}%
+     {Richard}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Cer}{C.}%
+     {Daniel~M}{D.~M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Manning}{M.}%
+     {Christopher~D}{C.~D.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{ZWY+1}
+  \strng{fullhash}{ZWYSRCDMMCD1}
+  \field{labelyear}{2013}
+  \field{sortinit}{Z}
+  \field{booktitle}{EMNLP}
+  \field{pages}{1393\bibrangedash 1398}
+  \field{title}{Bilingual Word Embeddings for Phrase-Based Machine
+  Translation.}
+  \field{year}{2013}
+\endentry
+
+\lossort
+\endlossort
+
+\endinput
