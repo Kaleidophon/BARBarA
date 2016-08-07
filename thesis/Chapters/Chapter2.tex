@@ -33,7 +33,7 @@ erforschte Probleme der Computerlinguistik signifikant zu verbessern. Exemplaris
 (\cite{collobert2011natural}) genannt, die so neue Ansätze für PoS-Tagging, Named-Entity-Recognition, Chunking und Semantic
 Role Labeling präsentieren. (\cite{mikolov2013efficient}) und (\cite{mikolov2013distributed}) beschäftigen sich mit der
 Optimierung des Wortvektortrainings. Dabei wird auch auf die arithmetischen Regelmäßigkeiten von Wortvektoradditionen
-eingegangen (siehe Abbildung \ref{fig:capitals} im vorherigen Kapitel). Diese Eigenschaft soll später in Kapitel \ref{Chapter8} erneut
+eingegangen (siehe Abbildung \ref{fig:capitals} im vorherigen Kapitel). Diese Eigenschaft soll später in Kapitel \ref{sec:exp-c} erneut
 aufgegriffen werden.\\
 
 Weitere Untersuchungen beschäftigen sich u. A. mit bilingualen Repräsentationen für maschinelle Übersetzung (\cite{zou2013bilingual}),
@@ -53,28 +53,30 @@ Dieses Thema nach dem Vorbild von Wortkontextvektoren zu bearbeiten ist jedoch e
 einer der ersten Ansätze versuchen (\cite{bordes2011learning}), symbolische Wissensrepräsentationen in einen Vektorraum
 einzubetten. Diese sog. \emph{structured embeddings} (SE) werden mithilfe von Neuronalen Netzwerken trainiert.
 Darauf aufbauend präsentieren (\cite{bordes2013translating}) einen etwas simpleren Ansatz namens \emph{TransE}, der darauf abziehlt, Relationen
-zwischen Entitäten als eine einfache vektorarithmetische Operation ($\leadsto$ Übersetzung) zu sehen. Diese Vorgehensweise wird in Kapitel \ref{Chapter6}
+zwischen Entitäten als eine einfache vektorarithmetische Operation ($\leadsto$ Übersetzung) zu sehen. Diese Vorgehensweise wird in Kapitel \ref{sec:exp-a}
 etwas genauer ausgeführt und deren Ergebnisse für einen deutschsprachigen Datensatz repliziert.\\
 
-\begin{figure}[h]
+\begin{table}[h]
   \centering
   \bgroup
   \def\arraystretch{1.5}
   \resizebox{0.8\columnwidth}{!}{%
-  \begin{tabular}{l|l}
+  \begin{tabular}{@{}ll@{}}
+    \toprule[1.5pt]
     \textsc{Modell} & \textsc{Verlustfunktion} \\
-    \hline \hline
+    \toprule
     \emph{TransE} & $f_r(h, t) = \parallel h + r - t \parallel^2_2$ \\
-    \hline
+    %\midrule
     \emph{TransH} & $f_r(h, t) = \parallel h_{\bot} + r - t_{\bot} \parallel^2_2$ \\
-    \hline
-    \multirow{3}{*}{\emph{TransR}} & $f_r(h, t) = \parallel h_r + r - t_r \parallel^2_2$ \\
+    %\midrule
+    \emph{TransR} & $f_r(h, t) = \parallel h_r + r - t_r \parallel^2_2$ \\
      & $h_r = hM_r$ \\
      & $t_r = tM_r$ \\
-    \hline
-    \multirow{3}{*}{\emph{CTransR}} & $f_r(h, t) = \parallel h_{r, c} + r_c - t_{r, c} \parallel^2_2 + \alpha\parallel r_c-r\parallel^2_2$ \\
+    %\midrule
+    \emph{CTransR} & $f_r(h, t) = \parallel h_{r, c} + r_c - t_{r, c} \parallel^2_2 + \alpha\parallel r_c-r\parallel^2_2$ \\
      & $h_{r,c} = hM_r$ \\
      & $t_{r,c} = tM_r$ \\
+     \bottomrule[1.15pt]
   \end{tabular}%
   }
   \egroup
@@ -106,7 +108,7 @@ etwas genauer ausgeführt und deren Ergebnisse für einen deutschsprachigen Date
   \caption[Übersicht über verschiedene Arten der Vektorrepräsentationen für Wissensdatenbanken]{Übersicht über verschiedene Arten der Vektorrepräsentationen für Wissensdatenbanken
   Für \emph{TransE} (\cite{bordes2013translating}), \emph{TransH} (\cite{wang2014knowledge}), \emph{TransR} und \emph{CTransR} (\cite{lin2015learning})
   werden die verschiedenen Scoringfunktionen gegenübergestellt und vorkommende Parameter erklärt. \label{fig:scoring}}
-\end{figure}
+\end{table}
 
 Diese Idee wird weiter von (\cite{wang2014knowledge}) vorangetrieben: Um nicht nur 1:1- sondern auch 1:n-, n:1- und m:n-Relationen
 abzubilden, werden Punkte in einem Vektorraum auf eine für jede Relation separat gelernte Ebene projiziert, woher sich

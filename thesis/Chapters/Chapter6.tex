@@ -1,8 +1,8 @@
-% Chapter 9
+% Chapter 6
 
 \chapter{Fazit} % Main chapter title
 
-\label{Chapter9} % For referencing the chapter elsewhere, use \ref{Chapter1}
+\label{Chapter6} % For referencing the chapter elsewhere, use \ref{Chapter1}
 
 %----------------------------------------------------------------------------------------
 
@@ -15,23 +15,23 @@
 \section{Zusammenfassung}
 
 In dieser Arbeit wurden verschiedene Möglichkeiten präsentiert, Wissen aus Wissensdatenbanken durch kontinuierliche Vektorrepräsentationen
-darzustellen und zu erweitern. In Kapitel \ref{Chapter6} wurden unterschiedlich komplexe Herangehensweisen vorgestellt, Repräsentationen
+darzustellen und zu erweitern. In Kapitel \ref{sec:exp-a} wurden unterschiedlich komplexe Herangehensweisen vorgestellt, Repräsentationen
 für Entitäten und Relationen einer solchen Datenbank gleichzeitig mithilfe von Methoden des Maschinellen Lernens zu trainieren.
 Für das TransE genannte Verfahren wurden zusätzlich Ergebnisse mit einer deutschsprachigen Untermenge der Daten (\textsc{GER14k})
 durchgeführt, die zwar bei der Evaluation etwas schlechter ausfielen, aber dennoch vergleichbar waren.\\
 
-In Kapitel \ref{Chapter7} wurde ein eigener Versuch unternommen, ähnliche Ergebnisse mithilfe von Wortkontextvektoren
+In Kapitel \ref{sec:exp-b} wurde versucht, Wortkontextvektoren in das Verfahren von Kapitel \ref{sec:exp-a} einzubinden und nur
+noch Vektorrepräsentationen für Relationen zu trainieren. Hierfür wurde ebenfalls ein Datenset namens \textsc{WE4k}
+erzeugt. Wegen der Datenknappheit und anderen in \ref{sec:we4k-zwifa} diskutierten Gründen konnten hierbei keine vergleichbaren Ergebnisse
+erlangt werden. Dennoch konnten einige Erkenntnisse über Wortkontextvektoren im Speziellen und Vektorrepräsentationen
+im Allgemeinen daraus gezogen werden, die im nächsten Abschnitt reflektiert werden.\\
+
+In Kapitel \ref{sec:exp-c} wurde ein eigener Versuch unternommen, ähnliche Ergebnisse mithilfe von Wortkontextvektoren
 zu erreichen, zu deren Erstellung das Tool \verb|word2vec| verwendet wurde, welches auf großen Korpora arbeitet. Dazu
 wurde der deutschsprachige Internetkorpus \textsc{DECOW14X} aufbereitet.\\
 Im Folgenden wurde angestrebt, Wortvektorpaare durch ihre Differenzvektoren verschiedenen Relationen zuzuteilen. Dies schlug
 jedoch fehl, da der Ansatz auf einem fehlerhaften Annahme fußte. Deshalb konnten keine evaluierbaren Ergebnisse erzeugt werden.
 Eine ausführliche Diskussion darüber findet sich in \ref{sec:zwi-dis}.\\
-
-In Kapitel \ref{Chapter8} wurde versucht, Wortkontextvektoren in das Verfahren von Kapitel \ref{Chapter6} einzubinden und nur
-noch Vektorrepräsentationen für Relationen zu trainieren. Hierfür wurde ebenfalls ein Datenset namens \textsc{WE4k}
-erzeugt. Wegen der Datenknappheit und anderen in \ref{sec:we4k-zwifa} diskutierten Gründen konnten hierbei keine vergleichbaren Ergebnisse
-erlangt werden. Dennoch konnten einige Erkenntnisse über Wortkontextvektoren im Speziellen und Vektorrepräsentationen
-im Allgemeinen daraus gezogen werden, die im nächsten Abschnitt reflektiert werden.
 
 \section{Diskussion}
 
@@ -43,7 +43,7 @@ Kontext eines großen Korpus zu trainieren, da diese so von Anfang an auf für W
 (nämlich die Beziehung zu anderen Relevanten Entitäten). Jedoch erfordern solche Repräsentationen bereits viele
 vorstrukturierte Datensätze, die von Menschen erstellt werden müssen.\\
 
-Das Fehlschlagen des vorgestellten Ansatzes in Kapitel \ref{Chapter7} scheint vor allem auf einen Fehler in der
+Das Fehlschlagen des vorgestellten Ansatzes in Kapitel \ref{sec:exp-b} scheint vor allem auf einen Fehler in der
 Grundannahme und die schlechte Skalierbarkeit zurückzuführen. Um Letzteres zu verhindern, könnten in zukünftigen Ansätzen
 weitere Informationsquellen hinzugezogen werden, um ``sinnvolle'' von ``sinnlosen'' Wortpaaren zu trennen. Da davon
 auszugehen ist, dass in der Menge aller Möglichen Wortpaare nur ein sehr kleiner Prozentsatz tatsächlich Sinn ergeben
