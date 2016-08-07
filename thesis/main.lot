@@ -11,7 +11,12 @@
 \contentsline {table}{\numberline {4.3}{\ignorespaces Anzahl der Annotatoren und Agreement der Wort\IeC {\"a}hnlichkeitsdatensets}}{21}{table.caption.79}
 \contentsline {table}{\numberline {4.4}{\ignorespaces Evaluationsergebnisse der besten Vektordatensets}}{22}{table.caption.82}
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Daten \IeC {\"u}ber die Relationsdatensets FB15k und GER14k}}{27}{table.caption.94}
+\contentsline {table}{\numberline {5.2}{\ignorespaces Resultate f\IeC {\"u}r TransE mit \textsc {FB15k} und \textsc {GER14k}}}{28}{table.caption.104}
+\contentsline {table}{\numberline {5.3}{\ignorespaces Daten des neuen Relationsdatensets im Vergleich zu \textsc {FB15k} und \textsc {GER14k}}}{30}{table.caption.109}
+\contentsline {table}{\numberline {5.4}{\ignorespaces Resultate auf mit Wordvektoren auf \textsc {WE3k}}}{31}{table.caption.114}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {A.1}{\ignorespaces Trainingsparameter der Wortkontextvektoren}}{31}{table.caption.91}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {B.1}{\ignorespaces Evaluationsergebnisse der Wortkontextvektoren}}{34}{table.caption.94}
+\contentsline {table}{\numberline {A.1}{\ignorespaces Trainingsparameter der Wortkontextvektoren}}{47}{table.caption.156}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {B.1}{\ignorespaces Evaluationsergebnisse der Wortkontextvektoren}}{50}{table.caption.159}

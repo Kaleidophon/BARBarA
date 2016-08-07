@@ -13,14 +13,21 @@ A: to To other side . get the
 \textsc{Jason Whittington}
 \end{itquote}
 
-\section{Experiment $\mathcal{A}$: TransE für deutsche Wissensdaten}
+Dieses Kapitel ist den drei in dieser Arbeit ausgeführten Experimenten gewidmet. Diese entsprechen
+\begin{itemize}
+  \item[$\mathcal{A}$:] Reproduktion des Ansatzes von (\cite{bordes2013translating}) mit einem kleineren Datenset
+  \item[$\mathcal{B}$:] Training von Relationsrepräsentationen ähnlich (\cite{bordes2013translating}) mit Wortkontextvektoren
+  \item[$\mathcal{C}$:] Identifikation von Wortpaaren gleicher Relation durch Clustering
+\end{itemize}
+In jedem Unterkapitel wird das jeweilige Prozedere beschrieben sowie die gewonnen Ergebnisse evaluiert. Zuletzt folgt
+jedes Mal ein Zwischenfazit. Ein Resümee für alle Versuche wird danach in Kapitel \ref{Chapter6} gezogen.
 
-In diesem Kapitel soll der Ansatz von (\cite{bordes2013translating}) für deutsche Daten nachvollzogen werden.
+\section{Experiment $\mathcal{A}$: TransE für deutsche Wissensdaten}\label{sec:exp-a}
+
+In diesem Unterkapitel soll der Ansatz von (\cite{bordes2013translating}) für deutsche Daten nachvollzogen werden.
 Dabei wird erst erklärt, wie die Daten erstellt wurden. Danach wird die Idee zum Training der Daten weiter ausgeführt und
 auf die neuen Datensätze angewendet, bevor schlussendlich eine Evaluation und eine Gegenüberstellung zu den Originalergebnissen
 erfolgt.
-
-Test tes.
 
 \subsection{Datenerzeugung}
 
@@ -66,7 +73,7 @@ später beim Training benötigt), z.B. bei \emph{/location/location/contains} un
 \begin{table}[h]
   \centering
   \def\arraystretch{1.5}
-  \begin{tabular}{@{}llll@{}}
+  \begin{tabular}{@{}lrrr@{}}
     \toprule
     \textsc{Datenset} & \textsc{\#Tripel} & \textsc{\#Entitäten} & \textsc{\#Relationen} \\
     \toprule
@@ -149,14 +156,14 @@ Die Ergebnisse für die auf FB15k und GER14k trainierten Daten sind in Abbildung
 \begin{table}[h]
   \centering
   \def\arraystretch{1.5}
-  \begin{tabular}{@{}lllll@{}}
+  \begin{tabular}{@{}lrrrr@{}}
     \toprule
      & \multicolumn{2}{c}{\textsc{\O\ Rang}} & \multicolumn{2}{c}{\textsc{Hits@10}} \\ \cmidrule(l{2pt}r{2pt}){2-3} \cmidrule(l{2pt}r{2pt}){4-5}
      \textsc{Datenset} & \emph{Roh} & \emph{Gefiltert} & \emph{Roh} & \emph{Gefiltert} \\
      \toprule
      \textsc{Unstr.} & 1123,46 & 1123,46 & 5,75 & 5,75 \\
      \textsc{FB15k} & 575,54 & \textbf{197,02} & \textbf{34,8} & \textbf{48,79} \\
-     \textsc{GER14k} & \textbf{234,73} & 222,05 & \textbf{34,07} & 41,83 \\
+     \textsc{GER14k} & \textbf{234,73} & 222,05 & 34,07 & 41,83 \\
      \bottomrule
   \end{tabular}
   \caption[Resultate für TransE mit \textsc{FB15k} und \textsc{GER14k}]{Resultate für TransE, trainiert auf dem
@@ -191,15 +198,15 @@ echte Teilmenge der englischen Daten darstellt. Für diese konnten ähnlich gute
 definitionem kleinere Menge an Übungsbeispielen dem Unterschied in der Performanz begründet.\\
 
 Bei dieser Vorgehensweise wurden die Vektorrepräsentationen für Entitäten und Relationen gemeinsam trainiert. In den folgenden
-Kapiteln soll ein Versuch unternommen werden, mithilfe von distributioneller Semantik erstellte Wortvektorrepräsentationen
-für die Entitäten zu nutzen und darauf aufbauend für ähnliche Zwecke wie in diesem Kapitel zu nutzen.
+Experimenten soll ein Versuch unternommen werden, mithilfe von distributioneller Semantik erstellte Wortvektorrepräsentationen
+für die Entitäten zu nutzen und darauf aufbauend für ähnliche Zwecke wie in diesem Kapitel zu nutzen.\\
 
-In diesem Kapitel soll versucht werden, die Methodik des rauschkonstrastierenden Lernen aus Kapitel \ref{Chapter6}
+\section{Experiment $\mathcal{B}$: Relationsvorhersage mit Wortkontextvektoren}\label{sec:exp-b}
+
+In diesem Unterkapitel soll versucht werden, die Methodik des rauschkonstrastierenden Lernen aus dem vorherigen Experiment
 auf die Wortkontextvektoren (vgl. Kapitel \ref{Chapter4}) anzuwenden und nur die Relationsvektoren zu lernen. Zu diesem Zweck
 wird eine Untermenge von \textsc{FB15k} gebildet, die Tripel enthält, deren Kopf- und Fußentität jeweils als Wortvektorrepräsentation vorliegen.
 Schlußendlich werden die Ergebnisse evaluiert und diskutiert.
-
-\section{Experiment $\mathcal{B}$: Relationsvorhersage mit Wortkontextvektoren}
 
 \subsection{Datenerzeugung}
 
@@ -214,7 +221,7 @@ erkennen ist.
   \centering
   \begin{changemargin}{0cm}{0cm}
   \resizebox{\textwidth}{!}{%
-  \begin{tabular}{@{}lllllll@{}}
+  \begin{tabular}{@{}lrlrlrl@{}}
     \toprule[1.5pt]
     \textsc{Datenset} & \multicolumn{2}{l}{\textsc{\#Tripel}} & \multicolumn{2}{l}{\textsc{\#Entitätstypen}} & \multicolumn{2}{l}{\textsc{\#Relationstypen}} \\
     \toprule
@@ -268,7 +275,7 @@ Nullvektoren entsprechen.
 
 \begin{table}[h]
   \centering
-  \begin{tabular}{lll}
+  \begin{tabular}{lrr}
     \toprule[1.5pt]
     \textsc{Datenset} & \textsc{\O\ Rang} & \textsc{Hits@10} \\
      \toprule
@@ -313,9 +320,18 @@ Ergebnisse in der Konsequenz zu leiden haben.\\
 Zuletzt sollte mit in Betracht gezogen werden, dass die trainierten Relationen sehr feingliedrig sind. Anderen Forschungsarbeiten,
  die mit grobaufgelösten Beziehungen wie ``Cause-Effect'' oder ``Entitiy-Origin''
 (\cite{hendrickx2009semeval}) arbeiten, können dadurch auf größere Datenmengen zugreifen und bessere Ergebnisse auf
-ungesehenen Beispielen erzielen.
+ungesehenen Beispielen erzielen.\\
 
-\section{Experiment $\mathcal{C}$: Relationsvorhersage mit Wortvektorrepräsentationen}
+Das nächste Experiment entfernt sich vom Training eigener Vektorrepräsentation und befasst sich mit der Frage, ob
+$h + r \approx t$ genutzt werden könnte, neue Relationen auf Basis von Wortkontextvektoren auszumachen und bestehende um
+ neue Wortpaare zu erweitern. Um diese Hypothese zu überprüfen, werden alle möglichen Vektorpaare durch ein
+ Clusteringverfahren nach ihrem $r$ ($h + r \approx t \rightarrow r \approx t - h$) gruppiert.
+
+\section{Experiment $\mathcal{C}$: Relationsvorhersage mit Wortvektorrepräsentationen}\label{sec:exp-c}
+
+In diesem Unterkapitel wird ein unüberwachtes maschinelles Lernverfahren auf Wortkontextvektorpaare angewendet, um diese
+nach ihrem Differenzvektor zu clustern. Diesbezüglich wird sich eines Algorithmus bedient, der aufgrund verschiedener
+Faktoren immer weiter modifiziert wird.
 
 \subsection{Idee}
 
@@ -612,17 +628,17 @@ Es lassen sich im Bezug auf jene folgende Punkte feststellen:
 \begin{figure}[h]
   \centering
   \begin{multicols}{2}
-    \includegraphics[width=0.5\textwidth]{../img/mappings_get10000_occ100_cos.jpg}
-    \textbf{Features:} $\spadesuit\clubsuit\blacksquare$
-    \includegraphics[width=0.5\textwidth]{../img/mappings_get10000_occ100_eucl.jpg}
-    \textbf{Features:} $\spadesuit\clubsuit\varheart$
+    \includegraphics[width=0.5\textwidth]{../img/clusters_occ100_cos.jpg}
+    $\mathbb{R}^{101}$: $\spadesuit\clubsuit\blacksquare$
+    \includegraphics[width=0.5\textwidth]{../img/clusters_occ100_eucl.jpg}
+    $\mathbb{R}^{101}$: $\spadesuit\clubsuit\varheart$
 
     \columnbreak
 
-    \includegraphics[width=0.5\textwidth]{../img/mappings_get10000_occ100.jpg}
-    \textbf{Features:} $\spadesuit\clubsuit$
-    \includegraphics[width=0.5\textwidth]{../img/mappings10000_occ.jpg}
-    \textbf{Features:} $\spadesuit\bigstar$
+    \includegraphics[width=0.5\textwidth]{../img/clusters_occ1.jpg}
+    $\mathbb{R}^{100}$: $\spadesuit\bigstar$
+    \includegraphics[width=0.5\textwidth]{../img/clusters_occ100_dist_eucl_cos_concat.jpg}
+    $\mathbb{R}^{302}$: $\spadesuit\clubsuit\varheart\blacksquare\diamondsuit$
   \end{multicols}
 
   \flushleft
@@ -639,6 +655,7 @@ Es lassen sich im Bezug auf jene folgende Punkte feststellen:
   \begin{itemize}
     \item[$\blacksquare$] $cos(\vec{v}(t_2), \vec{v}(t_1))$
     \item[$\varheart$] $\parallel \vec{v}(t_2) - \vec{v}(t_1) \parallel$
+    \item[$\diamondsuit$] $\vec{v}(t_2) \oplus \vec{v}(t_1)$
   \end{itemize}
 \end{multicols}
 }}
