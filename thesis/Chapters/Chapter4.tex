@@ -8,7 +8,7 @@
 
 \section{Vorbereitung}
 
-  Für die nachfolgenden Experimente in den Kapiteln \ref{Chapter6}, \ref{Chapter7} und \ref{Chapter8}
+  Für die nachfolgenden Experimente in Kapitel \ref{Chapter5}
   mussten einige Daten zuerst beschafft und unter Umständen aufbereitet werden. Die  dazu ergriffenen Maßnahmen werden
   deshalb in diesem Kapitel beschrieben.
 
@@ -19,34 +19,34 @@
   Als Korpus wurde das \textsc{DECOW14X}-Korpus verwendet. Genaueres über dessen Beschaffenheit und Vorverarbeitung für das
   Training von Wortvektoren werden in \ref{sec:corpusprep} und \ref{sec:vectrain} beschrieben.
 
-  \begin{figure}[h]
+  \begin{table}[h]
     \centering
     \def\arraystretch{1.5}
     \resizebox{\textwidth}{!}{%
-    \begin{tabular}{l|l|rl|l}
-      \textsc{Art} & \textsc{Name} & \multicolumn{2}{l|}{\textsc{Beschreibung}} & \textsc{Quelle} \\
-      \hline \hline
-      Korpora & \textsc{DECOW14X} & \multicolumn{2}{l|}{Deutschsprachiges Webkorpus} & (\cite{schafer2012building}) \\
-      \hline
-      Relationsdaten & \textsc{FB14k} & \multicolumn{2}{l|}{592k Relationstripel aus Freebase} & (\cite{bordes2013translating}) \\
-      \hline
-      \multirow{4}{*}{\parbox[t]{1.5cm}{Wortähnlich-keiten}} & \textsc{Schm280} & 280 & \multirow{4}{*}{\Vast \} \parbox[c]{4cm}{nach Ähnlichkeit bewertete Wortpaare}} & (\cite{koper2015multilingual})\\ \cline{5-5}
-       & \textsc{Wortpaare65} & 65 & & \multirow{3}{*}{(\cite{rubenstein1965contextual})} \\
+    \begin{tabular}{@{}llrll@{}}
+      \toprule[1.5pt]
+      \textsc{Art} & \textsc{Name} & \multicolumn{2}{l}{\textsc{Beschreibung}} & \textsc{Quelle} \\[0.2cm]
+      \toprule
+      Korpora & \textsc{DECOW14X} & \multicolumn{2}{l}{Deutschsprachiges Webkorpus} & (\cite{schafer2012building}) \\[0.2cm]
+      %\midrule
+      Relationsdaten & \textsc{FB14k} & \multicolumn{2}{l}{592k Relationstripel aus Freebase} & (\cite{bordes2013translating}) \\[0.2cm]
+
+      Wortähnlichkeiten & \textsc{Schm280} & 280 & \multirow{4}{*}{\Vast \} \parbox[c]{4cm}{nach Ähnlichkeit bewertete Wortpaare}} & (\cite{koper2015multilingual})\\ %\cline{5-5}
+       & \textsc{Wortpaare65} & 65 & & (\cite{rubenstein1965contextual}) \\
        & \textsc{Wortpaare222} & 222 & & \\
-       & \textsc{Wortpaare350} & 350 & & \\
-      \hline
-      \multirow{2}{*}{Analogien} & \textsc{Google} & \multicolumn{2}{l|}{Datenset mit 18.552 Analogien} & \multirow{2}{*}{(\cite{koper2015multilingual})} \\
-       & \textsc{SemRel} & \multicolumn{2}{l|}{Datenset mit 2.462 Analogien} & \\
+       & \textsc{Wortpaare350} & 350 & & \\[0.2cm]
+       Analogien & \textsc{Google} & \multicolumn{2}{l}{Datenset mit 18.552 Analogien} & (\cite{koper2015multilingual}) \\
+       & \textsc{SemRel} & \multicolumn{2}{l}{Datenset mit 2.462 Analogien} & \\
+       \bottomrule[1.25pt]
     \end{tabular}%
     }
   \caption[Übersicht über verwendete vorgefertigte Datensets]{Übersicht über in dieser Arbeit verwendete, extern generierte
   Datensets sowie deren Quelle.\label{fig:datasets}}
-  \end{figure}
+\end{table}
 
   Relationsdaten aus der mittlerweile in \text{Wikidata} integrierten Wissensdatenbank\footnote{Siehe
   \url{https://plus.google.com/109936836907132434202/posts/bu3z2wVqcQc} (zuletzt abgerufen am 21.07.16).}
-   \textsc{Freebase} wurden im Datenset \textsc{FB14k} von (\cite{bordes2013translating}) gesammelt.
-  Diese werden vor allem in den Versuchen von Kapiteln \ref{Chapter6} und \ref{Chapter8} relevant.\\
+   \textsc{Freebase} wurden im Datenset \textsc{FB14k} von (\cite{bordes2013translating}) gesammelt.\\
 
   Alle anderen Datensets sind zur Evaluation der Wortvektoren in Kapitel \ref{sec:we-eval} angedacht: Die Sets
   \textsc{Schm280}, \textsc{Wortpaare65}, \textsc{Wortpaare222} und \textsc{Wortpaare350} bestehen aus einer Reihe
@@ -75,7 +75,7 @@
 
   Um die beiden Varianten zu erstellen, wurden die jeweils relevanten Informationen aus den dazugehörigen Spalten des
   \textsc{CoNLL}-Formats verwendet.\\
-  Darüber hinaus wurden für spätere Anwendungen in Kapitel \ref{Chapter7} alle Eigennamen sowie die Satz-IDs für
+  Darüber hinaus wurden für spätere Anwendungen in Kapitel \ref{Chapter5} alle Eigennamen sowie die Satz-IDs für
   alle Eigennamen gesammelt (siehe die Kookkurrenzeinschränkung \ref{form:lambda-cooc}).
 
   \subsection{Training der Wortvektoren}\label{sec:vectrain}
@@ -97,10 +97,29 @@
 
   Zwar bietet das Tool auch noch andere Parameter, jedoch soll aufgrund der Empfehlungen in (\citeauthor{levy2015improving}), in
   der eine große Anzahl von Konfigurationen ausprobiert wurde, im Rahmen dieser Arbeit nur mit den oben genannten Werten experimentiert werden.
-  Weiterführende Optimierungen wurden zudem unterlassen, um den Rahmen dieser Arbeit nicht zu sprengen.
+  Weiterführende Optimierungen wurden zudem unterlassen, um den Rahmen dieser Arbeit nicht zu sprengen.\\
+
+  \begin{figure}[h]
+    \centering
+    \begin{tabular}{L|L|L|L|L|L}
+        \rowfont{\huge}%
+        01 & DE & R & S & 5 & -5 \\
+        \rowfont{\scriptsize}%
+        ID & \parbox[t]{1cm}{Korpus-kürzel} & \parbox[t]{1cm}{Lemmata (L) / Roh (R)} & \parbox[t]{1.5cm}{Skip-Gram (S) / CBOW (C)} & \parbox[t]{1cm}{Anzahl Negativ-beispiele} & \parbox[t]{1.5cm}{Sampling-rate} \\
+    \end{tabular}
+  \caption[Erklärung der Nomenklatur für Datensets aus Wortkontextvektoren]{Erklärung der Nomenklatur für Datensets aus
+  Wortkontextvektoren, hier für 01DERS5-5.\label{fig:nomenklatur}}
+  \end{figure}
+
+  Im Folgenden wird für ein spezielle Nomenklatur für jedes Vektordatenset eingeführt (siehe Abbildung \ref{fig:nomenklatur}):
+  So bezeichnen die ersten beiden
+  Ziffern die Nummer des jeweiligen Datensets, die nächsten beiden Buchstaben das Korpus, das für das Training verwendet
+  wurde, das nächste Zeichen, ob das Korpus lemmatisiert (L) oder roh vorlag (R). Danach folgt ein Hinweis auf das im Training
+  verwendete Modell (also Skip-Gram (S) oder CBOW (C)) und schlussendlich die Anzahl der negativen Trainingsbeispielen
+  sowie die Samplingrate.
 
 
-\section{Evaluationsarten für Wortkontextvektoren}\label{sec:we-eval}
+\section{Evaluation der Wortkontextvektoren}\label{sec:we-eval}
 
 An dieser Stelle sollen die verschiedenen Ansätze zum Evaluieren von Wortkontextvektoren miteinander verglichen werden. Zu diesem Zweck sollte zuerst eine Frage gestellt werden:
 Was macht eine Menge von Wortkontextvektoren ``besser'' bzw. ``schlechter'' als andere?\\
@@ -108,7 +127,8 @@ Da der Vorteil von Wortkontextvektoren darin besteht, semantische Information zu
 Frage meist dahingehend beantwortet, dass Vektoren dann als überlegen anzusehen sind, wenn sie
 eine höhere semantische ``Ausdruckskraft'' besitzen. Um diese festzustellen, haben sich in Veröffentlichungen
 zu diesem Thema bestimmte Vorgehensweisen durchgesetzt, die in den folgenden Abschnitten, vorgestellt, erläutert,
-angewendet und kritisch reflektiert werden sollen.\\
+angewendet und kritisch reflektiert werden sollen. Gegen Ende des Kapitel werden darüber hinaus die in Kapitel \ref{Chapter3}
+erzeugten Wortkontextvektoren mit gesagten Methoden evaluiert.\\
 
   \subsection{Qualitative Evaluation}
 
@@ -122,36 +142,37 @@ angewendet und kritisch reflektiert werden sollen.\\
   Unter der Annahme, dass in Vektorräumen von Wortkontextvektoren ähnliche Wörter nahe beieinanderliegen, sollte diese Liste
   im Idealfall eng verwandte Begriffe zutage fördern (siehe Abbildung \ref{fig:wortliste}).\\
 
-  \begin{figure}[h]
+  \begin{table}[h]
     \centering
     \begin{changemargin}{0cm}{0cm}
+    \def\arraystretch{1.5}
     \resizebox{\textwidth}{!}{%
-    \begin{tabular}{c|cccc}
-      \textsc{Nr.} & \textsc{Frankreich} & \textsc{Bank} & \textsc{Computerlinguistik} & \textsc{gekratzt} \\
-      \hline \hline
-      \multirow{5}{*}{\Romannum{1}} & \textsc{Belgien} & \textsc{Anlagebank} & \textsc{Linguistik} & \textsc{gekrazt} \\
+    \begin{tabular}{@{}lllll@{}}
+      \toprule[1.5pt]
+      \textsc{Name} & \textsc{Frankreich} & \textsc{Bank} & \textsc{Computerlinguistik} & \textsc{gekratzt} \\
+      \toprule
+      \textbf{01DERS5-5} & \textsc{Belgien} & \textsc{Anlagebank} & \textsc{Linguistik} & \textsc{gekrazt} \\
        & \textsc{Italien} & \textsc{(unknown)\_Bank} & \textsc{Informationswissenschaft} & \textsc{weggekrazt} \\
        & \textsc{Niederland} & \textsc{BAnk} & \textsc{Texttechnologie} & \textsc{geschubbert} \\
        & \textsc{Niederlande} & \textsc{Bankstatus} & \textsc{Sprachwissenschaft} & \textsc{gekratz} \\
-       & \textsc{Spanien} & \textsc{Geldinstitut} & \textsc{Softwaretechnik} & \textsc{abgeleckt} \\
-      \hline
-      \multirow{5}{*}{\Romannum{8}} & \textsc{Italien} & \textsc{Hausbank} & \textsc{Bioinformatik} & \textsc{gekrazt} \\
+       & \textsc{Spanien} & \textsc{Geldinstitut} & \textsc{Softwaretechnik} & \textsc{abgeleckt} \\[0.25cm]
+      \textbf{08DERC5-4} & \textsc{Italien} & \textsc{Hausbank} & \textsc{Bioinformatik} & \textsc{gekrazt} \\
       & \textsc{Ungarn} & \textsc{Geschäftsbank} & \textsc{Texttechnologie} & \textsc{weggekrazt} \\
       & \textsc{Polen} & \textsc{Großbank} & \textsc{Informationswissenschaft} & \textsc{geschubbert} \\
       & \textsc{Spanien} & \textsc{Kreditbank} & \textsc{Softwaretechnik} & \textsc{angeknabbert} \\
-      & \textsc{Belgien} & \textsc{Mutterbank} & \textsc{Linguistik} & \textsc{rausgerissen} \\
-      \hline
-      \multirow{5}{*}{\Romannum{22}} & \textsc{Italien} & \textsc{Kreditinstitut} & \textsc{Bioinformatik} & \textsc{geritzt} \\
+      & \textsc{Belgien} & \textsc{Mutterbank} & \textsc{Linguistik} & \textsc{rausgerissen} \\[0.25cm]
+      \textbf{22DELC5-2} & \textsc{Italien} & \textsc{Kreditinstitut} & \textsc{Bioinformatik} & \textsc{geritzt} \\
       & \textsc{Ungarn} & \textsc{Geldinstitut} & \textsc{Wirtschaftsgeographie} & \textsc{angesengt} \\
       & \textsc{Polen} & \textsc{Sparkasse} & \textsc{Grundschulpädagogik} & \textsc{zusammengenäht} \\
       & \textsc{Spanien} & \textsc{Landesbank} & \textsc{Computerwissenschaft} & \textsc{aufgesprungen} \\
       & \textsc{Belgien} & \textsc{Finanzinstitut} & \textsc{Humangeographie} & \textsc{tupfen} \\
+      \bottomrule[1.25pt]
     \end{tabular}%
     }
   \end{changemargin}
     \caption[Listen der \emph{k} nächsten Nachbarn von Wörtern in verschiedenen Datensets]{Listen der \emph{k} nächsten Nachbarn von Wörtern in verschiedenen Datensets. Inspiriert
             von (\cite{collobert2011natural}). \label{fig:wortliste}}
-  \end{figure}
+  \end{table}
 
   Das Problem bei dieser Methode liegt in der menschlichen Subjektivität: Die präsentierte Auswahl der Begriffe
   muss nicht zwangsläufig repräsentativ für die restlichen Daten sein und könnte theoretisch aus den wenigen,
@@ -251,19 +272,22 @@ angewendet und kritisch reflektiert werden sollen.\\
     der Annotatoren bezeichnet.
     } sind in Abbildung \ref{fig:evalsets} festgehalten.
 
-    \begin{figure}[h]
+    \begin{table}[h]
       \centering
-      \begin{tabular}{l|cc}
+      \def\arraystretch{1.5}
+      \begin{tabular}{@{}lrr@{}}
+        \toprule
         \textsc{Datenset} & \textsc{\#Annotatoren} & $\kappa$ \\
-        \hline
+        \toprule
         \textsc{Schm280} & 12 (?) & ??? \\
         \textsc{Wortpaare65} & 24 & 0,81 \\
         \textsc{Wortpaare222} & 21 & 0,49 \\
         \textsc{Wortpaare350} & 8 & 0,69 \\
+        \bottomrule
       \end{tabular}
       \caption[Anzahl der Annotatoren und Agreement der Wortähnlichkeitsdatensets]{Anzahl der Annotatoren und Agreement (als $Cohen's\ \kappa$) der Wortähnlichkeitsdatensets.
       \label{fig:evalsets}}
-    \end{figure}
+    \end{table}
 
     \subsubsection{Analogien}
 
@@ -275,7 +299,7 @@ angewendet und kritisch reflektiert werden sollen.\\
     \textsc{SemRel} wurde aus Synonomie-, Antonomie- und Hypernomie-Beziehungen von (\cite{koper2015multilingual}) für das Deutsche und Englische
     konstruiert. Dabei werden Substantive, Verben und Adjektive berücksichtigt. In der deutschen Variante sind 2.462
     (recht schwierige zu vervollständigende) Analogien enthalten, die aus teilweise sehr seltenen Wörter kreiert wurden
-    (siehe eine Kritik dazu im nächsten Abschnitt\ref{sec:evalerg}).
+    (siehe eine Kritik dazu im nächsten Abschnitt \ref{sec:evalerg}).
 
   \subsection{Evaluationsergebnisse}\label{sec:evalerg}
 
@@ -287,16 +311,18 @@ angewendet und kritisch reflektiert werden sollen.\\
 %Mark XIII  & \textbf{-0,8247$_{(1)}$} & \textbf{-0,5066$_{(102)}$}  & \textbf{-0,7494$_{(132)}$}  & -0,7097$_{(48)}$          & 15,51           & \textbf{3,01} \\
 %Mark XIV   & -0,8106$_{(1)}$          & -0,4953$_{(102)}$           & -0,7362$_{(132)}$           & \textbf{-0,7205$_{(48)}$} & 14,51           & 2,56 \\
 
-  \begin{figure}[h]
+  \begin{table}[h]
     \centering
-
     \resizebox{\textwidth}{!}{%
-    \begin{tabular}{l||l|l|l|l||l|l}
-      \textsc{Nr.} & \textsc{Wortpaare65} & \textsc{Wortpaare222} & \textsc{Wortpaare350} & \textsc{Schm280} & \textsc{Google} & \textsc{SemRel} \\
-      \hline
-      \Romannum{1} & \textbf{-0,8096} & \textbf{-0,4640$_{(13)}$} & \textbf{-0,7302$_{(13)}$} & \textbf{-0,7094$_{(2)}$} & \textbf{44,56}  & 1,71 \\
-      \Romannum{13} & \textbf{-0,8247$_{(1)}$} & \textbf{-0,5066$_{(102)}$}  & \textbf{-0,7494$_{(132)}$} & -0,7097$_{(48)}$ & 15,51 & \textbf{3,01} \\
-      \Romannum{14} & -0,8106$_{(1)}$ & -0,4953$_{(102)}$ & -0,7362$_{(132)}$ & \textbf{-0,7205$_{(48)}$} & 14,51 & 2,56 \\
+    \def\arraystretch{1.5}
+    \begin{tabular}{@{}lllllll@{}}
+      \toprule
+      \textsc{Name} & \textsc{Wortpaare65} & \textsc{Wortpaare222} & \textsc{Wortpaare350} & \textsc{Schm280} & \textsc{Google} & \textsc{SemRel} \\
+      \toprule
+      \textbf{01DERS5-5} & \textbf{-0,8096} & \textbf{-0,4640$_{(13)}$} & \textbf{-0,7302$_{(13)}$} & \textbf{-0,7094$_{(2)}$} & \textbf{44,56}  & 1,71 \\
+      \textbf{13DELS5-5} & \textbf{-0,8247$_{(1)}$} & \textbf{-0,5066$_{(102)}$}  & \textbf{-0,7494$_{(132)}$} & -0,7097$_{(48)}$ & 15,51 & \textbf{3,01} \\
+      \textbf{22DELC5-2} & -0,8106$_{(1)}$ & -0,4953$_{(102)}$ & -0,7362$_{(132)}$ & \textbf{-0,7205$_{(48)}$} & 14,51 & 2,56 \\
+      \bottomrule
     \end{tabular}%
     }
 
@@ -304,7 +330,7 @@ angewendet und kritisch reflektiert werden sollen.\\
     Bewertung durch Spearman's $\rho$. Rechts: Treffer beim Vervollständigen
     von Analogien in Prozent. Nicht gefundene Wortkontextvektoren klein in Klammern hinter dem Wert. Für eine vollständige Liste
     der Trainingsparameter jedes Datensets siehe \ref{AppendixA}. Für die gesamte Liste aller Ergebnisse siehe \ref{AppendixB}.}
-  \end{figure}
+  \end{table}
 
   Nach der Evaluation war zuallererst festzustellen, dass sowohl bei Datensets, die auf dem normalen oder lemmatisierten Korpus
   trainiert wurden, Ergebnisse mit steigender Downsamplingrate schlechter wurden. Dies war sowohl bei Training mit dem CBOW- als
@@ -338,4 +364,4 @@ angewendet und kritisch reflektiert werden sollen.\\
   Deshalb stellen sich die Ergebnisse bei diesem Vergleichsset ohne klare Tendenz in den Resultaten und generell sehr schlecht dar.\\
 
   Für die nachfolgenden Schritte wurde die bestabschneidenen Wortkontextvektorsets bei \textsc{Google} und den anderen
-  Wortpaarsets, namentlich Mark I, XIII und XIV ausgewählt.
+  Wortpaarsets, namentlich 01DERS5-5, 13DELS5-5 und 14DELS5-4 ausgewählt.
