@@ -25,18 +25,17 @@
     \resizebox{\textwidth}{!}{%
     \begin{tabular}{@{}llrll@{}}
       \toprule[1.5pt]
-      \textsc{Art} & \textsc{Name} & \multicolumn{2}{l}{\textsc{Beschreibung}} & \textsc{Quelle} \\
+      \textsc{Art} & \textsc{Name} & \multicolumn{2}{l}{\textsc{Beschreibung}} & \textsc{Quelle} \\[0.2cm]
       \toprule
-      Korpora & \textsc{DECOW14X} & \multicolumn{2}{l}{Deutschsprachiges Webkorpus} & (\cite{schafer2012building}) \\
+      Korpora & \textsc{DECOW14X} & \multicolumn{2}{l}{Deutschsprachiges Webkorpus} & (\cite{schafer2012building}) \\[0.2cm]
       %\midrule
-      Relationsdaten & \textsc{FB14k} & \multicolumn{2}{l}{592k Relationstripel aus Freebase} & (\cite{bordes2013translating}) \\
-      \midrule
-      \multirow{4}{*}{\parbox[t]{1.5cm}{Wortähnlich-keiten}} & \textsc{Schm280} & 280 & \multirow{4}{*}{\Vast \} \parbox[c]{4cm}{nach Ähnlichkeit bewertete Wortpaare}} & (\cite{koper2015multilingual})\\ %\cline{5-5}
+      Relationsdaten & \textsc{FB14k} & \multicolumn{2}{l}{592k Relationstripel aus Freebase} & (\cite{bordes2013translating}) \\[0.2cm]
+
+      Wortähnlichkeiten & \textsc{Schm280} & 280 & \multirow{4}{*}{\Vast \} \parbox[c]{4cm}{nach Ähnlichkeit bewertete Wortpaare}} & (\cite{koper2015multilingual})\\ %\cline{5-5}
        & \textsc{Wortpaare65} & 65 & & (\cite{rubenstein1965contextual}) \\
        & \textsc{Wortpaare222} & 222 & & \\
-       & \textsc{Wortpaare350} & 350 & & \\
-      \midrule
-      \multirow{2}{*}{Analogien} & \textsc{Google} & \multicolumn{2}{l}{Datenset mit 18.552 Analogien} & (\cite{koper2015multilingual}) \\
+       & \textsc{Wortpaare350} & 350 & & \\[0.2cm]
+       Analogien & \textsc{Google} & \multicolumn{2}{l}{Datenset mit 18.552 Analogien} & (\cite{koper2015multilingual}) \\
        & \textsc{SemRel} & \multicolumn{2}{l}{Datenset mit 2.462 Analogien} & \\
        \bottomrule[1.25pt]
     \end{tabular}%
@@ -156,14 +155,12 @@ erzeugten Wortkontextvektoren mit gesagten Methoden evaluiert.\\
        & \textsc{Italien} & \textsc{(unknown)\_Bank} & \textsc{Informationswissenschaft} & \textsc{weggekrazt} \\
        & \textsc{Niederland} & \textsc{BAnk} & \textsc{Texttechnologie} & \textsc{geschubbert} \\
        & \textsc{Niederlande} & \textsc{Bankstatus} & \textsc{Sprachwissenschaft} & \textsc{gekratz} \\
-       & \textsc{Spanien} & \textsc{Geldinstitut} & \textsc{Softwaretechnik} & \textsc{abgeleckt} \\
-      \midrule
+       & \textsc{Spanien} & \textsc{Geldinstitut} & \textsc{Softwaretechnik} & \textsc{abgeleckt} \\[0.25cm]
       \textbf{08DERC5-4} & \textsc{Italien} & \textsc{Hausbank} & \textsc{Bioinformatik} & \textsc{gekrazt} \\
       & \textsc{Ungarn} & \textsc{Geschäftsbank} & \textsc{Texttechnologie} & \textsc{weggekrazt} \\
       & \textsc{Polen} & \textsc{Großbank} & \textsc{Informationswissenschaft} & \textsc{geschubbert} \\
       & \textsc{Spanien} & \textsc{Kreditbank} & \textsc{Softwaretechnik} & \textsc{angeknabbert} \\
-      & \textsc{Belgien} & \textsc{Mutterbank} & \textsc{Linguistik} & \textsc{rausgerissen} \\
-      \midrule
+      & \textsc{Belgien} & \textsc{Mutterbank} & \textsc{Linguistik} & \textsc{rausgerissen} \\[0.25cm]
       \textbf{22DELC5-2} & \textsc{Italien} & \textsc{Kreditinstitut} & \textsc{Bioinformatik} & \textsc{geritzt} \\
       & \textsc{Ungarn} & \textsc{Geldinstitut} & \textsc{Wirtschaftsgeographie} & \textsc{angesengt} \\
       & \textsc{Polen} & \textsc{Sparkasse} & \textsc{Grundschulpädagogik} & \textsc{zusammengenäht} \\
@@ -278,7 +275,7 @@ erzeugten Wortkontextvektoren mit gesagten Methoden evaluiert.\\
     \begin{table}[h]
       \centering
       \def\arraystretch{1.5}
-      \begin{tabular}{@{}lll@{}}
+      \begin{tabular}{@{}lrr@{}}
         \toprule
         \textsc{Datenset} & \textsc{\#Annotatoren} & $\kappa$ \\
         \toprule
