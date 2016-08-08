@@ -28,6 +28,8 @@
 
 				<section id="titlepage" data-background="#193e5d" data-background-transition="zoom">
 					<h3>Analysis of relation prediction in German using word vector representations</h4><br>
+					<h4>Department for Computational Linguistics</h4>
+					<h4>Heidelberg University</h4>
 					<h4>Dennis Ulmer<h4><br>
 					<h4>12.12.12<h4>
 				</section>
@@ -47,6 +49,24 @@
 					<h4>Why knowledge graph completion?</h4>
 				</section>
 
+				<section data-background="#385c58" data-background-transition="slide">
+					<blockquote>
+						&ldquo;Knowledge graphs encode structured information of entities and their rich relations[, but] it is usually
+						far from complete. Knowledge graph completion aims at predicting relations between entities under
+						supervision of the existing knowledge graph.&rdquo;
+					</blockquote>
+					<div class="aligncenter">(Lin et al., 2015)</div>
+				</section>
+
+				<section data-background="#385c58" data-background-transition="slide">
+					<blockquote>
+						<div class="fragment shrink" data-fragment-index="1">&ldquo;Examples are social network analysis [...], recommender systems [...],
+						or </div>knowledge bases (KBs) such as Freebase <div class="fragment shrink" data-fragment-index="1">[...], where each entity [...] represents an abstract concept or concrete entity of the
+						world and relationships are predicates that represent facts involving two of them.&rdquo;</div>
+					</blockquote>
+					<div class="aligncenter">(Bordes et al., 2013)</div>
+				</section>
+
 				<section data-background="#6a1024" data-background-transition="slide">
 					<h4>What did others do?</h4>
 				</section>
@@ -55,7 +75,7 @@
 					<h4>How did I do it?</h4>
 				</section>
 
-				<section>
+				<section id="dbscan">
 				<section data-background-video="vid/dbscan_clean.mp4">
 					<div class="fragment textbox">
 					<h1>DBSCAN!</h1>
@@ -67,11 +87,50 @@
 				</section>
 				<section data-background="#5c6c80" data-background-transition="slide">
 						<h3> <b>D</b>ensity-<b>B</b>ased <b>S</b>patial <b>C</b>lustering of <b>A</b>pplications with <b>N</b>oise </h3>
+						<ul>
+							<li><b>Core point: </b>Points with at least <i>minPts</i> Points within radius $\epsilon$<br>
+							$\rightarrow$ <i>directly reachable</i></li>
+							<li>Point is <i>reachable</i>, if there is a path $p_1, \ldots, p_n$ were all $p_{i+1}$ are directly reachable
+								from $p_i$</li>
+							<li>Else: <i>Outlier</i>
+						</ul>
+						$\Rightarrow$ A cluster is formed with all points that are reachable from a core point
 				</section>
 			</section>
 
 				<section data-background="#3b9e7e" data-background-transition="slide">
 					<h4>What were the results?</h4>
+				</section>
+
+				<section data-background="#3b9e7e" data-background-transition="slide">
+					<table>
+						<tr> <th></th> <th></th> <th></th> </tr>
+						<tr>
+							<th align="left">Dataset</th>
+							<th align="right">&#216; Rank</th>
+							<th align="right">Hits@10</th>
+						</tr>
+						<tr>
+							<td align="left" style="border:0 none;"> <div class="fragment shrink" data-fragment-index="5">Unstr.</div> </td>
+							<td align="right" style="border:0 none;"> <div class="fragment shrink" data-fragment-index="5"><div class="fragment" data-fragment-index="1">1123.46</div></div></td>
+							<td align="right" style="border:0 none;"> <div class="fragment shrink" data-fragment-index="5"><div class="fragment" data-fragment-index="1">5.75</div></div></td>
+						</tr>
+						<tr>
+							<td align="left" style="border:0 none;"> <div class="fragment grow" data-fragment-index="5">FB15k</div></td>
+							<td align="right" style="border:0 none;"> <div class="fragment grow" data-fragment-index="5"><div class="fragment" data-fragment-index="2">197.02</div></div> </td>
+							<td align="right" style="border:0 none;"> <div class="fragment grow" data-fragment-index="5"><div class="fragment" data-fragment-index="2">48.79</div></div> </td>
+						</tr>
+						<tr>
+							<td align="left" style="border:0 none;"> <div class="fragment shrink" data-fragment-index="5">GER14k </div></td>
+							<td align="right" style="border:0 none;"> <div class="fragment shrink" data-fragment-index="5"><div class="fragment" data-fragment-index="3">222.05</div></div> </td>
+							<td align="right" style="border:0 none;"> <div class="fragment shrink" data-fragment-index="5"><div class="fragment" data-fragment-index="3">41.83</div></div> </td>
+						</tr>
+						<tr class="border_bottom">
+							<td align="left" style="border-bottom:1pt solid white;"> <div class="fragment shrink" data-fragment-index="5">WE4k</div> </td>
+							<td align="right" style="border-bottom:1pt solid white;"> <div class="fragment shrink" data-fragment-index="5"><div class="fragment" data-fragment-index="4">1122.03</div></div> </td>
+							<td align="right" style="border-bottom:1pt solid white;"> <div class="fragment shrink" data-fragment-index="5"><div class="fragment" data-fragment-index="4">5.67</div></div> </td>
+						</tr>
+					</table>
 				</section>
 
 				<section data-background="#265d8c" data-background-transition="slide">
@@ -96,10 +155,16 @@
 			Reveal.initialize({
 				history: true,
 
+				math: {
+        mathjax: 'plugin/mathjax/MathJax.js',
+        config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+    		},
+
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
 					{ src: 'plugin/markdown/marked.js' },
 					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/math/math.js', async: true },
 					{ src: 'plugin/notes/notes.js', async: true },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
 				]

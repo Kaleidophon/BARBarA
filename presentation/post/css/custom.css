@@ -8,3 +8,11 @@
   margin-left: auto ;
   margin-right: auto ;
 }
+
+.aligncenter {
+    text-align: center;
+}
+
+tr.border_bottom td {
+  border-bottom: 1pt solid black;
+}
