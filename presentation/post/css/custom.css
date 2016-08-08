@@ -1,0 +1,10 @@
+.textbox {
+  -moz-border-radius:30px;
+  -webkit-border-radius:30px;
+  border-radius:30px;
+  border: #solid 10px #000;
+  background-color: rgba(92,108,128,0.8);
+  width:110%;
+  margin-left: auto ;
+  margin-right: auto ;
+}
