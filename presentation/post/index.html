@@ -26,15 +26,15 @@
 		<div class="reveal">
 			<div class="slides">
 
-				<section id="titlepage" data-background="#193e5d" data-background-transition="zoom">
-					<h3>Analysis of relation prediction in German using word vector representations</h4><br>
-					<h4>Department for Computational Linguistics</h4>
-					<h4>Heidelberg University</h4>
-					<h4>Dennis Ulmer<h4><br>
-					<h4>12.12.12<h4>
+				<section id="titlepage" data-background="#373F8C" data-background-transition="zoom">
+					<h3>Analysis of relation prediction in German using word vector representations</h3><br>
+					<p align="center">Department for Computational Linguistics &#8729;
+					Heidelberg University &#8729;
+					Dennis Ulmer &#8729;
+					12.12.12
 				</section>
 
-				<section id="toc" data-background="#193e5d">
+				<section id="toc" data-background="#373F8C">
 					Sections:<br>
 						<ol>
 							<li><p class="fragment">Why knowledge graph completion?</p></li>
@@ -45,11 +45,11 @@
 						</ol>
 				</section>
 
-				<section data-background="#385c58" data-background-transition="slide">
+				<section data-background="#373F8C" data-background-transition="slide">
 					<h4>Why knowledge graph completion?</h4>
 				</section>
 
-				<section data-background="#385c58" data-background-transition="slide">
+				<section data-background="#373F8C" data-background-transition="slide">
 					<blockquote>
 						&ldquo;Knowledge graphs encode structured information of entities and their rich relations[, but] it is usually
 						far from complete. Knowledge graph completion aims at predicting relations between entities under
@@ -58,7 +58,7 @@
 					<div class="aligncenter">(Lin et al., 2015)</div>
 				</section>
 
-				<section data-background="#385c58" data-background-transition="slide">
+				<section data-background="#373F8C" data-background-transition="slide">
 					<blockquote>
 						<div class="fragment shrink" data-fragment-index="1">&ldquo;Examples are social network analysis [...], recommender systems [...],
 						or </div>knowledge bases (KBs) such as Freebase <div class="fragment shrink" data-fragment-index="1">[...], where each entity [...] represents an abstract concept or concrete entity of the
@@ -67,12 +67,128 @@
 					<div class="aligncenter">(Bordes et al., 2013)</div>
 				</section>
 
-				<section data-background="#6a1024" data-background-transition="slide">
+				<section data-background="#373F8C" data-background-transition="slide">
 					<h4>What did others do?</h4>
 				</section>
 
-				<section data-background="#5c6c80" data-background-transition="slide">
+				<section data-background="#373F8C" data-background-transition="slide">
+					<ul>
+						<li><div class="fragment">Use relation triplets $(h, l, t)$ from Freebase</div></li>
+						<li><div class="fragment">See a relation $l$ as a translation from $h$ to $t$: $h + l \approx t$</div></li>
+						<li><div class="fragment">Train continuous vector representation for $h, l, t$ jointly</div></li>
+						<li><div class="fragment">Define the distance you "missed" $t$ as loss</div></li>
+					</ul>
+				</section>
+
+				<section data-background="#373F8C" data-background-transition="slide">
+					<table>
+						<tr> <th></th> <th></th></tr>
+						<tr>
+							<th>Model</th>
+							<th>Loss function</th>
+						</tr>
+						<tr>
+							<td align="left" style="border:0 none;"><div class="fragment" data-fragment-index="1">TransE</div></td>
+							<td align="left" style="border:0 none;"><div class="fragment" data-fragment-index="1">$f_r(h, t) = \parallel h + r - t \parallel^2_2$</div></td>
+						</tr>
+						<tr>
+							<td align="left" style="border:0 none;"><div class="fragment" data-fragment-index="2">TransH</div></td>
+							<td align="left" style="border:0 none;"><div class="fragment" data-fragment-index="2">$f_r(h, t) = \parallel h_{\bot} + r - t_{\bot} \parallel^2_2$</div></td>
+						</tr>
+						<tr>
+							<td align="left" style="border:0 none;"><div class="fragment" data-fragment-index="3">TransR</div></td>
+							<td align="left" style="border:0 none;"><div class="fragment" data-fragment-index="3">$f_r(h, t) = \parallel h_r + r - t_r \parallel^2_2$</div></td>
+						</tr>
+						<tr>
+							<td align="left" style="border:0 none;"></td>
+							<td align="left" style="border:0 none;"><div class="fragment" data-fragment-index="3">$h_r = hM_r$</div></td>
+						</tr>
+						<tr>
+							<td align="left" style="border:0 none;"></td>
+							<td align="left" style="border:0 none;"><div class="fragment" data-fragment-index="3">$t_r = tM_r$</div></td>
+						</tr>
+						<tr>
+							<td align="left" style="border:0 none;"><div class="fragment" data-fragment-index="4">CTransR</div></td>
+							<td align="left" style="border:0 none;"><div class="fragment" data-fragment-index="4">$f_r(h, t) = \parallel h_{r, c} + r_c - t_{r, c} \parallel^2_2 + \alpha\parallel r_c-r\parallel^2_2$</div></td>
+						</tr>
+						<tr>
+							<td align="left" style="border:0 none;"></td>
+							<td align="left" style="border:0 none;"><div class="fragment" data-fragment-index="4">$h_{r,c} = hM_r$</div></td>
+						</tr>
+						<tr>
+							<td align="left" style="border-bottom:1pt solid white;"></td>
+							<td align="left" style="border-bottom:1pt solid white;"><div class="fragment" data-fragment-index="4">$t_{r,c} = tM_r$</div></td>
+						</tr>
+
+					</table>
+				</section>
+
+				<section data-background="#373F8C" data-background-transition="slide">
 					<h4>How did I do it?</h4>
+				</section>
+
+				<section data-background="#373F8C" data-background-transition="slide">
+					<h5>Experiments</h5>
+					<ul>
+						<li><div class="fragment" data-fragment-index="1">$\mathcal{A}$: Replicate results for TransE on German data</div></li>
+						<li><div class="fragment" data-fragment-index="2">$\mathcal{B}$: Replicate results for TransE, but use word embeddings as entitiy vectors</div></li>
+						<li><div class="fragment" data-fragment-index="3">$\mathcal{C}$: Cluster word embedding offsets ($\vec{v}(w_2) - \vec{v}(w_1)$) to find relation clusters</div></li>
+					</ul>
+				</section>
+
+				<section data-background="#373F8C" data-background-transition="slide">
+					<ul>
+						<li style="margin-bottom:25px;"><div class="fragment fade-up">Using noise-contrastive learning for Experiments $\mathcal{A}$ &amp; $\mathcal{B}$<br>
+						 (= Using negative samples for training)</div></li>
+						<li style="margin-bottom:25px;"><div class="fragment fade-up">Initialize vectors uniformly (not for $h$ and $t$ during $\mathcal{B}$)</div></li>
+						<li style="margin-bottom:25px;"><div class="fragment fade-up">Create a set of corrupted triplets:<br> $S' = \{(h', l, t)\ |\ h' \in E\} \cup \{(h, l, t')\ |\ t' \in E\}$</div></li>
+						<li style="margin-bottom:25px;"><div class="fragment fade-up">Pair it with a regular triplet:<br> $S^* = \{(s, sample(S'))\ |\ s \in S\}$</div></li>
+						<li style="margin-bottom:25px;"><div class="fragment fade-up">Minimize loss:<br> $\mathcal{L} = \sum_{((h,l,t), (h', l, t')) \in S^*} max(0, \gamma + d_p(h + l, t) - d_p(h' + l, t'))$</div></li>
+						<li><div class="fragment fade-up">Update vector reprenstations according to loss</div></li>
+					</ul>
+				</section>
+
+				<section>
+					<section data-background="#373F8C" data-background-transition="slide">
+						<ul>
+							<li> Training word embeddings with <i>word2vec</i> on DECOW14X for $\mathcal{C}$
+							<li> Using multithreading to make computation of vector offsets feasible
+						</ul>
+					</section>
+
+					<section data-background="#373F8C" data-background-transition="slide">
+						Simplified code sample in Python:
+						<pre style="overflow: visible;"><code data-trim data-noescape class="python">
+class MappingMasterThread(threading.Thread):
+  "Loads data, starts threads."
+  def __init__():
+    vector_queue = Queue()
+
+class MappingWorkerThread(threading.Thread):
+  def run():
+    while self.vector_queue.size() > 0:
+      curr_vec = self.vector_queue.get()
+
+      # Iterate over other vectors
+      for comp_vec in self.vector_dict:
+        vec_hash = self.hash_vectors(curr_vec, comp_vec)
+
+        # Has this pair been processed yet?
+        if vec_hash not in self.vector_dict.skippables:
+          self.vector_dict.skippables.add(vec_hash)
+
+          # What's the number of co-occurrences?
+          if Lamba(curr_vec, comp_vec) > gamma:
+            offset = comp_vec - curr_vec
+            # Write new vector to file
+
+class VectorDict(object):
+  """ Stores all word embeddings and processed word pairs. """
+  def __init__(self):
+    self.core_dict = defaultdict(numpy.array)
+    self.skippables = set()
+						</code></pre>
+					</section>
 				</section>
 
 				<section id="dbscan">
@@ -85,7 +201,7 @@
 					</div>
 
 				</section>
-				<section data-background="#5c6c80" data-background-transition="slide">
+				<section data-background="##373F8C" data-background-transition="slide">
 						<h3> <b>D</b>ensity-<b>B</b>ased <b>S</b>patial <b>C</b>lustering of <b>A</b>pplications with <b>N</b>oise </h3>
 						<ul>
 							<li><p class="fragment"><b>Core point: </b>Points with at least <i>minPts</i> Points within radius $\epsilon$<br>
@@ -98,11 +214,11 @@
 				</section>
 			</section>
 
-				<section data-background="#3b9e7e" data-background-transition="slide">
+				<section data-background="#373F8C" data-background-transition="slide">
 					<h4>What were the results?</h4>
 				</section>
 
-				<section data-background="#3b9e7e" data-background-transition="slide">
+				<section data-background="#373F8C" data-background-transition="slide">
 					<table>
 						<tr> <th></th> <th></th> <th></th> </tr>
 						<tr>
@@ -133,7 +249,7 @@
 					</table>
 				</section>
 
-				<section data-background="#3b9e7e" data-background-transition="slide">
+				<section data-background="#373F8C" data-background-transition="slide">
 					<div style="margin-bottom: -35px;">
 						<img src="img/cluster1.jpg" width="40%" height="40%" style="float: center;"/>
 						<img src="img/cluster2.jpg" width="40%" height="40%" style="float: center;"/>
@@ -144,11 +260,11 @@
 					</div>
 				</section>
 
-				<section data-background="#265d8c" data-background-transition="slide">
+				<section data-background="#373F8C" data-background-transition="slide">
 					<h4>Drawing conclusions</h4>
 				</section>
 
-				<section data-background="#265d8c" data-background-transition="slide">
+				<section data-background="#373F8C" data-background-transition="slide">
 					<h4>Sources</h4>
 					<ul>
 						<li><a href="http://www.naftaliharris.com/blog/visualizing-dbscan-clustering/">DBSCAN Demo</a></li>
