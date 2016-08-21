@@ -38,9 +38,9 @@
 					Sections:<br>
 						<ol>
 							<li><p class="fragment fade-up">Why knowledge graph completion?</p></li>
-							<li><p class="fragment fade-up">What did others do?</p></li>
-							<li><p class="fragment fade-up">How did I do it?</p></li>
-							<li><p class="fragment fade-up">What were the results?</p></li>
+							<li><p class="fragment fade-up">Related work</p></li>
+							<li><p class="fragment fade-up">Experiments</p></li>
+							<li><p class="fragment fade-up">Results</p></li>
 							<li><p class="fragment fade-up">Drawing conclusions</p></li>
 						</ol>
 				</section>
@@ -56,6 +56,12 @@
 						supervision of the existing knowledge graph.&rdquo;
 					</blockquote>
 					<div class="aligncenter">(Lin et al., 2015)</div>
+					<aside class="notes">
+      			<ul>
+							<li> What is a knowledge graphs?</li>
+							<li> What is knowledge graph completion?</li>
+						</ul>
+    			</aside>
 				</section>
 
 				<section data-background="#19426b" data-background-transition="slide">
@@ -65,10 +71,17 @@
 						world and relationships are predicates that represent facts involving two of them.&rdquo;</div>
 					</blockquote>
 					<div class="aligncenter">(Bordes et al., 2013)</div>
+					<aside class="notes">
+      			<ul>
+							<li>Examples</li>
+							<li>Also: AI, WSD, OIE etc.</li>
+							<li> Freebase: Retired, but has 1.9 billion triplets</li>
+						</ul>
+    			</aside>
 				</section>
 
 				<section data-background="#19426b" data-background-transition="slide">
-					<h4>What did others do?</h4>
+					<h4>Related work</h4>
 				</section>
 
 				<section data-background="#19426b" data-background-transition="slide">
@@ -133,14 +146,14 @@
 				</section>
 
 				<section data-background="#19426b" data-background-transition="slide">
-					<h4>How did I do it?</h4>
+					<h4>Experiments</h4>
 				</section>
 
 				<section data-background="#19426b" data-background-transition="slide">
 					<h5>Experiments</h5>
 					<ul>
 						<li><div class="fragment fade-up" data-fragment-index="1">$\mathcal{A}$: Replicate results for TransE on German data</div></li>
-						<li><div class="fragment fade-up" data-fragment-index="2">$\mathcal{B}$: Replicate results for TransE, but use word embeddings as entitiy vectors</div></li>
+						<li><div class="fragment fade-up" data-fragment-index="2">$\mathcal{B}$: Replicate results for TransE, but use word embeddings as entity vectors</div></li>
 						<li><div class="fragment fade-up" data-fragment-index="3">$\mathcal{C}$: Cluster word embedding offsets ($\vec{v}(w_2) - \vec{v}(w_1)$) to find relation clusters</div></li>
 					</ul>
 				</section>
@@ -155,17 +168,24 @@
 						<li style="margin-bottom:25px;"><div class="fragment fade-up">Minimize loss:<br> $\mathcal{L} = \sum_{((h,l,t), (h', l, t')) \in S^*} max(0, \gamma + d_p(h + l, t) - d_p(h' + l, t'))$</div></li>
 						<li><div class="fragment fade-up">Update vector reprenstations according to loss</div></li>
 					</ul>
+					<aside class="notes">
+      			<ul>
+							<li> d = dissimilarity measure, i.e. the distance</li>
+							<li>Meaning of training objective: "Optimize s.t. the dissimilarity w/ right tuple is smaller than the dissimilarity w/ corrupted tuple"</li>
+							<li>Use $\gamma$ as margin, so both tuples being equally dissimlar is penalized</li>
+						</ul>
+    			</aside>
 				</section>
 
 				<section data-background="#19426b" data-background-transition="slide">
 						<h5>Evaluation I</h5>
 						<ul>
-							<li><div class="fragment fade-up" data-fragment-index="1">First replace left and then right entitiy of relation triplet $(h, l, t)$</div></li>
+							<li><div class="fragment fade-up" data-fragment-index="1">First replace left and then right entity of relation triplet $(h, l, t)$</div></li>
 							<li><div class="fragment fade-up" data-fragment-index="2">Try out every possible entity, rank them descending regarding their $\parallel h + l - t \parallel$</div></li>
 							<li><div class="fragment fade-up" data-fragment-index="3">Measure two things:
 								<ol>
-									<li><div class="fragment fade-up" data-fragment-index="4">What's the average rank of the right entity? (&#216; Rank)</div></li>
-									<li><div class="fragment fade-up" data-fragment-index="5">In what percentage of cases is the right entitiy in the top 10? (Hits@10)</div></li>
+									<li><div class="fragment fade-up" data-fragment-index="4">What's the average rank of the correcht entity? (&#216; Rank)</div></li>
+									<li><div class="fragment fade-up" data-fragment-index="5">In what percentage of cases is the right entity in the top 10? (Hits@10)</div></li>
 								</ol>
 							</li>
 						</ul>
@@ -173,10 +193,17 @@
 
 				<section>
 					<section data-background="#19426b" data-background-transition="slide">
+						For Experiment $\mathcal{C}$:
 						<ul>
-							<li> Training word embeddings with <i>word2vec</i> on DECOW14X for $\mathcal{C}$
-							<li> Using multithreading to make computation of vector offsets feasible
+							<li> Training word embeddings with <i>word2vec</i> on DECOW14X for $\mathcal{C}$</li>
+							<li> Using multithreading to make computation of vector offsets feasible</li>
+							<li> Introduce a co-occurrence criterion to reduce the number of computations</li>
 						</ul>
+						<aside class="notes">
+	      			<ul>
+								<li>DECOW: 2011-14 web corpus, 11 billion tokens</li>
+							</ul>
+	    			</aside>
 					</section>
 
 					<section data-background="#19426b" data-background-transition="slide">
@@ -280,7 +307,7 @@ class VectorDict(object):
 
 
 				<section data-background="#19426b" data-background-transition="slide">
-					<h4>What were the results?</h4>
+					<h4>Results</h4>
 				</section>
 
 				<section data-background="#19426b" data-background-transition="slide">
@@ -313,6 +340,11 @@ class VectorDict(object):
 							<td align="right" style="border-bottom:1pt solid white;"> <div class="fragment shrink" data-fragment-index="5"><div class="fragment fade-up" data-fragment-index="4">5.67</div></div> </td>
 						</tr>
 					</table>
+					<aside class="notes">
+      			<ul>
+							<li>Explain names</li>
+						</ul>
+    			</aside>
 				</section>
 
 				<!--
@@ -331,6 +363,11 @@ class VectorDict(object):
 				<section data-background="#19426b" data-background-transition="slide">
 					<h4>Inside the clusters...</h4>
 					(Results for $\mathcal{C}$)
+					<aside class="notes">
+      			<ul>
+							<li>No eval possible, see pictures</li>
+						</ul>
+    			</aside>
 				</section>
 
 				<section data-background-image="img/clusters.gif">
@@ -360,7 +397,12 @@ class VectorDict(object):
 						</div>
 
 					</div>
-
+					<aside class="notes">
+						<ul>
+							<li>Dominant color = outliers</li>
+							<li>All noisy and stuff</li>
+						</ul>
+    			</aside>
 				</section>
 
 				<section data-background="#19426b" data-background-transition="slide">
