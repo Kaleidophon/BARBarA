@@ -1,0 +1,18 @@
+\beamer@endinputifotherversion {3.33pt}
+\select@language {ngerman}
+\beamer@sectionintoc {1}{Distributionelle Semantik}{3}{0}{1}
+\beamer@sectionintoc {2}{Idee}{5}{0}{2}
+\beamer@sectionintoc {3}{TransE, TransH, TransR, CTransR}{6}{0}{3}
+\beamer@sectionintoc {4}{Diese Arbeit}{10}{0}{4}
+\beamer@subsectionintoc {4}{1}{Hypothese}{11}{0}{4}
+\beamer@subsectionintoc {4}{2}{Ressourcen}{13}{0}{4}
+\beamer@subsubsectionintoc {4}{2}{1}{Decow-Korpus}{13}{0}{4}
+\beamer@subsubsectionintoc {4}{2}{2}{Freebase}{14}{0}{4}
+\beamer@subsubsectionintoc {4}{2}{3}{word2vec}{15}{0}{4}
+\beamer@subsectionintoc {4}{3}{Vorbereitungen}{16}{0}{4}
+\beamer@subsectionintoc {4}{4}{Clustering}{17}{0}{4}
+\beamer@sectionintoc {5}{Evaluation}{18}{0}{5}
+\beamer@sectionintoc {6}{Fahrplan}{19}{0}{6}
+\beamer@sectionintoc {7}{Quellen}{20}{0}{7}
+\beamer@subsectionintoc {7}{1}{Literatur}{20}{0}{7}
+\beamer@subsectionintoc {7}{2}{Sonstiges}{21}{0}{7}

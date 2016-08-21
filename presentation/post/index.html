@@ -1,0 +1,476 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section id="titlepage" data-background="#19426b" data-background-transition="zoom">
+					<h3>Analysis of relation prediction in German using word vector representations</h3><br>
+					<p align="center">Department for Computational Linguistics &#8729;
+					Heidelberg University &#8729;
+					Dennis Ulmer &#8729;
+					22.08.16
+				</section>
+
+				<section id="toc" data-background="#19426b">
+					Sections:<br>
+						<ol>
+							<li><p class="fragment fade-up">Why knowledge graph completion?</p></li>
+							<li><p class="fragment fade-up">Related work</p></li>
+							<li><p class="fragment fade-up">Experiments</p></li>
+							<li><p class="fragment fade-up">Results</p></li>
+							<li><p class="fragment fade-up">Drawing conclusions</p></li>
+						</ol>
+				</section>
+
+				<section data-background="#19426b" data-background-transition="slide">
+					<h4>Why knowledge graph completion?</h4>
+				</section>
+
+				<section data-background="#19426b" data-background-transition="slide">
+					<blockquote>
+						&ldquo;Knowledge graphs encode structured information of entities and their rich relations[, but] it is usually
+						far from complete. Knowledge graph completion aims at predicting relations between entities under
+						supervision of the existing knowledge graph.&rdquo;
+					</blockquote>
+					<div class="aligncenter">(Lin et al., 2015)</div>
+					<aside class="notes">
+      			<ul>
+							<li> What is a knowledge graphs?</li>
+							<li> What is knowledge graph completion?</li>
+						</ul>
+    			</aside>
+				</section>
+
+				<section data-background="#19426b" data-background-transition="slide">
+					<blockquote>
+						<div class="fragment shrink" data-fragment-index="1">&ldquo;Examples are social network analysis [...], recommender systems [...],
+						or </div>knowledge bases (KBs) such as Freebase <div class="fragment shrink" data-fragment-index="1">[...], where each entity [...] represents an abstract concept or concrete entity of the
+						world and relationships are predicates that represent facts involving two of them.&rdquo;</div>
+					</blockquote>
+					<div class="aligncenter">(Bordes et al., 2013)</div>
+					<aside class="notes">
+      			<ul>
+							<li>Examples</li>
+							<li>Also: AI, WSD, OIE etc.</li>
+							<li> Freebase: Retired, but has 1.9 billion triplets</li>
+						</ul>
+    			</aside>
+				</section>
+
+				<section data-background="#19426b" data-background-transition="slide">
+					<h4>Related work</h4>
+				</section>
+
+				<section data-background="#19426b" data-background-transition="slide">
+					<ul>
+						<li><div class="fragment fade-up">Use relation triplets $(h, l, t)$ from Freebase</div></li>
+						<li><div class="fragment fade-up">See a relation $l$ as a translation from $h$ to $t$: $h + l \approx t$</div></li>
+						<li><div class="fragment fade-up">Train continuous vector representation for $h, l, t$ jointly</div></li>
+						<li><div class="fragment fade-up">Define the distance you "missed" $t$ as loss</div></li>
+					</ul>
+				</section>
+
+				<section data-background="#19426b" data-background-transition="slide">
+					<table width=135% style="margin-left: -4.5cm !important;">
+						<tr> <th></th> <th></th> <th></th></tr>
+						<tr>
+							<th>Model</th>
+							<th>Loss function</th>
+							<th>Source</th>
+						</tr>
+						<tr>
+							<td align="left" style="border:0 none;"><div class="fragment fade-up" data-fragment-index="1">TransE</div></td>
+							<td align="left" style="border:0 none;"><div class="fragment fade-up" data-fragment-index="1">$f_r(h, t) = \parallel h + r - t \parallel^2_2$</div></td>
+							<td align="left" style="border:0 none;"><div class="fragment fade-up" data-fragment-index="1">(Bordes et al., 2013)</div></td>
+						</tr>
+						<tr>
+							<td align="left" style="border:0 none;"><div class="fragment fade-up" data-fragment-index="2">TransH</div></td>
+							<td align="left" style="border:0 none;"><div class="fragment fade-up" data-fragment-index="2">$f_r(h, t) = \parallel h_{\bot} + r - t_{\bot} \parallel^2_2$</div></td>
+							<td align="left" style="border:0 none;"><div class="fragment fade-up" data-fragment-index="2">(Wang et al., 2014)</div></td>
+						</tr>
+						<tr>
+							<td align="left" style="border:0 none;"><div class="fragment fade-up" data-fragment-index="3">TransR</div></td>
+							<td align="left" style="border:0 none;"><div class="fragment fade-up" data-fragment-index="3">$f_r(h, t) = \parallel h_r + r - t_r \parallel^2_2$</div></td>
+							<td align="left" style="border:0 none;"><div class="fragment fade-up" data-fragment-index="3">(Lin et al., 2015)</div></td>
+						</tr>
+						<tr>
+							<td align="left" style="border:0 none;"></td>
+							<td align="left" style="border:0 none;"><div class="fragment fade-up" data-fragment-index="3">$h_r = hM_r$</div></td>
+							<td align="left" style="border:0 none;"></td>
+						</tr>
+						<tr>
+							<td align="left" style="border:0 none;"></td>
+							<td align="left" style="border:0 none;"><div class="fragment fade-up" data-fragment-index="3">$t_r = tM_r$</div></td>
+							<td align="left" style="border:0 none;"></td>
+						</tr>
+						<tr>
+							<td align="left" style="border:0 none;"><div class="fragment fade-up" data-fragment-index="4">CTransR</div></td>
+							<td align="left" style="border:0 none;"><div class="fragment fade-up" data-fragment-index="4">$f_r(h, t) = \parallel h_{r, c} + r_c - t_{r, c} \parallel^2_2 + \alpha\parallel r_c-r\parallel^2_2$</div></td>
+							<td align="left" style="border:0 none;"><div class="fragment fade-up" data-fragment-index="4">(Lin et al., 2015)</div></td>
+						</tr>
+						<tr>
+							<td align="left" style="border:0 none;"></td>
+							<td align="left" style="border:0 none;"><div class="fragment fade-up" data-fragment-index="4">$h_{r,c} = hM_r$</div></td>
+							<td align="left" style="border:0 none;"></td>
+						</tr>
+						<tr>
+							<td align="left" style="border-bottom:1pt solid white;"></td>
+							<td align="left" style="border-bottom:1pt solid white;"><div class="fragment fade-up" data-fragment-index="4">$t_{r,c} = tM_r$</div></td>
+							<td align="left" style="border-bottom:1pt solid white;"></td>
+						</tr>
+
+					</table>
+				</section>
+
+				<section data-background="#19426b" data-background-transition="slide">
+					<h4>Experiments</h4>
+				</section>
+
+				<section data-background="#19426b" data-background-transition="slide">
+					<h5>Experiments</h5>
+					<ul>
+						<li><div class="fragment fade-up" data-fragment-index="1">$\mathcal{A}$: Replicate results for TransE on German data</div></li>
+						<li><div class="fragment fade-up" data-fragment-index="2">$\mathcal{B}$: Replicate results for TransE, but use word embeddings as entity vectors</div></li>
+						<li><div class="fragment fade-up" data-fragment-index="3">$\mathcal{C}$: Cluster word embedding offsets ($\vec{v}(w_2) - \vec{v}(w_1)$) to find relation clusters</div></li>
+					</ul>
+				</section>
+
+				<section data-background="#19426b" data-background-transition="slide">
+					<ul>
+						<li style="margin-bottom:25px;"><div class="fragment fade-up">Using noise-contrastive learning for Experiments $\mathcal{A}$ &amp; $\mathcal{B}$<br>
+						 (= Using negative samples for training)</div></li>
+						<li style="margin-bottom:25px;"><div class="fragment fade-up">Initialize vectors uniformly (not for $h$ and $t$ during $\mathcal{B}$)</div></li>
+						<li style="margin-bottom:25px;"><div class="fragment fade-up">Create a set of corrupted triplets:<br> $S' = \{(h', l, t)\ |\ h' \in E\} \cup \{(h, l, t')\ |\ t' \in E\}$</div></li>
+						<li style="margin-bottom:25px;"><div class="fragment fade-up">Pair it with a regular triplet:<br> $S^* = \{(s, sample(S'))\ |\ s \in S\}$</div></li>
+						<li style="margin-bottom:25px;"><div class="fragment fade-up">Minimize loss:<br> $\mathcal{L} = \sum_{((h,l,t), (h', l, t')) \in S^*} max(0, \gamma + d_p(h + l, t) - d_p(h' + l, t'))$</div></li>
+						<li><div class="fragment fade-up">Update vector reprenstations according to loss</div></li>
+					</ul>
+					<aside class="notes">
+      			<ul>
+							<li> d = dissimilarity measure, i.e. the distance</li>
+							<li>Meaning of training objective: "Optimize s.t. the dissimilarity w/ right tuple is smaller than the dissimilarity w/ corrupted tuple"</li>
+							<li>Use $\gamma$ as margin, so both tuples being equally dissimlar is penalized</li>
+						</ul>
+    			</aside>
+				</section>
+
+				<section data-background="#19426b" data-background-transition="slide">
+						<h5>Evaluation I</h5>
+						<ul>
+							<li><div class="fragment fade-up" data-fragment-index="1">First replace left and then right entity of relation triplet $(h, l, t)$</div></li>
+							<li><div class="fragment fade-up" data-fragment-index="2">Try out every possible entity, rank them descending regarding their $\parallel h + l - t \parallel$</div></li>
+							<li><div class="fragment fade-up" data-fragment-index="3">Measure two things:
+								<ol>
+									<li><div class="fragment fade-up" data-fragment-index="4">What's the average rank of the correcht entity? (&#216; Rank)</div></li>
+									<li><div class="fragment fade-up" data-fragment-index="5">In what percentage of cases is the right entity in the top 10? (Hits@10)</div></li>
+								</ol>
+							</li>
+						</ul>
+				</section>
+
+				<section>
+					<section data-background="#19426b" data-background-transition="slide">
+						For Experiment $\mathcal{C}$:
+						<ul>
+							<li> Training word embeddings with <i>word2vec</i> on DECOW14X for $\mathcal{C}$</li>
+							<li> Using multithreading to make computation of vector offsets feasible</li>
+							<li> Introduce a co-occurrence criterion to reduce the number of computations</li>
+						</ul>
+						<aside class="notes">
+	      			<ul>
+								<li>DECOW: 2011-14 web corpus, 11 billion tokens</li>
+							</ul>
+	    			</aside>
+					</section>
+
+					<section data-background="#19426b" data-background-transition="slide">
+						Simplified code sample in Python:
+						<pre style="overflow: visible;"><code data-trim data-noescape class="python">
+class MappingMasterThread(threading.Thread):
+  "Loads data, starts threads."
+  def __init__():
+    vector_queue = Queue()
+
+class MappingWorkerThread(threading.Thread):
+  def run():
+    while self.vector_queue.size() > 0:
+      curr_vec = self.vector_queue.get()
+
+      # Iterate over other vectors
+      for comp_vec in self.vector_dict:
+        vec_hash = self.hash_vectors(curr_vec, comp_vec)
+
+        # Has this pair been processed yet?
+        if vec_hash not in self.vector_dict.skippables:
+          self.vector_dict.skippables.add(vec_hash)
+
+          # What's the number of co-occurrences?
+          if Lamba(curr_vec, comp_vec) > gamma:
+            offset = comp_vec - curr_vec
+            # Write new vector to file
+
+class VectorDict(object):
+  """ Stores all word embeddings and processed word pairs. """
+  def __init__(self):
+    self.core_dict = defaultdict(numpy.array)
+    self.skippables = set()
+						</code></pre>
+					</section>
+				</section>
+
+				<section id="dbscan">
+				<section data-background-video="vid/dbscan_clean.mp4">
+					<div class="fragment textbox">
+					<div style="padding-left: 1.5cm; !important">
+					<h1>DBSCAN!</h1>
+					<ol>
+							<li><div class="fragment fade-up"><b>Density based:</b> Finds clusters, even if they are not linearily separable</div></li>
+							<li><div class="fragment fade-up"><b>Outlier detection:</b> Not all points have to belong a cluster</div></li></li>
+							<li><div class="fragment fade-up"><b>Number of clusters</b> doesn't have to be known beforehand</div></li><br></li>
+					</ol>
+					</div>
+					</div>
+
+				</section>
+				<section data-background="#19426b" data-background-transition="slide">
+						<h3> <b>D</b>ensity-<b>B</b>ased <b>S</b>patial <b>C</b>lustering of <b>A</b>pplications with <b>N</b>oise </h3>
+						<ul>
+							<li><p class="fragment fade-up"><b>Core point: </b>Points with at least <i>minPts</i> Points within radius $\epsilon$<br>
+							$\rightarrow$ <i>directly reachable</i></p></li>
+							<li><p class="fragment fade-up">Point is <i>reachable</i>, if there is a path $p_1, \ldots, p_n$ were all $p_{i+1}$ are directly reachable
+								from $p_i$</p></li>
+							<li><p class="fragment fade-up">Else: <i>Outlier</i></p></li>
+						</ul>
+						<p class="fragment fade-up">$\Rightarrow$ A cluster is formed with all points that are reachable from a core point</p>
+				</section>
+			</section>
+
+			<section>
+				<section data-background="#19426b" data-background-transition="slide">
+						<h5>Evaluation II</h5>
+						<ul>
+							<li><div class="fragment fade-up" data-fragment-index="1">Measure "purity" of clusters: How many pairs in a cluster belong to a certain (FB-)relation?</div></li>
+							<li><div class="fragment fade-up" data-fragment-index="2">Find "dominant" relation in cluster: $r_c = \underset{r \in R}{argmax}\ \sum_{(\vec{v}(w_1), \vec{v}(w_2)) \in c}  \mathbb{1}_{r}((w_1, w_2))$</div></li>
+							<li><div class="fragment fade-up" data-fragment-index="3">Use it to compute purity $P$: $P(c) = \sum_{(\vec{v}(w_1), \vec{v}(w_2)) \in c} \frac{\mathbb{1}_{r_c}((w_1, w_2))}{|c|}$</li>
+							<li><div class="fragment fade-up" data-fragment-index="4">Additionally: Modify it so it doesn't punish the existence of new relation word pairs
+						</ul>
+				</section>
+				<section data-background="#19426b" data-background-transition="slide">
+						<ul>
+							<li><div class="fragment fade-up" data-fragment-index="1">Extend the definition of cluster purity:</div></li>
+							<li><div class="fragment fade-up" data-fragment-index="2">Calculate the mean of all head and tail entities of wordpairs in a cluster $c$:</div>
+								<ul>
+									<li><div class="fragment fade-up" data-fragment-index="3">$H_c = \{\vec{v}(w_1)|(w_1, \cdot) \in r_c\}$, then $\overline{h} = \sum_{\vec{v}(w_1) \in H_c}\frac{\vec{v}(w_1)}{|H_c|}$</li>
+									<li><div class="fragment fade-up" data-fragment-index="3">Same with tail entities to produce $T_c$ and $\overline{t}$</li>
+								</ul>
+							</li>
+						</ul>
+				</section>
+				<section data-background="#19426b" data-background-transition="slide">
+					<ul>
+						<li><div class="fragment fade-up" data-fragment-index="1">Add wordpairs to dominant relation of they surpass a cosine similarity threshold $\tau$ with respect to $\overline{h}$ and $\overline{t}$:</div></li>
+						<li><div class="fragment fade-up" data-fragment-index="2">
+							<div class="fragment highlight-current-green" data-fragment-index="3" style="display: inline-block;">$r_c^+ = r_c\ \cup\ $</div><div class="fragment highlight-current-green" data-fragment-index="4" style="display: inline-block;">$\{(w_1, w_2)| (\vec{v}(w_1), \vec{v}(w_2)) \in c$</div>
+							<div class="fragment highlight-current-green" data-fragment-index="5" style="display: inline-block;">$\land\ cos(\vec{v}(w_1), \overline{h}) \geq \tau$</div>
+							<div class="fragment highlight-current-green" data-fragment-index="6" style="display: inline-block;">$\land\ cos(\vec{v}(w_2), \overline{t}) \geq \tau\}$</div>
+						</li>
+						<li><div class="fragment fade-up" data-fragment-index="7">Calculate extended purity $P^+(c)$: $P^+(c) = \sum_{(\vec{v}(w_1), \vec{v}(w_2)) \in c} \frac{\mathbb{1}_{r_c^+}((w_1, w_2))}{|c|}$</div></li>
+					</ul>
+				</section>
+			</section>
+
+
+
+
+
+				<section data-background="#19426b" data-background-transition="slide">
+					<h4>Results</h4>
+				</section>
+
+				<section data-background="#19426b" data-background-transition="slide">
+					Results for experiments $\mathcal{A}$ and $\mathcal{B}$
+					<table>
+						<tr> <th></th> <th></th> <th></th> </tr>
+						<tr>
+							<th align="left">Dataset</th>
+							<th align="right">&#216; Rank</th>
+							<th align="right">Hits@10</th>
+						</tr>
+						<tr>
+							<td align="left" style="border:0 none;"> <div class="fragment shrink" data-fragment-index="5">Unstr.</div> </td>
+							<td align="right" style="border:0 none;"> <div class="fragment shrink" data-fragment-index="5"><div class="fragment fade-up" data-fragment-index="1">1123.46</div></div></td>
+							<td align="right" style="border:0 none;"> <div class="fragment shrink" data-fragment-index="5"><div class="fragment fade-up" data-fragment-index="1">5.75</div></div></td>
+						</tr>
+						<tr>
+							<td align="left" style="border:0 none;"> <div class="fragment grow" data-fragment-index="5">FB15k</div></td>
+							<td align="right" style="border:0 none;"> <div class="fragment grow" data-fragment-index="5"><div class="fragment fade-up" data-fragment-index="2">197.02</div></div> </td>
+							<td align="right" style="border:0 none;"> <div class="fragment grow" data-fragment-index="5"><div class="fragment fade-up" data-fragment-index="2">48.79</div></div> </td>
+						</tr>
+						<tr>
+							<td align="left" style="border:0 none;"> <div class="fragment shrink" data-fragment-index="5">GER14k </div></td>
+							<td align="right" style="border:0 none;"> <div class="fragment shrink" data-fragment-index="5"><div class="fragment fade-up" data-fragment-index="3">222.05</div></div> </td>
+							<td align="right" style="border:0 none;"> <div class="fragment shrink" data-fragment-index="5"><div class="fragment fade-up" data-fragment-index="3">41.83</div></div> </td>
+						</tr>
+						<tr class="border_bottom">
+							<td align="left" style="border-bottom:1pt solid white;"> <div class="fragment shrink" data-fragment-index="5">WE4k</div> </td>
+							<td align="right" style="border-bottom:1pt solid white;"> <div class="fragment shrink" data-fragment-index="5"><div class="fragment fade-up" data-fragment-index="4">1122.03</div></div> </td>
+							<td align="right" style="border-bottom:1pt solid white;"> <div class="fragment shrink" data-fragment-index="5"><div class="fragment fade-up" data-fragment-index="4">5.67</div></div> </td>
+						</tr>
+					</table>
+					<aside class="notes">
+      			<ul>
+							<li>Explain names</li>
+						</ul>
+    			</aside>
+				</section>
+
+				<!--
+				<section data-background="#19426b" data-background-transition="slide">
+					<div style="margin-bottom: -35px;">
+						<img src="img/cluster1.jpg" width="40%" height="40%" style="float: center;"/>
+						<img src="img/cluster2.jpg" width="40%" height="40%" style="float: center;"/>
+					</div>
+					<div>
+						<img src="img/cluster3.jpg" width="40%" height="40%" style="float: center;"/>
+						<img src="img/cluster4.jpg" width="40%" height="40%" style="float: center;"/>
+					</div>
+				</section>
+				-->
+
+				<section data-background="#19426b" data-background-transition="slide">
+					<h4>Inside the clusters...</h4>
+					(Results for $\mathcal{C}$)
+					<aside class="notes">
+      			<ul>
+							<li>No eval possible, see pictures</li>
+						</ul>
+    			</aside>
+				</section>
+
+				<section data-background-image="img/clusters.gif">
+					<div class="fragment textbox" data-fragment-index="1">
+					<h2>Inside the clusters...</h2>
+						<div style="padding-bottom: 1.5cm; padding-top: 0.25cm;">
+						<div style="display: inline-block;">
+							<h4><p class="fragment fade-up" data-fragment-index="2">Example A</p></h4>
+							<ul>
+								<li><div class="fragment fade-up" data-fragment-index="2">Oldenburg - Görlitz</div></li>
+								<li><div class="fragment fade-up" data-fragment-index="2">Tschechien - Karin</div></li>
+								<li><div class="fragment fade-up" data-fragment-index="2">Tschechien - Uwe</div></li>
+								<li><div class="fragment fade-up" data-fragment-index="2">Hockenheim - Offenburg</div></li>
+								<li><div class="fragment fade-up" data-fragment-index="2">Oldenburg - Offenburg</div></li>
+							</ul>
+						</div>
+						<div style="display: inline-block;">
+							<h4><p class="fragment fade-up" data-fragment-index="3">Example B</p></h4>
+							<ul>
+								<li><div class="fragment fade-up" data-fragment-index="3">Dieter - Italienischen</div></li>
+								<li><div class="fragment fade-up" data-fragment-index="3">Pirna - Italienischen</div></li>
+								<li><div class="fragment fade-up" data-fragment-index="3">Damon - Italienischen</div></li>
+								<li><div class="fragment fade-up" data-fragment-index="3">Shanghai - Italienischen</div></li>
+								<li><div class="fragment fade-up" data-fragment-index="3">Pankow - Italienischen</div></li>
+							</ul>
+						</div>
+						</div>
+
+					</div>
+					<aside class="notes">
+						<ul>
+							<li>Dominant color = outliers</li>
+							<li>All noisy and stuff</li>
+						</ul>
+    			</aside>
+				</section>
+
+				<section data-background="#19426b" data-background-transition="slide">
+					<h4>Drawing conclusions</h4>
+				</section>
+
+				<section data-background="#19426b" data-background-transition="slide">
+					<ul>
+						<li><div class="fragment fade-up" data-fragment-index="1">TransE works, but benefits from more data</div></li>
+						<li><div class="fragment fade-up" data-fragment-index="2">Replacing entity vectors with WE probably doesn't work even with more data, joint training
+							of entities / relations makes more sense</div></li>
+						<li><div class="fragment fade-up" data-fragment-index="3">Clustering vector offsets might work in theory, but you need another data source to filter out noise
+						(co-occurrences encoded in WEs are not sufficient)</div></li>
+					</ul>
+				</section>
+
+				<section data-background="#19426b" data-background-transition="slide">
+					<h4>Possible improvements</h4>
+					<ul>
+						<li><div class="fragment fade-up" data-fragment-index="1">Use a different kind of embeddings like GloVe (Pennington et al., 2014) or Dependecy-based WE (Levy und Goldberg, 2014) etc.</div></li>
+						<li><div class="fragment fade-up" data-fragment-index="2">Use more coarse relations</div></li>
+						<li><div class="fragment fade-up" data-fragment-index="3">Move to supervised approach</div></li>
+					</ul>
+				</section>
+
+				<section data-background="#19426b" data-background-transition="slide">
+					<h4>Sources I</h4>
+					<ul>
+						<li>Bordes, Antoine et al. (2011). „Learning structured embeddings of knowled- ge bases“. In: <i>Conference on Artificial Intelligence</i>. EPFL-CONF-192344.</li>
+						<li>Bordes, Antoine et al. (2013). „Translating embeddings for modeling multi- relational data“. In: <i>Advances in Neural Information Processing Systems</i>, S. 2787–2795.</li>
+						<li>Ester, Martin et al. (1996). „A density-based algorithm for discovering clusters in large spatial databases with noise.“ In: <i>Kdd.</i> Bd. 96. 34, S. 226–231.</li>
+						<li>Lin, Yankai et al. (2015). „Learning Entity and Relation Embeddings for Know- ledge Graph Completion.“ In: <i>AAAI</i>, S. 2181–2187.</li>
+					</ul>
+				</section>
+
+				<section data-background="#19426b" data-background-transition="slide">
+					<h4>Sources II</h4>
+					<ul>
+						<li><a href="http://www.naftaliharris.com/blog/visualizing-dbscan-clustering/">DBSCAN Demo</a></li>
+						<li><a href="http://lab.hakim.se/reveal-js/">reveal.js presentation framework</a></li>
+					</ul>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				math: {
+        mathjax: 'plugin/mathjax/MathJax.js',
+        config: 'TeX-AMS_HTML-full'  // See http://docs.mathjax.org/en/latest/config-files.html
+    		},
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/math/math.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>

@@ -14,3 +14,4 @@ depend/
 testdata
 .idea/*
 freebase_api_key
+presentation/post/vid/*
