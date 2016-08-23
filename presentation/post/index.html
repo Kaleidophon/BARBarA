@@ -166,7 +166,7 @@
 						<li style="margin-bottom:25px;"><div class="fragment fade-up">Create a set of corrupted triplets:<br> $S' = \{(h', l, t)\ |\ h' \in E\} \cup \{(h, l, t')\ |\ t' \in E\}$</div></li>
 						<li style="margin-bottom:25px;"><div class="fragment fade-up">Pair it with a regular triplet:<br> $S^* = \{(s, sample(S'))\ |\ s \in S\}$</div></li>
 						<li style="margin-bottom:25px;"><div class="fragment fade-up">Minimize loss:<br> $\mathcal{L} = \sum_{((h,l,t), (h', l, t')) \in S^*} max(0, \gamma + d_p(h + l, t) - d_p(h' + l, t'))$</div></li>
-						<li><div class="fragment fade-up">Update vector reprenstations according to loss</div></li>
+						<li><div class="fragment fade-up">Update vector representations according to loss</div></li>
 					</ul>
 					<aside class="notes">
       			<ul>
@@ -184,7 +184,7 @@
 							<li><div class="fragment fade-up" data-fragment-index="2">Try out every possible entity, rank them descending regarding their $\parallel h + l - t \parallel$</div></li>
 							<li><div class="fragment fade-up" data-fragment-index="3">Measure two things:
 								<ol>
-									<li><div class="fragment fade-up" data-fragment-index="4">What's the average rank of the correcht entity? (&#216; Rank)</div></li>
+									<li><div class="fragment fade-up" data-fragment-index="4">What's the average rank of the correct entity? (&#216; Rank)</div></li>
 									<li><div class="fragment fade-up" data-fragment-index="5">In what percentage of cases is the right entity in the top 10? (Hits@10)</div></li>
 								</ol>
 							</li>
