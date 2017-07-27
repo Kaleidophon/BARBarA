@@ -1,5 +1,4 @@
 gensim
-gzip
 matplotlib
 mpl_toolkits
 numpy
