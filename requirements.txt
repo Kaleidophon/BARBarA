@@ -1,6 +1,6 @@
 gensim
 matplotlib
-mpl_toolkits
+mpl
 numpy
 scipy
 scikit-learn
