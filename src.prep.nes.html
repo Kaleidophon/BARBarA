@@ -1,0 +1,493 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>src.prep.nes package &mdash; BARBarA (a Bad Acronym Regarding a Bachelor Assignment) v1.0</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="BARBarA (a Bad Acronym Regarding a Bachelor Assignment) v1.0" href="index.html"/>
+        <link rel="up" title="src.prep package" href="src.prep.html"/>
+        <link rel="next" title="src.prep.relations package" href="src.prep.relations.html"/>
+        <link rel="prev" title="src.prep.corpus package" href="src.prep.corpus.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> BARBarA
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="simple">
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="src.html">src package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="src.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="src.clustering.html">src.clustering package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.eval.html">src.eval package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.mapping.html">src.mapping package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.misc.html">src.misc package</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="src.prep.html">src.prep package</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="src.prep.html#subpackages">Subpackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="src.prep.html#module-src.prep">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="src.trans_e.html">src.trans_e package</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">BARBarA</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+        <li><a href="src.html">src package</a> &raquo;</li>
+      
+        <li><a href="src.prep.html">src.prep package</a> &raquo;</li>
+      
+    <li>src.prep.nes package</li>
+    <li class="wy-breadcrumbs-aside">
+      
+          
+          <a href="_sources/src.prep.nes.txt" rel="nofollow"> View page source</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="src-prep-nes-package">
+<h1>src.prep.nes package<a class="headerlink" href="#src-prep-nes-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-src.prep.nes.extract_nes">
+<span id="src-prep-nes-extract-nes-module"></span><h2>src.prep.nes.extract_nes module<a class="headerlink" href="#module-src.prep.nes.extract_nes" title="Permalink to this headline">¶</a></h2>
+<p>This script is used to find all named entities in a corpus, extract them and also store their frequencies as well as
+the IDs of the sentences they occur in.</p>
+<dl class="function">
+<dt id="src.prep.nes.extract_nes.extract_named_entity">
+<code class="descname">extract_named_entity</code><span class="sig-paren">(</span><em>line</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.nes.extract_nes.extract_named_entity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts named entity from current line if present.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>line</strong> (<em>str</em>) &#8211; Current line</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Named entity in this line and its NE tag</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.prep.nes.extract_nes.main">
+<code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.nes.extract_nes.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.prep.nes.extract_nes.process">
+<code class="descname">process</code><span class="sig-paren">(</span><em>inpath</em>, <em>outpath</em>, <em>logpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.nes.extract_nes.process" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts extracting named entities and their corresponding sentence IDs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>inpath</strong> (<em>str</em>) &#8211; Path to input file. Input file is a gzipped xml file.</li>
+<li><strong>outpath</strong> (<em>str</em>) &#8211; Path to output directory.</li>
+<li><strong>logpath</strong> (<em>str</em>) &#8211; Path to log directory.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.prep.nes.extract_nes.write_dict_into_file">
+<code class="descname">write_dict_into_file</code><span class="sig-paren">(</span><em>dictionary</em>, <em>out_path</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.nes.extract_nes.write_dict_into_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a dictionary of named entities, their tags and their frequencies into a file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dictionary</strong> (<em>dict</em>) &#8211; Dictionary with named entities as key and their frequencies as values.</li>
+<li><strong>out_path</strong> (<em>str</em>) &#8211; Path the frequencies should written to.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.prep.nes.extract_nes.write_ids_into_file">
+<code class="descname">write_ids_into_file</code><span class="sig-paren">(</span><em>dictionary</em>, <em>out_path</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.nes.extract_nes.write_ids_into_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a dictionary of named entities,, their tags and IDs of the sentences they occur in into a file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dictionary</strong> (<em>dict</em>) &#8211; Dictionary with named entities as key and their occurrences as a list as values.</li>
+<li><strong>out_path</strong> (<em>str</em>) &#8211; Path the frequencies should written to.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.prep.nes.merge">
+<span id="src-prep-nes-merge-module"></span><h2>src.prep.nes.merge module<a class="headerlink" href="#module-src.prep.nes.merge" title="Permalink to this headline">¶</a></h2>
+<p>This module is used to merge various output files created from <code class="xref py py-mod docutils literal"><span class="pre">extract_nes.py</span></code>. Because they are only created
+for one corpus part at a time, you end up with multiple files that cannot simply by concatenated. Therefore, this module
+aims to merge them in a (relatively) memory-efficient manner.</p>
+<dl class="function">
+<dt id="src.prep.nes.merge.freq_worker">
+<code class="descname">freq_worker</code><span class="sig-paren">(</span><em>inpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.nes.merge.freq_worker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the named entity frequencies from a file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inpath</strong> (<em>str</em>) &#8211; Path to frequency file.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Dictionary with named entities as keys and their frequencies as values.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.prep.nes.merge.id_worker">
+<code class="descname">id_worker</code><span class="sig-paren">(</span><em>inpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.nes.merge.id_worker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads the named entity ids from a file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inpath</strong> (<em>str</em>) &#8211; Path to frequency file.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Dictionary with named entities as keys and their ids as values.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.prep.nes.merge.main">
+<code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.nes.merge.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function, handling command line arguments.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.prep.nes.merge.merge_dicts">
+<code class="descname">merge_dicts</code><span class="sig-paren">(</span><em>dicttuple</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.nes.merge.merge_dicts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges two dictionary (efficiently).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dicttuple</strong> (<em>tuple</em>) &#8211; Tuple of two frequency dictionaries.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">New merged dictionary</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.prep.nes.merge.merge_frequency_files">
+<code class="descname">merge_frequency_files</code><span class="sig-paren">(</span><em>infiles_path</em>, <em>outpath</em>, <em>logpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.nes.merge.merge_frequency_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge multiple named entitiy frequency files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>infiles_path</strong> (<em>str</em>) &#8211; Path to input file directory.</li>
+<li><strong>outpath</strong> (<em>str</em>) &#8211; Path to output directory.</li>
+<li><strong>logpath</strong> (<em>str</em>) &#8211; Path to logging directory.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.prep.nes.merge.merge_id_dicts">
+<code class="descname">merge_id_dicts</code><span class="sig-paren">(</span><em>dicttuple</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.nes.merge.merge_id_dicts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merges two id dictionary (efficiently).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dicttuple</strong> (<em>tuple</em>) &#8211; Tuple of two id dictionaries.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">New merged dictionary</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.prep.nes.merge.merge_id_files">
+<code class="descname">merge_id_files</code><span class="sig-paren">(</span><em>infiles_path</em>, <em>outpath</em>, <em>logpath</em>, <em>yaml=False</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.nes.merge.merge_id_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge multiple named entitiy id files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>infiles_path</strong> (<em>str</em>) &#8211; Path to input file directory.</li>
+<li><strong>outpath</strong> (<em>str</em>) &#8211; Path to output directory.</li>
+<li><strong>logpath</strong> (<em>str</em>) &#8211; Path to logging directory.</li>
+<li><strong>yaml</strong> (<em>bool</em>) &#8211; Flag to indicate whether merged files should be written in yaml format.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.prep.nes.merge.rl">
+<code class="descname">rl</code><span class="sig-paren">(</span><em>infile</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.nes.merge.rl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lazy function to read a line from a while and remove redundant whitespaces.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>infile</strong> (<em>str</em>) &#8211; Path to input file.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Stripped line</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.prep.nes.statistics">
+<span id="src-prep-nes-statistics-module"></span><h2>src.prep.nes.statistics module<a class="headerlink" href="#module-src.prep.nes.statistics" title="Permalink to this headline">¶</a></h2>
+<p>This script collects a few statistics about named entities extracted from the corpus and the percentage of their
+occurrence in the <em>Freebase</em> relation dataset.
+Requires a relation file in yaml format and a merged named entity frequency file, see <code class="xref py py-mod docutils literal"><span class="pre">extract_nes.py</span></code>,
+<code class="xref py py-mod docutils literal"><span class="pre">merge.py</span></code> and  <code class="xref py py-mod docutils literal"><span class="pre">relations.py</span></code>.</p>
+<dl class="function">
+<dt id="src.prep.nes.statistics.calculate_occurrences">
+<code class="descname">calculate_occurrences</code><span class="sig-paren">(</span><em>freqpath</em>, <em>relations_path</em><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.nes.statistics.calculate_occurrences" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate statistics about named entities extracted from the corpus and the percentage of their
+occurrence in the <em>Freebase</em> relation dataset.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>freqpath</strong> (<em>str</em>) &#8211; Path to merged frequencies file.</li>
+<li><strong>relations_path</strong> (<em>str</em>) &#8211; Path to relation yaml file.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.prep.nes.statistics.main">
+<code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.prep.nes.statistics.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.prep.nes">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-src.prep.nes" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="src.prep.relations.html" class="btn btn-neutral float-right" title="src.prep.relations package" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="src.prep.corpus.html" class="btn btn-neutral" title="src.prep.corpus package" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Dennis Ulmer.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'v1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

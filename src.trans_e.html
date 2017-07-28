@@ -1,0 +1,942 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>src.trans_e package &mdash; BARBarA (a Bad Acronym Regarding a Bachelor Assignment) v1.0</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="BARBarA (a Bad Acronym Regarding a Bachelor Assignment) v1.0" href="index.html"/>
+        <link rel="up" title="src package" href="src.html"/>
+        <link rel="prev" title="src.prep.relations package" href="src.prep.relations.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> BARBarA
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="simple">
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="src.html">src package</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="src.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="src.clustering.html">src.clustering package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.eval.html">src.eval package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.mapping.html">src.mapping package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.misc.html">src.misc package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="src.prep.html">src.prep package</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">src.trans_e package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-src.trans_e.add_inverse_relations">src.trans_e.add_inverse_relations module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-src.trans_e.contains_entities">src.trans_e.contains_entities module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-src.trans_e.differentiate_datasets">src.trans_e.differentiate_datasets module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-src.trans_e.partition_data">src.trans_e.partition_data module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-src.trans_e.trans_we">src.trans_e.trans_we module</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="src.html#module-src">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">BARBarA</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+        <li><a href="src.html">src package</a> &raquo;</li>
+      
+    <li>src.trans_e package</li>
+    <li class="wy-breadcrumbs-aside">
+      
+          
+          <a href="_sources/src.trans_e.txt" rel="nofollow"> View page source</a>
+        
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="src-trans-e-package">
+<h1>src.trans_e package<a class="headerlink" href="#src-trans-e-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-src.trans_e.add_inverse_relations">
+<span id="src-trans-e-add-inverse-relations-module"></span><h2>src.trans_e.add_inverse_relations module<a class="headerlink" href="#module-src.trans_e.add_inverse_relations" title="Permalink to this headline">¶</a></h2>
+<p>This script is used to add inverse relations to a <em>Freebase</em> relations dataset, e.g.
+<em>/location/location/contains</em> and <em>/location/location/containedby</em>.</p>
+<dl class="function">
+<dt id="src.trans_e.add_inverse_relations.add_inverse_relations">
+<code class="descname">add_inverse_relations</code><span class="sig-paren">(</span><em>relations_inpath</em>, <em>relations_outpath</em>, <em>inverse_relations</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.add_inverse_relations.add_inverse_relations" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.add_inverse_relations.init_argparse">
+<code class="descname">init_argparse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.add_inverse_relations.init_argparse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize all possible arguments for the argument parser.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">ArgumentParser object with command line arguments for this script.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-mod docutils literal"><span class="pre">argparse.ArgumentParser</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.add_inverse_relations.main">
+<code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.add_inverse_relations.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>The main function. Uses command line arguments to start the script.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.add_inverse_relations.read_file_with_inverse_relations">
+<code class="descname">read_file_with_inverse_relations</code><span class="sig-paren">(</span><em>inverse_inpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.add_inverse_relations.read_file_with_inverse_relations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read a <em>Freebase</em> information file where inverse relations are present and separated by a simple dot.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inverse_inpath</strong> (<em>str</em>) &#8211; Path to <em>Freebase</em> relation file.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Dictionary with a relation as a key and its inverse as value.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">defaultdict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.trans_e.contains_entities">
+<span id="src-trans-e-contains-entities-module"></span><h2>src.trans_e.contains_entities module<a class="headerlink" href="#module-src.trans_e.contains_entities" title="Permalink to this headline">¶</a></h2>
+<p>This script analyses entities in the <em>Freebase</em> <code class="docutils literal"><span class="pre">FB14k</span></code> relations datatset and the tql wikidata dump.
+This is handy because the <em>Freebase</em> API is deprecated nowadays. Also, this scripted was used to create the <code class="docutils literal"><span class="pre">GER14k</span></code>
+dataset.</p>
+<dl class="function">
+<dt id="src.trans_e.contains_entities.contains_entities">
+<code class="descname">contains_entities</code><span class="sig-paren">(</span><em>entities1</em>, <em>entities2</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.contains_entities.contains_entities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prints stats about two sets of entities.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>entities1</strong> (<em>set</em>) &#8211; First set of entities.</li>
+<li><strong>entities2</strong> (<em>set</em>) &#8211; Second set of entities.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.contains_entities.create_new_dataset">
+<code class="descname">create_new_dataset</code><span class="sig-paren">(</span><em>entities1</em>, <em>dataset</em>, <em>outpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.contains_entities.create_new_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a new dataset only with relations which entities appear in a specific set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>entities1</strong> (<em>set</em>) &#8211; Set entities in relations have to appear in.</li>
+<li><strong>dataset</strong> (<em>list</em>) &#8211; Original dataset (a list of tuples).</li>
+<li><strong>outpath</strong> (<em>str</em>) &#8211; Path to new dataset.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.contains_entities.extract_entities_from_relation_dataset">
+<code class="descname">extract_entities_from_relation_dataset</code><span class="sig-paren">(</span><em>dataset_inpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.contains_entities.extract_entities_from_relation_dataset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract all entities from the <em>Freebase</em> relations file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dataset_inpath</strong> (<em>str</em>) &#8211; Path to the <em>Freebase</em> file.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Set of entities in the <em>Freebase</em> relations file..</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">set</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.contains_entities.extract_entities_from_tql_file">
+<code class="descname">extract_entities_from_tql_file</code><span class="sig-paren">(</span><em>tql_path</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.contains_entities.extract_entities_from_tql_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract all entities from the <code class="docutils literal"><span class="pre">tql</span></code> <em>Wikidata</em> <em>Freebase</em> dump.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tql_path</strong> (<em>str</em>) &#8211; Path to <code class="docutils literal"><span class="pre">tql</span></code> file.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Set of entities in the <code class="docutils literal"><span class="pre">tql</span></code> dump.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">set</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.contains_entities.init_argparse">
+<code class="descname">init_argparse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.contains_entities.init_argparse" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.contains_entities.main">
+<code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.contains_entities.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.trans_e.differentiate_datasets">
+<span id="src-trans-e-differentiate-datasets-module"></span><h2>src.trans_e.differentiate_datasets module<a class="headerlink" href="#module-src.trans_e.differentiate_datasets" title="Permalink to this headline">¶</a></h2>
+<p>This script analyses entities of two relation datasets (e.g. <code class="docutils literal"><span class="pre">FB15k</span></code> and <code class="docutils literal"><span class="pre">GER14k</span></code>!).</p>
+<dl class="function">
+<dt id="src.trans_e.differentiate_datasets.compare_entities">
+<code class="descname">compare_entities</code><span class="sig-paren">(</span><em>set1</em>, <em>set2</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.differentiate_datasets.compare_entities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compares unique entities of two relation datasets.
+Also determines the size of their intersection.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>set1</strong> (<em>list</em>) &#8211; List of relation triples as tuples from dataset 1.</li>
+<li><strong>set2</strong> (<em>list</em>) &#8211; List of relation trilpes as tuples from dataset 2.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.differentiate_datasets.init_argparse">
+<code class="descname">init_argparse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.differentiate_datasets.init_argparse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize all possible arguments for the argument parser.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">ArgumentParser object with command line arguments for this script.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-mod docutils literal"><span class="pre">argparse.ArgumentParser</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.differentiate_datasets.main">
+<code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.differentiate_datasets.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.trans_e.partition_data">
+<span id="src-trans-e-partition-data-module"></span><h2>src.trans_e.partition_data module<a class="headerlink" href="#module-src.trans_e.partition_data" title="Permalink to this headline">¶</a></h2>
+<p>This script partition the data of a relation dataset like <code class="docutils literal"><span class="pre">FB15k</span></code> into a training, validation and test set so it
+can be used by <a class="reference external" href="https://github.com/glorotxa/SME">TransE</a>.
+To make sure that no relation appears in the validation or test set that didn&#8217;t appear in the training set, data
+will be partitioned relation-wise. To partition them intuitively is still an option, though.</p>
+<dl class="function">
+<dt id="src.trans_e.partition_data.check_data_integrity">
+<code class="descname">check_data_integrity</code><span class="sig-paren">(</span><em>data_inpath</em>, <em>remove_clones</em>, <em>outpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.partition_data.check_data_integrity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check whether all triplets in the data are unique.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.partition_data.check_set_integrity">
+<code class="descname">check_set_integrity</code><span class="sig-paren">(</span><em>indir</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.partition_data.check_set_integrity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the integrity of given training / validation / test sets (do triples with new relations appear in the
+validation or test, but not in the training set?).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>indir</strong> (<em>str</em>) &#8211; Directory of the datasets.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.partition_data.get_stats">
+<code class="descname">get_stats</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.partition_data.get_stats" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns some statistics about the given data, i.e. the number of unique entities, relations and
+their sum.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>data</strong> (<em>list</em>) &#8211; List of relation triples as tuples.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">#entities, #relations, #entities + #relations.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.partition_data.init_argparse">
+<code class="descname">init_argparse</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.partition_data.init_argparse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize all possible arguments for the argument parser.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">ArgumentParser object with command line arguments for this script.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-mod docutils literal"><span class="pre">argparse.ArgumentParser</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.partition_data.main">
+<code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.partition_data.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.partition_data.partition_data">
+<code class="descname">partition_data</code><span class="sig-paren">(</span><em>data</em>, <em>prts</em>, <em>outdir</em>, <em>whole=True</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.partition_data.partition_data" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.partition_data.partition_relation_wise">
+<code class="descname">partition_relation_wise</code><span class="sig-paren">(</span><em>data</em>, <em>prts</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.partition_data.partition_relation_wise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Partition data into training, validation and test set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>data</strong> (<em>list</em>) &#8211; List of relation triples as tuples.</li>
+<li><strong>prts</strong> (<em>tuple</em>) &#8211; Tuple of floats with each number corresponding to the desired percentage of data distributed to
+the corresponding set (% train set / % validation set / % tets set)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Tuple of the three data sets as lists of relation triples as tuples.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuples</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.partition_data.partition_whole">
+<code class="descname">partition_whole</code><span class="sig-paren">(</span><em>data</em>, <em>prts</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.partition_data.partition_whole" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.partition_data.read_only_relations_into_set">
+<code class="descname">read_only_relations_into_set</code><span class="sig-paren">(</span><em>inpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.partition_data.read_only_relations_into_set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only read the relation of a given relation dataset into a set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inpath</strong> (<em>str</em>) &#8211; Path to relation dataset.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Set of dataset relation types.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">set</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.partition_data.write_data_in_file">
+<code class="descname">write_data_in_file</code><span class="sig-paren">(</span><em>data</em>, <em>outfile</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.partition_data.write_data_in_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes relation triples into a file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>data</strong> (<em>list</em>) &#8211; List of relation triples as tuples.</li>
+<li><strong>outfile</strong> (<em>str</em>) &#8211; Path the triples should be written to.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-src.trans_e.trans_we">
+<span id="src-trans-e-trans-we-module"></span><h2>src.trans_e.trans_we module<a class="headerlink" href="#module-src.trans_e.trans_we" title="Permalink to this headline">¶</a></h2>
+<p>This module follows a modified approach from
+<a class="reference external" href="http://papers.nips.cc/paper/5071-translating-embeddings-for-modeling-multi-relational-data.pdf">(Bordes et al., 2013)</a>.
+As so, noise-contrastive learning and corrupt triples are use. But whereas in this original paper,
+vector representations forn entities and relations are learned in a joint manner, in this case only the continuous
+representations for semantic relations will be learned and word embeddings used for the entities instead.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Because we use words embedding but still the <em>FB15k</em> dataset here, we can only use data samples where we have
+trained word embeddings for both entities. Those are only a few, which is one reason why this approach performs
+badly.</p>
+</div>
+<dl class="function">
+<dt id="src.trans_e.trans_we.convert_data">
+<code class="descname">convert_data</code><span class="sig-paren">(</span><em>sets_path</em>, <em>tql_inpath</em>, <em>vector_inpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.trans_we.convert_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Re-formats relation data sets to fit the training routine in this module.
+Also tests the coverage of word embedding model on all entities in the datasets.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>sets_path</strong> (<em>str</em>) &#8211; Directory of the datasets.</li>
+<li><strong>tql_inpath</strong> (<em>str</em>) &#8211; Path to <em>Wikidata</em> <em>Freebase</em> dump in <cite>tql</cite> format.</li>
+<li><strong>vector_inpath</strong> (<em>str</em>) &#8211; Path to word embedding file.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.trans_we.create_corrupt_triples">
+<code class="descname">create_corrupt_triples</code><span class="sig-paren">(</span><em>grouped_pairs</em>, <em>entities</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.trans_we.create_corrupt_triples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a set of corrupted training triplets group by their shared relation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>grouped_pairs</strong> (<em>dict</em>) &#8211; Test samples as dictionary with relation as key and a list of tuples</li>
+<li><strong>two entities each as value.</strong> (<em>with</em>) &#8211; </li>
+<li><strong>entities</strong> (<em>set</em>) &#8211; Set of unique entities.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><strong>grouped_train</strong> &#8211; Corrupted training samples as dictionary with a relation as key and a list of tuples
+with two entities each as value.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.trans_we.dump_relation_vectors">
+<code class="descname">dump_relation_vectors</code><span class="sig-paren">(</span><em>relation_vectors</em>, <em>outpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.trans_we.dump_relation_vectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves relation numpy vectors.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>relation_vectors</strong> (<em>dict</em>) &#8211; Dictionary with index of a relation as key and the relations vector as a</li>
+<li><strong>as value.</strong> (<em>numpy.array</em>) &#8211; </li>
+<li><strong>outpath</strong> (<em>str</em>) &#8211; Path the vectors should be saved to.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.trans_we.evaluate">
+<code class="descname">evaluate</code><span class="sig-paren">(</span><em>model</em>, <em>grouped_test</em>, <em>relation_vectors</em>, <em>entities</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.trans_we.evaluate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evaluate the relations vector the same way as in <a class="reference external" href="http://papers.nips.cc/paper/5071-translating-embeddings-for-modeling-multi-relational-data.pdf">(Bordes et al.,
+2013)</a>.
+Therefore, for every relation triple in the testset, one entity will be removed and all entities will be inserted
+afterwards. Also they will be ranked by their loss (ascending) and assigned a rank. The evaluation metrics are
+the percentage of times the right entity is in the top ten highest ranked entities and mean rank of the correct
+entitiy.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>model</strong> (<em>gensim.models.Word2Vec</em>) &#8211; Word embeddings as gensim model.</li>
+<li><strong>grouped_test</strong> (<em>dict</em>) &#8211; Test samples as dictionary with relation as key and a list of tuples</li>
+<li><strong>two entities each as value.</strong> (<em>with</em>) &#8211; </li>
+<li><strong>relation_vectors</strong> (<em>dict</em>) &#8211; Dictionary with index of a relation as key and the relations vector as a numpy.array</li>
+<li><strong>value.</strong> (<em>as</em>) &#8211; </li>
+<li><strong>entities</strong> (<em>set</em>) &#8211; Set of unique entities.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.trans_we.extract_data_from_uri">
+<code class="descname">extract_data_from_uri</code><span class="sig-paren">(</span><em>uri</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.trans_we.extract_data_from_uri" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extracts data from an URI.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>uri</strong> (<em>str</em>) &#8211; URI the data should be extracted from.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Extracted data.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.trans_we.get_rank">
+<code class="descname">get_rank</code><span class="sig-paren">(</span><em>target</em>, <em>ranks</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.trans_we.get_rank" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get rank of a target entity within all ranked entities.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>target</strong> (<em>str</em>) &#8211; Target entity which rank should be determined.</li>
+<li><strong>ranks</strong> (<em>list</em>) &#8211; List of tuples of an entity and its rank.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Rank of entity or -1 if entity is not present in ranks.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.trans_we.init_argparser">
+<code class="descname">init_argparser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.trans_we.init_argparser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize all possible arguments for the argument parser.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">ArgumentParser object with command line arguments for this script.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-mod docutils literal"><span class="pre">argparse.ArgumentParser</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.trans_we.load_relation_vectors">
+<code class="descname">load_relation_vectors</code><span class="sig-paren">(</span><em>inpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.trans_we.load_relation_vectors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Loads relation numpy vectors.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>inpath</strong> (<em>str</em>) &#8211; Path the numpy vectors should be loaded from.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Dictionary with index of a relation as key and the relations vector as a numpy.array as value.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.trans_we.main">
+<code class="descname">main</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.trans_we.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>Main function.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.trans_we.prepare_training">
+<code class="descname">prepare_training</code><span class="sig-paren">(</span><em>sets_path</em>, <em>vector_inpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.trans_we.prepare_training" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares the training step loading word embeddings and training sets.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sets_path</strong> (<em>str</em>) &#8211; Path to training set directory.</li>
+<li><strong>vector_inpath</strong> (<em>str</em>) &#8211; Path to word embedding file.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Tuple of results with <strong>model</strong> (<em>gensim.models.Word2Vec</em>): Word embeddings as gensim model /
+<strong>grouped_train</strong> (<em>dict</em>): Training samples as dictionary with relation as key and a list of tuples
+with two entities each as value / <strong>grouped_valid</strong> (<em>dict</em>): As <strong>grouped_train</strong> / <strong>grouped_test</strong>
+(<em>dict</em>): As <strong>grouped_train</strong> / <strong>grouped_corrupted</strong> (<em>dict</em>): As <strong>grouped_train</strong> /
+<strong>relations_types</strong> (<em>dict</em>): Dictionary with relations as key and the amount of triples with this relation
+as a key / <strong>entities</strong> (<em>set</em>): Set of unique entities.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.trans_we.rank_entities">
+<code class="descname">rank_entities</code><span class="sig-paren">(</span><em>reference</em>, <em>solution</em>, <em>model</em>, <em>entities</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.trans_we.rank_entities" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ranks entities against a reference vector.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>reference</strong> (<em>numpy.array</em>) &#8211; Reference vector.</li>
+<li><strong>solution</strong> (<em>str</em>) &#8211; The actual solution.</li>
+<li><strong>model</strong> (<em>gensim.models.Word2Vec</em>) &#8211; Word embeddings as gensim model.</li>
+<li><strong>entities</strong> (<em>set</em>) &#8211; Set of unique entities.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Rank of solution as integer, flag if a <a class="reference external" href="mailto:Hit&#37;&#52;&#48;10">Hit<span>&#64;</span>10</a> has occurred as boolean.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuples</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.trans_we.read_freebase_data">
+<code class="descname">read_freebase_data</code><span class="sig-paren">(</span><em>sets_path</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.trans_we.read_freebase_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads all different datasets in a directory at once.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>sets_path</strong> (<em>str</em>) &#8211; Directory of the datasets.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Tuple of datasets as lists.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.trans_we.read_tql_file">
+<code class="descname">read_tql_file</code><span class="sig-paren">(</span><em>tql_inpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.trans_we.read_tql_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads a <em>Freebase</em> dump by wikidata. Must be in <cite>tql</cite> format. Available online
+<a class="reference external" href="https://developers.google.com/freebase/">here</a> (July 2016).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>tql_inpath</strong> (<em>str</em>) &#8211; Path to <em>Wikidata</em> <em>Freebase</em> dump in <cite>tql</cite> format.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Dictionary with <em>Freebase</em> code as key and the corresponding real name of an entity as value.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">defaultdict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.trans_we.test_coverage">
+<code class="descname">test_coverage</code><span class="sig-paren">(</span><em>triples</em>, <em>model</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.trans_we.test_coverage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Test the coverage of a dataset consisting of freebase triples on word2vec word embeddings.
+For every triple (h, l, t), the entities h and t are taken and used for look up in the word2vec
+model.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>triples</strong> (<em>list</em>) &#8211; List of relation triples as tuples.</li>
+<li><strong>model</strong> (<em>gensim.models.Word2Vec</em>) &#8211; Word embeddings as gensim model.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Set of entities in the model.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">set</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.trans_we.train">
+<code class="descname">train</code><span class="sig-paren">(</span><em>model</em>, <em>grouped_train</em>, <em>grouped_corrupted</em>, <em>lossf</em>, <em>relation_types</em>, <em>epochs=1000</em>, <em>learning_rate=0.01</em>, <em>margin=1.0</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.trans_we.train" title="Permalink to this definition">¶</a></dt>
+<dd><p>Train the relation vectors following the example of <a class="reference external" href="http://papers.nips.cc/paper/5071-translating-embeddings-for-modeling-multi-relational-data.pdf">(Bordes et al.,
+2013)</a>,
+but use word embeddings for the entity vectors instead.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>model</strong> (<em>gensim.models.Word2Vec</em>) &#8211; Word embeddings as gensim model.</li>
+<li><strong>grouped_train</strong> (<em>dict</em>) &#8211; Training samples as dictionary with relation as key and a list of tuples</li>
+<li><strong>two entities each as value.</strong> (<em>with</em>) &#8211; </li>
+<li><strong>grouped_corrupted</strong> (<em>dict</em>) &#8211; As grouped_train.</li>
+<li><strong>lossf</strong> (<em>func</em>) &#8211; Loss function for training.</li>
+<li><strong>relation_types</strong> (<em>dict</em>) &#8211; Dictionary with relations as key and the amount of triples with this relation as a key.</li>
+<li><strong>epochs</strong> (<em>int</em>) &#8211; Number of training epochs.</li>
+<li><strong>learning_rate</strong> (<em>float</em>) &#8211; Learning rate for training.</li>
+<li><strong>margin</strong> (<em>float</em>) &#8211; Margin <img class="math" src="_images/math/3666981dc77862de77b6ecfcb64aad59b425cbaf.png" alt="\gamma"/> for training.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Dictionary with index of a relation as key and the relations vector as a numpy.array as value.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">dict</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.trans_we.transform_triples">
+<code class="descname">transform_triples</code><span class="sig-paren">(</span><em>triples</em>, <em>relation_types</em>, <em>entities</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.trans_we.transform_triples" title="Permalink to this definition">¶</a></dt>
+<dd><p>Groups a list of relations triples by their relations and returns a suitable data structure.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>triples</strong> (<em>list</em>) &#8211; List of relation triples as tuples.</li>
+<li><strong>relation_types</strong> (<em>dict</em>) &#8211; Dictionary with relations as key and the amount of triples with this relation as a key.</li>
+<li><strong>entities</strong> (<em>set</em>) &#8211; Set of unique entities.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><dl class="docutils">
+<dt>Dictionary with relation as key and a list of entity tuples as value and an augmented set of unique</dt>
+<dd><p class="first last">entities.</p>
+</dd>
+</dl>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="src.trans_e.trans_we.write_data">
+<code class="descname">write_data</code><span class="sig-paren">(</span><em>triples</em>, <em>found_entities</em>, <em>outpath</em><span class="sig-paren">)</span><a class="headerlink" href="#src.trans_e.trans_we.write_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes relation triples into a file, but only those triples where both entities are also found in a designated
+set.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>triples</strong> (<em>list</em>) &#8211; List of relation triples as tuples.</li>
+<li><strong>found_entities</strong> (<em>set</em>) &#8211; Set of unique entities.</li>
+<li><strong>outpath</strong> (<em>str</em>) &#8211; Path the data should be written to.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="src.prep.relations.html" class="btn btn-neutral" title="src.prep.relations package" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, Dennis Ulmer.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'v1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
